@@ -6,6 +6,8 @@ import RelatedPosts from '@/components/RelatedPosts';
 import ReadingProgress from '@/components/ReadingProgress';
 import PostNavigation from '@/components/PostNavigation';
 import Comments from '@/components/Comments';
+import CommentCount from '@/components/CommentCount';
+import JumpToComments from '@/components/JumpToComments';
 
 export async function generateStaticParams() {
   const paths = await getAllPostIds();
@@ -38,10 +40,13 @@ export default async function BlogPost({
             >
               ← Back to Blog
             </Link>
-            <ShareButton 
-              title={post.title}
-              url={typeof window !== 'undefined' ? window.location.href : ''}
-            />
+            <div className="flex items-center gap-4">
+              <JumpToComments />
+              <ShareButton 
+                title={post.title}
+                url={typeof window !== 'undefined' ? window.location.href : ''}
+              />
+            </div>
           </div>
 
           <article className="prose lg:prose-xl mx-auto">
@@ -56,6 +61,8 @@ export default async function BlogPost({
               </time>
               <span>•</span>
               <span>{post.readingTime}</span>
+              <span>•</span>
+              <CommentCount repo="mennodejong/personal-website" term={params.slug} />
             </div>
             <div className="flex flex-wrap gap-2 mb-8 not-prose">
               {post.categories.map((category) => (
@@ -79,9 +86,10 @@ export default async function BlogPost({
           <PostNavigation currentSlug={params.slug} allPosts={allPosts} />
           <RelatedPosts currentPost={post} allPosts={allPosts} />
           <Comments 
-            repo="your-github-username/your-repo-name"
+            repo="mennodejong/personal-website"
             term={params.slug}
             label="Comments"
+            theme="light"
           />
         </div>
       </div>

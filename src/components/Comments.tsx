@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface CommentsProps {
   repo: string;
@@ -11,6 +11,22 @@ interface CommentsProps {
 
 export default function Comments({ repo, term, label, theme = 'light' }: CommentsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentTheme, setCurrentTheme] = useState(theme);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const updateTheme = (e: MediaQueryListEvent | MediaQueryList) => {
+      setCurrentTheme(e.matches ? 'dark' : 'light');
+    };
+
+    mediaQuery.addEventListener('change', updateTheme);
+    updateTheme(mediaQuery);
+
+    return () => mediaQuery.removeEventListener('change', updateTheme);
+  }, []);
 
   useEffect(() => {
     // Remove any existing script
@@ -33,10 +49,21 @@ export default function Comments({ repo, term, label, theme = 'light' }: Comment
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', theme);
+    script.setAttribute('data-theme', currentTheme);
     script.setAttribute('data-lang', 'en');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
+
+    // Listen for the giscus frame load
+    const handleLoad = () => {
+      setIsLoading(false);
+    };
+    window.addEventListener('message', (event) => {
+      if (event.origin === 'https://giscus.app' && 
+          event.data?.giscus?.resizeHeight) {
+        handleLoad();
+      }
+    });
 
     // Add script to container
     if (containerRef.current) {
@@ -49,12 +76,20 @@ export default function Comments({ repo, term, label, theme = 'light' }: Comment
         existingScript.remove();
       }
     };
-  }, [repo, term, theme]);
+  }, [repo, term, currentTheme]);
 
   return (
-    <section className="mt-12 pt-8 border-t">
+    <section id="comments" className="mt-12 pt-8 border-t">
       <h2 className="text-2xl font-bold mb-8">{label}</h2>
-      <div ref={containerRef} />
+      {isLoading && (
+        <div className="flex items-center justify-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        </div>
+      )}
+      <div 
+        ref={containerRef}
+        className={isLoading ? 'invisible h-0' : 'visible'}
+      />
     </section>
   );
 }
