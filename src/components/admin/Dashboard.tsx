@@ -173,6 +173,8 @@ categories: []
         .replace(/[^\w\s]/g, '')
         .replace(/\s+/g, '-')}`;
       
+      setIsLoading(true);
+      
       // Get default branch as base
       const { data: repoData } = await octokit.repos.get({
         owner: REPO_OWNER,
@@ -188,13 +190,27 @@ categories: []
         ref: `heads/${baseBranch}`,
       });
       
-      // Create new branch from base branch
-      await octokit.git.createRef({
-        owner: REPO_OWNER,
-        repo: REPO_NAME,
-        ref: `refs/heads/${branchName}`,
-        sha: refData.object.sha,
-      });
+      try {
+        // Create new branch from base branch
+        await octokit.git.createRef({
+          owner: REPO_OWNER,
+          repo: REPO_NAME,
+          ref: `refs/heads/${branchName}`,
+          sha: refData.object.sha,
+        });
+      } catch (branchError: any) {
+        if (branchError.message && (
+          branchError.message.includes('Resource not accessible by personal access token') ||
+          branchError.message.includes('Not Found') ||
+          branchError.message.includes('permission')
+        )) {
+          throw new Error(
+            'Your GitHub token lacks sufficient permissions to create branches. ' +
+            'Please create a new token with full repo permissions (including repo:status, repo_deployment, public_repo, repo:invite, security_events).'
+          );
+        }
+        throw branchError;
+      }
       
       // Save changes to new branch
       const filename = mode === 'create' 
@@ -231,9 +247,24 @@ categories: []
       alert(`Pull request created! PR #${prData.number}`);
       // Return to post list
       setMode('list');
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error creating PR:', err);
-      alert(`Error creating pull request: ${err.message}`);
+      
+      // Provide helpful error message based on error type
+      if (err.message && err.message.includes('Resource not accessible by personal access token')) {
+        alert(`Permission Error: Your GitHub token does not have sufficient permissions.
+
+Please create a new token with the following scopes:
+- repo (all checkboxes - full control)
+- workflow (for repository automation)
+- user (for user information)
+
+Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)`);
+      } else {
+        alert(`Error creating pull request: ${err.message}`);
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 

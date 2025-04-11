@@ -66,17 +66,25 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
             placeholder="ghp_..."
             required
           />
-          <p className="mt-2 text-sm text-gray-500">
-            Create a token with <code>repo</code> and <code>user</code> scopes at{' '}
-            <a 
-              href="https://github.com/settings/tokens" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
-            >
-              GitHub Settings
-            </a>
-          </p>
+          <div className="mt-2 text-sm text-gray-500">
+            <p>Create a <strong>classic</strong> token with the following permissions:</p>
+            <ul className="list-disc pl-5 mt-1">
+              <li><code>repo</code> (all checkboxes - full control)</li>
+              <li><code>workflow</code> (for repository automation)</li> 
+              <li><code>user</code> (for user information)</li>
+            </ul>
+            <p className="mt-1">
+              Create token at{' '}
+              <a 
+                href="https://github.com/settings/tokens" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+              </a>
+            </p>
+          </div>
         </div>
         
         <button
