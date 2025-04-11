@@ -27,11 +27,28 @@ interface GenerateMetadataProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
+// Base URL for canonical links - should be updated in production
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+
 export const generateMetadata = async ({ params }: GenerateMetadataProps): Promise<Metadata> => {
   const post = await getPostData(params.slug);
+  const canonicalUrl = `${BASE_URL}/blog/${params.slug}`;
+  
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      url: canonicalUrl,
+      publishedTime: post.date,
+      authors: ['Your Name'],
+      tags: post.categories,
+    },
   };
 };
 

@@ -5,6 +5,7 @@ import { BlogPostFile } from '@/types/github';
 import dynamic from 'next/dynamic';
 import { marked } from 'marked';
 import { FiSave, FiGitPullRequest } from 'react-icons/fi';
+import DevToPublisher from './DevToPublisher';
 
 // Dynamically import the entire CodeMirror component with extensions
 // This avoids the issues with multiple instances of @codemirror/state
@@ -309,6 +310,22 @@ categories: [${categories.map(cat => `"${cat}"`).join(', ')}]
           )}
         </div>
       </div>
+      
+      {/* Cross-posting integrations */}
+      {post && (
+        <div className="mt-8 border-t pt-6">
+          <h3 className="text-xl font-medium mb-3">Cross-Platform Publishing</h3>
+          <p className="text-sm text-gray-600 mb-4">
+            Extend your reach by publishing this article to developer platforms.
+          </p>
+          
+          <div className="space-y-4">
+            <DevToPublisher post={post} />
+            {/* Add more platforms here in the future */}
+          </div>
+        </div>
+      )}
+      
     </div>
   );
 }
