@@ -13,6 +13,7 @@ import JumpToComments from '@/components/JumpToComments';
 import SocialShare from '@/components/SocialShare';
 import PostReactions from '@/components/PostReactions';
 import WebMentions from '@/components/WebMentions';
+import BlogPostClient from '@/components/BlogPostClient';
 
 export async function generateStaticParams() {
   const paths = await getAllPostIds();
@@ -110,13 +111,18 @@ export default async function BlogPost({
             <SocialShare 
               url={typeof window !== 'undefined' ? window.location.href : ''}
               title={post.title}
-              description={post.excerpt}
             />
           </div>
 
           <PostNavigation currentSlug={params.slug} allPosts={allPosts} />
           <RelatedPosts currentPost={post} allPosts={allPosts} />
           <WebMentions url={typeof window !== 'undefined' ? window.location.href : ''} />
+          
+          {/* Client component that handles AI recommendations */}
+          <BlogPostClient
+            post={post}
+            allPosts={allPosts}
+          />
           <Comments 
             repo="mdresch/my-portfolio-menno"
             term={params.slug}
