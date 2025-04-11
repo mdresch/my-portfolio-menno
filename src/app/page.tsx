@@ -1,4 +1,5 @@
-import Image from 'next/image';
+
+import GitHubActivity from '@/components/GitHubActivity';
 
 export default function Home() {
   return (
@@ -43,6 +44,12 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <GitHubActivity />
+        </div>
+      </section>
     </main>
   );
 }

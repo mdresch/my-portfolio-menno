@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPostData, getAllPostIds, getSortedPostsData } from '@/lib/markdown';
 import ShareButton from '@/components/ShareButton';
@@ -8,17 +10,36 @@ import PostNavigation from '@/components/PostNavigation';
 import Comments from '@/components/Comments';
 import CommentCount from '@/components/CommentCount';
 import JumpToComments from '@/components/JumpToComments';
+import SocialShare from '@/components/SocialShare';
+import PostReactions from '@/components/PostReactions';
+import WebMentions from '@/components/WebMentions';
 
 export async function generateStaticParams() {
   const paths = await getAllPostIds();
-  return paths;
+  return paths.map(path => ({
+    slug: path.params.slug
+  }));
 }
 
-export default async function BlogPost({
-  params,
-}: {
+interface GenerateMetadataProps {
   params: { slug: string };
-}) {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export const generateMetadata = async ({ params }: GenerateMetadataProps): Promise<Metadata> => {
+  const post = await getPostData(params.slug);
+  return {
+    title: post.title,
+    description: post.excerpt,
+  };
+};
+
+export default async function BlogPost({ 
+  params 
+}: GenerateMetadataProps) {
+  if (!params.slug) {
+    notFound();
+  }
   const post = await getPostData(params.slug);
   const allPosts = await getSortedPostsData();
 
@@ -41,6 +62,7 @@ export default async function BlogPost({
               ← Back to Blog
             </Link>
             <div className="flex items-center gap-4">
+              <PostReactions repo="mdresch/my-portfolio-menno" term={params.slug} />
               <JumpToComments />
               <ShareButton 
                 title={post.title}
@@ -62,7 +84,7 @@ export default async function BlogPost({
               <span>•</span>
               <span>{post.readingTime}</span>
               <span>•</span>
-              <CommentCount repo="mennodejong/personal-website" term={params.slug} />
+              <CommentCount repo="mdresch/my-portfolio-menno" term={params.slug} />
             </div>
             <div className="flex flex-wrap gap-2 mb-8 not-prose">
               {post.categories.map((category) => (
@@ -83,10 +105,20 @@ export default async function BlogPost({
             <div id="post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
 
+          <div className="mt-8 flex justify-between items-center">
+            <PostReactions repo="mdresch/my-portfolio-menno" term={params.slug} />
+            <SocialShare 
+              url={typeof window !== 'undefined' ? window.location.href : ''}
+              title={post.title}
+              description={post.excerpt}
+            />
+          </div>
+
           <PostNavigation currentSlug={params.slug} allPosts={allPosts} />
           <RelatedPosts currentPost={post} allPosts={allPosts} />
+          <WebMentions url={typeof window !== 'undefined' ? window.location.href : ''} />
           <Comments 
-            repo="mennodejong/personal-website"
+            repo="mdresch/my-portfolio-menno"
             term={params.slug}
             label="Comments"
             theme="light"

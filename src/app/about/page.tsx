@@ -6,7 +6,7 @@ export default function AboutPage() {
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
       <div className="prose lg:prose-xl">
         <p className="mb-4">
-          Hello! I'm a passionate professional dedicated to creating meaningful solutions through technology.
+          Hello! Im a passionate professional dedicated to creating meaningful solutions through technology.
         </p>
         <h2 className="text-2xl font-semibold mt-6 mb-4">My Journey</h2>
         <p className="mb-4">

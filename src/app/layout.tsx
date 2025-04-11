@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geist = Geist({
@@ -10,6 +11,16 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Menno Drescher - Portfolio",
   description: "Personal portfolio showcasing my projects and skills as a software developer.",
+  alternates: {
+    types: {
+      'application/rss+xml': [
+        {
+          url: 'feed.xml',
+          title: 'Menno Drescher\'s Blog RSS Feed'
+        },
+      ],
+    },
+  },
 };
 
 export default function RootLayout({
@@ -19,9 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.className} bg-gray-50 min-h-screen`}>
+      <body className={`${geist.className} bg-gray-50 min-h-screen flex flex-col`}>
         <Navigation />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

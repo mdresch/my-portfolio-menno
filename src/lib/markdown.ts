@@ -6,6 +6,12 @@ import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
+export interface PostParams {
+  params: {
+    slug: string;
+  };
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -17,7 +23,7 @@ export interface BlogPost {
   readingTime: string;
 }
 
-export async function getAllPostIds() {
+export async function getAllPostIds(): Promise<PostParams[]> {
   const fileNames = await readdir(postsDirectory);
   return fileNames.map((fileName) => ({
     params: {
