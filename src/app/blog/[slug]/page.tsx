@@ -28,7 +28,7 @@ interface GenerateMetadataProps {
 }
 
 // Base URL for canonical links - should be updated in production
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://my-portfolio-menno.vercel.app/';
 
 export const generateMetadata = async ({ params }: GenerateMetadataProps): Promise<Metadata> => {
   const post = await getPostData(params.slug);
