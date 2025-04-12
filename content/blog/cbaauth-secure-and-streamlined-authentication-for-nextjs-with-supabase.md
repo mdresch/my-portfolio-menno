@@ -1,5 +1,5 @@
 ---
-title: CBA-Auth: Secure and Streamlined Authentication for Next.js with Supabase
+title: CBA-Auth Secure and Streamlined Authentication for Next js with Supabase
 date: 2025-04-12
 excerpt: CBA-Auth is a modern authentication system designed to simplify and secure user management for Next.js applications using Supabase. It addresses the common challenges of complex setup, security vulnerabilities, and inflexibility found in traditional authentication methods. CBA-Auth provides a streamlined, customizable solution with a user-friendly API and robust security features, enabling rapid development and enhanced user experience.
 categories: 
