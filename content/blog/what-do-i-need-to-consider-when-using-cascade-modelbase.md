@@ -6,7 +6,9 @@ excerpt: The Base model has more limited code generation capabilities compared t
 Complex integrations like the DEV.to publisher might need to be simplified or broken down into smaller steps
 
 You may need to provide more detailed guidance for each step of implementation
-categories: [Windsurf, React]
+categories: 
+  - Windsurf
+  - React
 ---
 
 ***
