@@ -3,6 +3,8 @@ import { Geist } from "next/font/google";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import '../styles/markdown-fix.css';
+import '../styles/resume-print.css'; // Add print styles
 
 const geist = Geist({
   subsets: ["latin"],

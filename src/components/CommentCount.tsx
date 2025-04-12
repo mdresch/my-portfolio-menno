@@ -10,83 +10,93 @@ interface CommentCountProps {
 export default function CommentCount({ repo, term }: CommentCountProps) {
   const [count, setCount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Function to fetch comment count from GitHub Discussions API
     const fetchCommentCount = async () => {
       try {
-        // Extract owner and repo name
-        const [owner, repoName] = repo.split('/');
+        setIsLoading(true);
         
-        // Get GitHub token from environment
-        const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+        // Get necessary environment variables
+        const repoId = process.env.NEXT_PUBLIC_GITHUB_REPO_ID;
+        const categoryId = process.env.NEXT_PUBLIC_GITHUB_CATEGORY_ID;
         
-        if (!token) {
-          throw new Error('GitHub token is not configured');
+        if (!repoId || !categoryId) {
+          console.error('Missing required environment variables for comment count');
+          setIsLoading(false);
+          return;
         }
-
-        // Query GitHub's GraphQL API to get discussion
-        const response = await fetch('https://api.github.com/graphql', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            query: `
-              query GetDiscussionComments($owner: String!, $repoName: String!, $term: String!) {
-                repository(owner: $owner, name: $repoName) {
-                  discussions(first: 1, filter: {term: $term}) {
-                    nodes {
-                      comments {
-                        totalCount
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            variables: {
-              owner,
-              repoName,
-              term
-            }
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error(`GitHub API error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const discussions = data?.data?.repository?.discussions?.nodes;
-        const commentCount = discussions?.[0]?.comments?.totalCount ?? 0;
-        setCount(commentCount);
-        setError(null);
+        
+        // Listen for messages from Giscus when it loads
+        const handleGiscusMessage = (event: MessageEvent) => {
+          if (event.origin !== 'https://giscus.app') return;
+          
+          // Check if this message contains discussion data
+          if (event.data?.giscus?.discussion) {
+            const totalCount = event.data.giscus.discussion.comments.totalCount;
+            setCount(totalCount);
+            setIsLoading(false);
+            // Remove listener after getting data
+            window.removeEventListener('message', handleGiscusMessage);
+          }
+        };
+        
+        window.addEventListener('message', handleGiscusMessage);
+        
+        // Fallback timer in case we don't get data from Giscus
+        const timeout = setTimeout(() => {
+          if (isLoading) {
+            setIsLoading(false);
+            window.removeEventListener('message', handleGiscusMessage);
+          }
+        }, 5000);
+        
+        return () => {
+          clearTimeout(timeout);
+          window.removeEventListener('message', handleGiscusMessage);
+        };
       } catch (error) {
         console.error('Error fetching comment count:', error);
-        setError(error instanceof Error ? error.message : 'Failed to fetch comment count');
-        setCount(0);
-      } finally {
         setIsLoading(false);
       }
     };
 
     fetchCommentCount();
-  }, [repo, term]);
+  }, [term, repo, isLoading]);
+
+  useEffect(() => {
+    const handleNewComment = (event: MessageEvent) => {
+      if (event.origin !== 'https://giscus.app') return;
+      
+      if (event.data?.giscus?.discussion?.comments?.totalCount) {
+        // Force reload of comment counts
+        const commentCountElements = document.querySelectorAll('.comment-count');
+        commentCountElements.forEach(el => {
+          el.classList.add('reload-count');
+          setTimeout(() => el.classList.remove('reload-count'), 100);
+        });
+      }
+    };
+    
+    window.addEventListener('message', handleNewComment);
+    return () => window.removeEventListener('message', handleNewComment);
+  }, []);
+
+  // Format the comment count with proper Dutch pluralization
+  const formatCommentCount = (count: number) => {
+    if (count === 1) {
+      return '1 reactie';
+    }
+    return `${count} reacties`;
+  };
 
   if (isLoading) {
-    return <span className="text-gray-500">Loading comments...</span>;
+    return <span className="text-gray-400 animate-pulse">...</span>;
   }
 
-  if (error) {
-    return <span className="text-red-500">{error}</span>;
+  if (count === null) {
+    return <span className="text-gray-400">0 reacties</span>;
   }
 
-  return (
-    <span className="text-gray-600">
-      {count} {count === 1 ? 'comment' : 'comments'}
-    </span>
-  );
+  return <span>{formatCommentCount(count)}</span>;
 }
