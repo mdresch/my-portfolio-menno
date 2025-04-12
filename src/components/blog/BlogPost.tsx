@@ -112,7 +112,10 @@ export default function BlogPost({ post }: BlogPostProps) {
           {/* Comments Section */}
           <div id="comments" className="mt-12 pt-8 border-t border-gray-200">
             <h2 className="text-2xl font-bold mb-6">Comments</h2>
-            <Comments postId={post.slug} />
+            <Comments
+              repo={process.env.NEXT_PUBLIC_GITHUB_REPO}
+              postId={post.slug}
+            />
           </div>
         </article>
         

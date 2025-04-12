@@ -1,6 +1,7 @@
 ---
 title: What do i need to consider when using Cascade modelbase 
 date: 2025-04-12
+<<<<<<< HEAD
 excerpt: The Base model has more limited code generation capabilities compared to the current model Complex integrations like the DEV.to publisher might need to be simplified or broken down into smaller steps. You may need to provide more detailed guidance for each step of implementation
 categories: 
     - Windsurf
@@ -9,6 +10,12 @@ categories:
 ---
 
 React]
+=======
+excerpt: The Base model has more limited code generation capabilities compared to the current model Complex integrations like the DEV.to publisher might need to be Simplified or broken down into smaller steps You may need to provide more detailed guidance for each step of implementation
+categories: 
+  - Windsurf
+  - React
+>>>>>>> c603510bdafa3fdacdd0b32ce49bb0395bc337d8
 ---
 
 ***
