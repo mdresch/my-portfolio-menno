@@ -1,11 +1,11 @@
 ---
-title: SDG 17 Partnerships for the Goals
+title: Untitled
 date: 2025-04-12
-excerpt: SDG 17: Partnerships for the Goals focuses on strengthening global collaboration to achieve sustainable development. It emphasizes the importance of partnerships between governments, private sectors, civil society, and international organizations to address global challenges effectively.
-categories:
-  - SDG
-  - Partnerships
+excerpt: 
+categories: [SDG]
 ---
+
+***
 
 SDG 17: Partnerships for the Goals focuses on strengthening global collaboration to achieve sustainable development. It emphasizes the importance of partnerships between governments, private sectors, civil society, and international organizations to address global challenges effectively.
 
