@@ -1,8 +1,17 @@
 ---
-title: " What do i need to consider and be aware of when moving to the Cascade Base model "
-date: "2025-04-11"
-excerpt: "When moving to the Cascade Base model, here are the key considerations and awareness points:"
-categories: ["Windsurf", "Cascade Model", "Base Model Consideration"]
+title: What do i need to consider when using Cascade modelbase 
+date: 2025-04-12
+excerpt: The Base model has more limited code generation capabilities compared to the current model
+
+Complex integrations like the DEV.to publisher might need to be simplified or broken down into smaller steps
+
+You may need to provide more detailed guidance for each step of implementation
+categories: [Windsurf, React]
+---
+
+***
+
+title: What do i need to consider and be aware of when moving to the Cascade Base modeldate: 2025-04-11excerpt: When moving to the Cascade Base model, here are the key considerations and awareness points:categories: [Windsurf, Cascade Model, Base Model Consideration]
 ---
 
 When moving to the Cascade Base model, here are the key considerations and awareness points:
@@ -52,4 +61,4 @@ Consider implementing logging for the cross-platform publishing process
 Add monitoring for API usage and rate limiting
 Would you like me to help you implement any of these considerations for your DEV.to integration? We can start with the most critical aspects first, such as proper error handling and security measures for the API keys.
 
-Going from a coding experience that is truly amazing and the newly aquired skills to enjoy the progress in coding efforts. I look forward to what the basemodel has to offer and will need to take these awareness points into consideration.
+Going from a coding experience that is truly amazing and the newly acquired skills to enjoy the progress in coding efforts. I look forward to what the basemodel has to offer and will need to take these awareness points into consideration.
