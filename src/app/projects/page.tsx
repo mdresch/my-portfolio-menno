@@ -9,17 +9,30 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Project One",
-    description: "A brief description of your first project and its impact.",
+    title: "My Portfolio Menno",
+    description: "Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results. Here, every piece tells a story of growth, skill, and vision. Let’s build the future together!",
     technologies: ["React", "Node.js", "MongoDB"],
-    link: "https://github.com/yourusername/project-one"
+    link: "https://github.com/users/mdresch/projects/3/"
   },
   {
-    title: "Project Two",
-    description: "Description of your second project highlighting key features.",
+    title: "ICT Governance Management Framework",
+    description: "The ICT Governance Framework Application and the CBA Consult IT Management Framework are initiatives aimed at optimizing governance in multi-cloud environments. It seems you're diving deep into governance frameworks and their integration with Infrastructure as Code (IaC) practices.",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
-    link: "https://github.com/yourusername/project-two"
+    link: "https://github.com/users/mdresch/projects/1"
+  },
+  {
+    title: "CBA AI Foundry",
+    description: "The CBA AI Foundry is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
+    link: "https://github.com/users/mdresch/projects/2"
+  },
+  {
+    title: "AI Agent Life Cycle Management",
+    description: "The AI Agent Life Cycle Management is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    technologies: ["React", "Node.js", "MongoDB"],
+    link: "https://github.com/users/mdresch/projects/4/"
   }
+
 ];
 
 export default function ProjectsPage() {

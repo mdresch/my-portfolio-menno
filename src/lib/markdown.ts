@@ -21,6 +21,7 @@ export interface BlogPost {
   slug: string;
   categories: string[];
   readingTime: string;
+  author?: string;
 }
 
 export async function getAllPostIds(): Promise<PostParams[]> {
@@ -78,6 +79,6 @@ export async function getPostData(slug: string): Promise<BlogPost> {
     content,
     slug,
     readingTime,
-    ...(matterResult.data as { title: string; date: string; excerpt: string; categories: string[] }),
+    ...(matterResult.data as { title: string; date: string; excerpt: string; categories: string[]; author?: string }),
   };
 }

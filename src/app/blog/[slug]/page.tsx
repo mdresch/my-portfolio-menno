@@ -32,7 +32,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://my-portfolio-menno
 
 export const generateMetadata = async ({ params }: GenerateMetadataProps): Promise<Metadata> => {
   const post = await getPostData(params.slug);
-  const canonicalUrl = `${BASE_URL}/blog/${params.slug}`;
+  if (!post) {
+    return {
+      title: 'Post Not Found',
+      description: 'The requested blog post could not be found.'
+    };
+  }
+
+  const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
 
   return {
     title: post.title,
@@ -46,9 +53,7 @@ export const generateMetadata = async ({ params }: GenerateMetadataProps): Promi
       url: canonicalUrl,
       type: 'article',
       article: {
-        publishedTime: post.date,
-        authors: [post.author],
-        tags: post.categories
+        publishedTime: post.date
       }
     },
     twitter: {
@@ -60,15 +65,17 @@ export const generateMetadata = async ({ params }: GenerateMetadataProps): Promi
 };
 
 export default async function BlogPost({
-  params
+  params: { slug },
+  searchParams
 }: {
   params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  if (!params.slug) {
+  const post = await getPostData(slug);
+  if (!post) {
     notFound();
   }
 
-  const post = await getPostData(params.slug);
   const allPosts = await getSortedPostsData();
 
   return (
@@ -90,7 +97,7 @@ export default async function BlogPost({
               ← Back to Blog
             </Link>
             <div className="flex items-center gap-4">
-              <PostReactions repo="mdresch/my-portfolio-menno" term={params.slug} />
+              <PostReactions repo="mdresch/my-portfolio-menno" term={post.slug} />
               <JumpToComments />
               <ShareButton 
                 title={post.title}
@@ -112,7 +119,7 @@ export default async function BlogPost({
               <span>•</span>
               <span>{post.readingTime}</span>
               <span>•</span>
-              <CommentCount repo="mdresch/my-portfolio-menno" term={params.slug} />
+              <CommentCount repo="mdresch/my-portfolio-menno" term={post.slug} />
             </div>
             <div className="flex flex-wrap gap-2 mb-8 not-prose">
               {post.categories.map((category) => (
@@ -134,14 +141,14 @@ export default async function BlogPost({
           </article>
 
           <div className="mt-8 flex justify-between items-center">
-            <PostReactions repo="mdresch/my-portfolio-menno" term={params.slug} />
+            <PostReactions repo="mdresch/my-portfolio-menno" term={post.slug} />
             <SocialShare 
               url={typeof window !== 'undefined' ? window.location.href : ''}
               title={post.title}
             />
           </div>
 
-          <PostNavigation currentSlug={params.slug} allPosts={allPosts} />
+          <PostNavigation currentSlug={post.slug} allPosts={allPosts} />
           <RelatedPosts currentPost={post} allPosts={allPosts} />
           <WebMentions url={typeof window !== 'undefined' ? window.location.href : ''} />
           
@@ -150,11 +157,12 @@ export default async function BlogPost({
             post={post}
             allPosts={allPosts}
           />
+          
+          {/* Comments section */}
           <Comments 
             repo="mdresch/my-portfolio-menno"
-            term={params.slug}
+            term={post.slug}
             label="Comments"
-            theme="light"
           />
         </div>
       </div>
