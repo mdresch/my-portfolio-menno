@@ -33,31 +33,41 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://my-portfolio-menno
 export const generateMetadata = async ({ params }: GenerateMetadataProps): Promise<Metadata> => {
   const post = await getPostData(params.slug);
   const canonicalUrl = `${BASE_URL}/blog/${params.slug}`;
-  
+
   return {
     title: post.title,
     description: post.excerpt,
     alternates: {
-      canonical: canonicalUrl,
+      canonical: canonicalUrl
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: 'article',
       url: canonicalUrl,
-      publishedTime: post.date,
-      authors: ['Your Name'],
-      tags: post.categories,
+      type: 'article',
+      article: {
+        publishedTime: post.date,
+        authors: [post.author],
+        tags: post.categories
+      }
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt
+    }
   };
 };
 
-export default async function BlogPost({ 
-  params 
-}: GenerateMetadataProps) {
+export default async function BlogPost({
+  params
+}: {
+  params: { slug: string }
+}) {
   if (!params.slug) {
     notFound();
   }
+
   const post = await getPostData(params.slug);
   const allPosts = await getSortedPostsData();
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GitHubUser } from '@/types/github';
 import { Octokit } from '@octokit/rest';
 
@@ -19,28 +19,58 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
     setError('');
 
     try {
+      // Validate token format
+      if (!token || !token.trim()) {
+        throw new Error('Token cannot be empty');
+      }
+
       // Authenticate with GitHub using personal access token
       const octokit = new Octokit({ auth: token });
       
       // Verify token by fetching user data
       const { data: userData } = await octokit.users.getAuthenticated();
       
-      // Store token in session storage (more secure than localStorage)
+      // Store token in session storage
       sessionStorage.setItem('github_token', token);
+      
+      // Also store user data for easy access
+      sessionStorage.setItem('github_user', JSON.stringify(userData));
       
       // Notify parent component of successful login
       onLoginSuccess({
         ...userData,
         token,
+        isAuthenticated: true
       });
       
-    } catch (err) {
+    } catch (err: any) {
       console.error('Login error:', err);
-      setError('Authentication failed. Please check your token and try again.');
+      const errorMessage = err.response?.data?.message || 
+        err.message || 
+        'Authentication failed. Please check your token and try again.';
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const savedToken = sessionStorage.getItem('github_token');
+    const savedUserData = sessionStorage.getItem('github_user');
+    
+    if (savedToken && savedUserData) {
+      try {
+        const userData = JSON.parse(savedUserData);
+        onLoginSuccess({
+          ...userData,
+          token: savedToken,
+          isAuthenticated: true
+        });
+      } catch (error) {
+        console.error('Error parsing saved user data:', error);
+      }
+    }
+  }, []);
 
   return (
     <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">

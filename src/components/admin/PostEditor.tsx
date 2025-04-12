@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { marked } from 'marked';
 import { FiSave, FiGitPullRequest } from 'react-icons/fi';
 import DevToPublisher from './DevToPublisher';
+import DevToConfig from './DevToConfig';
 
 // Dynamically import the entire CodeMirror component with extensions
 // This avoids the issues with multiple instances of @codemirror/state
@@ -320,6 +321,13 @@ categories: [${categories.map(cat => `"${cat}"`).join(', ')}]
           </p>
           
           <div className="space-y-4">
+            <DevToConfig onApiKeyChange={(apiKey) => {
+              // Update the DevToPublisher component with the new API key
+              const publisher = document.querySelector('DevToPublisher');
+              if (publisher) {
+                publisher.setAttribute('api-key', apiKey);
+              }
+            }} />
             <DevToPublisher post={post} />
             {/* Add more platforms here in the future */}
           </div>
