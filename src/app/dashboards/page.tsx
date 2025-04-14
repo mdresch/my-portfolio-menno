@@ -38,13 +38,13 @@ export const OverviewDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">
     <h2 className="text-2xl font-semibold mb-4">Overview Dashboard (Sample Data)</h2>
     {/* KPI Row */}
-    {/* Using grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 for more cards */}
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
       {/* Existing cards */}
       <MockKPICard title="GDP Growth (YoY)" value="1.9%" change="-0.3%" />
       <MockKPICard title="Inflation Rate (CPI)" value="2.8%" change="-0.1%" />
       <MockKPICard title="Unemployment Rate (U3)" value="4.1%" change="+0.2%" />
-      <MockKPICard title="Consumer Sentiment" value="98.5" change="+1.2 pts" />
+      {/* Updated Consumer Sentiment */}
+      <MockKPICard title="Consumer Sentiment (U.Mich)" value="57.0" change="-7.7 pts" />
       <MockKPICard title="Avg. Hourly Earnings (YoY)" value="+4.5%" change="+0.1%" />
       <MockKPICard title="ADP Employment Change" value="180K" change="-15K" />
       <MockKPICard title="GDP (Quarterly, Billions)" value="$28,200" change="+$150B" />
@@ -55,12 +55,9 @@ export const OverviewDashboard = () => (
       <MockKPICard title="Global Trade Growth (YoY)" value="+3.7%" />
       <MockKPICard title="Services Trade Growth (YoY)" value="+9.0%" />
       <MockKPICard title="Goods Trade Growth (YoY)" value="+2.0%" />
-      {/* Optional: Could add Developing Economies Growth */}
-      {/* <MockKPICard title="Developing Econ. Trade Growth" value="+4.0%" /> */}
     </div>
-    {/* Chart Row - Replace placeholders */}
+    {/* Chart Row */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Replace MockChartPlaceholder with specific mocks */}
       <MockLineChart title="GDP Growth Rate Over Time" />
       <MockDualAxisLineChart title="Inflation vs. Interest Rates" />
       <MockLineChart title="Unemployment Rate Over Time" />
@@ -69,6 +66,10 @@ export const OverviewDashboard = () => (
     {/* Add context note about trade */}
     <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-800 text-sm">
       <strong>Global Trade Note (2024/Early 2025):</strong> Growth driven by services, but momentum slowed late 2024. Early 2025 stable but faces risks from protectionism.
+    </div>
+    {/* Added context note about sentiment */}
+    <div className="mt-2 p-3 bg-red-50 border border-red-200 rounded text-red-800 text-sm">
+        <strong>Consumer Sentiment Note (Mar 2025):</strong> Recent declines reflect concerns over finances, business conditions, and inflation.
     </div>
   </section>
 );
