@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link'; // Optional: If you link to a full report
+import InteractiveRiskMap from '@/components/risk/InteractiveRiskMap'; // Adjust path
 
-export default function RiskOverviewPage() {
+export default function RiskPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <header className="mb-10 text-center">
@@ -11,8 +12,7 @@ export default function RiskOverviewPage() {
         <p className="text-lg text-gray-600">Adapting Risk Management to Today's Geopolitical Landscape</p>
       </header>
 
-      {/* --- Introduction and Report Benefits --- */}
-      <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8 mb-12">
+      <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8">
         <p className="text-gray-700 mb-6 text-lg leading-relaxed">
           Is your organization equipped to adapt its risk management strategies in response to today's complex and rapidly evolving geopolitical landscape? Understanding global risk is more critical than ever for maintaining resilience and making sound strategic decisions.
         </p>
@@ -92,6 +92,62 @@ export default function RiskOverviewPage() {
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Explore Key Risk Areas, Insights & Solutions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+          {/* Supply Chain Top 25 Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-red-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-red-100 text-red-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Gartner Supply Chain Top 25 for 2024</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Explore the renowned annual ranking of the world's superior supply chains, featuring companies that deliver beyond products—understanding customer value, investing in demand management, and promoting ESG innovation.
+            </p>
+            <Link href="/risk/supply-chain-top-25" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              View Rankings →
+            </Link>
+          </div>
+
+          {/* Gartner Regulatory Risk Survey Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-red-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-red-100 text-red-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Gartner: Unsettled Regulatory Environment Tops Emerging Risks</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Survey of 266 senior enterprise risk executives reveals that regulatory uncertainty has become the top emerging risk concern in Q1 2025, driven by political shifts and divergent AI regulation approaches.
+            </p>
+            <Link href="/risk/gartner-regulatory-risk-survey" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read Survey Findings →
+            </Link>
+          </div>
+
+          {/* Geopolitical Nerve Center Card - NEW FEATURE */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-red-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-red-100 text-red-800 px-2 py-0.5 rounded-full">FEATURED</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Navigating Tariffs with a Geopolitical Nerve Center</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Learn how a nerve center can help companies chart a course through expanding tariffs and trade controls by orchestrating nine rapid actions, from tariff operations to supplier diversification.
+            </p>
+            <Link href="/risk/geopolitical-nerve-center" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read Article →
+            </Link>
+          </div>
+
+          {/* Global Business Complexity Index Card - NEW FEATURE */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Global Business Complexity Index</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Understand and navigate global regulatory complexity with our comprehensive index ranking 77 jurisdictions based on business complexity across regulatory, tax, corporate, and HR dimensions.
+            </p>
+            <Link href="/risk/global-business-complexity-index" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Explore the Index →
+            </Link>
+          </div>
+          
           {/* Shifting Trade Flows Card */}
           <div className="bg-white rounded-lg shadow-md p-6 flex flex-col">
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Shifting Trade Flows</h3>
@@ -109,7 +165,7 @@ export default function RiskOverviewPage() {
             <p className="text-gray-600 text-sm mb-4 flex-grow">
               Understand how declining systemic constraints, the growing role of individual leaders, record public debt, and countervailing measures exacerbate operational risks.
             </p>
-            <Link href="/risk/mitigating-geopolitics-operational-risks" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+            <Link href="/risk/mitigating-geopolitics" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
               Learn More →
             </Link>
           </div>
@@ -183,6 +239,14 @@ export default function RiskOverviewPage() {
         </div>
       </section>
 
+      {/* --- Interactive Map Section --- */}
+      <section id="interactive-map" className="my-12">
+         <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Regional Risk Hotspots</h2>
+         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+           Explore hypothetical top risks based on the Global Risk Management Survey regions by hovering over representative countries on the map. (Data is illustrative).
+         </p>
+         <InteractiveRiskMap />
+      </section>
 
        {/* Link back to home */}
        <div className="mt-12 text-center">
