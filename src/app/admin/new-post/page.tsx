@@ -104,16 +104,22 @@ export default function NewPostPage() {
     
     const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
     
-    // Create frontmatter
+    // Create frontmatter with block style categories
+    const categoriesYAML = filteredCategories.length > 0
+      ? `categories:\n${filteredCategories.map(cat => `  - ${cat}`).join('\n')}`
+      : 'categories: []'; // Handle case with no categories
+
     const frontmatter = `---
 title: ${title}
 date: ${date}
 excerpt: ${excerpt}
-categories: [${filteredCategories.join(', ')}]
+${categoriesYAML}
 ---
 
 ${content}`;
-    
+
+    console.log("Generated Frontmatter:\n", frontmatter); // Add log for debugging
+
     try {
       const response = await fetch('/api/github/create-post', {
         method: 'POST',
@@ -122,7 +128,7 @@ ${content}`;
         },
         body: JSON.stringify({
           token: githubToken,
-          content: frontmatter,
+          content: frontmatter, // Use the updated frontmatter
           path: `content/blog/${slug}.md`,
           message: `Add blog post: ${title}`
         }),
