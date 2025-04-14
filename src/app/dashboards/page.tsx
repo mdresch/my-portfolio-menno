@@ -9,7 +9,8 @@ import {
   MockDualAxisLineChart,
   MockAreaChart,
   MockBarChart, // Ensure BarChart is imported if used elsewhere
-  MockPieChart // Ensure PieChart is imported if used elsewhere
+  MockPieChart, // Ensure PieChart is imported if used elsewhere
+  MockTablePlaceholder
 } from '@/components/dashboards/MockVisuals';
 import { OverviewDashboard } from '@/components/dashboards/OverviewDashboard';
 import { TradeSectorsDashboard } from '@/components/dashboards/TradeSectorsDashboard';
@@ -31,6 +32,21 @@ const dashboards = [
     description: 'Illustrating the influence of market conditions and policies on economic growth.',
   },
   // Add more dashboard objects here if needed
+];
+
+// Define REAL data for the table (Selected Countries/Regions)
+const gdpPerCapitaHeaders = ["Area", "2023 Q4", "2024 Q1", "2024 Q2", "2024 Q3", "2024 Q4"];
+const gdpPerCapitaRows = [
+  // Format: ["Country", "Q4'23", "Q1'24", "Q2'24", "Q3'24", "Q4'24"]
+  ["United States", "83,630", "84,407", "85,361", "86,235", "87,125"], // Rounded for display
+  ["Germany", "P68,246", "P68,940", "P69,136", "P69,551", "P69,793"],
+  ["Japan", "50,261", "50,429", "51,193", "P51,695", "52,371"],
+  ["United Kingdom", "57,386", "58,453", "59,102", "59,555", "59,950"],
+  ["Canada", "64,390", "64,648", "65,140", "65,420", "65,983"],
+  ["Australia", "71,944", "72,310", "72,716", "73,023", ".."],
+  ["Ireland", "120,858", "123,073", "122,769", "128,116", "132,691"],
+  ["Euro area (20)", "61,467", "62,088", "62,538", "63,035", "63,465"],
+  ["G7", "69,311", "69,920", "70,614", "71,226", "71,857"],
 ];
 
 // Updated OverviewDashboard with more sample data cards including Global Trade
@@ -57,19 +73,32 @@ export const OverviewDashboard = () => (
       <MockKPICard title="Goods Trade Growth (YoY)" value="+2.0%" />
     </div>
     {/* Chart Row */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
       <MockLineChart title="GDP Growth Rate Over Time" />
       <MockDualAxisLineChart title="Inflation vs. Interest Rates" />
       <MockLineChart title="Unemployment Rate Over Time" />
       <MockLineChart title="Global Trade Trends (Goods vs. Services)" />
     </div>
-    {/* Add context note about trade */}
-    <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-800 text-sm">
-      <strong>Global Trade Note (2024/Early 2025):</strong> Growth driven by services, but momentum slowed late 2024. Early 2025 stable but faces risks from protectionism.
+
+    {/* Table Row - Updated with Real Data */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <MockTablePlaceholder
+            title="Quarterly GDP per Capita (USD PPP, Seasonally Adj.)" // Updated Title
+            headers={gdpPerCapitaHeaders}
+            rows={gdpPerCapitaRows} // Using the real data array
+        />
+        {/* Optional: Add another chart or table here */}
+        {/* <MockLineChart title="US GDP per Capita Trend" /> */}
     </div>
-    {/* Added context note about sentiment */}
-    <div className="mt-2 p-3 bg-red-50 border border-red-200 rounded text-red-800 text-sm">
-        <strong>Consumer Sentiment Note (Mar 2025):</strong> Recent declines reflect concerns over finances, business conditions, and inflation.
+
+    {/* Context Notes Row */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-3 bg-blue-50 border border-blue-200 rounded text-blue-800 text-sm">
+            <strong>Global Trade Note (2024/Early 2025):</strong> Growth driven by services, but momentum slowed late 2024. Early 2025 stable but faces risks from protectionism.
+        </div>
+        <div className="p-3 bg-red-50 border border-red-200 rounded text-red-800 text-sm">
+            <strong>Consumer Sentiment Note (Mar 2025):</strong> Recent declines reflect concerns over finances, business conditions, and inflation.
+        </div>
     </div>
   </section>
 );
