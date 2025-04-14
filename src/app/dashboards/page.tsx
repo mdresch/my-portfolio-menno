@@ -16,8 +16,9 @@ import { TradeSectorsDashboard } from '@/components/dashboards/TradeSectorsDashb
 import { GlobalTradeInfluencesDashboard } from '@/components/dashboards/GlobalTradeInfluencesDashboard';
 import { GoodsTradeMetricsDashboard } from '@/components/dashboards/GoodsTradeMetricsDashboard';
 import { InvestmentScoreboardDashboard } from '@/components/dashboards/InvestmentScoreboardDashboard';
-// Import the new component
 import { ConsumerInvestmentDashboard } from '@/components/dashboards/ConsumerInvestmentDashboard';
+// Import the new component
+import { USDStrengthDashboard } from '@/components/dashboards/USDStrengthDashboard';
 
 // Define the structure for your dashboard embeds
 // Replace these with your actual Power BI embed URLs or configurations
@@ -117,6 +118,7 @@ export default function DashboardsPage() {
         <GoodsTradeMetricsDashboard /> {/* New section for Goods Trade Metrics */}
         <InvestmentScoreboardDashboard /> {/* Render the new section */}
         <ConsumerInvestmentDashboard /> {/* Render the new section */}
+        <USDStrengthDashboard /> {/* Render the new section */}
         {/* You could add other mock dashboard sections here too */}
         {/* e.g., <PolicyImpactDashboard /> */}
       </div>
