@@ -1,28 +1,12 @@
 ---
 title: What do i need to consider when using Cascade modelbase 
 date: 2025-04-12
-<<<<<<< HEAD
 excerpt: The Base model has more limited code generation capabilities compared to the current model Complex integrations like the DEV.to publisher might need to be simplified or broken down into smaller steps. You may need to provide more detailed guidance for each step of implementation
 categories: 
     - Windsurf
     - Cascade Model
     - Base Model Consideration
 ---
-
-React]
-=======
-excerpt: The Base model has more limited code generation capabilities compared to the current model Complex integrations like the DEV.to publisher might need to be Simplified or broken down into smaller steps You may need to provide more detailed guidance for each step of implementation
-categories: 
-  - Windsurf
-  - React
->>>>>>> c603510bdafa3fdacdd0b32ce49bb0395bc337d8
----
-
-***
-
-title: What do i need to consider and be aware of when moving to the Cascade Base modeldate: 2025-04-11excerpt: When moving to the Cascade Base model, here are the key considerations and awareness points:categories: [Windsurf, Cascade Model, Base Model Consideration]
----
-
 When moving to the Cascade Base model, here are the key considerations and awareness points:
 
 Code Generation Capabilities
