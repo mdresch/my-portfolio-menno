@@ -1,7 +1,7 @@
 ---
 title: SDG 17 Partnerships for Goals
 date: 2025-04-12
-excerpt: SDG 17: Partnerships for the Goals focuses on strengthening global collaboration to achieve sustainable development.
+excerpt: SDG 17 Partnerships for the Goals focuses on strengthening global collaboration to achieve sustainable development.
 categories: [SDG]
 ---
 
