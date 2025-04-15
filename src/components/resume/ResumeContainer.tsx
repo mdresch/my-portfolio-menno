@@ -25,10 +25,8 @@ export default function ResumeContainer() {
     setExpandedSections(newExpandedSections);
   };
 
-  // Extract skills as string array for structured data
-  const skillsList = resumeData.skills.map(skillCategory => 
-    skillCategory.items.map(skill => skill.name)
-  ).flat();
+  // Extract skills as string array for structured data - fixing the structure to match resume.ts
+  const skillsList = resumeData.skills.map(skill => skill.name);
 
   // Extract education data for structured data
   const educationData = resumeData.education.map(edu => ({
@@ -41,9 +39,9 @@ export default function ResumeContainer() {
   // Extract experience data for structured data
   const experienceData = resumeData.workExperience.map(exp => ({
     organization: exp.company,
-    position: exp.title,
+    position: exp.position,
     startDate: exp.startDate,
-    endDate: exp.endDate,
+    endDate: exp.endDate ?? undefined,  // Convert null to undefined to match expected type
     description: exp.description
   }));
 
