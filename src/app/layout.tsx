@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 import '../styles/markdown-fix.css';
 import '../styles/resume-print.css'; // Add print styles
+import { Analytics } from "@vercel/analytics/next";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -69,6 +70,7 @@ export default function RootLayout({
           {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
               to use client components only at the component level, not at the root layout level */}
           {children}
+          <Analytics />
         </main>
         <Footer />
       </body>
