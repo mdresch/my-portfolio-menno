@@ -1,4 +1,30 @@
 import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "About Menno Drescher | HCM Services Specialist",
+  description: "Learn about Menno Drescher, a Managed HCM Services Specialist with over 25 years of experience in Finance and Human Resources Consultancy.",
+  keywords: ["Menno Drescher", "HCM Services", "Human Resources Consultant", "Azure", "HR Technology"],
+  openGraph: {
+    title: "About Menno Drescher | HCM Services Specialist",
+    description: "Learn about Menno Drescher, a Managed HCM Services Specialist with over 25 years of experience in Finance and Human Resources Consultancy.",
+    type: "profile",
+    images: [
+      {
+        url: "https://my-portfolio-menno.vercel.app/images/showcase-dataviz.jpg", // Create this image
+        width: 1200,
+        height: 630,
+        alt: "Menno Drescher - HCM Services Specialist",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Menno Drescher | HCM Services Specialist",
+    description: "Learn about Menno Drescher, a Managed HCM Services Specialist with over 25 years of experience in Finance and Human Resources Consultancy.",
+    images: ["https://my-portfolio-menno.vercel.app/images/showcase-dataviz.jpg"], // Create this image
+  },
+};
 
 export default function AboutPage() {
   return (

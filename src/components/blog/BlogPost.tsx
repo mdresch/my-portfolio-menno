@@ -11,6 +11,8 @@ import PostReactions from '@/components/PostReactions';
 import WebMentions from '@/components/WebMentions';
 import Comments from '@/components/Comments';
 import JumpToComments from '@/components/JumpToComments';
+import BlogPostJsonLd from './BlogPostJsonLd';
+import Breadcrumbs from '@/components/SEO/Breadcrumbs';
 
 interface BlogPostProps {
   post: BlogPostType;
@@ -33,10 +35,22 @@ export default function BlogPost({ post }: BlogPostProps) {
     }
   }, [post.content]);
 
+  // Define breadcrumb items
+  const breadcrumbItems = [
+    { name: 'Blog', url: '/blog' },
+    { name: post.title, url: `/blog/${post.slug}` }
+  ];
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Add JSON-LD structured data */}
+      <BlogPostJsonLd post={post} />
+      
       {/* Reading Progress Bar */}
       <ReadingProgress targetRef={articleRef} />
+
+      {/* Breadcrumbs Navigation */}
+      <Breadcrumbs items={breadcrumbItems} className="mb-4" />
       
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Content */}

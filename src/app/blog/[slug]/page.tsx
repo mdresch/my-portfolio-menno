@@ -36,7 +36,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: 'The requested blog post could not be found'
     };
   }
-  
+
+  // Define base URL - should match the one in layout.tsx
+  const baseUrl = 'https://my-portfolio-menno.vercel.app/';
+  const postUrl = `${baseUrl}/blog/${post.slug}`;
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -45,9 +49,28 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: post.excerpt,
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author || 'Anonymous'],
-      tags: post.categories
-    }
+      authors: [post.author || 'Menno Drescher'],
+      tags: post.categories,
+      url: postUrl,
+      images: [
+        {
+          url: post.coverImage || `${baseUrl}/images/showcase-dataviz.jpg`, 
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage || `${baseUrl}/images/showcase-dataviz.jpg`],
+    },
+    alternates: {
+      canonical: postUrl,
+    },
+    keywords: [...post.categories, 'blog', 'web development', 'Menno Drescher'],
   };
 }
 

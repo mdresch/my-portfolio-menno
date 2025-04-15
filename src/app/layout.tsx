@@ -13,14 +13,45 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Menno Drescher - Portfolio",
   description: "Personal portfolio showcasing my projects and skills as a software developer.",
+  keywords: ["developer", "portfolio", "software engineer", "web development", "Menno Drescher"],
+  authors: [{ name: "Menno Drescher" }],
+  creator: "Menno Drescher",
+  metadataBase: new URL("https://my-portfolio-menno.vercel.app/"), // Update with your actual domain
   alternates: {
+    canonical: "/",
     types: {
       'application/rss+xml': [
         {
           url: 'feed.xml',
-          title: 'Menno Drescher\'s Blog RSS Feed'
+          title: "Menno Drescher's Blog RSS Feed"
         },
       ],
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://my-portfolio-menno.vercel.app/", // Update with your actual domain
+    title: "Menno Drescher - Portfolio",
+    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    siteName: "Menno Drescher",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Menno Drescher - Portfolio",
+    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    creator: "@mennodre", // Update with your actual Twitter handle
+    site: "@mennodre", // Update with your actual Twitter handle
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
     },
   },
 };
