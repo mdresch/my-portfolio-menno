@@ -249,7 +249,7 @@ export default function TrendsPage() {
 
       <section className="mb-10">
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-semibold mb-6">What's on the Horizon?</h2>
+          <h2 className="text-2xl font-semibold mb-4">What's on the Horizon?</h2>
           <p className="text-gray-700 mb-6">
             Looking ahead, we anticipate several developments that will shape business complexity in the coming years:
           </p>
@@ -281,6 +281,98 @@ export default function TrendsPage() {
               <p className="text-gray-600 text-sm">
                 Increasing data sovereignty laws and localization requirements will create additional operational complexity for businesses managing international data flows, particularly in technology, healthcare, and financial services.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Reports Section */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-6">Key Reports & Analyses</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Top 10 Most Complex Jurisdictions Card */}
+          <Link href="/risk/global-business-complexity-index/trends/top-10-most-complex" className="block">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="bg-red-600 p-3">
+                <h3 className="text-xl font-bold text-white">Top 10 Most Complex</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-4">
+                  Detailed analysis of the world's most challenging business environments, featuring Greece, France, Colombia, and more.
+                </p>
+                <div className="flex items-center text-red-600">
+                  <span className="font-medium">Explore report</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded">Complexity Rankings</span>
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded">New for 2024</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Growth Opportunities Card */}
+          <Link href="/risk/global-business-complexity-index/trends/growth-opportunities" className="block">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="bg-amber-600 p-3">
+                <h3 className="text-xl font-bold text-white">Growth Opportunities</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-4">
+                  Emerging markets and sectors showing promising business potential despite regulatory challenges in 2025.
+                </p>
+                <div className="flex items-center text-amber-600">
+                  <span className="font-medium">Explore report</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded">Market Expansion</span>
+                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">New for 2025</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* ESG Compliance Report Card */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-green-600 p-3">
+              <h3 className="text-xl font-bold text-white">ESG Compliance Evolution</h3>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 mb-4">
+                How environmental, social, and governance requirements are reshaping global compliance landscapes.
+              </p>
+              <div className="flex items-center text-green-600">
+                <span className="font-medium">Coming soon</span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">ESG</span>
+                <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded">Q3 2025</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Digital Transformation Card */}
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-blue-600 p-3">
+              <h3 className="text-xl font-bold text-white">Digital Transformation Index</h3>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700 mb-4">
+                Measuring the impact of digitalization on reducing administrative burdens across global jurisdictions.
+              </p>
+              <div className="flex items-center text-blue-600">
+                <span className="font-medium">Coming soon</span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">Digitalization</span>
+                <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded">Q2 2025</span>
+              </div>
             </div>
           </div>
         </div>
