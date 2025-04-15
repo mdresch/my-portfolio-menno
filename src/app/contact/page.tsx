@@ -179,7 +179,7 @@ export default function ContactPage() {
                 </div>
                 <div className="ml-3 text-gray-700">
                   <p className="text-sm font-medium">Email</p>
-                  <a href="mailto:contact@mennodrescher.com" className="hover:text-blue-600 transition-colors">contact@mennodrescher.com</a>
+                  <a href="mailto:contact@mennodrescher.com" className="hover:text-blue-600 transition-colors">menno.drescher@gmail.com</a>
                 </div>
               </div>
 
@@ -243,8 +243,8 @@ export default function ContactPage() {
           <h2 className="text-2xl font-semibold mb-4">Prefer Email?</h2>
           <p className="mb-4">
             If you&apos;d prefer to reach out directly via email, feel free to contact me at: 
-            <a href="mailto:contact@mennodrescher.com" className="text-blue-600 hover:text-blue-800 ml-1">
-              contact@mennodrescher.com
+            <a href="mailto:menno.drescher@gmail.com" className="text-blue-600 hover:text-blue-800 ml-1">
+              menno.drescher@gmail.com
             </a>
           </p>
           <p className="text-gray-600 text-sm">

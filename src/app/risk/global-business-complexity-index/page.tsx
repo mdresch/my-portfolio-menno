@@ -2,8 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import GlobalComplexityMap from '@/components/risk/GlobalComplexityMap';
+import dynamic from 'next/dynamic';
+
+// Import the wrapper component instead of directly importing the map
+const GlobalComplexityMapWrapper = dynamic(
+  () => import('@/components/risk/GlobalComplexityMapWrapper'),
+  { ssr: false }
+);
 
 export default function GlobalBusinessComplexityIndexPage() {
   return (
@@ -82,9 +87,8 @@ export default function GlobalBusinessComplexityIndexPage() {
             Explore the interactive map below to visualize business complexity across different regions. 
             Hover over countries to see their complexity score, global ranking, and key highlights.
           </p>
-          <div className="h-[500px] w-full border border-gray-100 rounded-lg">
-            <GlobalComplexityMap />
-          </div>
+          {/* Use the wrapper component instead of directly using the map */}
+          <GlobalComplexityMapWrapper />
           <p className="text-sm text-gray-500 italic mt-4">
             Note: Colors indicate complexity levels from very low (green) to very high (red). Countries in light gray have insufficient data.
           </p>
@@ -98,21 +102,21 @@ export default function GlobalBusinessComplexityIndexPage() {
             <div>
               <h3 className="text-lg font-medium mb-3">Top 5 Most Complex Jurisdictions</h3>
               <ol className="list-decimal pl-5 space-y-2 mb-4">
-                <li className="text-gray-700">Brazil - Navigating complex tax regulations and bureaucratic processes</li>
-                <li className="text-gray-700">France - Rigid labor laws and administrative requirements</li>
                 <li className="text-gray-700">Indonesia - Challenging regulatory environment and frequent policy changes</li>
-                <li className="text-gray-700">China - Complex market access restrictions and regulatory compliance</li>
-                <li className="text-gray-700">Mexico - Intricate tax reporting and accounting standards</li>
+                <li className="text-gray-700">Brazil - Navigating complex tax regulations and bureaucratic processes</li>
+                <li className="text-gray-700">Argentina - Stringent currency controls and volatile regulatory framework</li>
+                <li className="text-gray-700">Bolivia - Complicated incorporation process and accounting requirements</li>
+                <li className="text-gray-700">Greece - Intricate labor laws and frequently changing tax legislation</li>
               </ol>
             </div>
             <div>
               <h3 className="text-lg font-medium mb-3">Top 5 Least Complex Jurisdictions</h3>
               <ol className="list-decimal pl-5 space-y-2">
+                <li className="text-gray-700">Curaçao - Efficient digital business processes and transparent governance</li>
                 <li className="text-gray-700">Denmark - Streamlined digital processes and transparent regulations</li>
-                <li className="text-gray-700">Hong Kong - Efficient business setup and administration</li>
+                <li className="text-gray-700">Cayman Islands - Business-friendly environment with minimal filing requirements</li>
                 <li className="text-gray-700">Singapore - Straightforward compliance requirements and business-friendly policies</li>
-                <li className="text-gray-700">United States - Relatively predictable regulatory environment despite state variations</li>
-                <li className="text-gray-700">New Zealand - Simple incorporation process and transparent governance</li>
+                <li className="text-gray-700">Hong Kong - Efficient business setup and administration</li>
               </ol>
             </div>
           </div>

@@ -35,6 +35,8 @@ export default function RootLayout({
       <body className={`${geist.className} bg-gray-50 min-h-screen flex flex-col`}>
         <Navigation />
         <main className="flex-1">
+          {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
+              to use client components only at the component level, not at the root layout level */}
           {children}
         </main>
         <Footer />

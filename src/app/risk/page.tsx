@@ -8,7 +8,7 @@ export default function RiskPage() {
   return (
     <div className="container mx-auto px-4 py-12">
       <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-3">Navigating Global Risk in 2025</h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-3">Navigating Global Risk</h1>
         <p className="text-lg text-gray-600">Adapting Risk Management to Today's Geopolitical Landscape</p>
       </header>
 

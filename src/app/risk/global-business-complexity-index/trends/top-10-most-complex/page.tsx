@@ -55,7 +55,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">1. Greece</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               ↑ From 2nd in 2023
             </span>
           </div>
@@ -155,7 +155,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">2. France</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               ↓ From 1st in 2023
             </span>
           </div>
@@ -244,7 +244,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">3. Colombia</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 3
             </span>
           </div>
@@ -331,7 +331,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">4. Mexico</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 5
             </span>
           </div>
@@ -427,7 +427,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">5. Bolivia</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               ↑ From 9th in 2023
             </span>
           </div>
@@ -515,7 +515,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">6. Turkey</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 10
             </span>
           </div>
@@ -611,7 +611,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">7. Brazil</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               ↓ From 3rd in 2023
             </span>
           </div>
@@ -701,7 +701,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">8. Italy</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 10
             </span>
           </div>
@@ -790,7 +790,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">9. Peru</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 10
             </span>
           </div>
@@ -887,7 +887,7 @@ export default function Top10MostComplexPage() {
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="bg-red-600 p-3 flex items-center justify-between">
             <h3 className="text-xl font-bold text-white">10. Kazakhstan</h3>
-            <span className="text-white bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
               New in Top 10
             </span>
           </div>

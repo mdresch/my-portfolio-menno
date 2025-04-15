@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ComposableMap,
   Geographies,
@@ -27,7 +27,7 @@ const getMapColor = (score: number) => {
 
 // List of countries in the Americas to filter the map
 const americasCountries = [
-  "United States of America", 
+  "United States", // This is how the US appears in the GeoJSON
   "Canada", 
   "Mexico", 
   "Brazil", 
@@ -52,7 +52,7 @@ const americasCountries = [
   "Belize",
   "Cuba",
   "Haiti",
-  "Dominican Republic",
+  "Dominican Rep.",
   "Jamaica",
   "Puerto Rico",
   "Trinidad and Tobago",
@@ -61,14 +61,26 @@ const americasCountries = [
 
 // Map GeoJSON country names to our country names
 const countryMapping: { [key: string]: string } = {
-  "United States of America": "United States",
+  "United States": "United States of America", // Map from GeoJSON name to our data name
   "Canada": "Canada",
   "Mexico": "Mexico",
   "Brazil": "Brazil",
   "Argentina": "Argentina",
   "Colombia": "Colombia",
   "Chile": "Chile",
-  "Peru": "Peru"
+  "Peru": "Peru",
+  "Dominican Rep.": "Dominican Republic",
+  "Venezuela": "Venezuela",
+  "Ecuador": "Ecuador",
+  "Bolivia": "Bolivia",
+  "Paraguay": "Paraguay",
+  "Uruguay": "Uruguay",
+  "Costa Rica": "Costa Rica",
+  "Panama": "Panama",
+  "Nicaragua": "Nicaragua",
+  "Honduras": "Honduras",
+  "El Salvador": "El Salvador",
+  "Guatemala": "Guatemala"
 };
 
 const AmericasComplexityMap: React.FC = () => {
@@ -82,7 +94,6 @@ const AmericasComplexityMap: React.FC = () => {
   
   const [mapWidth, setMapWidth] = useState(800);
   const [mapHeight, setMapHeight] = useState(500);
-  const [debugInfo, setDebugInfo] = useState<string[]>([]);
 
   // Update map size on window resize
   useEffect(() => {
@@ -97,6 +108,18 @@ const AmericasComplexityMap: React.FC = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Debug logging to find exact country names from the GeoJSON data
+    fetch(geoUrl)
+      .then(response => response.json())
+      .then(data => {
+        const names = data.objects.countries.geometries.map((geo: any) => geo.properties.name);
+        console.log("All countries in TopoJSON:", names);
+        console.log("Looking for US:", names.filter((name: string) => name.includes("United") || name.includes("US") || name.includes("U.S.")));
+      })
+      .catch(error => console.error("Error loading map data:", error));
   }, []);
 
   const handleMouseEnter = (geo: any, event: any) => {
@@ -122,13 +145,6 @@ const AmericasComplexityMap: React.FC = () => {
     setTooltipContent(null);
   };
 
-  // For debugging
-  useEffect(() => {
-    // Log available countries in our data
-    console.log("Available countries in americasCountryData:", 
-      americasCountryData.map(c => c.country));
-  }, []);
-
   return (
     <div className="relative w-full h-full map-container">
       <ComposableMap
@@ -142,15 +158,8 @@ const AmericasComplexityMap: React.FC = () => {
       >
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
-            {({ geographies }) => {
-              // One-time logging of all country names from TopoJSON
-              if (geographies.length > 0 && debugInfo.length === 0) {
-                const names = geographies.map(geo => geo.properties.name);
-                console.log("Country names in TopoJSON:", names);
-                setDebugInfo(names);
-              }
-
-              return geographies.map(geo => {
+            {({ geographies }) => 
+              geographies.map(geo => {
                 const countryName = geo.properties.name;
                 
                 // Check if this is an Americas country
@@ -186,19 +195,11 @@ const AmericasComplexityMap: React.FC = () => {
                     onMouseLeave={handleMouseLeave}
                   />
                 );
-              });
-            }}
+              })
+            }
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-
-      {/* Debug panel - only in development */}
-      {process.env.NODE_ENV !== 'production' && debugInfo.length > 0 && (
-        <div className="fixed bottom-4 right-4 bg-white p-2 rounded shadow-lg text-xs max-w-xs max-h-40 overflow-auto z-50">
-          <p className="font-bold">Map Debug Info</p>
-          <p>Found {debugInfo.length} countries in TopoJSON</p>
-        </div>
-      )}
 
       {tooltipContent && (
         <div 
@@ -221,7 +222,7 @@ const AmericasComplexityMap: React.FC = () => {
 
       <div className="absolute bottom-0 left-0 bg-white bg-opacity-80 p-3 rounded-tr shadow-sm">
         <h4 className="text-sm font-semibold mb-1">Complexity Legend</h4>
-        <div className="flex items-center gap-3 text-xs">
+        <div className="flex flex-wrap gap-3 text-xs">
           <div className="flex items-center gap-1">
             <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: "#EF4444" }}></div>
             <span>Very High (80+)</span>

@@ -3,7 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
-import AmericasComplexityMap from '@/components/risk/AmericasComplexityMap';
+import dynamic from 'next/dynamic';
+
+// Replace direct import with dynamic import using the wrapper
+const AmericasComplexityMapWrapper = dynamic(
+  () => import('@/components/risk/AmericasComplexityMapWrapper'),
+  { ssr: false }
+);
 
 // Get Americas country data
 const americasCountryData = getCountriesByRegion("Americas");
@@ -63,7 +69,7 @@ export default function AmericasPage() {
             This map shows business complexity scores across the Americas region. Hover over countries to see their complexity details.
           </p>
           <div className="h-[500px] w-full relative">
-            <AmericasComplexityMap />
+            <AmericasComplexityMapWrapper />
           </div>
         </div>
 
