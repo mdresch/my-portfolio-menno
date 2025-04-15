@@ -6,10 +6,8 @@ Below is a table showing which versions of our project are currently supported w
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | ✅                |
-| 5.0.x   | ❌                |
-| 4.0.x   | ✅                |
-| < 4.0   | ❌                |
+| 1.0.x   | ✅                |
+
 
 ## Reporting a Vulnerability
 
