@@ -91,6 +91,12 @@ const GlobalComplexityMap: React.FC = () => {
     "Dem. Rep. Congo": "Democratic Republic of Congo",
     "Singapore": "Singapore",
     "Jamaica": "Jamaica",
+    "United States": "United States of America",
+    "Ireland": "Republic of Ireland",
+    "Malta": "Malta",
+    "Jersey": "Jersey",
+    "Guernsey": "Guernsey",
+    "British Virgin Is.": "British Virgin Islands",
     
     // From our data format to GeoJSON
     "South Africa": "S. Africa",

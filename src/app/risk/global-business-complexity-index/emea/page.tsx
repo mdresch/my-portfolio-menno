@@ -3,13 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
-
-// Component placeholder for EMEA complexity map
-const EmeaComplexityMap = () => (
-  <div className="h-full w-full bg-gray-100 flex items-center justify-center">
-    <p className="text-gray-500">EMEA complexity map visualization will be implemented here</p>
-  </div>
-);
+import EmeaComplexityMap from '@/components/risk/EmeaComplexityMap';
 
 // Get EMEA country data
 const emeaCountryData = getCountriesByRegion("EMEA");

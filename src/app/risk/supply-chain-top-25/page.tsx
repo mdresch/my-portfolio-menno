@@ -278,9 +278,9 @@ export default function SupplyChainTop25Page() {
             <a href="#" className="text-blue-600 hover:text-blue-800 text-sm font-medium">Download Report</a>
           </div>
           <div className="bg-white p-6 rounded-lg shadow text-center">
-            <h3 className="font-semibold mb-2">Tool</h3>
-            <p className="text-sm mb-4">Monthly Supply Chain Alert</p>
-            <a href="#" className="text-blue-600 hover:text-blue-800 text-sm font-medium">Learn More</a>
+            <h3 className="font-semibold mb-2">Methodology</h3>
+            <p className="text-sm mb-4">2025 Updates and 2026 Input Invitation</p>
+            <Link href="/risk/supply-chain-top-25/methodology" className="text-blue-600 hover:text-blue-800 text-sm font-medium">Learn More</Link>
           </div>
         </div>
       </section>

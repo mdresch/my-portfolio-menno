@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
+import ApacComplexityMap from '@/components/risk/ApacComplexityMap';
 
 // Get APAC country data
 const apacCountryData = getCountriesByRegion("APAC");
@@ -60,9 +61,7 @@ export default function ApacPage() {
           <p className="text-gray-600 mb-4">
             This map shows business complexity scores across the Asia-Pacific region. Hover over countries to see their complexity details.
           </p>
-          <div className="h-[500px] w-full bg-gray-100 flex items-center justify-center">
-            <p className="text-gray-500">APAC complexity map visualization will be implemented here</p>
-          </div>
+          <ApacComplexityMap />
         </div>
 
         {/* Top countries table */}

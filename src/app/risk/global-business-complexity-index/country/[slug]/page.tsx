@@ -3,7 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { allCountryData, getComplexityColor } from '@/lib/riskData';
+import { allCountryData, getComplexityColor, regionalAverages } from '@/lib/riskData';
+import ComplexityRadarChart from '@/components/risk/ComplexityRadarChart';
+import RegionalComparisonChart from '@/components/risk/RegionalComparisonChart';
 
 export default function CountryPage({ params }: { params: { slug: string } }) {
   // Convert slug to country name for matching (e.g., "united-states" -> "United States")
@@ -169,15 +171,15 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Radar Chart Placeholder */}
+      {/* Radar Chart */}
       <section className="mb-10">
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-semibold mb-4">Business Complexity Analysis</h2>
           <p className="text-gray-600 mb-6">
             Detailed breakdown of complexity factors affecting business operations in {countryData.country}.
           </p>
-          <div className="h-[400px] w-full bg-gray-100 flex items-center justify-center">
-            <p className="text-gray-500">Radar chart visualization for detailed complexity breakdown will be implemented here</p>
+          <div className="h-[400px] w-full">
+            <ComplexityRadarChart countryData={countryData} />
           </div>
         </div>
       </section>
@@ -231,8 +233,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
             <h3 className="text-xl font-semibold mb-4">Strategic Recommendations</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white bg-opacity-15 p-4 rounded-lg backdrop-filter backdrop-blur-sm border border-white/20">
-                <h4 className="font-medium mb-2 text-white">Local Expertise</h4>
-                <p className="text-white text-sm">
+                <h4 className="font-medium mb-2 text-black">Local Expertise</h4>
+                <p className="text-black text-sm">
                   {countryData.overall >= 70 
                     ? "Essential to maintain dedicated in-country expertise for compliance and regulatory navigation."
                     : countryData.overall >= 40
@@ -243,8 +245,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
               </div>
               
               <div className="bg-white bg-opacity-15 p-4 rounded-lg backdrop-filter backdrop-blur-sm border border-white/20">
-                <h4 className="font-medium mb-2 text-white">Process Management</h4>
-                <p className="text-white text-sm">
+                <h4 className="font-medium mb-2 text-black">Process Management</h4>
+                <p className="text-black text-sm">
                   {countryData.overall >= 70 
                     ? "Implement robust tracking systems for compliance deadlines and documentation requirements."
                     : countryData.overall >= 40
@@ -265,8 +267,11 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
           <p className="text-gray-600 mb-6">
             How {countryData.country}'s business complexity compares to regional averages.
           </p>
-          <div className="h-[300px] w-full bg-gray-100 flex items-center justify-center">
-            <p className="text-gray-500">Comparative bar chart visualization will be implemented here</p>
+          <div className="h-[300px] w-full">
+            <RegionalComparisonChart 
+              countryData={countryData} 
+              regionalAverages={regionalAverages[countryData.region]} 
+            />
           </div>
         </div>
       </section>

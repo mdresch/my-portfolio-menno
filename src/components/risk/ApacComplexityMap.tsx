@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
 } from 'react-simple-maps';
+import { feature } from 'topojson-client';
 
 // APAC country complexity data
 const apacComplexityData: Record<string, { score: number, rank: number, highlight: string }> = {
@@ -104,6 +105,49 @@ const getComplexityHoverColor = (score: number) => {
 
 const ApacComplexityMap: React.FC = () => {
   const [hoveredCountry, setHoveredCountry] = useState<HoveredCountry | null>(null);
+  const [geoData, setGeoData] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Use local file path
+  const geoUrl = "/maps/world-110m.json";
+
+  // Load and process the map data
+  useEffect(() => {
+    const fetchGeoData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(geoUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to load map data: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Try different object names
+        let geoJson;
+        if (data.objects.countries) {
+          geoJson = feature(data, data.objects.countries);
+        } else if (data.objects.land) {
+          geoJson = feature(data, data.objects.land);
+        } else {
+          // Use the first available object
+          const firstKey = Object.keys(data.objects)[0];
+          geoJson = feature(data, data.objects[firstKey]);
+        }
+        
+        setGeoData(geoJson);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error loading map data:", error);
+        setError(`Failed to load map data: ${error instanceof Error ? error.message : "Unknown error"}`);
+        setIsLoading(false);
+      }
+    };
+
+    fetchGeoData();
+  }, []);
 
   const handleMouseEnter = (geo: any) => {
     const countryName = geo.properties.name;
@@ -128,61 +172,77 @@ const ApacComplexityMap: React.FC = () => {
 
   return (
     <div className="relative w-full h-80 border border-gray-200 rounded-lg shadow-md overflow-hidden bg-white">
-      <ComposableMap
-        projection="geoMercator"
-        projectionConfig={{
-          scale: 250,
-          center: [100, 15] // Centered on APAC region
-        }}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <ZoomableGroup center={[100, 15]} zoom={1}>
-          <Geographies geography="/maps/world-110m.json">
-            {({ geographies }) =>
-              geographies.map((geo) => {
-                const countryName = geo.properties.name;
-                const complexityData = apacComplexityData[countryName];
-                const isInteractive = !!complexityData;
-                
-                // Filter to only show countries in the Asia-Pacific region
-                const coords = geo.properties.centroid || [0, 0];
-                const isInApac = 
-                  (coords[0] > 60 && coords[0] < 180 && coords[1] > -50 && coords[1] < 60); // Asia-Pacific
-                
-                if (!isInApac) return null;
-                
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={() => handleMouseEnter(geo)}
-                    onMouseLeave={handleMouseLeave}
-                    style={{
-                      default: {
-                        fill: isInteractive ? getComplexityColor(complexityData.score) : '#F1F5F9',
-                        stroke: '#FFFFFF',
-                        strokeWidth: 0.5,
-                        outline: 'none',
-                      },
-                      hover: {
-                        fill: isInteractive ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
-                        stroke: '#FFFFFF',
-                        strokeWidth: 0.5,
-                        outline: 'none',
-                        cursor: isInteractive ? 'pointer' : 'default',
-                      },
-                      pressed: {
-                        fill: isInteractive ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
-                        outline: 'none',
-                      },
-                    }}
-                  />
-                );
-              })
-            }
-          </Geographies>
-        </ZoomableGroup>
-      </ComposableMap>
+      {isLoading && (
+        <div className="flex items-center justify-center w-full h-full">
+          <p className="text-gray-500">Loading map data...</p>
+        </div>
+      )}
+      
+      {error && (
+        <div className="flex items-center justify-center w-full h-full">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
+      
+      {geoData && (
+        <ComposableMap
+          projection="geoMercator"
+          projectionConfig={{
+            scale: 250,
+            center: [100, 15] // Centered on APAC region
+          }}
+          style={{ width: '100%', height: '100%' }}
+        >
+          <ZoomableGroup center={[100, 15]} zoom={1}>
+            <Geographies geography={geoData}>
+              {({ geographies }) => 
+                geographies.map((geo) => {
+                  if (!geo.properties) return null;
+                  
+                  const countryName = geo.properties.name;
+                  const complexityData = countryName ? apacComplexityData[countryName] : null;
+                  
+                  // Filter to only show countries in the Asia-Pacific region
+                  // Optional: Uncomment to filter out non-APAC countries
+                  /*
+                  const coords = geo.properties.centroid || [0, 0];
+                  const isInApac = (coords[0] > 60 && coords[0] < 180 && coords[1] > -50 && coords[1] < 60);
+                  if (!isInApac) return null;
+                  */
+                  
+                  return (
+                    <Geography
+                      key={geo.rsmKey || Math.random().toString()}
+                      geography={geo}
+                      onMouseEnter={() => handleMouseEnter(geo)}
+                      onMouseLeave={handleMouseLeave}
+                      style={{
+                        default: {
+                          fill: complexityData ? getComplexityColor(complexityData.score) : '#F1F5F9',
+                          stroke: '#FFFFFF',
+                          strokeWidth: 0.5,
+                          outline: 'none',
+                        },
+                        hover: {
+                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
+                          stroke: '#FFFFFF',
+                          strokeWidth: 0.5,
+                          outline: 'none',
+                          cursor: complexityData ? 'pointer' : 'default',
+                        },
+                        pressed: {
+                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
+                          outline: 'none',
+                        },
+                      }}
+                    />
+                  );
+                })
+              }
+            </Geographies>
+          </ZoomableGroup>
+        </ComposableMap>
+      )}
 
       {/* Information Panel */}
       {hoveredCountry && (
