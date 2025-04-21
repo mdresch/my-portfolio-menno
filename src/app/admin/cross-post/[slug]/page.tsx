@@ -1,23 +1,21 @@
-import { useState } from 'react';
-import { use } from 'react';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function CrossPostPage({ params }) {
-  // Unwrap params
-  const { slug } = use(Promise.resolve(params));
+  const { slug } = params;
   
-  // State variables
   const [platform, setPlatform] = useState('hashnode');
   const [post, setPost] = useState(null);
   const [hashnodeToken, setHashnodeToken] = useState('');
   const [devtoKey, setDevtoKey] = useState('');
   const [isCrossPosting, setIsCrossPosting] = useState(false);
   const [result, setResult] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   
-  // Load saved tokens and fetch post data
   useEffect(() => {
     // Load saved API keys
     const savedHashnodeToken = localStorage.getItem('hashnodeToken');
@@ -30,47 +28,39 @@ export default function CrossPostPage({ params }) {
     if (savedDevtoKey) {
       setDevtoKey(savedDevtoKey);
     }
-    
-    // Fetch post data
-    async function fetchPost() {
-      setIsLoading(true);
-      setError('');
+
+    const fetchPost = async () => {      setIsLoading(true);
+      setError(null);
       try {
         const token = localStorage.getItem('githubToken');
         const endpoint = token
-          ? `/api/github-posts?slug=${slug}&token=${token}`
-          : `/api/posts?slug=${slug}`;
-        
-        const response = await fetch(endpoint);
+        ? `/api/github-posts?slug=${slug}&token=${token}`
+        : `/api/posts/${slug}`;
 
+        const response = await fetch(endpoint);
+        
         if (!response.ok) {
           setError(`Failed to fetch post: ${response.status}`);
           return;
         }
-
+        
         const postData = await response.json();
         setPost(postData);
       } catch (err) {
-        setError(
-          err.message || 'Failed to fetch post'
-        );
+        setError(err.message || 'Failed to fetch post');
       } finally {
         setIsLoading(false);
       }
-    }
-
-    if (slug) {
-      fetchPost();
-    }
-  }, []);
-  
+    };
+    
+    fetchPost();
+  }, [slug]);
+    
   // Handle cross-posting
   const handleCrossPost = async () => {
     // Get the appropriate token based on platform
     const token =
-      platform === 'hashnode'
-        ? hashnodeToken || localStorage.getItem('hashnodeToken')
-        : devtoKey || localStorage.getItem('devtoKey');
+    platform === 'hashnode' ? hashnodeToken || localStorage.getItem('hashnodeToken') : devtoKey || localStorage.getItem('devtoKey');
       
     if (!token) {
       alert(`Please enter your ${platform === 'hashnode' ? 'Hashnode API token' : 'DEV.to API key'}`);
@@ -81,10 +71,8 @@ export default function CrossPostPage({ params }) {
     setResult(null);
 
     try {
-      const endpoint =
-        platform === 'hashnode'
-          ? '/api/hashnode-crosspost'
-          : '/api/devto-crosspost';
+      const endpoint = platform === 'hashnode' ? '/api/hashnode-crosspost' : '/api/devto-crosspost';
+      
         
       console.log(`Cross-posting to ${platform} via ${endpoint}`);
       const response = await fetch(endpoint, {
@@ -108,9 +96,8 @@ export default function CrossPostPage({ params }) {
       
       if (!response.ok) throw new Error(responseData.error || `Failed to cross-post: ${response.status}`);
 
-      setResult(responseData);
+        setResult(responseData);
     } catch (error) {      
-
       setResult({ error: error.message || 'An error occurred during cross-posting' });
     } finally {
       setIsCrossPosting(false);
@@ -131,29 +118,28 @@ export default function CrossPostPage({ params }) {
   
   // Show error state
   if (error || !post) {
-       return (
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>
-          <p>{error || 'Post not found'}</p>
-          <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Admin
-          </Link>
-          {process.env.NODE_ENV !== 'production' && (
-            <div className="mt-4 p-4 bg-gray-100 rounded border text-xs font-mono">
-              <h3 className="font-medium mb-2">Debug Info:</h3>
-              <p>Slug: {slug}</p>
-              <p>GitHub Token Available: {localStorage.getItem('githubToken') ? 'Yes' : 'No'}</p>
-              <div className="mt-2">
-                <button
-                  onClick={async () => {
-                    try {
-                      const token = localStorage.getItem('githubToken');
-                      // Try both endpoints and show results
-                      const results = await Promise.allSettled([
-                        fetch(`/api/github-posts?slug=${slug}${token ? `&token=${token}` : ''}`),
-                        fetch(`/api/posts?slug=${slug}`)
-                      ]);
+    return (
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>          
+        <p>{error || 'Post not found'}</p>
+        <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
+          ← Back to Admin
+        </Link>
+        {process.env.NODE_ENV !== 'production' && (
+          <div className="mt-4 p-4 bg-gray-100 rounded border text-xs font-mono">
+            <h3 className="font-medium mb-2">Debug Info:</h3>
+            <p>Slug: {slug}</p>
+            <p>GitHub Token Available: {localStorage.getItem('githubToken') ? 'Yes' : 'No'}</p>
+            {/* <div className="mt-2">
+              <button
+                onClick={async () => {
+                  try {
+                    const token = localStorage.getItem('githubToken'); 
+                    // Try both endpoints and show results
+                    const results = await Promise.allSettled([
+                      fetch(`/api/github-posts?slug=${slug}${token ? `&token=${token}` : ''}`),
+                      fetch(`/api/posts?slug=${slug}`)
+                    ]);
                       
                       console.log('API Test Results:', results);
                       alert(`Check console for detailed API test results`);
@@ -161,15 +147,14 @@ export default function CrossPostPage({ params }) {
                       console.error('Debug test error:', e);
                     }
                   }}
-                  className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs"
-                >
-                  Test API Endpoints
-                </button>
-              </div>
+                  className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">
+                Test API Endpoints
+              </button> */}
             </div>
-          )}
+          </div>
+        )}
         </div>
-      </div>
+        </div>
     );
   }
   

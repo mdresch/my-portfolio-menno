@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -13,7 +13,7 @@ const MarkdownEditor = dynamic(() => import('@/components/admin/MarkdownEditor')
 
 export default function EditPostPage({ params }): JSX.Element {
   const router = useRouter();
-  const { slug } = use(params);
+  const { slug } = params;
 
   
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,10 +52,10 @@ export default function EditPostPage({ params }): JSX.Element {
       // Fetch the post data
       fetchPost(slug, token);
     } else {
-      setIsLoading(false);
       setError('GitHub token is required to edit posts. Please add it in Settings.');
     }
-  }, [router]);
+    setIsLoading(false);
+  }, [router, slug]);
   
   // Fetch post data
   const fetchPost = async (slug, token) => {
@@ -64,9 +64,9 @@ export default function EditPostPage({ params }): JSX.Element {
       setError('');
       
       const endpoint = token 
-        ? `/api/github-posts?slug=${slug}&token=${token}`
-        : `/api/github-posts?slug=${slug}`;
-      
+      ? `/api/github-posts?slug=${slug}&token=${token}`
+      : `/api/github-posts?slug=${slug}`;
+        
       const response = await fetch(endpoint);
       
       if (!response.ok) {
@@ -90,7 +90,6 @@ export default function EditPostPage({ params }): JSX.Element {
       setError(err.message || 'Failed to fetch post');
     } finally {
       setIsLoading(false);
-    }
   };
   
   // Generate slug from title
@@ -200,9 +199,9 @@ ${content}`;
   
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8 flex justify-center">
+      <main className="container mx-auto px-4 py-8 flex justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+      </main>
     );
   }
   
@@ -210,7 +209,7 @@ ${content}`;
     return null; // Will redirect in useEffect
   }
   
-  return (
+  return ( 
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-6 flex justify-between items-center">
         <Link href="/admin" className="text-blue-600 hover:underline flex items-center">
@@ -385,5 +384,5 @@ ${content}`;
         </div>
       </div>
     </div>
+   
   );
-}
