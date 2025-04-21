@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -11,9 +11,10 @@ const MarkdownEditor = dynamic(() => import('@/components/admin/MarkdownEditor')
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });
 
-export default function EditPostPage({ params }) {
+export default function EditPostPage({ params }): JSX.Element {
   const router = useRouter();
-  const { slug } = params;
+  const { slug } = use(params);
+
   
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,8 @@ export default function EditPostPage({ params }) {
   const [githubToken, setGithubToken] = useState('');
   
   useEffect(() => {
+
+
     // Check if user is authenticated
     const adminAuth = localStorage.getItem('adminAuth');
     const token = localStorage.getItem('githubToken');
@@ -52,7 +55,7 @@ export default function EditPostPage({ params }) {
       setIsLoading(false);
       setError('GitHub token is required to edit posts. Please add it in Settings.');
     }
-  }, [router, slug]);
+  }, [router]);
   
   // Fetch post data
   const fetchPost = async (slug, token) => {

@@ -1,43 +1,44 @@
-'use client';
-
+'use client'
+import { useRouter } from 'next/navigation'; 
 import { useState } from 'react';
 
-interface LoginFormProps {
-  onLoginSuccess: (userData: any) => void;
-}
 
-export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
+export default function LoginForm() {  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
+
     try {
-      // For a real implementation, replace this with an actual API call
-      // to your authentication endpoint
-      
-      // Simulated authentication check
-      if (email === process.env.NEXT_PUBLIC_ADMIN_EMAIL && 
-          password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      if (response.ok) {
+        // Set adminAuth to true and adminUser to email in localStorage
+        localStorage.setItem('adminAuth', 'true');
+        localStorage.setItem('adminUser', JSON.stringify({ email: email, name: 'admin' }));
+       //Redirect to the admin panel
+       
+        router.push('/admin/dashboard');
         
-        // Add a slight delay to simulate API call
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Sample user data - in a real app, this would come from your backend
-        const userData = {
-          name: 'Menno Drescher',
-          email: email,
-          role: 'admin'
-        };
-        
-        onLoginSuccess(userData);
       } else {
-        setError('Invalid email or password');
+        const errorData = await response.json();
+        setError(errorData.message || 'Invalid email or password');
+        
       }
     } catch (error) {
       setError('An error occurred during login. Please try again.');
@@ -50,13 +51,13 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <div className="px-6 py-8">
-        <h2 className="text-2xl font-bold text-center mb-6">Admin Login</h2>
-        
+        <h2 className="text-2xl font-bold text-center mb-6">Admin Login</h2>        
         {error && (
           <div className="mb-4 p-3 bg-red-50 text-red-700 rounded border border-red-200">
             {error}
           </div>
         )}
+
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link';
+
 
 export default function Navigation() {
   return (
@@ -26,6 +28,12 @@ export default function Navigation() {
             </Link>
             <Link href="/dashboards" className="text-gray-600 hover:text-blue-600 transition-colors">
               Dashboards
+            </Link>
+            <Link href="/signup" className="text-gray-600 hover:text-blue-600 transition-colors">
+              Signup
+            </Link>
+            <Link href="/login" className="text-gray-600 hover:text-blue-600 transition-colors">
+              Login
             </Link>
           </div>
         </div>

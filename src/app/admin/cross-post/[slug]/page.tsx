@@ -1,23 +1,20 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useState } from 'react';
+import { use } from 'react';
 import Link from 'next/link';
 
-export default function CrossPostPage() {
-  // Get the slug from the URL
-  const params = useParams();
-  const slug = params?.slug as string;
+export default function CrossPostPage({ params }) {
+  // Unwrap params
+  const { slug } = use(Promise.resolve(params));
   
   // State variables
-  const [platform, setPlatform] = useState('hashnode'); // or 'devto'
+  const [platform, setPlatform] = useState('hashnode');
   const [post, setPost] = useState(null);
   const [hashnodeToken, setHashnodeToken] = useState('');
   const [devtoKey, setDevtoKey] = useState('');
   const [isCrossPosting, setIsCrossPosting] = useState(false);
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   
   // Load saved tokens and fetch post data
@@ -36,53 +33,44 @@ export default function CrossPostPage() {
     
     // Fetch post data
     async function fetchPost() {
+      setIsLoading(true);
+      setError('');
       try {
-        setIsLoading(true);
-        
-        // Try to get the post from GitHub API first (since you're using GitHub fetching)
         const token = localStorage.getItem('githubToken');
-        const endpoint = token 
+        const endpoint = token
           ? `/api/github-posts?slug=${slug}&token=${token}`
-          : `/api/github-posts?slug=${slug}`;
+          : `/api/posts?slug=${slug}`;
         
-        console.log(`Fetching post from endpoint: ${endpoint}`);
         const response = await fetch(endpoint);
-        
+
         if (!response.ok) {
-          // If GitHub API fails, try the regular posts API as fallback
-          console.log('GitHub API failed, trying regular posts API...');
-          const fallbackResponse = await fetch(`/api/posts?slug=${slug}`);
-          
-          if (!fallbackResponse.ok) {
-            throw new Error(`Failed to fetch post: ${fallbackResponse.status}`);
-          }
-          
-          const postData = await fallbackResponse.json();
-          setPost(postData);
+          setError(`Failed to fetch post: ${response.status}`);
           return;
         }
-        
+
         const postData = await response.json();
         setPost(postData);
       } catch (err) {
-        console.error('Error fetching post:', err);
-        setError(err.message || 'Failed to fetch post');
+        setError(
+          err.message || 'Failed to fetch post'
+        );
       } finally {
         setIsLoading(false);
       }
     }
-    
+
     if (slug) {
       fetchPost();
     }
-  }, [slug]);
+  }, []);
   
   // Handle cross-posting
   const handleCrossPost = async () => {
     // Get the appropriate token based on platform
-    const token = platform === 'hashnode' 
-      ? hashnodeToken || localStorage.getItem('hashnodeToken')
-      : devtoKey || localStorage.getItem('devtoKey');
+    const token =
+      platform === 'hashnode'
+        ? hashnodeToken || localStorage.getItem('hashnodeToken')
+        : devtoKey || localStorage.getItem('devtoKey');
       
     if (!token) {
       alert(`Please enter your ${platform === 'hashnode' ? 'Hashnode API token' : 'DEV.to API key'}`);
@@ -93,13 +81,12 @@ export default function CrossPostPage() {
     setResult(null);
 
     try {
-      // Use the appropriate endpoint
-      const endpoint = platform === 'hashnode' 
-        ? '/api/hashnode-crosspost'
-        : '/api/devto-crosspost'; // Correct endpoint is selected
+      const endpoint =
+        platform === 'hashnode'
+          ? '/api/hashnode-crosspost'
+          : '/api/devto-crosspost';
         
       console.log(`Cross-posting to ${platform} via ${endpoint}`);
-      
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -110,7 +97,6 @@ export default function CrossPostPage() {
           token // Sending the API key/token
         }),
       });
-      
       // First try to get JSON response
       let responseData;
       try {
@@ -120,15 +106,11 @@ export default function CrossPostPage() {
         throw new Error(`Failed to parse response: ${response.status}`);
       }
       
-      if (!response.ok) {
-        console.error('Error response from API:', responseData);
-        throw new Error(responseData.error || `Failed to cross-post: ${response.status}`);
-      }
-      
-      console.log('Cross-post successful:', responseData);
+      if (!response.ok) throw new Error(responseData.error || `Failed to cross-post: ${response.status}`);
+
       setResult(responseData);
-    } catch (error) {
-      console.error('Error cross-posting:', error);
+    } catch (error) {      
+
       setResult({ error: error.message || 'An error occurred during cross-posting' });
     } finally {
       setIsCrossPosting(false);
@@ -149,7 +131,7 @@ export default function CrossPostPage() {
   
   // Show error state
   if (error || !post) {
-    return (
+       return (
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="bg-white rounded-lg shadow-md p-6">
           <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>
