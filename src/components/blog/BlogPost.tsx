@@ -7,18 +7,28 @@ import ShareButton from '@/components/ShareButton';
 import TableOfContents from '@/components/TableOfContents';
 import ReadingProgress from '@/components/ReadingProgress';
 import SocialShare from '@/components/SocialShare';
-import PostReactions from '@/components/PostReactions';
-import WebMentions from '@/components/WebMentions';
-import Comments from '@/components/Comments';
-import JumpToComments from '@/components/JumpToComments';
 import BlogPostJsonLd from './BlogPostJsonLd';
 import Breadcrumbs from '@/components/SEO/Breadcrumbs';
+import Giscus from '@/components/comments/Giscus';
+import { formatDate } from '@/lib/utils';
 
 interface BlogPostProps {
   post: BlogPostType;
 }
 
+interface BlogPostsProps {
+  posts: BlogPostType[];
+}
+
 export default function BlogPost({ post }: BlogPostProps) {
+  if (!post || !post.content) {
+    return (
+      <div className="bg-red-50 border-l-4 border-red-500 p-4 my-8">
+        <p className="text-red-700 font-semibold">Error: Blog post not found or missing content.</p>
+      </div>
+    );
+  }
+
   const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([]);
   const articleRef = useRef<HTMLElement>(null);
 
@@ -114,23 +124,19 @@ export default function BlogPost({ post }: BlogPostProps) {
                   text={post.excerpt}
                 />
               </div>
-              
-              <PostReactions postId={post.slug} />
             </div>
-            
-            <WebMentions postUrl={typeof window !== 'undefined' ? window.location.href : ''} />
           </footer>
-          
-          <JumpToComments />
-          
+
           {/* Comments Section */}
-          <div id="comments" className="mt-12 pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold mb-6">Comments</h2>
-            <Comments
-              repo={process.env.NEXT_PUBLIC_GITHUB_REPO}
-              postId={post.slug}
+          {post.slug && (
+            <Giscus
+              slug={post.slug}
+              repositoryId="R_kgDOLUkqzw"
+              category="Blog Comments"
+              categoryId="DIC_kwDOLUkqz84CdYVt"
             />
-          </div>
+          )}
+          
         </article>
         
         {/* Sidebar */}
@@ -159,6 +165,59 @@ export default function BlogPost({ post }: BlogPostProps) {
           </div>
         </aside>
       </div>
+    </div>
+  );
+}
+
+export function BlogPosts({ posts }: BlogPostsProps) {
+  return (
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <article
+          key={post.slug}
+          className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          {post.coverImage && (
+            <div className="aspect-w-16 aspect-h-9">
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="object-cover w-full h-48"
+              />
+            </div>
+          )}
+          <div className="p-6">
+            {post.categories && post.categories.length > 0 && (
+              <div className="flex gap-2 mb-3">
+                {post.categories.map((category) => (
+                  <Link
+                    key={category}
+                    href={`/blog/category/${category.toLowerCase()}`}
+                    className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-colors"
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+            )}
+            <h2 className="text-xl font-semibold mb-2">
+              <Link
+                href={`/blog/${post.slug}`}
+                className="hover:text-blue-600 transition-colors"
+              >
+                {post.title}
+              </Link>
+            </h2>
+            <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+              {post.excerpt}
+            </p>
+            <div className="flex items-center justify-between text-sm text-gray-500">
+              <span>{formatDate(post.date)}</span>
+              {post.author && <span>{post.author}</span>}
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   );
 }

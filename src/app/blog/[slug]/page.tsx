@@ -1,21 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getPostData, getAllPostIds, getSortedPostsData, getPostDataFromFile } from '@/lib/markdown';
-import ShareButton from '@/components/ShareButton';
-import TableOfContents from '@/components/TableOfContents';
-import RelatedPosts from '@/components/RelatedPosts';
-import ReadingProgress from '@/components/ReadingProgress';
+// Removed unused Link import
+import { getAllPostIds, getPostDataFromFile } from '@/lib/markdown';
 import PostNavigation from '@/components/PostNavigation';
-import Comments from '@/components/Comments';
-import CommentCount from '@/components/CommentCount';
-import JumpToComments from '@/components/JumpToComments';
-import SocialShare from '@/components/SocialShare';
-import PostReactions from '@/components/PostReactions';
-import WebMentions from '@/components/WebMentions';
-import BlogPostClient from '@/components/BlogPostClient';
-import HashnodeCrossPost from '@/components/HashnodeCrossPost';
+// import Comments from '@/components/Comments'; // Removed as the module is missing
 import BlogPost from '@/components/blog/BlogPost';
+import GiscusComments from '@/components/comments/Giscus';
 
 // Generate static paths at build time
 export async function generateStaticParams() {
@@ -29,6 +19,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const slug = await params.slug;
   
   const post = await getPostDataFromFile(slug);
+
+  // Fetch all posts to pass to PostNavigation
+  const allPosts = await getAllPostIds();
   
   if (!post) {
     return {
@@ -65,7 +58,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage || `${baseUrl}/images/showcase-dataviz.jpg`],
+      images: [(post as any).coverImage || `${baseUrl}/images/showcase-dataviz.jpg`],
     },
     alternates: {
       canonical: postUrl,
@@ -80,10 +73,26 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const slug = await params.slug;
   
   const post = await getPostDataFromFile(slug);
+  const allPosts = await getAllPostIds(); // Fetch all posts
   
   if (!post) {
     notFound();
   }
   
-  return <BlogPost post={post} />;
+  return (
+    <div>
+      <PostNavigation currentSlug={params.slug} allPosts={allPosts || []} />
+      <article className="max-w-4xl mx-auto px-4 py-12">
+        <BlogPost post={post} />
+        <PostNavigation currentSlug={params.slug} allPosts={allPosts} />
+        <GiscusComments 
+          slug={params.slug} 
+          repositoryId="your-repository-id" 
+          category="your-category" 
+          categoryId="your-category-id" 
+        />
+        {/* Removed Comments component as it is not available */}
+      </article>
+    </div>
+  );
 }

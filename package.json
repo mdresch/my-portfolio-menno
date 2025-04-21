@@ -11,6 +11,8 @@
   "dependencies": {
     "@codemirror/lang-markdown": "^6.3.2",
     "@heroicons/react": "^2.2.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@toast-ui/react-editor": "^3.2.3",
     "@uiw/react-codemirror": "^4.23.10",
     "@vercel/analytics": "^1.5.0",

@@ -1,86 +1,63 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import BlogSearch from './BlogSearch';
-import CategoryFilter from './CategoryFilter';
+import Image from 'next/image';
+import { formatDate } from '@/lib/utils';
 import type { BlogPost } from '@/lib/markdown';
 
 interface BlogPostsProps {
-  initialPosts: Omit<BlogPost, 'content'>[];
-  categories: string[];
+  posts: BlogPost[];
 }
 
-export default function BlogPosts({ initialPosts, categories }: BlogPostsProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  // Filter posts based on search query and selected category
-  const filteredPosts = initialPosts.filter((post) => {
-    const matchesSearch =
-      searchQuery === '' ||
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesCategory =
-      selectedCategory === null || post.categories.includes(selectedCategory);
-
-    return matchesSearch && matchesCategory;
-  });
-
+export default function BlogPosts({ posts }: BlogPostsProps) {
   return (
-    <>
-      <BlogSearch onSearch={setSearchQuery} />
-      <CategoryFilter
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
-      />
-
-      <div className="grid gap-6">
-        {filteredPosts.map((post) => (
-          <article key={post.slug} className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center gap-2 mb-3">
-              <time className="text-gray-500 text-sm">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-              <span className="text-gray-300">•</span>
-              <span className="text-gray-500 text-sm">{post.readingTime}</span>
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <article
+          key={post.slug}
+          className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          {post.coverImage && (
+            <div className="relative aspect-video">
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
-            
-            <Link 
-              href={`/blog/${post.slug}`}
-              className="block hover:text-blue-600 transition-colors"
-            >
-              <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-            </Link>
-            
-            <p className="text-gray-600 mb-4">{post.excerpt}</p>
-            
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.categories.map((category) => (
-                <span
+          )}
+          <div className="p-6">
+            <div className="flex gap-2 mb-3">
+              {post.categories?.map((category) => (
+                <Link
                   key={category}
-                  className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                  href={`/blog/category/${category.toLowerCase()}`}
+                  className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-colors"
                 >
                   {category}
-                </span>
+                </Link>
               ))}
             </div>
-            
-            <Link 
-              href={`/blog/${post.slug}`}
-              className="inline-block text-blue-600 hover:text-blue-800 transition-colors"
-            >
-              Read more →
-            </Link>
-          </article>
-        ))}
-      </div>
-    </>
+            <h2 className="text-xl font-semibold mb-2 line-clamp-2">
+              <Link
+                href={`/blog/${post.slug}`}
+                className="hover:text-blue-600 transition-colors"
+              >
+                {post.title}
+              </Link>
+            </h2>
+            <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+              {post.excerpt}
+            </p>
+            <div className="flex items-center justify-between text-sm text-gray-500">
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              {post.author && <span>{post.author}</span>}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }

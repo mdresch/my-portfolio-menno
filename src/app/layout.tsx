@@ -6,6 +6,7 @@ import "./globals.css";
 import '../styles/markdown-fix.css';
 import '../styles/resume-print.css'; // Add print styles
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from 'next-themes';
 
 const geist = Geist({
   subsets: ["latin"],
@@ -65,14 +66,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.className} bg-gray-50 min-h-screen flex flex-col`}>
-        <Navigation />
-        <main className="flex-1">
-          {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
-              to use client components only at the component level, not at the root layout level */}
-          {children}
-          <Analytics />
-        </main>
-        <Footer />
+        <ThemeProvider attribute="class">
+          <Navigation />
+          <main className="flex-1">
+            {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
+                to use client components only at the component level, not at the root layout level */}
+            {children}
+            <Analytics />
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
