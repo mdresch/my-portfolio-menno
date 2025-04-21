@@ -90,6 +90,7 @@ export default function EditPostPage({ params }): JSX.Element {
       setError(err.message || 'Failed to fetch post');
     } finally {
       setIsLoading(false);
+    }
   };
   
   // Generate slug from title
@@ -205,12 +206,24 @@ ${content}`;
     );
   }
   
+  if (error || !post) {
+    return (
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>
+        <p>{error || 'Post not found'}</p>
+        <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
+          Back to Admin
+        </Link>
+      </div>
+    );
+  }
+  
   if (!isAuthenticated) {
     return null; // Will redirect in useEffect
   }
   
-  return ( 
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+  return (
+    <div className="container mx-auto px-4 py-8">
       <div className="mb-6 flex justify-between items-center">
         <Link href="/admin" className="text-blue-600 hover:underline flex items-center">
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -384,5 +397,5 @@ ${content}`;
         </div>
       </div>
     </div>
-   
   );
+}

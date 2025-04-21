@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState(null);
+  const [posts, setPosts] = useState<{ id?: string; slug?: string; title?: string; date?: string; hasError?: boolean; errorMessage?: string }[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('posts');
   const [useGitHubFetch, setUseGitHubFetch] = useState(() => {
     if (typeof localStorage !== 'undefined') {
@@ -27,25 +27,6 @@ export default function Dashboard() {
     repo: "my-portfolio-menno",
     defaultBranch: "main"
   };
-
-  // Check for existing authentication on component mount
-  useEffect(() => {
-    const storedAuth = localStorage.getItem('adminAuth');
-    const storedUser = localStorage.getItem('adminUser');
-    
-    if (storedAuth && storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-        setIsAuthenticated(true);
-      } catch (error) {
-        // Handle parsing error - clear invalid data
-        localStorage.removeItem('adminAuth');
-        localStorage.removeItem('adminUser');
-      }
-    }
-    
-    setIsLoading(false);
-  }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -76,17 +57,18 @@ export default function Dashboard() {
         setError(null);
       }
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
       setPosts([]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const saveApiKey = async (platform) => {
+
+  const saveApiKey = async (platform: 'hashnode' | 'devto' | 'github'): Promise<void> => {
     setIsSaving(true);
     setSaveMessage({ message: '', type: '' });
-    const token = platform === 'hashnode' ? hashnodeToken : platform === 'devto' ? devtoKey : githubToken;
+    const token: string = platform === 'hashnode' ? hashnodeToken : platform === 'devto' ? devtoKey : githubToken;
     localStorage.setItem(`${platform}Token`, token);
 
     try {
@@ -154,8 +136,8 @@ export default function Dashboard() {
                 {user && user.name && user.name.charAt(0)}
               </div>
               <div>
-                <p className="font-medium">{user.name}</p>
-                <p className="text-sm text-gray-600">{user.email}</p>
+                <p className="font-medium">{user?.name || 'Guest'}</p>
+                <p className="text-sm text-gray-600">{user?.email || 'No email available'}</p>
               </div>
             </div>
           </div>
@@ -274,7 +256,7 @@ export default function Dashboard() {
                                 )}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {new Date(post.date).toLocaleDateString()}
+                                {post.date ? new Date(post.date).toLocaleDateString() : 'No date available'}
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 {post.hasError ? (
@@ -331,7 +313,7 @@ export default function Dashboard() {
                       <div key={post.slug} className="border rounded-lg p-4 hover:bg-gray-50">
                         <h3 className="font-medium">{post.title}</h3>
                         <p className="text-sm text-gray-500 mt-1">
-                          {new Date(post.date).toLocaleDateString()}
+                          {post.date ? new Date(post.date).toLocaleDateString() : 'No date available'}
                         </p>
                         <div className="mt-3">
                           <Link
@@ -516,7 +498,11 @@ export default function Dashboard() {
                         alert(`API Status: ${result.status}\nSource: ${useGitHubFetch ? 'GitHub' : 'Local'}\nCheck console for details`);
                       } catch (e) {
                         console.error('Debug fetch error:', e);
-                        alert(`Error: ${e.message}`);
+                        if (e instanceof Error) {
+                          alert(`Error: ${e.message}`);
+                        } else {
+                          alert('An unknown error occurred');
+                        }
                       } finally {
                         setIsLoading(false);
                       }

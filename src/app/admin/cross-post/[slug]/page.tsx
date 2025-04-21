@@ -3,7 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function CrossPostPage({ params }) {
+interface CrossPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function CrossPostPage({ params }: CrossPostPageProps) {
   const { slug } = params;
   
   const [platform, setPlatform] = useState('hashnode');
@@ -19,23 +25,19 @@ export default function CrossPostPage({ params }) {
   useEffect(() => {
     // Load saved API keys
     const savedHashnodeToken = localStorage.getItem('hashnodeToken');
-    const savedDevtoKey = localStorage.getItem('devtoKey');
     
     if (savedHashnodeToken) {
-      setHashnodeToken(savedHashnodeToken);
-    }
-    
-    if (savedDevtoKey) {
-      setDevtoKey(savedDevtoKey);
+      // Your logic for handling savedHashnodeToken
     }
 
-    const fetchPost = async () => {      setIsLoading(true);
+    const fetchPost = async () => {
+      setIsLoading(true);
       setError(null);
       try {
         const token = localStorage.getItem('githubToken');
         const endpoint = token
-        ? `/api/github-posts?slug=${slug}&token=${token}`
-        : `/api/posts/${slug}`;
+          ? `/api/github-posts?slug=${slug}&token=${token}`
+          : `/api/posts/${slug}`;
 
         const response = await fetch(endpoint);
         
@@ -52,7 +54,7 @@ export default function CrossPostPage({ params }) {
         setIsLoading(false);
       }
     };
-    
+
     fetchPost();
   }, [slug]);
     
@@ -123,7 +125,7 @@ export default function CrossPostPage({ params }) {
         <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>          
         <p>{error || 'Post not found'}</p>
         <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
-          ← Back to Admin
+          Back to Admin
         </Link>
         {process.env.NODE_ENV !== 'production' && (
           <div className="mt-4 p-4 bg-gray-100 rounded border text-xs font-mono">
@@ -149,14 +151,14 @@ export default function CrossPostPage({ params }) {
                   }}
                   className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">
                 Test API Endpoints
-              </button> */}
+              </button>
+            </div> */}
             </div>
-          </div>
-        )}
-        </div>
+          )}
         </div>
     );
   }
+        
   
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
