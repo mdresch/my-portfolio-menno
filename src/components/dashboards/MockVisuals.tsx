@@ -3,15 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 // Adjust the import path here:
-import { MockKPICard, MockChartPlaceholder, MockTablePlaceholder, MockMapPlaceholder } from '@/components/dashboards/MockVisuals'; // Assuming the file is in src/components/dashboards/
+import { MockMapPlaceholder as ImportedMockMapPlaceholder } from '@/components/dashboards/MockVisuals'; // Assuming the file is in src/components/dashboards/
 
 // Simple placeholder for any chart type (Can keep as fallback or remove)
-export const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
+const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
   <div className="border border-dashed border-gray-300 rounded-lg p-4 h-64 flex flex-col bg-gray-50">
     <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
     <div className="flex-grow flex justify-center items-center text-xs text-gray-400">({type} Placeholder)</div>
   </div>
 );
+
+export { MockChartPlaceholder };
 
 // --- NEW MOCK CHART COMPONENTS ---
 
@@ -119,6 +121,220 @@ export const MockPieChart = ({ title }: { title: string }) => (
   </div>
 );
 
+// Mock Stacked Bar Chart for Population by Age and Gender
+const populationData = [
+  { age: '0-14', male: 16, female: 17 },
+  { age: '15-64', male: 110, female: 111 },
+  { age: '65+', male: 13, female: 15 },
+];
+
+export const MockStackedBarChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end justify-around space-x-2 overflow-hidden p-2">
+      {populationData.map((group) => (
+        <div key={group.age} className="flex flex-col items-center w-1/5">
+          {/* Female bar */}
+          <div
+            className="w-8 bg-pink-400 rounded-t-sm"
+            style={{ height: `${group.female * 1.2}px` }}
+            title={`Female: ${group.female}M`}
+          ></div>
+          {/* Male bar (stacked below) */}
+          <div
+            className="w-8 bg-blue-400 rounded-b-sm"
+            style={{ height: `${group.male * 1.2}px`, marginTop: '-2px' }}
+            title={`Male: ${group.male}M`}
+          ></div>
+          <span className="text-xs mt-1">{group.age}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-around mt-2 text-xs text-gray-500">
+      <span className="flex items-center"><span className="inline-block w-3 h-3 bg-blue-400 rounded-full mr-1"></span>Male</span>
+      <span className="flex items-center"><span className="inline-block w-3 h-3 bg-pink-400 rounded-full mr-1"></span>Female</span>
+    </div>
+  </div>
+);
+
+// Mock data for unemployment rate over time
+const unemploymentRateData = [
+  { year: 2015, rate: 5.3 },
+  { year: 2016, rate: 4.9 },
+  { year: 2017, rate: 4.4 },
+  { year: 2018, rate: 3.9 },
+  { year: 2019, rate: 3.7 },
+  { year: 2020, rate: 8.1 },
+  { year: 2021, rate: 5.4 },
+  { year: 2022, rate: 3.6 },
+  { year: 2023, rate: 3.5 },
+  { year: 2024, rate: 3.8 },
+  { year: 2025, rate: 3.8 },
+];
+
+export const MockUnemploymentLineChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
+      {unemploymentRateData.map((point, idx) => (
+        <div key={point.year} className="flex flex-col items-center w-8">
+          <div
+            className="w-4 bg-blue-500 rounded-t-sm"
+            style={{ height: `${point.rate * 10}px` }}
+            title={`${point.rate}%`}
+          ></div>
+          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500">Unemployment Rate (%)</div>
+  </div>
+);
+
+// Mock data for PPI and CPI over time
+const ppiCpiData = [
+  { year: 2015, ppi: 100, cpi: 100 },
+  { year: 2016, ppi: 102, cpi: 101 },
+  { year: 2017, ppi: 104, cpi: 103 },
+  { year: 2018, ppi: 107, cpi: 105 },
+  { year: 2019, ppi: 110, cpi: 107 },
+  { year: 2020, ppi: 108, cpi: 109 },
+  { year: 2021, ppi: 115, cpi: 112 },
+  { year: 2022, ppi: 120, cpi: 117 },
+  { year: 2023, ppi: 123, cpi: 120 },
+  { year: 2024, ppi: 125, cpi: 123 },
+  { year: 2025, ppi: 127, cpi: 125 },
+];
+
+export const MockPPICPIChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
+      {ppiCpiData.map((point, idx) => (
+        <div key={point.year} className="flex flex-col items-center w-8">
+          {/* CPI line (green dot) */}
+          <div
+            className="w-3 h-3 rounded-full bg-green-500 mb-1"
+            style={{ marginBottom: `${(point.cpi - 100) * 1.2}px` }}
+            title={`CPI: ${point.cpi}`}
+          ></div>
+          {/* PPI line (blue dot) */}
+          <div
+            className="w-3 h-3 rounded-full bg-blue-500"
+            style={{ marginBottom: `${(point.ppi - point.cpi) * 1.2}px` }}
+            title={`PPI: ${point.ppi}`}
+          ></div>
+          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 gap-4">
+      <span className="flex items-center"><span className="inline-block w-3 h-3 bg-blue-500 rounded-full mr-1"></span>PPI</span>
+      <span className="flex items-center"><span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-1"></span>CPI</span>
+    </div>
+  </div>
+);
+
+// Mock data for payroll employment over time
+const payrollEmploymentData = [
+  { year: 2015, jobs: 140 },
+  { year: 2016, jobs: 142 },
+  { year: 2017, jobs: 145 },
+  { year: 2018, jobs: 148 },
+  { year: 2019, jobs: 151 },
+  { year: 2020, jobs: 146 },
+  { year: 2021, jobs: 150 },
+  { year: 2022, jobs: 154 },
+  { year: 2023, jobs: 157 },
+  { year: 2024, jobs: 159 },
+  { year: 2025, jobs: 160 },
+];
+
+export const MockPayrollEmploymentChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
+      {payrollEmploymentData.map((point) => (
+        <div key={point.year} className="flex flex-col items-center w-8">
+          <div
+            className="w-4 bg-emerald-500 rounded-t-sm"
+            style={{ height: `${(point.jobs - 140) * 4}px` }}
+            title={`${point.jobs}M jobs`}
+          ></div>
+          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500">Payroll Employment (Millions)</div>
+  </div>
+);
+
+// Mock data for average hourly earnings over time
+const averageHourlyEarningsData = [
+  { year: 2015, earnings: 22.5 },
+  { year: 2016, earnings: 23.1 },
+  { year: 2017, earnings: 23.8 },
+  { year: 2018, earnings: 24.5 },
+  { year: 2019, earnings: 25.1 },
+  { year: 2020, earnings: 26.0 },
+  { year: 2021, earnings: 27.2 },
+  { year: 2022, earnings: 28.0 },
+  { year: 2023, earnings: 28.7 },
+  { year: 2024, earnings: 29.3 },
+  { year: 2025, earnings: 29.8 },
+];
+
+export const MockAverageHourlyEarningsChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
+      {averageHourlyEarningsData.map((point) => (
+        <div key={point.year} className="flex flex-col items-center w-8">
+          <div
+            className="w-4 bg-yellow-500 rounded-t-sm"
+            style={{ height: `${(point.earnings - 22) * 10}px` }}
+            title={`$${point.earnings}`}
+          ></div>
+          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500">Avg Hourly Earnings (USD)</div>
+  </div>
+);
+
+// Updated mock data for Employment Cost Index (ECI) over time (2017=100, quarterly)
+const employmentCostIndexData = [
+  { label: '2022 Q4', eci: 116.0 },
+  { label: '2023 Q1', eci: 116.9 },
+  { label: '2023 Q2', eci: 117.7 },
+  { label: '2023 Q3', eci: 118.0 },
+  { label: '2023 Q4', eci: 118.4 },
+  { label: '2024 Q1', eci: 120.7 },
+  { label: '2024 Q2', eci: 120.4 },
+  { label: '2024 Q3', eci: 119.9 },
+  { label: '2024 Q4', eci: 120.6 },
+];
+
+export const MockEmploymentCostIndexChart = ({ title }: { title: string }) => (
+  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
+    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
+      {employmentCostIndexData.map((point) => (
+        <div key={point.label} className="flex flex-col items-center w-10">
+          <div
+            className="w-4 bg-purple-500 rounded-t-sm"
+            style={{ height: `${(point.eci - 115) * 12}px` }}
+            title={`ECI: ${point.eci}`}
+          ></div>
+          <span className="text-[10px] mt-1 text-gray-500">{point.label}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500">Employment Cost Index (2017=100)</div>
+  </div>
+);
+
 // Placeholder for KPI cards
 export const MockKPICard = ({ title, value, change }: { title: string; value: string; change?: string }) => (
   <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
@@ -137,7 +353,7 @@ export const MockTablePlaceholder = ({ title }: { title: string }) => (
 );
 
 // Placeholder for a map
-export const MockMapPlaceholder = ({ title }: { title: string }) => (
+export const LocalMockMapPlaceholder = ({ title }: { title: string }) => (
     <div className="border border-dashed border-gray-300 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50">
       <p className="text-sm font-medium text-gray-700 mb-2">{title}</p>
       <p className="text-xs text-gray-500">(Map Placeholder)</p>

@@ -163,7 +163,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-6">
-        <Link href="/admin" className="text-blue-600 hover:underline">
+        <Link href="/admin/dashboard" className="text-blue-600 hover:underline">
           ← Back to Admin
         </Link>
       </div>

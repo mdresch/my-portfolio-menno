@@ -25,6 +25,7 @@ export default function NewPostPage() {
   const [excerpt, setExcerpt] = useState('');
   const [categories, setCategories] = useState(['']);
   const [content, setContent] = useState('');
+  const [author, setAuthor] = useState('');
   
   // GitHub credentials
   const [githubToken, setGithubToken] = useState('');
@@ -112,6 +113,7 @@ export default function NewPostPage() {
     const frontmatter = `---
 title: ${title}
 date: ${date}
+author: ${author}
 excerpt: ${excerpt}
 ${categoriesYAML}
 ---
@@ -242,6 +244,21 @@ ${content}`;
             </div>
             
             <div className="mb-6">
+              <label htmlFor="author" className="block text-sm font-medium text-gray-700 mb-1">
+                Author
+              </label>
+              <input
+                type="text"
+                id="author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Author name"
+                required
+              />
+            </div>
+            
+            <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Categories
               </label>
@@ -307,7 +324,7 @@ ${content}`;
             
             <div className="flex justify-end gap-3">
               <Link
-                href="/admin"
+                href="/admin/dashboard"
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
               >
                 Cancel

@@ -1,6 +1,6 @@
 import React from 'react';
 // Import necessary mock components
-import { MockKPICard, MockPieChart, MockLineChart, MockBarChart } from './MockVisuals';
+import { MockKPICard, MockPieChart, MockBarChart } from './MockVisuals';
 
 export const ConsumerInvestmentDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">

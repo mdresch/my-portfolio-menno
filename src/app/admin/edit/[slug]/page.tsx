@@ -36,6 +36,7 @@ export default function EditPostPage() {
   const [categories, setCategories] = useState(['']);
   const [content, setContent] = useState('');
   const [date, setDate] = useState('');
+  const [author, setAuthor] = useState('');
   const [originalContent, setOriginalContent] = useState('');
 
   // GitHub credentials
@@ -88,6 +89,7 @@ export default function EditPostPage() {
       setCategories(post.categories && post.categories.length > 0 ? post.categories : ['']);
       setContent(post.content || '');
       setDate(post.date ? new Date(post.date).toISOString().split('T')[0] : '');
+      setAuthor(post.author || '');
       setOriginalContent(post.content || '');
 
     } catch (err) {
@@ -162,6 +164,7 @@ export default function EditPostPage() {
     const frontmatter = `---
 title: ${title}
 date: ${date || new Date().toISOString().split('T')[0]}
+author: ${author}
 excerpt: ${excerpt}
 categories: [${filteredCategories.join(', ')}]
 ---
@@ -216,7 +219,7 @@ ${content}`;
       <div className="bg-white rounded-lg shadow-md p-6">
         <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>
         <p>{error || 'Post not found'}</p>
-        <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
+        <Link href="/admin/dashboard" className="text-blue-600 hover:underline mt-4 inline-block">
           Back to Admin
         </Link>
       </div>
@@ -312,6 +315,21 @@ ${content}`;
                 rows={2}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Brief summary of your post"
+              />
+            </div>
+
+            <div className="mb-6">
+              <label htmlFor="author" className="block text-sm font-medium text-gray-700 mb-1">
+                Author
+              </label>
+              <input
+                type="text"
+                id="author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Author name"
+                required
               />
             </div>
 

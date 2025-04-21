@@ -236,6 +236,17 @@ export default function RiskPage() {
             </Link>
           </div>
 
+          {/* Import Global Tariffs   */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col">
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">U.S. Global Tariffs & Trade Policy (2025)</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Analyze the impact of the 2025 U.S. tariff policy, its global ripple effects, and how organizations can proactively respond to uncertainty and protect margins.
+            </p>
+            <Link href="/risk/trump-tariffs" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Explore Tariff Impact →
+            </Link>
+          </div>
+
           {/* --- TTIP Case Study Card --- */}
           <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
             <div className="flex items-center mb-2">

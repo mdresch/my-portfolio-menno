@@ -52,17 +52,23 @@ const menuItems: MenuItem[] = [
       { title: 'Business Complexity', href: '/risk/global-business-complexity-index' },
       { title: 'Risk Analysis', href: '/risk/gartner-regulatory-risk-survey' },
       { title: 'Risk Landscape', href: '/risk'},
+      { title: 'Global Tariffs', href: '/risk/trump-tariffs' },
     ]
   },
   {
-    title: 'Economics', 
-    href: '/dashboard',
-    description: 'Economic insights and analysis',
+    title: 'Economics & Stocks',
+    href: '/dashboards',
+    description: 'Economic insights, global indices, and market analysis',
     icon: <ChartBarIcon className="w-6 h-6" />,
     items: [
-      { title: 'Global Economic Dashboard', href: '/dashboards' },
-      { title: 'Economic Indicators', href: '/dashboards/economic-indicators' },
       { title: 'Market Trends', href: '/dashboards/market-trends' },
+      { title: 'Macroeconomics', href: '/dashboards/macro' },
+      { title: 'Policy Impact', href: '/dashboards/policy-impact' },
+      { title: 'Economic Indicators', href: '/dashboards/economic-indicators' },
+      { title: 'Stocks & Global Indices', href: '/dashboards/stocks' },
+      { title: 'Sectors', href: '/dashboards/stocks#sectors' },
+      { title: 'Companies', href: '/dashboards/stocks#companies' },
+      { title: 'Currencies', href: '/dashboards/currencies' },
     ]
   },
   {

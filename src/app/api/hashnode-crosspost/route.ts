@@ -52,6 +52,22 @@ export async function POST(request: NextRequest) {
 
     // Step 1: Create a draft first with updated query structure
     // Note: Removed 'success' field as it's no longer available
+    // Ensure publicationId is present and throw a clear error if not
+    const publicationId = process.env.HASHNODE_PUBLICATION_ID;
+    if (!publicationId) {
+      return NextResponse.json({
+        error: 'HASHNODE_PUBLICATION_ID environment variable is not set. Please set it in your .env.local file.'
+      }, { status: 500 });
+    }
+    // Build input object and always include publicationId
+    const draftInput: any = {
+      title: post.title,
+      contentMarkdown: contentMarkdown,
+      tags: tags,
+      subtitle: post.excerpt || undefined,
+      originalArticleURL: process.env.SITE_URL + '/blog/' + post.slug,
+      publicationId: publicationId
+    };
     const createDraftQuery = {
       query: `
         mutation CreateDraft($input: CreateDraftInput!) {
@@ -65,14 +81,7 @@ export async function POST(request: NextRequest) {
         }
       `,
       variables: {
-        input: {
-          title: post.title,
-          contentMarkdown: contentMarkdown,
-          tags: tags,
-          subtitle: post.excerpt || undefined,
-          originalArticleURL: process.env.SITE_URL + '/blog/' + post.slug,
-          publicationId: process.env.HASHNODE_PUBLICATION_ID || undefined
-        }
+        input: draftInput
       }
     };
 
@@ -115,8 +124,6 @@ export async function POST(request: NextRequest) {
     const draftId = draftData.data.createDraft.draft.id;
     
     // Step 2: Publish the draft with the CORRECT input structure
-    const publicationId = process.env.HASHNODE_PUBLICATION_ID || undefined;
-
     // Define the input object based on Hashnode's expected structure
     const publishInput = {
       draftId: draftId,
