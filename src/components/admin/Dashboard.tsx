@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Dashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState<{ id?: string; slug?: string; title?: string; date?: string; hasError?: boolean; errorMessage?: string }[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -23,16 +21,14 @@ export default function Dashboard() {
   const [devtoKey, setDevtoKey] = useState('');
   const [githubToken, setGithubToken] = useState('');
   const repoInfo = {
-    owner: "mennovermeulen",
+    owner: "mdresch",
     repo: "my-portfolio-menno",
     defaultBranch: "main"
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchPosts();
-    }
-  }, [isAuthenticated]);
+    fetchPosts();
+  }, []);
 
   const fetchPosts = async () => {
     setIsLoading(true);
@@ -64,7 +60,6 @@ export default function Dashboard() {
     }
   };
 
-
   const saveApiKey = async (platform: 'hashnode' | 'devto' | 'github'): Promise<void> => {
     setIsSaving(true);
     setSaveMessage({ message: '', type: '' });
@@ -85,14 +80,6 @@ export default function Dashboard() {
     }
   };
 
-  // Handle logout
-  const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    localStorage.removeItem('adminUser');
-    setIsAuthenticated(false);
-    setUser(null);
-  };
-
   if (isLoading) {
     return (
       <main className="container mx-auto px-4 py-8">
@@ -103,45 +90,12 @@ export default function Dashboard() {
     );
   }
 
-  if (!isAuthenticated) {
-      return (
-        <main className="container mx-auto px-4 py-8">
-          <div className="flex justify-center items-center min-h-[60vh]">
-            <div className="text-center">
-              <h1 className="text-3xl font-bold mb-4">Unauthorized</h1>
-              <p className="text-gray-600">You need to be logged in to view this page.</p>
-            </div>
-          </div>
-        </main>
-      );
-    }
-
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Blog Admin</h1>
-        {isAuthenticated && (
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
-          >
-            Logout
-          </button>
-        )}
       </div>
         <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-          <div className="p-4 bg-blue-50 border-b">
-            <div className="flex items-center">
-              <div className="bg-blue-100 text-blue-700 rounded-full w-10 h-10 flex items-center justify-center mr-3">
-                {user && user.name && user.name.charAt(0)}
-              </div>
-              <div>
-                <p className="font-medium">{user?.name || 'Guest'}</p>
-                <p className="text-sm text-gray-600">{user?.email || 'No email available'}</p>
-              </div>
-            </div>
-          </div>
-          
           <div className="border-b">
             <nav className="flex">
               <button

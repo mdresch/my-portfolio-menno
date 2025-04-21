@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -11,17 +11,24 @@ const MarkdownEditor = dynamic(() => import('@/components/admin/MarkdownEditor')
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });
 
-export default function EditPostPage({ params }): JSX.Element {
-  const router = useRouter();
-  const { slug } = params;
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
 
-  
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+export default function EditPostPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+
+  const [post, setPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  
+
   // Form state
   const [title, setTitle] = useState('');
   const [postSlug, setPostSlug] = useState('');
@@ -30,22 +37,20 @@ export default function EditPostPage({ params }): JSX.Element {
   const [content, setContent] = useState('');
   const [date, setDate] = useState('');
   const [originalContent, setOriginalContent] = useState('');
-  
+
   // GitHub credentials
   const [githubToken, setGithubToken] = useState('');
-  
+
   useEffect(() => {
-
-
     // Check if user is authenticated
     const adminAuth = localStorage.getItem('adminAuth');
     const token = localStorage.getItem('githubToken');
-    
+
     if (!adminAuth) {
       router.push('/admin');
       return;
     }
-    
+
     setIsAuthenticated(true);
     if (token) {
       setGithubToken(token);
@@ -55,27 +60,27 @@ export default function EditPostPage({ params }): JSX.Element {
       setError('GitHub token is required to edit posts. Please add it in Settings.');
     }
     setIsLoading(false);
-  }, [router, slug]);
-  
+  }, [slug]);
+
   // Fetch post data
   const fetchPost = async (slug, token) => {
     try {
       setIsLoading(true);
       setError('');
-      
-      const endpoint = token 
-      ? `/api/github-posts?slug=${slug}&token=${token}`
-      : `/api/github-posts?slug=${slug}`;
-        
+
+      const endpoint = token
+        ? `/api/github-posts?slug=${slug}&token=${token}`
+        : `/api/github-posts?slug=${slug}`;
+
       const response = await fetch(endpoint);
-      
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || `Failed to fetch post: ${response.status}`);
       }
-      
+
       const post = await response.json();
-      
+
       // Populate form with post data
       setTitle(post.title || '');
       setPostSlug(post.slug || slug);
@@ -84,7 +89,7 @@ export default function EditPostPage({ params }): JSX.Element {
       setContent(post.content || '');
       setDate(post.date ? new Date(post.date).toISOString().split('T')[0] : '');
       setOriginalContent(post.content || '');
-      
+
     } catch (err) {
       console.error('Error fetching post:', err);
       setError(err.message || 'Failed to fetch post');
@@ -92,7 +97,7 @@ export default function EditPostPage({ params }): JSX.Element {
       setIsLoading(false);
     }
   };
-  
+
   // Generate slug from title
   const generateSlug = (title) => {
     return title
@@ -100,30 +105,30 @@ export default function EditPostPage({ params }): JSX.Element {
       .replace(/[^\w\s]/gi, '')
       .replace(/\s+/g, '-');
   };
-  
+
   // Handle title change
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     setTitle(newTitle);
-    
+
     // Only auto-update slug if it hasn't been manually edited or is the same as original
     if (postSlug === slug || postSlug === '') {
       setPostSlug(generateSlug(newTitle));
     }
   };
-  
+
   // Handle category change
   const handleCategoryChange = (index, value) => {
     const newCategories = [...categories];
     newCategories[index] = value;
     setCategories(newCategories);
   };
-  
+
   // Add new category field
   const addCategory = () => {
     setCategories([...categories, '']);
   };
-  
+
   // Remove category field
   const removeCategory = (index) => {
     if (categories.length > 1) {
@@ -132,27 +137,27 @@ export default function EditPostPage({ params }): JSX.Element {
       setCategories(newCategories);
     }
   };
-  
+
   // Update post via GitHub API
   const updatePost = async (e) => {
     e.preventDefault();
-    
+
     if (!githubToken) {
       setError('GitHub token is required. Please add it in Settings tab.');
       return;
     }
-    
+
     if (!title || !postSlug || !content) {
       setError('Title, slug, and content are required fields.');
       return;
     }
-    
+
     setIsSaving(true);
     setError('');
-    
+
     // Filter out empty categories
     const filteredCategories = categories.filter(cat => cat.trim() !== '');
-    
+
     // Create frontmatter
     const frontmatter = `---
 title: ${title}
@@ -162,7 +167,7 @@ categories: [${filteredCategories.join(', ')}]
 ---
 
 ${content}`;
-    
+
     try {
       const response = await fetch('/api/github/update-post', {
         method: 'POST',
@@ -177,19 +182,19 @@ ${content}`;
           message: `Update blog post: ${title}`
         }),
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'Failed to update post');
       }
-      
+
       setSuccess(true);
       // Redirect after short delay
       setTimeout(() => {
         router.push('/admin');
       }, 2000);
-      
+
     } catch (err) {
       console.error('Error updating post:', err);
       setError(err.message || 'Failed to update post. Please try again.');
@@ -197,7 +202,7 @@ ${content}`;
       setIsSaving(false);
     }
   };
-  
+
   if (isLoading) {
     return (
       <main className="container mx-auto px-4 py-8 flex justify-center">
@@ -205,7 +210,7 @@ ${content}`;
       </main>
     );
   }
-  
+
   if (error || !post) {
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
@@ -217,11 +222,11 @@ ${content}`;
       </div>
     );
   }
-  
+
   if (!isAuthenticated) {
     return null; // Will redirect in useEffect
   }
-  
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6 flex justify-between items-center">
@@ -232,23 +237,23 @@ ${content}`;
           Back to Admin
         </Link>
       </div>
-      
+
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h1 className="text-2xl font-bold mb-6">Edit Blog Post</h1>
-          
+
           {error && (
             <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-md border border-red-200">
               {error}
             </div>
           )}
-          
+
           {success && (
             <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md border border-green-200">
               Post updated successfully! Redirecting...
             </div>
           )}
-          
+
           <form onSubmit={updatePost}>
             <div className="mb-6">
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
@@ -264,7 +269,7 @@ ${content}`;
                 required
               />
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1">
                 Slug
@@ -282,7 +287,7 @@ ${content}`;
                 URL-friendly name for your post
               </p>
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
                 Date
@@ -295,7 +300,7 @@ ${content}`;
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1">
                 Excerpt
@@ -309,7 +314,7 @@ ${content}`;
                 placeholder="Brief summary of your post"
               />
             </div>
-            
+
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Categories
@@ -343,18 +348,18 @@ ${content}`;
                 </div>
               ))}
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
                 Content
               </label>
-              <MarkdownEditor 
-                value={content} 
-                onChange={setContent} 
+              <MarkdownEditor
+                value={content}
+                onChange={setContent}
                 height="500px"
               />
             </div>
-            
+
             {!githubToken && (
               <div className="mb-6">
                 <label htmlFor="github-token" className="block text-sm font-medium text-gray-700 mb-1">
@@ -373,7 +378,7 @@ ${content}`;
                 </p>
               </div>
             )}
-            
+
             <div className="flex justify-end gap-3">
               <Link
                 href="/admin"
@@ -385,8 +390,8 @@ ${content}`;
                 type="submit"
                 disabled={isSaving}
                 className={`px-4 py-2 rounded-md font-medium ${
-                  isSaving 
-                    ? 'bg-blue-400 cursor-not-allowed' 
+                  isSaving
+                    ? 'bg-blue-400 cursor-not-allowed'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
               >
