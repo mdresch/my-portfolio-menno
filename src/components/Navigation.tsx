@@ -65,17 +65,24 @@ const menuItems: MenuItem[] = [
       { title: 'Macroeconomics', href: '/dashboards/macro' },
       { title: 'Policy Impact', href: '/dashboards/policy-impact' },
       { title: 'Economic Indicators', href: '/dashboards/economic-indicators' },
+      { title: 'Balance of Trade', href: '/dashboards/balance-of-trade' },
+      { title: 'Indicators Trade', href: '/dashboards/indicators-trade' },
       { title: 'Stocks & Global Indices', href: '/dashboards/stocks' },
       { title: 'Sectors', href: '/dashboards/stocks#sectors' },
       { title: 'Companies', href: '/dashboards/stocks#companies' },
       { title: 'Currencies', href: '/dashboards/currencies' },
+      { title: 'Major Economics', href: '/dashboards/major-economics' },
     ]
   },
   {
     title: 'Blog',
     href: '/blog',
     description: 'Articles and insights',
-    icon: <DocumentTextIcon className="w-6 h-6" />
+    icon: <DocumentTextIcon className="w-6 h-6" />,
+    items: [
+      { title: 'All Posts', href: '/blog' },
+      { title: 'Visualization Showcase', href: '/dashboards/visualizations-showcase' }
+    ]
   },
   {
     title: 'Contact',

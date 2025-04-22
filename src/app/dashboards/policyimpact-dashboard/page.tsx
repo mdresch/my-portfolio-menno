@@ -17,3 +17,5 @@ export const PolicyImpactDashboard = () => (
     </div>
   </section>
 );
+
+export default PolicyImpactDashboard;

@@ -25,6 +25,34 @@ export default function DashboardsLandingPage() {
           <h2 className="text-2xl font-semibold mb-2">Economic Indicators</h2>
           <p className="text-gray-600">Overview of key economic metrics and trends in a single dashboard.</p>
         </Link>
+        <Link href="/dashboards/currencies" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Currency</h2>
+          <p className="text-gray-600">Overview of major currency pairs</p>
+        </Link>
+        <Link href="/dashboards/overview-dashboard" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Overview Dashboard</h2>
+          <p className="text-gray-600">A comprehensive overview of key economic indicators and trends.</p>
+        </Link>
+        <Link href="/dashboards/policyimpact-dashboard" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Policy Impact Dashboard</h2>
+          <p className="text-gray-600">Analyze the effects of policy changes on economic indicators and market outcomes.</p>
+        </Link>
+        <Link href="/dashboards/stocks" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Stocks</h2>
+          <p className="text-gray-600">Overview of major stock indices and their performance.</p>
+        </Link>
+        <Link href="/dashboards/balance-of-trade" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Balance of Trade</h2>
+          <p className="text-gray-600">Major foreign investors, trade deficits, and economic insights on imports and exports by country.</p>
+        </Link>
+        <Link href="/dashboards/indicators-trade" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Indicators Trade</h2>
+          <p className="text-gray-600">Comprehensive overview of economic indicators influencing imports, exports, and trade between countries.</p>
+        </Link>
+        <Link href="/dashboards/major-economics" className="block bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 transition">
+          <h2 className="text-2xl font-semibold mb-2">Major Economics</h2>
+          <p className="text-gray-600">Key economic indicators for major global economies (OECD & large economic powers).</p>
+        </Link>
       </div>
     </div>
   );

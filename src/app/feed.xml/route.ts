@@ -4,7 +4,7 @@ export async function GET() {
   const posts = await getSortedPostsData();
   const baseUrl = 'https://my-portfolio-menno.vercel.app/';
   const authorName = 'Menno Drescher';
-  const authorEmail = 'contact@example.com'; // Update with your email
+  const authorEmail = 'menno.drescher@gmail.com'; // Update with your email
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
