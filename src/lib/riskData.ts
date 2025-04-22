@@ -48,6 +48,94 @@ export const regionalRiskData: { [key: string]: string[] } = {
     "Unemployment", // Example specific risk
     "Political Instability",
   ],
+  // Netherlands
+  "Netherlands": [
+    "Regulatory Changes",
+    "Tax Compliance Complexity",
+    "Cyber Attack/Data Breach",
+    "Supply Chain Disruption",
+    "Labor Market Shortages"
+  ],
+  // Luxembourg
+  "Luxembourg": [
+    "International Tax Regulation",
+    "Regulatory Changes",
+    "Cyber Attack/Data Breach",
+    "Economic Slowdown",
+    "Financial Sector Volatility"
+  ],
+  // France
+  "France": [
+    "Labor Strikes/Disruption",
+    "Regulatory Changes",
+    "Economic Slowdown",
+    "Cyber Attack/Data Breach",
+    "Tax Complexity"
+  ],
+  // Singapore
+  "Singapore": [
+    "Cyber Attack/Data Breach",
+    "Regulatory Changes",
+    "Economic Slowdown",
+    "Talent Shortage",
+    "Geopolitical Instability"
+  ],
+  // Australia
+  "Australia": [
+    "Natural Catastrophes",
+    "Economic Slowdown",
+    "Cyber Attack/Data Breach",
+    "Regulatory Changes",
+    "Supply Chain Disruption"
+  ],
+  // India
+  "India": [
+    "Regulatory Complexity",
+    "Economic Slowdown",
+    "Cyber Attack/Data Breach",
+    "Political Instability",
+    "Talent Shortage"
+  ],
+  // Denmark
+  "Denmark": [
+    "Cyber Attack/Data Breach",
+    "Regulatory Changes",
+    "Economic Slowdown",
+    "Supply Chain Disruption",
+    "Labor Market Shortages"
+  ],
+  // Spain
+  "Spain": [
+    "Economic Slowdown",
+    "Regulatory Changes",
+    "Unemployment",
+    "Cyber Attack/Data Breach",
+    "Political Instability"
+  ],
+  // Portugal
+  "Portugal": [
+    "Economic Slowdown",
+    "Regulatory Changes",
+    "Labor Market Shortages",
+    "Cyber Attack/Data Breach",
+    "Tax Complexity"
+  ],
+  // Italy
+  "Italy": [
+    "Economic Slowdown",
+    "Regulatory Changes",
+    "Political Instability",
+    "Cyber Attack/Data Breach",
+    "Tax Complexity"
+  ],
+  // Switzerland
+  "Switzerland": [
+    "Regulatory Changes",
+    "Financial Sector Volatility",
+    "Cyber Attack/Data Breach",
+    "Economic Slowdown",
+    "Supply Chain Disruption"
+  ],
   // Add more countries or refine as needed
 };
 

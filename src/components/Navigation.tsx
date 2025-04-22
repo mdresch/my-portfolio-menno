@@ -77,6 +77,18 @@ const menuItems: MenuItem[] = [
     description: 'Articles and insights',
     icon: <DocumentTextIcon className="w-6 h-6" />
   },
+  {
+    title: 'Contact',
+    href: '/contact',
+    description: 'Get in touch with Menno Drescher',
+    icon: <UserCircleIcon className="w-6 h-6" />
+  },
+  {
+    title: 'Resume',
+    href: '/resume',
+    description: 'View Menno Drescher\'s professional resume',
+    icon: <DocumentTextIcon className="w-6 h-6" />
+  },
 ];
 
 export default function Navigation() {
