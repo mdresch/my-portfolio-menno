@@ -2,7 +2,7 @@
 title: Global Risks 2025: A world of growing divisions
 date: 2025-04-22
 author: Menno Drescher
-excerpt: The current geopolitical climate, following Russia’s invasion of Ukraine and with wars raging in the Middle East and in Sudan, makes it nearly impossible not to think about such events when assessing the one global risk expected to present a material crisis in 2025: close to one-quarter
+excerpt: The current geopolitical climate, following Russia’s invasion of Ukraine and with wars raging in the Middle East and in Sudan, makes it nearly impossible not to think about such events
 categories: []
 ---
 
