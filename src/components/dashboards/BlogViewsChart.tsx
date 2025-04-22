@@ -1,4 +1,11 @@
 // BlogViewsChart.tsx
+// Ensure recharts is installed and compatible with Next.js 15+
+// If you see build errors, try: npm install recharts@latest
+// For SSR, recharts charts should only render on the client side.
+
+// Add 'use client' directive for Next.js app directory compatibility
+'use client';
+
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 // Mock data for demonstration; replace with real analytics as needed
