@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 // Mock data for global indices
 const indices = [
@@ -88,8 +89,12 @@ export default function StocksDashboardPage() {
             <tbody>
               {companies.map(c => (
                 <tr key={c.ticker} className="border-b">
-                  <td className="px-3 py-2 font-medium">{c.name}</td>
-                  <td className="px-3 py-2">{c.ticker}</td>
+                  <td className="px-3 py-2 font-medium">
+                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.name}</Link>
+                  </td>
+                  <td className="px-3 py-2">
+                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.ticker}</Link>
+                  </td>
                   <td className="px-3 py-2">{c.sector}</td>
                   <td className="px-3 py-2">{c.index}</td>
                   <td className="px-3 py-2">{c.price}</td>

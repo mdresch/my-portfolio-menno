@@ -261,6 +261,20 @@ export default function RiskPage() {
             </Link>
           </div>
 
+          {/* IMF World Economic Outlook 2025 Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">IMF World Economic Outlook 2025</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Explore the latest global growth projections, risks, and policy recommendations from the April 2025 IMF World Economic Outlook. Includes key charts, tables, and strategic insights for business and policy leaders.
+            </p>
+            <Link href="/risk/imf-world-economic-outlook-2025" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              View IMF WEO 2025 Insights →
+            </Link>
+          </div>
+
         </div>
       </section>
 
