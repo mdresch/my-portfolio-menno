@@ -1,4 +1,12 @@
 ---
+title: global risks 2025 a world of growing divisions
+date: 2025-04-26
+author: Anonymous
+excerpt: 
+categories: []
+---
+
+---
 title: Global Risks 2025: A world of growing divisions
 date: 2025-04-22
 author: Menno Drescher

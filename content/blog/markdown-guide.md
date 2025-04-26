@@ -1,9 +1,11 @@
 ---
-title: "A Complete Guide to Markdown"
-date: "2025-04-10"
-excerpt: "Learn how to use Markdown syntax for formatting your blog posts with this comprehensive guide."
-categories: ["Tutorial", "Writing", "Documentation"]
+title: A Complete Guide to Markdown
+date: 2025-04-10
+author: Menno Drescher
+excerpt: Learn how to use Markdown syntax for formatting your blog posts with this comprehensive guide.
+categories: [Tutorial, Writing, Documentation]
 ---
+
 
 # A Complete Guide to Markdown
 
