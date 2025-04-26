@@ -14,13 +14,46 @@ import { formatDate } from '@/lib/utils';
 
 interface BlogPostProps {
   post: BlogPostType;
+  allPosts?: BlogPostType[];
 }
 
 interface BlogPostsProps {
   posts: BlogPostType[];
 }
 
-export default function BlogPost({ post }: BlogPostProps) {
+function MostViewedPosts({ allPosts }: { allPosts: BlogPostType[] }) {
+  const [mostViewed, setMostViewed] = useState<{ slug: string; title: string; views: number }[]>([]);
+
+  useEffect(() => {
+    // Get view counts from localStorage
+    const viewCounts = allPosts.map(post => {
+      const key = `blog_views_${post.slug}`;
+      const views = parseInt(typeof window !== 'undefined' ? localStorage.getItem(key) || '0' : '0', 10);
+      return { slug: post.slug, title: post.title, views: isNaN(views) ? 0 : views };
+    });
+    // Sort by views descending and take top 5
+    setMostViewed(viewCounts.filter(v => v.views > 0).sort((a, b) => b.views - a.views).slice(0, 5));
+  }, [allPosts]);
+
+  if (mostViewed.length === 0) return null;
+  return (
+    <div className="bg-white rounded-lg p-6 mb-8 border">
+      <h3 className="text-lg font-medium mb-3">Your Most Viewed Posts</h3>
+      <ul className="space-y-2">
+        {mostViewed.map(post => (
+          <li key={post.slug} className="flex justify-between items-center">
+            <Link href={`/blog/${post.slug}`} className="text-blue-700 hover:underline text-sm">
+              {post.title}
+            </Link>
+            <span className="text-xs text-gray-500">{post.views} view{post.views === 1 ? '' : 's'}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?: BlogPostType[] }) {
   if (!post || !post.content) {
     return (
       <div className="bg-red-50 border-l-4 border-red-500 p-4 my-8">
@@ -31,6 +64,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 
   const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([]);
   const articleRef = useRef<HTMLElement>(null);
+  const [viewCount, setViewCount] = useState(0);
 
   // Extract headings for table of contents on component mount
   useEffect(() => {
@@ -44,6 +78,16 @@ export default function BlogPost({ post }: BlogPostProps) {
       setHeadings(extractedHeadings);
     }
   }, [post.content]);
+
+  // Track and display local view count
+  useEffect(() => {
+    if (!post?.slug) return;
+    const key = `blog_views_${post.slug}`;
+    let count = parseInt(localStorage.getItem(key) || '0', 10);
+    count = isNaN(count) ? 1 : count + 1;
+    localStorage.setItem(key, count.toString());
+    setViewCount(count);
+  }, [post?.slug]);
 
   // Define breadcrumb items
   const breadcrumbItems = [
@@ -88,6 +132,8 @@ export default function BlogPost({ post }: BlogPostProps) {
               </time>
               <span className="mx-2">•</span>
               <span>{post.readingTime}</span>
+              <span className="mx-2">•</span>
+              <span>{viewCount} view{viewCount === 1 ? '' : 's'}</span>
               {post.categories.length > 0 && (
                 <>
                   <span className="mx-2">•</span>
@@ -141,6 +187,7 @@ export default function BlogPost({ post }: BlogPostProps) {
         
         {/* Sidebar */}
         <aside className="lg:col-span-4 space-y-8">
+          <MostViewedPosts allPosts={allPosts || []} />
           <div className="sticky top-8">
             {/* Author Info */}
             <div className="bg-gray-50 rounded-lg p-6 mb-8">

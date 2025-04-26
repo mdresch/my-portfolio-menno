@@ -91,6 +91,7 @@ export default function EditPostPage() {
       setDate(post.date ? new Date(post.date).toISOString().split('T')[0] : '');
       setAuthor(post.author || '');
       setOriginalContent(post.content || '');
+      setPost(post); // <-- Fix: set the post state so the form renders
 
     } catch (err) {
       console.error('Error fetching post:', err);
@@ -233,7 +234,7 @@ ${content}`;
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6 flex justify-between items-center">
-        <Link href="/admin" className="text-blue-600 hover:underline flex items-center">
+        <Link href="/admin/dashboard" className="text-blue-600 hover:underline flex items-center">
           <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
@@ -399,7 +400,7 @@ ${content}`;
 
             <div className="flex justify-end gap-3">
               <Link
-                href="/admin"
+                href="/admin/dashboard"
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
               >
                 Cancel

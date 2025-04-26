@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import {
   UserCircleIcon,
@@ -29,6 +30,7 @@ const menuItems: MenuItem[] = [
       { title: 'Background', href: '/about#background' },
       { title: 'Skills', href: '/about#skills' },
       { title: 'Experience', href: '/about#experience' },
+      { title: 'Now', href: '/now' }, // Added Now page under About
     ]
   },
   {
@@ -97,6 +99,22 @@ const menuItems: MenuItem[] = [
     icon: <DocumentTextIcon className="w-6 h-6" />
   },
 ];
+
+function DarkModeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return (
+    <button
+      aria-label="Toggle Dark Mode"
+      className="ml-4 px-3 py-1 rounded text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+    </button>
+  );
+}
 
 export default function Navigation() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -167,6 +185,7 @@ export default function Navigation() {
                 )}
               </div>
             ))}
+            <DarkModeToggle />
           </div>
         </div>
       </div>
