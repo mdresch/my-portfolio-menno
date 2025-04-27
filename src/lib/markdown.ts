@@ -14,6 +14,7 @@ import remarkGfm from 'remark-gfm';
 import 'highlight.js/styles/github.css'; // Or another style like vs2015, atom-one-dark, etc.
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
+const projectsDirectory = path.join(process.cwd(), 'content/project');
 
 export interface PostParams {
   params: {
@@ -33,6 +34,25 @@ export interface BlogPost {
   author?: string;
   hasError?: boolean;
   errorMessage?: string;
+}
+
+export interface ProjectFrontmatter {
+  title: string;
+  description: string;
+  technologies: string[];
+  link?: string;
+  datePublished?: string;
+  category?: string;
+  image?: string;
+  caseStudy?: string;
+  screenshots?: string[];
+  outcomes?: string[];
+}
+
+export interface ProjectMarkdown {
+  slug: string;
+  frontmatter: ProjectFrontmatter;
+  content: string;
 }
 
 // SERVER-SIDE FUNCTIONS (for static generation)
@@ -168,4 +188,36 @@ export async function getPostData(slug: string): Promise<BlogPost | null> {
     }
     return response.json();
   }
+}
+
+export async function getAllProjectSlugs(): Promise<string[]> {
+  try {
+    const fileNames = await readdir(projectsDirectory);
+    return fileNames.filter(f => f.endsWith('.md')).map(f => f.replace(/\.md$/, ''));
+  } catch (error) {
+    console.error('Error reading project directory:', error);
+    return [];
+  }
+}
+
+export async function getProjectData(slug: string): Promise<ProjectMarkdown | null> {
+  try {
+    const fullPath = path.join(projectsDirectory, `${slug}.md`);
+    const fileContents = await readFile(fullPath, 'utf8');
+    const matterResult = matter(fileContents);
+    return {
+      slug,
+      frontmatter: matterResult.data as ProjectFrontmatter,
+      content: matterResult.content,
+    };
+  } catch (error) {
+    console.error(`Error getting project data for ${slug}:`, error);
+    return null;
+  }
+}
+
+export async function getAllProjects(): Promise<ProjectMarkdown[]> {
+  const slugs = await getAllProjectSlugs();
+  const projects = await Promise.all(slugs.map(getProjectData));
+  return projects.filter(Boolean) as ProjectMarkdown[];
 }
