@@ -1,7 +1,7 @@
 ---
 title: Financial Stability Risks April 2025
 date: 2025-04-29
-author: Menno Dresche3r
+author: Menno Drescher
 excerpt: Combined Summary Financial Stability Risks from trade Uncertainty
 categories: [International Trade]
 ---
