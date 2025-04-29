@@ -1,9 +1,9 @@
 ---
 title: Financial Stability Risks April 2025
 date: 2025-04-29
-author: Menno Drescher
-excerpt: Both Chapter 1 ("Enhancing Resilience amid Global Trade Uncertainty") and Chapter 2 ("Geopolitical Risks: Implications for Asset Prices and Financial Stability") highlight a significant increase in risks to global financial stability. This heightened risk stems from a confluence of factors, primarily driven by:
-categories: []
+author: Menno Dresche3r
+excerpt: Combined Summary Financial Stability Risks from trade Uncertainty
+categories: [International Trade]
 ---
 
 **Combined Summary: Financial Stability Risks from Trade Uncertainty and Geopolitical Shocks (Chapters 1 & 2)**
