@@ -84,6 +84,45 @@ export default function RiskPage() {
         </div>
       </section>
 
+      {/* --- NEW: 2025 Financial Stability & IMF Policy Recommendations --- */}
+      <section className="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8 mb-12 border border-blue-400">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-4">2025 Financial Stability Risks & IMF Policy Recommendations</h2>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          <b>Here is a summary of the key points from Chapter 1 and the policy recommendations outlined:</b>
+        </p>
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">Summary of Key Points</h3>
+        <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
+          <li><b>Increased Financial Stability Risks:</b> Global financial stability risks have risen sharply since October 2024, driven by tighter global financial conditions and heightened uncertainty, especially after the surprise US tariff announcements on April 2, 2025, and subsequent retaliation.</li>
+          <li><b>Impact of Trade Tariffs:</b> Tariff announcements triggered volatile market reactions: plunging stocks, gyrating bond yields, depreciating emerging market currencies, and wider corporate bond spreads.</li>
+          <li><b>Elevated Downside Growth Risk:</b> The IMF's Growth-at-Risk model now forecasts a 5% chance of global growth falling below 0.4% in the year ahead—a notable deterioration.</li>
+          <li><b>Three Key Vulnerabilities:</b>
+            <ul className="list-disc ml-6 space-y-1">
+              <li>Further asset price corrections (especially US tech, corporate bonds, Bitcoin).</li>
+              <li>Potential strains on leveraged financial institutions, especially NBFIs and private credit funds.</li>
+              <li>Turbulence in sovereign bond markets, especially in high-debt jurisdictions and emerging markets.</li>
+            </ul>
+          </li>
+          <li><b>Challenges for Global Banks:</b> Banks face headwinds from trade shocks, loan loss reversals, margin pressure, trade finance disruption, and US dollar funding risks for non-US banks.</li>
+          <li><b>Emerging & Frontier Market Pressures:</b> EM assets face headwinds from trade tensions, high financing needs, and increased capital outflow risks. Frontier and low-income economies face higher yields and refinancing concerns.</li>
+          <li><b>China's Bond Market Risks:</b> External (tariffs) and domestic (property, local government debt) challenges weigh on growth and sentiment, raising concentration and volatility risks.</li>
+          <li><b>Corporate & Household Vulnerabilities:</b> Corporate bankruptcies are rising, cash buffers are down, and refinancing costs are up. Households are more exposed to stock market declines and higher debt service ratios.</li>
+        </ul>
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">Policy Recommendations</h3>
+        <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
+          <li><b>Enhance Preparedness:</b> Ensure financial institutions can access central bank liquidity, test this access, and be ready to intervene early in core markets if needed.</li>
+          <li><b>Implement Resolution Frameworks:</b> Apply recovery and resolution frameworks for weak or failing financial institutions to avoid systemic risks.</li>
+          <li><b>Calibrate Monetary Policy:</b> Ease policy gradually where growth/inflation slow; remain restrictive where inflation is stubborn.</li>
+          <li><b>Tailor EM Policy Responses:</b> Use country-specific tools (exchange rate flexibility, FX intervention, capital flow management) and strengthen institutions.</li>
+          <li><b>Strengthen Bank Prudential Frameworks:</b> Fully implement Basel III and international standards; enhance supervision.</li>
+          <li><b>Stress Test Banks:</b> Continue stress-testing, especially for exposures to challenged sectors and NBFI linkages.</li>
+          <li><b>Mitigate NBFI Vulnerabilities:</b> Strengthen policies to address nonbank leverage and improve reporting and monitoring.</li>
+          <li><b>Calibrate Macroprudential Tools:</b> Tighten or release buffers as needed to support resilience and credit supply.</li>
+          <li><b>Pursue Fiscal Adjustments:</b> Focus on credible, growth-friendly fiscal adjustments to keep debt and financing costs manageable.</li>
+          <li><b>Manage Sovereign Debt:</b> Proactively manage refinancing risks and engage early with creditors if needed.</li>
+          <li><b>Address Crypto Risks:</b> Safeguard monetary sovereignty, adopt clear tax treatment, and implement international standards for crypto assets.</li>
+          <li><b>Enhance International Cooperation:</b> Strengthen multilateral surveillance and the global financial safety net to mitigate systemic risks.</li>
+        </ul>
+      </section>
 
       {/* --- Explore Key Risk Areas & Solutions Section --- */}
       <section className="max-w-4xl mx-auto mb-12">
@@ -312,6 +351,20 @@ export default function RiskPage() {
             </p>
             <Link href="/risk/pricing-under-tariffs" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
               Read the Guide →
+            </Link>
+          </div>
+
+          {/* Global Financial Stability Risks Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Global Financial Stability Risks (2025)</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Explore the combined summary of financial stability risks from trade uncertainty and geopolitical shocks, including key vulnerabilities and policy recommendations from the latest IMF report.
+            </p>
+            <Link href="/risk/global-financial-stability-risks" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read the 2025 Stability Analysis →
             </Link>
           </div>
 

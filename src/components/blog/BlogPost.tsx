@@ -171,6 +171,18 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
                 />
               </div>
             </div>
+            {/* Edit on GitHub link */}
+            <div className="mt-6">
+              <a
+                href={`https://github.com/mdresch/my-portfolio-menno/edit/master/content/blog/${post.slug}.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-xs text-gray-500 hover:text-blue-600 underline"
+                title="Edit this post on GitHub"
+              >
+                Edit this post on GitHub
+              </a>
+            </div>
           </footer>
 
           {/* Comments Section */}
