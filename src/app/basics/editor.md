@@ -2,37 +2,23 @@
 icon: pen-to-square
 ---
 
-# Editor
-
-GitBook has a powerful block-based editor that allows you to seamlessly create, update, and enhance your content.
+# Editor for my portfolio site
 
 <figure><img src="https://gitbookio.github.io/onboarding-template-images/editor-hero.png" alt=""><figcaption></figcaption></figure>
 
-### Writing content
+## **GitBook's Powerful Block-Based Editor**
 
-GitBook offers a range of block types for you to add to your content inline — from simple text and tables, to code blocks and more. These elements will make your pages more useful to readers, and offer extra information and context.
+GitBook features a robust block-based editor that allows you to create, update, and enhance your content seamlessly.
 
-Either start typing below, or press `/` to see a list of the blocks you can insert into your page.
+### Writing Content
 
-### Add a new block
+GitBook offers a variety of inline block types—from simple text and tables to code blocks and more. These elements enrich your pages by providing extra information and context for your readers.
 
-{% stepper %}
-{% step %}
-### Open the insert block menu
+* **Get Started:** Begin typing below, or press `/` to open a list of blocks you can insert into your page.
 
-Press `/` on your keyboard to open the insert block menu.
-{% endstep %}
+### Adding and Inserting Blocks
 
-{% step %}
-### Search for the block you need&#x20;
-
-Try searching for “Stepper”, for exampe, to insert the stepper block.
-{% endstep %}
-
-{% step %}
-### Insert and edit your block
-
-Click or press Enter to insert your block. From here, you’ll be able to edit it as needed.
-{% endstep %}
-{% endstepper %}
+1. **Open the Insert Block Menu:** Press `/` on your keyboard to open the insert block menu.
+2. **Search for the Block You Need:** Use the search feature to locate a block. For example, try typing “Stepper” to quickly find and insert the stepper block.
+3. **Insert and Edit Your Block:** Click on or press Enter for the block you want to add. Once inserted, you'll be able to edit and customize it to suit your content needs.
 

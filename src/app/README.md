@@ -1,6 +1,7 @@
 ---
 icon: hand-wave
-cover: https://gitbookio.github.io/onboarding-template-images/header.png
+cover: >-
+  https://images.unsplash.com/photo-1745437980540-b234c90a6557?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDU5MTY1ODd8&ixlib=rb-4.0.3&q=85
 coverY: 0
 layout:
   cover:
@@ -18,11 +19,30 @@ layout:
     visible: true
 ---
 
-# Welcome
+# Welcome to My Portfolio Menno
 
-Welcome to the GitBook Starter Template! Here you'll get an overview of all the amazing features GitBook offers to help you build beautiful, interactive documentation.
+Explore an interactive overview of all the amazing features my portfolio has to offer, along with beautifully crafted, dynamic documentation to showcase my work.
 
-You'll see some of the best parts of GitBook in action — and find help on how you can turn this template into your own.
+You'll get to experience the best parts of my portfolio in action—and discover step-by-step guidance on how to transform this template into your own unique showcase.
+
+## Documentation Library for My Portfolio – Menno
+
+Welcome to the comprehensive documentation library for my portfolio, Menno. This section is designed to serve both as an interactive guide to understanding how my portfolio is built and as a resource for anyone interested in turning this template into their own unique showcase.
+
+### What You’ll Discover
+
+* **In-Depth Feature Breakdowns:** Explore detailed guides on the amazing features that bring my portfolio to life, including interactive components and best practices in web design.
+* **Step-by-Step Setup and Customization:** Learn how to set up your own copy of this portfolio template, customize it to fit your vision, and integrate your content seamlessly.
+* **Technical Guides and Code Walkthroughs:** Get a behind-the-scenes look at the code architecture, including how I use modern tools like Next.js  and next/font to create an optimized, dynamic experience.
+* **Best Practices and Resources:** Find curated resources, tutorials, and documentation best practices to help you build and document your projects effectively.
+
+### Get Started
+
+Whether you’re here to get inspired or to learn how you can build something similar, this library is your starting point. Navigate through the sections to learn more about the underlying technologies, customize the template, and transform it into your very own portfolio masterpiece.
+
+Happy exploring!
+
+<figure><img src=".gitbook/assets/Screenshot_29-4-2025_104359_localhost.jpeg" alt=""><figcaption></figcaption></figure>
 
 ### Jump right in
 
