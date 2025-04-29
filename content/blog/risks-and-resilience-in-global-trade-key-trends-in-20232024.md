@@ -19,3 +19,60 @@ This report leverages detailed and high-frequency data to offer a timely, in-dep
 * The rerouting of ships from the Suez Canal is causing longer transit times, shipping delays and increased costs, on maritime routes crossing the Suez Canal, such as those connecting Asia and Europe, as well as on routes to and from the US East Coast due to the interconnectedness of maritime routes—which are already experiencing an additional upward pressure from drought-related restrictions in the Panama Canal.
 * Adjustments have been taking place and, so far, the impacts have been relatively limited, illustrating a degree of resilience of global trade to maritime transport disruptions. The analysis also shows a range of effects which, if magnified or spread to other transport routes or chokepoints, may have more significant implications for global trade, prices, and economic growth in the future.
 * Against the background of recent announcements of further tariff increases by the United States, the European Union and Canada on electric vehicles (EVs) imported from China, this note explores the evolution of world trade concentration of electric vehicles and EV batteries. This analysis shows a significant increase in the concentration of global trade of EVs and EV-related parts, in particular batteries, mainly accounted for by the emergence of China as a new and fast expanding producer. China’s growing market dominance has given rise to concerns about trade dependency and resilience in an industry that is seen as crucial to the green energy transition.
+
+# Analysis of International Trade Trends (2023-2024)
+
+## Overview
+
+In 2023, international trade experienced one of its weakest performances in four decades. This downturn was largely driven by:
+
+- Compositional shifts in traded goods and services due to the **COVID-19 recovery**
+- Macroeconomic pressures such as **inflation** and **high interest rates**
+
+Despite a more optimistic outlook for **2024 and 2025**, challenges remain, including **economic uncertainties**, **geopolitical tensions**, and **transportation disruptions**.
+
+## Key Findings
+
+### 1. Services Trade Recovery
+- **Travel-related services** rebounded in 2023 after being severely impacted by pandemic restrictions (2020-2022).
+- The structure of trade is gradually shifting back to **pre-pandemic levels**, though services remain **significantly different**.
+
+### 2. China's Trade Performance
+- After **lifting COVID-19 restrictions**, **China’s trade and output** accelerated, **outpacing the OECD** and boosting global trade.
+- Changes in **trade partners** and **product structure** indicate **potential long-term trade reorientation**.
+- However, a **decline in import growth in 2024** suggests an **economic slowdown**, raising concerns for **global trade and the world economy**.
+
+### 3. Russia’s Trade Adjustments
+- **Russia’s goods trade balance** declined significantly in 2023, driven by:
+  - **High base effect** from soaring energy prices in 2022
+  - **Economic sanctions** following its **invasion of Ukraine**
+- **Trade patterns shifted**:
+  - **Exports redirected** to **China and India**
+  - **Imports from the EU and OECD nations declined**
+- **G7 imports** from Russia fell, except in key sectors like **cereals, fertilizers, metals, and inorganic chemicals**.
+- **G7 exports** of **strategic goods** (e.g., **machinery, vehicles, aircraft**) to Russia also **declined**.
+
+### 4. Commodity Prices and Trade Disruptions
+- **Commodity prices fell in 2023**, but remain **above pre-pandemic levels**.
+- **Transport disruptions** in the **Suez Canal (9th most important)** and **Panama Canal (17th most important)** affected **19% of global maritime trade** in 2023.
+- **Maritime transport**, the dominant mode for **energy-related and agricultural products**, faced challenges:
+  - **Longer transit times** and **shipping delays**
+  - **Increased costs** due to rerouting and **drought-related restrictions in the Panama Canal**
+- The global trade system has shown **resilience**, but prolonged disruptions could have **major implications**.
+
+### 5. EV Trade and Geopolitical Concerns
+- The **United States, European Union, and Canada** announced **tariff increases** on **electric vehicles (EVs) imported from China**.
+- **China’s growing dominance** in the EV and **battery market** has raised concerns about:
+  - **Trade dependency**
+  - **Supply chain resilience**
+- This trend is seen as **critical** for the **green energy transition**.
+
+## Conclusion
+
+While international trade is expected to **align with global output growth** in **2024 and 2025**, key risks remain:
+- **Economic fluctuations**
+- **Geopolitical tensions**
+- **Supply chain disruptions**
+
+Understanding the **interconnections between trade, transportation, and policy decisions** will be essential for navigating the evolving global trade landscape.
+
