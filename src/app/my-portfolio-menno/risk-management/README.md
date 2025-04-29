@@ -1,3 +1,7 @@
+---
+icon: scale-unbalanced
+---
+
 # Risk Management
 
 ### Risk Management Page (pages/risk/page.tsx)

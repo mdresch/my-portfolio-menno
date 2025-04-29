@@ -1,3 +1,7 @@
+---
+icon: globe
+---
+
 # GBCI Country Rankings
 
 ***

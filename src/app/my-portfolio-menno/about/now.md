@@ -1,3 +1,7 @@
+---
+icon: book-open-cover
+---
+
 # Now
 
 ### Now Page Overview

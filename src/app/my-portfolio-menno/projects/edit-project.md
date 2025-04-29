@@ -1,3 +1,7 @@
+---
+icon: pen-to-square
+---
+
 # Edit Project
 
 The Edit Project page component provides a form for creating a new project entry or editing an existing one. It is designed to capture various aspects of a project, such as title, description, technologies used, publication date, images, and more. This page is intended to be reusable in both "create" and "edit" contexts based on the presence of an initial project object.

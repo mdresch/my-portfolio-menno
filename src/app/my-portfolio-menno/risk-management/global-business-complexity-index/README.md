@@ -1,3 +1,7 @@
+---
+icon: earth-europe
+---
+
 # Global Business Complexity Index
 
 ***

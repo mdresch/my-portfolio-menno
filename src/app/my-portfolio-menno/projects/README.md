@@ -1,3 +1,7 @@
+---
+icon: bars-progress
+---
+
 # Projects
 
 ## Projects Page Documentation

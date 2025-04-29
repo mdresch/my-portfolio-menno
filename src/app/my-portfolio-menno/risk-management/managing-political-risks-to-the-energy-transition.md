@@ -1,3 +1,7 @@
+---
+icon: lightbulb-on
+---
+
 # Managing Political Risks to the Energy Transition
 
 ***

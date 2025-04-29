@@ -1,3 +1,7 @@
+---
+icon: chart-kanban
+---
+
 # New Project
 
 ## New Project Page Documentation

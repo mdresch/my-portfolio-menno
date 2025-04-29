@@ -1,3 +1,7 @@
+---
+icon: bells
+---
+
 # Gartner Regulatory Risk Survey
 
 ***

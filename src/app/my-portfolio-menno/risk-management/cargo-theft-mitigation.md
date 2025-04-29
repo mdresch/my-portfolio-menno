@@ -1,3 +1,7 @@
+---
+icon: truck-moving
+---
+
 # Cargo Theft Mitigation
 
 ***
