@@ -48,7 +48,15 @@ export default function Footer() {
             ))}
           </div>
           <div className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Menno Drescher. All rights reserved.
+            <a
+              href="https://iq4fun.gitbook.io/my-portfolio-menno/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 underline ml-2"
+            >
+              Documentation
+            </a>
+            · © {new Date().getFullYear()} Menno Drescher. All rights reserved.
           </div>
         </div>
       </div>
