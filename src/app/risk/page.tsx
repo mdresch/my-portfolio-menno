@@ -1,5 +1,3 @@
-'use client'; // Assuming potential for client-side interactions later
-
 import React from 'react';
 import Link from 'next/link'; // Optional: If you link to a full report
 import InteractiveRiskMap from '@/components/risk/InteractiveRiskMap'; // Adjust path
@@ -300,6 +298,20 @@ export default function RiskPage() {
             </p>
             <Link href="/risk/sentrisk-platform" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
               Discover Sentrisk →
+            </Link>
+          </div>
+
+          {/* Pricing Under Tariffs Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Pricing Under Tariffs: Risk & Resilience</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Discover key strategies for managing pricing risks under tariffs, including margin protection, customer focus, and commercial readiness. Based on Deloitte Digital insights.
+            </p>
+            <Link href="/risk/pricing-under-tariffs" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read the Guide →
             </Link>
           </div>
 

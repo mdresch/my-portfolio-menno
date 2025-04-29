@@ -98,6 +98,12 @@ const menuItems: MenuItem[] = [
     description: 'View Menno Drescher\'s professional resume',
     icon: <DocumentTextIcon className="w-6 h-6" />
   },
+  {
+    title: 'Documentation',
+    href: 'https://iq4fun.gitbook.io/my-portfolio-menno/',
+    description: 'Project and portfolio documentation (GitBook)',
+    icon: <DocumentTextIcon className="w-6 h-6" />
+  },
 ];
 
 function DarkModeToggle() {
