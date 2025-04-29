@@ -275,6 +275,34 @@ export default function RiskPage() {
             </Link>
           </div>
 
+          {/* Global Economic Fragmentation 2025 Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Global Economic Fragmentation & Protectionism (2025)</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Discover how economic fragmentation, protectionism, and cyber risk are reshaping the global business landscape in 2025. Explore key trends, supply chain impacts, and five actionable steps for business resilience.
+            </p>
+            <Link href="/risk/global-economic-fragmentation-2025" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read the 2025 Analysis →
+            </Link>
+          </div>
+
+          {/* Sentrisk Platform Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Sentrisk™ Supply Chain Risk Platform</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Explore Sentrisk™, an AI-powered platform by Marsh McLennan, designed to help organizations uncover, understand, and contextualize supply chain risk. See features, use cases, and a platform overview video.
+            </p>
+            <Link href="/risk/sentrisk-platform" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Discover Sentrisk →
+            </Link>
+          </div>
+
         </div>
       </section>
 
