@@ -1,4 +1,17 @@
 ---
+title: Global Risks 2025 a world of growing divisions
+date: 2025-04-29
+author: Menno Drescher
+excerpt: The current geopolitical climate, following Russia’s invasion of Ukraine and with wars raging in
+
+the Middle East and in Sudan, makes it nearly impossible not to think about such events when assessing the one global risk expected to present a material crisis in 2025: close to one-quarter
+
+of survey respondents (23%) selected State- based armed conflict (proxy wars, civil wars, coups, terrorism, etc.) as the top risk for 2025 (Figure 1.1). Compared with last year, this risk has climbed from #8 to #1 in the rankings. Geopolitical tensions are also associated with the rising risk of Geoeconomic confrontation (sanctions, tariffs, investment screening), ranking #3, which is also driven by Inequality, Societal polarization and other factors.
+categories: []
+---
+
+***
+
 title: global risks 2025 a world of growing divisions
 date: 2025-04-26
 author: Menno Drescher
@@ -6,8 +19,7 @@ excerpt: The current geopolitical climate, following Russia’s invasion of Ukra
 
 the Middle East and in Sudan, makes it nearly impossible not to think about such events when assessing the one global risk expected to present a material crisis in 2025: close to one-quarter
 
-of survey respondents (23%) selected State- based armed conflict (proxy wars, civil wars, coups, terrorism, etc.) as the top risk for 2025 (Figure 1.1). Compared with last year, this risk has climbed from #8 to #1 in the rankings. Geopolitical tensions are also associated with the rising risk of Geoeconomic confrontation (sanctions, tariffs, investment screening), ranking #3, which is also driven by Inequality, Societal polarization and other factors.
-categories: [Risks Management - Global growing divisions]
+of survey respondents (23%) selected State- based armed conflict (proxy wars, civil wars, coups, terrorism, etc.) as the top risk for 2025 (Figure 1.1). Compared with last year, this risk has climbed from #8 to #1 in the rankings. Geopolitical tensions are also associated with the rising risk of Geoeconomic confrontation (sanctions, tariffs, investment screening), ranking #3, which is also driven by Inequality, Societal polarization and other factors.categories: [Risks Management - Global growing divisions]
 ---
 
 ***
