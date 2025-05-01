@@ -382,6 +382,48 @@ export default function RiskPage() {
             </Link>
           </div>
 
+          {/* Substance in Global Trade & Taxation Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Substance in Global Trade &amp; Taxation</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Understand the importance of genuine economic activity for tax and trade benefits. Explore substance requirements, compliance strategies, and their impact on M&amp;A and trade agreements.
+            </p>
+            <Link href="/risk/substance-global-trade-taxation" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Read More →
+            </Link>
+          </div>
+
+          {/* Mergers and Acquisitions (M&A) Landscape Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Mergers and Acquisitions (M&amp;A): Navigating the Evolving Landscape</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Discover how M&amp;A shapes growth, resilience, and innovation in a changing world. Explore key drivers, industry perspectives, tariff impacts, and emerging trends in the global M&amp;A landscape.
+            </p>
+            <Link href="/risk/mergers-acquisitions-landscape" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              Explore M&amp;A Landscape →
+            </Link>
+          </div>
+
+          {/* US Tariffs Roundtables Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">US Tariffs – Shifts in Global Trade Dynamics &amp; Trade Wars</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Explore the implications of the current US tariff landscape, industry impacts, mitigation strategies, and roundtable event details. Connect with peers and PwC experts to navigate today’s shifting trade environment.
+            </p>
+            <Link href="/risk/us-tariffs-roundtables" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              View Roundtables →
+            </Link>
+          </div>
+
         </div>
       </section>
 
