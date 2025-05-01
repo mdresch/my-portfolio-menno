@@ -39,6 +39,7 @@
     * [Americas Regional Insights](my-portfolio-menno/risk-management/global-business-complexity-index/americas-regional-insights.md)
     * [EMEA Regional Insights](my-portfolio-menno/risk-management/global-business-complexity-index/emea-regional-insights.md)
     * [APAC Regional Insights](my-portfolio-menno/risk-management/global-business-complexity-index/apac-regional-insights.md)
+  * [Global Financial Stability Risks](my-portfolio-menno/risk-management/global-financial-stability-risks.md)
 * [Economics & Stocks](my-portfolio-menno/economics-and-stocks/README.md)
   * [Balance of Trade](my-portfolio-menno/economics-and-stocks/balance-of-trade.md)
 * [Blog](my-portfolio-menno/blog/README.md)
