@@ -268,7 +268,7 @@ export default function RiskPage() {
             <p className="text-gray-600 text-sm mb-4 flex-grow">
               Explore the complex landscape of global trade risks, including geopolitical instability, economic tensions, supply chain vulnerabilities, and M&A dynamics.
             </p>
-            <Link href="/risk/deep-dirve-trade" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+            <Link href="/risk/deep-dive-trade" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
               Read the Deep Dive →
             </Link>
           </div>

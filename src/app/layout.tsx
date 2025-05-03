@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import '../styles/markdown-fix.css';
 import '../styles/resume-print.css'; // Add print styles
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from 'next-themes';
+import { Theme as RadixTheme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
+import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -64,17 +66,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geist.className} bg-gray-50 min-h-screen flex flex-col`}>
+    <html lang="en" className="min-h-screen transition-colors" suppressHydrationWarning>
+      <body className={`${geist.className} bg-gray-50 dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
         <ThemeProvider attribute="class">
-          <Navigation />
-          <main className="flex-1">
-            {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
-                to use client components only at the component level, not at the root layout level */}
-            {children}
-            <Analytics />
-          </main>
-          <Footer />
+          <RadixTheme>
+            <div className="flex items-center justify-center">
+              <NavigationMenuDemo />
+            </div>
+            <main className="flex-1">
+              {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
+                  to use client components only at the component level, not at the root layout level */}
+              {children}
+              <Analytics />
+            </main>
+            <Footer />
+          </RadixTheme>
         </ThemeProvider>
       </body>
     </html>
