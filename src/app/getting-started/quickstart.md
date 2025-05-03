@@ -32,7 +32,7 @@ git clone https://github.com/mdresch/my-portfolio-menno.git
 cd my-portfolio-menno
 ````
 
-#### 2. Install Dependencies
+### 2. Install Dependencies
 
 Once you are in the project directory, install the necessary dependencies using your preferred package manager.
 
@@ -48,7 +48,7 @@ bun install
 
 (Choose only one of the above commands based on the package manager you prefer to use).
 
-#### 3. Run the Development Server
+### 3. Run the Development Server
 
 After installation, you can start the development server:
 
@@ -103,16 +103,6 @@ Then, open http://localhost:3000 in your browser to see your app in action.
 You can begin editing the page by modifying `app/page.tsx`. The page will automatically update as you save your changes.
 
 This project uses `next/font` to automatically optimize and load **Geist**, a modern font family designed for Vercel.
-
-### Learn More
-
-To dive deeper into Next.js, check out these resources:
-
-* Next.js Documentation — Get the full lowdown on Next.js  features and APIs.
-* Learn Next.js — An interactive tutorial that takes you through Next.js  fundamentals.
-* Next.js GitHub Repository — Your feedback and contributions are welcome!
-
-### Deploy on Vercel
 
 The easiest way to deploy your Next.js  app is to use the Vercel Platform, created by the makers of Next.js..
 
