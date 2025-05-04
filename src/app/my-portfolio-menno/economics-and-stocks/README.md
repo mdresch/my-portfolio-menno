@@ -1,3 +1,7 @@
+---
+icon: arrow-trend-up
+---
+
 # Economics & Stocks
 
 ***
