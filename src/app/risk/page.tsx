@@ -424,6 +424,20 @@ export default function RiskPage() {
             </Link>
           </div>
 
+          {/* Trump Economic Agenda Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-blue-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Trump Economic Agenda: Risks & Market Impact</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Analyze the risks, market volatility, and economic impact of the Trump administration's 2025 agenda—tariffs, tax cuts, and deregulation—using infographics and data visualizations.
+            </p>
+            <Link href="/risk/trump-economic-agenda" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              View Risk Analysis →
+            </Link>
+          </div>
+
         </div>
       </section>
 
