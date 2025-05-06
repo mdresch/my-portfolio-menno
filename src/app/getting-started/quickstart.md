@@ -1,8 +1,22 @@
 ---
 icon: bullseye-arrow
 cover: >-
-  https://images.unsplash.com/photo-1742138162252-363d0d38a063?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDU5MTY2MDd8&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1513735718075-2e2d37cb7cc1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw1fHxsaWdodGhvdXNlfGVufDB8fHx8MTc0NjMxNzQzMXww&ixlib=rb-4.0.3&q=85
 coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Quickstart My-Portfolio

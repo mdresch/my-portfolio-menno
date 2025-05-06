@@ -1,5 +1,22 @@
 ---
 icon: globe-pointer
+cover: >-
+  https://images.unsplash.com/photo-1512649408904-c0a00fb810da?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw4fHxsaWdodGhvdXNlfGVufDB8fHx8MTc0NjMxNzQzMXww&ixlib=rb-4.0.3&q=85
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # Publish your docs with Gitbook

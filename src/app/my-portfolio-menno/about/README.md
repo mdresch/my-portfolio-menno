@@ -69,3 +69,5 @@ The file leverages Tailwind CSS for styling, ensuring that:
 ### **Conclusion**
 
 This About page is designed not only as an introduction but also as a comprehensive resource that details your professional and technical background. By integrating structured metadata, clear content sections, and responsive design, the page is optimized for both user engagement and search engine performance.
+
+{% embed url="https://cba-hr.atlassian.net/jira/polaris/projects/MPMPD/ideas/view/6932894" %}

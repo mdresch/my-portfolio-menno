@@ -1,3 +1,7 @@
+---
+icon: scale-unbalanced
+---
+
 # Balance of Trade
 
 ***

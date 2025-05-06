@@ -1,3 +1,7 @@
+---
+icon: address-book
+---
+
 # Contact
 
 ***

@@ -1,3 +1,7 @@
+---
+icon: file-user
+---
+
 # Interactive Resume
 
 ***
