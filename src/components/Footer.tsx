@@ -30,7 +30,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white border-t mt-12">
+    <footer className="bg-white dark:bg-neutral-900 border-t border-gray-100 dark:border-neutral-800 mt-12 transition-colors">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-center gap-4">
           <div className="flex items-center gap-6">
@@ -40,19 +40,19 @@ export default function Footer() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                 aria-label={link.name}
               >
                 {link.icon}
               </a>
             ))}
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-500 dark:text-gray-400">
             <a
               href="https://iq4fun.gitbook.io/my-portfolio-menno/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-600 underline ml-2"
+              className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 underline ml-2 transition-colors"
             >
               Documentation
             </a>

@@ -67,8 +67,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="min-h-screen transition-colors" suppressHydrationWarning>
-      <body className={`${geist.className} bg-gray-50 dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
-        <ThemeProvider attribute="class">
+      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
+        <ThemeProvider attribute="class" defaultTheme="light">
           <RadixTheme>
             <div className="flex items-center justify-center">
               <NavigationMenuDemo />

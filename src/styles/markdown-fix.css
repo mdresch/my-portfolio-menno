@@ -54,11 +54,20 @@ article.prose #post-content h3 {
   overflow-x: auto !important;
 }
 
+.dark .prose pre {
+  background-color: #1e293b !important;
+}
+
 .prose code {
   background-color: #f3f4f6 !important;
   padding: 0.2rem 0.4rem !important;
   border-radius: 0.25rem !important;
   font-family: monospace !important;
+}
+
+.dark .prose code {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
 }
 
 /* Footnotes */
@@ -67,4 +76,61 @@ article.prose #post-content h3 {
   padding-top: 1rem !important;
   border-top: 1px solid #e5e7eb !important;
   font-size: 0.875rem !important;
+}
+
+.dark .prose .footnotes {
+  border-top: 1px solid #334155 !important;
+}
+
+/* Improved link styling for better visibility in light mode */
+.prose a {
+  color: #3b82f6 !important;
+  text-decoration: none !important;
+}
+
+.prose a:hover {
+  text-decoration: underline !important;
+  color: #2563eb !important;
+}
+
+/* Better table styling for light mode */
+.prose table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.prose table th {
+  background-color: #f9fafb !important;
+  border-bottom: 2px solid #e5e7eb !important;
+  padding: 0.75rem !important;
+  text-align: left !important;
+}
+
+.dark .prose table th {
+  background-color: #1e293b !important;
+  border-bottom: 2px solid #334155 !important;
+}
+
+.prose table td {
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 0.75rem !important;
+}
+
+.dark .prose table td {
+  border-bottom: 1px solid #334155 !important;
+}
+
+/* Blockquote styling for light mode */
+.prose blockquote {
+  border-left: 4px solid #3b82f6 !important;
+  padding-left: 1rem !important;
+  font-style: italic !important;
+  color: #4b5563 !important;
+  margin: 1.5rem 0 !important;
+}
+
+.dark .prose blockquote {
+  color: #94a3b8 !important;
 }
