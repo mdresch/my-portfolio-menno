@@ -84,7 +84,26 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
     const fileContents = await readFile(fullPath, 'utf8');
     
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+    let matterResult;
+    try {
+      matterResult = matter(fileContents);
+    } catch (yamlError) {
+      console.error(`YAML parsing error in ${slug}.md:`, yamlError);
+      // Return a post with error information
+      return {
+        id: slug,
+        slug,
+        title: `⚠️ YAML Error: ${slug}`,
+        date: new Date().toISOString(),
+        excerpt: `This post has a frontmatter error: ${yamlError.message}`,
+        content: `# Error in Frontmatter\n\nThere was an error parsing the frontmatter in this file.\n\n\`\`\`\n${yamlError.message}\n\`\`\`\n\nPlease check the YAML formatting in the frontmatter section.`,
+        categories: ['error'],
+        readingTime: '1 min read',
+        author: 'Unknown',
+        hasError: true,
+        errorMessage: yamlError.message
+      };
+    }
     
     // Use remark to convert markdown into HTML string
     const processedContent = await unified()
@@ -103,6 +122,14 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
     const wordsPerMinute = 200;
     const wordCount = matterResult.content.split(/\s+/).length;
     const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+    // Ensure categories is always an array
+    let categories = matterResult.data.categories || [];
+    
+    // Handle if categories is a string rather than an array
+    if (typeof categories === 'string') {
+      categories = [categories];
+    }
     
     return {
       id: slug,
@@ -111,7 +138,7 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
       date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
       excerpt: matterResult.data.excerpt || '',
       content: contentHtml,
-      categories: matterResult.data.categories || [],
+      categories: categories,
       readingTime: `${readingTime} min read`,
       author: matterResult.data.author || 'Anonymous'
     };
@@ -135,32 +162,65 @@ export async function getSortedPostsData(): Promise<Omit<BlogPost, 'content'>[]>
         fileNames
           .filter(fileName => fileName.endsWith('.md'))
           .map(async fileName => {
-            const slug = fileName.replace(/\.md$/, '');
-            const fullPath = path.join(postsDirectory, fileName);
-            const fileContents = await readFile(fullPath, 'utf8');
-            const matterResult = matter(fileContents);
-            
-            return {
-              id: slug,
-              slug,
-              title: matterResult.data.title || 'Untitled',
-              date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
-              excerpt: matterResult.data.excerpt || '',
-              categories: matterResult.data.categories || [],
-              readingTime: '3 min read', // Simple placeholder
-              author: matterResult.data.author || 'Anonymous'
-            };
+            try {
+              const slug = fileName.replace(/\.md$/, '');
+              const fullPath = path.join(postsDirectory, fileName);
+              const fileContents = await readFile(fullPath, 'utf8');
+              
+              try {
+                const matterResult = matter(fileContents);
+                
+                // Ensure categories is always an array
+                let categories = matterResult.data.categories || [];
+                
+                // Handle if categories is a string rather than an array
+                if (typeof categories === 'string') {
+                  categories = [categories];
+                }
+                
+                return {
+                  id: slug,
+                  slug,
+                  title: matterResult.data.title || 'Untitled',
+                  date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
+                  excerpt: matterResult.data.excerpt || '',
+                  categories: categories,
+                  readingTime: '3 min read', // Simple placeholder
+                  author: matterResult.data.author || 'Anonymous'
+                };
+              } catch (yamlError) {
+                console.error(`YAML parsing error in ${fileName}:`, yamlError);
+                // Return a post with error information so the UI can still render
+                return {
+                  id: slug,
+                  slug,
+                  title: `⚠️ Error: ${slug}`,
+                  date: new Date().toISOString(),
+                  excerpt: `This post has a frontmatter error: ${yamlError.message}`,
+                  categories: ['error'],
+                  readingTime: '1 min read',
+                  author: 'Unknown',
+                  hasError: true,
+                  errorMessage: yamlError.message
+                };
+              }
+            } catch (fileError) {
+              console.error(`Error processing file ${fileName}:`, fileError);
+              return null;
+            }
           })
       );
       
-      // Sort posts by date
-      return allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
+      // Filter out null entries and sort posts by date
+      return allPostsData
+        .filter(Boolean)
+        .sort((a, b) => {
+          if (a.date < b.date) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
     } catch (error) {
       console.error('Error reading posts from files:', error);
       return [];

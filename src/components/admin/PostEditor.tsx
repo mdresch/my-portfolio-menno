@@ -74,11 +74,22 @@ export default function PostEditor({ post, mode, onSave, onCreatePR }: PostEdito
 
   // Update frontmatter when metadata changes
   const updateFrontmatter = () => {
+    // Format categories properly to avoid YAML issues
+    let categoriesYaml;
+    
+    if (categories.length > 0) {
+      // Use block style for multiple items
+      categoriesYaml = `categories:\n${categories.map(cat => `  - "${cat}"`).join('\n')}`;
+    } else {
+      // Use array syntax for empty arrays with proper spacing
+      categoriesYaml = 'categories: []';
+    }
+    
     const frontmatter = `---
 title: "${title}"
 date: "${post?.date || new Date().toISOString().split('T')[0]}"
 excerpt: "${excerpt}"
-categories: [${categories.map(cat => `"${cat}"`).join(', ')}]
+${categoriesYaml}
 ---`;
 
     // Replace existing frontmatter or add at the beginning

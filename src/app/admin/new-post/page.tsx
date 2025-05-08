@@ -105,16 +105,21 @@ export default function NewPostPage() {
     
     const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
     
-    // Create frontmatter with block style categories
-    const categoriesYAML = filteredCategories.length > 0
-      ? `categories:\n${filteredCategories.map(cat => `  - ${cat}`).join('\n')}`
-      : 'categories: []'; // Handle case with no categories
+    // Create frontmatter with proper YAML formatting for categories
+    let categoriesYAML;
+    if (filteredCategories.length > 0) {
+      // Use block style for categories (more YAML compatible)
+      categoriesYAML = `categories:\n${filteredCategories.map(cat => `  - "${cat}"`).join('\n')}`;
+    } else {
+      // Use proper spacing for empty array
+      categoriesYAML = 'categories: []';
+    }
 
     const frontmatter = `---
-title: ${title}
-date: ${date}
-author: ${author}
-excerpt: ${excerpt}
+title: "${title}"
+date: "${date}"
+author: "${author}"
+excerpt: "${excerpt}"
 ${categoriesYAML}
 ---
 

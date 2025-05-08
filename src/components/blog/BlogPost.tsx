@@ -228,7 +228,15 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
   );
 }
 
-export function BlogPosts({ posts }: BlogPostsProps) {
+export function BlogPosts({ posts, isLoading }: { posts: BlogPostType[]; isLoading?: boolean }) {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <span className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></span>
+        <span className="text-blue-600 font-medium">Loading blog posts...</span>
+      </div>
+    );
+  }
   return (
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
