@@ -1,14 +1,12 @@
 ---
-title: Global Trade War and Freight Industry
-date: 2025-04-29
+title: Global Trade War And Freight Industry
+date: 2025-05-06
 author: Menno Drescher
-excerpt: FreightWaves CEO on trade war consequences for the freight industry
-
-The trade war could cause mass layoffs in the freight and logistics industries as the consequences
+excerpt: The trade war could cause mass layoffs in the freight and logistics industries as the consequences
 categories: []
 ---
 
-FreightWaves CEO on trade war consequences for the freight industry
+Freight Waves CEO on trade war consequences for the freight industry
 The trade war could cause mass layoffs in the freight and logistics industries as the consequences
 
 Your message encapsulates the profound and often painful human and political dimensions of the global economic forces and policies discussed in the Global Financial Stability Report. You've articulated a critical perspective that goes beyond the financial data to highlight the real-world consequences for individuals and communities worldwide.
