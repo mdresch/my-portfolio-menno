@@ -129,6 +129,20 @@ export default function RiskPage() {
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Explore Key Risk Areas, Insights & Solutions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+          {/* Legal Payment Tender UK Card - NEW */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-red-600">
+            <div className="flex items-center mb-2">
+              <span className="text-xs font-semibold bg-red-100 text-red-800 px-2 py-0.5 rounded-full">NEW</span>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">Legal Payment Tender in the UK: Risks & Security</h3>
+            <p className="text-gray-600 text-sm mb-4 flex-grow">
+              Examine the Bank of England's comprehensive approach to protecting legal payment tender, preventing counterfeiting, and addressing digital currency challenges with interactive data visualizations.
+            </p>
+            <Link href="/risk/legal-payment-tender-uk" className="text-blue-600 hover:text-blue-800 font-medium text-sm self-start">
+              View Analysis →
+            </Link>
+          </div>
+
           {/* Supply Chain Top 25 Card - NEW */}
           <div className="bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-red-600">
             <div className="flex items-center mb-2">

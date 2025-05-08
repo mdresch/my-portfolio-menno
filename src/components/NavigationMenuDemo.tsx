@@ -168,14 +168,14 @@ export function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList className="flex items-center">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>About</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-secondary/20 transition-colors"
                   >
                     
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -200,14 +200,14 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>News</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">News</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <Link
                     href="/"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-secondary/20 transition-colors"
                   >
                     
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -232,7 +232,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Risk</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">Risk</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -248,7 +248,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Economics</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">Economics</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {componentseconomics.map((component) => (
@@ -264,7 +264,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="https://iq4fun.gitbook.io/my-portfolio-menno/" className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink href="https://iq4fun.gitbook.io/my-portfolio-menno/" className={cn(navigationMenuTriggerStyle(), "hover:bg-secondary hover:text-secondary-foreground")}>
             Docs
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -286,7 +286,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground",
             className
           )}
           {...props}
