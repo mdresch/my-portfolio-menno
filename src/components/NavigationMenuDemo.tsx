@@ -58,7 +58,7 @@ const components: { title: string; href: string; description: string }[] = [
 const componentseconomics: { title: string; href: string; description: string }[] = [
     {
       title: "Balance of Trade",
-      href: "/dashboards/balance-of=trade",
+      href: "/dashboards/balance-of-trade",
       description:
         "A modal dialog that interrupts the user with important content and expects a response.",
     },
@@ -84,12 +84,6 @@ const componentseconomics: { title: string; href: string; description: string }[
       href: "/dashboards/major-economics",
       description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Market Trends",
-      href: "/dashhboards/market-trends",
-      description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
     },
     {
       title: "Stocks",
