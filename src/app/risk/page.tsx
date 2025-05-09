@@ -340,10 +340,10 @@ export default function RiskOverviewPage() {
             isComingSoon={false}
           />
                     
-          {/* Cybersecurity Risk (Coming Soon) */}
+          {/* Energy Transition Political Risk */}
           <RiskReportCard
             title="Energy Transition Political Risks"
-            description=""
+            description="The energy transition is evolving into a complex interplay between policy, finance, and risk management, incorporating standardized carbon credit markets"
             date="May 01, 2025"
             category="Political Risk"
             tags={["Energy Transition", "Political Risk", "Geopolitical"]}

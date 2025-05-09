@@ -870,8 +870,7 @@ export const InterestRateEnvironmentChartNew = () => {
           <Bar dataKey="neutral" name="Estimated Neutral Rate" fill="#FFBB28" />
           <Bar dataKey="term" name="10Y Government Bond Yield" fill="#FF8042" />
         </BarChart>
-      </ResponsiveContainer>
-      <div class="text-xs text-gray-500 dark:text-gray-400 mt-3 transition-colors">
+      </ResponsiveContainer>      <div className="text-xs text-gray-500 dark:text-gray-400 mt-3 transition-colors">
         Source: Central banks, Bloomberg, GFMI estimates as of January 2025
       </div>
     </div>
@@ -914,22 +913,25 @@ export const MarketVolatilityChart = () => {
 };
 
 export const MarketVolatilityComparisonChart = () => {
+  // Ensure we're using the correct data array with the exact property names expected
+  const volatilityData = marketVolatilityDataNew;
+  
   return (
-    <div>
+    <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
       <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3 transition-colors">Market Volatility Indicators (2024)</h3>
       <div className="text-xs text-gray-500 dark:text-gray-400 mb-4 transition-colors">
         VIX (equity volatility), MOVE (bond volatility), and FX VOL (currency volatility) indices
       </div>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart
-          data={marketVolatilityData}
+          data={volatilityData}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="month" />
           <YAxis yAxisId="left" domain={[0, 150]} />
           <YAxis yAxisId="right" orientation="right" domain={[0, 15]} />
-          <Tooltip />
+          <Tooltip formatter={(value, name) => [value, name]} />
           <Legend />
           <Line 
             yAxisId="left"
