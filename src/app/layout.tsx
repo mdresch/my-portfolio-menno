@@ -9,6 +9,7 @@ import { ThemeProvider } from 'next-themes';
 import { Theme as RadixTheme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
                   to use client components only at the component level, not at the root layout level */}
               {children}
               <Analytics />
+              <SpeedInsights />
             </main>
             <Footer />
           </RadixTheme>

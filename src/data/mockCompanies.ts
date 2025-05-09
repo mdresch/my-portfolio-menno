@@ -90,8 +90,7 @@ export const mockCompanies = [
       { date: '2025-04-21', price: 191 },
       { date: '2025-04-22', price: 190 },
     ]
-  },
-  {
+  },  {
     name: 'Microsoft',
     ticker: 'MSFT',
     sector: 'Information Technology',
@@ -579,7 +578,1225 @@ export const mockCompanies = [
     peers: [ { name: 'Akzo Nobel', ticker: 'AKZA.AS' } ],
     financials: { incomeStatement: [ { year: 2024, revenue: '25.0B', netIncome: '1.5B' } ], balanceSheet: [ { year: 2024, assets: '10.0B', liabilities: '5.0B', equity: '5.0B' } ], cashFlow: [ { year: 2024, operating: '1.5B', investing: '-0.4B', financing: '-0.2B' } ] },
     options: { calls: [ { strike: 62, expiry: '2025-05-17', price: 0.5, volume: 8 } ], puts: [ { strike: 58, expiry: '2025-05-17', price: 0.4, volume: 6 } ] },
-    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },
-    priceHistory: [ { date: '2025-04-16', price: 59.8 }, { date: '2025-04-17', price: 60 }, { date: '2025-04-18', price: 60 }, { date: '2025-04-19', price: 60 } ]
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },    priceHistory: [ { date: '2025-04-16', price: 59.8 }, { date: '2025-04-17', price: 60 }, { date: '2025-04-18', price: 60 }, { date: '2025-04-19', price: 60 } ]
+  },
+  {
+    name: 'Toyota',
+    ticker: 'TM',
+    sector: 'Consumer Discretionary',
+    index: 'Nikkei 225',
+    price: 215,
+    change: '+1.2%',
+    summary: {
+      marketCap: '350B',
+      pe: 12.5,
+      eps: 17.2,
+      dividend: 5.4,
+      yield: '2.5%',
+      beta: 0.85,
+      volume: '2.1M',
+      shares: '1.63B',
+      roe: '14.2%',
+      revenue: '320.0B',
+      grossMargin: '18.5%',
+      netMargin: '8.4%',
+      debtToEquity: '110.0%'
+    },
+    news: [
+      { title: 'Toyota unveils new hydrogen-electric hybrid vehicle', date: '2025-04-15', url: 'https://news.example.com/toyota-hydrogen-electric' },
+      { title: 'Toyota expands EV production capacity', date: '2025-04-10', url: 'https://news.example.com/toyota-ev-production' }
+    ],
+    profile: {
+      description: 'Toyota Motor Corporation is a Japanese multinational automotive manufacturer headquartered in Toyota City, Japan. It is the global leader in hybrid electric vehicle sales.',
+      executives: [
+        { name: 'Koji Sato', title: 'Chief Executive Officer' },
+        { name: 'Akio Toyoda', title: 'Chairman' }
+      ],
+      address: '1 Toyota-Cho, Toyota City, Aichi Prefecture 471-8571, Japan',
+      website: 'https://global.toyota/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-05-08',
+      lastEarningsDate: '2025-02-08',
+      epsActual: 4.35,
+      epsEstimate: 4.20,
+      revenueActual: '82.0B',
+      revenueEstimate: '80.5B',
+      surprise: '+3.6%'
+    },
+    peers: [
+      { name: 'Honda', ticker: 'HMC' },
+      { name: 'Volkswagen', ticker: 'VWAGY' },
+      { name: 'Ford', ticker: 'F' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '320.0B', netIncome: '27.0B' },
+        { year: 2023, revenue: '310.0B', netIncome: '25.5B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '550.0B', liabilities: '340.0B', equity: '210.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '45.0B', investing: '-22.0B', financing: '-12.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 225, expiry: '2025-05-20', price: 3.8, volume: 450 },
+        { strike: 235, expiry: '2025-05-20', price: 2.1, volume: 320 }
+      ],
+      puts: [
+        { strike: 205, expiry: '2025-05-20', price: 2.9, volume: 380 },
+        { strike: 195, expiry: '2025-05-20', price: 1.5, volume: 240 }
+      ]
+    },
+    ownership: {
+      institutional: '12%',
+      insider: '0.5%',
+      topHolders: [
+        { name: 'Toyota Industries', percent: '8.7%' },
+        { name: 'Nippon Life Insurance', percent: '4.2%' },
+        { name: 'Bank of Japan', percent: '3.9%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-04-16', price: 212 },
+      { date: '2025-04-17', price: 213 },
+      { date: '2025-04-18', price: 214 },
+      { date: '2025-04-19', price: 215 },
+      { date: '2025-04-20', price: 215 }
+    ]
+  },
+  {
+    name: 'Nestle',
+    ticker: 'NSRGY',
+    sector: 'Consumer Staples',
+    index: 'SMI',
+    price: 115,
+    change: '+0.5%',
+    summary: {
+      marketCap: '310B',
+      pe: 19.3,
+      eps: 5.96,
+      dividend: 3.12,
+      yield: '2.7%',
+      beta: 0.45,
+      volume: '1.8M',
+      shares: '2.7B',
+      roe: '28.5%',
+      revenue: '95.0B',
+      grossMargin: '47.5%',
+      netMargin: '16.2%',
+      debtToEquity: '80.0%'
+    },
+    news: [
+      { title: 'Nestle expands plant-based product line', date: '2025-04-18', url: 'https://news.example.com/nestle-plant-based' },
+      { title: 'Nestle acquires premium coffee brand', date: '2025-04-12', url: 'https://news.example.com/nestle-coffee-acquisition' }
+    ],
+    profile: {
+      description: 'Nestle S.A. is a Swiss multinational food and drink processing company headquartered in Vevey, Switzerland. It is the largest food company in the world.',
+      executives: [
+        { name: 'Mark Schneider', title: 'Chief Executive Officer' },
+        { name: 'Paul Bulcke', title: 'Chairman' }
+      ],
+      address: 'Avenue Nestlé 55, 1800 Vevey, Switzerland',
+      website: 'https://www.nestle.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-05-22',
+      lastEarningsDate: '2025-02-15',
+      epsActual: 1.48,
+      epsEstimate: 1.45,
+      revenueActual: '24.5B',
+      revenueEstimate: '24.1B',
+      surprise: '+2.1%'
+    },
+    peers: [
+      { name: 'Unilever', ticker: 'UL' },
+      { name: 'PepsiCo', ticker: 'PEP' },
+      { name: 'Danone', ticker: 'DANOY' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '95.0B', netIncome: '15.4B' },
+        { year: 2023, revenue: '93.2B', netIncome: '14.8B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '130.0B', liabilities: '75.0B', equity: '55.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '18.0B', investing: '-5.8B', financing: '-8.2B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 120, expiry: '2025-05-15', price: 2.5, volume: 320 },
+        { strike: 125, expiry: '2025-05-15', price: 1.3, volume: 210 }
+      ],
+      puts: [
+        { strike: 110, expiry: '2025-05-15', price: 1.8, volume: 280 },
+        { strike: 105, expiry: '2025-05-15', price: 1.0, volume: 150 }
+      ]
+    },
+    ownership: {
+      institutional: '44%',
+      insider: '0.08%',
+      topHolders: [
+        { name: 'Vanguard Group', percent: '5.2%' },
+        { name: 'BlackRock', percent: '4.8%' },
+        { name: 'Norges Bank Investment', percent: '2.3%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-04-16', price: 114 },
+      { date: '2025-04-17', price: 114.5 },
+      { date: '2025-04-18', price: 114.8 },
+      { date: '2025-04-19', price: 115 },
+      { date: '2025-04-20', price: 115 }
+    ]
+  },
+  {
+    name: 'BMW',
+    ticker: 'BMW.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
+    price: 92,
+    change: '-0.8%',
+    summary: {
+      marketCap: '60B',
+      pe: 6.4,
+      eps: 14.38,
+      dividend: 6.00,
+      yield: '6.5%',
+      beta: 1.15,
+      volume: '0.9M',
+      shares: '0.65B',
+      roe: '12.3%',
+      revenue: '155.0B',
+      grossMargin: '19.8%',
+      netMargin: '7.1%',
+      debtToEquity: '145.2%'
+    },
+    news: [
+      { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' },
+      { title: 'BMW affected by China tariffs on EVs', date: '2025-04-30', url: 'https://news.example.com/bmw-china-tariffs' }
+    ],
+    profile: {
+      description: 'Bayerische Motoren Werke AG (BMW) is a German multinational corporation which produces luxury vehicles and motorcycles.',
+      executives: [
+        { name: 'Oliver Zipse', title: 'Chairman of the Board of Management' },
+        { name: 'Nicolas Peter', title: 'Chief Financial Officer' }
+      ],
+      address: 'Petuelring 130, 80788 Munich, Germany',
+      website: 'https://www.bmwgroup.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-03',
+      lastEarningsDate: '2025-05-02',
+      epsActual: 3.25,
+      epsEstimate: 3.60,
+      revenueActual: '36.5B',
+      revenueEstimate: '38.2B',
+      surprise: '-9.7%'
+    },
+    peers: [
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' },
+      { name: 'Volkswagen', ticker: 'VOW3.DE' },
+      { name: 'Porsche', ticker: 'P911.DE' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '155.0B', netIncome: '10.5B' },
+        { year: 2023, revenue: '150.7B', netIncome: '12.6B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '250.0B', liabilities: '190.0B', equity: '60.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '22.0B', investing: '-12.0B', financing: '-8.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 95, expiry: '2025-06-20', price: 2.1, volume: 350 },
+        { strike: 100, expiry: '2025-06-20', price: 1.4, volume: 220 }
+      ],
+      puts: [
+        { strike: 90, expiry: '2025-06-20', price: 2.5, volume: 410 },
+        { strike: 85, expiry: '2025-06-20', price: 1.7, volume: 280 }
+      ]
+    },
+    ownership: {
+      institutional: '55%',
+      insider: '25%',
+      topHolders: [
+        { name: 'Quandt Family', percent: '29.0%' },
+        { name: 'Norges Bank Investment', percent: '3.2%' },
+        { name: 'Vanguard Group', percent: '2.4%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 95 },
+      { date: '2025-05-06', price: 94 },
+      { date: '2025-05-07', price: 92.5 },
+      { date: '2025-05-08', price: 92 }
+    ]
+  },
+  {
+    name: 'Volkswagen AG',
+    ticker: 'VOW3.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
+    price: 118,
+    change: '-1.5%',
+    summary: {
+      marketCap: '70B',
+      pe: 4.3,
+      eps: 27.44,
+      dividend: 9.06,
+      yield: '7.7%',
+      beta: 1.35,
+      volume: '1.2M',
+      shares: '0.5B',
+      roe: '10.4%',
+      revenue: '322.0B',
+      grossMargin: '20.4%',
+      netMargin: '5.1%',
+      debtToEquity: '157.0%'
+    },
+    news: [
+      { title: 'Volkswagen reports 46.3% decline in Q1 operating profit', date: '2025-05-05', url: 'https://news.example.com/volkswagen-q1-2025' },
+      { title: 'Volkswagen struggles with inventory write-downs linked to US tariffs', date: '2025-04-28', url: 'https://news.example.com/volkswagen-tariff-impact' }
+    ],
+    profile: {
+      description: 'Volkswagen AG is a German multinational automotive manufacturing company headquartered in Wolfsburg, Germany. It is the largest automaker by production worldwide.',
+      executives: [
+        { name: 'Oliver Blume', title: 'Chief Executive Officer' },
+        { name: 'Arno Antlitz', title: 'Chief Financial Officer' }
+      ],
+      address: 'Berliner Ring 2, 38440 Wolfsburg, Germany',
+      website: 'https://www.volkswagenag.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-27',
+      lastEarningsDate: '2025-04-30',
+      epsActual: 4.50,
+      epsEstimate: 7.60,
+      revenueActual: '76.5B',
+      revenueEstimate: '82.0B',
+      surprise: '-40.8%'
+    },
+    peers: [
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' },
+      { name: 'Stellantis', ticker: 'STLA' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '322.0B', netIncome: '14.9B' },
+        { year: 2023, revenue: '310.5B', netIncome: '26.8B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '580.0B', liabilities: '430.0B', equity: '150.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '38.0B', investing: '-23.0B', financing: '-10.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 125, expiry: '2025-06-15', price: 1.8, volume: 420 },
+        { strike: 130, expiry: '2025-06-15', price: 1.2, volume: 260 }
+      ],
+      puts: [
+        { strike: 115, expiry: '2025-06-15', price: 2.7, volume: 540 },
+        { strike: 110, expiry: '2025-06-15', price: 1.9, volume: 320 }
+      ]
+    },
+    ownership: {
+      institutional: '40%',
+      insider: '30.8%',
+      topHolders: [
+        { name: 'Porsche Automobil Holding SE', percent: '31.4%' },
+        { name: 'State of Lower Saxony', percent: '11.8%' },
+        { name: 'Qatar Investment Authority', percent: '10.5%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 122 },
+      { date: '2025-05-06', price: 120 },
+      { date: '2025-05-07', price: 119 },
+      { date: '2025-05-08', price: 118 }
+    ]
+  },
+  {
+    name: 'Mercedes-Benz Group AG',
+    ticker: 'MBG.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
+    price: 67,
+    change: '-1.2%',
+    summary: {
+      marketCap: '72B',
+      pe: 5.8,
+      eps: 11.55,
+      dividend: 4.30,
+      yield: '6.4%',
+      beta: 1.28,
+      volume: '1.1M',
+      shares: '1.07B',
+      roe: '14.2%',
+      revenue: '153.0B',
+      grossMargin: '22.6%',
+      netMargin: '8.1%',
+      debtToEquity: '124.5%'
+    },
+    news: [
+      { title: 'Mercedes-Benz revenue declined by 7.4% in Q1 2025', date: '2025-05-04', url: 'https://news.example.com/mercedes-q1-2025' },
+      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' }
+    ],
+    profile: {
+      description: 'Mercedes-Benz Group AG, formerly Daimler AG, is a German multinational automotive corporation headquartered in Stuttgart, known for luxury vehicles, trucks, and buses.',
+      executives: [
+        { name: 'Ola Källenius', title: 'Chairman of the Board of Management' },
+        { name: 'Harald Wilhelm', title: 'Chief Financial Officer' }
+      ],
+      address: 'Mercedesstraße 120, 70372 Stuttgart, Germany',
+      website: 'https://www.mercedes-benz.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-25',
+      lastEarningsDate: '2025-04-30',
+      epsActual: 2.05,
+      epsEstimate: 2.35,
+      revenueActual: '37.2B',
+      revenueEstimate: '40.0B',
+      surprise: '-13.0%'
+    },
+    peers: [
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Volkswagen', ticker: 'VOW3.DE' },
+      { name: 'Tesla', ticker: 'TSLA' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '153.0B', netIncome: '12.5B' },
+        { year: 2023, revenue: '158.2B', netIncome: '21.5B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '340.0B', liabilities: '255.0B', equity: '85.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '25.0B', investing: '-14.0B', financing: '-9.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 70, expiry: '2025-06-20', price: 1.4, volume: 380 },
+        { strike: 75, expiry: '2025-06-20', price: 0.9, volume: 250 }
+      ],
+      puts: [
+        { strike: 65, expiry: '2025-06-20', price: 2.1, volume: 470 },
+        { strike: 60, expiry: '2025-06-20', price: 1.3, volume: 300 }
+      ]
+    },
+    ownership: {
+      institutional: '60%',
+      insider: '5%',
+      topHolders: [
+        { name: 'BAIC Group', percent: '9.98%' },
+        { name: 'Geely Group', percent: '9.69%' },
+        { name: 'Kuwait Investment Authority', percent: '6.8%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 69 },
+      { date: '2025-05-06', price: 68 },
+      { date: '2025-05-07', price: 67.5 },
+      { date: '2025-05-08', price: 67 }
+    ]
+  },
+  {
+    name: 'Tesla Inc.',
+    ticker: 'TSLA',
+    sector: 'Consumer Discretionary',
+    index: 'S&P 500',
+    price: 212,
+    change: '-2.1%',
+    summary: {
+      marketCap: '685B',
+      pe: 58.9,
+      eps: 3.60,
+      dividend: 0,
+      yield: '0%',
+      beta: 2.04,
+      volume: '85.2M',
+      shares: '3.18B',
+      roe: '17.5%',
+      revenue: '103.0B',
+      grossMargin: '21.0%',
+      netMargin: '11.3%',
+      debtToEquity: '18.5%'
+    },
+    news: [
+      { title: 'Tesla car sales in Europe fall to two-year low', date: '2025-05-07', url: 'https://news.example.com/tesla-europe-sales-drop' },
+      { title: 'Tesla disappoints with Q1 earnings amid slumping China sales', date: '2025-04-25', url: 'https://news.example.com/tesla-q1-2025-earnings' }
+    ],
+    profile: {
+      description: 'Tesla, Inc. is an American multinational automotive and clean energy company that designs and manufactures electric vehicles, battery energy storage, solar panels and solar roof tiles.',
+      executives: [
+        { name: 'Elon Musk', title: 'Chief Executive Officer' },
+        { name: 'Vaibhav Taneja', title: 'Chief Financial Officer' }
+      ],
+      address: '1 Tesla Road, Austin, TX 78725, United States',
+      website: 'https://www.tesla.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-22',
+      lastEarningsDate: '2025-04-22',
+      epsActual: 0.65,
+      epsEstimate: 0.72,
+      revenueActual: '22.5B',
+      revenueEstimate: '23.8B',
+      surprise: '-9.7%'
+    },
+    peers: [
+      { name: 'Rivian Automotive', ticker: 'RIVN' },
+      { name: 'BYD Co', ticker: '1211.HK' },
+      { name: 'Lucid Group', ticker: 'LCID' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '103.0B', netIncome: '11.6B' },
+        { year: 2023, revenue: '96.8B', netIncome: '15.3B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '165.0B', liabilities: '42.0B', equity: '123.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '16.0B', investing: '-11.0B', financing: '-2.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 220, expiry: '2025-06-20', price: 7.8, volume: 15000 },
+        { strike: 240, expiry: '2025-06-20', price: 4.3, volume: 12000 }
+      ],
+      puts: [
+        { strike: 200, expiry: '2025-06-20', price: 8.5, volume: 17000 },
+        { strike: 180, expiry: '2025-06-20', price: 5.2, volume: 10000 }
+      ]
+    },
+    ownership: {
+      institutional: '45%',
+      insider: '13.4%',
+      topHolders: [
+        { name: 'Elon Musk', percent: '13.0%' },
+        { name: 'Vanguard Group', percent: '8.1%' },
+        { name: 'BlackRock', percent: '6.8%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 220 },
+      { date: '2025-05-06', price: 217 },
+      { date: '2025-05-07', price: 215 },
+      { date: '2025-05-08', price: 212 }
+    ]
+  },
+  {
+    name: 'Porsche AG',
+    ticker: 'P911.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
+    price: 82,
+    change: '-1.8%',
+    summary: {
+      marketCap: '25B',
+      pe: 11.3,
+      eps: 7.26,
+      dividend: 2.31,
+      yield: '2.8%',
+      beta: 1.40,
+      volume: '0.5M',
+      shares: '0.3B',
+      roe: '16.5%',
+      revenue: '40.0B',
+      grossMargin: '24.8%',
+      netMargin: '9.2%',
+      debtToEquity: '95.0%'
+    },
+    news: [
+      { title: 'Porsche reports 43.8% drop in operating profit', date: '2025-05-06', url: 'https://news.example.com/porsche-profit-drop' },
+      { title: 'Porsche plans to cut 2,000 jobs amid financial pressure', date: '2025-04-30', url: 'https://news.example.com/porsche-job-cuts' }
+    ],
+    profile: {
+      description: 'Dr. Ing. h.c. F. Porsche AG is a German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans.',
+      executives: [
+        { name: 'Oliver Blume', title: 'Chief Executive Officer' },
+        { name: 'Lutz Meschke', title: 'Chief Financial Officer' }
+      ],
+      address: 'Porscheplatz 1, 70435 Stuttgart, Germany',
+      website: 'https://www.porsche.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-05',
+      lastEarningsDate: '2025-05-02',
+      epsActual: 1.20,
+      epsEstimate: 2.15,
+      revenueActual: '9.8B',
+      revenueEstimate: '10.5B',
+      surprise: '-44.2%'
+    },
+    peers: [
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' },
+      { name: 'Ferrari', ticker: 'RACE' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '40.0B', netIncome: '3.7B' },
+        { year: 2023, revenue: '42.5B', netIncome: '6.2B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '68.0B', liabilities: '46.0B', equity: '22.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '6.0B', investing: '-4.5B', financing: '-1.8B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 85, expiry: '2025-06-20', price: 1.6, volume: 180 },
+        { strike: 90, expiry: '2025-06-20', price: 0.9, volume: 120 }
+      ],
+      puts: [
+        { strike: 80, expiry: '2025-06-20', price: 2.2, volume: 210 },
+        { strike: 75, expiry: '2025-06-20', price: 1.4, volume: 150 }
+      ]
+    },
+    ownership: {
+      institutional: '25%',
+      insider: '75%',
+      topHolders: [
+        { name: 'Porsche Automobil Holding SE', percent: '25.0%' },
+        { name: 'Volkswagen AG', percent: '75.0%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 85 },
+      { date: '2025-05-06', price: 84 },
+      { date: '2025-05-07', price: 83 },
+      { date: '2025-05-08', price: 82 }
+    ]
+  },
+  {
+    name: 'Ferrari N.V.',
+    ticker: 'RACE',
+    sector: 'Consumer Discretionary',
+    index: 'S&P 100',
+    price: 395,
+    change: '-0.5%',
+    summary: {
+      marketCap: '72B',
+      pe: 46.5,
+      eps: 8.50,
+      dividend: 2.18,
+      yield: '0.55%',
+      beta: 0.98,
+      volume: '0.3M',
+      shares: '0.18B',
+      roe: '45.4%',
+      revenue: '6.5B',
+      grossMargin: '47.8%',
+      netMargin: '25.2%',
+      debtToEquity: '70.5%'
+    },
+    news: [
+      { title: 'Ferrari reports 25% sales drop in greater China region', date: '2025-05-08', url: 'https://news.example.com/ferrari-china-sales' },
+      { title: 'Ferrari global shipments up 1% despite regional challenges', date: '2025-05-03', url: 'https://news.example.com/ferrari-shipments-2025' }
+    ],
+    profile: {
+      description: 'Ferrari N.V. is an Italian luxury sports car manufacturer based in Maranello, Italy. Founded by Enzo Ferrari in 1939.',
+      executives: [
+        { name: 'Benedetto Vigna', title: 'Chief Executive Officer' },
+        { name: 'Antonio Picca Piccon', title: 'Chief Financial Officer' }
+      ],
+      address: 'Via Abetone Inferiore 4, 41053 Maranello, Italy',
+      website: 'https://www.ferrari.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-01',
+      lastEarningsDate: '2025-05-02',
+      epsActual: 2.15,
+      epsEstimate: 2.10,
+      revenueActual: '1.6B',
+      revenueEstimate: '1.7B',
+      surprise: '-5.9%'
+    },
+    peers: [
+      { name: 'Porsche AG', ticker: 'P911.DE' },
+      { name: 'Lamborghini', ticker: 'LAMBO.MI' },
+      { name: 'Aston Martin', ticker: 'AML.L' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '6.5B', netIncome: '1.64B' },
+        { year: 2023, revenue: '6.3B', netIncome: '1.58B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '9.2B', liabilities: '5.7B', equity: '3.5B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '2.0B', investing: '-0.8B', financing: '-0.7B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 400, expiry: '2025-06-20', price: 8.5, volume: 140 },
+        { strike: 420, expiry: '2025-06-20', price: 4.2, volume: 90 }
+      ],
+      puts: [
+        { strike: 390, expiry: '2025-06-20', price: 7.6, volume: 120 },
+        { strike: 380, expiry: '2025-06-20', price: 5.3, volume: 80 }
+      ]
+    },
+    ownership: {
+      institutional: '45%',
+      insider: '33.95%',
+      topHolders: [
+        { name: 'Exor N.V.', percent: '24.2%' },
+        { name: 'Piero Ferrari', percent: '10.0%' },
+        { name: 'BlackRock', percent: '5.8%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 397 },
+      { date: '2025-05-06', price: 396 },
+      { date: '2025-05-07', price: 395.5 },
+      { date: '2025-05-08', price: 395 }
+    ]
+  },
+  {
+    name: 'Nissan Motor Co. Ltd.',
+    ticker: '7201.T',
+    sector: 'Consumer Discretionary',
+    index: 'Nikkei 225',
+    price: 452, // JPY
+    change: '-3.2%',
+    summary: {
+      marketCap: '1.8T', // JPY (trillion)
+      pe: 'N/A', // Negative earnings
+      eps: '-159.21', // JPY
+      dividend: '10.00', // JPY
+      yield: '2.2%',
+      beta: 1.45,
+      volume: '12.5M',
+      shares: '3.9B',
+      roe: '-12.6%',
+      revenue: '12.5T', // JPY (trillion)
+      grossMargin: '18.5%',
+      netMargin: '-4.8%',
+      debtToEquity: '185.0%'
+    },
+    news: [
+      { title: 'Nissan to cut 9,000 jobs and reduce production capacity', date: '2025-05-07', url: 'https://news.example.com/nissan-job-cuts' },
+      { title: 'Nissan expects net loss of up to ¥750 billion for fiscal year', date: '2025-04-28', url: 'https://news.example.com/nissan-fiscal-projection' }
+    ],
+    profile: {
+      description: 'Nissan Motor Co., Ltd. is a Japanese multinational automobile manufacturer headquartered in Yokohama, Japan.',
+      executives: [
+        { name: 'Makoto Uchida', title: 'Chief Executive Officer' },
+        { name: 'Stephen Ma', title: 'Chief Financial Officer' }
+      ],
+      address: '1-1, Takashima 1-chome, Nishi-ku, Yokohama-shi, Kanagawa 220-8686, Japan',
+      website: 'https://www.nissan-global.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-08',
+      lastEarningsDate: '2025-05-05',
+      epsActual: '-42.50', // JPY
+      epsEstimate: '-35.00', // JPY
+      revenueActual: '3.1T', // JPY (trillion)
+      revenueEstimate: '3.2T', // JPY (trillion)
+      surprise: '-21.4%'
+    },
+    peers: [
+      { name: 'Toyota', ticker: '7203.T' },
+      { name: 'Honda', ticker: '7267.T' },
+      { name: 'Mazda', ticker: '7261.T' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '12.5T', netIncome: '-600B' }, // JPY (trillion/billion)
+        { year: 2023, revenue: '11.8T', netIncome: '-450B' } // JPY (trillion/billion)
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '22.0T', liabilities: '16.5T', equity: '5.5T' } // JPY (trillion)
+      ],
+      cashFlow: [
+        { year: 2024, operating: '850B', investing: '-780B', financing: '120B' } // JPY (billion)
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 500, expiry: '2025-06-13', price: 5.2, volume: 860 },
+        { strike: 550, expiry: '2025-06-13', price: 2.1, volume: 520 }
+      ],
+      puts: [
+        { strike: 450, expiry: '2025-06-13', price: 18.5, volume: 1200 },
+        { strike: 400, expiry: '2025-06-13', price: 9.8, volume: 850 }
+      ]
+    },
+    ownership: {
+      institutional: '18%',
+      insider: '43.7%',
+      topHolders: [
+        { name: 'Renault S.A.', percent: '43.4%' },
+        { name: 'The Master Trust Bank of Japan', percent: '5.2%' },
+        { name: 'Custody Bank of Japan', percent: '3.1%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 475 },
+      { date: '2025-05-06', price: 465 },
+      { date: '2025-05-07', price: 458 },
+      { date: '2025-05-08', price: 452 }
+    ]
+  },
+  {
+    name: 'BYD Co. Ltd.',
+    ticker: '1211.HK',
+    sector: 'Consumer Discretionary',
+    index: 'Hang Seng',
+    price: 248, // HKD
+    change: '-0.8%',
+    summary: {
+      marketCap: '720B', // HKD (billion)
+      pe: 22.4,
+      eps: '11.07', // HKD
+      dividend: '3.45', // HKD
+      yield: '1.4%',
+      beta: 1.28,
+      volume: '15.2M',
+      shares: '2.9B',
+      roe: '24.6%',
+      revenue: '640B', // CNY (billion)
+      grossMargin: '19.2%',
+      netMargin: '8.5%',
+      debtToEquity: '75.0%'
+    },
+    news: [
+      { title: 'BYD scraps plans for Chile lithium plants due to global market conditions', date: '2025-05-06', url: 'https://news.example.com/byd-lithium-chile' },
+      { title: 'BYD surpasses Tesla in global EV sales for second consecutive quarter', date: '2025-04-29', url: 'https://news.example.com/byd-tesla-ev-sales' }
+    ],
+    profile: {
+      description: 'BYD Company Limited is a Chinese manufacturing company based in Shenzhen, Guangdong, China, focusing on automobiles, battery-powered bicycles, buses, forklifts, solar panels, and rechargeable batteries.',
+      executives: [
+        { name: 'Wang Chuanfu', title: 'Chairman & President' },
+        { name: 'Li Ke', title: 'Executive Vice President' }
+      ],
+      address: 'No. 3009, BYD Road, Pingshan, Shenzhen, 518118, China',
+      website: 'https://www.byd.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-28',
+      lastEarningsDate: '2025-04-29',
+      epsActual: '2.75', // HKD
+      epsEstimate: '2.65', // HKD
+      revenueActual: '165B', // CNY (billion)
+      revenueEstimate: '160B', // CNY (billion)
+      surprise: '+3.8%'
+    },
+    peers: [
+      { name: 'Tesla', ticker: 'TSLA' },
+      { name: 'Nio', ticker: 'NIO' },
+      { name: 'Li Auto', ticker: '2015.HK' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '640B', netIncome: '54B' }, // CNY (billion)
+        { year: 2023, revenue: '520B', netIncome: '42B' } // CNY (billion)
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '520B', liabilities: '300B', equity: '220B' } // CNY (billion)
+      ],
+      cashFlow: [
+        { year: 2024, operating: '68B', investing: '-52B', financing: '15B' } // CNY (billion)
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 260, expiry: '2025-06-27', price: 4.8, volume: 2800 },
+        { strike: 280, expiry: '2025-06-27', price: 2.3, volume: 1950 }
+      ],
+      puts: [
+        { strike: 240, expiry: '2025-06-27', price: 5.2, volume: 3100 },
+        { strike: 220, expiry: '2025-06-27', price: 2.8, volume: 2400 }
+      ]
+    },
+    ownership: {
+      institutional: '24%',
+      insider: '19%',
+      topHolders: [
+        { name: 'Wang Chuanfu', percent: '17.6%' },
+        { name: 'Berkshire Hathaway', percent: '7.7%' },
+        { name: 'Himalaya Capital Management', percent: '3.2%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 252 },
+      { date: '2025-05-06', price: 250 },
+      { date: '2025-05-07', price: 249 },
+      { date: '2025-05-08', price: 248 }
+    ]
+  },
+  {
+    name: 'Rivian Automotive Inc.',
+    ticker: 'RIVN',
+    sector: 'Consumer Discretionary',
+    index: 'NASDAQ',
+    price: 11.25,
+    change: '-2.3%',
+    summary: {
+      marketCap: '11.5B',
+      pe: 'N/A', // Negative earnings
+      eps: '-5.65',
+      dividend: 0,
+      yield: '0%',
+      beta: 2.05,
+      volume: '28.5M',
+      shares: '1.02B',
+      roe: '-65.2%',
+      revenue: '4.8B',
+      grossMargin: '-28.6%',
+      netMargin: '-120.4%',
+      debtToEquity: '32.0%'
+    },
+    news: [
+      { title: 'Rivian impacted by punitive tariffs on EVs imported from China', date: '2025-05-04', url: 'https://news.example.com/rivian-tariff-impact' },
+      { title: 'Rivian ramps up production as demand grows for R2 SUV', date: '2025-04-22', url: 'https://news.example.com/rivian-r2-production' }
+    ],
+    profile: {
+      description: 'Rivian Automotive, Inc. is an American electric vehicle manufacturer and automotive technology company founded in 2009.',
+      executives: [
+        { name: 'RJ Scaringe', title: 'Chief Executive Officer' },
+        { name: 'Claire McDonough', title: 'Chief Financial Officer' }
+      ],
+      address: '13250 N. Haggerty Road, Plymouth, MI 48170, United States',
+      website: 'https://rivian.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-10',
+      lastEarningsDate: '2025-05-07',
+      epsActual: '-1.05',
+      epsEstimate: '-1.12',
+      revenueActual: '1.25B',
+      revenueEstimate: '1.18B',
+      surprise: '+6.3%'
+    },
+    peers: [
+      { name: 'Tesla', ticker: 'TSLA' },
+      { name: 'Lucid Group', ticker: 'LCID' },
+      { name: 'Ford', ticker: 'F' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '4.8B', netIncome: '-5.8B' },
+        { year: 2023, revenue: '4.0B', netIncome: '-6.6B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '16.0B', liabilities: '6.5B', equity: '9.5B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '-3.8B', investing: '-2.0B', financing: '4.5B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 12, expiry: '2025-06-20', price: 0.85, volume: 12500 },
+        { strike: 15, expiry: '2025-06-20', price: 0.35, volume: 9800 }
+      ],
+      puts: [
+        { strike: 10, expiry: '2025-06-20', price: 0.75, volume: 14200 },
+        { strike: 8, expiry: '2025-06-20', price: 0.40, volume: 10500 }
+      ]
+    },
+    ownership: {
+      institutional: '68%',
+      insider: '30.5%',
+      topHolders: [
+        { name: 'T. Rowe Price', percent: '14.2%' },
+        { name: 'Amazon.com', percent: '17.1%' },
+        { name: 'Ford Motor Company', percent: '9.8%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 11.85 },
+      { date: '2025-05-06', price: 11.60 },
+      { date: '2025-05-07', price: 11.40 },
+      { date: '2025-05-08', price: 11.25 }
+    ]
+  },
+  {
+    name: 'Volvo AB',
+    ticker: 'VOLV-B.ST',
+    sector: 'Industrials',
+    index: 'OMX Stockholm 30',
+    price: 245, // SEK
+    change: '-1.2%',
+    summary: {
+      marketCap: '520B', // SEK (billion)
+      pe: 14.2,
+      eps: '17.25', // SEK
+      dividend: '7.5', // SEK
+      yield: '3.1%',
+      beta: 1.12,
+      volume: '3.2M',
+      shares: '2.13B',
+      roe: '18.2%',
+      revenue: '520B', // SEK (billion)
+      grossMargin: '22.5%',
+      netMargin: '9.3%',
+      debtToEquity: '65.0%'
+    },
+    news: [
+      { title: 'Volvo recalls 73,000 plug-in hybrid vehicles over fire risk', date: '2025-05-05', url: 'https://news.example.com/volvo-recall-hybrids' },
+      { title: 'Volvo drops S90 from U.S. market due to tariffs', date: '2025-04-26', url: 'https://news.example.com/volvo-s90-us-market' }
+    ],
+    profile: {
+      description: 'Volvo AB is a Swedish multinational manufacturing company headquartered in Gothenburg, Sweden, focusing on trucks, buses, construction equipment, marine and industrial power systems.',
+      executives: [
+        { name: 'Martin Lundstedt', title: 'President & CEO' },
+        { name: 'Jan Ytterberg', title: 'Chief Financial Officer' }
+      ],
+      address: 'Gropegårdsgatan 2, 417 15 Göteborg, Sweden',
+      website: 'https://www.volvogroup.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-20',
+      lastEarningsDate: '2025-04-24',
+      epsActual: '4.35', // SEK
+      epsEstimate: '4.50', // SEK
+      revenueActual: '130B', // SEK (billion)
+      revenueEstimate: '132B', // SEK (billion)
+      surprise: '-3.3%'
+    },
+    peers: [
+      { name: 'Scania', ticker: 'SCV-B.ST' },
+      { name: 'Daimler Truck', ticker: 'DTG.DE' },
+      { name: 'Traton', ticker: '8TRA.DE' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '520B', netIncome: '48B' }, // SEK (billion)
+        { year: 2023, revenue: '490B', netIncome: '45B' } // SEK (billion)
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '650B', liabilities: '420B', equity: '230B' } // SEK (billion)
+      ],
+      cashFlow: [
+        { year: 2024, operating: '65B', investing: '-35B', financing: '-25B' } // SEK (billion)
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 250, expiry: '2025-06-20', price: 5.2, volume: 280 },
+        { strike: 260, expiry: '2025-06-20', price: 3.1, volume: 190 }
+      ],
+      puts: [
+        { strike: 240, expiry: '2025-06-20', price: 4.8, volume: 320 },
+        { strike: 230, expiry: '2025-06-20', price: 2.9, volume: 240 }
+      ]
+    },
+    ownership: {
+      institutional: '65%',
+      insider: '8.6%',
+      topHolders: [
+        { name: 'Industrivärden', percent: '16.8%' },
+        { name: 'Geely Holding', percent: '8.2%' },
+        { name: 'Alecta Pension Insurance', percent: '5.7%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 249 },
+      { date: '2025-05-06', price: 247 },
+      { date: '2025-05-07', price: 246 },
+      { date: '2025-05-08', price: 245 }
+    ]
+  },
+  {
+    name: 'Amazon.com Inc.',
+    ticker: 'AMZN',
+    sector: 'Consumer Discretionary',
+    index: 'NASDAQ-100',
+    price: 188,
+    change: '-0.7%',
+    summary: {
+      marketCap: '1.95T',
+      pe: 45.8,
+      eps: 4.10,
+      dividend: 0,
+      yield: '0%',
+      beta: 1.25,
+      volume: '35.2M',
+      shares: '10.4B',
+      roe: '22.5%',
+      revenue: '575.0B',
+      grossMargin: '48.2%',
+      netMargin: '7.4%',
+      debtToEquity: '45.0%'
+    },
+    news: [
+      { title: 'Amazon stock slips on weaker operating profit forecast', date: '2025-05-04', url: 'https://news.example.com/amazon-profit-forecast' },
+      { title: 'Amazon cites tariffs and trade policies as challenges to growth', date: '2025-04-28', url: 'https://news.example.com/amazon-tariff-impact' }
+    ],
+    profile: {
+      description: 'Amazon.com, Inc. is an American multinational technology company focusing on e-commerce, cloud computing, online advertising, digital streaming, and artificial intelligence.',
+      executives: [
+        { name: 'Andy Jassy', title: 'President & CEO' },
+        { name: 'Brian Olsavsky', title: 'Chief Financial Officer' }
+      ],
+      address: '410 Terry Avenue North, Seattle, WA 98109, United States',
+      website: 'https://www.amazon.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-25',
+      lastEarningsDate: '2025-04-30',
+      epsActual: 0.98,
+      epsEstimate: 1.05,
+      revenueActual: '142.5B',
+      revenueEstimate: '140.8B',
+      surprise: '-6.7%'
+    },
+    peers: [
+      { name: 'Alphabet', ticker: 'GOOGL' },
+      { name: 'Microsoft', ticker: 'MSFT' },
+      { name: 'Walmart', ticker: 'WMT' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '575.0B', netIncome: '42.5B' },
+        { year: 2023, revenue: '538.8B', netIncome: '35.2B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '480.0B', liabilities: '260.0B', equity: '220.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '85.0B', investing: '-48.0B', financing: '-15.0B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 195, expiry: '2025-06-20', price: 5.8, volume: 22000 },
+        { strike: 200, expiry: '2025-06-20', price: 4.2, volume: 18500 }
+      ],
+      puts: [
+        { strike: 185, expiry: '2025-06-20', price: 5.6, volume: 25000 },
+        { strike: 180, expiry: '2025-06-20', price: 4.3, volume: 20000 }
+      ]
+    },
+    ownership: {
+      institutional: '62%',
+      insider: '9.2%',
+      topHolders: [
+        { name: 'Vanguard Group', percent: '7.5%' },
+        { name: 'BlackRock', percent: '6.8%' },
+        { name: 'State Street Global Advisors', percent: '4.1%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 190 },
+      { date: '2025-05-06', price: 189.2 },
+      { date: '2025-05-07', price: 188.5 },
+      { date: '2025-05-08', price: 188 }
+    ]
+  },
+  {
+    name: 'Cummins Inc.',
+    ticker: 'CMI',
+    sector: 'Industrials',
+    index: 'S&P 500',
+    price: 265,
+    change: '-1.1%',
+    summary: {
+      marketCap: '38B',
+      pe: 18.2,
+      eps: 14.56,
+      dividend: 6.52,
+      yield: '2.5%',
+      beta: 1.05,
+      volume: '0.85M',
+      shares: '0.14B',
+      roe: '16.8%',
+      revenue: '34.0B',
+      grossMargin: '24.5%',
+      netMargin: '8.3%',
+      debtToEquity: '38.0%'
+    },
+    news: [
+      { title: 'Cummins withdraws 2025 outlook due to economic uncertainty', date: '2025-05-07', url: 'https://news.example.com/cummins-outlook-withdrawn' },
+      { title: 'Cummins share value down 12% year-to-date', date: '2025-04-29', url: 'https://news.example.com/cummins-share-decline' }
+    ],
+    profile: {
+      description: 'Cummins Inc. is an American multinational corporation that designs, manufactures, and distributes engines, filtration, and power generation products.',
+      executives: [
+        { name: 'Jennifer Rumsey', title: 'President & CEO' },
+        { name: 'Mark Smith', title: 'Chief Financial Officer' }
+      ],
+      address: '500 Jackson Street, Columbus, IN 47201, United States',
+      website: 'https://www.cummins.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-01',
+      lastEarningsDate: '2025-05-05',
+      epsActual: 3.45,
+      epsEstimate: 3.80,
+      revenueActual: '8.4B',
+      revenueEstimate: '8.7B',
+      surprise: '-9.2%'
+    },
+    peers: [
+      { name: 'Caterpillar', ticker: 'CAT' },
+      { name: 'Deere & Company', ticker: 'DE' },
+      { name: 'Paccar', ticker: 'PCAR' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '34.0B', netIncome: '2.8B' },
+        { year: 2023, revenue: '32.8B', netIncome: '3.0B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '42.0B', liabilities: '26.0B', equity: '16.0B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '4.2B', investing: '-2.1B', financing: '-1.8B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 270, expiry: '2025-06-20', price: 5.8, volume: 180 },
+        { strike: 280, expiry: '2025-06-20', price: 3.5, volume: 120 }
+      ],
+      puts: [
+        { strike: 260, expiry: '2025-06-20', price: 6.2, volume: 210 },
+        { strike: 250, expiry: '2025-06-20', price: 4.1, volume: 160 }
+      ]
+    },
+    ownership: {
+      institutional: '86%',
+      insider: '0.2%',
+      topHolders: [
+        { name: 'Vanguard Group', percent: '8.6%' },
+        { name: 'BlackRock', percent: '7.9%' },
+        { name: 'State Street Global Advisors', percent: '5.2%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-05', price: 269 },
+      { date: '2025-05-06', price: 267 },
+      { date: '2025-05-07', price: 266 },
+      { date: '2025-05-08', price: 265 }
+    ]
   }
 ];

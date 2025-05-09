@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { mockCompanies } from '@/data/mockCompanies';
 
 // Mock data for global indices
 const indices = [
@@ -12,21 +13,14 @@ const indices = [
   { name: 'Hang Seng', region: 'Hong Kong', value: 18000, change: '-0.2%', companies: 50, sectors: 10, segments: ['Large Cap'] },
   { name: 'CAC 40', region: 'France', value: 8200, change: '+0.4%', companies: 40, sectors: 10, segments: ['Large Cap'] },
   { name: 'SSE Composite', region: 'China', value: 3200, change: '+0.1%', companies: 1500, sectors: 11, segments: ['All Cap'] },
+  { name: 'SMI', region: 'Switzerland', value: 11200, change: '+0.3%', companies: 20, sectors: 10, segments: ['Large Cap'] },
+  { name: 'AEX', region: 'Netherlands', value: 880, change: '+0.5%', companies: 25, sectors: 9, segments: ['Large Cap'] },
 ];
 
 const sectors = [
   'Information Technology', 'Health Care', 'Financials', 'Consumer Discretionary',
   'Communication Services', 'Industrials', 'Consumer Staples', 'Energy',
   'Utilities', 'Real Estate', 'Materials'
-];
-
-const companies = [
-  { name: 'Apple', ticker: 'AAPL', sector: 'Information Technology', index: 'S&P 500', price: 190, change: '+1.1%' },
-  { name: 'Microsoft', ticker: 'MSFT', sector: 'Information Technology', index: 'S&P 500', price: 420, change: '+0.9%' },
-  { name: 'JPMorgan Chase', ticker: 'JPM', sector: 'Financials', index: 'Dow Jones', price: 180, change: '+0.4%' },
-  { name: 'Toyota', ticker: '7203.T', sector: 'Consumer Discretionary', index: 'Nikkei 225', price: 2600, change: '+0.7%' },
-  { name: 'Nestlé', ticker: 'NESN.SW', sector: 'Consumer Staples', index: 'SSE Composite', price: 110, change: '-0.2%' },
-  // ...add more as needed
 ];
 
 export default function StocksDashboardPage() {
@@ -71,9 +65,8 @@ export default function StocksDashboardPage() {
             <span key={sector} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">{sector}</span>
           ))}
         </div>
-      </section>
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Sample Companies</h2>
+      </section>      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Sample Companies Overview</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border text-sm">
             <thead className="bg-gray-100">
@@ -84,10 +77,13 @@ export default function StocksDashboardPage() {
                 <th className="px-3 py-2">Index</th>
                 <th className="px-3 py-2">Price</th>
                 <th className="px-3 py-2">Change</th>
+                <th className="px-3 py-2">Market Cap</th>
+                <th className="px-3 py-2">P/E</th>
+                <th className="px-3 py-2">Dividend Yield</th>
               </tr>
             </thead>
             <tbody>
-              {companies.map(c => (
+              {mockCompanies.map(c => (
                 <tr key={c.ticker} className="border-b">
                   <td className="px-3 py-2 font-medium">
                     <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.name}</Link>
@@ -99,10 +95,74 @@ export default function StocksDashboardPage() {
                   <td className="px-3 py-2">{c.index}</td>
                   <td className="px-3 py-2">{c.price}</td>
                   <td className="px-3 py-2">{c.change}</td>
+                  <td className="px-3 py-2">{c.summary.marketCap}</td>
+                  <td className="px-3 py-2">{c.summary.pe}</td>
+                  <td className="px-3 py-2">{c.summary.yield}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+      
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Detailed Company Information</h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {mockCompanies.map(company => (
+            <div key={company.ticker} className="border rounded-lg p-4 shadow-sm">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-bold">{company.name}</h3>
+                <div className="text-right">
+                  <p className="text-lg font-semibold">{company.price}</p>
+                  <p className={`text-sm ${company.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
+                    {company.change}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="text-sm mb-3">
+                <p><span className="font-medium">Ticker:</span> {company.ticker}</p>
+                <p><span className="font-medium">Sector:</span> {company.sector}</p>
+                <p><span className="font-medium">Index:</span> {company.index}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-2 text-xs mb-3">
+                <p><span className="font-medium">Market Cap:</span> {company.summary.marketCap}</p>
+                <p><span className="font-medium">P/E Ratio:</span> {company.summary.pe}</p>
+                <p><span className="font-medium">EPS:</span> {company.summary.eps}</p>
+                <p><span className="font-medium">Dividend:</span> {company.summary.dividend}</p>
+                <p><span className="font-medium">Yield:</span> {company.summary.yield}</p>
+                <p><span className="font-medium">Beta:</span> {company.summary.beta}</p>
+              </div>
+              
+              {company.news && company.news.length > 0 && (
+                <div className="mb-3">
+                  <h4 className="font-medium mb-1">Recent News</h4>
+                  <ul className="text-xs">
+                    {company.news.slice(0, 2).map((item, index) => (
+                      <li key={index} className="mb-1">
+                        <p>{item.title} <span className="text-gray-500">({item.date})</span></p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {company.profile && (
+                <div className="text-xs">
+                  <h4 className="font-medium mb-1">About</h4>
+                  <p className="line-clamp-3">{company.profile.description}</p>
+                </div>
+              )}
+              
+              <div className="mt-3 pt-2 border-t">
+                <Link href={`/dashboards/stocks/${encodeURIComponent(company.ticker)}`}
+                  className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                  View Details →
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
