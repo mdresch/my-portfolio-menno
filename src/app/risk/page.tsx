@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import InteractiveRiskMap from '@/components/risk/InteractiveRiskMap'; // Adjust path
+import RiskReportCard from '@/components/risk/RiskReportCard';
 
 export default function RiskOverviewPage() {
   return (
@@ -81,151 +82,278 @@ export default function RiskOverviewPage() {
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 transition-colors">Risk Reports Library</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1 - Canadian Financial Stability */}
-          <div className="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-            <Link href="/risk/canadian-financial-stability">
-              <div className="relative h-48">
-                <Image
-                  src="/images/showcase-dataviz.jpg"
-                  alt="Canadian Financial Stability Report"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </Link>
-            <div className="p-5">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">Financial Risk</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">May 8, 2025</span>
-              </div>
-              <Link href="/risk/canadian-financial-stability">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Canadian Financial Stability Report—2025</h3>
-              </Link>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Analysis of how the Canadian financial system is responding to US trade policy uncertainty and market volatility.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Trade War</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Banking</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Market Volatility</span>
-              </div>
-            </div>
-          </div>
+          <RiskReportCard
+            title="Canadian Financial Stability Report—2025"
+            description="Analysis of how the Canadian financial system is responding to US trade policy uncertainty and market volatility in 2025."
+            date="May 8, 2025"
+            category="Financial Risk"
+            tags={["Trade War", "Banking", "Market Volatility"]}
+            imageUrl="/images/showcase-dataviz.jpg"
+            href="/risk/canadian-financial-stability"
+            usePlaceholder={false} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/canadian-financial-stability-2025.csv" },
+              { format: "JSON", url: "/data/canadian-financial-stability-2025.json" },
+              { format: "XML", url: "/data/canadian-financial-stability-2025.xml" }
+            ]}
+          />
+          
+          {/* Card 2 - Deep Dive Trade War */}
+          <RiskReportCard
+            title="Global Trade War Analysis"
+            description="Deep dive into potential scenarios in the evolving US-China-EU trade conflict and implications for financial markets."
+            date="April 15, 2025"
+            category="Geopolitical Risk"
+            tags={["Trade War", "Geopolitics", "Scenario Analysis"]}
+            imageUrl="/images/risk-management-1.jpg"
+            href="/risk/deep-dive-trade"
+            usePlaceholder={false} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/trade-war-scenarios.csv" },
+              { format: "JSON", url: "/data/trade-war-scenarios.json" }
+            ]}
+          />
+          
+          {/* Card 3 - Climate Financial Impact */}
+          <RiskReportCard
+            title="Climate Risk Financial Impact"
+            description="Analysis of long-term climate risks to financial stability, including transition risks and physical asset exposures."
+            date="March 22, 2025"
+            category="Environmental Risk"
+            tags={["Climate Change", "Transition Risk", "Long-term Analysis"]}
+            imageUrl="/images/riskmanagement2.jpg"
+            href="/risk/climate-financial-impact"
+            usePlaceholder={false} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/climate-risk-data.csv" }
+            ]}
+          />
 
-          {/* Card 2 - Global Risks */}
-          <div className="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-            <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-              <div className="text-lg text-gray-400 dark:text-gray-500">Coming Soon</div>
-            </div>
-            <div className="p-5">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">Global Risk</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Expected June 2025</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Global Risks 2025: A World of Growing Divisions</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Comprehensive analysis of global geopolitical, economic, societal, and technological risks.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Geopolitical</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Climate</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Technology</span>
-              </div>
-            </div>
-          </div>
+          {/* Legal Payment Tender Risks UK */}
+          <RiskReportCard
+            title="Legal Payment Tender UK Analysis"
+            description="Comprehensive assessment of regulatory changes affecting payment systems and digital currency frameworks in the United Kingdom, with focus on CBDC development and private stablecoin regulation."
+            date="May 2, 2025"
+            category="Regulatory Risk"
+            tags={["CBDC", "Digital Payments", "Regulation"]}
+            imageUrl="/images/riskmanagement3.jpg"
+            href="/risk/legal-payment-tender-uk"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/uk-payment-systems-data.csv" },
+              { format: "JSON", url: "/data/uk-payment-systems-data.json" }
+            ]}
+          />
 
-          {/* Card 3 - Legal Payment Risks */}
-          <div className="bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
-            <div className="relative h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-              <div className="text-lg text-gray-400 dark:text-gray-500">Coming Soon</div>
-            </div>
-            <div className="p-5">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-medium text-blue-600 dark:text-blue-400">Regulatory Risk</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Expected July 2025</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Legal Payment Tender Risks UK 2025</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Analysis of regulatory changes affecting payment systems and legal tender in the UK.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Regulatory</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Payments</span>
-                <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Legal</span>
-              </div>
-            </div>
-          </div>
+          {/* global business complexity index */}
+          <RiskReportCard
+            title="Global Business Complexity Index"
+            description="Analysis of the Global Business Complexity Index (GBCI) to assess the regulatory environment and business complexity across different countries."
+            date="May 2, 2025"
+            category="Regulatory Risk"
+            tags={["GBCI", "Global Business Complexity Index", "Regulation"]}
+            imageUrl="/images/showcase-dataviz5.jpg"
+            href="/risk/global-business-complexity-index"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/global-business-complexity-index.csv" },
+              { format: "JSON", url: "/data/global-business-complexity-index.json" }
+            ]}
+          />
+
         </div>
       </section>
 
-      <section className="mb-10">
-        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Risk Assessment Methodology</h2>
-        <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-          Our risk reports use a comprehensive methodology that combines quantitative data analysis with qualitative expert assessment.
-          Each report includes:
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 transition-colors">Global Risk Map</h2>
+        <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
+          <p className="text-gray-700 dark:text-gray-300 mb-6 transition-colors">
+            Explore financial stability and risk factors across different regions. Click on regions to view detailed risk assessments and key vulnerabilities.
+          </p>          <div className="h-[500px] w-full relative">
+            <InteractiveRiskMap className="w-full h-full absolute inset-0" />
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 transition-colors">
+            Data updated: May 2025. Risk levels are calculated based on economic indicators, market volatility, and geopolitical factors.
+          </p>
+        </div>
+      </section>
+
+      <section className="my-16">
+        <h2 className="text-3xl font-semibold text-gray-800 dark:text-white mb-6 text-center transition-colors">
+          All Risk Analysis Reports
+        </h2>
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto transition-colors">
+          Browse our complete collection of risk analysis reports covering various financial sectors, geopolitical events, and emerging threats.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Data Sources</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-              <li>Central bank financial stability reports</li>
-              <li>Market data from major exchanges and data providers</li>
-              <li>Economic indicator reports from statistical agencies</li>
-              <li>Industry surveys and expert interviews</li>
-              <li>Academic research and policy papers</li>
-            </ul>
-          </div>
-          <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Analytical Framework</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-              <li>Risk identification through expert consultation</li>
-              <li>Likelihood assessment based on statistical models</li>
-              <li>Impact evaluation across economic sectors</li>
-              <li>Interconnection analysis between risk factors</li>
-              <li>Scenario development for future planning</li>
-            </ul>
-          </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Canadian Financial Stability */}
+          <RiskReportCard
+            title="Canadian Financial Stability Report—2025"
+            description="Analysis of how the Canadian financial system is responding to US trade policy uncertainty and market volatility."
+            date="May 8, 2025"
+            category="Financial Risk"
+            tags={["Trade War", "Banking", "Market Volatility"]}
+            imageUrl="/images/showcase-dataviz.jpg"
+            href="/risk/canadian-financial-stability"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/canadian-financial-stability-2025.csv" },
+              { format: "JSON", url: "/data/canadian-financial-stability-2025.json" },
+              { format: "XML", url: "/data/canadian-financial-stability-2025.xml" }
+            ]}
+          />
+          
+          {/* Deep Dive Trade Analysis */}
+          <RiskReportCard
+            title="Global Trade War Analysis"
+            description="Deep dive into potential scenarios in the evolving US-China-EU trade conflict and implications for financial markets."
+            date="April 15, 2025"
+            category="Geopolitical Risk"
+            tags={["Trade War", "Geopolitics", "Scenario Analysis"]}
+            imageUrl="/images/risk-management-1.jpg"
+            href="/risk/deep-dive-trade"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/trade-war-scenarios.csv" },
+              { format: "JSON", url: "/data/trade-war-scenarios.json" }
+            ]}
+          />
+          
+          {/* Climate Financial Impact */}
+          <RiskReportCard
+            title="Climate Risk Financial Impact"
+            description="Analysis of long-term climate risks to financial stability, including transition risks and physical asset exposures."
+            date="March 22, 2025"
+            category="Environmental Risk"
+            tags={["Climate Change", "Transition Risk", "Long-term Analysis"]}
+            imageUrl="/images/riskmanagement2.jpg"
+            href="/risk/climate-financial-impact"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/climate-risk-data.csv" }
+            ]}
+          />
+          
+          {/* European Banking System Health */}
+          <RiskReportCard
+            title="European Banking System Health"
+            description="Comprehensive assessment of European banking sector vulnerabilities, capital adequacy, and stress test results."
+            date="February 28, 2025"
+            category="Financial Risk"
+            tags={["Banking", "Europe", "Stress Tests"]}
+            imageUrl="/images/riskmanagement3.jpg"
+            href="/risk/european-banking-health"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/eu-banking-data.csv" }
+            ]}
+          />
+          
+          {/* Global Liquidity Trends */}
+          <RiskReportCard
+            title="Global Liquidity Trends Report"
+            description="Analysis of global liquidity conditions, central bank interventions, and implications for financial market stability."
+            date="January 15, 2025"
+            category="Market Risk"
+            tags={["Liquidity", "Central Banks", "Market Stability"]}
+            imageUrl="/images/riskmanagement4.jpg"
+            href="/risk/global-liquidity-trends"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/global-liquidity-data.csv" },
+              { format: "JSON", url: "/data/global-liquidity-data.json" }
+            ]}
+          />
+          
+          {/* Cryptocurrency Market Stability */}
+          <RiskReportCard
+            title="Cryptocurrency Market Stability"
+            description="Risk assessment of cryptocurrency markets, regulatory developments, and potential contagion to traditional financial systems."
+            date="December 10, 2024"
+            category="Emerging Risk"
+            tags={["Crypto", "Digital Assets", "Regulation"]}
+            imageUrl="/images/riskmanagement5.jpg"
+            href="/risk/crypto-market-stability"
+            usePlaceholder={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/crypto-stability-data.csv" }
+            ]}
+          />
+          
+          {/* Sovereign Debt Crisis Risks */}
+          <RiskReportCard
+            title="Sovereign Debt Crisis Risk Monitor"
+            description="Analysis of global sovereign debt levels, sustainability metrics, and potential triggers for sovereign debt crises."
+            date="November 5, 2024"
+            category="Sovereign Risk"
+            tags={["Debt", "Government", "Fiscal Policy"]}
+            imageUrl="/images/riskmanagement6.jpg"
+            href="/risk/sovereign-debt-monitor"
+            usePlaceholder={false}
+            isComingSoon={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/sovereign-debt-data.csv" },
+              { format: "JSON", url: "/data/sovereign-debt-data.json" }
+            ]}
+          />
+          
+          {/* Supply Chain Disruption Analysis */}
+          <RiskReportCard
+            title="Supply Chain Disruption Analysis"
+            description="Assessment of global supply chain vulnerabilities, resilience metrics, and financial impact of disruption scenarios."
+            date="October 20, 2024"
+            category="Operational Risk"
+            tags={["Supply Chain", "Logistics", "Business Continuity"]}
+            imageUrl="/images/showcase-dataviz3.jpg"
+            href="/risk/supply-chain-disruption"
+            usePlaceholder={false}
+            isComingSoon={false}
+            downloadLinks={[
+              { format: "CSV", url: "/data/supply-chain-data.csv" }
+            ]}
+          />
+            
+          {/* Legal Payment Risks (Coming Soon) */}
+          <RiskReportCard
+            title="Legal Payment Tender Risks UK 2025"
+            description="Analysis of regulatory changes affecting payment systems and legal tender in the UK. This report will examine the implications of new digital currency regulations."
+            date="Expected July 2025"
+            category="Regulatory Risk"
+            tags={["Regulatory", "Payments", "Legal"]}
+            imageUrl="/images/showcase-dataviz4.jpg"
+            href="/risk/legal-payment-tender-uk"
+            usePlaceholder={false}
+            isComingSoon={false}
+          />
+          
+          {/* Cybersecurity Risk (Coming Soon) */}
+          <RiskReportCard
+            title="Financial System Cybersecurity Risk Report"
+            description="Analysis of emerging cybersecurity threats to financial institutions and critical financial infrastructure. Includes vulnerability assessments and resilience strategies."
+            date="Expected August 2025"
+            category="Cybersecurity Risk"
+            tags={["Cyber", "Security", "Digital Infrastructure"]}
+            imageUrl="/images/showcase-dataviz5.jpg"
+            href="/risk/cybersecurity-financial"
+            usePlaceholder={false}
+            isComingSoon={false}
+          />
+                    
+          {/* Cybersecurity Risk (Coming Soon) */}
+          <RiskReportCard
+            title="Energy Transition Political Risks"
+            description=""
+            date="May 01, 2025"
+            category="Political Risk"
+            tags={["Energy Transition", "Political Risk", "Geopolitical"]}
+            imageUrl="/images/risk-management-1.jpg"
+            href="/risk/energy-transition-political-risks"
+            usePlaceholder={false}
+            isComingSoon={false}
+          />
         </div>
       </section>
-
-      <section>
-        <div className="bg-gray-50 dark:bg-neutral-900/50 rounded-lg p-6 border border-gray-200 dark:border-gray-800 transition-colors">
-          <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Subscribe to Risk Updates</h2>
-          <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-            Stay informed about the latest risk reports and analysis. Subscribe to receive notifications when new reports are published.
-          </p>
-          <div className="mt-4 flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex-grow dark:bg-neutral-800 dark:text-white transition-colors"
-            />
-            <button
-              type="button"
-              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
-            >
-              Subscribe
-            </button>
-          </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-            By subscribing, you agree to receive email communications. You can unsubscribe at any time.
-          </p>
-        </div>
-      </section>
-
-      <section id="interactive-map" className="my-12">
-         <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Regional Risk Hotspots</h2>
-         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-           Explore hypothetical top risks based on the Global Risk Management Survey regions by hovering over representative countries on the map. (Data is illustrative).
-         </p>
-         <InteractiveRiskMap />
-      </section>
-
-       {/* Link back to home */}
-       <div className="mt-12 text-center">
-        <Link href="/" className="text-blue-600 hover:underline">
-          ← Back to Home
-        </Link>
-      </div>
     </div>
   );
 }

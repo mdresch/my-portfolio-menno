@@ -12,6 +12,7 @@ import {
   InternationalContagionChart,
   ClimateRiskChart
 } from '@/components/risk/CanadianFinancialCharts';
+import RiskReportCard from '@/components/risk/RiskReportCard';
 
 export default function CanadianFinancialStabilityPage() {
   return (
@@ -335,6 +336,60 @@ export default function CanadianFinancialStabilityPage() {
           This analysis was produced by the Governing Council of the Bank of Canada: Tiff Macklem, Carolyn Rogers, Toni Gravelle, 
           Sharon Kozicki, Nicolas Vincent, Rhys Mendes and Michelle Alexopoulos.
         </p>
+      </section>
+
+      {/* Related Risk Reports Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Related Risk Reports</h2>
+        <p className="text-gray-700 dark:text-gray-300 mb-6 transition-colors">
+          Explore our other risk analysis reports to gain a comprehensive understanding of the evolving risk landscape
+          across markets, geopolitics, and regulatory environments.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <RiskReportCard
+            title="Canadian Financial Stability Report—2025"
+            description="Analysis of how the Canadian financial system is responding to US trade policy uncertainty and market volatility."
+            date="May 8, 2025"
+            category="Financial Risk"
+            tags={["Trade War", "Banking", "Market Volatility"]}
+            imageUrl="/images/showcase-dataviz.jpg"
+            href="/risk/canadian-financial-stability"
+            isActive={true}
+            usePlaceholder={true} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/canadian-financial-stability-2025.csv" },
+              { format: "JSON", url: "/data/canadian-financial-stability-2025.json" },
+              { format: "XML", url: "/data/canadian-financial-stability-2025.xml" }
+            ]}
+          />
+          <RiskReportCard
+            title="Global Trade War Analysis"
+            description="Deep dive into potential scenarios in the evolving US-China-EU trade conflict and implications for financial markets."
+            date="April 15, 2025"
+            category="Geopolitical Risk"
+            tags={["Trade War", "Geopolitics", "Scenario Analysis"]}
+            imageUrl="/images/risk-trade.jpg"
+            href="/risk/deep-dive-trade"
+            usePlaceholder={true} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/trade-war-scenarios.csv" },
+              { format: "JSON", url: "/data/trade-war-scenarios.json" }
+            ]}
+          />
+          <RiskReportCard
+            title="Climate Risk Financial Impact"
+            description="Analysis of long-term climate risks to financial stability, including transition risks and physical asset exposures."
+            date="March 22, 2025"
+            category="Environmental Risk"
+            tags={["Climate Change", "Transition Risk", "Long-term Analysis"]}
+            imageUrl="/images/risk-climate.jpg"
+            href="/risk/climate-financial-impact"
+            usePlaceholder={true} // Using placeholder until images are ready
+            downloadLinks={[
+              { format: "CSV", url: "/data/climate-risk-data.csv" }
+            ]}
+          />
+        </div>
       </section>
 
       {/* Link back to risk page */}
