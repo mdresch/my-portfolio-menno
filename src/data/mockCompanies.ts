@@ -1918,5 +1918,201 @@ export const mockCompanies = [
     options: {},
     ownership: {},
     priceHistory: []
+  },
+  {
+    name: 'Schneider Electric',
+    ticker: 'SU.PA',
+    sector: 'Industrials',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Schneider Electric has 7 factories recognized as Global Lighthouse Network sites, including Shanghai and Monterrey',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Schneider Electric SE is a French multinational company providing energy and automation digital solutions for efficiency and sustainability.',
+      executives: [],
+      address: '',
+      website: 'https://www.se.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Agilent Technologies',
+    ticker: 'A',
+    sector: 'Health Care',
+    index: 'S&P 500',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Agilent Technologies has two smart factories in Asia named as Global Lighthouse Network sites',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Agilent Technologies, Inc. is an American public research, development and manufacturing company.',
+      executives: [],
+      address: '',
+      website: 'https://www.agilent.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'UMC',
+    ticker: '2303.TW',
+    sector: 'Information Technology',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'UMC’s Fab 12A in Tainan, Taiwan is the first semiconductor foundry globally to earn Lighthouse status',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'United Microelectronics Corporation (UMC) is a Taiwanese company specializing in semiconductor foundry services.',
+      executives: [],
+      address: '',
+      website: 'https://www.umc.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Aramco',
+    ticker: '2222.SR',
+    sector: 'Energy',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Five Aramco facilities, including North Ghawar, added to the Global Lighthouse Network',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Saudi Aramco is a Saudi Arabian public petroleum and natural gas company.',
+      executives: [],
+      address: '',
+      website: 'https://www.aramco.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'CITIC Dicastal',
+    ticker: '',
+    sector: 'Metals & Mining',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'CITIC Dicastal’s Morocco factory is the first Lighthouse site in Africa',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'CITIC Dicastal is a Chinese manufacturer of aluminum wheels and automotive components.',
+      executives: [],
+      address: '',
+      website: 'https://www.citicdicastal.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Hindustan Unilever Limited (HUL)',
+    ticker: 'HINDUNILVR.NS',
+    sector: 'Consumer Goods',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'HUL’s Doomdummer factory recognized as an end-to-end value chain Lighthouse',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Hindustan Unilever Limited is an Indian consumer goods company headquartered in Mumbai, India.',
+      executives: [],
+      address: '',
+      website: 'https://www.hul.co.in/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'CEAT',
+    ticker: 'CEATLTD.NS',
+    sector: 'Automotive',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'CEAT recognized in the Global Lighthouse Network for innovation in tire manufacturing',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'CEAT Limited is an Indian multinational tyre manufacturing company.',
+      executives: [],
+      address: '',
+      website: 'https://www.ceat.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
   }
 ];
