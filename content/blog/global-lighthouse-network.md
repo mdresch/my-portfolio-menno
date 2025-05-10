@@ -1,9 +1,11 @@
 ---
-title: "Global Lighthouse Network"
-date: "2025-05-10"
-coverImage: "/public/images/hero-image-techcorp.jpg"
-description: "An overview of the Global Lighthouse Network and its pioneering role in 4IR manufacturing."
+title: Global Lighthouse Network
+date: 2025-05-10
+author: Menno Drescher
+excerpt: Global Lighthouse Network is a collaborative platform that brings together leading industrial organizations that are pioneering the use of Fourth Industrial Revolution
+categories: [Lighthouse]
 ---
+
 
 # Global Lighthouse Network
 
