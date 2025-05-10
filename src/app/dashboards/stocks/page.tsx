@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { mockCompanies } from '@/data/mockCompanies';
 
@@ -24,6 +25,19 @@ const sectors = [
 ];
 
 export default function StocksDashboardPage() {
+  const [selectedSector, setSelectedSector] = useState('All');
+  const [selectedIndex, setSelectedIndex] = useState('All');
+
+  // Get unique indices from mockCompanies
+  const indicesList = Array.from(new Set(mockCompanies.map(c => c.index).filter(Boolean)));
+
+  // Filter companies based on selected sector and index
+  const filteredCompanies = mockCompanies.filter(c => {
+    const sectorMatch = selectedSector === 'All' || c.sector === selectedSector;
+    const indexMatch = selectedIndex === 'All' || c.index === selectedIndex;
+    return sectorMatch && indexMatch;
+  });
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Global Stocks & Indices Dashboard</h1>
@@ -65,8 +79,37 @@ export default function StocksDashboardPage() {
             <span key={sector} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">{sector}</span>
           ))}
         </div>
-      </section>      <section className="mb-10">
+      </section>      
+      <section className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">Sample Companies Overview</h2>
+        <div className="flex flex-wrap gap-4 mb-4">
+          <label className="text-sm font-medium">
+            Sector:
+            <select
+              className="ml-2 border rounded px-2 py-1"
+              value={selectedSector}
+              onChange={e => setSelectedSector(e.target.value)}
+            >
+              <option value="All">All</option>
+              {sectors.map(sector => (
+                <option key={sector} value={sector}>{sector}</option>
+              ))}
+            </select>
+          </label>
+          <label className="text-sm font-medium">
+            Index:
+            <select
+              className="ml-2 border rounded px-2 py-1"
+              value={selectedIndex}
+              onChange={e => setSelectedIndex(e.target.value)}
+            >
+              <option value="All">All</option>
+              {indicesList.map(index => (
+                <option key={index} value={index}>{index}</option>
+              ))}
+            </select>
+          </label>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full border text-sm">
             <thead className="bg-gray-100">
@@ -83,7 +126,7 @@ export default function StocksDashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {mockCompanies.map(c => (
+              {filteredCompanies.map(c => (
                 <tr key={c.ticker} className="border-b">
                   <td className="px-3 py-2 font-medium">
                     <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.name}</Link>
@@ -114,8 +157,8 @@ export default function StocksDashboardPage() {
                 <h3 className="text-xl font-bold">{company.name}</h3>
                 <div className="text-right">
                   <p className="text-lg font-semibold">{company.price}</p>
-                  <p className={`text-sm ${company.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
-                    {company.change}
+                  <p className={`text-sm ${typeof company.change === 'string' && company.change.startsWith('+') ? 'text-green-600' : typeof company.change === 'string' && company.change.startsWith('-') ? 'text-red-600' : 'text-gray-500'}`}>
+                    {company.change ?? 'N/A'}
                   </p>
                 </div>
               </div>
