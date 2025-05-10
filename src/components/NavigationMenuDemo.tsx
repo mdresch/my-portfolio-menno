@@ -4,9 +4,9 @@ import * as React from "react"
 import Link from "next/link"
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { StrictNavigationMenuLink } from "./StrictNavigationMenuLink";
 
 import { cn } from "@/lib/utils"
-//import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,8 +16,27 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { MobileMenu } from "./MobileMenu"
+import { ComponentItem } from "@/types/navigation"
 
-const components: { title: string; href: string; description: string }[] = [
+// Define interfaces for component props
+interface IconProps {
+  className?: string;
+}
+
+/** 
+ * Props for the DarkModeToggle component.
+ * Currently takes no props, but using type alias for future extensibility.
+ */
+type DarkModeToggleProps = Record<string, never>;
+
+/**
+ * Props for the NavigationMenuDemo component.
+ * Currently takes no props, but using type alias for future extensibility.
+ */
+type NavigationMenuDemoProps = Record<string, never>;
+
+const components: ComponentItem[] = [
   {
     title: "Risk",
     href: "/risk",
@@ -55,7 +74,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-const componentseconomics: { title: string; href: string; description: string }[] = [
+const componentseconomics: ComponentItem[] = [
     {
       title: "Balance of Trade",
       href: "/dashboards/balance-of-trade",
@@ -103,9 +122,9 @@ const componentseconomics: { title: string; href: string; description: string }[
       description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
     },
-  ]
+]
 
-function DarkModeToggle() {
+export function DarkModeToggle({}: DarkModeToggleProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   
@@ -134,7 +153,7 @@ function DarkModeToggle() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-          Light
+          
         </span>
       </button>
       <button
@@ -150,148 +169,244 @@ function DarkModeToggle() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
-          Dark
+          
         </span>
       </button>
     </div>
   );
 }
 
-export function NavigationMenuDemo() {
+// Hamburger menu icon component
+function HamburgerIcon({ className = "w-6 h-6" }: IconProps): React.ReactElement {
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex items-center">
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">About</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    href="/"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-secondary/20 transition-colors"
-                  >
-                    
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      Portfolio Menno
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                    Learn more about my background and experience
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/about" title="About Me">
-                Professional Expertise and Technical Skills
-              </ListItem>
-              <ListItem href="/now" title="Now">
-                What I'm Doing Now - Maturity Dashboard
-              </ListItem>
-              <ListItem href="/resume" title="Resume">
-                Interactive Resume - My Work Experience
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">News</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    href="/"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md hover:bg-secondary/20 transition-colors"
-                  >
-                    
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      Blog and Projects
-                    </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                    Learn more about my posts and projects
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/projects" title="Projects">
-                Professional Expertise and Technical Skills
-              </ListItem>
-              <ListItem href="/blog" title="Blog">
-                What I'm Doing Now - Maturity Dashboard
-              </ListItem>
-              <ListItem href="/admin/dashboard" title="Admin">
-                Interactive Resume - My Work Experience
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">Risk</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="hover:bg-secondary hover:text-secondary-foreground">Economics</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {componentseconomics.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="https://iq4fun.gitbook.io/my-portfolio-menno/" className={cn(navigationMenuTriggerStyle(), "hover:bg-secondary hover:text-secondary-foreground")}>
-            Docs
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="ml-4">
-          <DarkModeToggle />
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  )
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor" 
+      className={className}
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeWidth={2} 
+        d="M4 6h16M4 12h16M4 18h16" 
+      />
+    </svg>
+  );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+// Close icon for mobile menu
+function CloseIcon({ className = "w-6 h-6" }: IconProps): React.ReactElement {
+  return (    
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor" 
+      className={className}
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeWidth={2} 
+        d="M6 18L18 6M6 6l12 12" 
+      />
+    </svg>
+  );
+}
+
+
+
+export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close mobile menu when resizing to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-secondary-foreground",
-            className
-          )}
-          {...props}
+    <div className="relative w-full">      {/* Mobile menu button */}
+      <div className="md:hidden flex justify-end py-4">
+        <button
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
+          {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+        </button>
+      </div>
+      
+      {/* Mobile menu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        components={components}
+        componentseconomics={componentseconomics}
+      />
+        {/* Desktop menu */}
+      <div className="hidden md:block">
+        <NavigationMenu className="flex justify-center mx-auto">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>About</NavigationMenuTrigger>
+              <NavigationMenuContent>                
+                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                  <StrictNavigationMenuLink asChild>
+                    <Link
+                      href="/"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    >
+                      <div className="flex flex-col">
+                        <span className="mb-2 mt-4 text-lg font-medium">
+                          Portfolio Menno
+                        </span>
+                        <span className="text-sm leading-tight text-muted-foreground">
+                          Learn more about my background and experience
+                        </span>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
+                  <div className="grid gap-1">
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/about" className={cn("block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground")}>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">About Me</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Professional Expertise and Technical Skills
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/now" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Now</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            What I&apos;m Doing Now - Maturity Dashboard
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/resume" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Resume</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Interactive Resume - My Work Experience
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  </div>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>News</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                  <StrictNavigationMenuLink asChild>
+                    <Link
+                      href="/"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    >
+                      <div className="flex flex-col">
+                        <span className="mb-2 mt-4 text-lg font-medium">
+                          Blog and Projects
+                        </span>
+                        <span className="text-sm leading-tight text-muted-foreground">
+                          Learn more about my posts and projects
+                        </span>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
+                  <div className="grid gap-1">
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/projects" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Projects</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Professional Expertise and Technical Skills
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/blog" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Blog</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            What I&apos;m Doing Now - Maturity Dashboard
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/admin/dashboard" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Admin</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Interactive Resume - My Work Experience
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  </div>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>            <NavigationMenuItem>
+              <NavigationMenuTrigger>Risk</NavigationMenuTrigger>
+              <NavigationMenuContent>                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+                  {components.map((component) => (
+                    <StrictNavigationMenuLink key={component.href} asChild>
+                      <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">{component.title}</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            {component.description}
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>            <NavigationMenuItem>
+              <NavigationMenuTrigger>Economics</NavigationMenuTrigger>
+              <NavigationMenuContent>                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+                  {componentseconomics.map((component) => (
+                    <StrictNavigationMenuLink key={component.href} asChild>
+                      <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">{component.title}</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            {component.description}
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>            <NavigationMenuItem>
+              <StrictNavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                <Link href="https://iq4fun.gitbook.io/my-portfolio-menno/">Docs</Link>
+              </StrictNavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          <DarkModeToggle />
+        </div>
+      </div>
+    </div>
+  );
+}

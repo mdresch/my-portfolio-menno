@@ -18,7 +18,16 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app",
+            value: [
+              "default-src 'self';",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://giscus.app https://va.vercel-scripts.com;",
+              "worker-src 'self' blob:;",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net https://giscus.app;",
+              "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://cdn.jsdelivr.net https://giscus.app;",
+              "frame-src 'self' https://giscus.app;",
+              "connect-src 'self' https://giscus.app https://va.vercel-scripts.com https://o447951.ingest.sentry.io https://sentry.io https://api.github.com;",
+              "img-src 'self' data:;"
+            ].join(' '),
           },
         ],
       },

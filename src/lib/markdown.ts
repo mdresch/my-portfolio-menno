@@ -31,7 +31,8 @@ export interface BlogPost {
   slug: string;
   categories: string[];
   readingTime: string;
-  author?: string;
+  author: string;
+  coverImage?: string;
   hasError?: boolean;
   errorMessage?: string;
 }
@@ -90,18 +91,20 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
     } catch (yamlError) {
       console.error(`YAML parsing error in ${slug}.md:`, yamlError);
       // Return a post with error information
+      const message = (yamlError as Error).message || String(yamlError);
       return {
         id: slug,
         slug,
         title: `⚠️ YAML Error: ${slug}`,
         date: new Date().toISOString(),
-        excerpt: `This post has a frontmatter error: ${yamlError.message}`,
-        content: `# Error in Frontmatter\n\nThere was an error parsing the frontmatter in this file.\n\n\`\`\`\n${yamlError.message}\n\`\`\`\n\nPlease check the YAML formatting in the frontmatter section.`,
+        excerpt: `This post has a frontmatter error: ${message}`,
+        content: `# Error in Frontmatter\n\nThere was an error parsing the frontmatter in this file.\n\n\`\`\`\n${message}\n\`\`\`\n\nPlease check the YAML formatting in the frontmatter section.`,
         categories: ['error'],
         readingTime: '1 min read',
         author: 'Unknown',
+        coverImage: undefined,
         hasError: true,
-        errorMessage: yamlError.message
+        errorMessage: message
       };
     }
     
@@ -140,7 +143,8 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
       content: contentHtml,
       categories: categories,
       readingTime: `${readingTime} min read`,
-      author: matterResult.data.author || 'Anonymous'
+      author: matterResult.data.author || 'Anonymous',
+      coverImage: matterResult.data.coverImage || undefined
     };
   } catch (error) {
     console.error(`Error getting post data for ${slug}:`, error);
@@ -191,17 +195,19 @@ export async function getSortedPostsData(): Promise<Omit<BlogPost, 'content'>[]>
               } catch (yamlError) {
                 console.error(`YAML parsing error in ${fileName}:`, yamlError);
                 // Return a post with error information so the UI can still render
+                const message = (yamlError as Error).message || String(yamlError);
                 return {
                   id: slug,
                   slug,
                   title: `⚠️ Error: ${slug}`,
                   date: new Date().toISOString(),
-                  excerpt: `This post has a frontmatter error: ${yamlError.message}`,
+                  excerpt: `This post has a frontmatter error: ${message}`,
                   categories: ['error'],
                   readingTime: '1 min read',
                   author: 'Unknown',
+                  coverImage: undefined,
                   hasError: true,
-                  errorMessage: yamlError.message
+                  errorMessage: message
                 };
               }
             } catch (fileError) {
@@ -212,15 +218,14 @@ export async function getSortedPostsData(): Promise<Omit<BlogPost, 'content'>[]>
       );
       
       // Filter out null entries and sort posts by date
-      return allPostsData
-        .filter(Boolean)
-        .sort((a, b) => {
-          if (a.date < b.date) {
-            return 1;
-          } else {
-            return -1;
-          }
-        });
+      const filteredPosts = allPostsData.filter(Boolean);
+      return filteredPosts.sort((a, b) => {
+        if (a.date < b.date) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
     } catch (error) {
       console.error('Error reading posts from files:', error);
       return [];
