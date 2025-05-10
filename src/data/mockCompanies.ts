@@ -102,7 +102,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Microsoft unveils new AI features in Office', date: '2025-04-20', url: '#' },
-      { title: 'Microsoft Q1 earnings strong', date: '2025-04-15', url: '#' }
+      { title: 'Microsoft Q1 earnings strong', date: '2025-04-15', url: '#' },
+      { title: 'Microsoft bans Deepseek AI app over data vulnerability, funds $1M AI Accelerator Grant for ovarian cancer research', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Microsoft Corporation develops, licenses, and supports software, services, devices, and solutions worldwide.',
@@ -780,7 +781,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' },
-      { title: 'BMW affected by China tariffs on EVs', date: '2025-04-30', url: 'https://news.example.com/bmw-china-tariffs' }
+      { title: 'BMW affected by China tariffs on EVs', date: '2025-04-30', url: 'https://news.example.com/bmw-china-tariffs' },
+      { title: 'BMW pursues legal action against EU tariffs on Chinese EVs, seeks political agreements to mitigate impact', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Bayerische Motoren Werke AG (BMW) is a German multinational corporation which produces luxury vehicles and motorcycles.',
@@ -954,7 +956,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Mercedes-Benz revenue declined by 7.4% in Q1 2025', date: '2025-05-04', url: 'https://news.example.com/mercedes-q1-2025' },
-      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' }
+      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' },
+      { title: 'Mercedes-Benz withdraws earnings forecasts due to industry-wide tariff impacts', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Mercedes-Benz Group AG, formerly Daimler AG, is a German multinational automotive corporation headquartered in Stuttgart, known for luxury vehicles, trucks, and buses.',
@@ -1041,7 +1044,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Tesla car sales in Europe fall to two-year low', date: '2025-05-07', url: 'https://news.example.com/tesla-europe-sales-drop' },
-      { title: 'Tesla disappoints with Q1 earnings amid slumping China sales', date: '2025-04-25', url: 'https://news.example.com/tesla-q1-2025-earnings' }
+      { title: 'Tesla disappoints with Q1 earnings amid slumping China sales', date: '2025-04-25', url: 'https://news.example.com/tesla-q1-2025-earnings' },
+      { title: 'Tesla cancels Cybertruck range extender, refunds deposits to customers', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Tesla, Inc. is an American multinational automotive and clean energy company that designs and manufactures electric vehicles, battery energy storage, solar panels and solar roof tiles.',
@@ -1214,7 +1218,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Ferrari reports 25% sales drop in greater China region', date: '2025-05-08', url: 'https://news.example.com/ferrari-china-sales' },
-      { title: 'Ferrari global shipments up 1% despite regional challenges', date: '2025-05-03', url: 'https://news.example.com/ferrari-shipments-2025' }
+      { title: 'Ferrari global shipments up 1% despite regional challenges', date: '2025-05-03', url: 'https://news.example.com/ferrari-shipments-2025' },
+      { title: 'Ferrari maintains confident 2025 outlook despite tariffs, first EV deliveries expected', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Ferrari N.V. is an Italian luxury sports car manufacturer based in Maranello, Italy. Founded by Enzo Ferrari in 1939.',
@@ -1301,7 +1306,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Nissan to cut 9,000 jobs and reduce production capacity', date: '2025-05-07', url: 'https://news.example.com/nissan-job-cuts' },
-      { title: 'Nissan expects net loss of up to ¥750 billion for fiscal year', date: '2025-04-28', url: 'https://news.example.com/nissan-fiscal-projection' }
+      { title: 'Nissan expects net loss of up to ¥750 billion for fiscal year', date: '2025-04-28', url: 'https://news.example.com/nissan-fiscal-projection' },
+      { title: 'Nissan abandons ¥153B battery plant, focuses on new Leaf EV and Mitsubishi partnership for 2026 EV launch', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Nissan Motor Co., Ltd. is a Japanese multinational automobile manufacturer headquartered in Yokohama, Japan.',
@@ -1388,7 +1394,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'BYD scraps plans for Chile lithium plants due to global market conditions', date: '2025-05-06', url: 'https://news.example.com/byd-lithium-chile' },
-      { title: 'BYD surpasses Tesla in global EV sales for second consecutive quarter', date: '2025-04-29', url: 'https://news.example.com/byd-tesla-ev-sales' }
+      { title: 'BYD surpasses Tesla in global EV sales for second consecutive quarter', date: '2025-04-29', url: 'https://news.example.com/byd-tesla-ev-sales' },
+      { title: 'BYD aims for 5 million global sales, 80% from China, expands into Europe despite geopolitical challenges', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'BYD Company Limited is a Chinese manufacturing company based in Shenzhen, Guangdong, China, focusing on automobiles, battery-powered bicycles, buses, forklifts, solar panels, and rechargeable batteries.',
@@ -1562,7 +1569,8 @@ export const mockCompanies = [
     },
     news: [
       { title: 'Volvo recalls 73,000 plug-in hybrid vehicles over fire risk', date: '2025-05-05', url: 'https://news.example.com/volvo-recall-hybrids' },
-      { title: 'Volvo drops S90 from U.S. market due to tariffs', date: '2025-04-26', url: 'https://news.example.com/volvo-s90-us-market' }
+      { title: 'Volvo drops S90 from U.S. market due to tariffs', date: '2025-04-26', url: 'https://news.example.com/volvo-s90-us-market' },
+      { title: 'Volvo closes Silicon Valley innovation hub, delivers 5,000+ battery-electric trucks globally, sees increased demand for gas-powered trucks', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: 'Volvo AB is a Swedish multinational manufacturing company headquartered in Gothenburg, Sweden, focusing on trucks, buses, construction equipment, marine and industrial power systems.',
@@ -1798,5 +1806,117 @@ export const mockCompanies = [
       { date: '2025-05-07', price: 266 },
       { date: '2025-05-08', price: 265 }
     ]
+  },
+  {
+    name: 'Sono Motors GmbH',
+    ticker: 'SONO',
+    sector: 'Automotive',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Sono Motors shifts focus to solar kits for trucks, buses, and RVs after cancelling Sion project',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Sono Motors GmbH is a German company specializing in solar technology for vehicles.',
+      executives: [],
+      address: '',
+      website: 'https://sonomotors.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Denso Corp.',
+    ticker: '6902',
+    sector: 'Automotive',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Denso strengthens innovation and semiconductor partnerships, targets next-generation vehicle systems',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Denso Corporation is a global automotive components manufacturer headquartered in Japan.',
+      executives: [],
+      address: '',
+      website: 'https://www.denso.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Dassault Systemes SE',
+    ticker: 'DSY',
+    sector: 'Technology',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Dassault Systemes driven by strong growth expectations, faces risks with high P/E ratio',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Dassault Systemes SE is a French software company specializing in 3D design and engineering software.',
+      executives: [],
+      address: '',
+      website: 'https://www.3ds.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
+  },
+  {
+    name: 'Aptera Motors Corp.',
+    ticker: '',
+    sector: 'Automotive',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      {
+        title: 'Aptera integrates 700W solar panels, aims for 20,000 cars/year by 2027',
+        date: '2025-05-10',
+        url: ''
+      }
+    ],
+    profile: {
+      description: 'Aptera Motors Corp. is an American startup developing ultra-efficient solar electric vehicles.',
+      executives: [],
+      address: '',
+      website: 'https://aptera.us/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
   }
 ];
