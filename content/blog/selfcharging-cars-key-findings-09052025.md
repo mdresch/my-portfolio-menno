@@ -1,10 +1,14 @@
 ---
-title: Self-Charging Cars: Key Findings - May 9, 2025
-date: 2025-05-09
-author: Menno Drescher
-excerpt: Self Charging Electric Vehicles.
-categories: [Self Charging Electric Vehicles, SCEV]
+title: "Self-Charging Car: Key Findings - May 9, 2025"
+date: "2025-05-09"
+author: "Menno Drescher"
+categories:
+  - Technology
+  - Electric Vehicles
+excerpt: "A concise look at the promise and challenges of self-charging electric cars."
+coverImage: "/images/hero-image-techcorp.jpg"
 ---
+
 
 # Self-Charging-Car Analysis: Key Findings - May 9, 2025
 
