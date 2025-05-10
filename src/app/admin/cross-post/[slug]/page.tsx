@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface CrossPostPageProps {
@@ -9,20 +9,39 @@ interface CrossPostPageProps {
   };
 }
 
+// Add types for BlogPost and CrossPostResult
+interface BlogPost {
+  title: string;
+  date: string;
+  excerpt?: string;
+  categories?: string[];
+  // ...add any other fields you use
+}
+
+interface CrossPostResult {
+  error?: string;
+  url?: string;
+  [key: string]: any;
+}
+
 export default function CrossPostPage({ params }: CrossPostPageProps) {
-  const { slug } = params;
+  // Unwrap params if it's a Promise (Next.js 14+)
+  // @ts-expect-error: Next.js migration compatibility
+  const unwrappedParams = typeof params.then === 'function' ? React.use(params) : params;
+  const { slug } = (unwrappedParams as { slug: string });
   
   const [platform, setPlatform] = useState('hashnode');
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [hashnodeToken, setHashnodeToken] = useState('');
   const [devtoKey, setDevtoKey] = useState('');
   const [isCrossPosting, setIsCrossPosting] = useState(false);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<CrossPostResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   
   useEffect(() => {
+    if (typeof window === 'undefined') return; // Prevent SSR localStorage access
     // Load saved API keys
     const savedHashnodeToken = localStorage.getItem('hashnodeToken');
     
@@ -34,7 +53,10 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
       setIsLoading(true);
       setError(null);
       try {
-        const token = localStorage.getItem('githubToken');
+        let token: string | null = null;
+        if (typeof window !== 'undefined') {
+          token = localStorage.getItem('githubToken');
+        }
         const endpoint = token
           ? `/api/github-posts?slug=${slug}&token=${token}`
           : `/api/posts/${slug}`;
@@ -48,8 +70,8 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
         
         const postData = await response.json();
         setPost(postData);
-      } catch (err) {
-        setError(err.message || 'Failed to fetch post');
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch post');
       } finally {
         setIsLoading(false);
       }
@@ -60,14 +82,36 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
     
   // Handle cross-posting
   const handleCrossPost = async () => {
+    if (typeof window === 'undefined') return; // Prevent SSR localStorage access
     // Get the appropriate token based on platform
-    const token =
-    platform === 'hashnode' ? hashnodeToken || localStorage.getItem('hashnodeToken') : devtoKey || localStorage.getItem('devtoKey');
-      
+    let token: string | null = null;
+    if (typeof window !== 'undefined') {
+      token =
+        platform === 'hashnode'
+          ? hashnodeToken || localStorage.getItem('hashnodeToken')
+          : devtoKey || localStorage.getItem('devtoKey');
+    } else {
+      token = platform === 'hashnode' ? hashnodeToken : devtoKey;
+    }
     if (!token) {
       alert(`Please enter your ${platform === 'hashnode' ? 'Hashnode API token' : 'DEV.to API key'}`);
       return;
     }
+
+    // --- URL Construction Fix ---
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    if (!siteUrl) {
+      alert('NEXT_PUBLIC_SITE_URL is not defined. Please set it in your environment variables.');
+      return;
+    }
+    const originalArticleURL = `${siteUrl}/blog/${slug}`;
+    try {
+      new URL(originalArticleURL);
+    } catch {
+      alert(`Invalid URL constructed: ${originalArticleURL}`);
+      return;
+    }
+    // --- End Fix ---
 
     setIsCrossPosting(true);
     setResult(null);
@@ -84,7 +128,8 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
         },
         body: JSON.stringify({
           post, // Sending the post object
-          token // Sending the API key/token
+          token, // Sending the API key/token
+          originalArticleURL // Always send a valid absolute URL
         }),
       });
       // First try to get JSON response
@@ -99,8 +144,10 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
       if (!response.ok) throw new Error(responseData.error || `Failed to cross-post: ${response.status}`);
 
         setResult(responseData);
-    } catch (error) {      
-      setResult({ error: error.message || 'An error occurred during cross-posting' });
+    } catch (error) {
+      // Ensure error is a string for setResult
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      setResult({ error: errorMsg || 'An error occurred during cross-posting' });
     } finally {
       setIsCrossPosting(false);
     }
@@ -169,7 +216,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
       </div>
       
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-2xl font-bold mb-6">Cross-Post: {post.title}</h1>
+        <h1 className="text-2xl font-bold mb-6">Cross-Post: {post?.title}</h1>
         
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -226,16 +273,16 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
         <div className="mb-6">
           <h2 className="text-lg font-medium mb-3">Post Details</h2>
           <div className="border rounded-md p-4 bg-gray-50">
-            <h3 className="font-medium">{post.title}</h3>
+            <h3 className="font-medium">{post?.title}</h3>
             <p className="text-sm text-gray-500 mt-1">
-              {new Date(post.date).toLocaleDateString()}
+              {post?.date ? new Date(post.date).toLocaleDateString() : ''}
             </p>
-            {post.excerpt && (
+            {post?.excerpt && (
               <p className="text-sm mt-3">{post.excerpt}</p>
             )}
-            {post.categories && post.categories.length > 0 && (
+            {post?.categories && post.categories.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
-                {post.categories.map((category) => (
+                {post.categories.map((category: string) => (
                   <span key={category} className="text-xs px-2 py-1 bg-gray-200 rounded-full">
                     {category}
                   </span>
@@ -315,8 +362,8 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                         console.log('Hashnode Schema:', data);
                         
                         // Look for specific types
-                        const createDraftType = data.types.find(t => t.name === 'CreateDraftPayload');
-                        const publishDraftType = data.types.find(t => t.name === 'PublishDraftPayload');
+                        const createDraftType = data.types.find((t: { name: string }) => t.name === 'CreateDraftPayload');
+                        const publishDraftType = data.types.find((t: { name: string }) => t.name === 'PublishDraftPayload');
                         
                         if (createDraftType) {
                           console.log('CreateDraftPayload fields:', createDraftType.fields);
@@ -327,9 +374,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                         }
                         
                         alert('Schema data logged to console');
-                      } catch (e) {
+                      } catch (e: unknown) {
                         console.error('Schema fetch error:', e);
-                        alert(`Error: ${e.message}`);
+                        alert(`Error: ${e instanceof Error ? e.message : String(e)}`);
                       }
                     }}
                     className="px-3 py-1 bg-blue-100 text-blue-800 rounded"
@@ -377,9 +424,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                         } else {
                           alert(`Test passed! Draft ID: ${data.data.createDraft.draft.id}`);
                         }
-                      } catch (e) {
+                      } catch (e: unknown) {
                         console.error('Test error:', e);
-                        alert(`Error: ${e.message}`);
+                        alert(`Error: ${e instanceof Error ? e.message : String(e)}`);
                       }
                     }}
                     className="px-3 py-1 bg-green-100 text-green-800 rounded"
@@ -410,13 +457,12 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                 <div className="mb-4">
                   <div className="font-medium mb-1">Test Your Categories</div>
                   <div className="bg-gray-100 p-2 rounded mb-2">
-                    {post.categories?.map((category, index) => {
+                    {post?.categories?.map((category: string, index: number) => {
                       const slug = category.toLowerCase()
                         .replace(/\s+/g, '-')
                         .replace(/\./g, '-')
                         .replace(/[^a-z0-9-]/g, '');
                       const isValid = /^[a-z0-9-]{1,250}$/.test(slug);
-                      
                       return (
                         <div key={index} className={`text-sm mb-1 ${isValid ? 'text-green-600' : 'text-red-600'}`}>
                           {category} → {slug} {isValid ? '✓' : '✗'}
@@ -491,7 +537,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                       // Check if the response indicates success (2xx status code)
                       // For Hashnode, also check if there are no GraphQL errors in the response body
                       let isSuccess = testResponse.ok;
-                      let responseBody = {}; // Default empty object
+                      let responseBody: { errors?: unknown } = {}; // Default empty object with errors optional
 
                       if (platform === 'hashnode') {
                         try {
@@ -500,7 +546,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                             isSuccess = false; // Mark as failed if GraphQL errors exist
                             console.error("Hashnode Test API Errors:", responseBody.errors);
                           }
-                        } catch (e) {
+                        } catch (e: unknown) {
                           // Ignore JSON parsing errors if the status was already not ok
                           if (isSuccess) {
                             console.error("Failed to parse Hashnode test response:", e);
@@ -514,9 +560,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                         `${(platform === 'hashnode' && responseBody.errors) ? ' - Check console for GraphQL errors.' : ''}`
                       );
 
-                    } catch (e) {
+                    } catch (e: unknown) {
                       console.error(`Connection test failed for ${platform}:`, e);
-                      alert(`Connection test failed: ${e.message}`);
+                      alert(`Connection test failed: ${e instanceof Error ? e.message : String(e)}`);
                     }
                   }}
                   className="px-2 py-1 bg-gray-200 rounded"
