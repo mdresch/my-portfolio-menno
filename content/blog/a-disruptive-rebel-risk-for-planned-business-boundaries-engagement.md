@@ -7,7 +7,7 @@
 ---
 
 ---
-title: "A Disruptive Rebel: Risk for Planned Business Boundaries Engagement"
+title: "A Disruptive Rebel: Risk for Planned Business Engagements and Nonlinear Risk Management and Accountability"
 date: "2025-05-10"
 categories:
   - risk
@@ -16,7 +16,7 @@ categories:
 excerpt: "Exploring the risks and opportunities of engaging a disruptive rebel in planned business boundary initiatives."
 ---
 
-# A Disruptive Rebel: Risk for Planned Business Boundaries Engagement
+# A Disruptive Rebel: Risk for Planned Business Engagement and Nonlinear Risk Management and Accountability
 
 Engaging a disruptive rebel in a business context can be both a risk and an opportunity. While such individuals often challenge the status quo and drive innovation, their approach may also create friction within established boundaries and processes.
 
