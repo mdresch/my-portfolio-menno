@@ -133,8 +133,8 @@ function DarkModeToggle() {
         aria-label="Switch to Light Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
           theme === 'light' 
-            ? 'bg-indigo-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700'
+            ? 'bg-sky-500 text-white' 
+            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
         }`}
         onClick={() => setTheme('light')}
       >
@@ -149,8 +149,8 @@ function DarkModeToggle() {
         aria-label="Switch to Dark Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
           theme === 'dark' 
-            ? 'bg-indigo-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700'
+            ? 'bg-sky-500 text-white' 
+            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
         }`}
         onClick={() => setTheme('dark')}
       >
@@ -181,24 +181,24 @@ export default function Navigation() {
                     <NavigationMenuItem key={item.title}>
                       {item.items ? (
                         <>
-                          <NavigationMenuTrigger className="flex items-center py-2 px-3 rounded-lg text-indigo-900 dark:text-indigo-200 hover:bg-indigo-100 dark:hover:bg-indigo-800 transition-colors font-medium">
+                          <NavigationMenuTrigger className="flex items-center py-2 px-3 rounded-lg text-sky-900 dark:text-sky-200 hover:bg-sky-100 dark:hover:bg-sky-800 transition-colors font-medium">
                             {item.icon && <span className="mr-2">{item.icon}</span>}
                             {item.title}
                           </NavigationMenuTrigger>
-                          <NavigationMenuContent className="mt-2 min-w-[18rem] bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md rounded-xl shadow-xl p-4 z-50 border border-indigo-100 dark:border-indigo-900">
-                            <div className="mb-2 text-indigo-900 dark:text-indigo-200 font-semibold flex items-center">
+                          <NavigationMenuContent className="mt-2 min-w-[18rem] bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md rounded-xl shadow-xl p-4 z-50 border border-sky-100 dark:border-sky-900">
+                            <div className="mb-2 text-sky-900 dark:text-sky-200 font-semibold flex items-center">
                               {item.icon && <span className="mr-2">{item.icon}</span>}
                               {item.title}
                             </div>
                             {item.description && (
-                              <div className="text-sm text-indigo-700 dark:text-indigo-300 mb-4">{item.description}</div>
+                              <div className="text-sm text-sky-700 dark:text-sky-300 mb-4">{item.description}</div>
                             )}
                             <div className="flex flex-col gap-2">
                               {item.items.map((subItem) => (
                                 <NavigationMenuLink asChild key={subItem.title}>
                                   <Link
                                     href={subItem.href}
-                                    className="block text-indigo-900 dark:text-indigo-200 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800 rounded-lg px-3 py-2 transition-colors flex items-center"
+                                    className="block text-sky-900 dark:text-sky-200 hover:text-sky-700 dark:hover:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-800 rounded-lg px-3 py-2 transition-colors flex items-center"
                                   >
                                     {subItem.icon && <span className="mr-2">{subItem.icon}</span>}
                                     {subItem.title}
@@ -212,7 +212,7 @@ export default function Navigation() {
                         <NavigationMenuLink asChild>
                           <Link
                             href={item.href}
-                            className="flex items-center py-2 px-3 rounded-lg text-indigo-900 dark:text-indigo-200 hover:bg-indigo-100 dark:hover:bg-indigo-800 transition-colors font-medium"
+                            className="flex items-center py-2 px-3 rounded-lg text-sky-900 dark:text-sky-200 hover:bg-sky-100 dark:hover:bg-sky-800 transition-colors font-medium"
                           >
                             {item.icon && <span className="mr-2">{item.icon}</span>}
                             {item.title}

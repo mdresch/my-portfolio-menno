@@ -174,8 +174,8 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
         aria-label="Switch to Light Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
           theme === 'light' 
-            ? 'bg-indigo-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700'
+            ? 'bg-sky-500 text-white' 
+            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
         }`}
         onClick={() => setTheme('light')}
       >
@@ -190,8 +190,8 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
         aria-label="Switch to Dark Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
           theme === 'dark' 
-            ? 'bg-indigo-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-indigo-700 dark:text-indigo-200 hover:bg-indigo-50 dark:hover:bg-gray-700'
+            ? 'bg-sky-500 text-white' 
+            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
         }`}
         onClick={() => setTheme('dark')}
       >
@@ -399,9 +399,9 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
                   {/* Risk landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-indigo-50 dark:bg-indigo-900/40 hover:bg-indigo-100 dark:hover:bg-indigo-800/60 mb-2">
+                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-sky-50 dark:bg-sky-900/40 hover:bg-sky-100 dark:hover:bg-sky-800/60 mb-2">
                       <div className="flex flex-col">
-                        <span className="text-base font-semibold text-indigo-700 dark:text-indigo-200">Risk Dashboards Home</span>
+                        <span className="text-base font-semibold text-sky-700 dark:text-sky-200">Risk Dashboards Home</span>
                         <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all risk dashboards</span>
                       </div>
                     </Link>
@@ -428,9 +428,9 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
                   {/* Economics landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-indigo-50 dark:bg-indigo-900/40 hover:bg-indigo-100 dark:hover:bg-indigo-800/60 mb-2">
+                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-sky-50 dark:bg-sky-900/40 hover:bg-sky-100 dark:hover:bg-sky-800/60 mb-2">
                       <div className="flex flex-col">
-                        <span className="text-base font-semibold text-indigo-700 dark:text-indigo-200">Economics Dashboards Home</span>
+                        <span className="text-base font-semibold text-sky-700 dark:text-sky-200">Economics Dashboards Home</span>
                         <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all economics dashboards</span>
                       </div>
                     </Link>

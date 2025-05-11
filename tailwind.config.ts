@@ -10,6 +10,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        sky: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49',
+        },
+      },
       typography: (theme: PluginAPI['theme']) => ({
         DEFAULT: {
           css: {
@@ -31,10 +46,10 @@ const config: Config = {
               lineHeight: '1.4',
             },
             a: {
-              color: theme('colors.blue.600'),
+              color: theme('colors.sky.600'),
               textDecoration: 'none',
               '&:hover': {
-                color: theme('colors.blue.800'),
+                color: theme('colors.sky.800'),
                 textDecoration: 'underline',
               },
             },
@@ -56,7 +71,7 @@ const config: Config = {
               overflowX: 'auto',
             },
             blockquote: {
-              borderLeftColor: theme('colors.blue.500'),
+              borderLeftColor: theme('colors.sky.500'),
               fontStyle: 'italic',
             },
             img: {
@@ -90,7 +105,7 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    import('@tailwindcss/typography'),
   ],
 };
 

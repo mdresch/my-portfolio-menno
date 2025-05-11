@@ -265,7 +265,7 @@ export default function CryptoMarketStabilityPage() {
 
       {/* Executive Summary Section */}
       <section className="mb-12">
-        <div className="bg-indigo-50 dark:bg-indigo-950/30 rounded-lg p-6 shadow-md border border-indigo-100 dark:border-indigo-900/50 transition-colors">
+        <div className="bg-sky-50 dark:bg-sky-950/30 rounded-lg p-6 shadow-md border border-sky-100 dark:border-sky-900/50 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Executive Summary</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
             This report examines the current state of cryptocurrency market stability and analyzes potential risks 
@@ -447,12 +447,12 @@ export default function CryptoMarketStabilityPage() {
       </section>
 
       {/* Emerging Risks Section */}
-      <section className="mb-12 bg-indigo-50 dark:bg-indigo-950/30 rounded-lg p-6 shadow-md border border-indigo-100 dark:border-indigo-900/50 transition-colors">
+      <section className="mb-12 bg-sky-50 dark:bg-sky-950/30 rounded-lg p-6 shadow-md border border-sky-100 dark:border-sky-900/50 transition-colors">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Emerging Risk Factors</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3 transition-colors">Technological Vulnerabilities</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Technological Vulnerabilities</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               Smart contract vulnerabilities and protocol exploits remain significant risks in the cryptocurrency 
               ecosystem. In 2024, approximately $850 million was lost due to protocol exploits and smart contract 
@@ -470,7 +470,7 @@ export default function CryptoMarketStabilityPage() {
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3 transition-colors">Market Structure Risks</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Market Structure Risks</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               The growth of decentralized finance has created complex interdependencies between protocols, introducing 
               new forms of systemic risk within the crypto ecosystem. Cascading liquidations and oracle failures represent 
@@ -561,7 +561,7 @@ export default function CryptoMarketStabilityPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3 transition-colors">For Regulators</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">For Regulators</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Develop harmonized global standards for cryptocurrency regulation to reduce fragmentation</li>
               <li>Implement proportionate regulatory frameworks that address risks without stifling innovation</li>
@@ -571,7 +571,7 @@ export default function CryptoMarketStabilityPage() {
             </ul>
           </div>
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold text-indigo-800 dark:text-indigo-300 mb-3 transition-colors">For Financial Institutions</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">For Financial Institutions</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Develop robust risk management frameworks specifically tailored to cryptocurrency exposures</li>
               <li>Implement enhanced due diligence for crypto counterparties, focusing on operational resilience</li>
@@ -597,7 +597,7 @@ export default function CryptoMarketStabilityPage() {
           A balanced approach that addresses key risks while allowing for continued innovation would best support 
           financial stability while capturing the potential benefits of blockchain technology and digital assets.
         </p>
-        <blockquote className="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4">
+        <blockquote className="border-l-4 border-sky-500 dark:border-sky-400 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4">
           "The cryptocurrency ecosystem has demonstrated remarkable resilience through multiple market cycles, 
           but its increasing integration with traditional finance demands vigilant monitoring and appropriate 
           safeguards to protect broader financial stability."
@@ -606,7 +606,7 @@ export default function CryptoMarketStabilityPage() {
       </section>
 
       {/* Download Data Section */}
-      <section className="mb-12 bg-indigo-50 dark:bg-indigo-950/30 p-6 rounded-lg border border-indigo-100 dark:border-indigo-900/50 transition-colors">
+      <section className="mb-12 bg-sky-50 dark:bg-sky-950/30 p-6 rounded-lg border border-sky-100 dark:border-sky-900/50 transition-colors">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Download Data</h2>
         <p className="text-gray-700 dark:text-gray-300 mb-6 transition-colors">
           All charts and data from this report are available for download.
@@ -617,7 +617,7 @@ export default function CryptoMarketStabilityPage() {
             download
             className="flex items-center px-4 py-2 bg-white dark:bg-neutral-800 rounded-md shadow-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-neutral-700 transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-600 dark:text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-sky-600 dark:text-sky-400" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
             <span className="text-gray-700 dark:text-gray-300">CSV Format</span>
@@ -631,7 +631,7 @@ export default function CryptoMarketStabilityPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 transition-colors">
-              <Link href="/risk/global-liquidity-trends" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <Link href="/risk/global-liquidity-trends" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
                 Global Liquidity Trends Report
               </Link>
             </h3>
@@ -641,14 +641,14 @@ export default function CryptoMarketStabilityPage() {
             </p>
             <Link 
               href="/risk/global-liquidity-trends" 
-              className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
+              className="text-sm text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 font-medium transition-colors"
             >
               Read Report →
             </Link>
           </div>
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 transition-colors">
-              <Link href="/risk/legal-payment-tender-uk" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+              <Link href="/risk/legal-payment-tender-uk" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
                 Legal Payment Tender Risks UK 2025
               </Link>
             </h3>
@@ -658,7 +658,7 @@ export default function CryptoMarketStabilityPage() {
             </p>
             <Link 
               href="/risk/legal-payment-tender-uk" 
-              className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
+              className="text-sm text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 font-medium transition-colors"
             >
               Read Report →
             </Link>
@@ -719,7 +719,7 @@ export default function CryptoMarketStabilityPage() {
 
       {/* Link back to risk page */}
       <div className="mt-12 text-center">
-        <Link href="/risk" className="text-indigo-600 dark:text-indigo-400 hover:underline hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">
+        <Link href="/risk" className="text-sky-600 dark:text-sky-400 hover:underline hover:text-sky-800 dark:hover:text-sky-300 transition-colors">
           ← Back to Risk Overview
         </Link>
       </div>

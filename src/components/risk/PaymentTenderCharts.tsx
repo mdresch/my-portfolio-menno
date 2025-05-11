@@ -201,29 +201,29 @@ export function StrategicRoadmap() {
       <h3 className="text-xl font-semibold text-center mb-4 text-gray-800 dark:text-white transition-colors">Strategic Roadmap for Legal Tender Protection</h3>
       <div className="flex flex-wrap justify-around items-center">
         <div className="text-center p-4">
-          <div className="w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mx-auto mb-2 transition-colors">
-            <span className="text-blue-800 dark:text-blue-200 text-xl font-bold transition-colors">2025</span>
+          <div className="w-20 h-20 rounded-full bg-sky-100 dark:bg-sky-900 flex items-center justify-center mx-auto mb-2 transition-colors">
+            <span className="text-sky-800 dark:text-sky-200 text-xl font-bold transition-colors">2025</span>
           </div>
           <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors">Digital Pound Pilot</p>
         </div>
         <div className="hidden md:block text-gray-500 dark:text-gray-400">→</div>
         <div className="text-center p-4">
-          <div className="w-20 h-20 rounded-full bg-blue-200 dark:bg-blue-800 flex items-center justify-center mx-auto mb-2 transition-colors">
-            <span className="text-blue-800 dark:text-blue-200 text-xl font-bold transition-colors">2026</span>
+          <div className="w-20 h-20 rounded-full bg-sky-200 dark:bg-sky-800 flex items-center justify-center mx-auto mb-2 transition-colors">
+            <span className="text-sky-800 dark:text-sky-200 text-xl font-bold transition-colors">2026</span>
           </div>
           <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors">CTP Framework Rollout</p>
         </div>
         <div className="hidden md:block text-gray-500 dark:text-gray-400">→</div>
         <div className="text-center p-4">
-          <div className="w-20 h-20 rounded-full bg-blue-300 dark:bg-blue-700 flex items-center justify-center mx-auto mb-2 transition-colors">
-            <span className="text-blue-800 dark:text-blue-200 text-xl font-bold transition-colors">2027</span>
+          <div className="w-20 h-20 rounded-full bg-sky-300 dark:bg-sky-700 flex items-center justify-center mx-auto mb-2 transition-colors">
+            <span className="text-sky-800 dark:text-sky-200 text-xl font-bold transition-colors">2027</span>
           </div>
           <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors">Liquidity Framework Review</p>
         </div>
         <div className="hidden md:block text-gray-500 dark:text-gray-400">→</div>
         <div className="text-center p-4">
-          <div className="w-20 h-20 rounded-full bg-blue-400 dark:bg-blue-600 flex items-center justify-center mx-auto mb-2 transition-colors">
-            <span className="text-blue-800 dark:text-blue-200 text-xl font-bold transition-colors">2028</span>
+          <div className="w-20 h-20 rounded-full bg-sky-400 dark:bg-sky-600 flex items-center justify-center mx-auto mb-2 transition-colors">
+            <span className="text-sky-800 dark:text-sky-200 text-xl font-bold transition-colors">2028</span>
           </div>
           <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors">Full Digital Pound Launch</p>
         </div>

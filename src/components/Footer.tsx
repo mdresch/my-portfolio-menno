@@ -40,7 +40,7 @@ export default function Footer() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                className="text-gray-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
                 aria-label={link.name}
               >
                 {link.icon}
@@ -52,7 +52,7 @@ export default function Footer() {
               href="https://iq4fun.gitbook.io/my-portfolio-menno/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 underline ml-2 transition-colors"
+              className="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 underline ml-2 transition-colors"
             >
               Documentation
             </a>

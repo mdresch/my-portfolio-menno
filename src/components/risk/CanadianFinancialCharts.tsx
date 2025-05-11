@@ -494,7 +494,7 @@ export const ClimateRiskChart: React.FC = () => {
           onClick={() => setView('overview')}
           className={`px-3 py-1 text-sm rounded-md ${
             view === 'overview'
-              ? 'bg-blue-500 text-white'
+              ? 'bg-sky-500 text-white'
               : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
           }`}
         >
@@ -504,7 +504,7 @@ export const ClimateRiskChart: React.FC = () => {
           onClick={() => setView('industry')}
           className={`px-3 py-1 text-sm rounded-md ${
             view === 'industry'
-              ? 'bg-blue-500 text-white'
+              ? 'bg-sky-500 text-white'
               : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
           }`}
         >

@@ -24,7 +24,7 @@ export default function EuropeanBankingHealthPage() {
 
       {/* Executive Summary Section */}
       <section className="mb-12">
-        <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-6 shadow-md border border-blue-100 dark:border-blue-900/50 transition-colors">
+        <div className="bg-sky-50 dark:bg-sky-950/30 rounded-lg p-6 shadow-md border border-sky-100 dark:border-sky-900/50 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Executive Summary</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
             This report examines the current state of the European banking system, assessing its resilience to economic 
@@ -81,7 +81,7 @@ export default function EuropeanBankingHealthPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
           <div>
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Non-Performing Loan Trends</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Non-Performing Loan Trends</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               Non-performing loan (NPL) ratios have declined consistently across the European banking sector, falling from a 
               post-crisis peak of 7.5% to 2.1% in 2024. This improvement reflects both economic recovery and active NPL 
@@ -94,7 +94,7 @@ export default function EuropeanBankingHealthPage() {
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Sectoral Credit Risk</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Sectoral Credit Risk</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               Commercial real estate (CRE) exposures present the highest sectoral risk in the current environment, with 
               rising interest rates and changing work patterns putting pressure on property valuations. Banks with heavy 
@@ -195,7 +195,7 @@ export default function EuropeanBankingHealthPage() {
           <CountryRiskHeatmapChart />
         </div>
         <div className="mt-6">
-          <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Geographic Risk Concentration</h3>
+          <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Geographic Risk Concentration</h3>
           <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
             Our assessment identifies significant disparities in banking system health across European countries. Nordic and 
             Benelux banking systems demonstrate the strongest overall health, with high capitalization, good asset quality, 
@@ -215,12 +215,12 @@ export default function EuropeanBankingHealthPage() {
       </section>
 
       {/* Emerging Risks Section */}
-      <section className="mb-12 bg-blue-50 dark:bg-blue-950/30 rounded-lg p-6 shadow-md border border-blue-100 dark:border-blue-900/50 transition-colors">
+      <section className="mb-12 bg-sky-50 dark:bg-sky-950/30 rounded-lg p-6 shadow-md border border-sky-100 dark:border-sky-900/50 transition-colors">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Emerging Risks</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Short-term Risks</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Short-term Risks</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li><strong>Credit quality deterioration</strong> as higher interest rates impact borrowers' debt servicing capacity</li>
               <li><strong>Commercial real estate corrections</strong> affecting loan collateral values and specialized lenders</li>
@@ -230,7 +230,7 @@ export default function EuropeanBankingHealthPage() {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Long-term Challenges</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Long-term Challenges</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li><strong>Digital disruption</strong> from fintech competitors and big tech entrants into financial services</li>
               <li><strong>Climate risk</strong> exposure through lending portfolios and transition risks</li>
@@ -248,7 +248,7 @@ export default function EuropeanBankingHealthPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">For Regulators and Supervisors</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">For Regulators and Supervisors</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Maintain vigilant supervision of commercial real estate exposures and related concentration risks</li>
               <li>Accelerate progress on Banking Union completion, including European Deposit Insurance Scheme</li>
@@ -258,7 +258,7 @@ export default function EuropeanBankingHealthPage() {
             </ul>
           </div>
           <div className="bg-white dark:bg-neutral-800 p-5 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">For Banking Institutions</h3>
+            <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">For Banking Institutions</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
               <li>Accelerate digital transformation while addressing legacy IT infrastructure</li>
               <li>Review business models and pursue sustainable profitability through diversification</li>
@@ -292,7 +292,7 @@ export default function EuropeanBankingHealthPage() {
       </section>
 
       {/* Download Data Section */}
-      <section className="mb-12 bg-blue-50 dark:bg-blue-950/30 p-6 rounded-lg border border-blue-100 dark:border-blue-900/50 transition-colors">
+      <section className="mb-12 bg-sky-50 dark:bg-sky-950/30 p-6 rounded-lg border border-sky-100 dark:border-sky-900/50 transition-colors">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Download Data</h2>
         <p className="text-gray-700 dark:text-gray-300 mb-6 transition-colors">
           All charts and data from this report are available for download.

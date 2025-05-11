@@ -57,15 +57,15 @@ export default function RiskOverviewPage() {
             <div className="absolute left-0 bottom-0 w-24 h-24 bg-blue-100 dark:bg-blue-800/20 rounded-full transform -translate-x-8 translate-y-8"></div>
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3 transition-colors">Latest Update</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 transition-colors">May 8, 2025</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 transition-colors">May 12, 2025</p>
               <h4 className="text-lg font-medium text-gray-800 dark:text-white mb-2 transition-colors">
-                Canadian Financial Stability Report—2025: Navigating a Trade War
+                ECB Financial Stability Report—2025: Navigating a Trade War
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-                Analysis of how the Canadian financial system is responding to US trade policy uncertainty and market volatility in 2025.
+                Analysis of how the ECB financial system is responding to US trade policy uncertainty and market volatility in 2025.
               </p>
               <Link 
-                href="/risk/canadian-financial-stability" 
+                href="/risk/ecb-financial-stability" 
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
               >
                 View Interactive Report
@@ -81,6 +81,23 @@ export default function RiskOverviewPage() {
       <section className="mb-16">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-6 transition-colors">Risk Reports Library</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Card 0 - ECB Financial Stability */}
+          <RiskReportCard
+            title="ECB Financial Stability Report—2025"
+            description="Analysis of how the ECB financial system is responding to US trade policy uncertainty and market volatility in 2025."
+            date="May 12, 2025"
+            category="Financial Risk"
+            tags={["Trade War", "Banking", "Market Volatility"]}
+            imageUrl="/images/showcase-dataviz.jpg"
+            href="/risk/canadian-financial-stability"
+            usePlaceholder={true} // Using placeholder until images are ready
+            isComingSoon={true}
+            downloadLinks={[
+              { format: "CSV", url: "/data/ecb-financial-stability-2025.csv" },
+              { format: "JSON", url: "/data/ecb-financial-stability-2025.json" },
+              { format: "XML", url: "/data/ecb-financial-stability-2025.xml" }
+            ]}
+          />
           {/* Card 1 - Canadian Financial Stability */}
           <RiskReportCard
             title="Canadian Financial Stability Report—2025"

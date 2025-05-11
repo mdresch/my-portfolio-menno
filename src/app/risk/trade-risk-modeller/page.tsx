@@ -53,7 +53,7 @@ export default function TradeRiskModellerPage() {
           </li>
           <li className="flex items-start gap-3">
             {/* Shield check icon */}
-            <span className="mt-1 text-indigo-600">
+            <span className="mt-1 text-sky-600">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7.5 4.5v6c0 5.25-7.5 9-7.5 9s-7.5-3.75-7.5-9v-6L12 3z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
@@ -72,7 +72,7 @@ export default function TradeRiskModellerPage() {
           </li>
           <li className="flex items-start gap-3">
             {/* User icon */}
-            <span className="mt-1 text-cyan-600">
+            <span className="mt-1 text-sky-600">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 21a8.25 8.25 0 1115 0H4.5z" />
               </svg>

@@ -31,7 +31,7 @@ export default function RelatedPosts({ currentPost, allPosts }: RelatedPostsProp
           <article key={post.slug} className="bg-white rounded-lg shadow-md p-4">
             <Link 
               href={`/blog/${post.slug}`}
-              className="block hover:text-blue-600 transition-colors"
+              className="block hover:text-sky-600 transition-colors"
             >
               <h3 className="font-semibold mb-2">{post.title}</h3>
             </Link>
@@ -48,7 +48,7 @@ export default function RelatedPosts({ currentPost, allPosts }: RelatedPostsProp
               {post.categories.map((category) => (
                 <span
                   key={category}
-                  className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                  className="bg-sky-100 text-sky-800 text-xs px-2 py-1 rounded-full"
                 >
                   {category}
                 </span>

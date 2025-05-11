@@ -42,7 +42,7 @@ function MobileLink({ href, children }: MobileLinkProps) {
   return (
     <Link 
       href={href}
-      className="block py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:pl-4 hover:border-l-2 hover:border-indigo-500 dark:hover:border-indigo-400"
+      className="block py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:pl-4 hover:border-l-2 hover:border-sky-500 dark:hover:border-sky-400"
     >
       {children}
     </Link>
@@ -112,7 +112,7 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
             </MobileAccordion>
             {/* Economics landing page link */}
             <MobileLink href="/dashboards" >
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">Economics Dashboards Home</span>
+              <span className="font-semibold text-sky-600 dark:text-sky-400">Economics Dashboards Home</span>
               <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Overview & links to all economics dashboards</span>
             </MobileLink>
             <MobileAccordion title="Economics">
