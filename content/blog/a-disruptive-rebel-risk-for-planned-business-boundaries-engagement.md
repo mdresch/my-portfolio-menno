@@ -1,20 +1,21 @@
+---
+title: "A Disruptive Rebel: Risk for Planned Business Engagements and Nonlinear Risk Management and Accountabilityr"
+description: "Exploring the risks and opportunities of engaging a disruptive rebel in planned business boundary initiatives."
+date: "2025-05-10"
+authors:
+  - "Menno Drescher"
+tags:
+  - risk
+  - business-strategy
+  - innovation
+image: "/images/showcase-dataviz.jpg"
+---
+
 <!-- Hero Image Placeholder -->
 <div class="hero-image" style="position: relative; width: 100%; height: 320px; background: url('/images/hero-image-techcorp.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
   <h1 style="color: white; font-size: 2.5rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.7); text-align: center; width: 100%;">A Disruptive Rebel: Risk for Planned Business Boundaries Engagement</h1>
   <!-- Replace '/images/hero-image-techcorp.jpg' with your actual hero image path -->
 </div>
-
----
-
----
-title: "A Disruptive Rebel: Risk for Planned Business Engagements and Nonlinear Risk Management and Accountability"
-date: "2025-05-10"
-categories:
-  - risk
-  - business-strategy
-  - innovation
-excerpt: "Exploring the risks and opportunities of engaging a disruptive rebel in planned business boundary initiatives."
----
 
 # A Disruptive Rebel: Risk for Planned Business Engagement and Nonlinear Risk Management and Accountability
 
