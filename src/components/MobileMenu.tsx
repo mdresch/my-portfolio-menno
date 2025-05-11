@@ -110,6 +110,11 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
                 </MobileLink>
               ))}
             </MobileAccordion>
+            {/* Economics landing page link */}
+            <MobileLink href="/dashboards" >
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400">Economics Dashboards Home</span>
+              <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Overview & links to all economics dashboards</span>
+            </MobileLink>
             <MobileAccordion title="Economics">
               {componentseconomics.map((item) => (
                 <MobileLink key={item.href} href={item.href}>

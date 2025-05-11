@@ -1,9 +1,9 @@
 ---
 title: "How Do You Create a Consulting Framework? A Guide"
-author: "Flavio Soriano"
-date: "2024-12-03"
-updated: "2024-12-03"
-byline: "High Bridge Academy"
+author: "Menno Drescher"
+date: "2025-05-10"
+updated: "2025-05-10"
+byline: "CBA Consult"
 excerpt: "A comprehensive guide to building, customizing, and applying consulting frameworks for business problem-solving."
 categories:
   - consulting
@@ -12,11 +12,6 @@ categories:
 ---
 
 # How Do You Create a Consulting Framework? A Guide
-
-*Flavio Soriano  
-Former Arthur D Little and McKinsey Consultant*
-
-_Last Update: December 3, 2024 | by High Bridge Academy_
 
 Understanding how to create and utilize a consulting framework is crucial in business consulting. A well-structured framework acts as a strategic tool for problem-solving, offering a systematic approach to tackle complex issues.
 
@@ -153,6 +148,16 @@ Customizing frameworks is vital for specific project challenges. Adapt standard 
 | Market Position        | Benchmarking          | Market share, brand ranking       |
 | Investment Returns     | ROI Calculation       | Return on Equity, Return on Assets|
 | Customer Engagement    | Surveys/Feedback      | NPS, Retention Rate               |
+
+## ISO 20700: International Standard for Management Consultancy Services
+ISO 20700 is an international standard that provides guidelines for management consultancy services. It aims to improve transparency and understanding between clients and management consultancy service providers (MCSPs), ensuring better results from consultancy projects. The standard is based on industry best practices and includes recommendations for contracting, execution, and closure of consulting assignments.
+
+**Key aspects of ISO 20700:**
+- **Applicability:** Applies to all MCSPs, regardless of size or specialization.
+- **Focus on Outcomes:** Emphasizes deliverables and results rather than specific methodologies.
+- **Ethical Behavior:** Encourages professionalism and ethical conduct in consulting.
+- **Client Needs:** Stresses the importance of understanding and addressing client requirements.
+- **Flexibility:** Allows MCSPs to use their own methods while following the standard’s principles.
 
 ## Adapting Your Framework to Evolving Business Trends
 - **Continuous Learning:** Stay up-to-date with literature and trends.

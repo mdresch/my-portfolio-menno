@@ -28,8 +28,10 @@ export default function StocksDashboardPage() {
   const [selectedSector, setSelectedSector] = useState('All');
   const [selectedIndex, setSelectedIndex] = useState('All');
 
-  // Get unique indices from mockCompanies
-  const indicesList = Array.from(new Set(mockCompanies.map(c => c.index).filter(Boolean)));
+  // Get unique indices from mockCompanies, filter out empty/falsey values
+  const indicesList = Array.from(new Set(mockCompanies.map(c => c.index).filter(index => !!index)));
+  // Filter out empty/falsey sectors (shouldn't happen, but for safety)
+  const filteredSectors = sectors.filter(Boolean);
 
   // Filter companies based on selected sector and index
   const filteredCompanies = mockCompanies.filter(c => {
@@ -39,13 +41,13 @@ export default function StocksDashboardPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 text-gray-900 dark:text-gray-100">
       <h1 className="text-3xl font-bold mb-6">Global Stocks & Indices Dashboard</h1>
       <section className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">Major Global Indices</h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border text-sm">
-            <thead className="bg-gray-100">
+          <table className="min-w-full border text-sm border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-100 dark:bg-gray-800">
               <tr>
                 <th className="px-3 py-2">Index</th>
                 <th className="px-3 py-2">Region</th>
@@ -58,7 +60,7 @@ export default function StocksDashboardPage() {
             </thead>
             <tbody>
               {indices.map(idx => (
-                <tr key={idx.name} className="border-b">
+                <tr key={idx.name} className="border-b border-gray-200 dark:border-gray-700">
                   <td className="px-3 py-2 font-medium">{idx.name}</td>
                   <td className="px-3 py-2">{idx.region}</td>
                   <td className="px-3 py-2">{idx.value}</td>
@@ -76,7 +78,7 @@ export default function StocksDashboardPage() {
         <h2 className="text-2xl font-semibold mb-4">Sectors</h2>
         <div className="flex flex-wrap gap-3 mb-4">
           {sectors.map(sector => (
-            <span key={sector} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">{sector}</span>
+            <span key={sector} className="bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-100 px-3 py-1 rounded-full text-xs font-medium">{sector}</span>
           ))}
         </div>
       </section>      
@@ -86,33 +88,33 @@ export default function StocksDashboardPage() {
           <label className="text-sm font-medium">
             Sector:
             <select
-              className="ml-2 border rounded px-2 py-1"
+              className="ml-2 border rounded px-2 py-1 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
               value={selectedSector}
               onChange={e => setSelectedSector(e.target.value)}
             >
               <option value="All">All</option>
-              {sectors.map(sector => (
-                <option key={sector} value={sector}>{sector}</option>
+              {filteredSectors.map((sector, i) => (
+                <option key={sector || `sector-${i}`} value={sector}>{sector}</option>
               ))}
             </select>
           </label>
           <label className="text-sm font-medium">
             Index:
             <select
-              className="ml-2 border rounded px-2 py-1"
+              className="ml-2 border rounded px-2 py-1 bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100"
               value={selectedIndex}
               onChange={e => setSelectedIndex(e.target.value)}
             >
               <option value="All">All</option>
-              {indicesList.map(index => (
-                <option key={index} value={index}>{index}</option>
+              {indicesList.map((index, i) => (
+                <option key={index || `index-${i}`} value={index}>{index}</option>
               ))}
             </select>
           </label>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full border text-sm">
-            <thead className="bg-gray-100">
+          <table className="min-w-full border text-sm border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-100 dark:bg-gray-800">
               <tr>
                 <th className="px-3 py-2">Company</th>
                 <th className="px-3 py-2">Ticker</th>
@@ -126,18 +128,24 @@ export default function StocksDashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {filteredCompanies.map(c => (
-                <tr key={c.ticker} className="border-b">
+              {filteredCompanies.map((c, i) => (
+                <tr key={c.ticker || `company-row-${i}`} className="border-b border-gray-200 dark:border-gray-700">
                   <td className="px-3 py-2 font-medium">
-                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.name}</Link>
+                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}
+                      className="text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-400">
+                      {c.name}
+                    </Link>
                   </td>
                   <td className="px-3 py-2">
-                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}>{c.ticker}</Link>
+                    <Link href={`/dashboards/stocks/${encodeURIComponent(c.ticker)}`}
+                      className="text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-400">
+                      {c.ticker}
+                    </Link>
                   </td>
                   <td className="px-3 py-2">{c.sector}</td>
                   <td className="px-3 py-2">{c.index}</td>
                   <td className="px-3 py-2">{c.price}</td>
-                  <td className="px-3 py-2">{c.change}</td>
+                  <td className={`px-3 py-2 ${typeof c.change === 'string' && c.change.startsWith('+') ? 'text-green-600 dark:text-green-300' : typeof c.change === 'string' && c.change.startsWith('-') ? 'text-red-600 dark:text-red-300' : 'text-gray-500 dark:text-gray-400'}`}>{c.change}</td>
                   <td className="px-3 py-2">{c.summary.marketCap}</td>
                   <td className="px-3 py-2">{c.summary.pe}</td>
                   <td className="px-3 py-2">{c.summary.yield}</td>
@@ -151,13 +159,13 @@ export default function StocksDashboardPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Detailed Company Information</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {mockCompanies.map(company => (
-            <div key={company.ticker} className="border rounded-lg p-4 shadow-sm">
+          {mockCompanies.map((company, i) => (
+            <div key={company.ticker || `company-card-${i}`} className="border rounded-lg p-4 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-700 dark:shadow-lg">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl font-bold">{company.name}</h3>
                 <div className="text-right">
                   <p className="text-lg font-semibold">{company.price}</p>
-                  <p className={`text-sm ${typeof company.change === 'string' && company.change.startsWith('+') ? 'text-green-600' : typeof company.change === 'string' && company.change.startsWith('-') ? 'text-red-600' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${typeof company.change === 'string' && company.change.startsWith('+') ? 'text-green-600 dark:text-green-300' : typeof company.change === 'string' && company.change.startsWith('-') ? 'text-red-600 dark:text-red-300' : 'text-gray-500 dark:text-gray-400'}`}>
                     {company.change ?? 'N/A'}
                   </p>
                 </div>
@@ -184,7 +192,7 @@ export default function StocksDashboardPage() {
                   <ul className="text-xs">
                     {company.news.slice(0, 2).map((item, index) => (
                       <li key={index} className="mb-1">
-                        <p>{item.title} <span className="text-gray-500">({item.date})</span></p>
+                        <p>{item.title} <span className="text-gray-500 dark:text-gray-400">({item.date})</span></p>
                       </li>
                     ))}
                   </ul>
@@ -198,9 +206,9 @@ export default function StocksDashboardPage() {
                 </div>
               )}
               
-              <div className="mt-3 pt-2 border-t">
+              <div className="mt-3 pt-2 border-t border-gray-200 dark:border-gray-700">
                 <Link href={`/dashboards/stocks/${encodeURIComponent(company.ticker)}`}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                  className="text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-400 text-sm font-medium">
                   View Details →
                 </Link>
               </div>

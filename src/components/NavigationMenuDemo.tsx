@@ -38,16 +38,40 @@ type NavigationMenuDemoProps = Record<string, never>;
 
 const components: ComponentItem[] = [
   {
-    title: "Risk",
-    href: "/risk",
-    description:
-      "Risk analysis and management insights",
-  },
-  {
     title: "Supply Chain Risk",
     href: "/risk/supply-chain-top-25",
     description:
       "Gartner Supply Chain Top 25 for 2024",
+  },
+  {
+    title: "mergers & acquisitions",
+    href: "/risk/mergers-acquisitions-landscape",
+    description:
+      "Mergers and Acquisitions Landscape"
+  },
+  {
+    title: "Supply Chain Disruption",
+    href: "/risk/supply-chain-disruption",
+    description:
+      "Supply Chain Disruption Risk Management",
+  },
+  {
+    title: "Trade Policy",
+    href: "/risk/trade-policy",
+    description:
+      "Trade Policy and Tariffs",
+  },
+  {
+    title: "Geopolitical Risk",
+    href: "/risk/geopolitical-risk",
+    description:
+      "Geopolitical Risk and Supply Chain Resilience",
+  },
+  {
+    title: "Supply Chain Resilience",
+    href: "/risk/supply-chain-resilience",
+    description:
+      "Supply Chain Resilience and Risk Management",
   },
   {
     title: "Business Complexity",
@@ -72,6 +96,12 @@ const components: ComponentItem[] = [
     description:
       "Deep Dive on Trade: Wide-Ranging Issues Confront Global Businesses",
   },
+  {
+    title: "Cost Optimization - Volatile Economy",
+    href: "/risk/cost-optimization",
+    description:
+      "Cost Optimization in a Volatile Economy",
+  }
 ]
 
 const componentseconomics: ComponentItem[] = [
@@ -365,7 +395,19 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
               <NavigationMenuTrigger>Risk</NavigationMenuTrigger>
-              <NavigationMenuContent>                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+              <NavigationMenuContent>                
+                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+                  {/* Risk landing page link */}
+                  <StrictNavigationMenuLink asChild>
+                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-indigo-50 dark:bg-indigo-900/40 hover:bg-indigo-100 dark:hover:bg-indigo-800/60 mb-2">
+                      <div className="flex flex-col">
+                        <span className="text-base font-semibold text-indigo-700 dark:text-indigo-200">Risk Dashboards Home</span>
+                        <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all risk dashboards</span>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
+                  {/* Risk components */}
+
                   {components.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
                       <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
@@ -382,7 +424,17 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
               <NavigationMenuTrigger>Economics</NavigationMenuTrigger>
-              <NavigationMenuContent>                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+              <NavigationMenuContent>
+                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
+                  {/* Economics landing page link */}
+                  <StrictNavigationMenuLink asChild>
+                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-indigo-50 dark:bg-indigo-900/40 hover:bg-indigo-100 dark:hover:bg-indigo-800/60 mb-2">
+                      <div className="flex flex-col">
+                        <span className="text-base font-semibold text-indigo-700 dark:text-indigo-200">Economics Dashboards Home</span>
+                        <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all economics dashboards</span>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
                   {componentseconomics.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
                       <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">

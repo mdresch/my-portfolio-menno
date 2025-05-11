@@ -20,8 +20,8 @@ const macroKPIs = [
 ];
 
 export const MacroDashboard = () => (
-  <section className="bg-white rounded-lg shadow-md p-6">
-    <h2 className="text-2xl font-semibold mb-4">Macroeconomic Dashboard</h2>
+  <section className="bg-white dark:bg-neutral-900 rounded-lg shadow-md p-6">
+    <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Macroeconomic Dashboard</h2>
     {/* KPI Row */}
     <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
       {macroKPIs.map((kpi) => (

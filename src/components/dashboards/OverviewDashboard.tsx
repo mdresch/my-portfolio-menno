@@ -56,19 +56,20 @@ const nonAgriExportPriceData = [
 ];
 
 // --- Chart Components ---
+// NOTE: The following inline styles are required for dynamic chart rendering and cannot be replaced by static Tailwind classes.
 const ImportExportPriceLineChart = () => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">Import & Export Price Indexes (MoM %)</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">Import & Export Price Indexes (MoM %)</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {importExportPriceData.map((point) => (
         <div key={point.month} className="flex flex-col items-center w-10">
           <div className="w-3 h-3 rounded-full bg-blue-500 mb-1" style={{ marginBottom: `${(point.import + 2) * 10}px` }} title={`Import: ${point.import}%`}></div>
           <div className="w-3 h-3 rounded-full bg-green-500" style={{ marginBottom: `${(point.export - point.import) * 10}px` }} title={`Export: ${point.export}%`}></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.month.slice(5)}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.month.slice(5)}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500 gap-4">
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400 gap-4">
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-blue-500 rounded-full mr-1"></span>Import</span>
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-1"></span>Export</span>
     </div>
@@ -76,68 +77,68 @@ const ImportExportPriceLineChart = () => (
 );
 
 const FuelImportBarChart = () => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">Fuel Import Prices (MoM %)</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">Fuel Import Prices (MoM %)</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {fuelImportPriceData.map((point) => (
         <div key={point.month} className="flex flex-col items-center w-10">
           <div className="w-4 bg-yellow-600 rounded-t-sm" style={{ height: `${(point.value + 8) * 6}px` }} title={`${point.value}%`}></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.month.slice(5)}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.month.slice(5)}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Fuel Imports</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Fuel Imports</div>
   </div>
 );
 
 const NonfuelImportBarChart = () => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">Nonfuel Import Prices (MoM %)</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">Nonfuel Import Prices (MoM %)</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {nonfuelImportPriceData.map((point) => (
         <div key={point.month} className="flex flex-col items-center w-10">
           <div className="w-4 bg-blue-400 rounded-t-sm" style={{ height: `${(point.value + 1) * 30}px` }} title={`${point.value}%`}></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.month.slice(5)}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.month.slice(5)}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Nonfuel Imports</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Nonfuel Imports</div>
   </div>
 );
 
 const AgriExportBarChart = () => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">Agricultural Export Prices (MoM %)</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">Agricultural Export Prices (MoM %)</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {agriExportPriceData.map((point) => (
         <div key={point.month} className="flex flex-col items-center w-10">
           <div className="w-4 bg-green-600 rounded-t-sm" style={{ height: `${(point.value + 1) * 30}px` }} title={`${point.value}%`}></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.month.slice(5)}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.month.slice(5)}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Agri Exports</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Agri Exports</div>
   </div>
 );
 
 const NonAgriExportBarChart = () => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">Non-Agri Export Prices (MoM %)</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">Non-Agri Export Prices (MoM %)</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {nonAgriExportPriceData.map((point) => (
         <div key={point.month} className="flex flex-col items-center w-10">
           <div className="w-4 bg-purple-600 rounded-t-sm" style={{ height: `${(point.value + 1) * 30}px` }} title={`${point.value}%`}></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.month.slice(5)}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.month.slice(5)}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Non-Agri Exports</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Non-Agri Exports</div>
   </div>
 );
 
 export const OverviewDashboard = () => (
-  <section className="bg-white rounded-lg shadow-md p-6">
-    <h2 className="text-2xl font-semibold mb-4">Overview Dashboard</h2>
+  <section className="bg-white dark:bg-neutral-900 rounded-lg shadow-md p-6">
+    <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Overview Dashboard</h2>
     {/* KPI Row */}
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       {/* Existing KPIs */}

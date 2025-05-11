@@ -7,9 +7,9 @@ import { MockMapPlaceholder as ImportedMockMapPlaceholder } from '@/components/d
 
 // Simple placeholder for any chart type (Can keep as fallback or remove)
 const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
-  <div className="border border-dashed border-gray-300 rounded-lg p-4 h-64 flex flex-col bg-gray-50">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
-    <div className="flex-grow flex justify-center items-center text-xs text-gray-400">({type} Placeholder)</div>
+  <div className="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-gray-50 dark:bg-neutral-900">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex justify-center items-center text-xs text-gray-400 dark:text-gray-500">({type} Placeholder)</div>
   </div>
 );
 
@@ -19,8 +19,8 @@ export { MockChartPlaceholder };
 
 // Mock Line Chart
 export const MockLineChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-hidden p-2">
       {/* Simulate line segments with varying heights */}
       <div className="w-1/6 h-1/3 bg-blue-200 rounded-t-sm"></div>
@@ -35,8 +35,8 @@ export const MockLineChart = ({ title }: { title: string }) => (
 
 // Mock Dual Axis Line Chart
 export const MockDualAxisLineChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm relative">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm relative">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-hidden p-2">
       {/* Line 1 (Blue) */}
       <div className="w-1/6 h-1/3 bg-blue-300 rounded-t-sm opacity-70"></div>
@@ -61,8 +61,8 @@ export const MockDualAxisLineChart = ({ title }: { title: string }) => (
 
 // Mock Bar Chart
 export const MockBarChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end justify-around space-x-2 overflow-hidden p-2">
       {/* Simulate bars */}
       <div className="w-1/5 h-1/3 bg-teal-300 rounded-t-sm"></div>
@@ -76,8 +76,8 @@ export const MockBarChart = ({ title }: { title: string }) => (
 
 // Mock Area Chart
 export const MockAreaChart = ({ title }: { title: string }) => (
-    <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-      <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+    <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
       <div className="flex-grow flex items-end space-x-0 overflow-hidden relative">
           {/* Simulate filled area segments */}
           <div className="w-1/6 h-1/3 bg-purple-200"></div>
@@ -94,8 +94,8 @@ export const MockAreaChart = ({ title }: { title: string }) => (
 
 // Mock Treemap
 export const MockTreemap = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow grid grid-cols-3 grid-rows-3 gap-1 p-1">
       {/* Simulate treemap blocks */}
       <div className="col-span-2 row-span-2 bg-indigo-500 rounded flex items-center justify-center text-white text-xs opacity-90">Area 1</div>
@@ -110,8 +110,8 @@ export const MockTreemap = ({ title }: { title: string }) => (
 
 // Mock Pie Chart (Simple Stacked Block Representation)
 export const MockPieChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex flex-col items-center justify-center p-2">
       <div className="w-3/4 h-1/4 bg-cyan-500 flex items-center justify-center text-white text-xs font-semibold">Sector A (40%)</div>
       <div className="w-3/4 h-1/5 bg-cyan-400 flex items-center justify-center text-white text-xs font-semibold">Sector B (25%)</div>
@@ -129,8 +129,8 @@ const populationData = [
 ];
 
 export const MockStackedBarChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end justify-around space-x-2 overflow-hidden p-2">
       {populationData.map((group) => (
         <div key={group.age} className="flex flex-col items-center w-1/5">
@@ -150,7 +150,7 @@ export const MockStackedBarChart = ({ title }: { title: string }) => (
         </div>
       ))}
     </div>
-    <div className="flex justify-around mt-2 text-xs text-gray-500">
+    <div className="flex justify-around mt-2 text-xs text-gray-500 dark:text-gray-400">
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-blue-400 rounded-full mr-1"></span>Male</span>
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-pink-400 rounded-full mr-1"></span>Female</span>
     </div>
@@ -173,8 +173,8 @@ const unemploymentRateData = [
 ];
 
 export const MockUnemploymentLineChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
       {unemploymentRateData.map((point, idx) => (
         <div key={point.year} className="flex flex-col items-center w-8">
@@ -183,11 +183,11 @@ export const MockUnemploymentLineChart = ({ title }: { title: string }) => (
             style={{ height: `${point.rate * 10}px` }}
             title={`${point.rate}%`}
           ></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.year}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Unemployment Rate (%)</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Unemployment Rate (%)</div>
   </div>
 );
 
@@ -207,8 +207,8 @@ const ppiCpiData = [
 ];
 
 export const MockPPICPIChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {ppiCpiData.map((point, idx) => (
         <div key={point.year} className="flex flex-col items-center w-8">
@@ -224,11 +224,11 @@ export const MockPPICPIChart = ({ title }: { title: string }) => (
             style={{ marginBottom: `${(point.ppi - point.cpi) * 1.2}px` }}
             title={`PPI: ${point.ppi}`}
           ></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.year}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500 gap-4">
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400 gap-4">
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-blue-500 rounded-full mr-1"></span>PPI</span>
       <span className="flex items-center"><span className="inline-block w-3 h-3 bg-green-500 rounded-full mr-1"></span>CPI</span>
     </div>
@@ -251,8 +251,8 @@ const payrollEmploymentData = [
 ];
 
 export const MockPayrollEmploymentChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
       {payrollEmploymentData.map((point) => (
         <div key={point.year} className="flex flex-col items-center w-8">
@@ -261,11 +261,11 @@ export const MockPayrollEmploymentChart = ({ title }: { title: string }) => (
             style={{ height: `${(point.jobs - 140) * 4}px` }}
             title={`${point.jobs}M jobs`}
           ></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.year}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Payroll Employment (Millions)</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Payroll Employment (Millions)</div>
   </div>
 );
 
@@ -285,8 +285,8 @@ const averageHourlyEarningsData = [
 ];
 
 export const MockAverageHourlyEarningsChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
       {averageHourlyEarningsData.map((point) => (
         <div key={point.year} className="flex flex-col items-center w-8">
@@ -295,11 +295,11 @@ export const MockAverageHourlyEarningsChart = ({ title }: { title: string }) => 
             style={{ height: `${(point.earnings - 22) * 10}px` }}
             title={`$${point.earnings}`}
           ></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.year}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.year}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Avg Hourly Earnings (USD)</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Avg Hourly Earnings (USD)</div>
   </div>
 );
 
@@ -317,8 +317,8 @@ const employmentCostIndexData = [
 ];
 
 export const MockEmploymentCostIndexChart = ({ title }: { title: string }) => (
-  <div className="border border-gray-200 rounded-lg p-4 h-64 flex flex-col bg-white shadow-sm">
-    <p className="text-sm font-medium text-gray-700 mb-2 text-center">{title}</p>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
       {employmentCostIndexData.map((point) => (
         <div key={point.label} className="flex flex-col items-center w-10">
@@ -327,36 +327,36 @@ export const MockEmploymentCostIndexChart = ({ title }: { title: string }) => (
             style={{ height: `${(point.eci - 115) * 12}px` }}
             title={`ECI: ${point.eci}`}
           ></div>
-          <span className="text-[10px] mt-1 text-gray-500">{point.label}</span>
+          <span className="text-[10px] mt-1 text-gray-500 dark:text-gray-400">{point.label}</span>
         </div>
       ))}
     </div>
-    <div className="flex justify-center mt-2 text-xs text-gray-500">Employment Cost Index (2017=100)</div>
+    <div className="flex justify-center mt-2 text-xs text-gray-500 dark:text-gray-400">Employment Cost Index (2017=100)</div>
   </div>
 );
 
 // Placeholder for KPI cards
 export const MockKPICard = ({ title, value, change }: { title: string; value: string; change?: string }) => (
-  <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-    <p className="text-sm text-gray-500 mb-1">{title}</p>
-    <p className="text-2xl font-semibold text-gray-800">{value}</p>
-    {change && <p className={`text-xs ${change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>{change}</p>}
+  <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
+    <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">{title}</p>
+    <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{value}</p>
+    {change && <p className={`text-xs ${change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{change}</p>}
   </div>
 );
 
 // Placeholder for a simple table/matrix
 export const MockTablePlaceholder = ({ title }: { title: string }) => (
-  <div className="border border-dashed border-gray-300 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50">
-    <p className="text-sm font-medium text-gray-700 mb-2">{title}</p>
-    <p className="text-xs text-gray-500">(Table/Matrix Placeholder)</p>
+  <div className="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50 dark:bg-neutral-900">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{title}</p>
+    <p className="text-xs text-gray-500 dark:text-gray-400">(Table/Matrix Placeholder)</p>
   </div>
 );
 
 // Placeholder for a map
 export const LocalMockMapPlaceholder = ({ title }: { title: string }) => (
-    <div className="border border-dashed border-gray-300 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50">
-      <p className="text-sm font-medium text-gray-700 mb-2">{title}</p>
-      <p className="text-xs text-gray-500">(Map Placeholder)</p>
+    <div className="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50 dark:bg-neutral-900">
+      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{title}</p>
+      <p className="text-xs text-gray-500 dark:text-gray-400">(Map Placeholder)</p>
     </div>
   );
 

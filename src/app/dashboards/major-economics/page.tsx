@@ -359,15 +359,15 @@ export default function MajorEconomicsDashboard() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Major Economics Dashboard</h1>
-      <p className="mb-8 text-gray-700 max-w-2xl">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Major Economics Dashboard</h1>
+      <p className="mb-8 text-gray-700 dark:text-gray-300 max-w-2xl">
         Key economic indicators for major global economies (OECD & large economic powers). Select a country to view its latest data.
       </p>
       <div className="mb-6">
-        <label htmlFor="country-select" className="mr-2 font-semibold">Country:</label>
+        <label htmlFor="country-select" className="mr-2 font-semibold text-gray-800 dark:text-gray-200">Country:</label>
         <select
           id="country-select"
-          className="border rounded px-3 py-2"
+          className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-100 rounded px-3 py-2"
           value={selectedCountry}
           onChange={e => setSelectedCountry(e.target.value)}
         >
@@ -377,26 +377,26 @@ export default function MajorEconomicsDashboard() {
         </select>
       </div>
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300">
+        <table className="min-w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-neutral-900">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-2 border">Indicator</th>
-              <th className="px-4 py-2 border">Value</th>
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <th className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200">Indicator</th>
+              <th className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200">Value</th>
             </tr>
           </thead>
           <tbody>
             {indicators.map(indicator => (
-              <tr key={indicator}>
-                <td className="px-4 py-2 border font-semibold">{indicator}</td>
-                <td className="px-4 py-2 border">{countryData[indicator]}</td>
+              <tr key={indicator} className="hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors">
+                <td className="px-4 py-2 border border-gray-300 dark:border-gray-700 font-semibold text-gray-900 dark:text-gray-100">{indicator}</td>
+                <td className="px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200">{countryData[indicator]}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="my-10 p-6 bg-blue-50 rounded">
-        <h2 className="text-2xl font-semibold mb-4">About the Economic Indicators</h2>
-        <ul className="list-disc ml-6 text-gray-800 space-y-2">
+      <div className="my-10 p-6 bg-blue-50 dark:bg-blue-950 rounded">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">About the Economic Indicators</h2>
+        <ul className="list-disc ml-6 text-gray-800 dark:text-gray-200 space-y-2">
           <li><strong>Unemployment:</strong> Percentage of the labor force that is jobless and seeking work. Lower values indicate a stronger labor market.</li>
           <li><strong>Gross domestic product (GDP):</strong> Total value of goods and services produced. Higher GDP reflects a larger, more productive economy.</li>
           <li><strong>Consumer price Index (CPI):</strong> Measures average change in prices paid by consumers. Used to track inflation.</li>
@@ -418,8 +418,8 @@ export default function MajorEconomicsDashboard() {
           <li><strong>Economic growth:</strong> Annual percentage increase in GDP. Higher growth rates are generally positive.</li>
           <li><strong>Labor market data:</strong> Includes participation rate and other employment metrics. Higher participation means more people are working or seeking work.</li>
         </ul>
-        <div className="mt-6 text-gray-700">
-          <h3 className="text-xl font-semibold mb-2">How to Read These Indicators</h3>
+        <div className="mt-6 text-gray-700 dark:text-gray-300">
+          <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">How to Read These Indicators</h3>
           <ul className="list-disc ml-6">
             <li>Compare indicator values across countries to spot strengths and weaknesses.</li>
             <li>Look for trends over time (rising, falling, stable) for context beyond a single value.</li>
