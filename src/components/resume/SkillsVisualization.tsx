@@ -6,7 +6,7 @@ interface SkillsVisualizationProps {
 }
 
 export default function SkillsVisualization({ skills }: SkillsVisualizationProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>('soft');
   
   const categories = ['all', ...Array.from(new Set(skills.map(skill => skill.category)))];
   

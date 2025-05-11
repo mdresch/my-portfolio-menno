@@ -10,6 +10,12 @@ import { Theme as RadixTheme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Hotjar from '@hotjar/browser';
+
+const siteId = 6399278;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
 
 const geist = Geist({
   subsets: ["latin"],
