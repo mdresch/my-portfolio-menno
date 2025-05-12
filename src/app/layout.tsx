@@ -10,12 +10,8 @@ import { Theme as RadixTheme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Hotjar from '@hotjar/browser';
-
-const siteId = 6399278;
-const hotjarVersion = 6;
-
-Hotjar.init(siteId, hotjarVersion);
+import ClientAnalytics from '@/components/ClientAnalytics';
+// Client component for Hotjar will be rendered in the body
 
 const geist = Geist({
   subsets: ["latin"],
@@ -90,8 +86,7 @@ export default function RootLayout({
             `
           }}
         />
-      </head>
-      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
+      </head>      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <RadixTheme>
             <div className="flex items-center justify-center">
@@ -99,10 +94,10 @@ export default function RootLayout({
             </div>
             <main className="flex-1">
               {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
-                  to use client components only at the component level, not at the root layout level */}
-              {children}
+                  to use client components only at the component level, not at the root layout level */}              {children}
               <Analytics />
               <SpeedInsights />
+              <ClientAnalytics />
             </main>
             <Footer />
           </RadixTheme>
