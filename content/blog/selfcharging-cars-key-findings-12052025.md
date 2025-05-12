@@ -1,6 +1,6 @@
 ---
-title: "Self-Charging Car: Key Findings - May 11, 2025"
-date: "2025-05-11"
+title: "Self-Charging Car: Key Findings - May 12, 2025"
+date: "2025-05-12"
 author: "Menno Drescher"
 categories:
   - Technology
