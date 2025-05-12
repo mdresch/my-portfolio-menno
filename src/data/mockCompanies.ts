@@ -99,8 +99,9 @@ export const mockCompanies = [
     change: '+0.9%',
     summary: {
       marketCap: '3.2T', pe: 35.2, eps: 9.8, dividend: 2.72, yield: '0.65%', beta: 0.92, volume: '32.1M', shares: '7.45B', roe: '45.2%', revenue: '230.0B', grossMargin: '68.2%', netMargin: '36.5%', debtToEquity: '50.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'Microsoft negotiates reduced stake in OpenAI in exchange for guaranteed access to future AI models', date: '2025-05-12', url: 'https://news.example.com/microsoft-openai-stake' },
+      { title: 'Microsoft lays off 2,000 employees as regulatory oversight increases', date: '2025-05-11', url: 'https://news.example.com/microsoft-layoffs' },
       { title: 'Microsoft unveils new AI features in Office', date: '2025-04-20', url: '#' },
       { title: 'Microsoft Q1 earnings strong', date: '2025-04-15', url: '#' },
       { title: 'Microsoft bans Deepseek AI app over data vulnerability, funds $1M AI Accelerator Grant for ovarian cancer research', date: '2025-05-10', url: '' }
@@ -128,7 +129,11 @@ export const mockCompanies = [
     summary: {
       marketCap: '2.0T', pe: 28.1, eps: 5.3, dividend: 0, yield: '0%', beta: 1.05, volume: '18.2M', shares: '13.2B', roe: '28.0%', revenue: '300.0B', grossMargin: '56.0%', netMargin: '25.0%', debtToEquity: '12.0%'
     },
-    news: [ { title: 'Alphabet launches new search AI', date: '2025-04-19', url: '#' } ],
+    news: [ 
+      { title: 'Alphabet faces DOJ antitrust pressure to share search data with competitors', date: '2025-05-12', url: 'https://news.example.com/alphabet-doj-antitrust' },
+      { title: 'Google market share in search traffic declines from 93% to under 90% after ChatGPT debut', date: '2025-05-11', url: 'https://news.example.com/google-market-share' },
+      { title: 'Alphabet launches new search AI', date: '2025-04-19', url: '#' } 
+    ],
     profile: {
       description: 'Alphabet Inc. is a holding company, with Google as its major subsidiary.',
       executives: [ { name: 'Sundar Pichai', title: 'Chief Executive Officer' } ],
@@ -602,8 +607,9 @@ export const mockCompanies = [
       grossMargin: '18.5%',
       netMargin: '8.4%',
       debtToEquity: '110.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'Toyota plans to mitigate impact of tariffs with investments in next-gen technologies', date: '2025-05-12', url: 'https://news.example.com/toyota-tariff-mitigation' },
+      { title: 'Toyota-Maruti partnership faces challenges as Maruti prioritizes exports', date: '2025-05-11', url: 'https://news.example.com/toyota-maruti-challenges' },
       { title: 'Toyota unveils new hydrogen-electric hybrid vehicle', date: '2025-04-15', url: 'https://news.example.com/toyota-hydrogen-electric' },
       { title: 'Toyota expands EV production capacity', date: '2025-04-10', url: 'https://news.example.com/toyota-ev-production' }
     ],
@@ -778,8 +784,9 @@ export const mockCompanies = [
       grossMargin: '19.8%',
       netMargin: '7.1%',
       debtToEquity: '145.2%'
-    },
-    news: [
+    },    news: [
+      { title: 'BMW aims for 50% electric vehicle production to reduce costs amid revenue decline', date: '2025-05-12', url: 'https://news.example.com/bmw-ev-production-target' },
+      { title: 'BMW reports 7.8% revenue decline and 26.4% drop in net profit in Q1 2025', date: '2025-05-11', url: 'https://news.example.com/bmw-q1-results' },
       { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' },
       { title: 'BMW affected by China tariffs on EVs', date: '2025-04-30', url: 'https://news.example.com/bmw-china-tariffs' },
       { title: 'BMW pursues legal action against EU tariffs on Chinese EVs, seeks political agreements to mitigate impact', date: '2025-05-10', url: '' }
@@ -866,8 +873,8 @@ export const mockCompanies = [
       grossMargin: '20.4%',
       netMargin: '5.1%',
       debtToEquity: '157.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'Volkswagen reinvents Golf as advanced electric car in major EV strategy pivot', date: '2025-05-12', url: 'https://news.example.com/volkswagen-id-golf' },
       { title: 'Volkswagen reports 46.3% decline in Q1 operating profit', date: '2025-05-05', url: 'https://news.example.com/volkswagen-q1-2025' },
       { title: 'Volkswagen struggles with inventory write-downs linked to US tariffs', date: '2025-04-28', url: 'https://news.example.com/volkswagen-tariff-impact' }
     ],
@@ -1041,8 +1048,8 @@ export const mockCompanies = [
       grossMargin: '21.0%',
       netMargin: '11.3%',
       debtToEquity: '18.5%'
-    },
-    news: [
+    },    news: [
+      { title: 'Tesla halts Model Y and Cybertruck production due to inventory surplus and softening demand', date: '2025-05-12', url: 'https://news.example.com/tesla-halts-production' },
       { title: 'Tesla car sales in Europe fall to two-year low', date: '2025-05-07', url: 'https://news.example.com/tesla-europe-sales-drop' },
       { title: 'Tesla disappoints with Q1 earnings amid slumping China sales', date: '2025-04-25', url: 'https://news.example.com/tesla-q1-2025-earnings' },
       { title: 'Tesla cancels Cybertruck range extender, refunds deposits to customers', date: '2025-05-10', url: '' }
@@ -1391,8 +1398,9 @@ export const mockCompanies = [
       grossMargin: '19.2%',
       netMargin: '8.5%',
       debtToEquity: '75.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'BYD adjusts Chile supply chain plans due to lithium price crash, focuses on Chinese facilities', date: '2025-05-12', url: 'https://news.example.com/byd-chile-plan-changes' },
+      { title: 'BYD emphasizes Europe expansion as pivotal to 2030 target amid US market lockout', date: '2025-05-11', url: 'https://news.example.com/byd-europe-expansion' },
       { title: 'BYD scraps plans for Chile lithium plants due to global market conditions', date: '2025-05-06', url: 'https://news.example.com/byd-lithium-chile' },
       { title: 'BYD surpasses Tesla in global EV sales for second consecutive quarter', date: '2025-04-29', url: 'https://news.example.com/byd-tesla-ev-sales' },
       { title: 'BYD aims for 5 million global sales, 80% from China, expands into Europe despite geopolitical challenges', date: '2025-05-10', url: '' }
@@ -1566,8 +1574,10 @@ export const mockCompanies = [
       grossMargin: '22.5%',
       netMargin: '9.3%',
       debtToEquity: '65.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'Volvo AB faces market challenges due to Chinese ownership', date: '2025-05-12', url: 'https://news.example.com/volvo-chinese-ownership' },
+      { title: 'Volvo and Daimler Truck announce joint venture for software-defined vehicle platform', date: '2025-05-11', url: 'https://news.example.com/volvo-daimler-jv' },
+      { title: 'Volvo recalls 413,151 vehicles due to camera display issue', date: '2025-05-09', url: 'https://news.example.com/volvo-recall-camera' },
       { title: 'Volvo recalls 73,000 plug-in hybrid vehicles over fire risk', date: '2025-05-05', url: 'https://news.example.com/volvo-recall-hybrids' },
       { title: 'Volvo drops S90 from U.S. market due to tariffs', date: '2025-04-26', url: 'https://news.example.com/volvo-s90-us-market' },
       { title: 'Volvo closes Silicon Valley innovation hub, delivers 5,000+ battery-electric trucks globally, sees increased demand for gas-powered trucks', date: '2025-05-10', url: '' }
@@ -1654,8 +1664,10 @@ export const mockCompanies = [
       grossMargin: '48.2%',
       netMargin: '7.4%',
       debtToEquity: '45.0%'
-    },
-    news: [
+    },    news: [
+      { title: 'Amazon enters quantum-computing race with launch of Ocelot quantum chip', date: '2025-05-12', url: 'https://news.example.com/amazon-quantum-chip' },
+      { title: 'Amazon faces backlash from Trump administration over labor practices', date: '2025-05-10', url: 'https://news.example.com/amazon-trump-labor' },
+      { title: 'Amazon fails to stop NLRB from acting on labor practice allegations', date: '2025-05-09', url: 'https://news.example.com/amazon-nlrb-decision' },
       { title: 'Amazon stock slips on weaker operating profit forecast', date: '2025-05-04', url: 'https://news.example.com/amazon-profit-forecast' },
       { title: 'Amazon cites tariffs and trade policies as challenges to growth', date: '2025-04-28', url: 'https://news.example.com/amazon-tariff-impact' }
     ],
@@ -1842,8 +1854,17 @@ export const mockCompanies = [
     index: '',
     price: null,
     change: null,
-    summary: {},
-    news: [
+    summary: {},    news: [
+      {
+        title: 'Denso solidifies strategic partnership with ROHM Co. in semiconductor field',
+        date: '2025-05-12',
+        url: 'https://news.example.com/denso-rohm-partnership'
+      },
+      {
+        title: 'Denso to acquire portion of ROHM shares to ensure stable semiconductor supply',
+        date: '2025-05-11', 
+        url: 'https://news.example.com/denso-rohm-shares'
+      },
       {
         title: 'Denso strengthens innovation and semiconductor partnerships, targets next-generation vehicle systems',
         date: '2025-05-10',
@@ -2114,5 +2135,258 @@ export const mockCompanies = [
     options: {},
     ownership: {},
     priceHistory: []
-  }
+  },
+  {
+    name: 'Bentley Systems Inc.',
+    ticker: 'BSY',
+    sector: 'Technology',
+    index: 'NASDAQ',
+    price: 56.42,
+    change: '+0.3%',
+    summary: {
+      marketCap: '15.8B',
+      pe: 47.8,
+      eps: 1.18,
+      dividend: 0.20,
+      yield: '0.35%',
+      beta: 1.15,
+      volume: '1.5M',
+      shares: '280.4M',
+      roe: '26.3%',
+      revenue: '1.2B',
+      grossMargin: '79.2%',
+      netMargin: '21.5%',
+      debtToEquity: '65.4%'
+    },
+    news: [
+      { title: 'Bentley Systems identifies India as primary growth driver in Asia Pacific', date: '2025-05-12', url: 'https://news.example.com/bentley-india-growth' },
+      { title: 'Bentley Systems earnings per share estimates upgraded by analysts', date: '2025-05-10', url: 'https://news.example.com/bentley-eps-upgrade' },
+      { title: 'Bentley Systems expands infrastructure digital twin capabilities', date: '2025-04-22', url: 'https://news.example.com/bentley-digital-twins' }
+    ],
+    profile: {
+      description: 'Bentley Systems, Inc. is an American-based software development company that develops, manufactures, licenses, sells and supports computer software and services for the design, construction, and operation of infrastructure.',
+      executives: [
+        { name: 'Greg Bentley', title: 'Chief Executive Officer' },
+        { name: 'Keith Bentley', title: 'Chief Technology Officer' }
+      ],
+      address: '685 Stockton Drive, Exton, PA 19341, United States',
+      website: 'https://www.bentley.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-10',
+      lastEarningsDate: '2025-05-05',
+      epsActual: 0.32,
+      epsEstimate: 0.29,
+      revenueActual: '320M',
+      revenueEstimate: '315M',
+      surprise: '+10.3%'
+    },
+    peers: [
+      { name: 'Autodesk', ticker: 'ADSK' },
+      { name: 'Trimble', ticker: 'TRMB' },
+      { name: 'AVEVA Group', ticker: 'AVV.L' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '1.2B', netIncome: '258M' },
+        { year: 2023, revenue: '1.1B', netIncome: '220M' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '3.2B', liabilities: '1.8B', equity: '1.4B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '450M', investing: '-120M', financing: '-80M' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 60, expiry: '2025-06-20', price: 2.15, volume: 320 },
+        { strike: 65, expiry: '2025-06-20', price: 0.85, volume: 180 }
+      ],
+      puts: [
+        { strike: 55, expiry: '2025-06-20', price: 1.75, volume: 290 },
+        { strike: 50, expiry: '2025-06-20', price: 0.65, volume: 140 }
+      ]
+    },
+    ownership: {
+      institutional: '62%',
+      insider: '21.5%',
+      topHolders: [
+        { name: 'Bentley Family', percent: '17.8%' },
+        { name: 'Vanguard Group', percent: '8.6%' },
+        { name: 'BlackRock', percent: '6.4%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-08', price: 55.80 },
+      { date: '2025-05-09', price: 55.95 },
+      { date: '2025-05-10', price: 56.10 },
+      { date: '2025-05-11', price: 56.25 },
+      { date: '2025-05-12', price: 56.42 }
+    ]
+  },
+  {
+    name: 'Waymo LLC',
+    ticker: 'Private (Alphabet subsidiary)',
+    sector: 'Technology',
+    index: 'N/A (Private)',
+    price: 'N/A',
+    change: 'N/A',
+    summary: {
+      marketCap: 'Est. $30B',
+      pe: 'N/A',
+      eps: 'N/A',
+      dividend: 0,
+      yield: '0%',
+      beta: 'N/A',
+      volume: 'N/A',
+      shares: 'N/A',
+      roe: 'N/A',
+      revenue: 'Est. $1B',
+      grossMargin: 'N/A',
+      netMargin: 'N/A',
+      debtToEquity: 'N/A'
+    },
+    news: [
+      { title: 'Waymo partnership with Uber evolving, Austin pilot exceeds expectations', date: '2025-05-12', url: 'https://news.example.com/waymo-uber-partnership' },
+      { title: 'Uber expands partnerships with WeRide and Volkswagen beyond Waymo', date: '2025-05-11', url: 'https://news.example.com/uber-autonomous-partnerships' },
+      { title: 'Waymo plans rollout of autonomous ride service in Atlanta', date: '2025-05-08', url: 'https://news.example.com/waymo-atlanta-rollout' },
+      { title: 'Waymo involved in multi-car crash in Scottsdale, Arizona', date: '2025-05-05', url: 'https://news.example.com/waymo-arizona-crash' }
+    ],
+    profile: {
+      description: 'Waymo LLC is an American autonomous driving technology company and subsidiary of Alphabet Inc. The company develops autonomous driving technology for ride-hailing services, trucking, and last-mile delivery.',
+      executives: [
+        { name: 'Tekedra Mawakana', title: 'Co-Chief Executive Officer' },
+        { name: 'Dmitri Dolgov', title: 'Co-Chief Executive Officer and CTO' }
+      ],
+      address: '1600 Amphitheatre Parkway, Mountain View, CA 94043, United States',
+      website: 'https://waymo.com/'
+    },
+    earnings: {
+      nextEarningsDate: 'N/A',
+      lastEarningsDate: 'N/A',
+      epsActual: 'N/A',
+      epsEstimate: 'N/A',
+      revenueActual: 'N/A',
+      revenueEstimate: 'N/A',
+      surprise: 'N/A'
+    },
+    peers: [
+      { name: 'Cruise', ticker: 'Private (GM subsidiary)' },
+      { name: 'Tesla', ticker: 'TSLA' },
+      { name: 'Uber', ticker: 'UBER' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: 'Est. $1B', netIncome: 'Est. -$500M' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: 'N/A', liabilities: 'N/A', equity: 'N/A' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: 'Est. -$600M', investing: 'Est. -$1.2B', financing: 'Est. $1.8B' }
+      ]
+    },
+    options: {
+      calls: [],
+      puts: []
+    },
+    ownership: {
+      institutional: '0%',
+      insider: '100%',
+      topHolders: [
+        { name: 'Alphabet Inc.', percent: '100%' }
+      ]
+    },
+    priceHistory: []
+  },
+  {
+    name: 'Peugeot Invest S.A.',
+    ticker: 'PEUG.PA',
+    sector: 'Financials',
+    index: 'CAC Mid 60',
+    price: 103.80,
+    change: '+0.6%',
+    summary: {
+      marketCap: '2.6B',
+      pe: 10.8,
+      eps: 9.60,
+      dividend: 3.15,
+      yield: '3.04%',
+      beta: 0.92,
+      volume: '11K',
+      shares: '24.9M',
+      roe: '9.2%',
+      revenue: '380M',
+      grossMargin: 'N/A',
+      netMargin: '62.8%',
+      debtToEquity: '25.3%'
+    },
+    news: [
+      { title: 'Peugeot Invest partners with Charterhouse Capital in EUR105M Novétude investment', date: '2025-05-12', url: 'https://news.example.com/peugeot-invest-novetude' },
+      { title: 'Peugeot Invest expands healthcare education portfolio through 19% stake in Novétude', date: '2025-05-11', url: 'https://news.example.com/peugeot-novetude-stake' },
+      { title: 'Peugeot Invest reports solid portfolio performance despite market turbulence', date: '2025-04-25', url: 'https://news.example.com/peugeot-invest-q1-results' }
+    ],
+    profile: {
+      description: 'Peugeot Invest S.A. (formerly FFP) is a French investment company and holding company owned by the Peugeot family with investments in various sectors including automotive, healthcare, technology, and consumer goods.',
+      executives: [
+        { name: 'Robert Peugeot', title: 'Chairman of the Board' },
+        { name: 'Bertrand Finet', title: 'Chief Executive Officer' }
+      ],
+      address: '66 Avenue Charles de Gaulle, 92200 Neuilly-sur-Seine, France',
+      website: 'https://www.peugeot-invest.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-08-15',
+      lastEarningsDate: '2025-03-20',
+      epsActual: 2.45,
+      epsEstimate: 2.30,
+      revenueActual: '95M',
+      revenueEstimate: '92M',
+      surprise: '+6.5%'
+    },
+    peers: [
+      { name: 'Wendel', ticker: 'MF.PA' },
+      { name: 'Eurazeo', ticker: 'RF.PA' },
+      { name: 'GBL', ticker: 'GBLB.BR' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '380M', netIncome: '238M' },
+        { year: 2023, revenue: '360M', netIncome: '224M' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '6.5B', liabilities: '1.4B', equity: '5.1B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '250M', investing: '-325M', financing: '120M' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 110, expiry: '2025-06-20', price: 2.50, volume: 85 },
+        { strike: 115, expiry: '2025-06-20', price: 0.95, volume: 40 }
+      ],
+      puts: [
+        { strike: 100, expiry: '2025-06-20', price: 2.20, volume: 95 },
+        { strike: 95, expiry: '2025-06-20', price: 1.10, volume: 65 }
+      ]
+    },
+    ownership: {
+      institutional: '18%',
+      insider: '76.5%',
+      topHolders: [
+        { name: 'Établissements Peugeot Frères', percent: '76.5%' },
+        { name: 'Amundi Asset Management', percent: '3.2%' },
+        { name: 'BNP Paribas Asset Management', percent: '2.1%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-08', price: 102.90 },
+      { date: '2025-05-09', price: 103.20 },
+      { date: '2025-05-10', price: 103.40 },
+      { date: '2025-05-11', price: 103.30 },
+      { date: '2025-05-12', price: 103.80 }
+    ]
+  },
 ];
