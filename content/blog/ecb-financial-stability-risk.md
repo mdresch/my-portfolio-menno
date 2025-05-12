@@ -13,7 +13,6 @@ tags:
 image: "/images/showcase-dataviz.jpg"
 ---
 
-# ECB Financial Stability Risk Dashboard—2025
 
 **Share this page on Facebook, X, LinkedIn, or by email**  
 **Data available as: CSV, JSON and XML**
