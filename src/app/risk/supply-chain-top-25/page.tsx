@@ -13,22 +13,29 @@ export default function SupplyChainTop25Page() {
 
       {/* Introduction Section */}
       <section className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8 mb-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Superior supply chains deliver on the business's purpose</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Superior supply chains deliver on the business&apos;s purpose</h2>
         <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-          They don't just push products; they understand customer value, invest 
+          They don&apos;t just push products; they understand customer value, invest 
           in demand management and promote innovation against ESG. The 
-          Gartner Supply Chain Top 25 is a renowned annual ranking of the world's 
+          Gartner Supply Chain Top 25 is a renowned annual ranking of the world&apos;s 
           superior supply chains. From financial and corporate social responsibility 
           data and community opinion, we identify, celebrate and profile companies 
           demonstrating excellence in supply chain management. Clients use the 
           peer benchmarks to make the business case for supply chain transformation 
           and the best practices to accelerate supply chain performance.
         </p>
+        
+        {/* Connect links */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+        </div>
       </section>
 
       {/* Macro Trends Section */}
       <section className="max-w-4xl mx-auto mb-12">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Macro trends among this year's supply chain leaders</h2>
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Macro trends among this year&apos;s supply chain leaders</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           
           {/* Talent Card */}
@@ -58,7 +65,7 @@ export default function SupplyChainTop25Page() {
               build practical use cases that benefit most from AI-driven advances.
             </p>
             <a href="#" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
-              Explore Gartner's supply chain AI resource center →
+              Explore Gartner&apos;s supply chain AI resource center →
             </a>
           </div>
           
@@ -66,9 +73,9 @@ export default function SupplyChainTop25Page() {
           <div className="bg-white rounded-lg shadow-md p-6 flex flex-col">
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Antifragile supply chains</h3>
             <p className="text-gray-600 mb-4 flex-grow">
-              Today's volatile, uncertain, complex and ambiguous (VUCA) environment demands 
+              Today&apos;s volatile, uncertain, complex and ambiguous (VUCA) environment demands 
               that CSCOs embrace uncertainty, learn from it and evolve toward a state called the 
-              "antifragile supply chain." Being in the antifragile state helps a complex global supply chain 
+              &quot;antifragile supply chain.&quot; Being in the antifragile state helps a complex global supply chain 
               understand how it can achieve its enterprise objectives despite disruption and uncertainty. 
               Gartner Supply Chain Top 25 companies understand that advancing toward antifragility 
               requires several shifts in decision-making processes, technology, network design and 
@@ -108,7 +115,7 @@ export default function SupplyChainTop25Page() {
           </div>
           <div className="bg-white p-4 rounded shadow text-center">
             <div className="text-lg font-bold text-gray-600">06</div>
-            <div className="font-semibold">Diageo and L'Oréal</div>
+            <div className="font-semibold">Diageo and L&apos;Oréal</div>
           </div>
           <div className="bg-white p-4 rounded shadow text-center">
             <div className="text-lg font-bold text-gray-600">07</div>
@@ -129,9 +136,7 @@ export default function SupplyChainTop25Page() {
         </div>
         
         <div className="text-center text-gray-700 italic mb-8">
-          Turn the page to read profiles of the companies ranked 1 – 10. Clients may read additional profiles (the companies 
-          ranked 11 – 25) at gartner.com. See the Gartner Supply Chain Top 25 most relevant to your geography or industry 
-          at gartner.com/en/supply-chain-top-25.
+          Visit gartner.com/en/supply-chain-top-25 to read profiles of the leading companies in the Gartner Supply Chain Top 25 for 2024.
         </div>
 
         <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-6 mx-auto max-w-xl">
@@ -151,6 +156,129 @@ export default function SupplyChainTop25Page() {
           <div>24 Heineken</div>
           <div></div>
           <div>25 JD.com</div>
+        </div>
+        
+        {/* Supply Chain Masters */}
+        <div className="pt-8 border-t border-gray-300">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">Supply Chain Masters</h3>
+          <p className="text-gray-600 italic mb-6 text-center">
+            Masters have attained top-five composite scores in the Gartner Supply Chain Top 25 for at least 
+            seven out of the last 10 years (2014 — 2024).
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white p-4 rounded shadow text-center">
+              <div className="font-semibold">Apple</div>
+            </div>
+            <div className="bg-white p-4 rounded shadow text-center">
+              <div className="font-semibold">Amazon</div>
+            </div>
+            <div className="bg-white p-4 rounded shadow text-center">
+              <div className="font-semibold">P&G</div>
+            </div>
+            <div className="bg-white p-4 rounded shadow text-center">
+              <div className="font-semibold">Unilever</div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Connect links */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-8 pt-4 border-t border-gray-200 text-sm">
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+        </div>
+      </section>
+
+      {/* Supply Chains Ranked 26-50 Section */}
+      <section className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8 mb-12">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Supply Chains Ranked 26 – 50</h2>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="p-2">
+            <div className="text-sm font-semibold">26 General Mills</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">35 Novo Nordisk</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">44 Takeda Pharmaceutical</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">27 McDonald&apos;s</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">36 ABB</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">45 Tesla</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">28 GSK</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">37 AbbVie</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">46 British American Tobacco</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">29 STMicroelectronics</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">38 Komatsu</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">47 Volvo Group</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">30 Sanofi</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">39 ASML Holding</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">48 Tata Motors</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">31 Essity</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">40 Dow</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">49 Leonardo</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">32 Airbus</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">41 LVMH Moët Hennessy Louis Vuitton</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">50 LG Electronics</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">33 Hewlett Packard Enterprises</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">42 IBM</div>
+          </div>
+          <div className="p-2 col-span-1"></div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">34 AB InBev</div>
+          </div>
+          <div className="p-2">
+            <div className="text-sm font-semibold">43 H&M</div>
+          </div>
+          <div className="p-2 col-span-1"></div>
+        </div>
+        
+        {/* Connect links */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
 
@@ -174,7 +302,7 @@ export default function SupplyChainTop25Page() {
           </p>
           <p className="text-gray-700">
             The World Economic Forum recognized Schneider as one of only three companies to 
-            attain its "Circular Lighthouses in the Built Environment" designation for the company's 
+            attain its &quot;Circular Lighthouses in the Built Environment&quot; designation for the company&apos;s 
             E2E circularity solution, which has avoided sending about 513 million tons of CO2e to 
             customers since 2018 and uses 27% green material content across products.
           </p>
@@ -189,7 +317,7 @@ export default function SupplyChainTop25Page() {
             <h3 className="text-xl font-semibold">Cisco Systems</h3>
           </div>
           <p className="text-gray-700 mb-4">
-            In the area of integrated sustainability, Cisco's focus on embedding circular design 
+            In the area of integrated sustainability, Cisco&apos;s focus on embedding circular design 
             principles and driving circular revenue targets means that 99.8% of materials used 
             can be recycled or repurposed.
           </p>
@@ -236,7 +364,7 @@ export default function SupplyChainTop25Page() {
           <div className="bg-gray-50 rounded-lg p-5">
             <h3 className="font-bold text-lg mb-3">P&G</h3>
             <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
-              <li>Supply chain is a critical enabler across all five pillars of P&G's integrated growth strategy.</li>
+              <li>Supply chain is a critical enabler across all five pillars of P&G&apos;s integrated growth strategy.</li>
               <li>P&G leverages an internal AI factory to drive capabilities across the organization, including its own GenAI tool, chatPG.</li>
             </ul>
           </div>
@@ -245,7 +373,7 @@ export default function SupplyChainTop25Page() {
           <div className="bg-gray-50 rounded-lg p-5">
             <h3 className="font-bold text-lg mb-3">Amazon</h3>
             <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
-              <li>A leader in customer centricity, Amazon's continuous innovation in its facilities includes expanded use of robots.</li>
+              <li>A leader in customer centricity, Amazon&apos;s continuous innovation in its facilities includes expanded use of robots.</li>
               <li>Amazon is expanding its same-day delivery service from 55 to more than 90 U.S. metro areas.</li>
             </ul>
           </div>
@@ -255,7 +383,7 @@ export default function SupplyChainTop25Page() {
             <h3 className="font-bold text-lg mb-3">Unilever</h3>
             <ul className="list-disc list-inside text-sm text-gray-700 space-y-2">
               <li>Unilever is using AI to help identify alternative ingredients that can strengthen supply chain resilience.</li>
-              <li>Unilever's focus on AI-driven advances also acts as a way of attracting and engaging talent and teams.</li>
+              <li>Unilever&apos;s focus on AI-driven advances also acts as a way of attracting and engaging talent and teams.</li>
             </ul>
           </div>
         </div>
@@ -282,6 +410,13 @@ export default function SupplyChainTop25Page() {
             <p className="text-sm mb-4">2025 Updates and 2026 Input Invitation</p>
             <Link href="/risk/supply-chain-top-25/methodology" className="text-blue-600 hover:text-blue-800 text-sm font-medium">Learn More</Link>
           </div>
+        </div>
+        
+        {/* Connect links */}
+        <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
       
