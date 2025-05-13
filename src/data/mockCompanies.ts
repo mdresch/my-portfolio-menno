@@ -130,6 +130,7 @@ export const mockCompanies = [
       marketCap: '2.0T', pe: 28.1, eps: 5.3, dividend: 0, yield: '0%', beta: 1.05, volume: '18.2M', shares: '13.2B', roe: '28.0%', revenue: '300.0B', grossMargin: '56.0%', netMargin: '25.0%', debtToEquity: '12.0%'
     },
     news: [ 
+      { title: 'Alphabet stock drops 8% as Apple explores AI-powered search features for Safari', date: '2025-05-13', url: 'https://news.example.com/alphabet-stock-drop-apple-ai' },
       { title: 'Alphabet announces partnership with UniCredit to migrate IT architecture to Google Cloud', date: '2025-05-13', url: 'https://news.example.com/alphabet-unicredit-cloud' },
       { title: 'Alphabet faces DOJ antitrust pressure to share search data with competitors', date: '2025-05-12', url: 'https://news.example.com/alphabet-doj-antitrust' },
       { title: 'Google market share in search traffic declines from 93% to under 90% after ChatGPT debut', date: '2025-05-11', url: 'https://news.example.com/google-market-share' },
@@ -609,6 +610,7 @@ export const mockCompanies = [
       netMargin: '8.4%',
       debtToEquity: '110.0%'
     },    news: [
+      { title: 'Toyota reports 21% decline in full-year profit due to tariff impacts', date: '2025-05-13', url: 'https://news.example.com/toyota-profit-decline-tariffs' },
       { title: 'Toyota plans to mitigate impact of tariffs with investments in next-gen technologies', date: '2025-05-12', url: 'https://news.example.com/toyota-tariff-mitigation' },
       { title: 'Toyota-Maruti partnership faces challenges as Maruti prioritizes exports', date: '2025-05-11', url: 'https://news.example.com/toyota-maruti-challenges' },
       { title: 'Toyota unveils new hydrogen-electric hybrid vehicle', date: '2025-04-15', url: 'https://news.example.com/toyota-hydrogen-electric' },
@@ -786,13 +788,13 @@ export const mockCompanies = [
       netMargin: '7.1%',
       debtToEquity: '145.2%'
     },    news: [
+      { title: 'BMW faces low three-digit million impact from EV tariffs on Chinese imports to EU', date: '2025-05-13', url: 'https://news.example.com/bmw-ev-tariff-impact' },
+      { title: 'BMW Q1 revenues miss analyst estimates by 3.6%, decrease 7.8% to EUR33.8 billion', date: '2025-05-13', url: 'https://news.example.com/bmw-q1-revenue-miss' },
       { title: 'BMW introduces improved X3 hybrid powertrain with redesigned intake and injection systems', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-hybrid-powertrain' },
       { title: 'BMW\'s new X3 G45 model expected to boost sales performance', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-g45-sales' },
       { title: 'BMW aims for 50% electric vehicle production to reduce costs amid revenue decline', date: '2025-05-12', url: 'https://news.example.com/bmw-ev-production-target' },
       { title: 'BMW reports 7.8% revenue decline and 26.4% drop in net profit in Q1 2025', date: '2025-05-11', url: 'https://news.example.com/bmw-q1-results' },
-      { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' },
-      { title: 'BMW affected by China tariffs on EVs', date: '2025-04-30', url: 'https://news.example.com/bmw-china-tariffs' },
-      { title: 'BMW pursues legal action against EU tariffs on Chinese EVs, seeks political agreements to mitigate impact', date: '2025-05-10', url: '' }
+      { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' }
     ],
     profile: {
       description: 'Bayerische Motoren Werke AG (BMW) is a German multinational corporation which produces luxury vehicles and motorcycles.',
@@ -965,10 +967,11 @@ export const mockCompanies = [
       debtToEquity: '124.5%'
     },
     news: [
+      { title: 'Mercedes-Benz pulls earnings forecasts due to tariff uncertainty', date: '2025-05-13', url: 'https://news.example.com/mercedes-tariff-uncertainty' },
+      { title: 'Mercedes-Benz earnings fell 28 percent to EUR10 billion, dividend cut by a fifth', date: '2025-05-13', url: 'https://news.example.com/mercedes-earnings-dividend-cut' },
       { title: 'Mercedes-Benz launches new CLA in UK, featuring electric and hybrid options built on MMA', date: '2025-05-13', url: 'https://news.example.com/mercedes-cla-uk-launch' },
       { title: 'Mercedes-Benz revenue declined by 7.4% in Q1 2025', date: '2025-05-04', url: 'https://news.example.com/mercedes-q1-2025' },
-      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' },
-      { title: 'Mercedes-Benz withdraws earnings forecasts due to industry-wide tariff impacts', date: '2025-05-10', url: '' }
+      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' }
     ],
     profile: {
       description: 'Mercedes-Benz Group AG, formerly Daimler AG, is a German multinational automotive corporation headquartered in Stuttgart, known for luxury vehicles, trucks, and buses.',
@@ -1053,6 +1056,7 @@ export const mockCompanies = [
       netMargin: '11.3%',
       debtToEquity: '18.5%'
     },    news: [
+      { title: 'Tesla sales plunge in China and Europe despite surge in overall EV adoption', date: '2025-05-13', url: 'https://news.example.com/tesla-sales-plunge-global' },
       { title: 'Tesla halts Model Y and Cybertruck production due to inventory surplus and softening demand', date: '2025-05-12', url: 'https://news.example.com/tesla-halts-production' },
       { title: 'Tesla car sales in Europe fall to two-year low', date: '2025-05-07', url: 'https://news.example.com/tesla-europe-sales-drop' },
       { title: 'Tesla disappoints with Q1 earnings amid slumping China sales', date: '2025-04-25', url: 'https://news.example.com/tesla-q1-2025-earnings' },
@@ -1321,12 +1325,11 @@ export const mockCompanies = [
       debtToEquity: '185.0%'
     },
     news: [
-      { title: 'Nissan to cut 20,000 jobs globally as part of massive restructuring effort', date: '2025-05-13', url: 'https://news.example.com/nissan-20k-job-cuts' },
-      { title: 'Nissan considering closure of domestic factory amid declining sales', date: '2025-05-13', url: 'https://news.example.com/nissan-factory-closure' },
-      { title: 'Nissan expected to report net loss of up to ¥750 billion for fiscal year', date: '2025-05-13', url: 'https://news.example.com/nissan-fiscal-loss' },
-      { title: 'Nissan to cut 9,000 jobs and reduce production capacity', date: '2025-05-07', url: 'https://news.example.com/nissan-job-cuts' },
-      { title: 'Nissan expects net loss of up to ¥750 billion for fiscal year', date: '2025-04-28', url: 'https://news.example.com/nissan-fiscal-projection' },
-      { title: 'Nissan abandons ¥153B battery plant, focuses on new Leaf EV and Mitsubishi partnership for 2026 EV launch', date: '2025-05-10', url: '' }
+      { title: 'Nissan plans to cut 20,000 jobs globally, 15% of workforce amid declining sales', date: '2025-05-13', url: 'https://news.example.com/nissan-job-cuts' },
+      { title: 'Nissan considering closing domestic factory as part of production capacity optimization', date: '2025-05-13', url: 'https://news.example.com/nissan-factory-closure' },
+      { title: 'Nissan expects net loss of up to 750 billion yen for fiscal year ended March', date: '2025-05-12', url: 'https://news.example.com/nissan-financial-loss' },
+      { title: 'Nissan to announce recovery actions with full-year financial results', date: '2025-05-11', url: 'https://news.example.com/nissan-recovery-plan' },
+      { title: 'Nissan reshuffles management team to address business turmoil', date: '2025-05-08', url: 'https://news.example.com/nissan-management-changes' }
     ],
     profile: {
       description: 'Nissan Motor Co., Ltd. is a Japanese multinational automobile manufacturer headquartered in Yokohama, Japan.',
@@ -1769,6 +1772,8 @@ export const mockCompanies = [
       debtToEquity: '38.0%'
     },
     news: [
+      { title: 'Cummins withdraws full-year guidance due to Trump administration tariff uncertainty', date: '2025-05-13', url: 'https://news.example.com/cummins-guidance-withdrawn-tariffs' },
+      { title: 'Cummins stock suffers 19.5% negative return due to trade policy uncertainty', date: '2025-05-13', url: 'https://news.example.com/cummins-stock-decline' },
       { title: 'Cummins X15 engine part of HELM platform offers compatibility with multiple fuel types', date: '2025-05-13', url: 'https://news.example.com/cummins-x15-engine' },
       { title: 'Cummins withdraws 2025 outlook due to economic uncertainty', date: '2025-05-07', url: 'https://news.example.com/cummins-outlook-withdrawn' },
       { title: 'Cummins share value down 12% year-to-date', date: '2025-04-29', url: 'https://news.example.com/cummins-share-decline' }
@@ -2263,6 +2268,7 @@ export const mockCompanies = [
       debtToEquity: 'N/A'
     },
     news: [
+      { title: 'Waymo faces increased regulatory scrutiny with crash rate of 1,000 per 100 million miles', date: '2025-05-13', url: 'https://news.example.com/waymo-regulatory-scrutiny' },
       { title: 'Waymo partnership with Uber evolving, Austin pilot exceeds expectations', date: '2025-05-12', url: 'https://news.example.com/waymo-uber-partnership' },
       { title: 'Uber expands partnerships with WeRide and Volkswagen beyond Waymo', date: '2025-05-11', url: 'https://news.example.com/uber-autonomous-partnerships' },
       { title: 'Waymo plans rollout of autonomous ride service in Atlanta', date: '2025-05-08', url: 'https://news.example.com/waymo-atlanta-rollout' },
@@ -2427,6 +2433,7 @@ export const mockCompanies = [
       debtToEquity: '220.0%'
     },
     news: [
+      { title: 'IBM stock drops 7.5% despite better-than-expected Q1 results due to weak consulting sales', date: '2025-05-13', url: 'https://news.example.com/ibm-stock-drop-consulting' },
       { title: 'IBM positions z17 mainframe to reclaim workloads from x86 servers and cloud platforms', date: '2025-05-13', url: 'https://news.example.com/ibm-z17-mainframe' },
       { title: 'IBM expands watsonx AI platform with new foundation models', date: '2025-05-10', url: 'https://news.example.com/ibm-watsonx-expansion' },
       { title: 'IBM completes acquisition of HashiCorp to enhance hybrid cloud strategy', date: '2025-05-02', url: 'https://news.example.com/ibm-hashicorp-acquisition' },
@@ -2583,5 +2590,32 @@ export const mockCompanies = [
       { date: '2025-05-11', price: 221 },
       { date: '2025-05-12', price: 220 }
     ]
+  },
+  {
+    name: 'Ola Electric',
+    ticker: '',
+    sector: 'Automotive',
+    index: '',
+    price: null,
+    change: null,
+    summary: {},
+    news: [
+      { title: 'Vanguard cuts Ola Electric valuation to $1.25 billion due to IPO uncertainty', date: '2025-05-13', url: 'https://news.example.com/ola-valuation-cut' },
+      { title: 'Ola Electric faces delayed sales growth and higher cash burn rates', date: '2025-05-13', url: 'https://news.example.com/ola-delayed-growth' },
+      { title: 'Ola Electric expands charging network by 50% in major cities', date: '2025-05-05', url: 'https://news.example.com/ola-charging-network' },
+      { title: 'Ola Electric launches new scooter model with improved range', date: '2025-04-28', url: 'https://news.example.com/ola-new-scooter' }
+    ],
+    profile: {
+      description: 'Ola Electric is an Indian electric vehicle manufacturer focused on producing electric scooters and expanding charging infrastructure.',
+      executives: [],
+      address: '',
+      website: 'https://olaelectric.com/'
+    },
+    earnings: {},
+    peers: [],
+    financials: {},
+    options: {},
+    ownership: {},
+    priceHistory: []
   },
 ];
