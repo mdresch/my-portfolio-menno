@@ -5,7 +5,9 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const slug = searchParams.get('slug');
-    const token = searchParams.get('token') || undefined;
+    
+    // Get the token from the request header rather than query parameter for better security
+    const token = request.headers.get('X-GitHub-Token') || undefined;
     
     // Return a specific post if slug is provided
     if (slug) {

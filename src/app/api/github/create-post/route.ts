@@ -21,7 +21,9 @@ async function getDefaultBranch(owner: string, repo: string, token: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { token, content, path, message } = await request.json();
+    // Get token from header for better security
+    const token = request.headers.get('X-GitHub-Token');
+    const { content, path, message } = await request.json();
     
     if (!token || !content || !path) {
       return NextResponse.json({ 

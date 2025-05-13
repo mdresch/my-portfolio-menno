@@ -96,17 +96,15 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
     if (!token) {
       alert(`Please enter your ${platform === 'hashnode' ? 'Hashnode API token' : 'DEV.to API key'}`);
       return;
-    }
-
-    // --- URL Construction Fix ---
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    if (!siteUrl) {
-      alert('NEXT_PUBLIC_SITE_URL is not defined. Please set it in your environment variables.');
-      return;
-    }
-    const originalArticleURL = `${siteUrl}/blog/${slug}`;
+    }    // --- URL Construction Fix ---
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    // Ensure the URL is properly formed with protocol
+    const baseUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
+    const originalArticleURL = `${baseUrl}/blog/${slug}`;
+    
     try {
       new URL(originalArticleURL);
+      console.log("Using canonical URL:", originalArticleURL);
     } catch {
       alert(`Invalid URL constructed: ${originalArticleURL}`);
       return;

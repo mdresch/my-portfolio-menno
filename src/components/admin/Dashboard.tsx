@@ -24,22 +24,85 @@ export default function Dashboard() {
     owner: "mdresch",
     repo: "my-portfolio-menno",
     defaultBranch: "main"
-  };
-
+  };  // Define fetchPosts inside useEffect to avoid dependency issues
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    const fetchPostsData = async () => {
+      setIsLoading(true);
+      setError(null);
+      
+      // Use the appropriate API endpoint based on the toggle
+      const apiUrl = useGitHubFetch ? '/api/github-posts' : '/api/posts';
+      
+      try {
+        // Create request options with authorization headers if needed
+        const requestOptions: RequestInit = {
+          method: 'GET',
+          headers: {},
+          credentials: 'same-origin'
+        };
+        
+        // If GitHub fetch is enabled, add token to request headers instead of URL
+        if (useGitHubFetch) {
+          const token = localStorage.getItem('githubToken');
+          if (token) {
+            // Add token to request headers for better security
+            requestOptions.headers = {
+              'X-GitHub-Token': token
+            };
+          }
+        }
+        
+        const response = await fetch(apiUrl, requestOptions);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        if (data.error) {
+          setError(data.error);
+          setPosts([]);
+        } else {
+          setPosts(data);
+        }
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+        setError(err instanceof Error ? err.message : 'Failed to fetch posts');
+        setPosts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
+    fetchPostsData();
+  }, [useGitHubFetch]);
+  // This function will be used for manual refreshes
   const fetchPosts = async () => {
     setIsLoading(true);
     setError(null);
-    const token = localStorage.getItem('githubToken');
-    const apiUrl = useGitHubFetch 
-      ? `/api/github-posts${token ? `?token=${token}` : ''}`
-      : '/api/posts';
+    
+    // Use the appropriate API endpoint based on the toggle
+    const apiUrl = useGitHubFetch ? '/api/github-posts' : '/api/posts';
     
     try {
-      const response = await fetch(apiUrl);
+      // Create request options with authorization headers if needed
+      const requestOptions: RequestInit = {
+        method: 'GET',
+        headers: {},
+        credentials: 'same-origin'
+      };
+      
+      // If GitHub fetch is enabled, add token to request headers instead of URL
+      if (useGitHubFetch) {
+        const token = localStorage.getItem('githubToken');
+        if (token) {
+          // Add token to request headers for better security
+          requestOptions.headers = {
+            'X-GitHub-Token': token
+          };
+        }
+      }
+      
+      const response = await fetch(apiUrl, requestOptions);
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.status}`);
       }

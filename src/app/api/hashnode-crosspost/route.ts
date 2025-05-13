@@ -5,16 +5,29 @@ const HASHNODE_API_URL = 'https://gql.hashnode.com';
 
 export async function POST(request: NextRequest) {
   try {
-    const { post, token } = await request.json();
+    const { post, token, originalArticleURL } = await request.json();
 
     if (!post || !token) {
       return NextResponse.json({ 
         error: 'Post data and token are required' 
       }, { status: 400 });
     }
+    
+    // Verify originalArticleURL is valid
+    if (!originalArticleURL) {
+      return NextResponse.json({
+        error: 'Original article URL is required'
+      }, { status: 400 });
+    }    try {
+      new URL(originalArticleURL);
+    } catch {
+      return NextResponse.json({
+        error: 'Invalid original article URL'
+      }, { status: 400 });
+    }
 
     // Update the tag formatting:
-    const tags = post.categories?.map(category => ({
+    const tags = post.categories?.map((category: string) => ({
       name: category, // Keep original name
       slug: category.toLowerCase()
         .replace(/\s+/g, '-')    // Replace spaces with hyphens
@@ -37,12 +50,11 @@ export async function POST(request: NextRequest) {
         .replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, '```\n$1\n```\n')
         .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
         .replace(/<em>(.*?)<\/em>/g, '*$1*')
-        .replace(/<ul>([\s\S]*?)<\/ul>/g, (match) => {
+        .replace(/<ul>([\s\S]*?)<\/ul>/g, (match: string) => {
           return match
             .replace(/<li>(.*?)<\/li>/g, '- $1\n')
             .replace(/<ul>|<\/ul>/g, '');
-        })
-        .replace(/<ol>([\s\S]*?)<\/ol>/g, (match, index) => {
+        })        .replace(/<ol>([\s\S]*?)<\/ol>/g, (match: string) => {
           let num = 1;
           return match
             .replace(/<li>(.*?)<\/li>/g, () => `${num++}. $1\n`)
@@ -59,15 +71,17 @@ export async function POST(request: NextRequest) {
         error: 'HASHNODE_PUBLICATION_ID environment variable is not set. Please set it in your .env.local file.'
       }, { status: 500 });
     }
+    
     // Build input object and always include publicationId
-    const draftInput: any = {
+    const draftInput = {
       title: post.title,
       contentMarkdown: contentMarkdown,
       tags: tags,
       subtitle: post.excerpt || undefined,
-      originalArticleURL: process.env.SITE_URL + '/blog/' + post.slug,
+      originalArticleURL: originalArticleURL, // Use the validated URL from request
       publicationId: publicationId
     };
+    
     const createDraftQuery = {
       query: `
         mutation CreateDraft($input: CreateDraftInput!) {
@@ -106,7 +120,7 @@ export async function POST(request: NextRequest) {
 
     // Check for GraphQL errors in draft creation
     if (draftData.errors) {
-      const errorMessage = draftData.errors.map(e => e.message).join(', ');
+      const errorMessage = draftData.errors.map((e: { message: string }) => e.message).join(', ');
       return NextResponse.json({
         error: `GraphQL Error: ${errorMessage}`,
         details: draftData.errors
@@ -166,7 +180,7 @@ export async function POST(request: NextRequest) {
 
     // Check for GraphQL errors in publishing
     if (publishData.errors) {
-      const errorMessage = publishData.errors.map(e => e.message).join(', ');
+      const errorMessage = publishData.errors.map((e: { message: string }) => e.message).join(', ');
       return NextResponse.json({
         error: `GraphQL Error when publishing: ${errorMessage}`,
         details: publishData.errors,

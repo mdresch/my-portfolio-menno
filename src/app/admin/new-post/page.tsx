@@ -23,7 +23,7 @@ export default function NewPostPage() {
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [excerpt, setExcerpt] = useState('');
-  const [categories, setCategories] = useState(['']);
+  const [categories, setCategories] = useState<string[]>(['']);
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   
@@ -48,7 +48,7 @@ export default function NewPostPage() {
   }, [router]);
   
   // Generate slug from title
-  const generateSlug = (title) => {
+  const generateSlug = (title: string): string => {
     return title
       .toLowerCase()
       .replace(/[^\w\s]/gi, '')
@@ -56,26 +56,26 @@ export default function NewPostPage() {
   };
   
   // Handle title change
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newTitle = e.target.value;
     setTitle(newTitle);
     setSlug(generateSlug(newTitle));
   };
   
   // Handle category change
-  const handleCategoryChange = (index, value) => {
+  const handleCategoryChange = (index: number, value: string): void => {
     const newCategories = [...categories];
     newCategories[index] = value;
     setCategories(newCategories);
   };
   
   // Add new category field
-  const addCategory = () => {
+  const addCategory = (): void => {
     setCategories([...categories, '']);
   };
   
   // Remove category field
-  const removeCategory = (index) => {
+  const removeCategory = (index: number): void => {
     if (categories.length > 1) {
       const newCategories = [...categories];
       newCategories.splice(index, 1);
@@ -84,7 +84,7 @@ export default function NewPostPage() {
   };
   
   // Create post via GitHub API
-  const createPost = async (e) => {
+  const createPost = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     
     if (!githubToken) {
@@ -99,7 +99,6 @@ export default function NewPostPage() {
     
     setIsSaving(true);
     setError('');
-    
     // Filter out empty categories
     const filteredCategories = categories.filter(cat => cat.trim() !== '');
     
@@ -132,9 +131,9 @@ ${content}`;
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-GitHub-Token': githubToken // Send token in header instead of body
         },
         body: JSON.stringify({
-          token: githubToken,
           content: frontmatter, // Use the updated frontmatter
           path: `content/blog/${slug}.md`,
           message: `Add blog post: ${title}`
@@ -153,9 +152,9 @@ ${content}`;
         router.push('/admin');
       }, 2000);
       
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Error creating post:', err);
-      setError(err.message || 'Failed to create post. Please try again.');
+      setError(err instanceof Error ? err.message : 'Failed to create post. Please try again.');
     } finally {
       setIsSaving(false);
     }
@@ -224,7 +223,7 @@ ${content}`;
                 type="text"
                 id="slug"
                 value={slug}
-                onChange={(e) => setSlug(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSlug(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="enter-post-slug"
                 required
@@ -241,7 +240,7 @@ ${content}`;
               <textarea
                 id="excerpt"
                 value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setExcerpt(e.target.value)}
                 rows={2}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Brief summary of your post"
@@ -256,7 +255,7 @@ ${content}`;
                 type="text"
                 id="author"
                 value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAuthor(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Author name"
                 required
@@ -272,7 +271,7 @@ ${content}`;
                   <input
                     type="text"
                     value={category}
-                    onChange={(e) => handleCategoryChange(index, e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleCategoryChange(index, e.target.value)}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. JavaScript, React, Web Development"
                   />
@@ -317,7 +316,7 @@ ${content}`;
                   type="password"
                   id="github-token"
                   value={githubToken}
-                  onChange={(e) => setGithubToken(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGithubToken(e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter your GitHub token"
                 />
