@@ -100,10 +100,10 @@ export const mockCompanies = [
     summary: {
       marketCap: '3.2T', pe: 35.2, eps: 9.8, dividend: 2.72, yield: '0.65%', beta: 0.92, volume: '32.1M', shares: '7.45B', roe: '45.2%', revenue: '230.0B', grossMargin: '68.2%', netMargin: '36.5%', debtToEquity: '50.0%'
     },    news: [
+      { title: 'Microsoft to announce new AI integrations at Build 2025 developer conference', date: '2025-05-13', url: 'https://news.example.com/microsoft-build-ai-integrations' },
+      { title: 'Microsoft expanding enterprise AI capabilities through joint venture with Oracle and SoftBank', date: '2025-05-13', url: 'https://news.example.com/microsoft-ai-data-centers' },
       { title: 'Microsoft negotiates reduced stake in OpenAI in exchange for guaranteed access to future AI models', date: '2025-05-12', url: 'https://news.example.com/microsoft-openai-stake' },
       { title: 'Microsoft lays off 2,000 employees as regulatory oversight increases', date: '2025-05-11', url: 'https://news.example.com/microsoft-layoffs' },
-      { title: 'Microsoft unveils new AI features in Office', date: '2025-04-20', url: '#' },
-      { title: 'Microsoft Q1 earnings strong', date: '2025-04-15', url: '#' },
       { title: 'Microsoft bans Deepseek AI app over data vulnerability, funds $1M AI Accelerator Grant for ovarian cancer research', date: '2025-05-10', url: '' }
     ],
     profile: {
@@ -130,6 +130,7 @@ export const mockCompanies = [
       marketCap: '2.0T', pe: 28.1, eps: 5.3, dividend: 0, yield: '0%', beta: 1.05, volume: '18.2M', shares: '13.2B', roe: '28.0%', revenue: '300.0B', grossMargin: '56.0%', netMargin: '25.0%', debtToEquity: '12.0%'
     },
     news: [ 
+      { title: 'Alphabet announces partnership with UniCredit to migrate IT architecture to Google Cloud', date: '2025-05-13', url: 'https://news.example.com/alphabet-unicredit-cloud' },
       { title: 'Alphabet faces DOJ antitrust pressure to share search data with competitors', date: '2025-05-12', url: 'https://news.example.com/alphabet-doj-antitrust' },
       { title: 'Google market share in search traffic declines from 93% to under 90% after ChatGPT debut', date: '2025-05-11', url: 'https://news.example.com/google-market-share' },
       { title: 'Alphabet launches new search AI', date: '2025-04-19', url: '#' } 
@@ -785,6 +786,8 @@ export const mockCompanies = [
       netMargin: '7.1%',
       debtToEquity: '145.2%'
     },    news: [
+      { title: 'BMW introduces improved X3 hybrid powertrain with redesigned intake and injection systems', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-hybrid-powertrain' },
+      { title: 'BMW\'s new X3 G45 model expected to boost sales performance', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-g45-sales' },
       { title: 'BMW aims for 50% electric vehicle production to reduce costs amid revenue decline', date: '2025-05-12', url: 'https://news.example.com/bmw-ev-production-target' },
       { title: 'BMW reports 7.8% revenue decline and 26.4% drop in net profit in Q1 2025', date: '2025-05-11', url: 'https://news.example.com/bmw-q1-results' },
       { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' },
@@ -962,6 +965,7 @@ export const mockCompanies = [
       debtToEquity: '124.5%'
     },
     news: [
+      { title: 'Mercedes-Benz launches new CLA in UK, featuring electric and hybrid options built on MMA', date: '2025-05-13', url: 'https://news.example.com/mercedes-cla-uk-launch' },
       { title: 'Mercedes-Benz revenue declined by 7.4% in Q1 2025', date: '2025-05-04', url: 'https://news.example.com/mercedes-q1-2025' },
       { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' },
       { title: 'Mercedes-Benz withdraws earnings forecasts due to industry-wide tariff impacts', date: '2025-05-10', url: '' }
@@ -1138,6 +1142,10 @@ export const mockCompanies = [
       debtToEquity: '95.0%'
     },
     news: [
+      { title: 'Porsche completes acquisition of majority stake in V4Smart GmbH for battery technology', date: '2025-05-13', url: 'https://news.example.com/porsche-v4smart-acquisition' },
+      { title: 'Porsche invests over €200 million in strategic projects during Q1 2025', date: '2025-05-13', url: 'https://news.example.com/porsche-q1-investments' },
+      { title: 'Porsche partners with VARTA for high-performance battery cell development', date: '2025-05-13', url: 'https://news.example.com/porsche-varta-partnership' },
+      { title: 'Porsche signs e-Fuels agreement with HIF Global and Shell for Chilean facility', date: '2025-05-13', url: 'https://news.example.com/porsche-efuels-chile' },
       { title: 'Porsche reports 43.8% drop in operating profit', date: '2025-05-06', url: 'https://news.example.com/porsche-profit-drop' },
       { title: 'Porsche plans to cut 2,000 jobs amid financial pressure', date: '2025-04-30', url: 'https://news.example.com/porsche-job-cuts' }
     ],
@@ -1224,6 +1232,7 @@ export const mockCompanies = [
       debtToEquity: '70.5%'
     },
     news: [
+      { title: 'Ferrari Elettrica expected to benefit from favorable Chinese tax structure', date: '2025-05-13', url: 'https://news.example.com/ferrari-elettrica-china' },
       { title: 'Ferrari reports 25% sales drop in greater China region', date: '2025-05-08', url: 'https://news.example.com/ferrari-china-sales' },
       { title: 'Ferrari global shipments up 1% despite regional challenges', date: '2025-05-03', url: 'https://news.example.com/ferrari-shipments-2025' },
       { title: 'Ferrari maintains confident 2025 outlook despite tariffs, first EV deliveries expected', date: '2025-05-10', url: '' }
@@ -1312,6 +1321,9 @@ export const mockCompanies = [
       debtToEquity: '185.0%'
     },
     news: [
+      { title: 'Nissan to cut 20,000 jobs globally as part of massive restructuring effort', date: '2025-05-13', url: 'https://news.example.com/nissan-20k-job-cuts' },
+      { title: 'Nissan considering closure of domestic factory amid declining sales', date: '2025-05-13', url: 'https://news.example.com/nissan-factory-closure' },
+      { title: 'Nissan expected to report net loss of up to ¥750 billion for fiscal year', date: '2025-05-13', url: 'https://news.example.com/nissan-fiscal-loss' },
       { title: 'Nissan to cut 9,000 jobs and reduce production capacity', date: '2025-05-07', url: 'https://news.example.com/nissan-job-cuts' },
       { title: 'Nissan expects net loss of up to ¥750 billion for fiscal year', date: '2025-04-28', url: 'https://news.example.com/nissan-fiscal-projection' },
       { title: 'Nissan abandons ¥153B battery plant, focuses on new Leaf EV and Mitsubishi partnership for 2026 EV launch', date: '2025-05-10', url: '' }
@@ -1399,6 +1411,8 @@ export const mockCompanies = [
       netMargin: '8.5%',
       debtToEquity: '75.0%'
     },    news: [
+      { title: 'BYD faces delays in Brazilian factory completion due to labor abuse accusations', date: '2025-05-13', url: 'https://news.example.com/byd-brazil-factory-delays' },
+      { title: 'BYD expands lithium-ion battery recycling capabilities in Oceania with Livium', date: '2025-05-13', url: 'https://news.example.com/byd-battery-recycling' },
       { title: 'BYD adjusts Chile supply chain plans due to lithium price crash, focuses on Chinese facilities', date: '2025-05-12', url: 'https://news.example.com/byd-chile-plan-changes' },
       { title: 'BYD emphasizes Europe expansion as pivotal to 2030 target amid US market lockout', date: '2025-05-11', url: 'https://news.example.com/byd-europe-expansion' },
       { title: 'BYD scraps plans for Chile lithium plants due to global market conditions', date: '2025-05-06', url: 'https://news.example.com/byd-lithium-chile' },
@@ -1755,6 +1769,7 @@ export const mockCompanies = [
       debtToEquity: '38.0%'
     },
     news: [
+      { title: 'Cummins X15 engine part of HELM platform offers compatibility with multiple fuel types', date: '2025-05-13', url: 'https://news.example.com/cummins-x15-engine' },
       { title: 'Cummins withdraws 2025 outlook due to economic uncertainty', date: '2025-05-07', url: 'https://news.example.com/cummins-outlook-withdrawn' },
       { title: 'Cummins share value down 12% year-to-date', date: '2025-04-29', url: 'https://news.example.com/cummins-share-decline' }
     ],
@@ -2387,6 +2402,186 @@ export const mockCompanies = [
       { date: '2025-05-10', price: 103.40 },
       { date: '2025-05-11', price: 103.30 },
       { date: '2025-05-12', price: 103.80 }
+    ]
+  },
+  {
+    name: 'IBM Corp.',
+    ticker: 'IBM',
+    sector: 'Information Technology',
+    index: 'S&P 500',
+    price: 178.25,
+    change: '+0.8%',
+    summary: {
+      marketCap: '163B',
+      pe: 21.7,
+      eps: 8.21,
+      dividend: 6.64,
+      yield: '3.72%',
+      beta: 0.85,
+      volume: '4.2M',
+      shares: '0.91B',
+      roe: '26.8%',
+      revenue: '62.5B',
+      grossMargin: '55.4%',
+      netMargin: '12.5%',
+      debtToEquity: '220.0%'
+    },
+    news: [
+      { title: 'IBM positions z17 mainframe to reclaim workloads from x86 servers and cloud platforms', date: '2025-05-13', url: 'https://news.example.com/ibm-z17-mainframe' },
+      { title: 'IBM expands watsonx AI platform with new foundation models', date: '2025-05-10', url: 'https://news.example.com/ibm-watsonx-expansion' },
+      { title: 'IBM completes acquisition of HashiCorp to enhance hybrid cloud strategy', date: '2025-05-02', url: 'https://news.example.com/ibm-hashicorp-acquisition' },
+      { title: 'IBM reports Q1 2025 revenue growth of 2.6%, driven by software segment', date: '2025-04-24', url: 'https://news.example.com/ibm-q1-2025-earnings' }
+    ],
+    profile: {
+      description: 'International Business Machines Corporation (IBM) is an American multinational technology corporation headquartered in Armonk, New York, specializing in cloud computing, artificial intelligence, and quantum computing.',
+      executives: [
+        { name: 'Arvind Krishna', title: 'Chairman & Chief Executive Officer' },
+        { name: 'James Kavanaugh', title: 'Senior Vice President & Chief Financial Officer' }
+      ],
+      address: '1 New Orchard Road, Armonk, NY 10504, United States',
+      website: 'https://www.ibm.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-18',
+      lastEarningsDate: '2025-04-24',
+      epsActual: 1.68,
+      epsEstimate: 1.65,
+      revenueActual: '15.3B',
+      revenueEstimate: '15.1B',
+      surprise: '+1.8%'
+    },
+    peers: [
+      { name: 'Microsoft', ticker: 'MSFT' },
+      { name: 'Oracle', ticker: 'ORCL' },
+      { name: 'Hewlett Packard Enterprise', ticker: 'HPE' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '62.5B', netIncome: '7.8B' },
+        { year: 2023, revenue: '60.8B', netIncome: '7.2B' }
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '150.2B', liabilities: '124.5B', equity: '25.7B' }
+      ],
+      cashFlow: [
+        { year: 2024, operating: '13.5B', investing: '-5.8B', financing: '-7.1B' }
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 185, expiry: '2025-06-20', price: 3.85, volume: 850 },
+        { strike: 195, expiry: '2025-06-20', price: 1.65, volume: 620 }
+      ],
+      puts: [
+        { strike: 170, expiry: '2025-06-20', price: 3.20, volume: 780 },
+        { strike: 160, expiry: '2025-06-20', price: 1.75, volume: 560 }
+      ]
+    },
+    ownership: {
+      institutional: '72%',
+      insider: '0.12%',
+      topHolders: [
+        { name: 'Vanguard Group', percent: '8.8%' },
+        { name: 'BlackRock', percent: '7.9%' },
+        { name: 'State Street Global Advisors', percent: '5.6%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-08', price: 175.80 },
+      { date: '2025-05-09', price: 176.45 },
+      { date: '2025-05-10', price: 177.20 },
+      { date: '2025-05-11', price: 177.85 },
+      { date: '2025-05-12', price: 178.25 }
+    ]
+  },
+  {
+    name: 'Volvo Car AB',
+    ticker: 'VOLCAR.B.ST',
+    sector: 'Consumer Discretionary',
+    index: 'OMX Stockholm',
+    price: 220, // SEK
+    change: '-1.8%',
+    summary: {
+      marketCap: '72B', // SEK (billion)
+      pe: 11.5,
+      eps: '19.13', // SEK
+      dividend: '5.50', // SEK
+      yield: '2.5%',
+      beta: 1.15,
+      volume: '2.5M',
+      shares: '0.33B',
+      roe: '14.5%',
+      revenue: '400B', // SEK (billion)
+      grossMargin: '20.8%',
+      netMargin: '7.5%',
+      debtToEquity: '55.0%'
+    },
+    news: [
+      { title: 'Volvo Car revenue drops to 82.9bn krona from 93.9bn krona year-on-year', date: '2025-05-13', url: 'https://news.example.com/volvo-car-revenue-drop' },
+      { title: 'Volvo Car EBIT margin decreased to 2.3% from 5% year-on-year', date: '2025-05-13', url: 'https://news.example.com/volvo-car-ebit-margin' },
+      { title: 'Volvo Car expands plug-in hybrid lineup across European markets', date: '2025-05-05', url: 'https://news.example.com/volvo-car-hybrid-expansion' },
+      { title: 'Volvo Car reports slower than expected EV sales growth in Q1', date: '2025-04-28', url: 'https://news.example.com/volvo-car-ev-sales' }
+    ],
+    profile: {
+      description: 'Volvo Car AB is a Swedish automotive manufacturer of luxury vehicles headquartered in Gothenburg, Sweden. It is a subsidiary of the Chinese automotive company Geely Holding Group.',
+      executives: [
+        { name: 'Jim Rowan', title: 'Chief Executive Officer' },
+        { name: 'Johan Ekdahl', title: 'Chief Financial Officer' }
+      ],
+      address: 'Assar Gabrielssons Väg, 405 31 Gothenburg, Sweden',
+      website: 'https://www.volvocars.com/'
+    },
+    earnings: {
+      nextEarningsDate: '2025-07-20',
+      lastEarningsDate: '2025-04-25',
+      epsActual: '4.65', // SEK
+      epsEstimate: '5.10', // SEK
+      revenueActual: '82.9B', // SEK (billion)
+      revenueEstimate: '88.5B', // SEK (billion)
+      surprise: '-8.8%'
+    },
+    peers: [
+      { name: 'Volvo AB', ticker: 'VOLV-B.ST' },
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' }
+    ],
+    financials: {
+      incomeStatement: [
+        { year: 2024, revenue: '400B', netIncome: '30B' }, // SEK (billion)
+        { year: 2023, revenue: '380B', netIncome: '32B' } // SEK (billion)
+      ],
+      balanceSheet: [
+        { year: 2024, assets: '500B', liabilities: '280B', equity: '220B' } // SEK (billion)
+      ],
+      cashFlow: [
+        { year: 2024, operating: '45B', investing: '-25B', financing: '-8B' } // SEK (billion)
+      ]
+    },
+    options: {
+      calls: [
+        { strike: 230, expiry: '2025-06-20', price: 4.5, volume: 320 },
+        { strike: 240, expiry: '2025-06-20', price: 2.8, volume: 240 }
+      ],
+      puts: [
+        { strike: 210, expiry: '2025-06-20', price: 3.8, volume: 380 },
+        { strike: 200, expiry: '2025-06-20', price: 2.2, volume: 290 }
+      ]
+    },
+    ownership: {
+      institutional: '40%',
+      insider: '50.6%',
+      topHolders: [
+        { name: 'Geely Holding Group', percent: '51.0%' },
+        { name: 'AMF Pension', percent: '5.8%' },
+        { name: 'Folksam', percent: '4.2%' }
+      ]
+    },
+    priceHistory: [
+      { date: '2025-05-08', price: 226 },
+      { date: '2025-05-09', price: 224 },
+      { date: '2025-05-10', price: 223 },
+      { date: '2025-05-11', price: 221 },
+      { date: '2025-05-12', price: 220 }
     ]
   },
 ];

@@ -27,9 +27,9 @@ export default function SupplyChainTop25Page() {
         
         {/* Connect links */}
         <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="https://www.linkedin.com/in/mennodrescher/" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
 
@@ -183,10 +183,10 @@ export default function SupplyChainTop25Page() {
         </div>
         
         {/* Connect links */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-8 pt-4 border-t border-gray-200 text-sm">
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+        <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="https://www.linkedin.com/in/mennodrescher/" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
 
@@ -276,9 +276,9 @@ export default function SupplyChainTop25Page() {
         
         {/* Connect links */}
         <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="https://www.linkedin.com/in/mennodrescher/" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
 
@@ -414,9 +414,9 @@ export default function SupplyChainTop25Page() {
         
         {/* Connect links */}
         <div className="flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-gray-200 text-sm">
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
-          <a href="#" className="text-blue-600 hover:text-blue-800">Become a Client</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Sign Up for Our Newsletter</a>
+          <a href="https://www.linkedin.com/in/mennodrescher/" className="text-blue-600 hover:text-blue-800 mb-3 md:mb-0">Follow Us on LinkedIn</a>
+          <a href="https://my-portfolio-menno.vercel.app/contact" className="text-blue-600 hover:text-blue-800">Become a Client</a>
         </div>
       </section>
       
