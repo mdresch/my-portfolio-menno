@@ -65,32 +65,32 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="min-h-screen transition-colors" suppressHydrationWarning>
       <head>
         {/* Hotjar Tracking Code for My Portfolio Menno */}
         <script>
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:6399278,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          {`(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:6399278,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
         </script>
-      </head>      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
+      </head>
+      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <RadixTheme>
             <div className="flex items-center justify-center">
               <NavigationMenuDemo />
             </div>
             <main className="flex-1">
-              {/* We don't wrap the entire app with ErrorBoundary in layout.tsx because we need
-                  to use client components only at the component level, not at the root layout level */}              {children}
+              {children}
               <Analytics />
               <SpeedInsights />
               <ClientAnalytics />
