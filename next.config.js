@@ -3,15 +3,15 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const ContentSecurityPolicy = [
   "default-src 'self';",
-  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live;",
+  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com;",
   "child-src 'self' blob:;",
   "style-src 'self' 'unsafe-inline';",
   "img-src * blob: data:;",
   "media-src 'none';",
-  "connect-src *;",
+  "connect-src * https://*.hotjar.com;",
   "font-src 'self';",
   "worker-src 'self' blob:;",
-  "frame-src 'self';"
+  "frame-src 'self' https://vars.hotjar.com;"
 ].join(' ');
 
 const securityHeaders = [
@@ -76,7 +76,7 @@ const nextConfig = {
       },
     ],
   },
-}
+};
 
 module.exports = withSentryConfig(nextConfig, {
   // For all available options, see:
