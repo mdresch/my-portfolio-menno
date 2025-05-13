@@ -1,7 +1,7 @@
 ---
 title: Create a modern digital workplace where people are at the center
 date: 2025-04-11
-author: Anonymous
+author: Menno Drescher
 excerpt: Creating a modern digital workplace that prioritizes people involves blending technology, culture, and physical spaces to enhance collaboration, productivity, and employee well-being. Here are some key strategies:
 categories: [modernwork, employeecentricity, Employee Experience, Modern Work Environement]
 ---
