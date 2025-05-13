@@ -5,13 +5,13 @@ const ContentSecurityPolicy = [
   "default-src 'self';",
   "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com;",
   "child-src 'self' blob:;",
-  "style-src 'self' 'unsafe-inline';",
+  "style-src 'self' 'unsafe-inline' https://giscus.app;", // Allow giscus styles
   "img-src * blob: data:;",
   "media-src 'none';",
   "connect-src * https://*.hotjar.com;",
   "font-src 'self';",
   "worker-src 'self' blob:;",
-  "frame-src 'self' https://vars.hotjar.com;"
+  "frame-src 'self' https://vars.hotjar.com https://giscus.app;" // Allow giscus frames
 ].join(' ');
 
 const securityHeaders = [
