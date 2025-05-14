@@ -29,7 +29,7 @@ jobs:
           dotnet ef database update --project ./api/PortfolioApi.csproj --context PortfolioContext
         env:
           ASPNETCORE_ENVIRONMENT: ${{ matrix.environment }}
-          ConnectionStrings__AzureSqlConnection: ${{ secrets[format('AZURE_SQL_CONNECTION_STRING_{0}', matrix.environment | upper)] }}
+          ConnectionStrings__AzureSqlConnection: ${{ secrets[format('AZURE_SQL_CONNECTION_STRING_{0}', toUpper(matrix.environment))] }}
       - name: Run integration tests
         run: dotnet test ./api/PortfolioApi.csproj --filter Category=Integration
         env:
