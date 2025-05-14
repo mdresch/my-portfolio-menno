@@ -1,0 +1,168 @@
+<#
+.SYNOPSIS
+    Applies Azure SQL Database best practices for performance and security
+.DESCRIPTION
+    This script configures Azure SQL Database settings following Microsoft best practices
+    for performance, security, and resource optimization.
+.PARAMETER ServerName
+    The name of your Azure SQL Server (without .database.windows.net)
+.PARAMETER DatabaseName
+    The name of your Azure SQL Database
+.PARAMETER ResourceGroupName
+    The name of the Resource Group containing your Azure SQL Server
+#>
+
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory = $true)]
+    [string]$ServerName,
+    
+    [Parameter(Mandatory = $true)]
+    [string]$DatabaseName,
+    
+    [Parameter(Mandatory = $true)]
+    [string]$ResourceGroupName
+)
+
+# Check for Azure PowerShell modules
+if (-not (Get-Module -ListAvailable Az.Sql)) {
+    Write-Host "Installing required Az modules..." -ForegroundColor Yellow
+    Install-Module -Name Az.Sql -Scope CurrentUser -Force
+    Install-Module -Name Az.Monitor -Scope CurrentUser -Force
+}
+
+# Connect to Azure
+try {
+    $context = Get-AzContext
+    if (-not $context) {
+        Connect-AzAccount
+    }
+}
+catch {
+    Write-Host "Please connect to your Azure account" -ForegroundColor Yellow
+    Connect-AzAccount
+}
+
+# Enable Azure SQL auditing
+Write-Host "Enabling SQL auditing..." -ForegroundColor Cyan
+try {
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroupName | Select-Object -First 1
+    
+    if (-not $storageAccount) {
+        Write-Host "Creating storage account for auditing..." -ForegroundColor Yellow
+        $storageAccountName = "sqlaudit$(Get-Random -Minimum 100000 -Maximum 999999)"
+        $storageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
+            -Name $storageAccountName -Location (Get-AzResourceGroup -Name $ResourceGroupName).Location `
+            -SkuName Standard_LRS -Kind StorageV2
+    }
+    
+    # Enable server auditing
+    Set-AzSqlServerAudit -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName `
+        -StorageAccountResourceId $storageAccount.Id `
+        -RetentionInDays 90 `
+        -BlobStorageTargetState Enabled
+        
+    Write-Host "SQL Server auditing enabled!" -ForegroundColor Green
+}
+catch {
+    Write-Host "Error enabling auditing: $_" -ForegroundColor Red
+}
+
+# Enable Transparent Data Encryption
+Write-Host "Enabling Transparent Data Encryption..." -ForegroundColor Cyan
+try {
+    Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName -DatabaseName $DatabaseName -State Enabled
+    Write-Host "Transparent Data Encryption enabled!" -ForegroundColor Green
+}
+catch {
+    Write-Host "Error enabling TDE: $_" -ForegroundColor Red
+}
+
+# Enable Advanced Data Security
+Write-Host "Enabling Advanced Data Security..." -ForegroundColor Cyan
+try {
+    # Get the current subscription
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    
+    # Enable Advanced Data Security at the server level
+    Set-AzSqlServerAdvancedDataSecurity -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName -EnableAdvancedDataSecurity $true
+        
+    # Enable specific protections
+    Update-AzSqlServerVulnerabilityAssessmentSetting -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName `
+        -StorageAccountResourceId $storageAccount.Id `
+        -RecurringScansInterval Weekly `
+        -EmailAdmins $true
+        
+    Write-Host "Advanced Data Security enabled!" -ForegroundColor Green
+}
+catch {
+    Write-Host "Error enabling Advanced Data Security: $_" -ForegroundColor Red
+}
+
+# Enable Azure SQL automatic tuning
+Write-Host "Enabling automatic tuning..." -ForegroundColor Cyan
+try {
+    # Enable automatic tuning for the database
+    Set-AzSqlDatabaseAutomaticTuning -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName -DatabaseName $DatabaseName `
+        -AutomaticTuningMode Auto
+        
+    # Enable specific tuning options
+    Set-AzSqlDatabaseAutomaticTuning -ResourceGroupName $ResourceGroupName `
+        -ServerName $ServerName -DatabaseName $DatabaseName `
+        -CreateIndex Enabled -DropIndex Enabled -ForceLastGoodPlan Enabled
+        
+    Write-Host "Automatic tuning enabled!" -ForegroundColor Green
+}
+catch {
+    Write-Host "Error enabling automatic tuning: $_" -ForegroundColor Red
+}
+
+# Set up performance alerts
+Write-Host "Setting up performance alerts..." -ForegroundColor Cyan
+try {
+    # Create an action group for alerts
+    $actionGroup = New-AzActionGroup -ResourceGroupName $ResourceGroupName `
+        -Name "SQLPerfAlerts" -ShortName "SQLPerf" `
+        -Receiver @(
+            (New-AzActionGroupEmailReceiver -Name "EmailAdmin" -EmailAddress "admin@example.com")
+        )
+        
+    # Create CPU alert
+    $cpuThreshold = 80
+    New-AzMetricAlertRuleV2 -ResourceGroupName $ResourceGroupName `
+        -Name "SQLHighCPU" -TargetResourceId "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Sql/servers/$ServerName/databases/$DatabaseName" `
+        -Condition (New-AzMetricAlertRuleV2Criteria -MetricName "cpu_percent" -TimeAggregation Average -Operator GreaterThan -Threshold $cpuThreshold) `
+        -ActionGroup $actionGroup.Id -WindowSize 00:05:00 -Frequency 00:01:00 -Severity 2
+        
+    # Create DTU alert (for DTU-based databases)
+    $dtuThreshold = 90
+    New-AzMetricAlertRuleV2 -ResourceGroupName $ResourceGroupName `
+        -Name "SQLHighDTU" -TargetResourceId "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Sql/servers/$ServerName/databases/$DatabaseName" `
+        -Condition (New-AzMetricAlertRuleV2Criteria -MetricName "dtu_consumption_percent" -TimeAggregation Average -Operator GreaterThan -Threshold $dtuThreshold) `
+        -ActionGroup $actionGroup.Id -WindowSize 00:05:00 -Frequency 00:01:00 -Severity 2
+        
+    # Create storage alert
+    $storageThreshold = 85
+    New-AzMetricAlertRuleV2 -ResourceGroupName $ResourceGroupName `
+        -Name "SQLHighStorage" -TargetResourceId "/subscriptions/$subscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Sql/servers/$ServerName/databases/$DatabaseName" `
+        -Condition (New-AzMetricAlertRuleV2Criteria -MetricName "storage_percent" -TimeAggregation Average -Operator GreaterThan -Threshold $storageThreshold) `
+        -ActionGroup $actionGroup.Id -WindowSize 01:00:00 -Frequency 00:05:00 -Severity 2
+        
+    Write-Host "Performance alerts configured!" -ForegroundColor Green
+}
+catch {
+    Write-Host "Error setting up performance alerts: $_" -ForegroundColor Red
+}
+
+Write-Host "`nAzure SQL Best Practices configuration completed!" -ForegroundColor Green
+Write-Host "`nRecommended next steps:" -ForegroundColor Yellow
+Write-Host "1. Review server firewall rules to ensure least-privileged access" -ForegroundColor White
+Write-Host "2. Set up geo-replication or failover groups for business continuity" -ForegroundColor White
+Write-Host "3. Schedule regular vulnerability assessments using SQL Advanced Data Security" -ForegroundColor White
+Write-Host "4. Configure backups with appropriate retention policy through Azure Portal" -ForegroundColor White
+Write-Host "5. Set up monitoring alerts for login failures and suspicious activities" -ForegroundColor White

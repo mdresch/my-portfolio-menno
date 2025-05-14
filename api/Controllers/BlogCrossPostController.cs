@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using PortfolioApi.Models;
+using PortfolioApi.Data;
 
 namespace PortfolioApi.Controllers
 {
@@ -29,17 +32,26 @@ namespace PortfolioApi.Controllers
         // POST: api/BlogCrossPost
         // Record a new cross-post
         [HttpPost]
-        public async Task<ActionResult<CrossPostResult>> CrossPost([FromBody] CrossPostRequest request)
+        public async Task<ActionResult<CrossPostResultDto>> CrossPost([FromBody] CrossPostRequestDto request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            // Find the blog post by slug
+            var blogPost = await _context.BlogPosts
+                .FirstOrDefaultAsync(bp => bp.Slug == request.BlogPostSlug);
+
+            if (blogPost == null)
+            {
+                return NotFound($"Blog post with slug '{request.BlogPostSlug}' not found.");
+            }
             
             // Create a record of this cross-post
             var crossPost = new CrossPost
             {
-                SourceSlug = request.SourceSlug,
+                BlogPostId = blogPost.Id,
                 Platform = request.Platform,
                 CrossPostedUrl = request.CrossPostedUrl,
                 CrossPostedAt = DateTime.UtcNow,
@@ -72,7 +84,7 @@ namespace PortfolioApi.Controllers
             
             await _context.SaveChangesAsync();
             
-            return Ok(new CrossPostResult
+            return Ok(new CrossPostResultDto
             {
                 Success = true,
                 Message = $"Successfully cross-posted to {request.Platform}",
@@ -80,19 +92,26 @@ namespace PortfolioApi.Controllers
             });
         }
         
-        // GET: api/BlogCrossPost/{sourceSlug}
+        // GET: api/BlogCrossPost/{slug}
         // Get cross-post history for a specific blog post
-        [HttpGet("{sourceSlug}")]
-        public async Task<ActionResult<IEnumerable<CrossPost>>> GetCrossPostsBySource(string sourceSlug)
+        [HttpGet("{slug}")]
+        public async Task<ActionResult<IEnumerable<CrossPost>>> GetCrossPostsBySource(string slug)
         {
+            var blogPost = await _context.BlogPosts
+                .FirstOrDefaultAsync(bp => bp.Slug == slug);
+
+            if (blogPost == null)
+            {
+                return NotFound($"Blog post with slug '{slug}' not found.");
+            }
+
             var crossPosts = await _context.CrossPosts
-                .Where(cp => cp.SourceSlug == sourceSlug)
+                .Where(cp => cp.BlogPostId == blogPost.Id)
                 .OrderByDescending(cp => cp.CrossPostedAt)
                 .ToListAsync();
-                
-            if (!crossPosts.Any())
+                  if (!crossPosts.Any())
             {
-                return NotFound($"No cross-posts found for article with slug: {sourceSlug}");
+                return NotFound($"No cross-posts found for article with slug: {slug}");
             }
             
             return Ok(crossPosts);
@@ -101,7 +120,7 @@ namespace PortfolioApi.Controllers
         // GET: api/BlogCrossPost/analytics
         // Get analytics for cross-posting
         [HttpGet("analytics")]
-        public async Task<ActionResult<CrossPostAnalytics>> GetCrossPostAnalytics()
+        public async Task<ActionResult<CrossPostAnalyticsDto>> GetCrossPostAnalytics()
         {
             var totalCrossPosts = await _context.CrossPosts.CountAsync();
             var platformStats = await _context.CrossPostStatistics.ToListAsync();
@@ -113,14 +132,14 @@ namespace PortfolioApi.Controllers
             // Calculate platform distribution
             var platformDistribution = await _context.CrossPosts
                 .GroupBy(cp => cp.Platform)
-                .Select(g => new PlatformDistribution
+                .Select(g => new PlatformDistributionDto
                 {
                     Platform = g.Key,
                     Count = g.Count()
                 })
                 .ToListAsync();
                 
-            return Ok(new CrossPostAnalytics
+            return Ok(new CrossPostAnalyticsDto
             {
                 TotalCrossPosts = totalCrossPosts,
                 PlatformStatistics = platformStats,
@@ -130,50 +149,32 @@ namespace PortfolioApi.Controllers
         }
     }
     
-    // Models
-    public class CrossPostRequest
+    // DTOs
+    public class CrossPostRequestDto
     {
-        public string SourceSlug { get; set; }
-        public string Platform { get; set; }
-        public string CrossPostedUrl { get; set; }
+        public required string BlogPostSlug { get; set; }
+        public required string Platform { get; set; }
+        public required string CrossPostedUrl { get; set; }
     }
     
-    public class CrossPostResult
+    public class CrossPostResultDto
     {
         public bool Success { get; set; }
-        public string Message { get; set; }
+        public required string Message { get; set; }
         public int CrossPostId { get; set; }
     }
     
-    public class CrossPost
+    public class PlatformDistributionDto
     {
-        public int Id { get; set; }
-        public string SourceSlug { get; set; }
-        public string Platform { get; set; }
-        public string CrossPostedUrl { get; set; }
-        public DateTime CrossPostedAt { get; set; }
-        public string Status { get; set; }
-    }
-    
-    public class CrossPostStatistics
-    {
-        public int Id { get; set; }
-        public string Platform { get; set; }
-        public int TotalCrossPosts { get; set; }
-        public DateTime LastCrossPostedAt { get; set; }
-    }
-    
-    public class CrossPostAnalytics
-    {
-        public int TotalCrossPosts { get; set; }
-        public List<CrossPostStatistics> PlatformStatistics { get; set; }
-        public List<PlatformDistribution> PlatformDistribution { get; set; }
-        public List<CrossPost> RecentCrossPosts { get; set; }
-    }
-    
-    public class PlatformDistribution
-    {
-        public string Platform { get; set; }
+        public required string Platform { get; set; }
         public int Count { get; set; }
+    }
+    
+    public class CrossPostAnalyticsDto
+    {
+        public int TotalCrossPosts { get; set; }
+        public required List<CrossPostStatistics> PlatformStatistics { get; set; }
+        public required List<PlatformDistributionDto> PlatformDistribution { get; set; }
+        public required List<CrossPost> RecentCrossPosts { get; set; }
     }
 }

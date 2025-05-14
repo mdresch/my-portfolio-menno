@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -19,6 +19,7 @@ interface PageProps {
 
 export default function EditPostPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
 
   const [post, setPost] = useState<Post | null>(null);
@@ -41,7 +42,6 @@ export default function EditPostPage() {
 
   // GitHub credentials
   const [githubToken, setGithubToken] = useState('');
-
   useEffect(() => {
     // Check if user is authenticated
     const adminAuth = localStorage.getItem('adminAuth');
@@ -56,12 +56,11 @@ export default function EditPostPage() {
     if (token) {
       setGithubToken(token);
       // Fetch the post data
-      fetchPost(slug, token);
-    } else {
+      fetchPost(slug, token);    } else {
       setError('GitHub token is required to edit posts. Please add it in Settings.');
     }
     setIsLoading(false);
-  }, [slug]);
+  }, [slug, router]);
 
   // Fetch post data
   const fetchPost = async (slug, token) => {

@@ -11,6 +11,7 @@ import '@radix-ui/themes/styles.css';
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientAnalytics from '@/components/ClientAnalytics';
+import Providers from './providers';
 // Client component for Hotjar will be rendered in the body
 
 const geist = Geist({
@@ -82,22 +83,23 @@ export default function RootLayout({
               a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
         </script>
-      </head>
-      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <RadixTheme>
-            <div className="flex items-center justify-center">
-              <NavigationMenuDemo />
-            </div>
-            <main className="flex-1">
-              {children}
-              <Analytics />
-              <SpeedInsights />
-              <ClientAnalytics />
-            </main>
-            <Footer />
-          </RadixTheme>
-        </ThemeProvider>
+      </head>      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
+        <Providers>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <RadixTheme>
+              <div className="flex items-center justify-center">
+                <NavigationMenuDemo />
+              </div>
+              <main className="flex-1">
+                {children}
+                <Analytics />
+                <SpeedInsights />
+                <ClientAnalytics />
+              </main>
+              <Footer />
+            </RadixTheme>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

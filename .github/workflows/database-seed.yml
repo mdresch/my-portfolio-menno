@@ -1,0 +1,50 @@
+# .github/workflows/database-seed.yml
+name: Seed Azure SQL Database with EF Core
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'api/Migrations/**'
+      - 'api/Data/PortfolioContext.cs'
+      - 'api/Models/**'
+
+jobs:
+  seed-database:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, staging, production]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Restore dependencies
+        run: dotnet restore ./api/PortfolioApi.csproj
+      - name: Apply EF Core migrations and seed data
+        run: |
+          dotnet ef database update --project ./api/PortfolioApi.csproj --context PortfolioContext
+        env:
+          ASPNETCORE_ENVIRONMENT: ${{ matrix.environment }}
+          ConnectionStrings__AzureSqlConnection: ${{ secrets[format('AZURE_SQL_CONNECTION_STRING_{0}', matrix.environment | upper)] }}
+      - name: Run integration tests
+        run: dotnet test ./api/PortfolioApi.csproj --filter Category=Integration
+        env:
+          ASPNETCORE_ENVIRONMENT: ${{ matrix.environment }}
+      - name: Send email on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.your-email-provider.com # e.g., smtp.gmail.com for Gmail
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "🚨 CI/CD Failure: Database Seeding or Tests Failed"
+          to: your@email.com
+          from: "CI/CD Bot <your@email.com>"
+          body: |
+            The GitHub Actions workflow failed during database seeding or integration testing.
+            Please check the logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}

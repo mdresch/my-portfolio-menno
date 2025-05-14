@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Production connection strings and sensitive data
+**/appsettings.Production.json
+api/Scripts/secrets.txt
+**/connectionstrings.config
+
 # vercel
 .vercel
 
@@ -42,3 +47,34 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Build logs
+build_log.txt
+build_output.txt
+
+# .NET specific
+api/bin/
+api/obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.cache
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.opendb
+*.VC.db
+
+# IDE - Visual Studio
+.vs/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
