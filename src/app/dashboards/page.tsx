@@ -66,7 +66,7 @@ export default function EconomicsLandingPage() {
       <section className="relative flex flex-col items-center justify-center py-16 px-4 text-center">
         <div className="absolute inset-0 w-full h-full -z-10">
           <Image
-            src="/images/economics-hero.jpg"
+            src="/images/trade-policy-uncertainty-index.jpg"
             alt="Economics hero background"
             fill
             className="object-cover object-center opacity-60 dark:opacity-40"
