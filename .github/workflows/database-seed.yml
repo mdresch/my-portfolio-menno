@@ -38,13 +38,13 @@ jobs:
         if: failure()
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.your-email-provider.com # e.g., smtp.gmail.com for Gmail
+          server_address: smtp.gmail.com # e.g., smtp.gmail.com for Gmail
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "🚨 CI/CD Failure: Database Seeding or Tests Failed"
-          to: your@email.com
-          from: "CI/CD Bot <your@email.com>"
+          to: menno.drescher@gmail.com
+          from: "CI/CD Bot <menno.drescher@gmail.com>"
           body: |
             The GitHub Actions workflow failed during database seeding or integration testing.
             Please check the logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
