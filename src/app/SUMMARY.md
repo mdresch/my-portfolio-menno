@@ -46,3 +46,11 @@
   * [Blog Post](my-portfolio-menno/blog/blog-post.md)
 * [Contact](my-portfolio-menno/contact.md)
 * [Interactive Resume](my-portfolio-menno/interactive-resume.md)
+
+## Ongoing Upgrade
+
+* [DotNetIntegration](ongoing-upgrade/dotnetintegration.md)
+
+***
+
+* [Startup](startup.md)
