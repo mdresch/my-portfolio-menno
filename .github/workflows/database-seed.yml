@@ -28,12 +28,23 @@ jobs:
         run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
       - name: Restore dependencies
         run: dotnet restore ./api/PortfolioApi.csproj
+      - name: Set Azure SQL connection string
+        id: set-conn
+        shell: bash
+        run: |
+          if [ "${{ matrix.environment }}" = "dev" ]; then
+            echo "CONN=${{ secrets.AZURE_SQL_CONNECTION_STRING_DEV }}" >> $GITHUB_ENV
+          elif [ "${{ matrix.environment }}" = "staging" ]; then
+            echo "CONN=${{ secrets.AZURE_SQL_CONNECTION_STRING_STAGING }}" >> $GITHUB_ENV
+          elif [ "${{ matrix.environment }}" = "production" ]; then
+            echo "CONN=${{ secrets.AZURE_SQL_CONNECTION_STRING_PRODUCTION }}" >> $GITHUB_ENV
+          fi
       - name: Apply EF Core migrations and seed data
         run: |
           dotnet ef database update --project ./api/PortfolioApi.csproj --context PortfolioContext
         env:
           ASPNETCORE_ENVIRONMENT: ${{ matrix.environment }}
-          ConnectionStrings__AzureSqlConnection: ${{ secrets['AZURE_SQL_CONNECTION_STRING_' + matrix.environment] }}
+          ConnectionStrings__AzureSqlConnection: ${{ env.CONN }}
       - name: Run integration tests
         run: dotnet test ./api/PortfolioApi.csproj --filter Category=Integration
         env:
