@@ -1,14 +1,9 @@
 ---
-title: "Building a Full-Stack Portfolio with Next.js and ASP.NET Core"
-date: "2025-05-14"
-author: "Menno"
-excerpt: "How I enhanced my portfolio with a robust .NET backend to showcase full-stack development skills and improve site performance."
-categories:
-  - ".NET"
-  - "Next.js"
-  - "Full-Stack"
-  - "Portfolio"
-  - "ASP.NET Core"
+title: Building a Full-Stack Portfolio with Next.js and ASP.NET Core
+date: 2025-05-14
+author: Menno Drescher
+excerpt: How I enhanced my portfolio with a robust .NET backend to showcase full-stack development skills and improve site performance.
+categories: [.NET, Next.js, Full-Stack, Portfolio, ASP.NET Core]
 ---
 
 # Building a Full-Stack Portfolio with Next.js and ASP.NET Core
@@ -44,29 +39,29 @@ my-portfolio/
 
 ## Key Features Implemented
 
-### 1. Performance-Optimized Blog Engine
+### 1\. Performance\-Optimized Blog Engine
 
 I replaced the file-based blog with a SQL Server database managed by Entity Framework Core, enabling:
 
-- Faster search and filtering
-- Advanced caching strategies
-- Better content management
-- Improved analytics
+* Faster search and filtering
+* Advanced caching strategies
+* Better content management
+* Improved analytics
 
 The blog posts are now stored in a structured database, allowing for more complex queries and content relationships.
 
-### 2. Cross-Posting Analytics Dashboard
+### 2\. Cross\-Posting Analytics Dashboard
 
 One feature I'm particularly proud of is the cross-posting analytics dashboard. It:
 
-- Tracks all blog posts cross-posted to platforms like Hashnode and Dev.to
-- Displays performance metrics for posts across platforms
-- Shows which topics perform best on different platforms
-- Visualizes post engagement over time
+* Tracks all blog posts cross-posted to platforms like Hashnode and Dev.to
+* Displays performance metrics for posts across platforms
+* Shows which topics perform best on different platforms
+* Visualizes post engagement over time
 
 This was implemented with a dedicated `BlogCrossPostController` in the .NET API that collects and analyzes cross-posting data.
 
-### 3. Secure Admin Panel with JWT Authentication
+### 3\. Secure Admin Panel with JWT Authentication
 
 The admin experience is now significantly improved:
 
@@ -85,13 +80,14 @@ var token = new JwtSecurityToken(
 return new JwtSecurityTokenHandler().WriteToken(token);
 ```
 
-### 4. Contact Form with Email Integration
+### 4\. Contact Form with Email Integration
 
 I integrated a contact form that:
-- Stores submissions in the database
-- Sends email notifications using SendGrid
-- Implements rate limiting and spam protection
-- Provides a management interface for responses
+
+* Stores submissions in the database
+* Sends email notifications using SendGrid
+* Implements rate limiting and spam protection
+* Provides a management interface for responses
 
 ## Development and Deployment Process
 
@@ -125,9 +121,10 @@ services:
 ### Deployment Architecture
 
 For production, I deployed:
-- Next.js frontend on Vercel
-- ASP.NET Core API on Azure App Service
-- Database on Azure SQL
+
+* Next.js frontend on Vercel
+* ASP.NET Core API on Azure App Service
+* Database on Azure SQL
 
 This provides excellent scalability while keeping costs reasonable.
 
@@ -136,7 +133,7 @@ This provides excellent scalability while keeping costs reasonable.
 The switch to a .NET backend yielded impressive performance gains:
 
 | Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
+| ------ | ------ | ----- | ----------- |
 | Blog Loading Time | 840ms | 320ms | 62% faster |
 | API Response Time | 500ms | 180ms | 64% faster |
 | Admin Operations | 1.2s | 400ms | 67% faster |
@@ -146,11 +143,8 @@ The switch to a .NET backend yielded impressive performance gains:
 Building this full-stack solution taught me several valuable lessons:
 
 1. **Integration Complexity**: Building bridges between Next.js and .NET required careful planning of APIs and authentication flows.
-
 2. **Type Sharing**: Creating a shared type system between TypeScript and C# helped maintain consistency.
-
 3. **Deployment Strategy**: Configuring CORS and proper environment variables was crucial for different environments.
-
 4. **Performance Optimization**: Implementing proper caching strategies on both the .NET API and Next.js side was essential.
 
 ## Future Enhancements

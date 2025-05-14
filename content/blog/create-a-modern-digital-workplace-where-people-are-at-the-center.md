@@ -1,4 +1,12 @@
 ---
+title: create-a-modern-digital-workplace-where-people-are-at-the-center
+date: 2025-05-14
+author: Menno Drescher
+excerpt: 
+categories: [Modern Work, Employee Experience]
+---
+
+---
 title: Create a modern digital workplace where people are at the center
 date: 2025-04-11
 author: Menno Drescher

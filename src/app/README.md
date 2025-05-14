@@ -1,8 +1,9 @@
 ---
 icon: hand-wave
 cover: >-
-  https://images.unsplash.com/photo-1616243850909-f010afe8de3a?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxFbGVjdHJpY3xlbnwwfHx8fDE3NDYzMTczNzl8MA&ixlib=rb-4.0.3&q=85
-coverY: -687
+  .gitbook/assets/Firefly Lighthouse guiding hot air balloons to the sea during
+  sunset 54338.jpg
+coverY: 456
 layout:
   cover:
     visible: true
