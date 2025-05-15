@@ -22,6 +22,42 @@ layout:
 
 # Welcome to My Portfolio Menno
 
+**Welcome to My Full-Stack Portfolio Documentation**
+
+Hello! I'm **Menno**, a Full-Stack Developer passionate about building robust, scalable, and maintainable web applications.
+
+This documentation site serves as a comprehensive guide to my key portfolio projects, offering deeper insights into the technologies, architecture, and development practices behind them than a typical resume or project README alone.
+
+Here, you can explore:
+
+* **Detailed overviews of my projects**, showcasing practical application of full-stack development.
+* The **backend architecture** built with **C# .NET** and a **RESTful API**.
+* The **frontend implementation** using **React Next JS** for dynamic user interfaces.
+* Integration with **Azure SQL Database** for reliable data storage.
+* My process for **automated CI/CD** using **GitHub Actions**, including database migrations and testing.
+
+**Key Areas and Technologies Explored Here:**
+
+* **Full-Stack Development:** Demonstrating the ability to work across both frontend and backend.
+* **Backend Development:** Focusing on **C#** and the **.NET** ecosystem.
+* **RESTful APIs:** Designing and implementing structured data access.
+* **Frontend Development:** Utilizing **React Next JS** for dynamic and responsive user interfaces.
+* **Database Management:** Working with **Azure SQL Database**.
+* **CI/CD Automation:** Implementing continuous integration and continuous delivery pipelines using **GitHub Actions**.
+* **Azure Cloud:** Leveraging Azure services for hosting and data storage.
+
+My goal is to demonstrate my proficiency across the entire development lifecycle, from database design and backend logic to frontend user experiences and automated deployment pipelines in cloud environments like Azure.
+
+* **Explore the Live Projects:** [https://my-portfolio-menno.vercel.app/](https://my-portfolio-menno.vercel.app/)
+* **View the Code on GitHub:** [https://github.com/mdresch/my-portfolio-menno](https://github.com/mdresch/my-portfolio-menno)
+* **Connect with me on LinkedIn:** [https://www.linkedin.com/in/mennodrescher/](https://www.linkedin.com/in/mennodrescher/)
+
+**Invitation to Explore:**
+
+Please navigate through the sections in the sidebar to dive deeper into specific projects, technologies, and my approach to building modern web applications.
+
+***
+
 Explore an interactive overview of all the amazing features my portfolio has to offer, along with beautifully crafted, dynamic documentation to showcase my work.
 
 You'll get to experience the best parts of my portfolio in action—and discover step-by-step guidance on how to transform this template into your own unique showcase.

@@ -50,7 +50,19 @@
 ## Ongoing Upgrade
 
 * [DotNetIntegration](ongoing-upgrade/dotnetintegration.md)
+* [🌟 Unique Features](ongoing-upgrade/unique-features.md)
 
 ***
 
 * [Startup](startup.md)
+
+## Backend / API Section
+
+* [Backend / API Section](backend-api-section/backend-api-section.md)
+* [Database Section](backend-api-section/database-section.md)
+* [CI/CD Section](backend-api-section/ci-cd-section.md)
+* [Azure Infrastructure Section](backend-api-section/azure-infrastructure-section.md)
+
+## Frontend Section
+
+* [Frontend Section](frontend-section/frontend-section.md)
