@@ -22,10 +22,14 @@ function normalizeProject(p: ApiProject) {
 }
 
 export default async function ProjectsPage() {
-  // Fetch projects from the live API endpoint
-  const apiProjects = await ProjectService.getAll();
-  const projects = apiProjects.map(normalizeProject);
-  return <ProjectsClient projects={projects} />;
+  try {
+    const apiProjects = await ProjectService.getAll();
+    const projects = apiProjects.map(normalizeProject);
+    return <ProjectsClient projects={projects} />;
+  } catch (err) {
+    // Optionally log the error
+    return <div>Failed to load projects. Please try again later.</div>;
+  }
 }
 
 
