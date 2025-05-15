@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 
-interface Project {
+export interface Project {
   title: string;
   description: string;
   technologies: string[];
@@ -11,6 +11,8 @@ interface Project {
   caseStudy?: string;
   screenshots?: string[];
   outcomes?: string[];
+  gitHubUrl?: string; // Added for backend compatibility
+  liveUrl?: string;   // Added for backend compatibility
 }
 
 interface ProjectFormProps {
@@ -40,6 +42,8 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       caseStudy: '',
       screenshots: [],
       outcomes: [],
+      gitHubUrl: '', // Added
+      liveUrl: '',   // Added
     }
   );
 
@@ -118,6 +122,14 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       <div>
         <label className="block font-semibold">Outcomes (one per line)</label>
         <textarea name="outcomes" value={project.outcomes?.join('\n') || ''} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" />
+      </div>
+      <div>
+        <label className="block font-semibold">GitHub URL</label>
+        <input name="gitHubUrl" value={project.gitHubUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+      </div>
+      <div>
+        <label className="block font-semibold">Live URL</label>
+        <input name="liveUrl" value={project.liveUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
       </div>
       <div className="flex gap-4 mt-4">
         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{initialProject ? 'Update' : 'Create'}</button>

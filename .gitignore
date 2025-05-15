@@ -78,3 +78,29 @@ api/obj/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Azure publish output
+api/publish/
+
+# VS Code settings
+.vscode/
+
+# Local build/test logs
+build_log.txt
+build_output.txt
+
+# Ignore local database files (if any)
+*.mdf
+*.ldf
+
+# Ignore API bin/obj folders
+api/bin/
+api/obj/
+
+# Ignore API debug/release folders
+api/Debug/
+api/Release/
+
+# Ignore local .env files in api/
+api/.env*
+.azure

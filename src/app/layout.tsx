@@ -83,7 +83,8 @@ export default function RootLayout({
               a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
         </script>
-      </head>      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
+      </head>
+      <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
         <Providers>
           <ThemeProvider attribute="class" defaultTheme="light">
             <RadixTheme>
