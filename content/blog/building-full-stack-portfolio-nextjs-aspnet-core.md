@@ -3,8 +3,9 @@ title: Building a Full-Stack Portfolio with Next.js and ASP.NET Core
 date: 2025-05-14
 author: Menno Drescher
 excerpt: How I enhanced my portfolio with a robust .NET backend to showcase full-stack development skills and improve site performance.
-categories: [.NET, Next.js, Full-Stack, Portfolio, ASP.NET Core]
+categories: [.NET, Next.js, Portfolio, ASP.NET Core]
 ---
+
 
 # Building a Full-Stack Portfolio with Next.js and ASP.NET Core
 
