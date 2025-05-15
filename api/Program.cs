@@ -21,6 +21,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Azure Best Practice: Use organized configuration methods
 StartupConfiguration.ConfigureServices(builder);
 
+// Add CORS policy for local development
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Register ConnectionPoolManager for DI
 builder.Services.AddSingleton<ConnectionPoolManager>(provider =>
     new ConnectionPoolManager(
@@ -32,10 +43,21 @@ builder.Services.AddSingleton<ConnectionPoolManager>(provider =>
     )
 );
 
+// Register DbContext for DI
+builder.Services.AddDbContext<PortfolioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSqlConnection")));
+
 // REMOVE this line to avoid duplicate health check registration
 // builder.Services.AddAzureSqlHealthChecks();
 
 var app = builder.Build();
+
+// Use CORS policy
+app.UseCors("AllowLocalFrontend");
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 
 // Azure Best Practice: Configure the pipeline in an organized way
 StartupConfiguration.ConfigureApp(app);

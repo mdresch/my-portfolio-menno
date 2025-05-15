@@ -15,10 +15,7 @@ namespace PortfolioApi.Data
     /// </summary>
     public class PortfolioContext : DbContext
     {
-        public PortfolioContext(DbContextOptions<PortfolioContext> options)
-            : base(options)
-        {
-        }
+        public PortfolioContext(DbContextOptions<PortfolioContext> options) : base(options) { }
 
         public DbSet<BlogPost> BlogPosts { get; set; } = null!;
         public DbSet<CrossPost> CrossPosts { get; set; } = null!;
