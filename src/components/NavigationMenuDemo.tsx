@@ -381,7 +381,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/admin/dashboard" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/admin" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
                         <div className="flex flex-col">
                           <span className="text-sm font-medium leading-none">Admin</span>
                           <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">

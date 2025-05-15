@@ -87,7 +87,7 @@ export default function AdminDashboard() {
               title="Skills"
               count="Manage"
               icon="🧠"
-              href="/skills"
+              href="/admin/skills"
             />
           </div>
           
@@ -111,6 +111,12 @@ export default function AdminDashboard() {
                 target="_blank"
               />
             </div>
+            <Link
+              href="/admin/dashboard"
+              className="text-blue-600 hover:underline text-base font-medium"
+            >
+              Go to new Admin Dashboard
+            </Link>
           </div>
         </>
       )}

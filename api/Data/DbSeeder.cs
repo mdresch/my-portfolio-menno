@@ -112,8 +112,33 @@ namespace PortfolioApi.Data
 
         private static void SeedProductionData(PortfolioContext context)
         {
-            // Example: Only seed minimal or real data for production
-            // (No-op or add only essential records)
+            // Automated migration from JSON file (same as development)
+            var jsonPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "content", "project", "projects.json");
+            if (File.Exists(jsonPath))
+            {
+                var json = File.ReadAllText(jsonPath);
+                var projects = JsonSerializer.Deserialize<List<ProjectJson>>(json);
+                if (projects != null)
+                {
+                    foreach (var proj in projects)
+                    {
+                        if (proj?.Title == null) continue;
+                        if (!context.Projects.Any(p => p.Title == proj.Title))
+                        {
+                            context.Projects.Add(new Project
+                            {
+                                Title = proj.Title ?? string.Empty,
+                                Description = proj.Description ?? string.Empty,
+                                ImageUrl = proj.ImageUrl ?? string.Empty,
+                                GitHubUrl = proj.GitHubUrl ?? string.Empty,
+                                LiveUrl = proj.LiveUrl ?? string.Empty,
+                                Created = proj.Created ?? DateTime.UtcNow,
+                                TechnologiesJson = JsonSerializer.Serialize(proj.Technologies ?? new List<string>())
+                            });
+                        }
+                    }
+                }
+            }
         }
 
         private class ProjectJson
