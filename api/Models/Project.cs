@@ -40,6 +40,8 @@ namespace PortfolioApi.Models
         
         public string? ImageUrl { get; set; }
         
+        public List<string>? Challenges { get; set; }
+        
         // Azure Best Practice: Add fields for sorting and filtering
         public bool IsFeatured { get; set; } = false;
         

@@ -11,6 +11,7 @@ public class ProjectDTO
     public string? LiveUrl { get; set; }
     public DateTime Created { get; set; }
     public List<string>? Technologies { get; set; }
+    public List<string>? Challenges { get; set; }
 }
 
 public class CreateProjectDTO
@@ -21,6 +22,7 @@ public class CreateProjectDTO
     public string? GitHubUrl { get; set; }
     public string? LiveUrl { get; set; }
     public List<string>? Technologies { get; set; }
+    public List<string>? Challenges { get; set; }
 }
 
 public class UpdateProjectDTO
@@ -31,6 +33,7 @@ public class UpdateProjectDTO
     public string? GitHubUrl { get; set; }
     public string? LiveUrl { get; set; }
     public List<string>? Technologies { get; set; }
+    public List<string>? Challenges { get; set; }
 }
 
 // Contact Message DTOs

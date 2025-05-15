@@ -8,4 +8,9 @@ technologies:
 link: "https://github.com/users/mdresch/projects/1"
 datePublished: "2023-03-10"
 category: "BusinessApplication"
+challenges:
+  - "Integrating governance policies across multiple cloud providers."
+  - "Automating compliance checks and reporting."
+  - "Designing a user-friendly dashboard for complex governance data."
+  - "Solution: Leveraged TypeScript for type safety, automated policy checks, and built custom dashboard components with Tailwind CSS."
 ---

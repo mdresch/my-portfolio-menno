@@ -3,17 +3,15 @@ import { useAuthToken } from '@/lib/auth';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5154/api';
 
-// Helper function to get auth header
-function getAuthHeader(): HeadersInit {
-  const token = localStorage.getItem('portfolio_auth_token');
-  if (!token) return {};
-  
-  try {
-    const parsedToken = JSON.parse(token);
-    return { 'Authorization': `Bearer ${parsedToken.token}` };
-  } catch {
-    return {};
+// Helper function to get auth header (safe for both server and client)
+export function getAuthHeader() {
+  // Only access localStorage in the browser
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("token");
+    return token ? { Authorization: `Bearer ${token}` } : {};
   }
+  // On the server, do not send an Authorization header from localStorage
+  return {};
 }
 
 // Helper function for HTTP requests

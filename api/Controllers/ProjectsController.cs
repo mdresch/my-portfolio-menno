@@ -39,7 +39,8 @@ public class ProjectsController : ControllerBase
             GitHubUrl = p.GitHubUrl,
             LiveUrl = p.LiveUrl,
             Created = p.Created,
-            Technologies = p.Technologies
+            Technologies = p.Technologies,
+            Challenges = p.Challenges ?? new List<string>()
         }));
     }
     
@@ -66,7 +67,8 @@ public class ProjectsController : ControllerBase
             GitHubUrl = project.GitHubUrl,
             LiveUrl = project.LiveUrl,
             Created = project.Created,
-            Technologies = project.Technologies
+            Technologies = project.Technologies,
+            Challenges = project.Challenges ?? new List<string>()
         };
     }
     
@@ -84,7 +86,8 @@ public class ProjectsController : ControllerBase
             ImageUrl = projectDto.ImageUrl ?? string.Empty,
             GitHubUrl = projectDto.GitHubUrl ?? string.Empty,
             LiveUrl = projectDto.LiveUrl ?? string.Empty,
-            TechnologiesJson = JsonSerializer.Serialize(projectDto.Technologies)
+            TechnologiesJson = JsonSerializer.Serialize(projectDto.Technologies),
+            Challenges = projectDto.Challenges ?? new List<string>()
         };
         
         _context.Projects.Add(project);
@@ -102,7 +105,8 @@ public class ProjectsController : ControllerBase
                 GitHubUrl = project.GitHubUrl,
                 LiveUrl = project.LiveUrl,
                 Created = project.Created,
-                Technologies = project.Technologies
+                Technologies = project.Technologies,
+                Challenges = project.Challenges ?? new List<string>()
             });
     }
     
@@ -131,6 +135,12 @@ public class ProjectsController : ControllerBase
         if (projectDto.Technologies != null)
         {
             project.TechnologiesJson = JsonSerializer.Serialize(projectDto.Technologies);
+        }
+        
+        // Update challenges if provided
+        if (projectDto.Challenges != null)
+        {
+            project.Challenges = projectDto.Challenges;
         }
         
         _context.Entry(project).State = EntityState.Modified;

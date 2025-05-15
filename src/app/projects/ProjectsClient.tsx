@@ -1,13 +1,28 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import ProjectForm, { Project } from '@/components/ProjectForm';
+import ProjectForm from '@/components/ProjectForm';
 import { ProjectService } from '@/lib/api-services';
-import Image from 'next/image';
 import type { Project as ApiProject } from '@/types/api';
+import ProjectCard from './ProjectCard';
 
 interface ProjectsClientProps {
-  // Now expects an array of Project from the API, not markdown
   projects: Project[];
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  link?: string;
+  datePublished?: string;
+  category?: string;
+  image?: string;
+  caseStudy?: string;
+  screenshots?: string[];
+  outcomes?: string[];
+  gitHubUrl?: string;
+  liveUrl?: string;
+  challenges?: string[];
 }
 
 // Helper to normalize API data to Project type
@@ -19,12 +34,13 @@ function normalizeProject(p: ApiProject): Project {
     link: '', // Not present in API, fallback to empty string
     datePublished: '', // Not present in API, fallback to empty string
     category: '', // Not present in API, fallback to empty string
-    image: p.imageUrl ?? '',
-    caseStudy: '', // Not present in API, fallback to empty string
-    screenshots: [], // Not present in API, fallback to empty array
-    outcomes: [], // Not present in API, fallback to empty array
+    image: p.imageUrl ?? '/default-project-image.png',
+    caseStudy: p.caseStudy ?? '',
+    screenshots: p.screenshots ?? [],
+    outcomes: p.outcomes ?? [],
     gitHubUrl: p.gitHubUrl ?? '',
     liveUrl: p.liveUrl ?? '',
+    challenges: p.challenges ?? [],
   };
 }
 
@@ -90,6 +106,7 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
           caseStudy: project.caseStudy || '',
           screenshots: project.screenshots ?? [],
           outcomes: project.outcomes ?? [],
+          challenges: project.challenges ?? [],
         };
         await ProjectService.create(apiProject);
         // Refresh from API
@@ -181,70 +198,7 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
             </div>
           ) : (
             filteredProjects.map((fm, index) => (
-              <div key={index} className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow relative">
-                <h2 className="text-2xl font-semibold mb-3">{fm.title}</h2>
-                <p className="text-gray-600 mb-4">{fm.description}</p>
-                {fm.caseStudy && (
-                  <div className="mb-4">
-                    <h3 className="font-semibold text-lg mb-1">Case Study</h3>
-                    <div className="text-gray-700 text-sm" dangerouslySetInnerHTML={{ __html: typeof fm.caseStudy === 'string' ? fm.caseStudy : '' }} />
-                  </div>
-                )}
-                {fm.screenshots && fm.screenshots.length > 0 && (
-                  <div className="mb-4">
-                    <h3 className="font-semibold text-lg mb-1">Screenshots</h3>
-                    <div className="flex flex-wrap gap-3">
-                      {fm.screenshots.map((src, i) => (
-                        <Image
-                          key={i}
-                          src={src}
-                          alt={fm.title + ' screenshot'}
-                          width={128}
-                          height={80}
-                          className="w-32 h-20 object-cover rounded border"
-                          style={{ objectFit: 'cover' }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {fm.outcomes && fm.outcomes.length > 0 && (
-                  <div className="mb-4">
-                    <h3 className="font-semibold text-lg mb-1">Outcomes & Impact</h3>
-                    <ul className="list-disc pl-5 text-gray-700 text-sm">
-                      {fm.outcomes.map((outcome, i) => (
-                        <li key={i}>{outcome}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {(Array.isArray(fm.technologies) ? fm.technologies : []).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {fm.link && (
-                  <a
-                    href={fm.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    View Project →
-                  </a>
-                )}
-                <button
-                  className="absolute top-4 right-4 bg-gray-200 text-gray-700 px-2 py-1 rounded hover:bg-gray-300 text-xs"
-                  onClick={() => handleEdit(index)}
-                >
-                  Edit
-                </button>
-              </div>
+              <ProjectCard key={index} project={fm} />
             ))
           )}
         </div>
@@ -252,3 +206,9 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
     </>
   );
 }
+
+
+
+
+
+

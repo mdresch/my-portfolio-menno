@@ -6,4 +6,9 @@ technologies:
   - Next.js
   - Tailwind CSS
 link: "https://github.com/users/mdresch/projects/2"
+challenges:
+  - "Managing the lifecycle of multiple AI models and deployments."
+  - "Ensuring reproducibility and traceability of experiments."
+  - "Scaling compute resources efficiently for training and inference."
+  - "Solution: Adopted containerization, implemented experiment tracking, and used cloud-based scaling strategies."
 ---

@@ -13,6 +13,11 @@ screenshots:
 outcomes:
   - "Increased professional visibility and engagement."
   - "Demonstrated full-stack and data visualization skills."
+challenges:
+  - "Integrating multiple data sources and ensuring seamless data flow between backend and frontend."
+  - "Implementing responsive design for optimal viewing on all devices."
+  - "Ensuring accessibility and performance while maintaining a visually appealing UI."
+  - "Solution: Leveraged React best practices, optimized API calls, and used Tailwind CSS for rapid, accessible UI development."
 ---
 
 ## Case Study
