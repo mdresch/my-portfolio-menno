@@ -17,40 +17,13 @@ namespace PortfolioApi.Data
     {
         public PortfolioContext(DbContextOptions<PortfolioContext> options) : base(options) { }
 
-        public DbSet<BlogPost> BlogPosts { get; set; } = null!;
-        public DbSet<CrossPost> CrossPosts { get; set; } = null!;
         public DbSet<Project> Projects { get; set; } = null!;
-        public DbSet<CrossPostStatistics> CrossPostStatistics { get; set; } = null!;
         public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // Configure BlogPost entity
-            modelBuilder.Entity<BlogPost>()
-                .HasIndex(b => b.Slug)
-                .IsUnique();
-
-            // Configure CrossPost entity
-            modelBuilder.Entity<CrossPost>()
-                .HasOne(c => c.BlogPost)
-                .WithMany(b => b.CrossPosts)
-                .HasForeignKey(c => c.BlogPostId);
-
-            // Configure Statistics
-            modelBuilder.Entity<CrossPostStatistics>()
-                .HasIndex(s => s.Platform)
-                .IsUnique();
-
-            // Azure Best Practice: Add appropriate indexes for Azure SQL performance
-            modelBuilder.Entity<CrossPost>()
-                .HasIndex(c => new { c.Platform, c.PublishedAt });
-
-            // Azure Best Practice: Configure table options for Azure SQL
-            modelBuilder.Entity<BlogPost>()
-                .ToTable("BlogPosts", tb => tb.IsTemporal()); // Use SQL Server 2022 temporal tables feature
 
             // Azure Best Practice: Configure indexes for efficient Azure SQL performance
             modelBuilder.Entity<Project>()
@@ -64,27 +37,9 @@ namespace PortfolioApi.Data
             // Azure Best Practice: Configure temporal tables for auditing if using Azure SQL
             if (Database.IsSqlServer())
             {
-                modelBuilder.Entity<BlogPost>()
-                    .ToTable(tb => tb.IsTemporal());
-                    
                 modelBuilder.Entity<Project>()
                     .ToTable(tb => tb.IsTemporal());
             }
-
-            // Azure Best Practice: Configure relationships for optimal performance
-            modelBuilder.Entity<CrossPost>()
-                .HasOne(cp => cp.BlogPost)
-                .WithMany(bp => bp.CrossPosts)
-                .HasForeignKey(cp => cp.BlogPostId)
-                .OnDelete(DeleteBehavior.Cascade); // Automatically delete cross posts when blog post is deleted
-                
-            // Azure Best Practice: Add indexes for frequently queried columns
-            modelBuilder.Entity<BlogPost>()
-                .HasIndex(b => b.Slug)
-                .IsUnique();
-                
-            modelBuilder.Entity<BlogPost>()
-                .HasIndex(b => b.IsPublished);
                 
             modelBuilder.Entity<Project>()
                 .HasIndex(p => p.IsFeatured);
@@ -98,15 +53,6 @@ namespace PortfolioApi.Data
             modelBuilder.Entity<ContactMessage>()
                 .HasIndex(c => c.IsRead);
                 
-            // Azure Best Practice: Configure query filters
-            modelBuilder.Entity<BlogPost>()
-                .HasQueryFilter(b => b.IsPublished);
-                
-            // Azure Best Practice: Configure statistics as a read-only view
-            modelBuilder.Entity<CrossPostStatistics>()
-                .ToView("vw_CrossPostStatistics")
-                .HasNoKey();
-
             // Add seed data
             // SeedData(modelBuilder); // Commented out to avoid duplicate/conflicting seeding. Use DbSeeder instead.
         }

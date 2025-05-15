@@ -7,6 +7,7 @@
     <!-- Azure Best Practice: Configure appropriate TLS settings -->
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <UserSecretsId>cdbffb41-7cde-49ca-b10f-4ac2c19aae9d</UserSecretsId>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <!-- Note: Azure.Identity 1.11.0 has known vulnerabilities (GHSA-m5vv-6r4h-3vj9) 

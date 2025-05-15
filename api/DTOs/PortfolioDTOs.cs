@@ -33,58 +33,6 @@ public class UpdateProjectDTO
     public List<string>? Technologies { get; set; }
 }
 
-// Blog Post DTOs
-public class BlogPostDTO
-{
-    public int Id { get; set; }
-    public string Title { get; set; } = null!;
-    public string Slug { get; set; } = null!;
-    public string? Excerpt { get; set; }
-    public string Content { get; set; } = null!;
-    public string? Author { get; set; }
-    public DateTime Published { get; set; }
-    public DateTime? LastModified { get; set; }
-    public List<string>? Categories { get; set; }
-}
-
-public class CreateBlogPostDTO
-{
-    public required string Title { get; set; }
-    public required string Slug { get; set; }
-    public string? Excerpt { get; set; }
-    public required string Content { get; set; }
-    public string? Author { get; set; }
-    public List<string>? Categories { get; set; }
-}
-
-public class UpdateBlogPostDTO
-{
-    public string? Title { get; set; }
-    public string? Slug { get; set; }
-    public string? Excerpt { get; set; }
-    public string? Content { get; set; }
-    public string? Author { get; set; }
-    public List<string>? Categories { get; set; }
-}
-
-// Cross Post DTOs
-public class CrossPostDTO
-{
-    public int Id { get; set; }
-    public int BlogPostId { get; set; }
-    public string Platform { get; set; } = null!;
-    public string? CrossPostedUrl { get; set; }
-    public DateTime CrossPostedAt { get; set; }
-    public string Status { get; set; } = null!;
-}
-
-public class CreateCrossPostDTO
-{
-    public required int BlogPostId { get; set; }
-    public required string Platform { get; set; }
-    public string? CrossPostedUrl { get; set; }
-}
-
 // Contact Message DTOs
 public class ContactMessageDTO
 {

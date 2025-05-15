@@ -16,7 +16,7 @@ export default function BlogPosts({ posts, onCategoryClick }: BlogPostsProps) {
       {posts.map((post) => (
         <article
           key={post.slug}
-          className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-cyan-100 dark:border-cyan-800"
         >
           {post.coverImage && (
             <div className="relative aspect-video">
@@ -24,13 +24,14 @@ export default function BlogPosts({ posts, onCategoryClick }: BlogPostsProps) {
                 src={post.coverImage}
                 alt={post.title}
                 fill
-                className="object-cover"
+                className="object-cover rounded-t-lg"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
               />
             </div>
           )}
-          <div className="p-6">
-            <div className="flex gap-2 mb-3">
+          <div className="p-6 flex flex-col h-full">
+            <div className="flex gap-2 mb-3 flex-wrap">
               {post.categories?.map((category) => (
                 onCategoryClick ? (
                   <button
@@ -60,10 +61,10 @@ export default function BlogPosts({ posts, onCategoryClick }: BlogPostsProps) {
                 {post.title}
               </Link>
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
               {post.excerpt}
             </p>
-            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mt-auto">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               {post.author && <span>{post.author}</span>}
             </div>

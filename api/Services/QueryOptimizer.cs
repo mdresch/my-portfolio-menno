@@ -15,24 +15,6 @@ namespace PortfolioApi.Services
     public static class QueryOptimizer
     {
         /// <summary>
-        /// Optimizes a blog posts query with proper includes and tracking settings
-        /// </summary>
-        public static IQueryable<BlogPost> OptimizeBlogPostsQuery(this IQueryable<BlogPost> query, bool includeCrossPosts = true)
-        {
-            // Apply NoTracking for read-only scenarios
-            query = query.AsNoTracking();
-            
-            // Use split query for better performance with complex includes
-            if (includeCrossPosts)
-            {
-                query = query.Include(b => b.CrossPosts)
-                             .AsSplitQuery();
-            }
-            
-            return query;
-        }
-        
-        /// <summary>
         /// Gets projects with appropriate caching based on Azure SQL best practices
         /// </summary>
         public static async Task<IEnumerable<Project>> GetCachedProjectsAsync(

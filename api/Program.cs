@@ -56,6 +56,9 @@ builder.Services.AddDbContext<PortfolioContext>(options =>
 
 var app = builder.Build();
 
+// Register global exception middleware (must be before other middleware)
+app.UseMiddleware<PortfolioApi.Middleware.GlobalExceptionMiddleware>();
+
 // Use CORS policy
 app.UseCors("AllowLocalFrontend");
 app.UseRouting();

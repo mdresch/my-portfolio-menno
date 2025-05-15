@@ -23,7 +23,8 @@ public class SkillsController : ControllerBase
 
     // GET: api/skills
     [HttpGet]
-    [ResponseCache(Duration = 600)]    public async Task<ActionResult<IEnumerable<Skill>>> GetSkills()
+    [ResponseCache(Duration = 600)]
+    public async Task<ActionResult<IEnumerable<Skill>>> GetSkills()
     {
         const string cacheKey = "AllSkills";
         // Check if skills are in the cache
@@ -58,7 +59,8 @@ public class SkillsController : ControllerBase
 
     // GET: api/skills/categories
     [HttpGet("categories")]
-    [ResponseCache(Duration = 600)]    public async Task<ActionResult<IEnumerable<string>>> GetSkillCategories()
+    [ResponseCache(Duration = 600)]
+    public async Task<ActionResult<IEnumerable<string>>> GetSkillCategories()
     {
         const string cacheKey = "SkillCategories";
         // Check if categories are in the cache

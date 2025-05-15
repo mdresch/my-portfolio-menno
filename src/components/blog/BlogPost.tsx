@@ -11,14 +11,11 @@ import BlogPostJsonLd from './BlogPostJsonLd';
 import Breadcrumbs from '@/components/SEO/Breadcrumbs';
 import Giscus from '@/components/comments/Giscus';
 import { formatDate } from '@/lib/utils';
+import Image from 'next/image';
 
 interface BlogPostProps {
   post: BlogPostType;
   allPosts?: BlogPostType[];
-}
-
-interface BlogPostsProps {
-  posts: BlogPostType[];
 }
 
 function MostViewedPosts({ allPosts }: { allPosts: BlogPostType[] }) {
@@ -54,21 +51,14 @@ function MostViewedPosts({ allPosts }: { allPosts: BlogPostType[] }) {
 }
 
 export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?: BlogPostType[] }) {
-  if (!post || !post.content) {
-    return (
-      <div className="bg-red-50 border-l-4 border-red-500 p-4 my-8">
-        <p className="text-red-700 font-semibold">Error: Blog post not found or missing content.</p>
-      </div>
-    );
-  }
-
+  // Always call hooks at the top
   const [headings, setHeadings] = useState<{ id: string; text: string; level: number }[]>([]);
   const articleRef = useRef<HTMLElement>(null);
   const [viewCount, setViewCount] = useState(0);
 
   // Extract headings for table of contents on component mount
   useEffect(() => {
-    if (articleRef.current) {
+    if (post && articleRef.current) {
       const headingElements = articleRef.current.querySelectorAll('h2, h3, h4');
       const extractedHeadings = Array.from(headingElements).map(heading => ({
         id: heading.id,
@@ -77,17 +67,26 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
       }));
       setHeadings(extractedHeadings);
     }
-  }, [post.content]);
+  }, [post]);
 
   // Track and display local view count
   useEffect(() => {
-    if (!post?.slug) return;
-    const key = `blog_views_${post.slug}`;
-    let count = parseInt(localStorage.getItem(key) || '0', 10);
-    count = isNaN(count) ? 1 : count + 1;
-    localStorage.setItem(key, count.toString());
-    setViewCount(count);
+    if (post?.slug) {
+      const key = `blog_views_${post.slug}`;
+      let count = parseInt(localStorage.getItem(key) || '0', 10);
+      count = isNaN(count) ? 1 : count + 1;
+      localStorage.setItem(key, count.toString());
+      setViewCount(count);
+    }
   }, [post?.slug]);
+
+  if (!post || !post.content) {
+    return (
+      <div className="bg-red-50 border-l-4 border-red-500 p-4 my-8">
+        <p className="text-red-700 font-semibold">Error: Blog post not found or missing content.</p>
+      </div>
+    );
+  }
 
   // Define breadcrumb items
   const breadcrumbItems = [
@@ -101,7 +100,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
       <BlogPostJsonLd post={post} />
       
       {/* Reading Progress Bar */}
-      <ReadingProgress targetRef={articleRef} />
+      <ReadingProgress targetRef={articleRef as React.RefObject<HTMLElement>} />
 
       {/* Breadcrumbs Navigation */}
       <Breadcrumbs items={breadcrumbItems} className="mb-4" />
@@ -111,6 +110,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
         <article 
           ref={articleRef}
           className="lg:col-span-8 prose prose-slate lg:prose-lg max-w-none"
+          id="post-content"
         >
           {/* Post Header */}
           <header className="mb-8">
@@ -155,7 +155,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
           
           {/* Post Content */}
           <div 
-            className="blog-content" 
+            className="blog-content prose-code:before:hidden prose-code:after:hidden"
             dangerouslySetInnerHTML={{ __html: post.content }} 
           />
 
@@ -167,7 +167,6 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
                 <SocialShare 
                   url={typeof window !== 'undefined' ? window.location.href : ''}
                   title={post.title}
-                  text={post.excerpt}
                 />
               </div>
             </div>
@@ -246,10 +245,13 @@ export function BlogPosts({ posts, isLoading }: { posts: BlogPostType[]; isLoadi
         >
           {post.coverImage && (
             <div className="aspect-w-16 aspect-h-9">
-              <img
+              <Image
                 src={post.coverImage}
                 alt={post.title}
+                width={800}
+                height={450}
                 className="object-cover w-full h-48"
+                priority
               />
             </div>
           )}

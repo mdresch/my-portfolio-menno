@@ -44,7 +44,7 @@ const components: ComponentItem[] = [
       "Gartner Supply Chain Top 25 for 2024",
   },
   {
-    title: "mergers & acquisitions",
+    title: "Mergers & Acquisitions",
     href: "/risk/mergers-acquisitions-landscape",
     description:
       "Mergers and Acquisitions Landscape"
