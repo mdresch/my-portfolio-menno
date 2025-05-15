@@ -5,6 +5,8 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace PortfolioApi.Data
 {
@@ -148,5 +150,28 @@ namespace PortfolioApi.Data
         // {
         //     // ...existing code for seeding...
         // }
+    }
+
+    // Design-time factory for EF Core CLI support in CI/CD and local development
+    public class PortfolioContextFactory : IDesignTimeDbContextFactory<PortfolioContext>
+    {
+        public PortfolioContext CreateDbContext(string[] args)
+        {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true)
+                .AddEnvironmentVariables();
+            var config = builder.Build();
+            var optionsBuilder = new DbContextOptionsBuilder<PortfolioContext>();
+            var connStr = config.GetConnectionString("AzureSqlConnection");
+            if (string.IsNullOrEmpty(connStr))
+            {
+                throw new InvalidOperationException("No AzureSqlConnection string found for EF Core CLI.");
+            }
+            optionsBuilder.UseSqlServer(connStr);
+            return new PortfolioContext(optionsBuilder.Options);
+        }
     }
 }
