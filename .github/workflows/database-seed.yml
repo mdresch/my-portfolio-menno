@@ -39,11 +39,18 @@ jobs:
           elif [ "${{ matrix.environment }}" = "production" ]; then
             echo "CONN=${{ secrets.AZURE_SQL_CONNECTION_STRING_PRODUCTION }}" >> $GITHUB_ENV
           fi
+      - name: Debug connection string
+        run: |
+          echo "Connection string is: $CONN"
+        env:
+          CONN: ${{ env.CONN }}
       - name: Apply EF Core migrations and seed data
         run: |
+          echo "Using connection string: $CONN"
           dotnet ef database update --project ./api/PortfolioApi.csproj --context PortfolioContext
         env:
           ASPNETCORE_ENVIRONMENT: ${{ matrix.environment }}
+          CONN: ${{ env.CONN }}
           ConnectionStrings__AzureSqlConnection: ${{ env.CONN }}
       - name: Run integration tests
         run: dotnet test ./api/PortfolioApi.csproj --filter Category=Integration
