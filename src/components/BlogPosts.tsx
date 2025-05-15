@@ -12,11 +12,11 @@ interface BlogPostsProps {
 
 export default function BlogPosts({ posts, onCategoryClick }: BlogPostsProps) {
   return (
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2">
       {posts.map((post) => (
         <article
           key={post.slug}
-          className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-cyan-100 dark:border-cyan-800"
+          className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-cyan-100 dark:border-cyan-800 flex flex-col"
         >
           {post.coverImage && (
             <div className="relative aspect-video">
@@ -64,8 +64,13 @@ export default function BlogPosts({ posts, onCategoryClick }: BlogPostsProps) {
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
               {post.excerpt}
             </p>
-            <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mt-auto">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mt-auto gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
+                <span aria-label="Reading time" title="Reading time">• {post.readingTime}</span>
+                {/* Example: Replace with actual times read if available */}
+                {/* <span aria-label="Times read" title="Times read">• {post.timesRead} reads</span> */}
+              </div>
               {post.author && <span>{post.author}</span>}
             </div>
           </div>

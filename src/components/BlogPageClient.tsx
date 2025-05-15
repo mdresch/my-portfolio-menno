@@ -25,29 +25,26 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState('');
-  
+  // Pagination state
+  const [page, setPage] = useState(1);
+  const pageSize = 10; // Number of posts per page
+
   // Debounce search query to avoid excessive re-renders
   const debouncedQuery = useDebounce(query, 300);
-  
+
   // Memoize expensive computations
   const categories = useMemo(() => 
     Array.from(new Set(posts.flatMap(post => post.categories || []))),
     [posts]
   );
-  
+
   const years = useMemo(() => 
     Array.from(new Set(posts.map(post => 
       new Date(post.date).getFullYear().toString())
     )).sort((a, b) => b.localeCompare(a)),
     [posts]
   );
-  
-  // Show loading state briefly when filters change
-  // (removed isLoading logic as it's no longer used)
-  useEffect(() => {
-    // No loading state needed
-  }, [debouncedQuery, selectedCategory, selectedYear]);
-  
+
   // Memoize filtered posts to avoid recalculation on every render
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
@@ -60,6 +57,18 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
       return matchesQuery && matchesCategory && matchesYear;
     });
   }, [posts, debouncedQuery, selectedCategory, selectedYear]);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredPosts.length / pageSize);
+  const paginatedPosts = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    return filteredPosts.slice(start, start + pageSize);
+  }, [filteredPosts, page, pageSize]);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setPage(1);
+  }, [debouncedQuery, selectedCategory, selectedYear]);
 
   // Handler for clicking a category badge on a blog card
   const handleCategoryClick = (category: string) => {
@@ -102,7 +111,29 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
           </select>
         </div>
       </div>
-      <BlogPosts posts={filteredPosts as BlogPost[]} onCategoryClick={handleCategoryClick} />
+      <BlogPosts posts={paginatedPosts as BlogPost[]} onCategoryClick={handleCategoryClick} />
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-8">
+          <button
+            className="px-3 py-1 rounded border bg-gray-50 disabled:opacity-50"
+            onClick={() => setPage(page - 1)}
+            disabled={page === 1}
+            aria-label="Previous page"
+          >
+            &larr; Prev
+          </button>
+          <span className="mx-2">Page {page} of {totalPages}</span>
+          <button
+            className="px-3 py-1 rounded border bg-gray-50 disabled:opacity-50"
+            onClick={() => setPage(page + 1)}
+            disabled={page === totalPages}
+            aria-label="Next page"
+          >
+            Next &rarr;
+          </button>
+        </div>
+      )}
     </div>
   );
 }
