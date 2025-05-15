@@ -45,17 +45,6 @@ jobs:
       # Checkout code from repository
       - name: Checkout
         uses: actions/checkout@v4
-      # Cache npm dependencies for faster builds
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      # Install npm dependencies
-      - name: Install dependencies
-        run: npm ci
       # Install Azure Developer CLI (azd)
       - name: Install azd
         uses: Azure/setup-azd@v2.0.0
