@@ -3,7 +3,7 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const ContentSecurityPolicy = [
   "default-src 'self';",
-  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com;",
+  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com;", // <-- Added GTM and GA
   "child-src 'self' blob:;",
   "style-src 'self' 'unsafe-inline' https://giscus.app;", // Allow giscus styles
   "img-src * blob: data:;",
