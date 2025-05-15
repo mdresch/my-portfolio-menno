@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function CollapsibleSection({ title, children }: { title: string; children: React.ReactNode }) {
