@@ -25,16 +25,6 @@ namespace PortfolioApi.Data
         public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                // Fallback for design-time (e.g., dotnet ef)
-                optionsBuilder.UseSqlServer(
-                    "Server=(localdb)\\mssqllocaldb;Database=PortfolioDb;Trusted_Connection=True;MultipleActiveResultSets=true");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
