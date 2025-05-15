@@ -13,6 +13,24 @@ permissions:
   id-token: write
   contents: read
 
+# This workflow builds, provisions, and deploys your Azure application using azd and GitHub Actions.
+# It uses federated credentials for secure, secretless authentication to Azure.
+# Steps:
+# 1. Checks out your code
+# 2. Caches npm dependencies for faster builds
+# 3. Installs dependencies with npm ci
+# 4. Installs the Azure Developer CLI (azd)
+# 5. Authenticates to Azure using OIDC
+# 6. Provisions infrastructure as defined in azure.yaml/bicep
+# 7. Deploys your application to Azure
+#
+# Required repository variables/secrets:
+#   AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID, AZURE_ENV_NAME, AZURE_LOCATION
+#   AZD_INITIAL_ENVIRONMENT_CONFIG (secret, for initial environment config)
+#
+# For more info, see:
+#   https://learn.microsoft.com/azure/developer/github/connect-from-azure
+#   https://learn.microsoft.com/azure/developer/azure-developer-cli/
 
 jobs:
   build:
@@ -24,10 +42,24 @@ jobs:
       AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
     steps:
+      # Checkout code from repository
       - name: Checkout
         uses: actions/checkout@v4
+      # Cache npm dependencies for faster builds
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # Install npm dependencies
+      - name: Install dependencies
+        run: npm ci
+      # Install Azure Developer CLI (azd)
       - name: Install azd
-        uses: Azure/setup-azd@v2
+        uses: Azure/setup-azd@v2.0.0
+      # Authenticate to Azure using federated credentials (OIDC)
       - name: Log in with Azure (Federated Credentials)
         run: |
           azd auth login `
@@ -35,12 +67,15 @@ jobs:
             --federated-credential-provider "github" `
             --tenant-id "$Env:AZURE_TENANT_ID"
         shell: pwsh
-
-
+      # Provision infrastructure as code
       - name: Provision Infrastructure
-        run: azd provision --no-prompt
+        run: |
+          set -e
+          azd provision --no-prompt
         env:
           AZD_INITIAL_ENVIRONMENT_CONFIG: ${{ secrets.AZD_INITIAL_ENVIRONMENT_CONFIG }}
-
+      # Deploy application to Azure
       - name: Deploy Application
-        run: azd deploy --no-prompt
+        run: |
+          set -e
+          azd deploy --no-prompt

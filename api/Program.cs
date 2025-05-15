@@ -18,6 +18,9 @@ using PortfolioApi.Configuration;
 // Azure Best Practice: Keep Program.cs as the only file with top-level statements
 var builder = WebApplication.CreateBuilder(args);
 
+// Add service defaults for Azure best practices
+builder.AddServiceDefaults();
+
 // Azure Best Practice: Use organized configuration methods
 StartupConfiguration.ConfigureServices(builder);
 
@@ -49,7 +52,12 @@ builder.Services.AddSingleton<ConnectionPoolManager>(provider =>
 
 // Register DbContext for DI
 builder.Services.AddDbContext<PortfolioContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSqlConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString(
+            builder.Environment.IsProduction() ? "AzureSqlConnection" : "DefaultConnection"
+        ) ?? throw new InvalidOperationException("Connection string not found")
+    )
+);
 
 // REMOVE this line to avoid duplicate health check registration
 // builder.Services.AddAzureSqlHealthChecks();

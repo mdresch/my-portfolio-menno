@@ -1,0 +1,13 @@
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\bin\Debug\net8.0\api.ServiceDefaults.deps.json
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\bin\Debug\net8.0\api.ServiceDefaults.dll
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\bin\Debug\net8.0\api.ServiceDefaults.pdb
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.AssemblyInfo.cs
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.sourcelink.json
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.dll
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\refint\api.ServiceDefaults.dll
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\api.ServiceDefaults.pdb
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\obj\Debug\net8.0\ref\api.ServiceDefaults.dll
