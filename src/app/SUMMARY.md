@@ -50,6 +50,7 @@
 ## Ongoing Upgrade
 
 * [DotNetIntegration](ongoing-upgrade/dotnetintegration.md)
+* [🌟 Unique Features](ongoing-upgrade/unique-features.md)
 
 ***
 
