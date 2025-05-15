@@ -11,7 +11,7 @@ const ContentSecurityPolicy = [
   "connect-src * https://*.hotjar.com;",
   "font-src 'self';",
   "worker-src 'self' blob:;",
-  "frame-src 'self' https://vars.hotjar.com https://giscus.app;" // Allow giscus frames
+  "frame-src 'self' https://vars.hotjar.com https://giscus.app https://vercel.live;" // Allow giscus frames
 ].join(' ');
 
 const securityHeaders = [
