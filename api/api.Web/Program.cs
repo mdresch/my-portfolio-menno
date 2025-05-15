@@ -25,6 +25,12 @@ builder.Services.AddHttpClient<GitHubBlogService>(client =>
     client.DefaultRequestHeaders.UserAgent.ParseAdd("MyPortfolioApp/1.0");
 });
 
+// Register ProjectsApiClient for API calls
+builder.Services.AddHttpClient<ProjectsApiClient>(client =>
+{
+    client.BaseAddress = new Uri("https+http://apiservice");
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
