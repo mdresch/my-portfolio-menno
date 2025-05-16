@@ -22,12 +22,24 @@ export default function AdminDashboard() {
           ProjectService.getAll(),
           BlogService.getAll(),
         ]);
-        
-        // Contact messages count would require a separate endpoint
-        // This is a placeholder for now
+
+        // Count blog posts from markdown files in content/blog (serverless API route)
+        let blogPostsCount = blogPosts.length;
+        try {
+          const res = await fetch('/api/posts');
+          if (res.ok) {
+            const posts = await res.json();
+            if (Array.isArray(posts)) {
+              blogPostsCount = posts.length;
+            }
+          }
+        } catch {
+          // fallback to API count
+        }
+
         setStats({
           projectsCount: projects.length,
-          blogPostsCount: blogPosts.length,
+          blogPostsCount,
           contactMessagesCount: 0, // Would need a specific API endpoint
           unreadMessagesCount: 0, // Would need a specific API endpoint
         });
@@ -101,7 +113,7 @@ export default function AdminDashboard() {
               />
               <ActionButton
                 title="Create Blog Post"
-                href="/admin/blog/new"
+                href="/admin/new-post"
                 icon="✏️"
               />
               <ActionButton
@@ -110,13 +122,17 @@ export default function AdminDashboard() {
                 icon="🌐"
                 target="_blank"
               />
+              <ActionButton
+                title="Admin Cross-Posts"
+                href="/admin/dashboard"
+                icon="🔗"
+              />
+              <ActionButton
+                title="Analytics"
+                href="/admin/analytics"
+                icon="📊"
+              />
             </div>
-            <Link
-              href="/admin/dashboard"
-              className="text-blue-600 hover:underline text-base font-medium"
-            >
-              Go to new Admin Dashboard
-            </Link>
           </div>
         </>
       )}
