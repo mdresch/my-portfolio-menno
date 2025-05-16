@@ -4,6 +4,142 @@
     "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj": {}
   },
   "projects": {
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
+        "projectName": "api.ApiService",
+        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
+        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "noWarn": [
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.UI.Client": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Aspire.Hosting": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Azure.Extensions.AspNetCore.Configuration.Secrets": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.23.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
+            "Microsoft.Extensions.Logging.ApplicationInsights": {
+              "target": "Package",
+              "version": "[2.23.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -131,6 +267,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj"
+              },
               "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
                 "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
               }

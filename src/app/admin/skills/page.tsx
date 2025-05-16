@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { SkillService } from "@/lib/api-services";
+import type { Skill as ApiSkill } from "@/types/api";
 
 // Use the real Skill type from backend
-interface Skill {
-  id: number;
-  name: string;
-  category?: string;
-  proficiencyLevel: number;
-  iconUrl?: string;
-}
+interface Skill extends ApiSkill {}
 
 export default function SkillsAdminPage() {
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -21,9 +17,7 @@ export default function SkillsAdminPage() {
   async function fetchSkills() {
     setLoading(true);
     try {
-      const res = await fetch("/api/skills");
-      if (!res.ok) throw new Error("Failed to fetch skills");
-      const data = await res.json();
+      const data = await SkillService.getAll();
       setSkills(data);
       setError(null);
     } catch (err: unknown) {
@@ -41,8 +35,7 @@ export default function SkillsAdminPage() {
     if (!confirm("Are you sure you want to delete this skill?")) return;
     setDeletingId(id);
     try {
-      const res = await fetch(`/api/skills/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Failed to delete skill");
+      await SkillService.delete(id);
       setSkills((prev) => prev.filter((s) => s.id !== id));
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to delete skill");
@@ -55,7 +48,7 @@ export default function SkillsAdminPage() {
     <div className="max-w-2xl mx-auto py-8">
       <h1 className="text-2xl font-bold mb-6">Manage Skills</h1>
       <div className="mb-4">
-        <Link href="/admin/skills/new" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add New Skill</Link>
+        <Link href="/admin/skills/new-skills" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Add New Skill</Link>
       </div>
       {loading ? (
         <div>Loading...</div>
@@ -75,7 +68,7 @@ export default function SkillsAdminPage() {
             {skills.map((skill) => (
               <tr key={skill.id}>
                 <td className="py-2 px-4 border-b">{skill.name}</td>
-                <td className="py-2 px-4 border-b">{skill.category || "-"}</td>
+                <td className="py-2 px-4 border-b">{skill.category ?? "-"}</td>
                 <td className="py-2 px-4 border-b">{skill.proficiencyLevel}</td>
                 <td className="py-2 px-4 border-b">
                   <Link href={`/admin/skills/${skill.id}/edit`} className="text-blue-600 hover:underline mr-2">Edit</Link>

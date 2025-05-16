@@ -4,22 +4,23 @@ import { useAuthToken } from '@/lib/auth';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5154/api';
 
 // Helper function to get auth header (safe for both server and client)
-export function getAuthHeader() {
-  // Only access localStorage in the browser
+export function getAuthHeader(): Record<string, string> {
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("token");
     return token ? { Authorization: `Bearer ${token}` } : {};
   }
-  // On the server, do not send an Authorization header from localStorage
   return {};
 }
 
 // Helper function for HTTP requests
 async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const headers = {
+  const baseHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
     ...getAuthHeader(),
-    ...options.headers,
+  };
+  const headers: Record<string, string> = {
+    ...baseHeaders,
+    ...(options.headers ? options.headers as Record<string, string> : {}),
   };
 
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
@@ -116,6 +117,19 @@ export const SkillService = {
 
   async getCategories(): Promise<string[]> {
     return fetchAPI<string[]>('/skills/categories');
+  },
+
+  async create(skill: Omit<Skill, 'id'>): Promise<Skill> {
+    return fetchAPI<Skill>('/skills', {
+      method: 'POST',
+      body: JSON.stringify(skill),
+    });
+  },
+
+  async delete(id: number): Promise<void> {
+    return fetchAPI<void>(`/skills/${id}`, {
+      method: 'DELETE',
+    });
   },
 };
 

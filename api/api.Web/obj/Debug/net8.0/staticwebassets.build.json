@@ -1,16 +1,28 @@
 {
   "Version": 1,
-  "Hash": "ZXsYDgZvvgjhvkp8WBHGNjUUz3ZrwaUfh1ZUTFWXk4Q=",
+  "Hash": "rbDMaFCp//xpboOUEM0EliZQASi3TDBru6xQt2qasuc=",
   "Source": "api.Web",
   "BasePath": "_content/api.Web",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
+      "Version": 2,
+      "Source": "api.ApiService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [
     {
       "Name": "api.Web\\wwwroot",
       "Source": "api.Web",
-      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "Pattern": "**"
     }
@@ -58,7 +70,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\app.css",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -77,7 +89,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -96,7 +108,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -115,7 +127,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\favicon.png",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
