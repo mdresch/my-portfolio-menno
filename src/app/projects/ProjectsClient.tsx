@@ -122,10 +122,6 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
     }
   };
 
-  const handleEdit = (index: number) => {
-    setEditIndex(index);
-    setShowForm(true);
-  };
 
   const handleNew = () => {
     setEditIndex(null);
@@ -198,7 +194,14 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
             </div>
           ) : (
             filteredProjects.map((fm, index) => (
-              <ProjectCard key={index} project={fm} />
+              <ProjectCard
+                key={index}
+                project={fm}
+                onEdit={() => {
+                  setEditIndex(projectList.findIndex(p => p === fm));
+                  setShowForm(true);
+                }}
+              />
             ))
           )}
         </div>
