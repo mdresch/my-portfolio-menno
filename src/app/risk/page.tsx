@@ -100,9 +100,9 @@ export default function RiskOverviewPage() {
               category="Financial Risk"
               tags={["Trade War", "Banking", "Market Volatility"]}
               imageUrl="/images/showcase-dataviz.jpg"
-              href="/risk/canadian-financial-stability"
-              usePlaceholder={true} // Using placeholder until images are ready
-              isComingSoon={true}
+              href="/risk/ecb-financial-stability"
+              usePlaceholder={false} // Using placeholder until images are ready
+              isComingSoon={false}
               downloadLinks={[
                 { format: "CSV", url: "/data/ecb-financial-stability-2025.csv" },
                 { format: "JSON", url: "/data/ecb-financial-stability-2025.json" },
