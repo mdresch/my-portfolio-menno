@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rbDMaFCp//xpboOUEM0EliZQASi3TDBru6xQt2qasuc=",
+  "Hash": "45upTt3DO02RngjAZ+3TsiFklq1LMqd3K6MaV9NkTSk=",
   "Source": "api.Web",
   "BasePath": "_content/api.Web",
   "Mode": "Default",
@@ -22,7 +22,7 @@
     {
       "Name": "api.Web\\wwwroot",
       "Source": "api.Web",
-      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "Pattern": "**"
     }
@@ -70,7 +70,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\app.css",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -89,7 +89,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -108,7 +108,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -127,7 +127,7 @@
       "Identity": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\favicon.png",
       "SourceId": "api.Web",
       "SourceType": "Discovered",
-      "ContentRoot": "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\wwwroot\\",
       "BasePath": "_content/api.Web",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

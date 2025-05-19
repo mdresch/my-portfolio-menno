@@ -32,4 +32,8 @@ export default async function ProjectsPage() {
   }
 }
 
+// Add an Edit button for each project (to be rendered in ProjectsClient)
+// Example usage in ProjectsClient:
+// <button onClick={() => router.push(`/projects/${project.id}/edit`)} className="text-blue-600 hover:underline">Edit</button>
+
 

@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, onEdit }) {
+  const router = useRouter();
   return (
     <div className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
       <Image
@@ -19,7 +21,12 @@ export default function ProjectCard({ project }) {
           </span>
         ))}
       </div>
-      {/* Add links/buttons as needed */}
+      <button
+        className="mt-2 text-blue-600 hover:underline"
+        onClick={() => router.push(`/projects/${project.id || project._id || project.slug || ''}/edit`)}
+      >
+        Edit
+      </button>
     </div>
   );
 }
