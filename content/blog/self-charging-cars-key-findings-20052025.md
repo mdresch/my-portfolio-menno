@@ -9,7 +9,7 @@ excerpt: "Toyota Launches Five New EVs Amid Tesla's Slump"
 coverImage: "/images/hero-image-techcorp.jpg"
 ---
 
-# Self-Charging Cars: Key Findings - May 20, 2025
+
 ## Toyota Launches Five New EVs Amid Tesla's Slump
 
 **May 20, 2025**
