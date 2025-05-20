@@ -88,6 +88,58 @@ export default function ECBFinancialStabilityRisk() {
               </div>
             </div>
           </div>
+          
+          {/* Growth Forecasts & Trade Tensions Component */}
+          <div className="flex flex-col h-full bg-white dark:bg-neutral-900 rounded-xl shadow-md p-6 border border-gray-100 dark:border-neutral-800 transition-colors">
+            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-3 transition-colors">Economic Growth Forecasts</h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors text-base leading-relaxed">
+              The European Commission has significantly cut its growth forecasts for the Eurozone as US trade policy creates economic disruption. The EU executive now expects the 20-member currency area's economy to grow only 0.9% in 2025—down from its previous estimate of 1.3%—and has reduced its 2026 GDP growth outlook to 1.4% from 1.6%.
+            </p>
+            
+            <div className="my-4 bg-gray-50 dark:bg-neutral-800 rounded-lg p-6 border border-gray-200 dark:border-neutral-700 transition-colors">
+              <h4 className="font-semibold text-gray-800 dark:text-white mb-3 transition-colors">Revised Growth Forecasts by Country</h4>
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-100 dark:bg-neutral-700">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Country</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Previous 2025 Forecast (%)</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Revised 2025 Forecast (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white dark:bg-neutral-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <tr>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">Eurozone (Overall)</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">1.3</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.9</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">Germany</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.7</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.0</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">France</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.8</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.6</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">Italy</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">1.0</td>
+                      <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-300">0.7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">Source: European Commission Forecast, May 2025</p>
+            </div>
+            
+            <div className="my-4">
+              <div className="bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-sm text-gray-800 dark:text-gray-200 shadow-sm transition-colors">
+                <strong>Trade Tensions & Economic Impact:</strong> The EU's growth forecasts factor in a "significant" reduction in US-China trade and new US tariffs, including 10% "reciprocal" levies on most EU imports and 25% tariffs on EU steel, aluminum, and cars. Economy Commissioner Valdis Dombrovskis noted that while "the EU economy is demonstrating resilience amid high trade tensions," risks to the outlook remain "tilted to the downside." Germany is projected to flatline this year, while Ireland, Spain, and Greece are expected to outperform the Eurozone average. Inflation is forecast to reach the ECB's 2% target by mid-2025 before falling to 1.7% on average next year.
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
