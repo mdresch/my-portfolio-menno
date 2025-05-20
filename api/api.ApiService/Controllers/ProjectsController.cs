@@ -69,6 +69,7 @@ public class ProjectsController : ControllerBase
             Created = project.Created,
             Technologies = project.Technologies,
             Challenges = project.Challenges ?? new List<string>()
+            ViewCount = project.ViewCount
         };
     }
     

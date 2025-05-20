@@ -12,6 +12,7 @@ public class ProjectDTO
     public DateTime Created { get; set; }
     public List<string>? Technologies { get; set; }
     public List<string>? Challenges { get; set; }
+    public int ViewCount { get; set; }
 }
 
 public class CreateProjectDTO

@@ -9,6 +9,7 @@ export interface Project {
   liveUrl: string | null;
   created: string;
   technologies: string[];
+  viewCount?: number;
 }
 
 export interface BlogPost {

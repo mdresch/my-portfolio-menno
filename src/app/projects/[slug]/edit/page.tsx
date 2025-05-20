@@ -115,6 +115,7 @@ const EditProjectPage: React.FC = () => {
           (p) => normalizeSlug(p.title) === params.slug
         );
         setProject(found ?? null);
+        if (!found) setError('Project not found.');
       })
       .catch(() => setError('Failed to load project.'));
   }, [params.slug]);

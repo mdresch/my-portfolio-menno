@@ -1,8 +1,17 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+// Helper to generate a slug from the project title
+function normalizeSlug(title: string) {
+  return title?.toLowerCase().replace(/\s+/g, '-');
+}
+
 export default function ProjectCard({ project, onEdit }) {
   const router = useRouter();
+  const slug =
+    project.slug ||
+    (project.title ? normalizeSlug(project.title) : project.id || project._id || '');
+
   return (
     <div className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
       <Image
@@ -23,12 +32,10 @@ export default function ProjectCard({ project, onEdit }) {
       </div>
       <button
         className="mt-2 text-blue-600 hover:underline"
-        onClick={() => router.push(`/projects/${project.id || project._id || project.slug || ''}/edit`)}
+        onClick={() => router.push(`/projects/${slug}/edit`)}
       >
         Edit
       </button>
     </div>
   );
 }
-
-
