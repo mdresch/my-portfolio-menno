@@ -1,15 +1,19 @@
 // API Types that match the .NET Backend models
 
-export interface Project {
-  id: number;
-  title: string;
-  description: string | null;
-  imageUrl: string | null;
-  gitHubUrl: string | null;
-  liveUrl: string | null;
-  created: string;
-  technologies: string[];
-  viewCount?: number;
+export interface ApiProject {
+id: number;
+title: string;
+description: string | null;
+imageUrl: string | null;
+gitHubUrl: string | null;
+liveUrl: string | null;
+created: string;
+technologies: string[];
+viewCount?: number;
+caseStudy?: string | null;
+screenshots?: string[];
+outcomes?: string[];
+challenges?: string[];
 }
 
 export interface BlogPost {
