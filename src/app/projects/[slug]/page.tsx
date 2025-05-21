@@ -2,7 +2,9 @@ import ProjectDetail from "../ProjectDetail";
 
 // import the correct type from '@/types/api'
 import type { ApiProject } from '@/types/api';
-// If 'ApiProject' is not exported, update this line to import the correct type name as exported from '@/types/api'
+// import the correct type from '@/types/api'
+import type { ApiProject } from '@/types/api';
+import { notFound } from 'next/navigation';
 import { notFound } from 'next/navigation';
 
 
