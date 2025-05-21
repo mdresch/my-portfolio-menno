@@ -1,7 +1,7 @@
 import ProjectDetail from "../ProjectDetail";
-
-import type { Project as ApiProject } from '@/types/api';
+import type { ApiProject } from '@/types/api';
 import { notFound } from 'next/navigation';
+
 
 
 // Helper to normalize API data to ProjectDetail type
@@ -16,28 +16,31 @@ function normalizeProject(p: ApiProject) {
   };
 }
 
+// Example implementation: fetch projects from a local JSON file or API endpoint
+async function fetchProjects(): Promise<ApiProject[]> {
+  // Replace the URL below with your actual API endpoint or data source
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || ''}/api/projects`, {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    const errorMessage = await res.text();
+    throw new Error(`Failed to fetch projects: ${res.status} ${res.statusText}. ${errorMessage}`);
+  }
+
+  const data = await res.json();
+  return data as ApiProject[];
+}
+
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
-  // Await params if needed (for Next.js 14+)
-  // const { slug } = await params;
-
-
-  // TODO: Replace this with your actual data fetching logic
-// Await params if needed (for Next.js 14+)
-  // const { slug } = await params;
-
   let projects: ApiProject[] = [];
 
   try {
-    // TODO: Replace this with your actual data fetching logic
-    projects = await fetchProjects(); // Example: fetch from API
+    projects = await fetchProjects();
   } catch (error) {
     console.error('Error fetching projects:', error);
-    // Handle the error appropriately (e.g., show an error message to the user)
     return <div>Error loading projects. Please try again later.</div>;
   }
-
-  const project = projects
-    .map(normalizeProject)
 
   const project = projects
     .map(normalizeProject)
@@ -47,6 +50,5 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   if (!project) return notFound();
 
-  // Ensure project.viewCount is present
   return <ProjectDetail project={project} />;
 }

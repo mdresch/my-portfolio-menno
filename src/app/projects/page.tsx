@@ -1,6 +1,6 @@
 import ProjectsClient from './ProjectsClient';
 import { ProjectService } from '@/lib/api-services';
-import type { Project as ApiProject } from '@/types/api';
+import type { ApiProject } from '@/types/api';
 
 
 // Helper to normalize API data to ProjectClient type
