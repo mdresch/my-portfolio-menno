@@ -7,7 +7,36 @@ function normalizeSlug(title: string) {
 }
 
 interface Project {
-  id?: string;
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+// Helper to generate a slug from the project title
+function normalizeSlug(title: string) {
+  return title?.toLowerCase().replace(/\s+/g, '-');
+}
+
+interface Project {
+  id: string;
+  slug?: string;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  image?: string;
+  technologies?: string[];
+  viewCount?: number;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  const router = useRouter();
+  const slug =
+    project.slug ||
+    (project.title ? normalizeSlug(project.title) : project.id || '');
+
+  return (
   _id?: string;
   slug?: string;
   title: string;

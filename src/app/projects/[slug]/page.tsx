@@ -22,7 +22,22 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
 
   // TODO: Replace this with your actual data fetching logic
-  const projects: ApiProject[] = []; // Example: fetch from API or import
+// Await params if needed (for Next.js 14+)
+  // const { slug } = await params;
+
+  let projects: ApiProject[] = [];
+
+  try {
+    // TODO: Replace this with your actual data fetching logic
+    projects = await fetchProjects(); // Example: fetch from API
+  } catch (error) {
+    console.error('Error fetching projects:', error);
+    // Handle the error appropriately (e.g., show an error message to the user)
+    return <div>Error loading projects. Please try again later.</div>;
+  }
+
+  const project = projects
+    .map(normalizeProject)
 
   const project = projects
     .map(normalizeProject)
