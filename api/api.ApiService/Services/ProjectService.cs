@@ -90,7 +90,12 @@ public async Task<ProjectDTO?> GetByIdAsync(int id)
 
         public async Task IncrementViewCountAsync(int id)
         {
+public async Task IncrementViewCountAsync(int id)
+        {
+            // using System.Data.Entity; // Import EntityFramework for DbSet<T>
             var project = await _context.Projects.FindAsync(id);
+            if (project != null)
+            {
             if (project != null)
             {
                 project.ViewCount++;
