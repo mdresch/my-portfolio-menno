@@ -40,7 +40,8 @@ public class ProjectsController : ControllerBase
             LiveUrl = p.LiveUrl,
             Created = p.Created,
             Technologies = p.Technologies,
-            Challenges = p.Challenges ?? new List<string>()
+            Challenges = p.Challenges ?? new List<string>(),
+            ViewCount = p.ViewCount // <-- Add this line
         }));
     }
     
@@ -68,7 +69,7 @@ public class ProjectsController : ControllerBase
             LiveUrl = project.LiveUrl,
             Created = project.Created,
             Technologies = project.Technologies,
-            Challenges = project.Challenges ?? new List<string>()
+            Challenges = project.Challenges ?? new List<string>(),
             ViewCount = project.ViewCount
         };
     }
@@ -182,6 +183,21 @@ public class ProjectsController : ControllerBase
         _context.Projects.Remove(project);
         await _context.SaveChangesAsync();
         
+        return NoContent();
+    }
+    
+    [HttpPost("{slug}/increment-view")]
+    public async Task<IActionResult> IncrementView(string slug)
+    {
+        var project = await _context.Projects.FirstOrDefaultAsync(p => p.Slug == slug);
+        if (project == null)
+        {
+            return NotFound();
+        }
+
+        project.ViewCount++;
+        await _context.SaveChangesAsync();
+
         return NoContent();
     }
     

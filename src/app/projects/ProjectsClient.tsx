@@ -2,7 +2,22 @@
 import React, { useState, useEffect } from 'react';
 import ProjectForm from '@/components/ProjectForm';
 import { ProjectService } from '@/lib/api-services';
-import type { Project as ApiProject } from '@/types/api';
+// Define ApiProject type locally (copied from src/types/api.ts)
+interface ApiProject {
+  id: number;
+  title: string;
+  description: string | null;
+  imageUrl: string | null;
+  gitHubUrl: string | null;
+  liveUrl: string | null;
+  created: string;
+  technologies: string[];
+  viewCount?: number;
+  caseStudy?: string | null;
+  screenshots?: string[];
+  outcomes?: string[];
+  challenges?: string[];
+}
 import ProjectCard from './ProjectCard';
 
 interface ProjectsClientProps {

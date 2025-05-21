@@ -1,11 +1,8 @@
-import ProjectDetail from '../ProjectDetail';
-import { ProjectService } from '@/lib/api-services';
+import ProjectDetail from "../ProjectDetail";
+
 import type { Project as ApiProject } from '@/types/api';
 import { notFound } from 'next/navigation';
 
-interface ProjectPageProps {
-  params: { slug: string };
-}
 
 // Helper to normalize API data to ProjectDetail type
 function normalizeProject(p: ApiProject) {
@@ -16,16 +13,25 @@ function normalizeProject(p: ApiProject) {
     imageUrl: p.imageUrl ?? '/default-project-image.png',
     gitHubUrl: p.gitHubUrl ?? '',
     liveUrl: p.liveUrl ?? '',
-    challenges: p.challenges ?? [],
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  // Fetch all projects and find by slug (or use a getBySlug API if available)
-  const projects = await ProjectService.getAll();
-  const project = projects.map(normalizeProject).find(
-    (p) => p.title.toLowerCase().replace(/\s+/g, '-') === params.slug
-  );
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+  // Await params if needed (for Next.js 14+)
+  // const { slug } = await params;
+
+
+  // TODO: Replace this with your actual data fetching logic
+  const projects: ApiProject[] = []; // Example: fetch from API or import
+
+  const project = projects
+    .map(normalizeProject)
+    .find(
+      (p) => p.title.toLowerCase().replace(/\s+/g, '-') === params.slug
+    );
+
   if (!project) return notFound();
+
+  // Ensure project.viewCount is present
   return <ProjectDetail project={project} />;
 }

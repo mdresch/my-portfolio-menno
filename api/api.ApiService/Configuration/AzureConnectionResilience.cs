@@ -6,6 +6,7 @@ using System;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
+using api.ApiService.Data;
 
 namespace PortfolioApi.Configuration
 {

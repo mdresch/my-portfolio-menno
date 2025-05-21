@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     /// <summary>
     /// Database context for portfolio application using Azure SQL

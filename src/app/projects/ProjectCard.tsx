@@ -6,7 +6,23 @@ function normalizeSlug(title: string) {
   return title?.toLowerCase().replace(/\s+/g, '-');
 }
 
-export default function ProjectCard({ project, onEdit }) {
+interface Project {
+  id?: string;
+  _id?: string;
+  slug?: string;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  image?: string;
+  technologies?: string[];
+  viewCount?: number;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
   const router = useRouter();
   const slug =
     project.slug ||
@@ -30,12 +46,21 @@ export default function ProjectCard({ project, onEdit }) {
           </span>
         ))}
       </div>
-      <button
-        className="mt-2 text-blue-600 hover:underline"
-        onClick={() => router.push(`/projects/${slug}/edit`)}
-      >
-        Edit
-      </button>
+      <div className="flex items-center gap-4 mt-2">
+        <button
+          className="text-blue-600 hover:underline"
+          onClick={() => router.push(`/projects/${slug}/edit`)}
+        >
+          Edit
+        </button>
+        <span className="text-gray-500 text-sm flex items-center">
+          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          {project.viewCount ?? 0} views
+        </span>
+      </div>
     </div>
   );
 }
