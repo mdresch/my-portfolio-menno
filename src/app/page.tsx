@@ -1,6 +1,7 @@
 import GitHubActivity from '@/components/GitHubActivity';
 import { generatePersonStructuredData, generateWebsiteStructuredData } from '@/lib/structured-data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Mission, Values, and UVP Section
 const MissionSection = () => (
@@ -31,17 +32,17 @@ const projects = [
   {
     title: 'AI-Powered Portfolio',
     description: 'A modern portfolio site with dynamic content, analytics, and Azure integration.',
-    image: '/images/portfolio-ai.jpg',
+    image: '/images/showcase-aiassist.jpg',
   },
   {
     title: 'E-Commerce Dashboard',
     description: 'A scalable dashboard for managing products, orders, and analytics.',
-    image: '/images/ecommerce-dashboard.jpg',
+    image: '/images/showcase-cloudbackup.jpg',
   },
   {
     title: 'Open Source Contributions',
     description: 'Active contributions to open source React and .NET projects.',
-    image: '/images/open-source.jpg',
+    image: '/images/showcase-cloudscale.jpg',
   },
 ];
 
@@ -89,12 +90,22 @@ export default function Home() {
       <main className="container mx-auto px-4 py-16 min-h-screen bg-cyan-50/50 dark:bg-neutral-950 transition-colors font-sans">
         <div className="max-w-4xl mx-auto">
           <MissionSection />
-          <div className="text-center mb-10">
-            <h1 className="text-5xl font-bold mb-2 text-cyan-800 dark:text-cyan-200 transition-colors">Menno Drescher&apos;s Full-Stack Portfolio</h1>
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-700 dark:text-cyan-300 transition-colors">Showcasing projects built with C#, .NET, React, and Azure</h2>
-            <p className="text-lg text-cyan-600 dark:text-cyan-300 mb-6 transition-colors">
-              I'm a Full-Stack Developer passionate about building robust and scalable web applications. This site showcases my work using technologies like <strong>C#/.NET</strong>, <strong>React</strong>, and cloud platforms such as <strong>Azure</strong>.
-            </p>
+            <div className="text-center mb-10">
+                <h1 className="text-5xl font-bold mb-2 text-cyan-800 dark:text-cyan-200 transition-colors">
+                    Menno Drescher&apos;s Full-Stack Development Portfolio
+                </h1>
+                <h2 className="text-2xl font-semibold mb-4 text-cyan-700 dark:text-cyan-300 transition-colors">
+                    Building scalable, high-performance applications with C#, .NET, React, and Azure
+                </h2>
+                <p className="text-lg text-cyan-600 dark:text-cyan-300 mb-6 transition-colors">
+                    Welcome to my portfolio—a space where innovation meets robust web solutions. As a 
+                    <strong>Full-Stack Developer</strong>, I specialize in crafting efficient, scalable applications 
+                    using technologies like <strong>C#/.NET</strong>, <strong>React</strong>, and <strong>Azure</strong>. 
+                    Explore my projects, discover my approach to modern software development, and let's build 
+                    something extraordinary together.
+                </p>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-4 mb-8 homepage-links">
               <a href="https://github.com/mdresch" className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition-colors" target="_blank" rel="noopener noreferrer">
                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
@@ -133,33 +144,21 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div className="my-16">
-            <h3 className="text-2xl font-bold text-cyan-800 dark:text-cyan-200 mb-6 text-center">Case Studies & Achievements</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <ProjectCard key={project.title} {...project} />
-              ))}
-            </div>
-          </div>
-
           <div className="text-center">
-            <a
+            <Link
               href="/projects"
               className="inline-block bg-cyan-500 dark:bg-cyan-700 text-white px-6 py-3 rounded-lg hover:bg-cyan-600 dark:hover:bg-cyan-800 transition-colors shadow-md"
             >
               View My Projects
-            </a>
+            </Link>
           </div>
-        </div>
-
-        <ProjectsSection />
-        <section className="py-12 bg-white dark:bg-neutral-900/80 backdrop-blur-md transition-colors mt-16 rounded-lg shadow-md border border-cyan-50 dark:border-cyan-900">
-          <div className="container mx-auto px-4">
-            <GitHubActivity />
-          </div>
-        </section>
-        <CTASection />
+          <ProjectsSection />
+          <section className="py-12 bg-white dark:bg-neutral-900/80 backdrop-blur-md transition-colors mt-16 rounded-lg shadow-md border border-cyan-50 dark:border-cyan-900">
+            <div className="container mx-auto px-4">
+              <GitHubActivity />
+            </div>
+          </section>
+          <CTASection />
       </main>
     </>
   );

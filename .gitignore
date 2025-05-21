@@ -104,3 +104,5 @@ api/Release/
 # Ignore local .env files in api/
 api/.env*
 .azure
+
+.fake
