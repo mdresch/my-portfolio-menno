@@ -120,7 +120,14 @@ public async Task<ProjectDTO?> GetByIdAsync(int id)
             return new ProjectDTO
             if (project == null) return null;
 
-            return new ProjectDTO
+var project = await _context.Projects.FindAsync(id);
+            if (project == null) return null;
+
+            // TODO: Implement mapping using AutoMapper
+            return MapProjectToDTO(project);
+        }
+
+        public async Task IncrementViewCountAsync(int id)
             {
                 Id = project.Id,
                 Title = project.Title,
