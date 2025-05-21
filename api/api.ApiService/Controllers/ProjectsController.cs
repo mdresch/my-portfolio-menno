@@ -189,7 +189,20 @@ public class ProjectsController : ControllerBase
     [HttpPost("{slug}/increment-view")]
     public async Task<IActionResult> IncrementView(string slug)
     {
-        var project = await _context.Projects.FirstOrDefaultAsync(p => p.Slug == slug);
+[HttpPost("{slug}/increment-view")]
+    public async Task<IActionResult> IncrementView(string slug)
+    {
+        var affected = await _context.Projects
+            .Where(p => p.Slug == slug)
+            .ExecuteUpdateAsync(p => p.SetProperty(x => x.ViewCount, x => x.ViewCount + 1));
+
+        if (affected == 0)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
         if (project == null)
         {
             return NotFound();
