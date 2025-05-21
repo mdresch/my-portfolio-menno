@@ -19,7 +19,34 @@ namespace api.ApiService.Services
 
         public async Task<List<ProjectDTO>> GetAllAsync()
         {
-            var projects = await _context.Projects.ToListAsync();
+public async Task<List<ProjectDTO>> GetAllAsync()
+        {
+            try
+            {
+                var projects = await _context.Projects.ToListAsync();
+                return projects.Select(p => new ProjectDTO
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Description = p.Description,
+                    ImageUrl = p.ImageUrl,
+                    GitHubUrl = p.GitHubUrl,
+                    LiveUrl = p.LiveUrl,
+                    Created = p.Created,
+                    Technologies = p.Technologies,
+                    Challenges = p.Challenges ?? new List<string>(),
+                    ViewCount = p.ViewCount
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                // TODO: Implement proper logging
+                Console.WriteLine($"Error in GetAllAsync: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<ProjectDTO?> GetByIdAsync(int id)
             return projects.Select(p => new ProjectDTO
             {
                 Id = p.Id,
