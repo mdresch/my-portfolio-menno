@@ -17,7 +17,54 @@ namespace api.ApiService.Services
             _context = context;
         }
 
+using api.ApiService.Data;
+using api.ApiService.Models;
+using api.ApiService.DTOs;
+using Microsoft.Extensions.Logging; // Import for logging
+
+namespace api.ApiService.Services
+{
+    public class ProjectService
+    {
+        private readonly PortfolioContext _context;
+        private readonly ILogger<ProjectService> _logger;
+
+        public ProjectService(PortfolioContext context, ILogger<ProjectService> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
         public async Task<List<ProjectDTO>> GetAllAsync()
+        {
+            _logger.LogInformation("Entering GetAllAsync method");
+            try
+            {
+                var projects = await _context.Projects.ToListAsync();
+                var projectDTOs = projects.Select(p => new ProjectDTO
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Description = p.Description,
+                    ImageUrl = p.ImageUrl,
+                    GitHubUrl = p.GitHubUrl,
+                    LiveUrl = p.LiveUrl,
+                    Created = p.Created,
+                    Technologies = p.Technologies,
+                    Challenges = p.Challenges ?? new List<string>(),
+                    ViewCount = p.ViewCount
+                }).ToList();
+                _logger.LogInformation($"GetAllAsync method completed. Retrieved {projectDTOs.Count} projects");
+                return projectDTOs;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred in GetAllAsync method");
+                throw;
+            }
+        }
+
+        public async Task<ProjectDTO?> GetByIdAsync(int id)
         {
 public async Task<List<ProjectDTO>> GetAllAsync()
         {
