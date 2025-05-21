@@ -1,6 +1,10 @@
 import ProjectsClient from './ProjectsClient';
 import { ProjectService } from '@/lib/api-services';
-import type { Project as ApiProject } from '@/types/api';
+// Update the import below to match the actual export from '@/types/api'
+// For example, if the type is exported as 'ApiProject', use:
+import type { ApiProject } from '@/types/api';
+// Or if it's exported as 'ProjectType', use:
+// import type { ProjectType as ApiProject } from '@/types/api';
 
 
 // Helper to normalize API data to ProjectClient type
