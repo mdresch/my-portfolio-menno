@@ -1,11 +1,7 @@
 import ProjectDetail from "../ProjectDetail";
+import type { ApiProject } from '@/types/api';
+import { notFound } from 'next/navigation';
 
-// import the correct type from '@/types/api'
-import type { ApiProject } from '@/types/api';
-// import the correct type from '@/types/api'
-import type { ApiProject } from '@/types/api';
-import { notFound } from 'next/navigation';
-import { notFound } from 'next/navigation';
 
 
 // Helper to normalize API data to ProjectDetail type
@@ -28,14 +24,8 @@ async function fetchProjects(): Promise<ApiProject[]> {
   });
 
   if (!res.ok) {
-});
-
-  if (!res.ok) {
     const errorMessage = await res.text();
     throw new Error(`Failed to fetch projects: ${res.status} ${res.statusText}. ${errorMessage}`);
-  }
-
-  const data = await res.json();
   }
 
   const data = await res.json();
@@ -62,4 +52,3 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return <ProjectDetail project={project} />;
 }
-
