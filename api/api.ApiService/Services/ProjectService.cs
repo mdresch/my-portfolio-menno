@@ -37,7 +37,13 @@ namespace api.ApiService.Services
 
         public async Task<ProjectDTO?> GetByIdAsync(int id)
         {
-            var project = await _context.Projects.FindAsync(id);
+public async Task<ProjectDTO?> GetByIdAsync(int id)
+        {
+            // Using parameterized query to prevent NoSQL injection
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
+            if (project == null) return null;
+
+            return new ProjectDTO
             if (project == null) return null;
 
             return new ProjectDTO
