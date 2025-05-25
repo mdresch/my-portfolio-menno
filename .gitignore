@@ -106,3 +106,4 @@ api/.env*
 .azure
 
 .fake
+vertex-service-account.json
