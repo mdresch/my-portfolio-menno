@@ -162,3 +162,25 @@ I0525 20:44:37.360919  105196 dev.go:95] Listening on address (HTTP + gRPC): 127
 [debug] [2025-05-25T18:44:50.837Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
 [debug] [2025-05-25T18:45:09.991Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
 [debug] [2025-05-25T18:45:09.991Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-05-25T19:01:36.353Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2025-05-25T19:01:36.354Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-05-25T19:01:36.358Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-25T19:01:36.359Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-05-25T19:01:36.360Z] Checked if tokens are valid: true, expires at: 1748202289798
+[debug] [2025-05-25T19:01:36.360Z] [Firebase Plugin] User found:  menno.drescher@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-05-25T19:01:36.362Z] Checked if tokens are valid: true, expires at: 1748202289798
+[debug] [2025-05-25T19:01:36.365Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-05-25T19:01:36.377Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2025-05-25T19:01:36.377Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-05-25T19:01:36.379Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-25T19:01:36.379Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-05-25T19:01:36.379Z] Checked if tokens are valid: true, expires at: 1748202289798
+[debug] [2025-05-25T19:01:36.380Z] [Firebase Plugin] User found:  menno.drescher@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-05-25T19:01:36.381Z] Checked if tokens are valid: true, expires at: 1748202289798
+[debug] [2025-05-25T19:01:36.382Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-05-25T19:01:36.800Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-05-25T19:01:36.800Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-05-25T19:01:37.146Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-05-25T19:01:37.147Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]

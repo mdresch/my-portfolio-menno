@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPostDataFromFile, getSortedPostsData } from '@/lib/markdown';
+import { getPostDataFromFile, getSortedPostsData } from '../../../lib/markdown';
 
 // Simple in-memory cache for all posts
 let cachedPosts: any[] | null = null;

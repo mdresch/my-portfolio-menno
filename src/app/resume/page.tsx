@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import ResumeContainer from '@/components/resume/ResumeContainer';
+import ResumeContainer from '../../components/resume/ResumeContainer';
 
 export const metadata: Metadata = {
   title: 'Interactive Resume | Menno Drescher',

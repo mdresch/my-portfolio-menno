@@ -1,5 +1,5 @@
 import React from 'react';
-import { MarketTrendsDashboard } from '@/components/dashboards/MarketTrendsDashboard';
+import { MarketTrendsDashboard } from '../../../components/dashboards/MarketTrendsDashboard';
 
 export default function MarketTrendsPage() {
   return (

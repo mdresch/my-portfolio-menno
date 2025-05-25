@@ -6,7 +6,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
 // Dynamically import the editor to avoid SSR issues
-const MarkdownEditor = dynamic(() => import('@/components/admin/MarkdownEditor'), {
+const MarkdownEditor = dynamic(() => import('../../../../components/admin/MarkdownEditor'), {
   ssr: false,
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });

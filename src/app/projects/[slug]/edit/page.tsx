@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ProjectService } from '@/lib/api-services';
-import type { Project } from '@/types/api';
+import { ProjectService } from '../../../../lib/api-services';
+import type { Project } from '../../../../types/api';
 
 interface ProjectFormProps {
   project: Project;

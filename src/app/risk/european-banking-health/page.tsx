@@ -9,7 +9,7 @@ import {
   LiquidityCoverageChart,
   ProfitabilityTrendsChart,
   CountryRiskHeatmapChart
-} from '@/components/risk/EuropeanBankingCharts';
+} from '../../../components/risk/EuropeanBankingCharts';
 
 export default function EuropeanBankingHealthPage() {
   return (

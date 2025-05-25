@@ -1,4 +1,4 @@
-import { getSortedPostsData, getPostData } from '@/lib/markdown';
+import { getSortedPostsData, getPostData } from '../../lib/markdown';
 
 export async function GET() {
   const posts = await getSortedPostsData();

@@ -1,5 +1,5 @@
 import React from 'react';
-import EmeaComplexityMap from '@/components/risk/EmeaComplexityMap';
+import EmeaComplexityMap from '../../../components/risk/EmeaComplexityMap';
 
 export const metadata = {
   title: 'EMEA - Global Business Complexity Index',

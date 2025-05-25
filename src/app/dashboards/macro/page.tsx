@@ -1,5 +1,5 @@
 import React from 'react';
-import { MacroDashboard } from '@/components/dashboards/MacroDashboard';
+import { MacroDashboard } from '../../../components/dashboards/MacroDashboard';
 
 export default function MacroPage() {
   return (

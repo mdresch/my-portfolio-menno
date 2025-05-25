@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
-import { mockCompanies } from '@/data/mockCompanies';
+import { mockCompanies } from '../../../../data/mockCompanies';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,

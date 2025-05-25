@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { SkillService } from "@/lib/api-services";
-import type { Skill as ApiSkill } from "@/types/api";
+import { SkillService } from "../../../lib/api-services";
+import type { Skill as ApiSkill } from "../../../types/api";
 
 // Use the real Skill type from backend
 interface Skill extends ApiSkill {}

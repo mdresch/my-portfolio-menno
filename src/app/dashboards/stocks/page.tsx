@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { mockCompanies } from '@/data/mockCompanies';
+import { mockCompanies } from '../../../data/mockCompanies';
 
 // Mock data for global indices
 const indices = [

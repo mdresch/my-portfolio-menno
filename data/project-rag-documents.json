@@ -1,0 +1,164 @@
+[
+  {
+    "id": "project-risk-reports",
+    "content": "Risk Reports The Risk Reports is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks. React Node.js MongoDB Handling large volumes of financial data and ensuring data integrity. Designing a scalable architecture for real-time risk analysis. Implementing robust authentication and authorization for sensitive data. Solution: Used MongoDB for flexible data storage, implemented JWT-based auth, and optimized backend queries for performance.",
+    "metadata": {
+      "source": "content/project/risk-reports.md",
+      "title": "Risk Reports",
+      "description": "The Risk Reports is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "link": "https://github.com/users/mdresch/projects/6/",
+      "challenges": [
+        "Handling large volumes of financial data and ensuring data integrity.",
+        "Designing a scalable architecture for real-time risk analysis.",
+        "Implementing robust authentication and authorization for sensitive data.",
+        "Solution: Used MongoDB for flexible data storage, implemented JWT-based auth, and optimized backend queries for performance."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-my-portfolio-menno",
+    "content": "My Portfolio Menno Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results. React Node.js MongoDB Integrating multiple data sources and ensuring seamless data flow between backend and frontend. Implementing responsive design for optimal viewing on all devices. Ensuring accessibility and performance while maintaining a visually appealing UI. Solution: Leveraged React best practices, optimized API calls, and used Tailwind CSS for rapid, accessible UI development. ## Case Study\r\nThis portfolio was built to showcase my work and technical skills, featuring a modern stack and interactive dashboards.",
+    "metadata": {
+      "source": "content/project/my-portfolio-menno.md",
+      "title": "My Portfolio Menno",
+      "description": "Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "link": "https://github.com/users/mdresch/projects/3/",
+      "challenges": [
+        "Integrating multiple data sources and ensuring seamless data flow between backend and frontend.",
+        "Implementing responsive design for optimal viewing on all devices.",
+        "Ensuring accessibility and performance while maintaining a visually appealing UI.",
+        "Solution: Leveraged React best practices, optimized API calls, and used Tailwind CSS for rapid, accessible UI development."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-money-market-and-foereign-exchange",
+    "content": "Money Market and Foereign Exchange The Money Market and Foreign Exchange an Introduction to Supply Demand Interst Rates Inflation and 6 Trilion a day Market. React Node.js Material UI Next JS Visualizing complex financial concepts in an intuitive way for users. Ensuring up-to-date market data and handling API rate limits. Maintaining cross-browser compatibility and accessibility. Solution: Used Next.js for SSR, Material UI for consistent design, and implemented caching for API data.",
+    "metadata": {
+      "source": "content/project/money-market-and-foereign-exchange.md",
+      "title": "Money Market and Foereign Exchange",
+      "description": "The Money Market and Foreign Exchange an Introduction to Supply Demand Interst Rates Inflation and 6 Trilion a day Market.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Material UI",
+        "Next JS"
+      ],
+      "link": "https://github.com/users/mdresch/projects/7/",
+      "challenges": [
+        "Visualizing complex financial concepts in an intuitive way for users.",
+        "Ensuring up-to-date market data and handling API rate limits.",
+        "Maintaining cross-browser compatibility and accessibility.",
+        "Solution: Used Next.js for SSR, Material UI for consistent design, and implemented caching for API data."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-ict-governance-management-framework",
+    "content": "ICT Governance Management Framework The ICT Governance Framework Application and the CBA Consult IT Management Framework are initiatives aimed at optimizing governance in multi-cloud environments. TypeScript Next.js Tailwind CSS Integrating governance policies across multiple cloud providers. Automating compliance checks and reporting. Designing a user-friendly dashboard for complex governance data. Solution: Leveraged TypeScript for type safety, automated policy checks, and built custom dashboard components with Tailwind CSS.",
+    "metadata": {
+      "source": "content/project/ict-governance-management-framework.md",
+      "title": "ICT Governance Management Framework",
+      "description": "The ICT Governance Framework Application and the CBA Consult IT Management Framework are initiatives aimed at optimizing governance in multi-cloud environments.",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "Tailwind CSS"
+      ],
+      "link": "https://github.com/users/mdresch/projects/1",
+      "challenges": [
+        "Integrating governance policies across multiple cloud providers.",
+        "Automating compliance checks and reporting.",
+        "Designing a user-friendly dashboard for complex governance data.",
+        "Solution: Leveraged TypeScript for type safety, automated policy checks, and built custom dashboard components with Tailwind CSS."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-hr-insights-dashboard",
+    "content": "hr-insights-dashboard The hr-insights-dashboard is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks. React Node.js MongoDB Aggregating HR data from disparate sources and ensuring data privacy. Building predictive analytics for workforce trends. Providing actionable insights through clear visualizations. Solution: Used secure APIs for data integration, implemented ML models for analytics, and designed custom charts with React.",
+    "metadata": {
+      "source": "content/project/hr-insights-dashboard.md",
+      "title": "hr-insights-dashboard",
+      "description": "The hr-insights-dashboard is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "link": "https://github.com/users/mdresch/projects/5/",
+      "challenges": [
+        "Aggregating HR data from disparate sources and ensuring data privacy.",
+        "Building predictive analytics for workforce trends.",
+        "Providing actionable insights through clear visualizations.",
+        "Solution: Used secure APIs for data integration, implemented ML models for analytics, and designed custom charts with React."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-cba-ai-foundry",
+    "content": "CBA AI Foundry The CBA AI Foundry is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks. TypeScript Next.js Tailwind CSS Managing the lifecycle of multiple AI models and deployments. Ensuring reproducibility and traceability of experiments. Scaling compute resources efficiently for training and inference. Solution: Adopted containerization, implemented experiment tracking, and used cloud-based scaling strategies.",
+    "metadata": {
+      "source": "content/project/cba-ai-foundry.md",
+      "title": "CBA AI Foundry",
+      "description": "The CBA AI Foundry is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "Tailwind CSS"
+      ],
+      "link": "https://github.com/users/mdresch/projects/2",
+      "challenges": [
+        "Managing the lifecycle of multiple AI models and deployments.",
+        "Ensuring reproducibility and traceability of experiments.",
+        "Scaling compute resources efficiently for training and inference.",
+        "Solution: Adopted containerization, implemented experiment tracking, and used cloud-based scaling strategies."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  },
+  {
+    "id": "project-ai-agent-life-cycle-management",
+    "content": "AI Agent Life Cycle Management The AI Agent Life Cycle Management is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks. React Node.js MongoDB Orchestrating agent training, deployment, and monitoring workflows. Maintaining version control and rollback for agent models. Securing sensitive data and model artifacts. Solution: Built workflow automation, integrated versioning tools, and enforced security best practices throughout the pipeline.",
+    "metadata": {
+      "source": "content/project/ai-agent-life-cycle-management.md",
+      "title": "AI Agent Life Cycle Management",
+      "description": "The AI Agent Life Cycle Management is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "link": "https://github.com/users/mdresch/projects/4/",
+      "challenges": [
+        "Orchestrating agent training, deployment, and monitoring workflows.",
+        "Maintaining version control and rollback for agent models.",
+        "Securing sensitive data and model artifacts.",
+        "Solution: Built workflow automation, integrated versioning tools, and enforced security best practices throughout the pipeline."
+      ],
+      "category": "project",
+      "type": "project"
+    }
+  }
+]

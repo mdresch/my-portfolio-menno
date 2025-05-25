@@ -9,7 +9,7 @@ import {
   TransitionRiskTimelineChart,
   CarbonPricingScenarioChart,
   InvestmentTrendsChart
-} from '@/components/risk/ClimateFinancialCharts';
+} from '../../../components/risk/ClimateFinancialCharts';
 
 export default function ClimateFinancialImpactPage() {
   return (

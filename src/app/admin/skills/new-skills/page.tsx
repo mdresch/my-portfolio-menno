@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SkillService } from "@/lib/api-services";
+import { SkillService } from "../../../../lib/api-services";
 
 export default function AddSkillPage() {
   const [name, setName] = useState("");

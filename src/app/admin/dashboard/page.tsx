@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Dashboard from '@/components/admin/Dashboard';
+import Dashboard from '../../../components/admin/Dashboard';
 
 const AdminDashboardPage = () => {
   const [isMounted, setIsMounted] = useState(false);

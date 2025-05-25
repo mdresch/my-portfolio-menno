@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import BlogCrossPostAnalytics from '@/components/admin/BlogCrossPostAnalytics';
+import BlogCrossPostAnalytics from '../../../components/admin/BlogCrossPostAnalytics';
 
 export default function AnalyticsDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,7 +1,7 @@
 "use client";
-import ProjectForm from '@/components/ProjectForm';
+import ProjectForm from '../../../../components/ProjectForm';
 import { useRouter } from 'next/navigation';
-import type { Project } from '@/components/ProjectForm';
+import type { Project } from '../../../../components/ProjectForm';
 
 export default function NewProjectPage() {
   const router = useRouter();

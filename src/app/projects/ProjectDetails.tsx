@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CollapsibleSection from "@/components/CollapsibleSection";
+import CollapsibleSection from "../../components/CollapsibleSection";
 
 
 interface Project {

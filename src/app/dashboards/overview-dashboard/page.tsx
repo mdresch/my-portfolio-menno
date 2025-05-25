@@ -3,10 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 // Import the mock dashboard components
-import { OverviewDashboard } from '@/components/dashboards/OverviewDashboard'; // Adjust path if needed
-import PolicyImpactDashboard from '@/app/dashboards/policyimpact-dashboard/page';
-import { MarketTrendsDashboard } from '@/components/dashboards/MarketTrendsDashboard'; // Adjust path if needed
-import { MacroDashboard } from '@/components/dashboards/MacroDashboard'; // Adjust path if needed
+import { OverviewDashboard } from '../../../components/dashboards/OverviewDashboard'; // Adjust path if needed
+import PolicyImpactDashboard from '../../../app/dashboards/policyimpact-dashboard/page';
+import { MarketTrendsDashboard } from '../../../components/dashboards/MarketTrendsDashboard'; // Adjust path if needed
+import { MacroDashboard } from '../../../components/dashboards/MacroDashboard'; // Adjust path if needed
 // Import other mock dashboards (Macro, Market) if you create them
 
 export default function DashboardsPage() {

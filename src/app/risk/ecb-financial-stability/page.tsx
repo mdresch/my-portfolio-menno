@@ -10,17 +10,17 @@ import {
   LiquidityCoverageChart,
   ProfitabilityTrendsChart,
   CountryRiskHeatmapChart
-} from '@/components/risk/EuropeanBankingCharts';
+} from '../../../components/risk/EuropeanBankingCharts';
 import {
   CentralBankBalanceSheetsChart,
   InterestRateEnvironmentChart,
   MarketVolatilityChart
-} from '@/components/risk/GlobalLiquidityCharts';
+} from '../../../components/risk/GlobalLiquidityCharts';
 import {
   ClimateRiskOverviewChart,
   SectorExposureChart
-} from '@/components/risk/ClimateFinancialCharts';
-import RiskReportCard from '@/components/risk/RiskReportCard';
+} from '../../../components/risk/ClimateFinancialCharts';
+import RiskReportCard from '../../../components/risk/RiskReportCard';
 
 export default function ECBFinancialStabilityRisk() {
   return (

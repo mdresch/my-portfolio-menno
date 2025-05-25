@@ -1,6 +1,6 @@
 import React from "react";
-import { MaturityDashboard } from "@/components/dashboards/MaturityDashboard";
-import { MaturityAssessmentDashboard } from "@/components/dashboards/MaturityAssessmentDashboard";
+import { MaturityDashboard } from "../../components/dashboards/MaturityDashboard";
+import { MaturityAssessmentDashboard } from "../../components/dashboards/MaturityAssessmentDashboard";
 
 export default function NowPage() {
   return (

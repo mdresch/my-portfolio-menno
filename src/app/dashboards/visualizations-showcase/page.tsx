@@ -1,4 +1,4 @@
-import BlogViewsChart from '@/components/dashboards/BlogViewsChart';
+import BlogViewsChart from '../../../components/dashboards/BlogViewsChart';
 
 export default function VisualizationsShowcasePage() {
   return (

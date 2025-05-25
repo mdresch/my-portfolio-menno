@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '../../lib/auth';
 import Link from 'next/link';
-import { ProjectService, BlogService, ContactService } from '@/lib/api-services';
+import { ProjectService, BlogService, ContactService } from '../../lib/api-services';
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();

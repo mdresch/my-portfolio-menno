@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '../../lib/auth';
 import { useRouter } from 'next/navigation';
-import LoginForm from '@/components/LoginForm';
+import LoginForm from '../../components/LoginForm';
 
 export default function AdminLayout({
   children,
