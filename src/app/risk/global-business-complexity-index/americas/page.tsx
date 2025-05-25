@@ -2,12 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
+import { getCountriesByRegion, getComplexityColor } from '../../../../lib/riskData';
 import dynamic from 'next/dynamic';
 
 // Replace direct import with dynamic import using the wrapper
 const AmericasComplexityMapWrapper = dynamic(
-  () => import('@/components/risk/AmericasComplexityMapWrapper'),
+  () => import('../../../../components/risk/AmericasComplexityMapWrapper'),
   { ssr: false }
 );
 

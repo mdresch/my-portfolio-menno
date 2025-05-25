@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
-import ApacComplexityMap from '@/components/risk/ApacComplexityMap';
+import { getCountriesByRegion, getComplexityColor } from '../../../../lib/riskData';
+import ApacComplexityMap from '../../../../components/risk/ApacComplexityMap';
 
 // Get APAC country data
 const apacCountryData = getCountriesByRegion("APAC");

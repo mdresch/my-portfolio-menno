@@ -1,5 +1,5 @@
 import React from 'react';
-import { MockKPICard, MockLineChart, MockBarChart, MockTablePlaceholder, MockStackedBarChart, MockUnemploymentLineChart } from '@/components/dashboards/MockVisuals';
+import { MockKPICard, MockLineChart, MockBarChart, MockTablePlaceholder, MockStackedBarChart, MockUnemploymentLineChart } from '../../components/dashboards/MockVisuals';
 
 // Example mock data for macro indicators
 const macroKPIs = [

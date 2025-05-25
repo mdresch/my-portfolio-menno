@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { allCountryData, getComplexityColor } from '@/lib/riskData';
+import { allCountryData, getComplexityColor } from '../../../../lib/riskData';
 
 // Trend icons
 const TrendIcon = ({ trend }: { trend: string }) => {

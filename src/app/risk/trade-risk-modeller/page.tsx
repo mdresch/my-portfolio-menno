@@ -1,8 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import DashboardClient from "@/components/DashboardClient";
-import GlobeWithTradeRoutes from "@/components/GlobeWithTradeRoutes";
+import DashboardClient from "../../../components/DashboardClient";
+import GlobeWithTradeRoutes from "../../../components/GlobeWithTradeRoutes";
 
 export default function TradeRiskModellerPage() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { MockKPICard } from "@/components/dashboards/MockVisuals";
+import { MockKPICard } from "../../components/dashboards/MockVisuals";
 
 const maturityData = [
   { title: "Accessibility", value: "80%", change: "+10% YoY" },

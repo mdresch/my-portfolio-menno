@@ -12,8 +12,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { gdpGrowthData, gdpGrowthYears, gdpGrowthCountryOptions } from '@/data/gdpGrowthData';
-import { inflationData } from '@/data/inflationData';
+import { gdpGrowthData, gdpGrowthYears, gdpGrowthCountryOptions } from '../../../data/gdpGrowthData';
+import { inflationData } from '../../../data/inflationData';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react';
-import { User, AuthToken, LoginRequest } from '@/types/api';
+import { User, AuthToken, LoginRequest } from '../types/api';
 
 // Define the auth context interface
 interface AuthContextType {

@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import resumeData from '@/data/resume';
+import resumeData from '../../data/resume';
 import ResumeHeader from './ResumeHeader';
 import ResumeSection from './ResumeSection';
 import SkillsVisualization from './SkillsVisualization';
 import ExperienceItem from './ExperienceItem';
 import EducationItem from './EducationItem';
 import PDFExport from './PDFExport';
-import ResumeJsonLd from '@/components/SEO/ResumeJsonLd';
+import ResumeJsonLd from '../../components/SEO/ResumeJsonLd';
 
 export default function ResumeContainer() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(

@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { allCountryData, getComplexityColor, regionalAverages } from '@/lib/riskData';
-import ComplexityRadarChart from '@/components/risk/ComplexityRadarChart';
-import RegionalComparisonChart from '@/components/risk/RegionalComparisonChart';
+import { allCountryData, getComplexityColor, regionalAverages } from '../../../../../lib/riskData';
+import ComplexityRadarChart from '../../../../../components/risk/ComplexityRadarChart';
+import RegionalComparisonChart from '../../../../../components/risk/RegionalComparisonChart';
 
 export default function CountryPage({ params }: { params: { slug: string } }) {
   // Convert slug to country name for matching (e.g., "united-states" -> "United States")

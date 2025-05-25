@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Skill } from '@/data/resume';
+import { Skill } from '../../data/resume';
 
 interface SkillsVisualizationProps {
   skills: Skill[];

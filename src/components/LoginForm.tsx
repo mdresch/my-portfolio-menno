@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@/lib/auth';
+// Update the import path below if your useAuth hook is located elsewhere
+import { useAuth } from '../lib/auth';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');

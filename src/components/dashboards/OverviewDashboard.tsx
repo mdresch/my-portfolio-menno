@@ -1,7 +1,7 @@
 // filepath: src/components/dashboards/OverviewDashboard.tsx (adjust path if needed)
 import React from 'react';
 // Correct named import from the correct location
-import { MockKPICard, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from '@/components/dashboards/MockVisuals';
+import { MockKPICard, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from '../../components/dashboards/MockVisuals';
 // Or relative path: import { MockKPICard, MockChartPlaceholder, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from './MockVisuals';
 
 // --- Import/Export Price Indexes Mock Data ---

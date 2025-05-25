@@ -1,5 +1,5 @@
 import React from 'react';
-import { MockKPICard, MockBarChart, MockTablePlaceholder } from '@/components/dashboards/MockVisuals';
+import { MockKPICard, MockBarChart, MockTablePlaceholder } from '../../components/dashboards/MockVisuals';
 
 // Example mock data for sectors and segments
 const sectors = [
