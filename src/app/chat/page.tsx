@@ -57,11 +57,67 @@ const CopyButton = ({ text }: { text: string }) => {
   );
 };
 
+// Metadata display component
+const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  if (!metadata) return null;
+  
+  return (
+    <div className="mt-2">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="text-xs text-gray-500 hover:text-gray-700 flex items-center"
+      >
+        <svg 
+          className={`w-3 h-3 mr-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+        AI Details
+      </button>
+      
+      {isExpanded && (
+        <div className="mt-1 p-2 bg-gray-50 rounded text-xs space-y-1">
+          {metadata.model && <div><span className="font-medium">Model:</span> {metadata.model}</div>}
+          {metadata.wordCount && <div><span className="font-medium">Words:</span> {metadata.wordCount}</div>}
+          {metadata.tokensUsed && <div><span className="font-medium">Tokens:</span> {metadata.tokensUsed}</div>}
+          {metadata.generationConfig && (
+            <div>
+              <span className="font-medium">Config:</span> 
+              <span className="ml-1">
+                T:{metadata.generationConfig.temperature}, 
+                P:{metadata.generationConfig.topP}, 
+                K:{metadata.generationConfig.topK}
+              </span>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 type Message = {
   user: string;
   ai: string;
   timestamp: number;
   error?: boolean;
+  metadata?: {
+    timestamp?: string;
+    model?: string;
+    tokensUsed?: number;
+    wordCount?: number;
+    responseTime?: number;
+    generationConfig?: {
+      temperature: number;
+      topP: number;
+      topK: number;
+    };
+  };
 };
 
 export default function ChatPage() {
@@ -96,11 +152,10 @@ export default function ChatPage() {
         }),
       });
       if (!res.ok) throw new Error('AI response failed');
-      const data = await res.json();
-      setMessages((msgs) =>
+      const data = await res.json();      setMessages((msgs) =>
         msgs.map((msg, i) =>
           i === msgs.length - 1
-            ? { ...msg, ai: data.response, timestamp: Date.now() }
+            ? { ...msg, ai: data.response, timestamp: Date.now(), metadata: data.metadata }
             : msg
         )
       );
@@ -156,9 +211,8 @@ export default function ChatPage() {
                       <div className="mr-2">{/* Avatar left */}<AIAvatar /></div>
                       <CopyButton text={msg.ai} />
                       <span className="text-xs text-gray-400 ml-2">{formatTime(msg.timestamp)}</span>
-                    </div>
-                    <div
-                      className={`mt-1 rounded-lg px-4 py-2 max-w-xs whitespace-pre-wrap break-words shadow-md ${
+                    </div>                    <div
+                      className={`mt-1 rounded-lg px-4 py-2 max-w-md whitespace-pre-wrap break-words shadow-md ${
                         msg.error
                           ? 'bg-red-100 text-red-700 border border-red-300'
                           : 'bg-gray-200 text-gray-900 border border-gray-200'
@@ -166,6 +220,7 @@ export default function ChatPage() {
                     >
                       <ReactMarkdown>{msg.ai}</ReactMarkdown>
                     </div>
+                    <MetadataDisplay metadata={msg.metadata} />
                   </div>
                 </div>
               )}

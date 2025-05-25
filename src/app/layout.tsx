@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import Footer from "../components/Footer";
+import ConditionalFooter from "../components/ConditionalFooter";
 import "./globals.css";
 import '../styles/markdown-fix.css';
 import '../styles/resume-print.css'; // Add print styles
@@ -109,7 +109,7 @@ export default function RootLayout({
                 <SpeedInsights />
                 <ClientAnalytics />
               </main>
-              <Footer />
+              <ConditionalFooter />
             </RadixTheme>
           </ThemeProvider>
         </Providers>

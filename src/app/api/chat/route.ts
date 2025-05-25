@@ -46,10 +46,24 @@ export async function POST(req: NextRequest) {
       const response = result.response;
       if (!response?.candidates?.[0]?.content?.parts?.[0]?.text) {
         throw new Error('Invalid response format from Vertex AI');
-      }
-
-      const text = response.candidates[0].content.parts[0].text;
-      return NextResponse.json({ response: text });
+      }      const text = response.candidates[0].content.parts[0].text;
+      
+      // Enhanced response with metadata
+      return NextResponse.json({ 
+        response: text,
+        metadata: {
+          timestamp: new Date().toISOString(),
+          model: 'gemini-2.5-flash-preview',
+          tokensUsed: response.usageMetadata?.totalTokenCount || 0,
+          wordCount: text.split(/\s+/).length,
+          responseTime: Date.now(),
+          generationConfig: {
+            temperature: 0.4,
+            topP: 0.8,
+            topK: 40
+          }
+        }
+      });
     } catch (generateError) {
       console.error('Content generation error:', generateError);
       // Try to get more details about the error
