@@ -455,9 +455,68 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
               </StrictNavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <StrictNavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-                <Link href="/chat">AI Chat</Link>
-              </StrictNavigationMenuLink>
+              <NavigationMenuTrigger>AI Chat</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
+                  <StrictNavigationMenuLink asChild>
+                    <Link
+                      href="/chat"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    >
+                      <div className="flex flex-col">
+                        <span className="mb-2 mt-4 text-lg font-medium">
+                          AI Chat Hub
+                        </span>
+                        <span className="text-sm leading-tight text-muted-foreground">
+                          Explore AI-powered chat and testing interfaces
+                        </span>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
+                  <div className="grid gap-1">
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/chat" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Chat Interface</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Main AI chat interface and conversation tools
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">AI Logic</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            AI reasoning and logic processing interface
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">GenKit</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Firebase GenKit AI development and testing
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Firebase AI Test</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Firebase integration testing for AI services
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  </div>
+                </div>
+              </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>        <div className="absolute right-4 top-1/2 -translate-y-1/2">
