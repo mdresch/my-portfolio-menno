@@ -7,7 +7,7 @@ import {
   Geography, 
   ZoomableGroup 
 } from 'react-simple-maps';
-import { allCountryData, getComplexityColor } from '@/lib/riskData';
+import { allCountryData, getComplexityColor } from '../../lib/riskData';
 
 // Type definitions
 interface CountryData {

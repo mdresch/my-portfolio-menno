@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 import "./globals.css";
 import '../styles/markdown-fix.css';
 import '../styles/resume-print.css'; // Add print styles
@@ -8,9 +8,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from 'next-themes';
 import { Theme as RadixTheme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
-import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
+import { NavigationMenuDemo } from "../components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import ClientAnalytics from '@/components/ClientAnalytics';
+import ClientAnalytics from '../components/ClientAnalytics';
 import Providers from './providers';
 // Client component for Hotjar will be rendered in the body
 

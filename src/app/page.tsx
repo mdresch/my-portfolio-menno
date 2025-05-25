@@ -1,5 +1,5 @@
 "use client";
-import GitHubActivity from '@/components/GitHubActivity';
+import GitHubActivity from '../components/GitHubActivity';
 import { generatePersonStructuredData, generateWebsiteStructuredData } from '@/lib/structured-data';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -95,7 +95,7 @@ const ProjectsSection = () => (
 const CTASection = () => (
   <section className="bg-indigo-600 dark:bg-cyan-800 text-white py-12 text-center rounded-lg shadow-md mt-16 mb-8 font-sans">
     <h2 className="text-3xl font-bold mb-4">Ready to Collaborate?</h2>
-    <p className="text-lg mb-6">Let’s build something amazing together.</p>
+    <p className="text-lg mb-6">Let's build something amazing together.</p>
     <a href="/contact" className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full hover:bg-gray-100 transition inline-block">
       Get in Touch
     </a>

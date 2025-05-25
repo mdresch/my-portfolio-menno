@@ -1,16 +1,17 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { BlogPost as BlogPostType } from '@/lib/markdown';
-import ShareButton from '@/components/ShareButton';
-import TableOfContents from '@/components/TableOfContents';
-import ReadingProgress from '@/components/ReadingProgress';
-import SocialShare from '@/components/SocialShare';
+import { BlogPost as BlogPostType } from '../../lib/markdown';
+import ShareButton from '../ShareButton';
+import TableOfContents from '../TableOfContents';
+import ReadingProgress from '../ReadingProgress';
+import SocialShare from '../SocialShare';
 import BlogPostJsonLd from './BlogPostJsonLd';
-import Breadcrumbs from '@/components/SEO/Breadcrumbs';
-import Giscus from '@/components/comments/Giscus';
-import { formatDate } from '@/lib/utils';
+import Breadcrumbs from '../SEO/Breadcrumbs';
+import Giscus from '../comments/Giscus';
+import { formatDate } from '../../lib/utils';
 import Image from 'next/image';
 
 interface BlogPostProps {

@@ -1,11 +1,11 @@
 import ProjectsClient from './ProjectsClient';
-import { ProjectService } from '@/lib/api-services';
-import type { ApiProject } from '@/types/api';
-
+import { ProjectService } from '../../lib/api-services';
+import type { ApiProject } from '../../types/api';
 
 // Helper to normalize API data to ProjectClient type
 function normalizeProject(p: ApiProject) {
   return {
+    id: p.id,
     title: p.title ?? '',
     description: p.description ?? '',
     technologies: p.technologies ?? [],
@@ -28,6 +28,7 @@ export default async function ProjectsPage() {
     return <ProjectsClient projects={projects} />;
   } catch (err) {
     // Optionally log the error
+    console.error('Error fetching projects:', err);
     return <div>Failed to load projects. Please try again later.</div>;
   }
 }

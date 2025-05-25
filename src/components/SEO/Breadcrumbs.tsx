@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { generateBreadcrumbStructuredData } from '@/lib/structured-data';
+import { generateBreadcrumbStructuredData } from '../../lib/structured-data';
 
 interface BreadcrumbItem {
   name: string;

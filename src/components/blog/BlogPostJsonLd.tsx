@@ -1,8 +1,9 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\components\blog\BlogPostJsonLd.tsx
 'use client';
 
-import { BlogPost } from '@/lib/markdown';
-import { generateBlogPostStructuredData } from '@/lib/structured-data';
+import React from 'react';
+import { BlogPost } from '../../lib/markdown';
+import { generateBlogPostStructuredData } from '../../lib/structured-data';
 
 interface BlogPostJsonLdProps {
   post: BlogPost;

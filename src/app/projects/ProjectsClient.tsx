@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import ProjectForm from '@/components/ProjectForm';
-import { ProjectService } from '@/lib/api-services';
+import ProjectForm from '../../components/ProjectForm';
+import { ProjectService } from '../../lib/api-services';
 // Define ApiProject type locally (copied from src/types/api.ts)
 interface ApiProject {
   id: number;
@@ -25,6 +25,7 @@ interface ProjectsClientProps {
 }
 
 export interface Project {
+  id: number;
   title: string;
   description: string;
   technologies: string[];
@@ -43,6 +44,7 @@ export interface Project {
 // Helper to normalize API data to Project type
 function normalizeProject(p: ApiProject): Project {
   return {
+    id: p.id,
     title: p.title ?? '',
     description: p.description ?? '',
     technologies: p.technologies ?? [],

@@ -1,11 +1,11 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import ErrorBoundary from '@/components/ErrorBoundary';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 // Dynamically load the map component with error handling
 const GlobalComplexityMap = dynamic(
-  () => import('@/components/risk/GlobalComplexityMap'),
+  () => import('../../components/risk/GlobalComplexityMap'),
   { 
     ssr: false,
     loading: () => (

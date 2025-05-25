@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import InteractiveRiskMap from '@/components/risk/InteractiveRiskMap'; // Adjust path
-import RiskReportCard from '@/components/risk/RiskReportCard';
+import InteractiveRiskMap from '../../components/risk/InteractiveRiskMap'; // Adjust path
+import RiskReportCard from '../../components/risk/RiskReportCard';
 
 export default function RiskOverviewPage() {
   return (

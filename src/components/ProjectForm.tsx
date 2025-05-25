@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 
 export interface Project {
+  id: string;
   title: string;
   description: string;
   technologies: string[];
@@ -17,7 +18,7 @@ export interface Project {
 
 interface ProjectFormProps {
   initialProject?: Project;
-  onSubmit: (project: Project) => void;
+  onSubmit: (project: Project) => Promise<void>;
   onCancel?: () => void;
 }
 
@@ -32,6 +33,7 @@ const categoryOptions = [
 export default function ProjectForm({ initialProject, onSubmit, onCancel }: ProjectFormProps) {
   const [project, setProject] = useState<Project>(
     initialProject || {
+      id: '',
       title: '',
       description: '',
       technologies: [],
@@ -75,15 +77,15 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       <h2 className="text-2xl font-bold mb-4">{initialProject ? 'Edit Project' : 'New Project'}</h2>
       <div>
         <label className="block font-semibold">Title</label>
-        <input name="title" value={project.title} onChange={handleChange} className="border rounded px-3 py-2 w-full" required />
+        <input name="title" value={project.title} onChange={handleChange} className="border rounded px-3 py-2 w-full" required placeholder="Enter project title" />
       </div>
       <div>
         <label className="block font-semibold">Description</label>
-        <textarea name="description" value={project.description} onChange={handleChange} className="border rounded px-3 py-2 w-full" required />
+        <textarea name="description" value={project.description} onChange={handleChange} className="border rounded px-3 py-2 w-full" required placeholder="Enter project description" />
       </div>
       <div>
         <label className="block font-semibold">Technologies</label>
-        <select name="technologies" multiple value={project.technologies} onChange={handleTechChange} className="border rounded px-3 py-2 w-full">
+        <select name="technologies" multiple value={project.technologies} onChange={handleTechChange} className="border rounded px-3 py-2 w-full" title="Select technologies">
           {techOptions.map(tech => (
             <option key={tech} value={tech}>{tech}</option>
           ))}
@@ -92,7 +94,7 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       </div>
       <div>
         <label className="block font-semibold">Category</label>
-        <select name="category" value={project.category} onChange={handleChange} className="border rounded px-3 py-2 w-full">
+        <select name="category" value={project.category} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select category">
           <option value="">Select category</option>
           {categoryOptions.map(cat => (
             <option key={cat} value={cat}>{cat}</option>
@@ -101,35 +103,35 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       </div>
       <div>
         <label className="block font-semibold">Link</label>
-        <input name="link" value={project.link || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <input name="link" value={project.link || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Optional link" />
       </div>
       <div>
         <label className="block font-semibold">Date Published</label>
-        <input name="datePublished" type="date" value={project.datePublished || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <input name="datePublished" type="date" value={project.datePublished || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select publication date" />
       </div>
       <div>
         <label className="block font-semibold">Image URL</label>
-        <input name="image" value={project.image || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <input name="image" value={project.image || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Image URL" />
       </div>
       <div>
         <label className="block font-semibold">Case Study</label>
-        <textarea name="caseStudy" value={project.caseStudy || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <textarea name="caseStudy" value={project.caseStudy || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Case study content" />
       </div>
       <div>
         <label className="block font-semibold">Screenshots (comma separated URLs)</label>
-        <input name="screenshots" value={project.screenshots?.join(', ') || ''} onChange={handleScreenshotsChange} className="border rounded px-3 py-2 w-full" />
+        <input name="screenshots" value={project.screenshots?.join(', ') || ''} onChange={handleScreenshotsChange} className="border rounded px-3 py-2 w-full" placeholder="Screenshot URLs (comma separated)" />
       </div>
       <div>
         <label className="block font-semibold">Outcomes (one per line)</label>
-        <textarea name="outcomes" value={project.outcomes?.join('\n') || ''} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" />
+        <textarea name="outcomes" value={project.outcomes?.join('\n') || ''} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" placeholder="Project outcomes (one per line)" />
       </div>
       <div>
         <label className="block font-semibold">GitHub URL</label>
-        <input name="gitHubUrl" value={project.gitHubUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <input name="gitHubUrl" value={project.gitHubUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="GitHub repository URL" />
       </div>
       <div>
         <label className="block font-semibold">Live URL</label>
-        <input name="liveUrl" value={project.liveUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" />
+        <input name="liveUrl" value={project.liveUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Live demo URL" />
       </div>
       <div className="flex gap-4 mt-4">
         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{initialProject ? 'Update' : 'Create'}</button>

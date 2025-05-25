@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import PlaceholderImage from '@/components/ui/PlaceholderImage';
+import PlaceholderImage from '../ui/PlaceholderImage';
 
 interface RiskReportCardProps {
   title: string;

@@ -1,11 +1,12 @@
+import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 // Removed unused Link import
-import { getAllPostIds, getPostDataFromFile, getSortedPostsData } from '@/lib/markdown';
-import PostNavigation from '@/components/PostNavigation';
+import { getAllPostIds, getPostDataFromFile, getSortedPostsData } from '../../../lib/markdown';
+import PostNavigation from '../../../components/PostNavigation';
 // import Comments from '@/components/Comments'; // Removed as the module is missing
-import BlogPost from '@/components/blog/BlogPost';
-import GiscusComments from '@/components/comments/Giscus';
+import BlogPost from '../../../components/blog/BlogPost';
+import GiscusComments from '../../../components/comments/Giscus';
 
 // Generate static paths at build time
 export async function generateStaticParams() {
@@ -15,7 +16,8 @@ export async function generateStaticParams() {
 
 // Update the metadata function
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const slug = params.slug;
+  const awaitedParams = await params; // Await params as suggested by the error
+  const slug = awaitedParams.slug;
   const post = await getPostDataFromFile(slug);
   if (!post) {
     return {
@@ -54,7 +56,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 // Update the page component
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug;
+  const awaitedParams = await params; // Await params as suggested by the error
+  const slug = awaitedParams.slug;
   const post = await getPostDataFromFile(slug);
   // Fetch all posts for navigation (Omit<BlogPost, 'content'>[])
   const allPosts = await getSortedPostsData();

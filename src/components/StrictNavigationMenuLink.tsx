@@ -1,10 +1,10 @@
 import * as React from "react";
-import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { NavigationMenuLink } from "./ui/navigation-menu";
 
 interface StrictNavigationMenuLinkProps {
   asChild?: boolean;
   children: React.ReactNode;
-  [key: string]: any;
+  [key: string]: React.HTMLAttributes<HTMLElement> | boolean | React.ReactNode;
 }
 
 export function StrictNavigationMenuLink({
@@ -17,7 +17,7 @@ export function StrictNavigationMenuLink({
     (
       !React.isValidElement(children) ||
       Array.isArray(children) ||
-      (typeof children === "object" && (children as any).type === React.Fragment)
+      (typeof children === "object" && (children as React.ReactElement).type === React.Fragment)
     )
   ) {
     if (process.env.NODE_ENV !== "production") {

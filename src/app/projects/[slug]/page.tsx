@@ -1,5 +1,5 @@
 import ProjectDetail from "../ProjectDetail";
-import type { ApiProject } from '@/types/api';
+import type { ApiProject } from '../../types/api';
 import { notFound } from 'next/navigation';
 
 

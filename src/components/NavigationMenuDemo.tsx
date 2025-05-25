@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { StrictNavigationMenuLink } from "./StrictNavigationMenuLink";
 
-import { cn } from "@/lib/utils"
+import { cn } from "../lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,9 +15,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "./ui/navigation-menu"
 import { MobileMenu } from "./MobileMenu"
-import { ComponentItem } from "@/types/navigation"
+import { ComponentItem } from "../types/navigation"
 
 // Define interfaces for component props
 interface IconProps {

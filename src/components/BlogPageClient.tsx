@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useMemo, useEffect } from 'react';
-import BlogSearch from '@/components/BlogSearch';
-import BlogPosts from '@/components/BlogPosts';
-import { BlogPost } from '@/lib/markdown';
+import BlogSearch from './BlogSearch';
+import BlogPosts from './BlogPosts';
+import { BlogPost } from '../lib/markdown';
+import SearchWidget from './SearchWidget';
 
 // Helper for debouncing
 function useDebounce<T>(value: T, delay: number): T {
@@ -77,16 +78,17 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Blog</h1>
-      <div className="flex flex-col md:flex-row md:items-center md:space-x-4 gap-4 mb-6">
-        <div className="flex-1">
+
+      
+      <div className="flex flex-row items-center gap-4 mb-6">
+        <div className="h-12 flex-1">
           <BlogSearch onSearch={setQuery} />
         </div>
-        <div>
+        <div className="h-12">
           <label htmlFor="category-select" className="sr-only">Filter by category</label>
           <select
             id="category-select"
-            className="border rounded px-3 py-2 min-w-[160px]"
+            className="h-full border rounded px-3 py-2 min-w-[160px]"
             value={selectedCategory || ''}
             onChange={e => setSelectedCategory(e.target.value || null)}
           >
@@ -96,11 +98,11 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
             ))}
           </select>
         </div>
-        <div>
+        <div className="h-12">
           <label htmlFor="year-select" className="sr-only">Filter by year</label>
           <select
             id="year-select"
-            className="border rounded px-3 py-2 min-w-[120px]"
+            className="h-full border rounded px-3 py-2 min-w-[120px]"
             value={selectedYear}
             onChange={e => setSelectedYear(e.target.value)}
           >

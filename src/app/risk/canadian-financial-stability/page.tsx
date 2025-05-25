@@ -11,7 +11,7 @@ import {
   HousingVulnerabilityChart,
   InternationalContagionChart,
   ClimateRiskChart
-} from '@/components/risk/CanadianFinancialCharts';
+} from '../../components/risk/CanadianFinancialCharts';
 import RiskReportCard from '@/components/risk/RiskReportCard';
 
 export default function CanadianFinancialStabilityPage() {

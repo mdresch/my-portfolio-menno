@@ -8,7 +8,7 @@ import {
   ZoomableGroup,
   GeoType
 } from 'react-simple-maps';
-import { regionalRiskData, countryNameMapping } from '@/lib/riskData'; // Adjust path as needed
+import { regionalRiskData, countryNameMapping } from '../../lib/riskData'; // Adjust path as needed
 
 // You might need to download or link to a GeoJSON file.
 // This example assumes a world map GeoJSON is available at this path.

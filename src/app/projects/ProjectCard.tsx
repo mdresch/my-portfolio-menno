@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +8,7 @@ function normalizeSlug(title: string) {
 }
 
 interface Project {
-  id: string;
+  id: number;
   slug?: string;
   title: string;
   description?: string;
@@ -19,13 +20,14 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
+  onEdit?: () => void;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const router = useRouter();
   const slug =
     project.slug ||
-    (project.title ? normalizeSlug(project.title) : project.id || '');
+    (project.title ? normalizeSlug(project.title) : project.id?.toString() || '');
 
   return (
     <div className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">

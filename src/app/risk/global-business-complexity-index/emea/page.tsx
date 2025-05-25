@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { getCountriesByRegion, getComplexityColor } from '@/lib/riskData';
-import EmeaComplexityMap from '@/components/risk/EmeaComplexityMap';
+import { getCountriesByRegion, getComplexityColor } from '../../../../lib/riskData';
+import EmeaComplexityMap from '../../../../components/risk/EmeaComplexityMap';
 
 // Get EMEA country data
 const emeaCountryData = getCountriesByRegion("EMEA");

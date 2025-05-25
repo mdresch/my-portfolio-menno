@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 // Import the wrapper component instead of directly importing the map
 const GlobalComplexityMapWrapper = dynamic(
-  () => import('@/components/risk/GlobalComplexityMapWrapper'),
+  () => import('../../../components/risk/GlobalComplexityMapWrapper'),
   { ssr: false }
 );
 
