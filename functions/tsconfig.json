@@ -1,0 +1,34 @@
+{
+  "compileOnSave": true,
+  "include": [
+    "src",
+    "../src/app/api/chat/chat.ts"
+  ],
+  "compilerOptions": {
+    "module": "NodeNext",
+    "noImplicitReturns": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+    "noUnusedLocals": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

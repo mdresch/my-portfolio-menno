@@ -1,0 +1,436 @@
+openapi: 3.0.3
+info:
+  title: Portfolio API
+  version: 1.0.0
+  description: API for portfolio projects, skills, contact, and authentication.
+servers:
+  - url: /api
+paths:
+  /auth/login:
+    post:
+      summary: Login and get JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequestDto'
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponseDto'
+        '401':
+          description: Invalid credentials
+  /projects:
+    get:
+      summary: Get all projects
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProjectDTO'
+    post:
+      summary: Create a new project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectDTO'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDTO'
+  /projects/{id}:
+    get:
+      summary: Get a project by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectDTO'
+        '404':
+          description: Not found
+    put:
+      summary: Update a project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectDTO'
+      responses:
+        '204':
+          description: Updated
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a project
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Not found
+  /skills:
+    get:
+      summary: Get all skills
+      responses:
+        '200':
+          description: List of skills
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SkillDTO'
+    post:
+      summary: Create a new skill
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSkillDTO'
+      responses:
+        '201':
+          description: Skill created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDTO'
+  /skills/{id}:
+    get:
+      summary: Get a skill by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Skill
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SkillDTO'
+        '404':
+          description: Not found
+    put:
+      summary: Update a skill
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSkillDTO'
+      responses:
+        '204':
+          description: Updated
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a skill
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Not found
+  /skills/categories:
+    get:
+      summary: Get all skill categories
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /skills/category/{category}:
+    get:
+      summary: Get skills by category
+      parameters:
+        - in: path
+          name: category
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of skills
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SkillDTO'
+        '404':
+          description: Not found
+  /contact:
+    get:
+      summary: Get all contact messages
+      responses:
+        '200':
+          description: List of contact messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactMessageDTO'
+    post:
+      summary: Submit a contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContactMessageDTO'
+      responses:
+        '201':
+          description: Message submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactMessageDTO'
+  /contact/{id}:
+    get:
+      summary: Get a contact message by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Contact message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactMessageDTO'
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a contact message
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Not found
+components:
+  schemas:
+    LoginRequestDto:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    AuthTokenDto:
+      type: object
+      properties:
+        token:
+          type: string
+        expiration:
+          type: string
+          format: date-time
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+    AuthResponseDto:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/AuthTokenDto'
+        user:
+          $ref: '#/components/schemas/UserDto'
+    ProjectDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+        gitHubUrl:
+          type: string
+        liveUrl:
+          type: string
+        created:
+          type: string
+          format: date-time
+        technologies:
+          type: array
+          items:
+            type: string
+    CreateProjectDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+        gitHubUrl:
+          type: string
+        liveUrl:
+          type: string
+        technologies:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+    UpdateProjectDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        imageUrl:
+          type: string
+        gitHubUrl:
+          type: string
+        liveUrl:
+          type: string
+        technologies:
+          type: array
+          items:
+            type: string
+    SkillDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        category:
+          type: string
+        proficiencyLevel:
+          type: integer
+        iconUrl:
+          type: string
+    CreateSkillDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        proficiencyLevel:
+          type: integer
+        iconUrl:
+          type: string
+      required:
+        - name
+    UpdateSkillDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        proficiencyLevel:
+          type: integer
+        iconUrl:
+          type: string
+    ContactMessageDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+        receivedAt:
+          type: string
+          format: date-time
+        isRead:
+          type: boolean
+    CreateContactMessageDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        subject:
+          type: string
+        message:
+          type: string
+      required:
+        - name
+        - email
+        - message

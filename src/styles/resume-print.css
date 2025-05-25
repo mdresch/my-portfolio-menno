@@ -1,0 +1,41 @@
+@media print {
+  /* Hide navigation elements */
+  nav, footer, .print-hide {
+    display: none !important;
+  }
+  
+  /* Ensure all sections are expanded */
+  .print-show {
+    display: block !important;
+    opacity: 1 !important;
+    max-height: none !important;
+  }
+  
+  /* Clean page breaks */
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  /* Adjust margins */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Force colors to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Styles for PDF generation */
+body.generating-pdf .print-hide {
+  display: none !important;
+}
+
+body.generating-pdf .resume-section {
+  display: block !important;
+  opacity: 1 !important;
+  max-height: none !important;
+}

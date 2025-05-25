@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "my-portfolio-menno"
+location: "europe-west1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "postgres"
+      cloudSql:
+        instanceId: "my-portfolio-menno-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

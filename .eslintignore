@@ -1,0 +1,2 @@
+# Temporarily ignore admin components during development
+src/components/admin/*
