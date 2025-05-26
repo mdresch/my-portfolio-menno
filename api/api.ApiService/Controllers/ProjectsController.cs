@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PortfolioApi.Models;
-using PortfolioApi.DTOs;
+using api.ApiService.Models;
+using api.ApiService.DTOs;
 using System.Text.Json;
-using PortfolioApi.Data;
+using api.ApiService.Data;
 
-namespace PortfolioApi.Controllers;
+namespace api.ApiService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -173,7 +173,7 @@ public class ProjectsController : ControllerBase
     {
         _logger.LogInformation("Deleting project with ID {Id}", id);
         
-        var project = await _context.Projects.FindAsync(id);
+                var project = await _context.Projects.FindAsync(id);
         if (project == null)
         {
             _logger.LogWarning("Project with ID {Id} not found", id);
@@ -189,9 +189,6 @@ public class ProjectsController : ControllerBase
     [HttpPost("{slug}/increment-view")]
     public async Task<IActionResult> IncrementView(string slug)
     {
-[HttpPost("{slug}/increment-view")]
-    public async Task<IActionResult> IncrementView(string slug)
-    {
         var affected = await _context.Projects
             .Where(p => p.Slug == slug)
             .ExecuteUpdateAsync(p => p.SetProperty(x => x.ViewCount, x => x.ViewCount + 1));
@@ -200,16 +197,6 @@ public class ProjectsController : ControllerBase
         {
             return NotFound();
         }
-
-        return NoContent();
-    }
-        if (project == null)
-        {
-            return NotFound();
-        }
-
-        project.ViewCount++;
-        await _context.SaveChangesAsync();
 
         return NoContent();
     }

@@ -1,34 +1,26 @@
 {
-  "compileOnSave": true,
-  "include": [
-    "src",
-    "../src/app/api/chat/chat.ts"
-  ],
   "compilerOptions": {
-    "module": "NodeNext",
-    "noImplicitReturns": true,
-    "outDir": "lib",
-    "sourceMap": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ESNext", "DOM"], // Added "DOM" for .tsx files which often use browser APIs
+    "jsx": "preserve", // Added for .tsx file support (use "react-jsx" for new JSX transform if preferred)
     "strict": true,
-    "target": "es2017",
-    "skipLibCheck": true,
     "esModuleInterop": true,
-    "moduleResolution": "nodenext",
-    "noUnusedLocals": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
+    "outDir": "./dist", // Specify output directory
+    "rootDir": "./src", // Specify root directory of source files
+    "sourceMap": true, // Enable source maps for debugging
+    "resolveJsonModule": true, // Allows importing .json files
+    "isolatedModules": true, // Good practice, ensures files can be transpiled independently
+    // Add your project specific paths
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  // Ensure your source files are included
+  "include": ["src/**/*.ts", "src/**/*.tsx", "../eslint.config.ts"], // Adjusted path if eslint.config.ts is one level up
+  "exclude": ["node_modules", "dist"] // "dist" is now covered by outDir, but good to keep here
 }

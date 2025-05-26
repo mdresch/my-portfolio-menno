@@ -39,9 +39,9 @@ export default function GitHubActivity() {
     async function fetchGitHubStats() {
       try {
         const [userResponse, reposResponse, followersResponse] = await Promise.all([
-          fetch('https://api.github.com/users/mdresch'),
-          fetch('https://api.github.com/users/mdresch/repos'),
-          fetch('https://api.github.com/users/mdresch/followers')
+          fetch('/api/github/user'),
+          fetch('/api/github/repos'),
+          fetch('/api/github/followers')
         ]);
 
         const userData = await userResponse.json();
@@ -60,7 +60,7 @@ export default function GitHubActivity() {
 
     async function fetchGitHubActivity() {
       try {
-        const response = await fetch('https://api.github.com/users/mdresch/events/public');
+        const response = await fetch('/api/github/events');
         const data = await response.json();
         setEvents(data.slice(0, 5)); // Show last 5 events
       } catch (error) {

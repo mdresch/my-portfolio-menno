@@ -3,8 +3,9 @@ import GitHubActivity from '../components/GitHubActivity';
 import { generatePersonStructuredData, generateWebsiteStructuredData } from '@/lib/structured-data';
 import Image from 'next/image';
 import Link from 'next/link';
-import { firebaseApp } from '@/lib/firebase';
+import { app, isFirebaseInitialized } from '@/lib/firebase';
 import { useEffect } from 'react';
+import { getAnalytics } from 'firebase/analytics';
 
 // Firebase app is now imported from centralized config
 
@@ -40,12 +41,12 @@ const projects = [
     image: '/images/showcase-aiassist.jpg',
   },
   {
-    title: 'E-Commerce Dashboard',
-    description: 'A scalable dashboard for managing products, orders, and analytics.',
+    title: 'HR AI Insights Dashboard',
+    description: 'A scalable dashboard for managing HR data and analytics.',
     image: '/images/showcase-cloudbackup.jpg',
   },
   {
-    title: 'Open Source Contributions',
+    title: 'Community Forum Application',
     description: 'Active contributions to open source React and .NET projects.',
     image: '/images/showcase-cloudscale.jpg',
   },
@@ -92,10 +93,12 @@ const CTASection = () => (
 export default function Home() {
   useEffect(() => {
     // Only run on client
-    if (typeof window !== 'undefined') {
-      import('firebase/analytics').then(({ getAnalytics }) => {
+    if (typeof window !== 'undefined' && isFirebaseInitialized()) {
+      try {
         getAnalytics(app);
-      });
+      } catch (err) {
+        console.error('Analytics initialization failed:', err);
+      }
     }
   }, []);
 

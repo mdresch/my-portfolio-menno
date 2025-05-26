@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { generateAIResponse, generateAIResponseDirect, availableModels } from '@/lib/firebase';
 import FirebaseAIShowcase from '@/components/FirebaseAIShowcase';
 
 const AILogicPage = () => {
   const [activeTab, setActiveTab] = useState<'showcase' | 'custom'>('showcase');
-  const [prompt, setPrompt] = useState('');  const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
+  const [response, setResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash');
   const [useDirectAPI, setUseDirectAPI] = useState(true);
+
   const handleGenerateResponse = async () => {
     if (!prompt.trim()) return;
 
@@ -74,7 +76,8 @@ const AILogicPage = () => {
           {activeTab === 'showcase' ? (
             <FirebaseAIShowcase />
           ) : (
-            <div className="space-y-6">              {/* Model Selection for Custom Chat */}
+            <div className="space-y-6">
+              {/* Model Selection for Custom Chat */}
               <div className="bg-white/10 backdrop-blur-md rounded-lg p-6">
                 <label className="block text-white font-semibold mb-2">
                   Select AI Model:
@@ -108,7 +111,7 @@ const AILogicPage = () => {
                   <p className="text-slate-400 text-xs mt-1">
                     {useDirectAPI ? 
                       "Client-side Firebase AI SDK" : 
-                      "Server-side API processing"
+                      "Server-side API processing with monitoring"
                     }
                   </p>
                 </div>
@@ -157,7 +160,9 @@ const AILogicPage = () => {
                 </div>
               )}
             </div>
-          )}          {/* Firebase AI Info */}
+          )}
+
+          {/* Firebase AI Info */}
           <div className="mt-8 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-6">
             <h3 className="text-white font-semibold mb-3">About Firebase AI Integration</h3>
             <div className="text-slate-300 space-y-2">

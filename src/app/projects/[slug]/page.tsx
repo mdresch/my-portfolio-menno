@@ -10,7 +10,7 @@ function normalizeProject(p: ApiProject) {
     title: p.title ?? '',
     description: p.description ?? '',
     technologies: p.technologies ?? [],
-    imageUrl: p.imageUrl ?? '/default-project-image.png',
+    imageUrl: p.imageUrl ?? '/default-project-image.jpg',
     gitHubUrl: p.gitHubUrl ?? '',
     liveUrl: p.liveUrl ?? '',
   };

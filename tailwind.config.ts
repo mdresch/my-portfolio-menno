@@ -5,8 +5,8 @@ const config: Config = {
   darkMode: 'class', // Enable dark mode using class strategy
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './functions/src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {

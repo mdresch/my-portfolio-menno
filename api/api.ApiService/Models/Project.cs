@@ -44,12 +44,10 @@ namespace api.ApiService.Models
 
         public string? ImageUrl { get; set; }
 
-        public List<string>? Challenges { get; set; }
-
-        // Azure Best Practice: Add fields for sorting and filtering
+        public List<string>? Challenges { get; set; }        // Azure Best Practice: Add fields for sorting and filtering
         public bool IsFeatured { get; set; } = false;
-
         public int DisplayOrder { get; set; } = 0;
+        public DateTime Created { get; set; } = DateTime.UtcNow;
 
         // For backward compatibility
         [NotMapped]

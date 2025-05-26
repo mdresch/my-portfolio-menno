@@ -1,17 +1,22 @@
-// Move require to the top for CommonJS compatibility and lint compliance
+// const ContentSecurityPolicy = [
+//   "default-src 'self';",
+//   "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;", // Added reCAPTCHA domains for Firebase App Check
+//   "child-src 'self' blob:;",
+// ];
+
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const ContentSecurityPolicy = [
   "default-src 'self';",
-  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com;", // <-- Added GTM and GA
+  "script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: https://giscus.app https://va.vercel-scripts.com https://vercel.live https://static.hotjar.com https://script.hotjar.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://www.google.com/ https://www.gstatic.com/;",
   "child-src 'self' blob:;",
   "style-src 'self' 'unsafe-inline' https://giscus.app;", // Allow giscus styles
   "img-src * blob: data:;",
   "media-src 'none';",
   "connect-src * https://*.hotjar.com;",
   "font-src 'self';",
-  "worker-src 'self' blob:;",
-  "frame-src 'self' https://vars.hotjar.com https://giscus.app https://vercel.live;" // Allow giscus frames
+  "worker-src 'self' blob:;",  
+  "frame-src 'self' https://vars.hotjar.com https://giscus.app https://vercel.live https://www.google.com https://www.gstatic.com;" // Allow giscus frames and reCAPTCHA frames
 ].join(' ');
 
 const securityHeaders = [

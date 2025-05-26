@@ -7,11 +7,10 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import {onRequest} from "firebase-functions/v2/https";
-import * as logger from "firebase-functions/logger";
-import express from 'express';
-import { runFlow } from '@genkit-ai/flow';
-import { chatFlow, chatPromptSchema } from './flows/chatFlow';
+// import { onRequest } from "firebase-functions/v2/https";
+import express from "express";
+import { runFlow } from "@genkit-ai/flow";
+import { chatFlow, chatPromptSchema } from "./flows/chatFlow.js";
 
 const app = express();
 app.use(express.json());
@@ -42,17 +41,21 @@ app.use(express.json());
  *                 response:
  *                   type: string
  */
-app.post('/chat', async (req, res) => {
+app.post("/chat", async (req, res) => {
   const validation = chatPromptSchema.safeParse(req.body);
   if (!validation.success) {
-    return res.status(400).json({ error: 'Invalid input', details: validation.error.format() });
+    return res.status(400).json({ error: "Invalid input", details: validation.error.format() });
   }
   try {
     const result = await runFlow(chatFlow, validation.data);
     res.status(200).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: 'AI error', details: error.message });
+  } catch (error: unknown) {
+    let message = "Unknown error";
+    if (error instanceof Error) {
+      message = error.message;
+    }
+    res.status(500).json({ error: "AI error", details: message });
   }
 });
 
-export const api = onRequest({ region: 'us-central1' }, app);
+// export const api = onRequest({ region: "us-central1" }, app);

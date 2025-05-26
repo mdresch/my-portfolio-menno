@@ -108,18 +108,64 @@ export const BlogService = {
 
 export const SkillService = {
   async getAll(): Promise<Skill[]> {
-    return fetchAPI<Skill[]>('/skills');
+    try {
+      // Try the .NET backend first
+      return await fetchAPI<Skill[]>('/skills');
+    } catch (error) {
+      console.warn('Backend API not available, falling back to Next.js API:', error);
+      try {
+        // Fallback to Next.js API route
+        const response = await fetch('/api/skills');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+      } catch (fallbackError) {
+        console.error('Both backend and fallback API failed:', fallbackError);
+        throw new Error('Unable to fetch skills from any source');
+      }
+    }
   },
 
   async getByCategory(category: string): Promise<Skill[]> {
-    return fetchAPI<Skill[]>(`/skills/category/${category}`);
+    try {
+      // Try the .NET backend first
+      return await fetchAPI<Skill[]>(`/skills/category/${category}`);
+    } catch (error) {
+      console.warn('Backend API not available, filtering locally:', error);
+      try {
+        // Fallback: get all skills and filter locally
+        const allSkills = await this.getAll();
+        return allSkills.filter(skill => skill.category === category);
+      } catch (fallbackError) {
+        console.error('Failed to get skills by category:', fallbackError);
+        throw new Error(`Unable to fetch skills for category: ${category}`);
+      }
+    }
   },
 
   async getCategories(): Promise<string[]> {
-    return fetchAPI<string[]>('/skills/categories');
+    try {
+      // Try the .NET backend first
+      return await fetchAPI<string[]>('/skills/categories');
+    } catch (error) {
+      console.warn('Backend API not available, falling back to Next.js API:', error);
+      try {
+        // Fallback to Next.js API route
+        const response = await fetch('/api/skills/categories');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+      } catch (fallbackError) {
+        console.error('Both backend and fallback API failed:', fallbackError);
+        throw new Error('Unable to fetch skill categories from any source');
+      }
+    }
   },
 
   async create(skill: Omit<Skill, 'id'>): Promise<Skill> {
+    // This operation requires the backend as Next.js API is read-only
     return fetchAPI<Skill>('/skills', {
       method: 'POST',
       body: JSON.stringify(skill),
@@ -127,6 +173,7 @@ export const SkillService = {
   },
 
   async delete(id: number): Promise<void> {
+    // This operation requires the backend as Next.js API is read-only
     return fetchAPI<void>(`/skills/${id}`, {
       method: 'DELETE',
     });

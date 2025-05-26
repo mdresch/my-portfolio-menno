@@ -1,154 +1,198 @@
-import { useState, useEffect, createContext, useContext } from 'react';
-import { User, AuthToken, LoginRequest } from '../types/api';
+'use client';
 
-// Define the auth context interface
+import { createContext, useContext, useEffect, useState } from 'react';
+import { 
+  User,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+  updateProfile,
+  onAuthStateChanged
+} from 'firebase/auth';
+import { isFirebaseInitialized } from './firebase';
+
 interface AuthContextType {
   user: User | null;
-  login: (credentials: LoginRequest) => Promise<void>;
-  logout: () => void;
-  isLoading: boolean;
+  loading: boolean;
   isAuthenticated: boolean;
+  error: string | null;
+  login: (credentials: { email: string; password: string }) => Promise<void>;
+  signUp: (data: { username: string; email: string; password: string }) => Promise<void>;
+  logout: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
 }
 
-// API configuration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5154/api';
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Create the context with a default empty implementation
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  login: async () => {},
-  logout: () => {},
-  isLoading: true,
-  isAuthenticated: false,
-});
-
-// Local storage keys
-const TOKEN_KEY = 'portfolio_auth_token';
-const USER_KEY = 'portfolio_user';
-
-// Authentication provider component
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Load user from local storage on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem(USER_KEY);
-    if (storedUser) {
+    const initializeAuth = async () => {
       try {
-        const parsedUser = JSON.parse(storedUser);
-        setUser(parsedUser);
+        // Check if Firebase is initialized
+        if (!isFirebaseInitialized()) {
+          setError('Firebase is not properly configured');
+          setLoading(false);
+          return;
+        }
+
+        const { auth } = await import('./firebase');
+        
+        if (!auth) {
+          setError('Firebase auth not available');
+          setLoading(false);
+          return;
+        }
+
+        const unsubscribe = onAuthStateChanged(
+          auth, 
+          (user) => {
+            setUser(user);
+            setLoading(false);
+            setError(null);
+          }, 
+          (error) => {
+            console.error('Auth state change error:', error);
+            setError('Authentication error occurred');
+            setLoading(false);
+          }
+        );
+
+        return unsubscribe;
       } catch (error) {
-        console.error('Error parsing user from localStorage', error);
-        localStorage.removeItem(USER_KEY);
+        console.error('Failed to initialize Firebase auth:', error);
+        setError('Failed to initialize authentication');
+        setLoading(false);
       }
-    }
-    setIsLoading(false);
+    };
+
+    let unsubscribe: (() => void) | undefined;
+    
+    initializeAuth().then((unsub) => {
+      unsubscribe = unsub;
+    });
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, []);
 
-  // Check if token is expired
-  const isTokenExpired = (token: AuthToken): boolean => {
+  const login = async ({ email, password }: { email: string; password: string }) => {
     try {
-      const expiration = new Date(token.expiration);
-      return expiration <= new Date();
-    } catch {
-      return true;
+      if (!isFirebaseInitialized()) {
+        throw new Error('Firebase is not properly configured');
+      }
+
+      const { auth } = await import('./firebase');
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error: unknown) {
+      if (typeof error === 'object' && error !== null && 'code' in error) {
+        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
+      }
+      throw new Error('An error occurred. Please try again.');
     }
   };
 
-  // Login function
-  const login = async (credentials: LoginRequest): Promise<void> => {
-    setIsLoading(true);
+  const signUp = async ({ username, email, password }: { username: string; email: string; password: string }) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
+      if (!isFirebaseInitialized()) {
+        throw new Error('Firebase is not properly configured');
+      }
+
+      const { auth } = await import('./firebase');
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: username
       });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || 'Login failed');
+    } catch (error: unknown) {
+      if (typeof error === 'object' && error !== null && 'code' in error) {
+        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
       }
-
-      const authData = await response.json();
-      const { token, user } = authData;
-
-      // Store token and user in localStorage
-      localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
-      localStorage.setItem(USER_KEY, JSON.stringify(user));
-      
-      setUser(user);
-    } catch (error) {
-      console.error('Login error:', error);
-      throw error;
-    } finally {
-      setIsLoading(false);
+      throw new Error('An error occurred. Please try again.');
     }
   };
 
-  // Logout function
-  const logout = () => {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USER_KEY);
-    setUser(null);
-  };
-
-  // Get auth token from local storage
-  const getAuthToken = (): AuthToken | null => {
-    const storedToken = localStorage.getItem(TOKEN_KEY);
-    if (!storedToken) return null;
-
+  const logout = async () => {
     try {
-      const token = JSON.parse(storedToken) as AuthToken;
-      if (isTokenExpired(token)) {
-        localStorage.removeItem(TOKEN_KEY);
-        return null;
+      if (!isFirebaseInitialized()) {
+        throw new Error('Firebase is not properly configured');
       }
-      return token;
+
+      const { auth } = await import('./firebase');
+      await signOut(auth);
     } catch {
-      localStorage.removeItem(TOKEN_KEY);
-      return null;
+      throw new Error('Failed to log out');
     }
+  };
+
+  const resetPassword = async (email: string) => {
+    try {
+      if (!isFirebaseInitialized()) {
+        throw new Error('Firebase is not properly configured');
+      }
+
+      const { auth } = await import('./firebase');
+      await sendPasswordResetEmail(auth, email);
+    } catch (error: unknown) {
+      if (typeof error === 'object' && error !== null && 'code' in error) {
+        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
+      }
+      throw new Error('An error occurred. Please try again.');
+    }
+  };
+
+  const value = {
+    user,
+    loading,
+    isAuthenticated: !!user,
+    error,
+    login,
+    signUp,
+    logout,
+    resetPassword
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        login,
-        logout,
-        isLoading,
-        isAuthenticated: !!user,
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-// Hook to use auth context
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 }
 
-// Hook to get the auth token for API calls
-export function useAuthToken() {
-  const storedToken = localStorage.getItem(TOKEN_KEY);
-  if (!storedToken) return null;
-
-  try {
-    const token = JSON.parse(storedToken) as AuthToken;
-    const expiration = new Date(token.expiration);
-    if (expiration <= new Date()) {
-      localStorage.removeItem(TOKEN_KEY);
-      return null;
-    }
-    return token.token;
-  } catch {
-    localStorage.removeItem(TOKEN_KEY);
-    return null;
+// Helper function to convert Firebase error codes to user-friendly messages
+function getFirebaseErrorMessage(errorCode: string): string {
+  switch (errorCode) {
+    case 'auth/user-not-found':
+      return 'No account found with this email address.';
+    case 'auth/wrong-password':
+      return 'Incorrect password.';
+    case 'auth/email-already-in-use':
+      return 'An account with this email already exists.';
+    case 'auth/weak-password':
+      return 'Password should be at least 6 characters.';
+    case 'auth/invalid-email':
+      return 'Invalid email address.';
+    case 'auth/too-many-requests':
+      return 'Too many failed attempts. Please try again later.';
+    case 'auth/user-disabled':
+      return 'This account has been disabled.';
+    case 'auth/invalid-credential':
+      return 'Invalid email or password.';
+    default:
+      return 'An error occurred. Please try again.';
   }
 }

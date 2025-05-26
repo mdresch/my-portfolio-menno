@@ -1,0 +1,22 @@
+{"users": [
+{
+  "localId": "cZnnjJH9jzW9upSuPKgw78Ulhqm1",
+  "email": "admin@menno.dev",
+  "emailVerified": true,
+  "passwordHash": "/B+NKqw4L6NhB1bg/Mfo9AEr7vmGZTYtVVFrvHQmRTjCf1LW/9RqtphQYsZRRKBVkevxXxLHnORcttzBa/F7kQ==",
+  "salt": "6sveaGfr1sR/Bw==",
+  "displayName": "Admin User",
+  "createdAt": "1748268750440",
+  "disabled": false,
+  "providerUserInfo": []
+},
+{
+  "localId": "glVvN77aBjZQpqLARD6oHkFMBx03",
+  "email": "menno.drescher@gmail.com",
+  "emailVerified": true,
+  "passwordHash": "3cnrf9mf/7KRGJw1ZF/J4srsLAn4szOUplAjFEPyGMv9zjH0NfvKVMMMdeWr6GQdznUcOCkjj9pmMxb33hsQpQ==",
+  "salt": "uWEbGS2yOYM6nA==",
+  "lastSignedInAt": "1745249111010",
+  "createdAt": "1745233306011",
+  "providerUserInfo": []
+}]}
