@@ -264,7 +264,8 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
   }, []);
 
   return (
-    <div className="relative w-full">      {/* Mobile menu button */}
+    <div className="relative w-full sticky top-0 z-50 bg-white dark:bg-gray-900 shadow">
+      {/* Mobile menu button */}
       <div className="md:hidden flex justify-end py-4">
         <button
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -510,6 +511,16 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                           <span className="text-sm font-medium leading-none">Firebase AI Test</span>
                           <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
                             Firebase integration testing for AI services
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">Vertex AI Chat</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Chat with Vertex AI using portfolio data
                           </span>
                         </div>
                       </Link>
