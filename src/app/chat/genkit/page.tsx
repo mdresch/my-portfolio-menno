@@ -19,8 +19,18 @@ export default function GenkitDemoPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ theme }),
       });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error('Server returned invalid JSON');
+      }
+
+      if (!res.ok) {
+        throw new Error(data?.error || 'Server error');
+      }
+
       setSuggestion(data.suggestion);
     } catch (err: unknown) {
       if (err instanceof Error) {

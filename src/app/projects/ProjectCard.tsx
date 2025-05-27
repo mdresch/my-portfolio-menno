@@ -32,7 +32,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
       <Image
-        src={project.imageUrl || project.image || "/default-project-image.jpg"}
+        src={
+          project.imageUrl && project.imageUrl.startsWith('http')
+            ? project.imageUrl
+            : project.image && project.image.startsWith('http')
+              ? project.image
+              : "/images/default-project-image.jpg"
+        }
         alt={project.title}
         width={400}
         height={250}
