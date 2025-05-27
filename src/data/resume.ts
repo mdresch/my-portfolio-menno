@@ -234,6 +234,15 @@ const resumeData: Resume = {
     { name: "Waterfall", level: 70, category: "tool"},
     { name: "Gitbook", level: 70, category: "tool"},
     { name: "Confluence", level: 70, category: "tool"},
+    { name: "Firebase", level: 80, category: "tool" },
+    { name: "Vertex AI", level: 70, category: "tool" },
+    { name: "Vercel", level: 75, category: "tool" },
+    { name: "Cloud-Native Architecture", level: 70, category: "technical" },
+    { name: "Environment Variable Management", level: 65, category: "technical" },
+    { name: "AI Prompt Engineering", level: 70, category: "technical" },
+    { name: "Real-Time Data Handling", level: 70, category: "technical" },
+    { name: "Authentication & Security", level: 75, category: "technical" },
+    { name: "Scalable Web App Deployment", level: 70, category: "technical" },
   ]
 };
 
