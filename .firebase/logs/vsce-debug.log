@@ -306,3 +306,85 @@ E0526 19:38:47.208881   28432 installsdk.go:82] Failed to install package: exec:
 I0526 19:38:47.208881   28432 load.go:115] Finished reloading
 I0526 19:38:47.810382   28432 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001
  {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0526 19:38:47.208881   28432 installsdk.go:80] Running command: npm install file:dataconnect-generated\\js\\default-connector\nE0526 19:38:47.208881   28432 installsdk.go:82] Failed to install package: exec: \"npm\": executable file not found in %PATH%\nI0526 19:38:47.208881   28432 load.go:115] Finished reloading\nI0526 19:38:47.810382   28432 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2025-05-26T18:09:26.639Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2025-05-26T18:09:27.213Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-05-26T18:09:27.216Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-26T18:09:27.217Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-05-26T18:09:27.222Z] Checked if tokens are valid: true, expires at: 1748284535906
+[debug] [2025-05-26T18:09:27.222Z] Checked if tokens are valid: true, expires at: 1748284535906
+[debug] [2025-05-26T18:09:27.223Z] [Firebase Plugin] User found:  menno.drescher@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-05-26T18:09:27.224Z] Checked if tokens are valid: true, expires at: 1748284535906
+[debug] [2025-05-26T18:09:27.226Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-05-26T18:09:27.242Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 2.6.1) on port 50002
+[debug] [2025-05-26T18:09:28.225Z] I0526 20:09:28.187238   36204 control.go:73] [/emulator/my-portfolio-menno 1219] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\queries.gql [1880B] connector\mutations.gql [1266B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0526 20:09:28.187238   36204 control.go:73] [/emulator/my-portfolio-menno 1219] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\queries.gql [1880B] connector\\mutations.gql [1266B] \n"}}
+[debug] [2025-05-26T18:09:28.226Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-05-26T18:09:28.227Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2025-05-26T18:09:28.227Z] Starting Data Connect Emulator with command {"binary":"C:\\Users\\menno\\.cache\\firebase\\emulators\\dataconnect-emulator-2.6.1.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50002","--config_dir=c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\menno\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-2.6.1.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50002\",\"--config_dir=c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2025-05-26T18:09:28.277Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-05-26T18:09:28.277Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-05-26T18:09:28.325Z] I0526 20:09:28.305993   17172 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0526 20:09:28.305993   17172 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2025-05-26T18:09:28.705Z] I0526 20:09:28.350714   17172 control.go:73] [/emulator/my-portfolio-menno 97a2] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+I0526 20:09:28.385389   17172 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+I0526 20:09:28.407667   17172 collector.go:107] schema extensions wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [71531B] 
+I0526 20:09:28.436817   17172 collector.go:107] connector "default" javascriptSdk wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+Generated sources: index.d.ts [246B] esm\index.esm.js [122B] index.cjs.js [157B] README.md [2774B] react\package.json [468B] esm\package.json [17B] package.json [860B] react\index.d.ts [228B] react\esm\package.json [17B] react\index.cjs.js [0B] react\esm\index.esm.js [0B] react\README.md [5357B] 
+I0526 20:09:28.478955   17172 installsdk.go:80] Running command: npm install file:dataconnect-generated\js\default-connector
+E0526 20:09:28.478955   17172 installsdk.go:82] Failed to install package: exec: "npm": executable file not found in %PATH%
+I0526 20:09:28.479496   17172 load.go:115] Finished reloading
+I0526 20:09:28.506372   17172 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50002
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0526 20:09:28.350714   17172 control.go:73] [/emulator/my-portfolio-menno 97a2] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\mutations.gql [1266B] connector\\queries.gql [1880B] \nI0526 20:09:28.385389   17172 codegen.go:82] [connector \"default\" javascriptSdk] Generating sources into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nI0526 20:09:28.407667   17172 collector.go:107] schema extensions wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [71531B] \nI0526 20:09:28.436817   17172 collector.go:107] connector \"default\" javascriptSdk wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nGenerated sources: index.d.ts [246B] esm\\index.esm.js [122B] index.cjs.js [157B] README.md [2774B] react\\package.json [468B] esm\\package.json [17B] package.json [860B] react\\index.d.ts [228B] react\\esm\\package.json [17B] react\\index.cjs.js [0B] react\\esm\\index.esm.js [0B] react\\README.md [5357B] \nI0526 20:09:28.478955   17172 installsdk.go:80] Running command: npm install file:dataconnect-generated\\js\\default-connector\nE0526 20:09:28.478955   17172 installsdk.go:82] Failed to install package: exec: \"npm\": executable file not found in %PATH%\nI0526 20:09:28.479496   17172 load.go:115] Finished reloading\nI0526 20:09:28.506372   17172 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50002\n"}}
+[info] [Firebase Plugin] Stopping Data Connect toolkit
+[warn] !  Data Connect Emulator has exited upon receiving signal: SIGKILL 
+[debug] [2025-05-27T07:04:10.001Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2025-05-27T07:04:12.607Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-05-27T07:04:12.611Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-27T07:04:12.612Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-05-27T07:04:12.617Z] Checked if tokens are valid: false, expires at: 1748322664098
+[debug] [2025-05-27T07:04:12.618Z] Checked if tokens are valid: false, expires at: 1748322664098
+[debug] [2025-05-27T07:04:12.618Z] > refreshing access token with scopes: []
+[debug] [2025-05-27T07:04:12.620Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-05-27T07:04:12.621Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-05-27T07:04:12.646Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 2.6.1) on port 50001
+[debug] [2025-05-27T07:04:14.159Z] I0527 09:04:14.116554   13704 control.go:73] [/emulator/my-portfolio-menno dac3] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0527 09:04:14.116554   13704 control.go:73] [/emulator/my-portfolio-menno dac3] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\mutations.gql [1266B] connector\\queries.gql [1880B] \n"}}
+[debug] [2025-05-27T07:04:14.160Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-05-27T07:04:14.161Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2025-05-27T07:04:14.161Z] Starting Data Connect Emulator with command {"binary":"C:\\Users\\menno\\.cache\\firebase\\emulators\\dataconnect-emulator-2.6.1.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\menno\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-2.6.1.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2025-05-27T07:04:14.339Z] I0527 09:04:14.318725    4548 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0527 09:04:14.318725    4548 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2025-05-27T07:04:14.414Z] I0527 09:04:14.393285    4548 control.go:73] [/emulator/my-portfolio-menno 1372] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0527 09:04:14.393285    4548 control.go:73] [/emulator/my-portfolio-menno 1372] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\mutations.gql [1266B] connector\\queries.gql [1880B] \n"}}
+[debug] [2025-05-27T07:04:14.580Z] I0527 09:04:14.483573    4548 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+I0527 09:04:14.507014    4548 collector.go:107] schema extensions wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [71531B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0527 09:04:14.483573    4548 codegen.go:82] [connector \"default\" javascriptSdk] Generating sources into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nI0527 09:04:14.507014    4548 collector.go:107] schema extensions wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [71531B] \n"}}
+[debug] [2025-05-27T07:04:26.721Z] I0527 09:04:14.738476    4548 collector.go:107] connector "default" javascriptSdk wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+Generated sources: react\esm\index.esm.js [0B] react\README.md [5357B] index.cjs.js [157B] package.json [860B] react\package.json [468B] react\esm\package.json [17B] react\index.cjs.js [0B] index.d.ts [246B] esm\index.esm.js [122B] esm\package.json [17B] README.md [2774B] react\index.d.ts [228B] 
+I0527 09:04:14.935451    4548 installsdk.go:80] Running command: npm install file:dataconnect-generated\js\default-connector
+E0527 09:04:14.935451    4548 installsdk.go:82] Failed to install package: exec: "npm": executable file not found in %PATH%
+I0527 09:04:14.935451    4548 load.go:115] Finished reloading
+I0527 09:04:14.992889    4548 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0527 09:04:14.738476    4548 collector.go:107] connector \"default\" javascriptSdk wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nGenerated sources: react\\esm\\index.esm.js [0B] react\\README.md [5357B] index.cjs.js [157B] package.json [860B] react\\package.json [468B] react\\esm\\package.json [17B] react\\index.cjs.js [0B] index.d.ts [246B] esm\\index.esm.js [122B] esm\\package.json [17B] README.md [2774B] react\\index.d.ts [228B] \nI0527 09:04:14.935451    4548 installsdk.go:80] Running command: npm install file:dataconnect-generated\\js\\default-connector\nE0527 09:04:14.935451    4548 installsdk.go:82] Failed to install package: exec: \"npm\": executable file not found in %PATH%\nI0527 09:04:14.935451    4548 load.go:115] Finished reloading\nI0527 09:04:14.992889    4548 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2025-05-27T07:04:38.477Z] *** [apiv2] error from fetch(https://www.googleapis.com/oauth2/v3/token, {"headers":{},"method":"POST","body":{"_overheadLength":545,"_valueLength":212,"_valuesToMeasure":[],"writable":false,"readable":true,"dataSize":0,"maxDataSize":2097152,"pauseStreams":true,"_released":true,"_streams":[],"_currentStream":null,"_insideLoop":false,"_pendingNext":false,"_boundary":"--------------------------027434443822648741734542","_events":{},"_eventsCount":1}}): FetchError: request to https://www.googleapis.com/oauth2/v3/token failed, reason: read ECONNRESET
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] [Firebase Plugin] requireAuth error: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
