@@ -8,13 +8,13 @@ import { getRequirementsFromGithubAI } from './github-openai';
  */
 export async function POST(req: NextRequest) {
   try {
-    const { businessProblem } = await req.json();
+    const { businessProblem, technologyStack } = await req.json();
     if (!businessProblem || typeof businessProblem !== 'string') {
       return NextResponse.json({ error: 'Missing or invalid businessProblem' }, { status: 400 });
     }
 
     // Use the GitHub OpenAI model (mocked or real)
-    const roles = await getRequirementsFromGithubAI(businessProblem, { includeProcesses: true });
+    const roles = await getRequirementsFromGithubAI(businessProblem, { includeProcesses: true, technologyStack });
     return NextResponse.json({ roles });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });

@@ -1,0 +1,13 @@
+{
+  "name": "requirements-gathering-agent",
+  "version": "0.1.0",
+  "description": "Reusable LLM-powered requirements gathering agent for any project.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@azure-rest/ai-inference": "*",
+    "@azure/core-auth": "*"
+  }
+}
