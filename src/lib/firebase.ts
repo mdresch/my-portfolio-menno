@@ -2,6 +2,7 @@ import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 import { getFirestore, Firestore } from 'firebase/firestore';
 import { initializeAppCheck, ReCaptchaV3Provider, getToken } from 'firebase/app-check';
+import { getRemoteConfig, fetchAndActivate, getValue } from 'firebase/remote-config';
 
 // Firebase configuration using environment variables
 const firebaseConfig = {
@@ -27,6 +28,7 @@ let app: FirebaseApp;
 let auth: Auth;
 let db: Firestore;
 let appCheck: any;
+let remoteConfig: any;
 
 try {
   if (!validateFirebaseConfig()) {
@@ -42,7 +44,16 @@ try {
 
   // Initialize services
   auth = getAuth(app);
-  db = getFirestore(app);  // Initialize App Check in browser environment only
+  db = getFirestore(app);
+  // Initialize Remote Config
+  if (typeof window !== 'undefined') {
+    remoteConfig = getRemoteConfig(app);
+    remoteConfig.settings = { minimumFetchIntervalMillis: 3600000 };
+    fetchAndActivate(remoteConfig).catch((err) => {
+      console.warn('Remote Config fetch failed:', err);
+    });
+  }
+  // Initialize App Check in browser environment only
   if (typeof window !== 'undefined') {
     try {
       // Enable debug mode in development
@@ -177,7 +188,7 @@ export async function generateAIResponseDirect(prompt: string, model: string = '
 }
 
 // Export with proper error handling
-export { app, auth, db, appCheck };
+export { app, auth, db, appCheck, remoteConfig };
 
 // Helper function to check if Firebase is properly initialized
 export function isFirebaseInitialized(): boolean {
