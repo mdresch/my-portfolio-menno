@@ -11,11 +11,33 @@ const RISK_RAG_PATH = path.join(process.cwd(), 'data/blog-rag-risk-documents.jso
 function loadRagDocuments() {
   try {
     // Load the documents
-    const blogDocs = JSON.parse(fs.readFileSync(BLOG_RAG_PATH, 'utf8'));
-    const projectDocs = JSON.parse(fs.readFileSync(PROJECT_RAG_PATH, 'utf8'));
-    const riskDocs = JSON.parse(fs.readFileSync(RISK_RAG_PATH, 'utf8'));
+const blogDocs = JSON.parse(fs.readFileSync(BLOG_RAG_PATH, 'utf8'));
+const projectDocs = JSON.parse(fs.readFileSync(PROJECT_RAG_PATH, 'utf8'));
+const riskDocs = JSON.parse(fs.readFileSync(RISK_RAG_PATH, 'utf8'));
+
+console.log(`Loaded ${encodeURIComponent(blogDocs.length)} blog documents`);
+console.log(`Loaded ${encodeURIComponent(projectDocs.length)} project documents`);
+console.log(`Loaded ${encodeURIComponent(riskDocs.length)} risk documents`);
     
-    console.log(`Loaded ${blogDocs.length} blog documents`);
+    // Display a sample of each type
+console.log('\nBlog Document Sample:');
+    
+    // Use a safe logging function to prevent log injection
+    // import { safeLog } from './safeLogging'; // Import a custom safe logging function
+    safeLog(`Loaded ${blogDocs.length} blog documents`);
+    safeLog(`Loaded ${projectDocs.length} project documents`);
+    safeLog(`Loaded ${riskDocs.length} risk documents`);
+    
+    // Display a sample of each type
+console.log('\nBlog Document Sample:');
+    
+    // Use encodeURIComponent to sanitize input before logging
+    console.log(`Loaded ${encodeURIComponent(blogDocs.length)} blog documents`);
+    console.log(`Loaded ${encodeURIComponent(projectDocs.length)} project documents`);
+    console.log(`Loaded ${encodeURIComponent(riskDocs.length)} risk documents`);
+    
+    // Display a sample of each type
+    console.log('\nBlog Document Sample:');
     console.log(`Loaded ${projectDocs.length} project documents`);
     console.log(`Loaded ${riskDocs.length} risk documents`);
     

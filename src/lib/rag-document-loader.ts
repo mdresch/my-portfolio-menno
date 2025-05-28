@@ -22,7 +22,7 @@ const CACHE_TIMEOUT = 60 * 60 * 1000;
  * If the cache is fresh, returns cached documents
  * Otherwise reloads from disk
  */
-export function loadRagDocuments(forceRefresh = false) {
+export async function loadRagDocuments(forceRefresh = false) {
   const now = new Date();
   const isCacheStale = !ragCache.lastUpdated || 
     (now.getTime() - ragCache.lastUpdated.getTime() > CACHE_TIMEOUT);
@@ -31,17 +31,16 @@ export function loadRagDocuments(forceRefresh = false) {
     try {
       console.log('Refreshing RAG document cache...');
       
-      ragCache.blog = JSON.parse(
-        fs.readFileSync(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8')
-      );
+      // Load all documents concurrently for better performance
+      const [blogContent, projectContent, riskContent] = await Promise.all([
+        fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8'),
+        fs.promises.readFile(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8'),
+        fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')
+      ]);
       
-      ragCache.project = JSON.parse(
-        fs.readFileSync(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8')
-      );
-      
-      ragCache.risk = JSON.parse(
-        fs.readFileSync(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')
-      );
+      ragCache.blog = JSON.parse(blogContent);
+      ragCache.project = JSON.parse(projectContent);
+      ragCache.risk = JSON.parse(riskContent);
       
       ragCache.lastUpdated = now;
       
@@ -67,15 +66,15 @@ export function loadRagDocuments(forceRefresh = false) {
 /**
  * Force reload of RAG documents from disk
  */
-export function refreshRagDocuments() {
-  return loadRagDocuments(true);
+export async function refreshRagDocuments() {
+  return await loadRagDocuments(true);
 }
 
 /**
  * Get all RAG documents combined into a single array
  */
-export function getAllRagDocuments() {
-  const docs = loadRagDocuments();
+export async function getAllRagDocuments() {
+  const docs = await loadRagDocuments();
   return [
     ...docs.blog,
     ...docs.project,
@@ -86,7 +85,11 @@ export function getAllRagDocuments() {
 /**
  * Get RAG documents by type
  */
-export function getRagDocumentsByType(type: 'blog' | 'project' | 'risk') {
-  const docs = loadRagDocuments();
-  return docs[type] || [];
+export async function getRagDocumentsByType(type: 'blog' | 'project' | 'risk') {
+  const docs = await loadRagDocuments();
+  if (type === 'blog' || type === 'project' || type === 'risk') {
+    return docs[type];
+  } else {
+    throw new Error(`Invalid document type: ${type}`);
+  }
 }
