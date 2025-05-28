@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { glob } from 'glob';
+const glob = require('glob'); // Use require for glob for best compatibility
 
 // Path to your blog markdown files
 const BLOG_DIR = path.join(process.cwd(), 'content/blog');
@@ -10,8 +10,8 @@ const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 const OUTPUT_FILE = path.join(process.cwd(), 'data/blog-rag-documents.json');
 
 async function extractBlogContent() {
-  // Find all .md files in the blog directory
-  const files = await glob('*.md', { cwd: BLOG_DIR });
+  // Find all .md files recursively in the blog directory and subfolders
+  const files = glob.sync('**/*.md', { cwd: BLOG_DIR });
 
   const documents = files.map((file) => {
     const filePath = path.join(BLOG_DIR, file);
