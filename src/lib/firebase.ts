@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+// Load env.local before anything else
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config({ path: '.env.local' });
+}
+
 import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 import { getFirestore, Firestore } from 'firebase/firestore';
@@ -31,6 +37,7 @@ let appCheck: any;
 let remoteConfig: any;
 
 try {
+  // Ensure env.local is loaded before validation
   if (!validateFirebaseConfig()) {
     throw new Error('Firebase configuration is incomplete');
   }

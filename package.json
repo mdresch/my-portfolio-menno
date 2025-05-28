@@ -13,6 +13,8 @@
     "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content"
   },
   "dependencies": {
+    "@azure-rest/ai-inference": "^1.0.0-beta.6",
+    "@azure/core-auth": "^1.9.0",
     "@codemirror/lang-markdown": "^6.3.2",
     "@genkit-ai/firebase": "^1.10.0",
     "@genkit-ai/googleai": "^1.10.0",
@@ -70,7 +72,7 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.17.51",
+    "@types/node": "^20.17.52",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
