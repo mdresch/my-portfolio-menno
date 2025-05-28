@@ -1,0 +1,21 @@
+# Technology Stack
+
+- Next.js
+- React
+- Tailwind CSS
+- Firebase
+- Genkit AI
+- Azure AI Inference
+- Google Vertex AI
+- Chart.js
+- Recharts
+- Framer Motion
+- Sentry
+- Hotjar
+- Toast UI Editor
+- Markdown/Remark/Marked
+- Rehype Highlight
+- clsx
+- dotenv
+- TypeScript
+- ESLint

@@ -3,52 +3,58 @@
 ## Portfolio Owner
 **Needs:**
 - Create and customize personal portfolio pages
-- Showcase and organize projects
-- Write, edit, and manage blog posts with rich content
+- Showcase projects with detailed descriptions and media
+- Publish, edit, and manage blog content
 - Integrate with external developer services (e.g., GitHub, Dev.to)
-- View analytics on portfolio and blog engagement
-- Manage privacy and security of personal data
+- Access analytics on portfolio and blog engagement
+- Ensure security and privacy of personal data
+- User-friendly and rich content editing experience
 **Processes:**
 - Portfolio creation and customization
-- Project addition and editing
-- Blog content creation, editing, and publishing
-- External service integration management
-- Engagement analytics monitoring
-- User authentication and profile management
-
-## Platform Administrator
-**Needs:**
-- Monitor platform performance and scalability
-- Manage user accounts and permissions
-- Ensure data security and compliance
-- Oversee integration with third-party services
-- Handle user support and issue resolution
-**Processes:**
-- User account and access management
-- System monitoring and maintenance
-- Security auditing and compliance checks
-- Integration management and troubleshooting
-- Support ticket and feedback handling
+- Project management
+- Blog content management
+- Third-party service integration management
+- Analytics reporting
+- User authentication and security management
 
 ## Visitor
 **Needs:**
-- Browse and search user portfolios
-- View projects and blog content
-- Interact with portfolio owners (e.g., comments, contact forms)
-- Access secure and responsive platform
+- Browse portfolio pages and projects
+- Read blog content
+- Interact with portfolio owner via contact or feedback forms
+- Access external project links (e.g., GitHub repositories)
 **Processes:**
-- Portfolio and blog browsing
-- Content search and filtering
-- User interaction (comments, contact)
-- Visitor analytics tracking
+- Portfolio and project browsing
+- Blog content consumption
+- Contact or feedback submission
 
-## External Service Integrator
+## Platform Administrator
 **Needs:**
-- Facilitate secure integration with developer services (e.g., GitHub, Dev.to)
-- Maintain data synchronization between services and platform
-- Manage API keys and credentials securely
+- Monitor platform health and performance
+- Manage user accounts and permissions
+- Oversee security and compliance
+- Handle user support and content moderation
+- Manage integrations and API keys
+- Monitor analytics across the platform
 **Processes:**
-- Integration setup and authorization
-- Data synchronization and update
-- API management and error handling
+- User account and permission management
+- Platform security and compliance checks
+- Content moderation
+- Support ticket management
+- Integration and API management
+- Platform-wide analytics monitoring
+
+## Developer (Platform Maintainer)
+**Needs:**
+- Maintain and update platform features
+- Ensure integration compatibility with external services
+- Monitor and improve system scalability and security
+- Fix bugs and handle technical support
+- Implement new analytics features
+**Processes:**
+- Feature development and deployment
+- Integration setup and maintenance
+- System monitoring and troubleshooting
+- Bug tracking and resolution
+- Analytics feature implementation
 
