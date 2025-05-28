@@ -65,7 +65,7 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.17.50",
+    "@types/node": "^20.17.51",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
