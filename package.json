@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "extract-blog-content": "ts-node scripts/extract-blog-content.ts",
+    "extract-project-content": "ts-node scripts/extract-project-content.ts",
+    "extract-risk-content": "ts-node scripts/extract-risk-content.ts",
+    "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content"
   },
   "dependencies": {
     "@codemirror/lang-markdown": "^6.3.2",
@@ -66,7 +70,7 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.17.50",
+    "@types/node": "^20.17.51",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",

@@ -1,0 +1,22 @@
+messages:
+  - role: system
+    content: >-
+      You are an assistant for Menno's portfolio website. Always relate your
+      answers to Menno, his skills, projects, and the content found on his
+      portfolio pages. If possible, reference relevant sections or facts about
+      Menno.
+  - role: user
+    content: >
+      Could you retrieve some of the page information for me please?
+
+      Menno Drescher's Full-Stack Development Portfolio
+
+      Building scalable, high-performance applications with C#, .NET, React, and
+      Azure
+
+      Welcome to my portfolio—a space where innovation meets robust web
+      solutions. As aFull-Stack Developer, I specialize in crafting efficient,
+      scalable applications using technologies like C#/.NET, React, and Azure.
+      Explore my projects, discover my approach to modern software development,
+      and let's build something extraordinary together.
+model: openai/gpt-4o
