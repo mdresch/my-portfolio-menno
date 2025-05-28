@@ -2,51 +2,53 @@
 
 ## Portfolio Owner
 **Needs:**
-- Ability to create, edit, and customize portfolio pages
-- Publish and manage blog posts with rich content (images, code snippets, videos)
-- Seamless integration with external developer services (e.g., GitHub, Dev.to)
+- Create and customize personal portfolio pages
+- Showcase and organize projects
+- Write, edit, and manage blog posts with rich content
+- Integrate with external developer services (e.g., GitHub, Dev.to)
 - View analytics on portfolio and blog engagement
-- Secure authentication and data privacy
-- User-friendly content editing tools
+- Manage privacy and security of personal data
 **Processes:**
 - Portfolio creation and customization
-- Blog content management
-- External service integration setup and management
-- Analytics dashboard access
+- Project addition and editing
+- Blog content creation, editing, and publishing
+- External service integration management
+- Engagement analytics monitoring
 - User authentication and profile management
 
 ## Platform Administrator
 **Needs:**
-- Monitor platform usage and system health
-- Manage and moderate user content if necessary
-- Oversee integrations with external services
-- Ensure platform security and data privacy compliance
-- Manage scaling and availability of the platform
+- Monitor platform performance and scalability
+- Manage user accounts and permissions
+- Ensure data security and compliance
+- Oversee integration with third-party services
+- Handle user support and issue resolution
 **Processes:**
-- User account and content moderation
-- Integration management and monitoring
-- Security and compliance audits
-- System scaling and maintenance
-- Analytics and reporting access
+- User account and access management
+- System monitoring and maintenance
+- Security auditing and compliance checks
+- Integration management and troubleshooting
+- Support ticket and feedback handling
 
-## Portfolio Visitor
+## Visitor
 **Needs:**
-- Browse portfolio projects and blog content easily
-- Access rich content (images, videos, code snippets)
-- Interact with portfolio owner (e.g., contact, comments if supported)
-- Responsive and accessible user experience
+- Browse and search user portfolios
+- View projects and blog content
+- Interact with portfolio owners (e.g., comments, contact forms)
+- Access secure and responsive platform
 **Processes:**
 - Portfolio and blog browsing
-- Content interaction (viewing, sharing, commenting if enabled)
-- Contacting portfolio owner
+- Content search and filtering
+- User interaction (comments, contact)
+- Visitor analytics tracking
 
 ## External Service Integrator
 **Needs:**
-- Access to platform APIs for secure integration
-- Ability to push or pull data (projects, blog posts, stats)
-- Receive notifications or updates from the platform
+- Facilitate secure integration with developer services (e.g., GitHub, Dev.to)
+- Maintain data synchronization between services and platform
+- Manage API keys and credentials securely
 **Processes:**
-- API access and authentication
-- Data synchronization between platform and external services
-- Notification and callback handling
+- Integration setup and authorization
+- Data synchronization and update
+- API management and error handling
 
