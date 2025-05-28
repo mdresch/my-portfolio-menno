@@ -11,6 +11,8 @@ const REQUIREMENTS_OUTPUT_PATH = path.join(DOCS_DIR, 'requirements-agent-output.
 const REQUIREMENTS_AGENT_API = 'http://localhost:3000/api/requirements-agent';
 
 // 1. Analyze project and generate a problem statement (simple heuristic, can be replaced with LLM call)
+let lastStatement = '';
+
 function analyzeProject() {
   // 1. Prefer docs/business-problem-statement.md if it exists and is non-empty
   const statementPath = path.join(__dirname, '../docs/business-problem-statement.md');
@@ -46,6 +48,16 @@ function saveProblemStatement(statement) {
   console.log('Business problem statement saved.');
 }
 
+function shouldRunRequirementsAgent(statement) {
+  // Only run if the statement has changed
+  if (lastStatement === statement) {
+    console.log('Business problem statement unchanged. Skipping requirements agent output.');
+    return false;
+  }
+  lastStatement = statement;
+  return true;
+}
+
 // 3. Call requirements agent API
 function callRequirementsAgent(statement) {
   return fetch(REQUIREMENTS_AGENT_API, {
@@ -78,8 +90,17 @@ function saveRequirementsOutput(roles) {
 
 // Main automation flow
 (async function main() {
-  const statement = analyzeProject();
-  saveProblemStatement(statement);
-  const roles = await callRequirementsAgent(statement);
-  saveRequirementsOutput(roles);
+  try {
+    const statement = analyzeProject();
+    saveProblemStatement(statement);
+    if (shouldRunRequirementsAgent(statement)) {
+      const roles = await callRequirementsAgent(statement);
+      saveRequirementsOutput(roles);
+    } else {
+      console.log('Requirements agent output not updated because the business problem statement did not change.');
+    }
+  } catch (error) {
+    console.error('An error occurred in the requirements automation script:', error);
+    process.exit(1);
+  }
 })();
