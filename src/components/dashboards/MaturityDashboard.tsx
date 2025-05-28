@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import { MockKPICard } from "../../components/dashboards/MockVisuals";
 import { motion, AnimatePresence } from "framer-motion";
