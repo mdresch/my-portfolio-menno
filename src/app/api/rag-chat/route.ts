@@ -4,17 +4,11 @@ import fs from 'fs';
 import path from 'path';
 import { cosineDistance } from '@/lib/vector-similarity';
 import * as mockGemini from '@/lib/mock-gemini';
+import { loadRagDocuments } from '@/lib/rag-document-loader';
 
 // Vertex AI endpoint for Gemini
 const VERTEX_AI_API_URL = process.env.VERTEX_AI_API_URL!;
 const GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS || 'my-portfolio-menno-1c10fc787618.json';
-
-// Load RAG documents
-const RAG_DOCUMENTS = {
-  blog: JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8')),
-  project: JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8')),
-  risk: JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')),
-};
 
 // Simple in-memory vector store for embeddings
 let documentEmbeddings: Record<string, number[]> = {};
@@ -125,11 +119,14 @@ async function findRelevantDocuments(query: string, topK: number = 3) {
       return findDocumentsByKeywords(query, topK);
     }
     
+    // Load documents from the dynamic loader
+    const ragDocs = loadRagDocuments();
+    
     // Combine all document sources
     const allDocuments = [
-      ...RAG_DOCUMENTS.blog,
-      ...RAG_DOCUMENTS.project,
-      ...RAG_DOCUMENTS.risk
+      ...ragDocs.blog,
+      ...ragDocs.project,
+      ...ragDocs.risk
     ];
     
     // For each document, generate embedding if not already present
@@ -170,11 +167,14 @@ function findDocumentsByKeywords(query: string, topK: number = 3): any[] {
     .split(/\W+/)
     .filter(word => word.length > 2 && !['the', 'and', 'for', 'with', 'that', 'this'].includes(word));
   
+  // Load documents from the dynamic loader
+  const ragDocs = loadRagDocuments();
+  
   // Combine all documents
   const allDocuments = [
-    ...RAG_DOCUMENTS.blog,
-    ...RAG_DOCUMENTS.project,
-    ...RAG_DOCUMENTS.risk
+    ...ragDocs.blog,
+    ...ragDocs.project,
+    ...ragDocs.risk
   ];
   
   // Score documents by counting query token occurrences
