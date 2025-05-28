@@ -90,10 +90,17 @@ function saveRequirementsOutput(roles) {
 
 // Main automation flow
 (async function main() {
-  const statement = analyzeProject();
-  saveProblemStatement(statement);
-  if (shouldRunRequirementsAgent(statement)) {
-    const roles = await callRequirementsAgent(statement);
-    saveRequirementsOutput(roles);
+  try {
+    const statement = analyzeProject();
+    saveProblemStatement(statement);
+    if (shouldRunRequirementsAgent(statement)) {
+      const roles = await callRequirementsAgent(statement);
+      saveRequirementsOutput(roles);
+    } else {
+      console.log('Requirements agent output not updated because the business problem statement did not change.');
+    }
+  } catch (error) {
+    console.error('An error occurred in the requirements automation script:', error);
+    process.exit(1);
   }
 })();
