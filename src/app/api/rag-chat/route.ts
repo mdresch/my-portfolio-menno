@@ -120,7 +120,7 @@ async function findRelevantDocuments(query: string, topK: number = 3) {
     }
     
     // Load documents from the dynamic loader
-    const ragDocs = loadRagDocuments();
+    const ragDocs = await loadRagDocuments();
     
     // Combine all document sources
     const allDocuments = [
@@ -158,7 +158,7 @@ async function findRelevantDocuments(query: string, topK: number = 3) {
 }
 
 // A simple keyword-based search function for development/fallback
-function findDocumentsByKeywords(query: string, topK: number = 3): any[] {
+async function findDocumentsByKeywords(query: string, topK: number = 3): Promise<any[]> {
   console.log('Performing keyword search for:', query);
   
   // Simple tokenization - split into words and normalize
@@ -168,7 +168,7 @@ function findDocumentsByKeywords(query: string, topK: number = 3): any[] {
     .filter(word => word.length > 2 && !['the', 'and', 'for', 'with', 'that', 'this'].includes(word));
   
   // Load documents from the dynamic loader
-  const ragDocs = loadRagDocuments();
+  const ragDocs = await loadRagDocuments();
   
   // Combine all documents
   const allDocuments = [

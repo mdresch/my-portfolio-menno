@@ -31,16 +31,17 @@ export async function loadRagDocuments(forceRefresh = false) {
     try {
       console.log('Refreshing RAG document cache...');
       
-      // Load all documents concurrently for better performance
-      const [blogContent, projectContent, riskContent] = await Promise.all([
-        fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8'),
-        fs.promises.readFile(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8'),
-        fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')
-      ]);
+      ragCache.blog = JSON.parse(
+        await fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8')
+      );
       
-      ragCache.blog = JSON.parse(blogContent);
-      ragCache.project = JSON.parse(projectContent);
-      ragCache.risk = JSON.parse(riskContent);
+      ragCache.project = JSON.parse(
+        await fs.promises.readFile(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8')
+      );
+      
+      ragCache.risk = JSON.parse(
+        await fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')
+      );
       
       ragCache.lastUpdated = now;
       
@@ -67,7 +68,7 @@ export async function loadRagDocuments(forceRefresh = false) {
  * Force reload of RAG documents from disk
  */
 export async function refreshRagDocuments() {
-  return await loadRagDocuments(true);
+  return loadRagDocuments(true);
 }
 
 /**
@@ -87,9 +88,5 @@ export async function getAllRagDocuments() {
  */
 export async function getRagDocumentsByType(type: 'blog' | 'project' | 'risk') {
   const docs = await loadRagDocuments();
-  if (type === 'blog' || type === 'project' || type === 'risk') {
-    return docs[type];
-  } else {
-    throw new Error(`Invalid document type: ${type}`);
-  }
+  return docs[type] || [];
 }

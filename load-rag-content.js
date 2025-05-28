@@ -1,5 +1,6 @@
 // Simple script to load and display RAG content
-const fs = require('fs');
+const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 
 // Paths to RAG documents
@@ -8,36 +9,20 @@ const PROJECT_RAG_PATH = path.join(process.cwd(), 'data/project-rag-documents.js
 const RISK_RAG_PATH = path.join(process.cwd(), 'data/blog-rag-risk-documents.json');
 
 // Function to load and display RAG documents
-function loadRagDocuments() {
+async function loadRagDocuments() {
   try {
     // Load the documents
-const blogDocs = JSON.parse(fs.readFileSync(BLOG_RAG_PATH, 'utf8'));
-const projectDocs = JSON.parse(fs.readFileSync(PROJECT_RAG_PATH, 'utf8'));
-const riskDocs = JSON.parse(fs.readFileSync(RISK_RAG_PATH, 'utf8'));
-
-console.log(`Loaded ${encodeURIComponent(blogDocs.length)} blog documents`);
-console.log(`Loaded ${encodeURIComponent(projectDocs.length)} project documents`);
-console.log(`Loaded ${encodeURIComponent(riskDocs.length)} risk documents`);
+    const [blogContent, projectContent, riskContent] = await Promise.all([
+      fs.readFile(BLOG_RAG_PATH, 'utf8'),
+      fs.readFile(PROJECT_RAG_PATH, 'utf8'),
+      fs.readFile(RISK_RAG_PATH, 'utf8')
+    ]);
     
-    // Display a sample of each type
-console.log('\nBlog Document Sample:');
+    const blogDocs = JSON.parse(blogContent);
+    const projectDocs = JSON.parse(projectContent);
+    const riskDocs = JSON.parse(riskContent);
     
-    // Use a safe logging function to prevent log injection
-    // import { safeLog } from './safeLogging'; // Import a custom safe logging function
-    safeLog(`Loaded ${blogDocs.length} blog documents`);
-    safeLog(`Loaded ${projectDocs.length} project documents`);
-    safeLog(`Loaded ${riskDocs.length} risk documents`);
-    
-    // Display a sample of each type
-console.log('\nBlog Document Sample:');
-    
-    // Use encodeURIComponent to sanitize input before logging
-    console.log(`Loaded ${encodeURIComponent(blogDocs.length)} blog documents`);
-    console.log(`Loaded ${encodeURIComponent(projectDocs.length)} project documents`);
-    console.log(`Loaded ${encodeURIComponent(riskDocs.length)} risk documents`);
-    
-    // Display a sample of each type
-    console.log('\nBlog Document Sample:');
+    console.log(`Loaded ${blogDocs.length} blog documents`);
     console.log(`Loaded ${projectDocs.length} project documents`);
     console.log(`Loaded ${riskDocs.length} risk documents`);
     
@@ -52,9 +37,15 @@ console.log('\nBlog Document Sample:');
     console.log(JSON.stringify(riskDocs[0], null, 2).substring(0, 500) + '...');
     
     // Get file modification times
-    const blogModified = fs.statSync(BLOG_RAG_PATH).mtime;
-    const projectModified = fs.statSync(PROJECT_RAG_PATH).mtime;
-    const riskModified = fs.statSync(RISK_RAG_PATH).mtime;
+    const [blogStats, projectStats, riskStats] = await Promise.all([
+      fs.stat(BLOG_RAG_PATH),
+      fs.stat(PROJECT_RAG_PATH),
+      fs.stat(RISK_RAG_PATH)
+    ]);
+    
+    const blogModified = blogStats.mtime;
+    const projectModified = projectStats.mtime;
+    const riskModified = riskStats.mtime;
     
     console.log('\nFile Last Modified:');
     console.log(`Blog documents: ${blogModified}`);
@@ -80,4 +71,7 @@ console.log('\nBlog Document Sample:');
 }
 
 // Execute
-loadRagDocuments();
+loadRagDocuments().catch(err => {
+  console.error('Failed to load RAG documents:', err);
+  process.exit(1);
+});

@@ -18,11 +18,21 @@ export default function RagContentRefresher() {
     setResult(null);
 
     try {
-      // Call a secure server-side API to handle the token and refresh content
+      // Get the token from somewhere secure (this is just a placeholder)
+      // In a real app, you'd store this in a secure environment variable or get it from auth
+      const refreshToken = process.env.NEXT_PUBLIC_REFRESH_RAG_TOKEN || prompt('Enter refresh token:');
+      
+      if (!refreshToken) {
+        setResult({ success: false, error: 'No refresh token provided' });
+        setIsRefreshing(false);
+        return;
+      }
+
       const response = await fetch('/api/refresh-rag', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${refreshToken}`
         }
       });
 
