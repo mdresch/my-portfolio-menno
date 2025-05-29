@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { AuthProvider } from '@/lib/auth';
-import { isFirebaseInitialized } from '@/lib/firebase';
-import { useEffect, useState } from 'react';
+import { AuthProvider } from "@/lib/auth";
+import { isFirebaseInitialized } from "@/lib/firebase";
+import { useEffect, useState } from "react";
 
 export default function ClientAuthProvider({ children }: { children: React.ReactNode }) {
   const [firebaseReady, setFirebaseReady] = useState(false);
@@ -13,7 +13,7 @@ export default function ClientAuthProvider({ children }: { children: React.React
       if (isFirebaseInitialized()) {
         setFirebaseReady(true);
       } else {
-        console.warn('Firebase not properly initialized');
+        console.warn("Firebase not properly initialized");
         setFirebaseReady(true); // Still render children but auth won't work
       }
     };

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -24,12 +24,12 @@ import {
   ResponsiveContainer,
   ComposedChart,
   Scatter
-} from 'recharts';
+} from "recharts";
 
 // Colors for charts
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
-const GREEN_COLORS = ['#34A853', '#93D29B', '#D0EDCA'];
-const RED_COLORS = ['#EA4335', '#F28B82', '#FCE8E6'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"];
+const GREEN_COLORS = ["#34A853", "#93D29B", "#D0EDCA"];
+const RED_COLORS = ["#EA4335", "#F28B82", "#FCE8E6"];
 
 // Climate Risk Overview Data
 const climateRiskOverviewData = [
@@ -44,37 +44,37 @@ const climateRiskOverviewData = [
 // Sector Exposure Data
 const sectorExposureData = [
   {
-    sector: 'Energy',
+    sector: "Energy",
     transition: 85,
     physical: 55,
   },
   {
-    sector: 'Utilities',
+    sector: "Utilities",
     transition: 80,
     physical: 70,
   },
   {
-    sector: 'Materials',
+    sector: "Materials",
     transition: 75,
     physical: 65,
   },
   {
-    sector: 'Transportation',
+    sector: "Transportation",
     transition: 70,
     physical: 60,
   },
   {
-    sector: 'Agriculture',
+    sector: "Agriculture",
     transition: 45,
     physical: 90,
   },
   {
-    sector: 'Finance',
+    sector: "Finance",
     transition: 65,
     physical: 40,
   },
   {
-    sector: 'Technology',
+    sector: "Technology",
     transition: 30,
     physical: 25,
   },
@@ -82,11 +82,11 @@ const sectorExposureData = [
 
 // Physical Risk Map Data (simplified for demo)
 const physicalRiskRegionsData = [
-  { name: 'Coastal Asia', value: 85 },
-  { name: 'Southeast US', value: 75 },
-  { name: 'Mediterranean', value: 70 },
-  { name: 'Central Africa', value: 65 },
-  { name: 'Australia', value: 60 },
+  { name: "Coastal Asia", value: 85 },
+  { name: "Southeast US", value: 75 },
+  { name: "Mediterranean", value: 70 },
+  { name: "Central Africa", value: 65 },
+  { name: "Australia", value: 60 },
 ];
 
 // Transition Risk Timeline Data
@@ -298,7 +298,7 @@ export const CarbonPricingScenarioChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="year" />
-          <YAxis domain={[0, 'auto']} tickFormatter={(value) => `$${value}`} />
+          <YAxis domain={[0, "auto"]} tickFormatter={(value) => `$${value}`} />
           <Tooltip formatter={(value) => [`$${value}/tCO₂e`, undefined]} />
           <Legend />
           <Line 

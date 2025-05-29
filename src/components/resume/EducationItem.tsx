@@ -1,5 +1,5 @@
-import React from 'react';
-import { Education } from '@/data/resume';
+import React from "react";
+import { Education } from "@/data/resume";
 
 interface EducationItemProps {
   education: Education;
@@ -38,8 +38,8 @@ export default function EducationItem({ education }: EducationItemProps) {
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    month: 'short', 
-    year: 'numeric' 
+  return date.toLocaleDateString("en-US", { 
+    month: "short", 
+    year: "numeric" 
   });
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ResumeSectionProps {
   title: string;
@@ -34,7 +34,7 @@ export default function ResumeSection({
           )}
         </button>
       </div>
-      <div className={`transition-all duration-300 ${isExpanded ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 overflow-hidden'} print:opacity-100 print:max-h-full`}>
+      <div className={`transition-all duration-300 ${isExpanded ? "opacity-100 max-h-screen" : "opacity-0 max-h-0 overflow-hidden"} print:opacity-100 print:max-h-full`}>
         {children}
       </div>
     </section>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface Heading {
   id: string;

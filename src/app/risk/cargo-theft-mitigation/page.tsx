@@ -1,7 +1,7 @@
-'use client'; // Assuming potential for client-side interactions later
+"use client"; // Assuming potential for client-side interactions later
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export default function CargoTheftMitigationPage() {
   return (

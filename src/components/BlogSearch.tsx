@@ -1,12 +1,12 @@
 "use client";
-import { useState } from 'react';
+import { useState } from "react";
 
 interface BlogSearchProps {
   onSearch: (query: string) => void;
 }
 
 export default function BlogSearch({ onSearch }: BlogSearchProps) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

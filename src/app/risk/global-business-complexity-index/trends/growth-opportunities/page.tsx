@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export default function GrowthOpportunitiesPage() {
   return (
@@ -181,7 +181,7 @@ export default function GrowthOpportunitiesPage() {
                     <span className="text-sm font-medium">50%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '50%' }}></div>
+                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: "50%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -190,7 +190,7 @@ export default function GrowthOpportunitiesPage() {
                     <span className="text-sm font-medium">50%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '50%' }}></div>
+                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: "50%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -199,7 +199,7 @@ export default function GrowthOpportunitiesPage() {
                     <span className="text-sm font-medium">43%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-yellow-500 h-2.5 rounded-full" style={{ width: '43%' }}></div>
+                    <div className="bg-yellow-500 h-2.5 rounded-full" style={{ width: "43%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -208,7 +208,7 @@ export default function GrowthOpportunitiesPage() {
                     <span className="text-sm font-medium">46% (slow)</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '46%' }}></div>
+                    <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "46%" }}></div>
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-2">Percentage of jurisdictions in each region that can adapt staffing levels quickly (except EMEA, which shows percentage reporting slow adaptability)</p>
@@ -292,7 +292,7 @@ export default function GrowthOpportunitiesPage() {
                       <span className="text-sm font-medium">88%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '88%' }}></div>
+                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: "88%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -301,7 +301,7 @@ export default function GrowthOpportunitiesPage() {
                       <span className="text-sm font-medium">90%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -310,7 +310,7 @@ export default function GrowthOpportunitiesPage() {
                       <span className="text-sm font-medium">56%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: '56%' }}></div>
+                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: "56%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -319,7 +319,7 @@ export default function GrowthOpportunitiesPage() {
                       <span className="text-sm font-medium">62%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: '62%' }}></div>
+                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: "62%" }}></div>
                     </div>
                   </div>
                 </div>
@@ -390,7 +390,7 @@ export default function GrowthOpportunitiesPage() {
                     </div>
                   </div>
                   <div className="bg-gray-200 rounded-full">
-                    <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{ width: '41%' }}>
+                    <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style={{ width: "41%" }}>
                       NET: Prepared 41%
                     </div>
                   </div>

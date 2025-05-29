@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell
-} from 'recharts';
+} from "recharts";
 
 interface CrossPostStatistics {
   platform: string;
@@ -34,7 +34,7 @@ interface CrossPostAnalytics {
 }
 
 // Colors for the pie chart
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
 export default function BlogCrossPostAnalytics() {
   const [analytics, setAnalytics] = useState<CrossPostAnalytics | null>(null);
@@ -46,7 +46,7 @@ export default function BlogCrossPostAnalytics() {
       try {
         // In production, this would fetch from your .NET API
         // For now, we'll fetch from the Next.js API route that proxies to .NET
-        const response = await fetch('/api/cross-post/analytics');
+        const response = await fetch("/api/cross-post/analytics");
         
         if (!response.ok) {
           throw new Error(`Error fetching analytics: ${response.status}`);
@@ -55,8 +55,8 @@ export default function BlogCrossPostAnalytics() {
         const data = await response.json();
         setAnalytics(data);
       } catch (err) {
-        console.error('Failed to fetch analytics:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error');
+        console.error("Failed to fetch analytics:", err);
+        setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         setLoading(false);
       }
@@ -93,11 +93,11 @@ export default function BlogCrossPostAnalytics() {
   // Prepare monthly data for the line chart
   // For demo, we're creating example data - in production this would come from the API
   const monthlyData = [
-    { month: 'Jan', hashnode: 5, devto: 3, medium: 2 },
-    { month: 'Feb', hashnode: 7, devto: 5, medium: 4 },
-    { month: 'Mar', hashnode: 10, devto: 8, medium: 6 },
-    { month: 'Apr', hashnode: 8, devto: 12, medium: 5 },
-    { month: 'May', hashnode: 12, devto: 14, medium: 8 },
+    { month: "Jan", hashnode: 5, devto: 3, medium: 2 },
+    { month: "Feb", hashnode: 7, devto: 5, medium: 4 },
+    { month: "Mar", hashnode: 10, devto: 8, medium: 6 },
+    { month: "Apr", hashnode: 8, devto: 12, medium: 5 },
+    { month: "May", hashnode: 12, devto: 14, medium: 8 },
   ];
 
   return (
@@ -143,7 +143,7 @@ export default function BlogCrossPostAnalytics() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value) => [`${value} posts`, 'Count']} />
+              <Tooltip formatter={(value) => [`${value} posts`, "Count"]} />
               <Legend />
             </PieChart>
           </ResponsiveContainer>
@@ -193,14 +193,14 @@ export default function BlogCrossPostAnalytics() {
                       href={`/blog/${post.sourceSlug}`} 
                       className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                     >
-                      {post.sourceSlug.replace(/-/g, ' ')}
+                      {post.sourceSlug.replace(/-/g, " ")}
                     </a>
                   </td>
                   <td className="py-3 px-4 capitalize">{post.platform}</td>
                   <td className="py-3 px-4">{new Date(post.crossPostedAt).toLocaleDateString()}</td>
                   <td className="py-3 px-4">
                     <span className={`px-2 py-1 rounded text-xs ${
-                      post.status === 'Success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      post.status === "Success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
                     }`}>
                       {post.status}
                     </span>

@@ -1,7 +1,7 @@
-'use client'; // Assuming potential for client-side interactions later
+"use client"; // Assuming potential for client-side interactions later
 
-import React from 'react';
-import Link from 'next/link'; // Optional: If you link back or to a form
+import React from "react";
+import Link from "next/link"; // Optional: If you link back or to a form
 
 export default function RiskSolutionsPage() {
   // Data for the table
@@ -71,12 +71,12 @@ export default function RiskSolutionsPage() {
             </p>
           </div>
           <div className="text-center md:text-left bg-blue-50 p-6 rounded-lg border border-blue-200">
-             <p className="text-blue-800 font-semibold mb-3">Interested in learning more?</p>
-             {/* Replace with actual link to contact form/page */}
-             <Link href="/contact" className="inline-block bg-blue-600 text-white font-semibold py-2 px-5 rounded hover:bg-blue-700 transition duration-200 text-sm">
+            <p className="text-blue-800 font-semibold mb-3">Interested in learning more?</p>
+            {/* Replace with actual link to contact form/page */}
+            <Link href="/contact" className="inline-block bg-blue-600 text-white font-semibold py-2 px-5 rounded hover:bg-blue-700 transition duration-200 text-sm">
                 Connect with a Specialist
-             </Link>
-             <p className="text-xs text-blue-600 mt-2">Fill out the form to find out more.</p>
+            </Link>
+            <p className="text-xs text-blue-600 mt-2">Fill out the form to find out more.</p>
           </div>
         </div>
       </section>
@@ -99,7 +99,7 @@ export default function RiskSolutionsPage() {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {solutionsData.map((item, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                 <td className="px-6 py-4 align-top">
                   <p className="text-sm font-semibold text-gray-900 mb-1">{item.risk}</p>
                   <p className="text-xs text-gray-600">{item.overview}</p>

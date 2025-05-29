@@ -1,9 +1,9 @@
-import React from 'react';
-import EmeaComplexityMap from '../../../components/risk/EmeaComplexityMap';
+import React from "react";
+import EmeaComplexityMap from "../../../components/risk/EmeaComplexityMap";
 
 export const metadata = {
-  title: 'EMEA - Global Business Complexity Index',
-  description: 'EMEA regional analysis from the Global Business Complexity Index, detailing business complexity and compliance challenges across Europe, Middle East & Africa.',
+  title: "EMEA - Global Business Complexity Index",
+  description: "EMEA regional analysis from the Global Business Complexity Index, detailing business complexity and compliance challenges across Europe, Middle East & Africa.",
 };
 
 export default function EmeaPage() {

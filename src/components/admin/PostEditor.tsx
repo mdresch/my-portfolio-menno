@@ -1,37 +1,37 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { BlogPostFile } from '@/types/github';
-import dynamic from 'next/dynamic';
-import { marked } from 'marked';
-import { FiSave, FiGitPullRequest } from 'react-icons/fi';
-import DevToPublisher from './DevToPublisher';
-import DevToConfig from './DevToConfig';
+import { useState, useEffect } from "react";
+import { BlogPostFile } from "@/types/github";
+import dynamic from "next/dynamic";
+import { marked } from "marked";
+import { FiSave, FiGitPullRequest } from "react-icons/fi";
+import DevToPublisher from "./DevToPublisher";
+import DevToConfig from "./DevToConfig";
 
 // Dynamically import the entire CodeMirror component with extensions
 // This avoids the issues with multiple instances of @codemirror/state
-const CodeMirrorEditor = dynamic(() => import('./CodeMirrorEditor'), { ssr: false });
+const CodeMirrorEditor = dynamic(() => import("./CodeMirrorEditor"), { ssr: false });
 
 interface PostEditorProps {
   post: BlogPostFile | null;
-  mode: 'create' | 'edit';
+  mode: "create" | "edit";
   onSave: (post: BlogPostFile, commitMessage: string) => Promise<void>;
   onCreatePR: (post: BlogPostFile, title: string, body: string) => Promise<void>;
 }
 
 export default function PostEditor({ post, mode, onSave, onCreatePR }: PostEditorProps) {
-  const [content, setContent] = useState(post?.content || '');
-  const [title, setTitle] = useState('');
-  const [excerpt, setExcerpt] = useState('');
+  const [content, setContent] = useState(post?.content || "");
+  const [title, setTitle] = useState("");
+  const [excerpt, setExcerpt] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
-  const [commitMessage, setCommitMessage] = useState('');
-  const [prTitle, setPrTitle] = useState('');
-  const [prDescription, setPrDescription] = useState('');
+  const [commitMessage, setCommitMessage] = useState("");
+  const [prTitle, setPrTitle] = useState("");
+  const [prDescription, setPrDescription] = useState("");
   const [showPrForm, setShowPrForm] = useState(false);
-  const [preview, setPreview] = useState('');
-  const [newCategory, setNewCategory] = useState('');
+  const [preview, setPreview] = useState("");
+  const [newCategory, setNewCategory] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit');
+  const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
 
   // Extract metadata from frontmatter
   useEffect(() => {
@@ -52,8 +52,8 @@ export default function PostEditor({ post, mode, onSave, onCreatePR }: PostEdito
       const categoriesMatch = post.content.match(/categories:\s*\[(.*?)\]/s);
       if (categoriesMatch && categoriesMatch[1]) {
         const cats = categoriesMatch[1]
-          .split(',')
-          .map((cat: string) => cat.trim().replace(/^['"]|['"]$/g, ''))
+          .split(",")
+          .map((cat: string) => cat.trim().replace(/^['"]|['"]$/g, ""))
           .filter(Boolean);
         setCategories(cats);
       }
@@ -64,11 +64,11 @@ export default function PostEditor({ post, mode, onSave, onCreatePR }: PostEdito
   useEffect(() => {
     try {
       // Extract content without frontmatter
-      const contentWithoutFrontmatter = content.replace(/---[\s\S]+?---/, '');
+      const contentWithoutFrontmatter = content.replace(/---[\s\S]+?---/, "");
       const htmlContent = marked(contentWithoutFrontmatter);
       setPreview(htmlContent);
     } catch (err) {
-      console.error('Error generating preview:', err);
+      console.error("Error generating preview:", err);
     }
   }, [content]);
 
@@ -79,21 +79,21 @@ export default function PostEditor({ post, mode, onSave, onCreatePR }: PostEdito
     
     if (categories.length > 0) {
       // Use block style for multiple items
-      categoriesYaml = `categories:\n${categories.map(cat => `  - "${cat}"`).join('\n')}`;
+      categoriesYaml = `categories:\n${categories.map(cat => `  - "${cat}"`).join("\n")}`;
     } else {
       // Use array syntax for empty arrays with proper spacing
-      categoriesYaml = 'categories: []';
+      categoriesYaml = "categories: []";
     }
     
     const frontmatter = `---
 title: "${title}"
-date: "${post?.date || new Date().toISOString().split('T')[0]}"
+date: "${post?.date || new Date().toISOString().split("T")[0]}"
 excerpt: "${excerpt}"
 ${categoriesYaml}
 ---`;
 
     // Replace existing frontmatter or add at the beginning
-    const contentWithoutFrontmatter = content.replace(/---[\s\S]+?---/, '').trim();
+    const contentWithoutFrontmatter = content.replace(/---[\s\S]+?---/, "").trim();
     return `${frontmatter}\n\n${contentWithoutFrontmatter}`;
   };
 
@@ -101,7 +101,7 @@ ${categoriesYaml}
   const handleAddCategory = () => {
     if (newCategory && !categories.includes(newCategory)) {
       setCategories([...categories, newCategory]);
-      setNewCategory('');
+      setNewCategory("");
     }
   };
 
@@ -130,7 +130,7 @@ ${categoriesYaml}
       const updatedContent = updateFrontmatter();
       await onCreatePR(
         { ...post, title, content: updatedContent },
-        prTitle || `${mode === 'create' ? 'Add' : 'Update'} post: ${title}`,
+        prTitle || `${mode === "create" ? "Add" : "Update"} post: ${title}`,
         prDescription
       );
     } finally {
@@ -143,7 +143,7 @@ ${categoriesYaml}
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-lg border">
         <h2 className="text-xl font-semibold mb-4">
-          {mode === 'create' ? 'Create New Post' : 'Edit Post'}
+          {mode === "create" ? "Create New Post" : "Edit Post"}
         </h2>
         
         <div className="mb-4">
@@ -202,7 +202,7 @@ ${categoriesYaml}
               onChange={e => setNewCategory(e.target.value)}
               className="flex-1 px-3 py-2 border rounded-l-md"
               placeholder="Add a category"
-              onKeyPress={e => e.key === 'Enter' && handleAddCategory()}
+              onKeyPress={e => e.key === "Enter" && handleAddCategory()}
             />
             <button
               type="button"
@@ -219,14 +219,14 @@ ${categoriesYaml}
         <div className="border-b">
           <div className="flex">
             <button
-              className={`px-4 py-2 ${activeTab === 'edit' ? 'bg-gray-100 font-medium' : 'hover:bg-gray-50'}`}
-              onClick={() => setActiveTab('edit')}
+              className={`px-4 py-2 ${activeTab === "edit" ? "bg-gray-100 font-medium" : "hover:bg-gray-50"}`}
+              onClick={() => setActiveTab("edit")}
             >
               Edit
             </button>
             <button
-              className={`px-4 py-2 ${activeTab === 'preview' ? 'bg-gray-100 font-medium' : 'hover:bg-gray-50'}`}
-              onClick={() => setActiveTab('preview')}
+              className={`px-4 py-2 ${activeTab === "preview" ? "bg-gray-100 font-medium" : "hover:bg-gray-50"}`}
+              onClick={() => setActiveTab("preview")}
             >
               Preview
             </button>
@@ -235,8 +235,8 @@ ${categoriesYaml}
 
         <div className="h-[500px] relative">
           {/* Editor */}
-          <div className={`absolute inset-0 overflow-auto ${activeTab === 'edit' ? 'block' : 'hidden'}`}>
-            {typeof window !== 'undefined' && (
+          <div className={`absolute inset-0 overflow-auto ${activeTab === "edit" ? "block" : "hidden"}`}>
+            {typeof window !== "undefined" && (
               <CodeMirrorEditor
                 value={content}
                 onChange={(value) => setContent(value)}
@@ -246,7 +246,7 @@ ${categoriesYaml}
 
           {/* Preview */}
           <div 
-            className={`absolute inset-0 overflow-auto p-6 prose max-w-none ${activeTab === 'preview' ? 'block' : 'hidden'}`}
+            className={`absolute inset-0 overflow-auto p-6 prose max-w-none ${activeTab === "preview" ? "block" : "hidden"}`}
             dangerouslySetInnerHTML={{ __html: preview }}
           />
         </div>
@@ -261,7 +261,7 @@ ${categoriesYaml}
               value={commitMessage}
               onChange={e => setCommitMessage(e.target.value)}
               className="w-full px-3 py-2 border rounded-md"
-              placeholder={`${mode === 'create' ? 'Add' : 'Update'} post: ${title}`}
+              placeholder={`${mode === "create" ? "Add" : "Update"} post: ${title}`}
             />
             <button
               type="submit"
@@ -269,7 +269,7 @@ ${categoriesYaml}
               className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md disabled:bg-blue-400"
             >
               <FiSave />
-              {isProcessing ? 'Saving...' : 'Save Directly'}
+              {isProcessing ? "Saving..." : "Save Directly"}
             </button>
           </form>
         </div>
@@ -292,7 +292,7 @@ ${categoriesYaml}
                 value={prTitle}
                 onChange={e => setPrTitle(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md"
-                placeholder={`${mode === 'create' ? 'Add' : 'Update'} post: ${title}`}
+                placeholder={`${mode === "create" ? "Add" : "Update"} post: ${title}`}
               />
               <textarea
                 value={prDescription}
@@ -315,7 +315,7 @@ ${categoriesYaml}
                   className="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md disabled:bg-green-400"
                 >
                   <FiGitPullRequest />
-                  {isProcessing ? 'Creating...' : 'Submit PR'}
+                  {isProcessing ? "Creating..." : "Submit PR"}
                 </button>
               </div>
             </form>
@@ -334,9 +334,9 @@ ${categoriesYaml}
           <div className="space-y-4">
             <DevToConfig onApiKeyChange={(apiKey) => {
               // Update the DevToPublisher component with the new API key
-              const publisher = document.querySelector('DevToPublisher');
+              const publisher = document.querySelector("DevToPublisher");
               if (publisher) {
-                publisher.setAttribute('api-key', apiKey);
+                publisher.setAttribute("api-key", apiKey);
               }
             }} />
             <DevToPublisher post={post} />

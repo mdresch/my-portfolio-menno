@@ -1,5 +1,5 @@
-import React from 'react';
-import { MockChartPlaceholder, MockTablePlaceholder } from '../../../components/dashboards/MockVisuals';
+import React from "react";
+import { MockChartPlaceholder, MockTablePlaceholder } from "../../../components/dashboards/MockVisuals";
 
 export const PolicyImpactDashboard = () => (
   <section className="bg-white dark:bg-gray-900 rounded-lg shadow-md dark:shadow-lg p-6 text-gray-900 dark:text-gray-100">

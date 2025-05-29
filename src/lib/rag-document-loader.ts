@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 // Cache for RAG documents
-let ragCache: {
+const ragCache: {
   blog: any[];
   project: any[];
   risk: any[];
@@ -29,30 +29,30 @@ export async function loadRagDocuments(forceRefresh = false) {
   
   if (forceRefresh || isCacheStale) {
     try {
-      console.log('Refreshing RAG document cache...');
+      console.log("Refreshing RAG document cache...");
       
       ragCache.blog = JSON.parse(
-        await fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-documents.json'), 'utf8')
+        await fs.promises.readFile(path.join(process.cwd(), "data/blog-rag-documents.json"), "utf8")
       );
       
       ragCache.project = JSON.parse(
-        await fs.promises.readFile(path.join(process.cwd(), 'data/project-rag-documents.json'), 'utf8')
+        await fs.promises.readFile(path.join(process.cwd(), "data/project-rag-documents.json"), "utf8")
       );
       
       ragCache.risk = JSON.parse(
-        await fs.promises.readFile(path.join(process.cwd(), 'data/blog-rag-risk-documents.json'), 'utf8')
+        await fs.promises.readFile(path.join(process.cwd(), "data/blog-rag-risk-documents.json"), "utf8")
       );
       
       ragCache.lastUpdated = now;
       
       console.log(`RAG cache refreshed. Loaded ${ragCache.blog.length} blog, ${ragCache.project.length} project, and ${ragCache.risk.length} risk documents`);
     } catch (error) {
-      console.error('Error loading RAG documents:', error);
+      console.error("Error loading RAG documents:", error);
       // If we have a cache, use it even if stale
       if (!ragCache.lastUpdated) {
         throw error; // No cache available, must propagate error
       }
-      console.warn('Using stale RAG cache due to load error');
+      console.warn("Using stale RAG cache due to load error");
     }
   }
   
@@ -86,7 +86,7 @@ export async function getAllRagDocuments() {
 /**
  * Get RAG documents by type
  */
-export async function getRagDocumentsByType(type: 'blog' | 'project' | 'risk') {
+export async function getRagDocumentsByType(type: "blog" | "project" | "risk") {
   const docs = await loadRagDocuments();
   return docs[type] || [];
 }

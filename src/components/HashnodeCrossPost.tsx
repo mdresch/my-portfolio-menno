@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { BlogPost } from '@/lib/markdown';
+import { useState } from "react";
+import { BlogPost } from "@/lib/markdown";
 
 interface HashnodeCrossPostProps {
   post: BlogPost;
@@ -15,7 +15,7 @@ export default function HashnodeCrossPost({ post }: HashnodeCrossPostProps) {
     error?: string;
   }>({});
   const [showTokenInput, setShowTokenInput] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   const handleCrossPost = async () => {
     if (!token) {
@@ -28,10 +28,10 @@ export default function HashnodeCrossPost({ post }: HashnodeCrossPostProps) {
     
     try {
       // Call our server-side API route instead of directly calling Hashnode
-      const response = await fetch('/api/hashnode-crosspost', {
-        method: 'POST',
+      const response = await fetch("/api/hashnode-crosspost", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           post,
@@ -46,10 +46,10 @@ export default function HashnodeCrossPost({ post }: HashnodeCrossPostProps) {
       const data = await response.json();
       setResult(data);
     } catch (error) {
-      console.error('Error cross-posting:', error);
+      console.error("Error cross-posting:", error);
       setResult({
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to cross-post'
+        error: error instanceof Error ? error.message : "Failed to cross-post"
       });
     } finally {
       setIsLoading(false);
@@ -116,8 +116,8 @@ export default function HashnodeCrossPost({ post }: HashnodeCrossPostProps) {
         disabled={isLoading}
         className={`mt-3 px-4 py-2 rounded font-medium ${
           isLoading
-            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-purple-600 text-white hover:bg-purple-700'
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-purple-600 text-white hover:bg-purple-700"
         }`}
       >
         {isLoading ? (
@@ -129,7 +129,7 @@ export default function HashnodeCrossPost({ post }: HashnodeCrossPostProps) {
             Cross-posting...
           </span>
         ) : (
-          'Cross-Post to Hashnode'
+          "Cross-Post to Hashnode"
         )}
       </button>
       

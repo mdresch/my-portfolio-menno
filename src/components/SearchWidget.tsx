@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import Script from 'next/script';
+import React, { useEffect } from "react";
+import Script from "next/script";
 
 // Add type declaration for the custom element
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'gen-search-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      "gen-search-widget": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
         configId: string;
         triggerId: string;
       };

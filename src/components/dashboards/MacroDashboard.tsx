@@ -1,22 +1,22 @@
-import React from 'react';
-import { MockKPICard, MockLineChart, MockBarChart, MockTablePlaceholder, MockStackedBarChart, MockUnemploymentLineChart } from '../../components/dashboards/MockVisuals';
+import React from "react";
+import { MockKPICard, MockLineChart, MockBarChart, MockTablePlaceholder, MockStackedBarChart, MockUnemploymentLineChart } from "../../components/dashboards/MockVisuals";
 
 // Example mock data for macro indicators
 const macroKPIs = [
-  { title: 'GDP Growth (YoY)', value: '2.5%', change: '+0.1%' },
-  { title: 'Inflation Rate (CPI)', value: '3.1%', change: '-0.2%' },
-  { title: 'Interest Rate', value: '4.0%', change: '+0.25%' },
-  { title: 'Employment Rate', value: '96.2%', change: '+0.1%' },
-  { title: 'Unemployment Rate', value: '3.8%', change: '-0.1%' },
-  { title: 'Population Growth', value: '0.7%', change: '+0.02%' },
-  { title: 'R&D Expenditure (% GDP)', value: '2.1%' },
-  { title: 'Tax on Personal Income (% GDP)', value: '9.5%' },
-  { title: 'Gov. Debt (% GDP)', value: '78%' },
-  { title: 'Household Debt (% Net Disposable Income)', value: '110%' },
-  { title: 'Population', value: '340M', change: '+0.7%' },
-  { title: 'Age 0-14', value: '18%', change: '-0.1%' },
-  { title: 'Age 15-64', value: '65%', change: '+0.1%' },
-  { title: 'Age 65+', value: '17%', change: '+0.2%' },
+  { title: "GDP Growth (YoY)", value: "2.5%", change: "+0.1%" },
+  { title: "Inflation Rate (CPI)", value: "3.1%", change: "-0.2%" },
+  { title: "Interest Rate", value: "4.0%", change: "+0.25%" },
+  { title: "Employment Rate", value: "96.2%", change: "+0.1%" },
+  { title: "Unemployment Rate", value: "3.8%", change: "-0.1%" },
+  { title: "Population Growth", value: "0.7%", change: "+0.02%" },
+  { title: "R&D Expenditure (% GDP)", value: "2.1%" },
+  { title: "Tax on Personal Income (% GDP)", value: "9.5%" },
+  { title: "Gov. Debt (% GDP)", value: "78%" },
+  { title: "Household Debt (% Net Disposable Income)", value: "110%" },
+  { title: "Population", value: "340M", change: "+0.7%" },
+  { title: "Age 0-14", value: "18%", change: "-0.1%" },
+  { title: "Age 15-64", value: "65%", change: "+0.1%" },
+  { title: "Age 65+", value: "17%", change: "+0.2%" },
 ];
 
 export const MacroDashboard = () => (

@@ -47,7 +47,7 @@ jobs:
         run: npm ci --legacy-peer-deps
         
       - name: Run ESLint
-        run: npm run lint
+        run: echo "Running ESLint in verbose mode" && npm run lint -- --verbose || (echo "ESLint failed: Showing detailed errors" && npx next lint --verbose)
 
   build:
     name: Build Application

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { BlogPostFile } from '@/types/github';
+import { useState } from "react";
+import { BlogPostFile } from "@/types/github";
 
 interface PostListProps {
   posts: BlogPostFile[];
@@ -10,7 +10,7 @@ interface PostListProps {
 }
 
 export default function PostList({ posts, isLoading, onEditPost }: PostListProps) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   
   const filteredPosts = posts.filter(post => 
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -52,7 +52,7 @@ export default function PostList({ posts, isLoading, onEditPost }: PostListProps
       
       {sortedPosts.length === 0 ? (
         <div className="text-center py-8 text-gray-500">
-          {searchTerm ? 'No posts match your search' : 'No posts found'}
+          {searchTerm ? "No posts match your search" : "No posts found"}
         </div>
       ) : (
         <div className="space-y-4">

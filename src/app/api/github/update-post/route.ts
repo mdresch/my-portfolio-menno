@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // Helper function to detect default branch
 async function getDefaultBranch(owner: string, repo: string, token: string) {
@@ -6,8 +6,8 @@ async function getDefaultBranch(owner: string, repo: string, token: string) {
   
   const response = await fetch(repoUrl, {
     headers: {
-      'Accept': 'application/vnd.github.v3+json',
-      'Authorization': `token ${token}`
+      "Accept": "application/vnd.github.v3+json",
+      "Authorization": `token ${token}`
     }
   });
   
@@ -25,13 +25,13 @@ export async function POST(request: NextRequest) {
     
     if (!token || !content || !oldPath) {
       return NextResponse.json({ 
-        error: 'Missing required parameters' 
+        error: "Missing required parameters" 
       }, { status: 400 });
     }
     
     // GitHub API details
-    const owner = 'mdresch'; // Your GitHub username
-    const repo = 'my-portfolio-menno'; // Your repository name
+    const owner = "mdresch"; // Your GitHub username
+    const repo = "my-portfolio-menno"; // Your repository name
     
     // Get the default branch name dynamically
     const defaultBranch = await getDefaultBranch(owner, repo, token);
@@ -42,14 +42,14 @@ export async function POST(request: NextRequest) {
     
     const getFileResponse = await fetch(getFileUrl, {
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${token}`
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": `token ${token}`
       }
     });
     
     if (!getFileResponse.ok) {
       const errorData = await getFileResponse.json();
-      console.error('GitHub API error:', {
+      console.error("GitHub API error:", {
         status: getFileResponse.status,
         message: errorData.message,
         errors: errorData.errors,
@@ -59,12 +59,12 @@ export async function POST(request: NextRequest) {
       let errorMessage = errorData.message || `Error: ${getFileResponse.status}`;
       
       // Add more context for specific error cases
-      if (errorData.message?.includes('branch not found')) {
+      if (errorData.message?.includes("branch not found")) {
         errorMessage = `Branch not found. Detected branch name '${defaultBranch}'. Please check your repository settings.`;
-      } else if (errorData.message?.includes('Not Found')) {
+      } else if (errorData.message?.includes("Not Found")) {
         errorMessage = `Repository not found. Please verify owner (${owner}) and repo name (${repo}).`;
-      } else if (errorData.message?.includes('Bad credentials')) {
-        errorMessage = 'Invalid GitHub token. Please check your personal access token.';
+      } else if (errorData.message?.includes("Bad credentials")) {
+        errorMessage = "Invalid GitHub token. Please check your personal access token.";
       }
       
       return NextResponse.json({
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     const fileSha = fileData.sha;
     
     // Encode content to base64
-    const contentBase64 = Buffer.from(content).toString('base64');
+    const contentBase64 = Buffer.from(content).toString("base64");
     
     // Determine if we need to update in place or rename (move) the file
     const isFileBeingRenamed = oldPath !== newPath;
@@ -86,11 +86,11 @@ export async function POST(request: NextRequest) {
     // If we're renaming, delete the old file first
     if (isFileBeingRenamed) {
       const deleteResponse = await fetch(getFileUrl, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Accept': 'application/vnd.github.v3+json',
-          'Authorization': `token ${token}`,
-          'Content-Type': 'application/json'
+          "Accept": "application/vnd.github.v3+json",
+          "Authorization": `token ${token}`,
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           message: `Delete ${oldPath} as part of rename operation`,
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
       
       if (!deleteResponse.ok) {
         const errorData = await deleteResponse.json();
-        console.error('GitHub API error:', {
+        console.error("GitHub API error:", {
           status: deleteResponse.status,
           message: errorData.message,
           errors: errorData.errors,
@@ -111,12 +111,12 @@ export async function POST(request: NextRequest) {
         let errorMessage = errorData.message || `Error: ${deleteResponse.status}`;
         
         // Add more context for specific error cases
-        if (errorData.message?.includes('branch not found')) {
+        if (errorData.message?.includes("branch not found")) {
           errorMessage = `Branch not found. Detected branch name '${defaultBranch}'. Please check your repository settings.`;
-        } else if (errorData.message?.includes('Not Found')) {
+        } else if (errorData.message?.includes("Not Found")) {
           errorMessage = `Repository not found. Please verify owner (${owner}) and repo name (${repo}).`;
-        } else if (errorData.message?.includes('Bad credentials')) {
-          errorMessage = 'Invalid GitHub token. Please check your personal access token.';
+        } else if (errorData.message?.includes("Bad credentials")) {
+          errorMessage = "Invalid GitHub token. Please check your personal access token.";
         }
         
         return NextResponse.json({
@@ -128,11 +128,11 @@ export async function POST(request: NextRequest) {
     
     // Create the new file or update existing one
     const response = await fetch(apiUrl, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${token}`,
-        'Content-Type': 'application/json'
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         message,
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
     
     if (!response.ok) {
-      console.error('GitHub API error:', {
+      console.error("GitHub API error:", {
         status: response.status,
         message: data.message,
         errors: data.errors,
@@ -155,12 +155,12 @@ export async function POST(request: NextRequest) {
       let errorMessage = data.message || `Error: ${response.status}`;
       
       // Add more context for specific error cases
-      if (data.message?.includes('branch not found')) {
+      if (data.message?.includes("branch not found")) {
         errorMessage = `Branch not found. Detected branch name '${defaultBranch}'. Please check your repository settings.`;
-      } else if (data.message?.includes('Not Found')) {
+      } else if (data.message?.includes("Not Found")) {
         errorMessage = `Repository not found. Please verify owner (${owner}) and repo name (${repo}).`;
-      } else if (data.message?.includes('Bad credentials')) {
-        errorMessage = 'Invalid GitHub token. Please check your personal access token.';
+      } else if (data.message?.includes("Bad credentials")) {
+        errorMessage = "Invalid GitHub token. Please check your personal access token.";
       }
       
       return NextResponse.json({
@@ -178,9 +178,9 @@ export async function POST(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Error updating post via GitHub:', error);
+    console.error("Error updating post via GitHub:", error);
     return NextResponse.json({
-      error: error instanceof Error ? error.message : 'An unknown error occurred'
+      error: error instanceof Error ? error.message : "An unknown error occurred"
     }, { status: 500 });
   }
 }

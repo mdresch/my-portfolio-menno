@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
@@ -33,15 +33,15 @@ export default function ContactPage() {
       setIsSubmitting(false);
       setSubmitStatus({
         success: true,
-        message: 'Your message has been sent! I will get back to you as soon as possible.'
+        message: "Your message has been sent! I will get back to you as soon as possible."
       });
       
       // Reset form after submission
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
       });
       
       // In a real implementation, you would have API call here
@@ -64,7 +64,7 @@ export default function ContactPage() {
         <div className="md:col-span-2">
           <div className="bg-white rounded-lg shadow-md p-8">
             {submitStatus ? (
-              <div className={`p-4 rounded-md mb-6 ${submitStatus.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+              <div className={`p-4 rounded-md mb-6 ${submitStatus.success ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
                 <p className="font-medium">{submitStatus.message}</p>
                 {submitStatus.success && (
                   <button 
@@ -147,7 +147,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  className={`px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   {isSubmitting ? (
                     <span className="flex items-center">
@@ -158,7 +158,7 @@ export default function ContactPage() {
                       Sending...
                     </span>
                   ) : (
-                    'Send Message'
+                    "Send Message"
                   )}
                 </button>
               </form>

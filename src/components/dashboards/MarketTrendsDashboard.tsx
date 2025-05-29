@@ -1,19 +1,19 @@
-import React from 'react';
-import { MockKPICard, MockBarChart, MockTablePlaceholder } from '../../components/dashboards/MockVisuals';
+import React from "react";
+import { MockKPICard, MockBarChart, MockTablePlaceholder } from "../../components/dashboards/MockVisuals";
 
 // Example mock data for sectors and segments
 const sectors = [
-  { name: 'Technology', performance: '+8.2%', vsTotal: 'Overperforming' },
-  { name: 'Healthcare', performance: '+3.5%', vsTotal: 'Underperforming' },
-  { name: 'Financials', performance: '+5.0%', vsTotal: 'Overperforming' },
-  { name: 'Consumer Discretionary', performance: '+2.1%', vsTotal: 'Underperforming' },
-  { name: 'Energy', performance: '+6.7%', vsTotal: 'Overperforming' },
+  { name: "Technology", performance: "+8.2%", vsTotal: "Overperforming" },
+  { name: "Healthcare", performance: "+3.5%", vsTotal: "Underperforming" },
+  { name: "Financials", performance: "+5.0%", vsTotal: "Overperforming" },
+  { name: "Consumer Discretionary", performance: "+2.1%", vsTotal: "Underperforming" },
+  { name: "Energy", performance: "+6.7%", vsTotal: "Overperforming" },
 ];
 
 const marketSegments = [
-  { name: 'Large Cap', performance: '+6.0%', vsTotal: 'Overperforming' },
-  { name: 'Mid Cap', performance: '+4.2%', vsTotal: 'Underperforming' },
-  { name: 'Small Cap', performance: '+2.8%', vsTotal: 'Underperforming' },
+  { name: "Large Cap", performance: "+6.0%", vsTotal: "Overperforming" },
+  { name: "Mid Cap", performance: "+4.2%", vsTotal: "Underperforming" },
+  { name: "Small Cap", performance: "+2.8%", vsTotal: "Underperforming" },
 ];
 
 export const MarketTrendsDashboard = () => (
@@ -43,7 +43,7 @@ export const MarketTrendsDashboard = () => (
               <tr key={s.name}>
                 <td className="px-2 py-1 border">{s.name}</td>
                 <td className="px-2 py-1 border">{s.performance}</td>
-                <td className={`px-2 py-1 border ${s.vsTotal === 'Overperforming' ? 'text-green-600' : 'text-red-600'}`}>{s.vsTotal}</td>
+                <td className={`px-2 py-1 border ${s.vsTotal === "Overperforming" ? "text-green-600" : "text-red-600"}`}>{s.vsTotal}</td>
               </tr>
             ))}
           </tbody>
@@ -67,7 +67,7 @@ export const MarketTrendsDashboard = () => (
               <tr key={s.name}>
                 <td className="px-2 py-1 border">{s.name}</td>
                 <td className="px-2 py-1 border">{s.performance}</td>
-                <td className={`px-2 py-1 border ${s.vsTotal === 'Overperforming' ? 'text-green-600' : 'text-red-600'}`}>{s.vsTotal}</td>
+                <td className={`px-2 py-1 border ${s.vsTotal === "Overperforming" ? "text-green-600" : "text-red-600"}`}>{s.vsTotal}</td>
               </tr>
             ))}
           </tbody>

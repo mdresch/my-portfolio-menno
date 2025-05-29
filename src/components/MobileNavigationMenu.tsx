@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useState } from 'react';
-import { useTheme } from 'next-themes';
+import { useState } from "react";
+import { useTheme } from "next-themes";
 import { DarkModeToggle } from "./NavigationMenuDemo"; // Import DarkModeToggle from NavigationMenuDemo
 
 // Type definitions
@@ -178,7 +178,7 @@ function MobileNavSection({
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
@@ -201,13 +201,13 @@ export function MobileNavigationMenu() {
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (!target.closest('[data-mobile-menu]')) {
+      if (!target.closest("[data-mobile-menu]")) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobileMenuOpen]);
 
   // Close mobile menu when resizing to desktop
@@ -218,8 +218,8 @@ export function MobileNavigationMenu() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

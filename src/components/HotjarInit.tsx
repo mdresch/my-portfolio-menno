@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Hotjar from '@hotjar/browser';
+import { useEffect } from "react";
+import Hotjar from "@hotjar/browser";
 
 export default function HotjarInit() {
   useEffect(() => {
@@ -10,9 +10,9 @@ export default function HotjarInit() {
     
     try {
       Hotjar.init(siteId, hotjarVersion);
-      console.log('Hotjar initialized successfully');
+      console.log("Hotjar initialized successfully");
     } catch (error) {
-      console.error('Failed to initialize Hotjar:', error);
+      console.error("Failed to initialize Hotjar:", error);
     }
   }, []);
 

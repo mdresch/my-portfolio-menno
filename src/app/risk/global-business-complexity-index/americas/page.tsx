@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { getCountriesByRegion, getComplexityColor } from '../../../../lib/riskData';
-import dynamic from 'next/dynamic';
+import React from "react";
+import Link from "next/link";
+import { getCountriesByRegion, getComplexityColor } from "../../../../lib/riskData";
+import dynamic from "next/dynamic";
 
 // Replace direct import with dynamic import using the wrapper
 const AmericasComplexityMapWrapper = dynamic(
-  () => import('../../../../components/risk/AmericasComplexityMapWrapper'),
+  () => import("../../../../components/risk/AmericasComplexityMapWrapper"),
   { ssr: false }
 );
 
@@ -90,7 +90,7 @@ export default function AmericasPage() {
                 <tr key={country.country} className="hover:bg-gray-50">
                   <td className="px-4 py-3 whitespace-nowrap">{country.rank}</td>
                   <td className="px-4 py-3 whitespace-nowrap font-medium">
-                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, '-')}`} className="text-blue-600 hover:underline">
+                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, "-")}`} className="text-blue-600 hover:underline">
                       {country.country}
                     </Link>
                   </td>

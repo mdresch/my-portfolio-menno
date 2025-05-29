@@ -1,6 +1,6 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\app\contact\layout.tsx
-import React from 'react';
-import { metadata } from './metadata';
+import React from "react";
+import { metadata } from "./metadata";
 
 export { metadata };
 

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -23,16 +23,16 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
   render(): ReactNode {
     if (this.state.hasError) {
       // Check if the error is a chunk load error
       const isChunkError = 
-        this.state.error?.message?.includes('ChunkLoadError') || 
-        this.state.error?.message?.includes('Loading chunk') ||
-        this.state.error?.stack?.includes('ChunkLoadError');
+        this.state.error?.message?.includes("ChunkLoadError") || 
+        this.state.error?.message?.includes("Loading chunk") ||
+        this.state.error?.stack?.includes("ChunkLoadError");
 
       if (isChunkError) {
         return (

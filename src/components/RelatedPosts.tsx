@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import type { BlogPost } from '@/lib/markdown';
+import Link from "next/link";
+import type { BlogPost } from "@/lib/markdown";
 
 interface RelatedPostsProps {
-  currentPost: Omit<BlogPost, 'content'>;
-  allPosts: Omit<BlogPost, 'content'>[];
+  currentPost: Omit<BlogPost, "content">;
+  allPosts: Omit<BlogPost, "content">[];
 }
 
 export default function RelatedPosts({ currentPost, allPosts }: RelatedPostsProps) {
@@ -36,10 +36,10 @@ export default function RelatedPosts({ currentPost, allPosts }: RelatedPostsProp
               <h3 className="font-semibold mb-2">{post.title}</h3>
             </Link>
             <div className="text-sm text-gray-500 mb-2">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
               <span className="mx-2">•</span>
               {post.readingTime}

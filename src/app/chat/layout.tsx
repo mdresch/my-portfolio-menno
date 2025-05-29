@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function ChatLayout({
   children,
@@ -11,9 +11,9 @@ export default function ChatLayout({
   const pathname = usePathname();
   
   const navItems = [
-    { href: '/chat', label: 'Standard Chat' },
-    { href: '/chat/vertex-ai-chat', label: 'Vertex AI Chat' },
-    { href: '/chat/rag-chat', label: 'Portfolio RAG Chat' },
+    { href: "/chat", label: "Standard Chat" },
+    { href: "/chat/vertex-ai-chat", label: "Vertex AI Chat" },
+    { href: "/chat/rag-chat", label: "Portfolio RAG Chat" },
   ];
 
   return (
@@ -29,8 +29,8 @@ export default function ChatLayout({
                   href={item.href}
                   className={`px-3 py-2 rounded-lg transition ${
                     isActive
-                      ? 'bg-blue-600 text-white font-medium'
-                      : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      ? "bg-blue-600 text-white font-medium"
+                      : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                   }`}
                 >
                   {item.label}

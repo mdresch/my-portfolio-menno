@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { formatDate } from '../lib/utils';
-import type { BlogPost } from '../lib/markdown';
+import Link from "next/link";
+import Image from "next/image";
+import { formatDate } from "../lib/utils";
+import type { BlogPost } from "../lib/markdown";
 
 interface BlogPostsProps {
   posts: BlogPost[];

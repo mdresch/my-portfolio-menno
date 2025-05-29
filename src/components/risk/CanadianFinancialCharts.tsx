@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   LineChart,
   Line,
@@ -20,62 +20,62 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
-} from 'recharts';
+} from "recharts";
 
 // Mortgage Arrears Data
 const mortgageArrearsData = [
-  { name: 'Q1 2023', actual: 0.15, baseCase: 0.15, severeCase: 0.15 },
-  { name: 'Q2 2023', actual: 0.17, baseCase: 0.17, severeCase: 0.17 },
-  { name: 'Q3 2023', actual: 0.18, baseCase: 0.18, severeCase: 0.18 },
-  { name: 'Q4 2023', actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
-  { name: 'Q1 2024', actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
-  { name: 'Q2 2024', actual: 0.18, baseCase: 0.19, severeCase: 0.21 },
-  { name: 'Q3 2024', actual: 0.17, baseCase: 0.18, severeCase: 0.23 },
-  { name: 'Q4 2024', actual: 0.16, baseCase: 0.17, severeCase: 0.25 },
-  { name: 'Q1 2025', actual: 0.15, baseCase: 0.17, severeCase: 0.28 },
-  { name: 'Q2 2025', actual: null, baseCase: 0.16, severeCase: 0.32 },
-  { name: 'Q3 2025', actual: null, baseCase: 0.16, severeCase: 0.38 },
-  { name: 'Q4 2025', actual: null, baseCase: 0.15, severeCase: 0.45 },
-  { name: 'Q1 2026', actual: null, baseCase: 0.15, severeCase: 0.52 },
+  { name: "Q1 2023", actual: 0.15, baseCase: 0.15, severeCase: 0.15 },
+  { name: "Q2 2023", actual: 0.17, baseCase: 0.17, severeCase: 0.17 },
+  { name: "Q3 2023", actual: 0.18, baseCase: 0.18, severeCase: 0.18 },
+  { name: "Q4 2023", actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
+  { name: "Q1 2024", actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
+  { name: "Q2 2024", actual: 0.18, baseCase: 0.19, severeCase: 0.21 },
+  { name: "Q3 2024", actual: 0.17, baseCase: 0.18, severeCase: 0.23 },
+  { name: "Q4 2024", actual: 0.16, baseCase: 0.17, severeCase: 0.25 },
+  { name: "Q1 2025", actual: 0.15, baseCase: 0.17, severeCase: 0.28 },
+  { name: "Q2 2025", actual: null, baseCase: 0.16, severeCase: 0.32 },
+  { name: "Q3 2025", actual: null, baseCase: 0.16, severeCase: 0.38 },
+  { name: "Q4 2025", actual: null, baseCase: 0.15, severeCase: 0.45 },
+  { name: "Q1 2026", actual: null, baseCase: 0.15, severeCase: 0.52 },
 ];
 
 // Bank Capital Ratio Data
 const bankCapitalRatioData = [
-  { name: '2023', actual: 12.8, stressScenario: null },
-  { name: '2024', actual: 13.1, stressScenario: null },
-  { name: '2025', actual: 13.3, stressScenario: 13.3 },
-  { name: '2026', actual: null, stressScenario: 10.8 },
-  { name: '2027', actual: null, stressScenario: 9.2 },
+  { name: "2023", actual: 12.8, stressScenario: null },
+  { name: "2024", actual: 13.1, stressScenario: null },
+  { name: "2025", actual: 13.3, stressScenario: 13.3 },
+  { name: "2026", actual: null, stressScenario: 10.8 },
+  { name: "2027", actual: null, stressScenario: 9.2 },
 ];
 
 // Asset Volatility Data
 const assetVolatilityData = [
   {
-    date: 'Jan 2025',
+    date: "Jan 2025",
     equityVolatility: 11,
     bondVolatility: 5,
     currencyVolatility: 8,
   },
   {
-    date: 'Feb 2025',
+    date: "Feb 2025",
     equityVolatility: 13,
     bondVolatility: 7,
     currencyVolatility: 9,
   },
   {
-    date: 'Mar 2025',
+    date: "Mar 2025",
     equityVolatility: 15,
     bondVolatility: 8,
     currencyVolatility: 11,
   },
   {
-    date: 'Apr 2025',
+    date: "Apr 2025",
     equityVolatility: 29,
     bondVolatility: 18,
     currencyVolatility: 24,
   },
   {
-    date: 'May 2025',
+    date: "May 2025",
     equityVolatility: 22,
     bondVolatility: 14,
     currencyVolatility: 16,
@@ -85,31 +85,31 @@ const assetVolatilityData = [
 // Business Vulnerability Data
 const businessVulnerabilityData = [
   {
-    sector: 'Manufacturing',
+    sector: "Manufacturing",
     highDebt: 28,
     lowCash: 35,
     usTradeDependence: 65,
   },
   {
-    sector: 'Services',
+    sector: "Services",
     highDebt: 19,
     lowCash: 22,
     usTradeDependence: 42,
   },
   {
-    sector: 'Retail',
+    sector: "Retail",
     highDebt: 23,
     lowCash: 29,
     usTradeDependence: 38,
   },
   {
-    sector: 'Agriculture',
+    sector: "Agriculture",
     highDebt: 31,
     lowCash: 27,
     usTradeDependence: 51,
   },
   {
-    sector: 'Technology',
+    sector: "Technology",
     highDebt: 15,
     lowCash: 18,
     usTradeDependence: 67,
@@ -118,46 +118,46 @@ const businessVulnerabilityData = [
 
 // Risk assessment data
 const riskAssessmentData = [
-  { subject: 'Market Risk', A: 8, B: 6, fullMark: 10 },
-  { subject: 'Credit Risk', A: 7, B: 5, fullMark: 10 },
-  { subject: 'Funding Risk', A: 5, B: 2, fullMark: 10 },
-  { subject: 'Trade War Impact', A: 9, B: 3, fullMark: 10 },
-  { subject: 'Household Risk', A: 6, B: 5, fullMark: 10 },
-  { subject: 'Business Risk', A: 7, B: 4, fullMark: 10 },
+  { subject: "Market Risk", A: 8, B: 6, fullMark: 10 },
+  { subject: "Credit Risk", A: 7, B: 5, fullMark: 10 },
+  { subject: "Funding Risk", A: 5, B: 2, fullMark: 10 },
+  { subject: "Trade War Impact", A: 9, B: 3, fullMark: 10 },
+  { subject: "Household Risk", A: 6, B: 5, fullMark: 10 },
+  { subject: "Business Risk", A: 7, B: 4, fullMark: 10 },
 ];
 
 // Housing Market Vulnerability Data
 const housingVulnerabilityData = [
   {
-    quarter: 'Q1 2024',
+    quarter: "Q1 2024",
     overvaluation: 65,
     debtService: 72,
     priceAcceleration: 45,
     overbuilding: 38
   },
   {
-    quarter: 'Q2 2024',
+    quarter: "Q2 2024",
     overvaluation: 68,
     debtService: 75,
     priceAcceleration: 50,
     overbuilding: 42
   },
   {
-    quarter: 'Q3 2024',
+    quarter: "Q3 2024",
     overvaluation: 70,
     debtService: 78,
     priceAcceleration: 58,
     overbuilding: 44
   },
   {
-    quarter: 'Q4 2024',
+    quarter: "Q4 2024",
     overvaluation: 73,
     debtService: 82,
     priceAcceleration: 62,
     overbuilding: 48
   },
   {
-    quarter: 'Q1 2025',
+    quarter: "Q1 2025",
     overvaluation: 75,
     debtService: 85,
     priceAcceleration: 65,
@@ -167,48 +167,48 @@ const housingVulnerabilityData = [
 
 // International Financial Contagion Risk Data
 const contagionRiskData = [
-  { name: 'US', value: 35 },
-  { name: 'EU', value: 28 },
-  { name: 'China', value: 22 },
-  { name: 'UK', value: 10 },
-  { name: 'Japan', value: 5 },
+  { name: "US", value: 35 },
+  { name: "EU", value: 28 },
+  { name: "China", value: 22 },
+  { name: "UK", value: 10 },
+  { name: "Japan", value: 5 },
 ];
 
 // Climate Financial Risk Data
 const climateRiskData = [
-  { name: 'Physical Risk', value: 42 },
-  { name: 'Transition Risk', value: 58 },
+  { name: "Physical Risk", value: 42 },
+  { name: "Transition Risk", value: 58 },
 ];
 
 const climateRiskByIndustryData = [
   {
-    industry: 'Energy',
+    industry: "Energy",
     transition: 85,
     physical: 55,
   },
   {
-    industry: 'Utilities',
+    industry: "Utilities",
     transition: 80,
     physical: 70,
   },
   {
-    industry: 'Materials',
+    industry: "Materials",
     transition: 75,
     physical: 65,
   },
   {
-    industry: 'Transportation',
+    industry: "Transportation",
     transition: 70,
     physical: 60,
   },
   {
-    industry: 'Agriculture',
+    industry: "Agriculture",
     transition: 45,
     physical: 90,
   },
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"];
 
 export const MortgageArrearsChart: React.FC = () => {
   return (
@@ -221,9 +221,9 @@ export const MortgageArrearsChart: React.FC = () => {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis dataKey="name" tick={{ fill: '#666', fontSize: 12 }} />
+          <XAxis dataKey="name" tick={{ fill: "#666", fontSize: 12 }} />
           <YAxis
-            tick={{ fill: '#666', fontSize: 12 }}
+            tick={{ fill: "#666", fontSize: 12 }}
             domain={[0, 0.6]}
             tickFormatter={(value) => `${(value * 100).toFixed(1)}%`}
           />
@@ -278,10 +278,10 @@ export const BankCapitalRatioChart: React.FC = () => {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis dataKey="name" tick={{ fill: '#666', fontSize: 12 }} />
+          <XAxis dataKey="name" tick={{ fill: "#666", fontSize: 12 }} />
           <YAxis
-            tick={{ fill: '#666', fontSize: 12 }}
-            domain={[0, 'dataMax + 2']}
+            tick={{ fill: "#666", fontSize: 12 }}
+            domain={[0, "dataMax + 2"]}
             tickFormatter={(value) => `${value.toFixed(1)}%`}
           />
           <Tooltip
@@ -315,8 +315,8 @@ export const AssetVolatilityChart: React.FC = () => {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis dataKey="date" tick={{ fill: '#666', fontSize: 12 }} />
-          <YAxis tick={{ fill: '#666', fontSize: 12 }} />
+          <XAxis dataKey="date" tick={{ fill: "#666", fontSize: 12 }} />
+          <YAxis tick={{ fill: "#666", fontSize: 12 }} />
           <Tooltip />
           <Legend />
           <Line
@@ -363,11 +363,11 @@ export const BusinessVulnerabilityChart: React.FC = () => {
           layout="vertical"
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis type="number" tick={{ fill: '#666', fontSize: 12 }} />
+          <XAxis type="number" tick={{ fill: "#666", fontSize: 12 }} />
           <YAxis
             dataKey="sector"
             type="category"
-            tick={{ fill: '#666', fontSize: 12 }}
+            tick={{ fill: "#666", fontSize: 12 }}
             width={100}
           />
           <Tooltip />
@@ -411,9 +411,9 @@ export const HousingVulnerabilityChart: React.FC = () => {
           <PolarGrid stroke="#e0e0e0" />
           <PolarAngleAxis 
             dataKey="name" 
-            tick={{ fill: '#666', fontSize: 12 }}
+            tick={{ fill: "#666", fontSize: 12 }}
             tickFormatter={(_, index) => {
-              const keys = ['Overvaluation', 'Debt Service', 'Price Acceleration', 'Overbuilding'];
+              const keys = ["Overvaluation", "Debt Service", "Price Acceleration", "Overbuilding"];
               return keys[index];
             }} 
           />
@@ -483,7 +483,7 @@ export const InternationalContagionChart: React.FC = () => {
 };
 
 export const ClimateRiskChart: React.FC = () => {
-  const [view, setView] = useState<'overview'|'industry'>('overview');
+  const [view, setView] = useState<"overview"|"industry">("overview");
   
   return (
     <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
@@ -491,28 +491,28 @@ export const ClimateRiskChart: React.FC = () => {
       
       <div className="flex justify-center space-x-4 mb-4">
         <button
-          onClick={() => setView('overview')}
+          onClick={() => setView("overview")}
           className={`px-3 py-1 text-sm rounded-md ${
-            view === 'overview'
-              ? 'bg-sky-500 text-white'
-              : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+            view === "overview"
+              ? "bg-sky-500 text-white"
+              : "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
           }`}
         >
           Risk Overview
         </button>
         <button
-          onClick={() => setView('industry')}
+          onClick={() => setView("industry")}
           className={`px-3 py-1 text-sm rounded-md ${
-            view === 'industry'
-              ? 'bg-sky-500 text-white'
-              : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+            view === "industry"
+              ? "bg-sky-500 text-white"
+              : "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
           }`}
         >
           By Industry
         </button>
       </div>
       
-      {view === 'overview' ? (
+      {view === "overview" ? (
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -540,8 +540,8 @@ export const ClimateRiskChart: React.FC = () => {
             layout="vertical"
           >
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-            <XAxis type="number" tick={{ fill: '#666', fontSize: 12 }} domain={[0, 100]} />
-            <YAxis dataKey="industry" type="category" tick={{ fill: '#666', fontSize: 12 }} />
+            <XAxis type="number" tick={{ fill: "#666", fontSize: 12 }} domain={[0, 100]} />
+            <YAxis dataKey="industry" type="category" tick={{ fill: "#666", fontSize: 12 }} />
             <Tooltip formatter={(value: any) => [`${value}`, undefined]} />
             <Legend />
             <Bar dataKey="transition" name="Transition Risk" fill="#EA4335" />
@@ -572,11 +572,11 @@ export const RiskAssessmentDashboard: React.FC = () => {
   ];
   
   const pieData = [
-    { name: 'High', value: 25 },
-    { name: 'Medium-High', value: 35 },
-    { name: 'Medium', value: 20 },
-    { name: 'Medium-Low', value: 15 },
-    { name: 'Low', value: 5 },
+    { name: "High", value: 25 },
+    { name: "Medium-High", value: 35 },
+    { name: "Medium", value: 20 },
+    { name: "Medium-Low", value: 15 },
+    { name: "Low", value: 5 },
   ];
   
   return (
@@ -593,13 +593,13 @@ export const RiskAssessmentDashboard: React.FC = () => {
               outerRadius={80}
               fill="#8884d8"
               dataKey="value"
-              label={({name, percent}) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
             >
               {pieData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip formatter={(value) => [`${value}%`, 'Proportion']} />
+            <Tooltip formatter={(value) => [`${value}%`, "Proportion"]} />
           </PieChart>
         </ResponsiveContainer>
         <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center transition-colors">
@@ -613,8 +613,8 @@ export const RiskAssessmentDashboard: React.FC = () => {
         <ResponsiveContainer width="100%" height={250}>
           <RadarChart outerRadius={90} data={riskAssessmentData}>
             <PolarGrid stroke="#e0e0e0" />
-            <PolarAngleAxis dataKey="subject" tick={{ fill: '#666', fontSize: 12 }} />
-            <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: '#666', fontSize: 10 }} />
+            <PolarAngleAxis dataKey="subject" tick={{ fill: "#666", fontSize: 12 }} />
+            <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: "#666", fontSize: 10 }} />
             <Radar
               name="May 2025 (Current)"
               dataKey="A"

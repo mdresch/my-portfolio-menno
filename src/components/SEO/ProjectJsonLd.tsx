@@ -1,8 +1,8 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\components\SEO\ProjectJsonLd.tsx
-'use client';
+"use client";
 
-import React from 'react';
-import { generateProjectStructuredData, ProjectStructuredData } from '@/lib/structured-data';
+import React from "react";
+import { generateProjectStructuredData, ProjectStructuredData } from "@/lib/structured-data";
 
 interface ProjectJsonLdProps {
   project: ProjectStructuredData;
