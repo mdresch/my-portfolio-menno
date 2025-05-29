@@ -18,11 +18,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.x'  # Updated to support Next.js 15.x
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run tests
         run: npm test
@@ -40,14 +40,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.x'  # Updated to support Next.js 15.x
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run ESLint
         run: npm run lint
+        env:
+          CI: true
 
   build:
     name: Build Application
@@ -60,14 +62,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.x'  # Updated to support Next.js 15.x
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Build application
-        run: npm run build
+        run: npm run build --legacy-peer-deps
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
         
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -87,11 +91,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.x'  # Updated to support Next.js 15.x
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+        
+      - name: Setup test environment
+        run: |
+          mkdir -p docs/requirements || { echo "Failed to create docs/requirements directory"; exit 1; }
+          touch docs/requirements/requirements-agent-output.md || { echo "Failed to create requirements-agent-output.md file"; exit 1; }
         
       - name: Run auto-requirements tests
         run: npx jest scripts/auto-requirements.test.js --verbose
