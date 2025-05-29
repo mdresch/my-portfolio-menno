@@ -12,7 +12,12 @@ export async function POST(req: NextRequest) {
     if (!businessProblem || typeof businessProblem !== 'string') {
       return NextResponse.json({ error: 'Missing or invalid businessProblem' }, { status: 400 });
     }
-
+    if (
+      typeof technologyStack !== 'undefined' &&
+      (!Array.isArray(technologyStack) || !technologyStack.every((t) => typeof t === 'string'))
+    ) {
+      return NextResponse.json({ error: 'Invalid technologyStack: must be an array of strings' }, { status: 400 });
+    }
     // Use the GitHub OpenAI model (mocked or real)
     const roles = await getRequirementsFromGithubAI(businessProblem, { includeProcesses: true, technologyStack });
     return NextResponse.json({ roles });

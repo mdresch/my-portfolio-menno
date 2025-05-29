@@ -42,12 +42,8 @@ export async function generateStrategicSections({ businessProblem, technologySta
   try {
     return JSON.parse(rawContent);
   } catch (e) {
-    return {
-      vision: '',
-      mission: '',
-      coreValues: [],
-      purpose: ''
-    };
+    console.error('Error parsing JSON:', e);
+    throw new Error('Failed to parse response content');
   }
 }
 
@@ -104,6 +100,7 @@ export async function generateRequirements({ businessProblem, technologyStack = 
   try {
     return JSON.parse(rawContent);
   } catch (e) {
-    return [];
+    console.error('Error parsing JSON:', e);
+    throw new Error('Failed to parse response content');
   }
 }

@@ -8,22 +8,30 @@ const token = process.env["GITHUB_TOKEN"];
 const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 
+const MOCK_STRATEGIC_SECTIONS = {
+  vision: 'To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
+  mission: 'To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
+  coreValues: [
+    'User empowerment and creativity',
+    'Simplicity and usability',
+    'Openness and integration',
+    'Data privacy and security',
+    'Continuous improvement and innovation'
+  ],
+  purpose: 'To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
+};
+
+// Utility to sanitize log content and prevent log injection
+function sanitizeLogContent(input: string): string {
+  // Remove or encode newlines and control characters
+  return input.replace(/[\r\n\u2028\u2029]+/g, ' ').replace(/[\x00-\x1F\x7F]+/g, '');
+}
+
 export async function getRequirementsFromGithubAI(businessProblem: string, options?: { includeProcesses?: boolean, technologyStack?: string[], requestStrategicSections?: boolean, contextBundle?: string }) {
   if (!token) {
     // fallback to mock if no token
     if (options?.requestStrategicSections) {
-      return {
-        vision: 'To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
-        mission: 'To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
-        coreValues: [
-          'User empowerment and creativity',
-          'Simplicity and usability',
-          'Openness and integration',
-          'Data privacy and security',
-          'Continuous improvement and innovation'
-        ],
-        purpose: 'To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
-      };
+      return MOCK_STRATEGIC_SECTIONS;
     }
     return [
       {
@@ -91,7 +99,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
 
   // Debug: Output raw LLM response to console
   const rawContent = response.body.choices[0].message.content ?? '';
-  console.log('[Requirements Agent] Raw LLM output:', rawContent);
+  console.log('[Requirements Agent] Raw LLM output:', sanitizeLogContent(rawContent));
 
   // Try to parse the model's response as JSON
   try {
@@ -100,18 +108,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
   } catch (e) {
     // fallback to mock if parsing fails
     if (options?.requestStrategicSections) {
-      return {
-        vision: 'To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
-        mission: 'To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
-        coreValues: [
-          'User empowerment and creativity',
-          'Simplicity and usability',
-          'Openness and integration',
-          'Data privacy and security',
-          'Continuous improvement and innovation'
-        ],
-        purpose: 'To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
-      };
+      return MOCK_STRATEGIC_SECTIONS;
     }
     console.warn('[Requirements Agent] Using mock data as fallback: Model response could not be parsed as JSON.');
     return [
