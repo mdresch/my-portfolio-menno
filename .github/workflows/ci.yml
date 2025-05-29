@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run tests
         run: npm test
@@ -44,7 +44,7 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run ESLint
         run: echo "Running ESLint in verbose mode" && npm run lint -- --verbose || (echo "ESLint failed: Showing detailed errors" && npx next lint --verbose)
@@ -64,10 +64,10 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Build application
-        run: npm run build
+        run: npm run build --legacy-peer-deps
         
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -91,7 +91,7 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run auto-requirements tests
         run: npx jest scripts/auto-requirements.test.js --verbose
