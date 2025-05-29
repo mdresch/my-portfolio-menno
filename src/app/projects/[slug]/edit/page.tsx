@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import { ProjectService } from '../../../../lib/api-services';
-import type { Project } from '../../../../types/api';
+import React, { useEffect, useState } from "react";
+import { useRouter, useParams } from "next/navigation";
+import { ProjectService } from "../../../../lib/api-services";
+import type { Project } from "../../../../types/api";
 
 interface ProjectFormProps {
   project: Project;
@@ -14,18 +14,18 @@ interface ProjectFormProps {
 
 const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSubmit, isSaving, error }) => {
   const [title, setTitle] = useState(project.title);
-  const [description, setDescription] = useState(project.description ?? '');
-  const [technologies, setTechnologies] = useState(project.technologies.join(', '));
-  const [imageUrl, setImageUrl] = useState(project.imageUrl ?? '');
-  const [gitHubUrl, setGitHubUrl] = useState(project.gitHubUrl ?? '');
-  const [liveUrl, setLiveUrl] = useState(project.liveUrl ?? '');
+  const [description, setDescription] = useState(project.description ?? "");
+  const [technologies, setTechnologies] = useState(project.technologies.join(", "));
+  const [imageUrl, setImageUrl] = useState(project.imageUrl ?? "");
+  const [gitHubUrl, setGitHubUrl] = useState(project.gitHubUrl ?? "");
+  const [liveUrl, setLiveUrl] = useState(project.liveUrl ?? "");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({
       title,
       description,
-      technologies: technologies.split(',').map((t) => t.trim()).filter(Boolean),
+      technologies: technologies.split(",").map((t) => t.trim()).filter(Boolean),
       imageUrl,
       gitHubUrl,
       liveUrl,
@@ -91,14 +91,14 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSubmit, isSaving, 
         className="bg-blue-600 text-white rounded px-4 py-2"
         disabled={isSaving}
       >
-        {isSaving ? 'Saving...' : 'Save Changes'}
+        {isSaving ? "Saving..." : "Save Changes"}
       </button>
     </form>
   );
 };
 
 const normalizeSlug = (title: string) =>
-  title.toLowerCase().replace(/\s+/g, '-');
+  title.toLowerCase().replace(/\s+/g, "-");
 
 const EditProjectPage: React.FC = () => {
   const params = useParams<{ slug: string }>();
@@ -115,9 +115,9 @@ const EditProjectPage: React.FC = () => {
           (p) => normalizeSlug(p.title) === params.slug
         );
         setProject(found ?? null);
-        if (!found) setError('Project not found.');
+        if (!found) setError("Project not found.");
       })
-      .catch(() => setError('Failed to load project.'));
+      .catch(() => setError("Failed to load project."));
   }, [params.slug]);
 
   const handleUpdate = async (updated: Partial<Project>) => {
@@ -128,7 +128,7 @@ const EditProjectPage: React.FC = () => {
       await ProjectService.update(project.id, updated);
       router.push(`/projects/${params.slug}`);
     } catch (e: any) {
-      setError(e.message || 'Failed to update project.');
+      setError(e.message || "Failed to update project.");
     } finally {
       setIsSaving(false);
     }

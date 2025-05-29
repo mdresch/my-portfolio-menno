@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { initializeUserPreferences, recordPostRead } from '@/lib/userPreferences';
-import { getRecommendations } from '@/lib/recommendationEngine';
-import type { BlogPost } from '@/lib/markdown';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { initializeUserPreferences, recordPostRead } from "@/lib/userPreferences";
+import { getRecommendations } from "@/lib/recommendationEngine";
+import type { BlogPost } from "@/lib/markdown";
 
 interface RecommendedPostsProps {
   currentPostId?: string;
-  allPosts: Omit<BlogPost, 'content'>[];
+  allPosts: Omit<BlogPost, "content">[];
 }
 
 export default function RecommendedPosts({ currentPostId, allPosts }: RecommendedPostsProps) {
-  const [recommendations, setRecommendations] = useState<Omit<BlogPost, 'content'>[]>([]);
+  const [recommendations, setRecommendations] = useState<Omit<BlogPost, "content">[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Only run on client-side
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
     
     // Generate recommendations based on user preferences
     const userPrefs = initializeUserPreferences();
@@ -63,10 +63,10 @@ export default function RecommendedPosts({ currentPostId, allPosts }: Recommende
               </h4>
               <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
                 <time>
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
                   })}
                 </time>
                 <span>•</span>

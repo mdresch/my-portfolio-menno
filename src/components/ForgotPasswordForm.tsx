@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useAuth } from '../lib/auth';
-import Link from 'next/link';
+import { useState } from "react";
+import { useAuth } from "../lib/auth";
+import Link from "next/link";
 
 export default function ForgotPasswordForm() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -20,10 +20,10 @@ export default function ForgotPasswordForm() {
     
     try {
       await resetPassword(email);
-      setSuccess('Password reset email sent! Check your inbox for instructions.');
-      setEmail('');
+      setSuccess("Password reset email sent! Check your inbox for instructions.");
+      setEmail("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send reset email. Please try again.');
+      setError(err instanceof Error ? err.message : "Failed to send reset email. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -69,13 +69,13 @@ export default function ForgotPasswordForm() {
           disabled={isSubmitting}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50"
         >
-          {isSubmitting ? 'Sending...' : 'Send Reset Email'}
+          {isSubmitting ? "Sending..." : "Send Reset Email"}
         </button>
       </form>
       
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Remember your password?{' '}
+          Remember your password?{" "}
           <Link href="/login" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium">
             Back to login
           </Link>

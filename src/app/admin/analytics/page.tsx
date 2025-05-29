@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import BlogCrossPostAnalytics from '../../../components/admin/BlogCrossPostAnalytics';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import BlogCrossPostAnalytics from "../../../components/admin/BlogCrossPostAnalytics";
 
 export default function AnalyticsDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -10,11 +10,11 @@ export default function AnalyticsDashboardPage() {
 
   useEffect(() => {
     // Check if user is authenticated
-    const adminAuth = localStorage.getItem('adminAuth');
+    const adminAuth = localStorage.getItem("adminAuth");
     
     if (!adminAuth) {
       // Redirect to admin login if not authenticated
-      window.location.href = '/admin';
+      window.location.href = "/admin";
       return;
     }
     

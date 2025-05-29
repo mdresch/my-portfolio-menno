@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -9,8 +9,8 @@ import {
   Filler,
   Tooltip,
   Legend
-} from 'chart.js';
-import { Radar } from 'react-chartjs-2';
+} from "chart.js";
+import { Radar } from "react-chartjs-2";
 
 // Register Chart.js components
 ChartJS.register(
@@ -38,7 +38,7 @@ interface ComplexityRadarChartProps {
 const ComplexityRadarChart: React.FC<ComplexityRadarChartProps> = ({ countryData }) => {
   // Prepare data for the radar chart
   const chartData = {
-    labels: ['Regulatory Complexity', 'Tax Complexity', 'Corporate Governance', 'Employment Compliance', 'Overall Complexity'],
+    labels: ["Regulatory Complexity", "Tax Complexity", "Corporate Governance", "Employment Compliance", "Overall Complexity"],
     datasets: [
       {
         label: `${countryData.country} Complexity Scores`,
@@ -49,13 +49,13 @@ const ComplexityRadarChart: React.FC<ComplexityRadarChartProps> = ({ countryData
           countryData.employment,
           countryData.overall,
         ],
-        backgroundColor: 'rgba(53, 162, 235, 0.2)',
-        borderColor: 'rgba(53, 162, 235, 1)',
+        backgroundColor: "rgba(53, 162, 235, 0.2)",
+        borderColor: "rgba(53, 162, 235, 1)",
         borderWidth: 2,
-        pointBackgroundColor: 'rgba(53, 162, 235, 1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(53, 162, 235, 1)',
+        pointBackgroundColor: "rgba(53, 162, 235, 1)",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "rgba(53, 162, 235, 1)",
       }
     ],
   };
@@ -71,19 +71,19 @@ const ComplexityRadarChart: React.FC<ComplexityRadarChartProps> = ({ countryData
         suggestedMax: 100,
         ticks: {
           stepSize: 20,
-          backdropColor: 'transparent',
+          backdropColor: "transparent",
         },
         pointLabels: {
           font: {
             size: 12,
-            weight: 'bold' as const,
+            weight: "bold" as const,
           },
         },
       },
     },
     plugins: {
       legend: {
-        position: 'bottom' as const,
+        position: "bottom" as const,
         labels: {
           boxWidth: 15,
           font: {
@@ -94,7 +94,7 @@ const ComplexityRadarChart: React.FC<ComplexityRadarChartProps> = ({ countryData
       tooltip: {
         callbacks: {
           label: function(context: any) {
-            const label = context.dataset.label || '';
+            const label = context.dataset.label || "";
             const value = context.raw || 0;
             return `${label}: ${value}/100`;
           },

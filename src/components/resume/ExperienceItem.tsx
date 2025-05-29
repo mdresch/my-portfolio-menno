@@ -1,5 +1,5 @@
-import React from 'react';
-import { WorkExperience } from '@/data/resume';
+import React from "react";
+import { WorkExperience } from "@/data/resume";
 
 interface ExperienceItemProps {
   experience: WorkExperience;
@@ -11,7 +11,7 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
       <div className="flex flex-col sm:flex-row justify-between mb-1">
         <h3 className="font-semibold text-gray-800">{experience.position}</h3>
         <span className="text-sm text-gray-600">
-          {formatDate(experience.startDate)} – {experience.endDate ? formatDate(experience.endDate) : 'Present'}
+          {formatDate(experience.startDate)} – {experience.endDate ? formatDate(experience.endDate) : "Present"}
         </span>
       </div>
       
@@ -48,8 +48,8 @@ export default function ExperienceItem({ experience }: ExperienceItemProps) {
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    month: 'short', 
-    year: 'numeric' 
+  return date.toLocaleDateString("en-US", { 
+    month: "short", 
+    year: "numeric" 
   });
 }

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { recordPostRead } from '@/lib/userPreferences';
+import { useEffect, useState } from "react";
+import { recordPostRead } from "@/lib/userPreferences";
 
 interface ReadingTrackerProps {
   postId: string;
@@ -17,7 +17,7 @@ export default function ReadingTracker({ postId, categories }: ReadingTrackerPro
   const [maxScrollPercentage, setMaxScrollPercentage] = useState(0);
   
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
     
     // Initial recording of article view
     recordPostRead(postId, categories, 0, 0);
@@ -41,11 +41,11 @@ export default function ReadingTracker({ postId, categories }: ReadingTrackerPro
     };
     
     // Track scrolling to determine reading progress
-    window.addEventListener('scroll', calculateScrollPercentage);
+    window.addEventListener("scroll", calculateScrollPercentage);
     
     // Save reading data when user leaves
     return () => {
-      window.removeEventListener('scroll', calculateScrollPercentage);
+      window.removeEventListener("scroll", calculateScrollPercentage);
       
       // Calculate reading time in seconds
       const readingTime = Math.floor((Date.now() - startTime) / 1000);

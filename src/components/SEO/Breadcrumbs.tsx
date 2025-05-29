@@ -1,9 +1,9 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\components\SEO\Breadcrumbs.tsx
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { generateBreadcrumbStructuredData } from '../../lib/structured-data';
+import React from "react";
+import Link from "next/link";
+import { generateBreadcrumbStructuredData } from "../../lib/structured-data";
 
 interface BreadcrumbItem {
   name: string;
@@ -22,11 +22,11 @@ interface BreadcrumbsProps {
  */
 export default function Breadcrumbs({ 
   items, 
-  className = '', 
+  className = "", 
   showStructuredData = true 
 }: BreadcrumbsProps) {
   // Define base URL - should match the one in layout.tsx
-  const baseUrl = 'https://my-portfolio-menno.vercel.app/';
+  const baseUrl = "https://my-portfolio-menno.vercel.app/";
 
   // Generate structured data
   const breadcrumbJsonLd = generateBreadcrumbStructuredData(items, baseUrl);

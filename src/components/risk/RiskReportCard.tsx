@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import PlaceholderImage from '../ui/PlaceholderImage';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import PlaceholderImage from "../ui/PlaceholderImage";
 
 interface RiskReportCardProps {
   title: string;
@@ -33,10 +33,10 @@ export default function RiskReportCard({
   return (
     <div className={`bg-white dark:bg-neutral-800 rounded-lg overflow-hidden shadow-md border ${
       isActive 
-        ? 'border-blue-300 dark:border-blue-600' 
-        : 'border-gray-200 dark:border-gray-700'
+        ? "border-blue-300 dark:border-blue-600" 
+        : "border-gray-200 dark:border-gray-700"
     } hover:shadow-lg transition-all duration-300 h-full flex flex-col`}>
-      <Link href={!isComingSoon ? href : "#"} className={isComingSoon ? 'cursor-default' : ''}>
+      <Link href={!isComingSoon ? href : "#"} className={isComingSoon ? "cursor-default" : ""}>
         <div className="relative h-48">
           {!usePlaceholder && imageUrl ? (
             <>

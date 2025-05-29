@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface CrossPostPageProps {
   params: {
@@ -27,13 +27,13 @@ interface CrossPostResult {
 export default function CrossPostPage({ params }: CrossPostPageProps) {
   // Unwrap params if it's a Promise (Next.js 14+)
   // @ts-expect-error: Next.js migration compatibility
-  const unwrappedParams = typeof params.then === 'function' ? React.use(params) : params;
+  const unwrappedParams = typeof params.then === "function" ? React.use(params) : params;
   const { slug } = (unwrappedParams as { slug: string });
   
-  const [platform, setPlatform] = useState('hashnode');
+  const [platform, setPlatform] = useState("hashnode");
   const [post, setPost] = useState<BlogPost | null>(null);
-  const [hashnodeToken, setHashnodeToken] = useState('');
-  const [devtoKey, setDevtoKey] = useState('');
+  const [hashnodeToken, setHashnodeToken] = useState("");
+  const [devtoKey, setDevtoKey] = useState("");
   const [isCrossPosting, setIsCrossPosting] = useState(false);
   const [result, setResult] = useState<CrossPostResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,9 +41,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
   const [showDebugPanel, setShowDebugPanel] = useState(false);
   
   useEffect(() => {
-    if (typeof window === 'undefined') return; // Prevent SSR localStorage access
+    if (typeof window === "undefined") return; // Prevent SSR localStorage access
     // Load saved API keys
-    const savedHashnodeToken = localStorage.getItem('hashnodeToken');
+    const savedHashnodeToken = localStorage.getItem("hashnodeToken");
     
     if (savedHashnodeToken) {
       // Your logic for handling savedHashnodeToken
@@ -54,8 +54,8 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
       setError(null);
       try {
         let token: string | null = null;
-        if (typeof window !== 'undefined') {
-          token = localStorage.getItem('githubToken');
+        if (typeof window !== "undefined") {
+          token = localStorage.getItem("githubToken");
         }
         const endpoint = token
           ? `/api/github-posts?slug=${slug}&token=${token}`
@@ -71,7 +71,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
         const postData = await response.json();
         setPost(postData);
       } catch (err: unknown) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch post');
+        setError(err instanceof Error ? err.message : "Failed to fetch post");
       } finally {
         setIsLoading(false);
       }
@@ -82,24 +82,24 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
     
   // Handle cross-posting
   const handleCrossPost = async () => {
-    if (typeof window === 'undefined') return; // Prevent SSR localStorage access
+    if (typeof window === "undefined") return; // Prevent SSR localStorage access
     // Get the appropriate token based on platform
     let token: string | null = null;
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       token =
-        platform === 'hashnode'
-          ? hashnodeToken || localStorage.getItem('hashnodeToken')
-          : devtoKey || localStorage.getItem('devtoKey');
+        platform === "hashnode"
+          ? hashnodeToken || localStorage.getItem("hashnodeToken")
+          : devtoKey || localStorage.getItem("devtoKey");
     } else {
-      token = platform === 'hashnode' ? hashnodeToken : devtoKey;
+      token = platform === "hashnode" ? hashnodeToken : devtoKey;
     }
     if (!token) {
-      alert(`Please enter your ${platform === 'hashnode' ? 'Hashnode API token' : 'DEV.to API key'}`);
+      alert(`Please enter your ${platform === "hashnode" ? "Hashnode API token" : "DEV.to API key"}`);
       return;
     }    // --- URL Construction Fix ---
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
     // Ensure the URL is properly formed with protocol
-    const baseUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
+    const baseUrl = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`;
     const originalArticleURL = `${baseUrl}/blog/${slug}`;
     
     try {
@@ -115,14 +115,14 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
     setResult(null);
 
     try {
-      const endpoint = platform === 'hashnode' ? '/api/hashnode-crosspost' : '/api/devto-crosspost';
+      const endpoint = platform === "hashnode" ? "/api/hashnode-crosspost" : "/api/devto-crosspost";
       
         
       console.log(`Cross-posting to ${platform} via ${endpoint}`);
       const response = await fetch(endpoint, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           post, // Sending the post object
@@ -135,17 +135,17 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
       try {
         responseData = await response.json();
       } catch (jsonError) {
-        console.error('Failed to parse JSON response:', jsonError);
+        console.error("Failed to parse JSON response:", jsonError);
         throw new Error(`Failed to parse response: ${response.status}`);
       }
       
       if (!response.ok) throw new Error(responseData.error || `Failed to cross-post: ${response.status}`);
 
-        setResult(responseData);
+      setResult(responseData);
     } catch (error) {
       // Ensure error is a string for setResult
       const errorMsg = error instanceof Error ? error.message : String(error);
-      setResult({ error: errorMsg || 'An error occurred during cross-posting' });
+      setResult({ error: errorMsg || "An error occurred during cross-posting" });
     } finally {
       setIsCrossPosting(false);
     }
@@ -168,15 +168,15 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
         <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>          
-        <p>{error || 'Post not found'}</p>
+        <p>{error || "Post not found"}</p>
         <Link href="/admin" className="text-blue-600 hover:underline mt-4 inline-block">
           Back to Admin
         </Link>
-        {process.env.NODE_ENV !== 'production' && (
+        {process.env.NODE_ENV !== "production" && (
           <div className="mt-4 p-4 bg-gray-100 rounded border text-xs font-mono">
             <h3 className="font-medium mb-2">Debug Info:</h3>
             <p>Slug: {slug}</p>
-            <p>GitHub Token Available: {localStorage.getItem('githubToken') ? 'Yes' : 'No'}</p>
+            <p>GitHub Token Available: {localStorage.getItem("githubToken") ? "Yes" : "No"}</p>
             {/* <div className="mt-2">
               <button
                 onClick={async () => {
@@ -198,9 +198,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                 Test API Endpoints
               </button>
             </div> */}
-            </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
     );
   }
         
@@ -223,22 +223,22 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
           <div className="flex space-x-4">
             <button
               type="button"
-              onClick={() => setPlatform('hashnode')}
+              onClick={() => setPlatform("hashnode")}
               className={`px-4 py-2 rounded-md ${
-                platform === 'hashnode'
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                platform === "hashnode"
+                  ? "bg-purple-600 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
               Hashnode
             </button>
             <button
               type="button"
-              onClick={() => setPlatform('devto')}
+              onClick={() => setPlatform("devto")}
               className={`px-4 py-2 rounded-md ${
-                platform === 'devto'
-                  ? 'bg-gray-800 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                platform === "devto"
+                  ? "bg-gray-800 text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
               DEV.to
@@ -248,23 +248,23 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
         
         <form onSubmit={(e) => e.preventDefault()} className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            {platform === 'hashnode' ? 'Hashnode Token' : 'DEV.to API Key'}
+            {platform === "hashnode" ? "Hashnode Token" : "DEV.to API Key"}
           </label>
           <input
             type="password"
-            value={platform === 'hashnode' ? hashnodeToken : devtoKey}
-            onChange={(e) => platform === 'hashnode' 
+            value={platform === "hashnode" ? hashnodeToken : devtoKey}
+            onChange={(e) => platform === "hashnode" 
               ? setHashnodeToken(e.target.value) 
               : setDevtoKey(e.target.value)
             }
             autoComplete="new-password"
-            placeholder={`Enter your ${platform === 'hashnode' ? 'Hashnode token' : 'DEV.to API key'}`}
+            placeholder={`Enter your ${platform === "hashnode" ? "Hashnode token" : "DEV.to API key"}`}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
           <p className="mt-1 text-sm text-gray-500">
-            {platform === 'hashnode' 
-              ? 'You can find your Hashnode token in your Hashnode account settings.' 
-              : 'You can find your DEV.to API key in your DEV.to account settings.'}
+            {platform === "hashnode" 
+              ? "You can find your Hashnode token in your Hashnode account settings." 
+              : "You can find your DEV.to API key in your DEV.to account settings."}
           </p>
         </form>
         
@@ -273,7 +273,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
           <div className="border rounded-md p-4 bg-gray-50">
             <h3 className="font-medium">{post?.title}</h3>
             <p className="text-sm text-gray-500 mt-1">
-              {post?.date ? new Date(post.date).toLocaleDateString() : ''}
+              {post?.date ? new Date(post.date).toLocaleDateString() : ""}
             </p>
             {post?.excerpt && (
               <p className="text-sm mt-3">{post.excerpt}</p>
@@ -296,19 +296,19 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
             disabled={isCrossPosting}
             className={`px-5 py-3 rounded-md text-white font-medium ${
               isCrossPosting
-                ? 'bg-blue-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
+                ? "bg-blue-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
-            {isCrossPosting ? 'Posting...' : `Post to ${platform === 'hashnode' ? 'Hashnode' : 'DEV.to'}`}
+            {isCrossPosting ? "Posting..." : `Post to ${platform === "hashnode" ? "Hashnode" : "DEV.to"}`}
           </button>
         </div>
         
         {result && (
           <div className={`mt-6 p-4 rounded-md ${
             result.error 
-              ? 'bg-red-50 border border-red-200 text-red-700' 
-              : 'bg-green-50 border border-green-200 text-green-700'
+              ? "bg-red-50 border border-red-200 text-red-700" 
+              : "bg-green-50 border border-green-200 text-green-700"
           }`}>
             {result.error ? (
               <p>Error: {result.error}</p>
@@ -330,13 +330,13 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
           </div>
         )}
 
-        {process.env.NODE_ENV !== 'production' && (
+        {process.env.NODE_ENV !== "production" && (
           <div className="mt-8 border-t pt-4">
             <button 
               onClick={() => setShowDebugPanel(!showDebugPanel)}
               className="text-sm text-gray-500 underline"
             >
-              {showDebugPanel ? 'Hide' : 'Show'} Debug Panel
+              {showDebugPanel ? "Hide" : "Show"} Debug Panel
             </button>
             
             {showDebugPanel && (
@@ -347,33 +347,33 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                   <button
                     onClick={async () => {
                       try {
-                        const token = localStorage.getItem('hashnodeToken');
+                        const token = localStorage.getItem("hashnodeToken");
                         if (!token) {
-                          alert('Please enter a Hashnode token first');
+                          alert("Please enter a Hashnode token first");
                           return;
                         }
                         
-                        const response = await fetch('/api/hashnode-schema', {
-                          headers: { 'Authorization': token }
+                        const response = await fetch("/api/hashnode-schema", {
+                          headers: { "Authorization": token }
                         });
                         const data = await response.json();
-                        console.log('Hashnode Schema:', data);
+                        console.log("Hashnode Schema:", data);
                         
                         // Look for specific types
-                        const createDraftType = data.types.find((t: { name: string }) => t.name === 'CreateDraftPayload');
-                        const publishDraftType = data.types.find((t: { name: string }) => t.name === 'PublishDraftPayload');
+                        const createDraftType = data.types.find((t: { name: string }) => t.name === "CreateDraftPayload");
+                        const publishDraftType = data.types.find((t: { name: string }) => t.name === "PublishDraftPayload");
                         
                         if (createDraftType) {
-                          console.log('CreateDraftPayload fields:', createDraftType.fields);
+                          console.log("CreateDraftPayload fields:", createDraftType.fields);
                         }
                         
                         if (publishDraftType) {
-                          console.log('PublishDraftPayload fields:', publishDraftType.fields);
+                          console.log("PublishDraftPayload fields:", publishDraftType.fields);
                         }
                         
-                        alert('Schema data logged to console');
+                        alert("Schema data logged to console");
                       } catch (e: unknown) {
-                        console.error('Schema fetch error:', e);
+                        console.error("Schema fetch error:", e);
                         alert(`Error: ${e instanceof Error ? e.message : String(e)}`);
                       }
                     }}
@@ -388,9 +388,9 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                   <button
                     onClick={async () => {
                       try {
-                        const token = localStorage.getItem('hashnodeToken');
+                        const token = localStorage.getItem("hashnodeToken");
                         if (!token) {
-                          alert('Please enter a Hashnode token first');
+                          alert("Please enter a Hashnode token first");
                           return;
                         }
                         
@@ -408,14 +408,14 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                           }
                         `;
                         
-                        const response = await fetch('/api/hashnode-test', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
+                        const response = await fetch("/api/hashnode-test", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ query: testQuery, token })
                         });
                         
                         const data = await response.json();
-                        console.log('Test create draft response:', data);
+                        console.log("Test create draft response:", data);
                         
                         if (data.errors) {
                           alert(`Test failed: ${data.errors[0].message}`);
@@ -423,7 +423,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                           alert(`Test passed! Draft ID: ${data.data.createDraft.draft.id}`);
                         }
                       } catch (e: unknown) {
-                        console.error('Test error:', e);
+                        console.error("Test error:", e);
                         alert(`Error: ${e instanceof Error ? e.message : String(e)}`);
                       }
                     }}
@@ -457,13 +457,13 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                   <div className="bg-gray-100 p-2 rounded mb-2">
                     {post?.categories?.map((category: string, index: number) => {
                       const slug = category.toLowerCase()
-                        .replace(/\s+/g, '-')
-                        .replace(/\./g, '-')
-                        .replace(/[^a-z0-9-]/g, '');
+                        .replace(/\s+/g, "-")
+                        .replace(/\./g, "-")
+                        .replace(/[^a-z0-9-]/g, "");
                       const isValid = /^[a-z0-9-]{1,250}$/.test(slug);
                       return (
-                        <div key={index} className={`text-sm mb-1 ${isValid ? 'text-green-600' : 'text-red-600'}`}>
-                          {category} → {slug} {isValid ? '✓' : '✗'}
+                        <div key={index} className={`text-sm mb-1 ${isValid ? "text-green-600" : "text-red-600"}`}>
+                          {category} → {slug} {isValid ? "✓" : "✗"}
                         </div>
                       );
                     })}
@@ -474,7 +474,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
           </div>
         )}
 
-        {process.env.NODE_ENV !== 'production' && (
+        {process.env.NODE_ENV !== "production" && (
           <div className="mt-8 border-t pt-4">
             <h3 className="text-sm font-medium text-gray-700 mb-2">Debug Information</h3>
             <div className="bg-gray-50 p-4 rounded text-xs font-mono overflow-auto max-h-60">
@@ -485,24 +485,24 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                 <strong>Post Slug:</strong> {slug}
               </div>
               <div>
-                <strong>Has Token:</strong> {(platform === 'hashnode' ? hashnodeToken : devtoKey) ? 'Yes' : 'No'}
+                <strong>Has Token:</strong> {(platform === "hashnode" ? hashnodeToken : devtoKey) ? "Yes" : "No"}
               </div>
               <div className="mt-2">
                 <button 
-                  onClick={() => console.log('Post data:', post)}
+                  onClick={() => console.log("Post data:", post)}
                   className="px-2 py-1 bg-gray-200 rounded mr-2"
                 >
                   Log Post Data
                 </button>
                 <button
                   onClick={async () => {
-                    const apiUrl = platform === 'hashnode'
-                      ? 'https://gql.hashnode.com'
-                      : 'https://dev.to/api/articles/me/published'; // Use a DEV.to endpoint requiring auth
+                    const apiUrl = platform === "hashnode"
+                      ? "https://gql.hashnode.com"
+                      : "https://dev.to/api/articles/me/published"; // Use a DEV.to endpoint requiring auth
 
-                    const token = platform === 'hashnode'
-                      ? localStorage.getItem('hashnodeToken')
-                      : localStorage.getItem('devtoKey');
+                    const token = platform === "hashnode"
+                      ? localStorage.getItem("hashnodeToken")
+                      : localStorage.getItem("devtoKey");
 
                     if (!token) {
                       alert(`Please enter a ${platform} token/key first.`);
@@ -511,23 +511,23 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
 
                     try {
                       let testResponse;
-                      if (platform === 'hashnode') {
+                      if (platform === "hashnode") {
                         // Use a simple GraphQL query for Hashnode test
-                        const testQuery = { query: '{ __typename }' }; // Basic introspection query
+                        const testQuery = { query: "{ __typename }" }; // Basic introspection query
                         testResponse = await fetch(apiUrl, {
-                          method: 'POST',
+                          method: "POST",
                           headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': token
+                            "Content-Type": "application/json",
+                            "Authorization": token
                           },
                           body: JSON.stringify(testQuery)
                         });
                       } else {
                         // Use a simple GET request for DEV.to test (requires API key)
                         testResponse = await fetch(apiUrl, {
-                          method: 'GET',
+                          method: "GET",
                           headers: {
-                            'api-key': token
+                            "api-key": token
                           }
                         });
                       }
@@ -537,7 +537,7 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                       let isSuccess = testResponse.ok;
                       let responseBody: { errors?: unknown } = {}; // Default empty object with errors optional
 
-                      if (platform === 'hashnode') {
+                      if (platform === "hashnode") {
                         try {
                           responseBody = await testResponse.json();
                           if (responseBody.errors) {
@@ -554,8 +554,8 @@ export default function CrossPostPage({ params }: CrossPostPageProps) {
                       }
 
                       alert(
-                        `Test connection to ${platform} API: ${isSuccess ? 'Success' : 'Failed'} (${testResponse.status})` +
-                        `${(platform === 'hashnode' && responseBody.errors) ? ' - Check console for GraphQL errors.' : ''}`
+                        `Test connection to ${platform} API: ${isSuccess ? "Success" : "Failed"} (${testResponse.status})` +
+                        `${(platform === "hashnode" && responseBody.errors) ? " - Check console for GraphQL errors." : ""}`
                       );
 
                     } catch (e: unknown) {

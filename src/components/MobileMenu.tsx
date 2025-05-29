@@ -1,9 +1,9 @@
 "use client"
 
-import React from 'react';
-import Link from 'next/link';
-import { DarkModeToggle } from './NavigationMenuDemo';
-import { ComponentItem } from '@/types/navigation';
+import React from "react";
+import Link from "next/link";
+import { DarkModeToggle } from "./NavigationMenuDemo";
+import { ComponentItem } from "@/types/navigation";
 
 // Icon component with proper return type
 function ChevronIcon({ isOpen }: { isOpen: boolean }): React.ReactElement {
@@ -13,7 +13,7 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }): React.ReactElement {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
-      className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+      className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
     >
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
     </svg>
@@ -64,7 +64,7 @@ function MobileAccordion({ title, children }: MobileAccordionProps) {
       </button>
       <div 
         className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="pl-4 mt-2 space-y-2">
@@ -81,7 +81,7 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
       {/* Backdrop */}
       <div 
         className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
-          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
       />
@@ -89,7 +89,7 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
       {/* Content */}
       <div 
         className={`fixed top-16 left-0 right-0 z-50 w-full md:hidden bg-white dark:bg-gray-900 shadow-lg rounded-b-lg border-t dark:border-gray-700 overflow-auto max-h-[calc(100vh-4rem)] transition-all duration-300 ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
         <nav className="p-4">

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import TextareaAutosize from 'react-textarea-autosize';
-import styles from './page.module.css';
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import TextareaAutosize from "react-textarea-autosize";
+import styles from "./page.module.css";
 
 const SYSTEM_PROMPT = "You are an assistant for Menno's portfolio website. Always relate your answers to Menno, his skills, projects, and the content found on his portfolio pages. If possible, referece relevant sections or facts about Menno.";
 
@@ -58,7 +58,7 @@ const CopyButton = ({ text }: { text: string }) => {
 };
 
 // Metadata display component
-const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
+const MetadataDisplay = ({ metadata }: { metadata?: Message["metadata"] }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   if (!metadata) return null;
@@ -70,7 +70,7 @@ const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
         className="text-xs text-gray-500 hover:text-gray-700 flex items-center"
       >
         <svg 
-          className={`w-3 h-3 mr-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+          className={`w-3 h-3 mr-1 transition-transform ${isExpanded ? "rotate-90" : ""}`} 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -121,37 +121,37 @@ type Message = {
 };
 
 export default function ChatPage() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
     setLoading(true);
-    setError('');
+    setError("");
     const userMsg = input;
-    setInput('');
+    setInput("");
     const timestamp = Date.now();
     setMessages((msgs) => [
       ...msgs,
-      { user: userMsg, ai: '', timestamp }
+      { user: userMsg, ai: "", timestamp }
     ]);
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           message: userMsg,
           systemPrompt: SYSTEM_PROMPT,
         }),
       });
-      if (!res.ok) throw new Error('AI response failed');
+      if (!res.ok) throw new Error("AI response failed");
       const data = await res.json();      setMessages((msgs) =>
         msgs.map((msg, i) =>
           i === msgs.length - 1
@@ -163,17 +163,17 @@ export default function ChatPage() {
       setMessages((msgs) =>
         msgs.map((msg, i) =>
           i === msgs.length - 1
-            ? { ...msg, ai: 'Error: Could not get AI response.', error: true, timestamp: Date.now() }
+            ? { ...msg, ai: "Error: Could not get AI response.", error: true, timestamp: Date.now() }
             : msg
         )
       );
-      setError('Something went wrong. Please try again.');
+      setError("Something went wrong. Please try again.");
     }
     setLoading(false);
   };
 
   const formatTime = (ts: number) =>
-    new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    new Date(ts).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
@@ -214,8 +214,8 @@ export default function ChatPage() {
                     </div>                    <div
                       className={`mt-1 rounded-lg px-4 py-2 max-w-md whitespace-pre-wrap break-words shadow-md ${
                         msg.error
-                          ? 'bg-red-100 text-red-700 border border-red-300'
-                          : 'bg-gray-200 text-gray-900 border border-gray-200'
+                          ? "bg-red-100 text-red-700 border border-red-300"
+                          : "bg-gray-200 text-gray-900 border border-gray-200"
                       }`}
                     >
                       <ReactMarkdown>{msg.ai}</ReactMarkdown>
@@ -247,7 +247,7 @@ export default function ChatPage() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => {
-                if (e.key === 'Enter' && !e.shiftKey && !loading) {
+                if (e.key === "Enter" && !e.shiftKey && !loading) {
                   e.preventDefault();
                   sendMessage();
                 }

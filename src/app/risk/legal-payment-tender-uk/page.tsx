@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { DigitalPaymentChart, SecurityFeaturesChart, CounterfeitNotesChart, BanknoteDenominationChart, StrategicRoadmap } from '../../../components/risk/PaymentTenderCharts';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { DigitalPaymentChart, SecurityFeaturesChart, CounterfeitNotesChart, BanknoteDenominationChart, StrategicRoadmap } from "../../../components/risk/PaymentTenderCharts";
 
 export default function LegalPaymentTenderUKPage() {
   return (

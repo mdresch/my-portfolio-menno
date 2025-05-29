@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { BlogPostFile } from '@/types/github';
-import { FiExternalLink, FiCheckCircle, FiXCircle, FiInfo, FiCopy } from 'react-icons/fi';
-import { DevToApiKeyManager, ApiKeyStatus } from '@/lib/devto/api-key';
-import { ReactNode } from 'react';
+import { useState, useEffect } from "react";
+import { BlogPostFile } from "@/types/github";
+import { FiExternalLink, FiCheckCircle, FiXCircle, FiInfo, FiCopy } from "react-icons/fi";
+import { DevToApiKeyManager, ApiKeyStatus } from "@/lib/devto/api-key";
+import { ReactNode } from "react";
 
 interface DevToPublisherProps {
   post: BlogPostFile;
@@ -54,15 +54,15 @@ const ApiKeyStatusIndicator = ({ status, onTest, onClear }: ApiKeyStatusProps) =
 
 export default function DevToPublisher({ post }: DevToPublisherProps) {
   const [isPublishing, setIsPublishing] = useState(false);
-  const [publishedUrl, setPublishedUrl] = useState('');
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState<string | JSX.Element>('');
-  const [apiKey, setApiKey] = useState('');
+  const [publishedUrl, setPublishedUrl] = useState("");
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState<string | JSX.Element>("");
+  const [apiKey, setApiKey] = useState("");
   const [showApiForm, setShowApiForm] = useState(false);
   const [apiKeyStatus, setApiKeyStatus] = useState<ApiKeyStatus | null>(null);
 
   // Get the site's domain for canonical URL
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://my-portfolio-menno.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://my-portfolio-menno.vercel.app";
 
   useEffect(() => {
     initApiKeyStatus();
@@ -81,7 +81,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
   const handleApiKeySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!apiKey) {
-      setError('API key is required');
+      setError("API key is required");
       return;
     }
 
@@ -92,39 +92,39 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
         await initApiKeyStatus();
         setShowApiForm(false);
       } else {
-        setError(result.error || 'Invalid API key');
+        setError(result.error || "Invalid API key");
       }
     } catch (error) {
-      setError('Error testing API key connection');
+      setError("Error testing API key connection");
     }
   };
 
   const handleTestApiKey = async () => {
     if (!apiKey) {
-      setError('API key is required');
+      setError("API key is required");
       return;
     }
 
     try {
       const result = await DevToApiKeyManager.testApiKey(apiKey);
       if (result.isValid) {
-        setError('');
-        setSuccessMessage('Successfully connected to DEV.to');
+        setError("");
+        setSuccessMessage("Successfully connected to DEV.to");
       } else {
-        setError(result.error || 'Invalid API key');
+        setError(result.error || "Invalid API key");
       }
     } catch (error) {
-      setError('Error testing API key connection');
+      setError("Error testing API key connection");
     }
   };
 
   const handleClearApiKey = () => {
     DevToApiKeyManager.clearApiKey();
-    setApiKey('');
+    setApiKey("");
     setApiKeyStatus(null);
     setShowApiForm(true);
-    setError('');
-    setSuccessMessage('');
+    setError("");
+    setSuccessMessage("");
   };
 
   const handlePublish = async () => {
@@ -134,15 +134,15 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
     }
 
     setIsPublishing(true);
-    setError('');
+    setError("");
     
     try {
       const result = await DevToApiKeyManager.testApiKey(apiKey);
       if (!result.isValid) {
-        throw new Error(result.error || 'Invalid API key');
+        throw new Error(result.error || "Invalid API key");
       }
 
-      console.log('Preparing to publish to DEV.to:', {
+      console.log("Preparing to publish to DEV.to:", {
         postTitle: post.title,
         categories: post.categories,
         hasApiKey: !!apiKey
@@ -152,14 +152,14 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
       const devToArticle = formatDevToArticle(post);
 
       // First check if article already exists
-      const checkResponse = await fetch('/api/devto', {
-        method: 'POST',
+      const checkResponse = await fetch("/api/devto", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           apiKey,
-          action: 'check',
+          action: "check",
           data: {
             canonical_url: devToArticle.article.canonical_url
           }
@@ -168,7 +168,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
 
       if (!checkResponse.ok) {
         const errorData = await checkResponse.json();
-        if (errorData.error?.includes('already been taken')) {
+        if (errorData.error?.includes("already been taken")) {
           setError(
             <div className="bg-yellow-50 p-4 rounded-lg">
               <div className="flex items-center">
@@ -178,7 +178,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
                 </div>
                 <button
                   onClick={() => {
-                    setError('');
+                    setError("");
                     setIsPublishing(false);
                   }}
                   className="text-gray-500 hover:text-gray-700 text-sm"
@@ -195,38 +195,38 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
       }
 
       // Send to our server-side API
-      const apiResponse = await fetch('/api/devto', {
-        method: 'POST',
+      const apiResponse = await fetch("/api/devto", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           apiKey,
-          action: 'publish',
+          action: "publish",
           data: devToArticle
         })
       });
 
       if (!apiResponse.ok) {
         const errorData = await apiResponse.json().catch(() => ({ 
-          error: 'Unknown error',
+          error: "Unknown error",
           status: apiResponse.status,
           statusText: apiResponse.statusText
         }));
         
-        console.error('DEV.to API Error:', {
+        console.error("DEV.to API Error:", {
           status: apiResponse.status,
           statusText: apiResponse.statusText,
           errorData,
           request: {
-            url: '/api/devto',
-            method: 'POST',
+            url: "/api/devto",
+            method: "POST",
             body: devToArticle
           }
         });
 
         // Handle canonical URL error specifically
-        if (errorData.error?.includes('already been taken')) {
+        if (errorData.error?.includes("already been taken")) {
           setError(
             <div className="bg-yellow-50 p-4 rounded-lg">
               <div className="flex items-center">
@@ -236,7 +236,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
                 </div>
                 <button
                   onClick={() => {
-                    setError('');
+                    setError("");
                     setIsPublishing(false);
                   }}
                   className="text-gray-500 hover:text-gray-700 text-sm"
@@ -247,12 +247,12 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
             </div>
           );
         } else {
-          throw new Error(errorData.error || errorData.message || errorData.detail || errorData.errors?.join(', ') || `Error ${apiResponse.status}: ${apiResponse.statusText}`);
+          throw new Error(errorData.error || errorData.message || errorData.detail || errorData.errors?.join(", ") || `Error ${apiResponse.status}: ${apiResponse.statusText}`);
         }
       }
 
       const publishResult = await apiResponse.json();
-      console.log('Successfully published to DEV.to:', {
+      console.log("Successfully published to DEV.to:", {
         url: publishResult.url,
         id: publishResult.id,
         title: publishResult.title
@@ -288,8 +288,8 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
                               </a>
                               <button
                                 onClick={() => {
-                                  setSuccessMessage('');
-                                  setPublishedUrl('');
+                                  setSuccessMessage("");
+                                  setPublishedUrl("");
                                 }}
                                 className="text-gray-500 hover:text-gray-700 text-sm"
                               >
@@ -301,8 +301,8 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
                       </div>
                     );
                     setTimeout(() => {
-                      setSuccessMessage('');
-                      setPublishedUrl('');
+                      setSuccessMessage("");
+                      setPublishedUrl("");
                     }, 3000);
                   }}
                   className="text-green-700 hover:text-green-800 text-sm flex items-center gap-1"
@@ -321,8 +321,8 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
                 </a>
                 <button
                   onClick={() => {
-                    setSuccessMessage('');
-                    setPublishedUrl('');
+                    setSuccessMessage("");
+                    setPublishedUrl("");
                   }}
                   className="text-gray-500 hover:text-gray-700 text-sm"
                 >
@@ -335,7 +335,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
       );
 
     } catch (error: any) {
-      console.error('Error publishing to DEV.to:', error);
+      console.error("Error publishing to DEV.to:", error);
       setError(error.message);
       setIsPublishing(false);
     }
@@ -350,35 +350,35 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
     // Add 1 minute to ensure it's in the future
     now.setMinutes(now.getMinutes() + 1);
     // Format timestamp according to DEV.to's requirements
-    const publishDate = now.toISOString().replace('T', ' ').replace('Z', '');
+    const publishDate = now.toISOString().replace("T", " ").replace("Z", "");
 
     // Format tags according to DEV.to requirements
     const formatTag = (tag: string): string => {
       // Convert to lowercase
       let formatted = tag.toLowerCase();
       // Replace spaces with hyphens
-      formatted = formatted.replace(/\s+/g, '-');
+      formatted = formatted.replace(/\s+/g, "-");
       // Remove any non-alphanumeric characters except hyphens
-      formatted = formatted.replace(/[^a-z0-9-]/g, '');
+      formatted = formatted.replace(/[^a-z0-9-]/g, "");
       // Remove consecutive hyphens
-      formatted = formatted.replace(/-{2,}/g, '-');
+      formatted = formatted.replace(/-{2,}/g, "-");
       // Remove leading/trailing hyphens
-      formatted = formatted.replace(/^\-|-$/g, '');
+      formatted = formatted.replace(/^\-|-$/g, "");
       
       // Special handling for known tags
       const tagMap: { [key: string]: string } = {
-        'tutorial': 'tutorial',
-        'next.js': 'nextjs',
-        'react': 'react'
+        "tutorial": "tutorial",
+        "next.js": "nextjs",
+        "react": "react"
       };
       
       // Use mapped tag if available, otherwise use formatted tag
-      return tagMap[formatted] || formatted || 'webdevelopment';
+      return tagMap[formatted] || formatted || "webdevelopment";
     };
 
     // Format the article content
     const formattedContent = post.content
-      .replace(/\n{3,}/g, '\n\n') // Normalize multiple newlines
+      .replace(/\n{3,}/g, "\n\n") // Normalize multiple newlines
       .trim();
 
     // Create the payload for DEV.to API
@@ -388,13 +388,13 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
         body_markdown: formattedContent,
         published: true,
         tags: categories.map(tag => formatTag(tag)),
-        canonical_url: `${baseUrl}/blog/${post.path.split('/').pop()?.replace('.md', '')}`,
-        description: post.excerpt || post.title.substring(0, 155) + '...',
-        main_image: post.image || '',
-        series: '',
+        canonical_url: `${baseUrl}/blog/${post.path.split("/").pop()?.replace(".md", "")}`,
+        description: post.excerpt || post.title.substring(0, 155) + "...",
+        main_image: post.image || "",
+        series: "",
         published_at: publishDate,
         organization_id: null,
-        readtime: Math.ceil(formattedContent.split(' ').length / 265) || 1, // Estimate reading time
+        readtime: Math.ceil(formattedContent.split(" ").length / 265) || 1, // Estimate reading time
         articles: [] // Required by DEV.to API
       }
     };
@@ -405,7 +405,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
   return (
     <div className="space-y-4">
       <ApiKeyStatusIndicator
-        status={apiKeyStatus || { isValid: false, hasKey: false, message: 'No API key set' }}
+        status={apiKeyStatus || { isValid: false, hasKey: false, message: "No API key set" }}
         onTest={handleTestApiKey}
         onClear={handleClearApiKey}
       />
@@ -433,9 +433,9 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
               type="button"
               onClick={() => {
                 setShowApiForm(false);
-                setApiKey('');
-                setError('');
-                setSuccessMessage('');
+                setApiKey("");
+                setError("");
+                setSuccessMessage("");
               }}
               className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
@@ -456,7 +456,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
           onClick={handlePublish}
           disabled={isPublishing || !apiKey}
           className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
-            isPublishing ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
+            isPublishing ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"
           } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full`}
         >
           {isPublishing ? (
@@ -468,7 +468,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
               Publishing...
             </>
           ) : (
-            'Publish to DEV.to'
+            "Publish to DEV.to"
           )}
         </button>
 
@@ -480,7 +480,7 @@ export default function DevToPublisher({ post }: DevToPublisherProps) {
 
         {successMessage && (
           <div className="bg-green-50 p-4 rounded-lg shadow-sm">
-            {typeof successMessage === 'string' ? (
+            {typeof successMessage === "string" ? (
               <p className="text-green-800">{successMessage}</p>
             ) : (
               successMessage

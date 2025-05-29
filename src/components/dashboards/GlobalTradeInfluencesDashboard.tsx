@@ -1,5 +1,5 @@
-import React from 'react';
-import { MockKPICard } from './MockVisuals';
+import React from "react";
+import { MockKPICard } from "./MockVisuals";
 
 export const GlobalTradeInfluencesDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">
@@ -22,9 +22,9 @@ export const GlobalTradeInfluencesDashboard = () => (
       <MockChartPlaceholder title="Tariff Rate Changes Over Time" type="Line Chart" />
     </div> */}
 
-     {/* Context Note */}
-     <div className="mt-4 p-3 bg-gray-100 border border-gray-200 rounded text-gray-700 text-sm">
-        <strong>Note:</strong> These KPIs represent a mix of geopolitical, economic, technological, social, environmental, and security factors influencing global trade dynamics. Data is illustrative.
-      </div>
+    {/* Context Note */}
+    <div className="mt-4 p-3 bg-gray-100 border border-gray-200 rounded text-gray-700 text-sm">
+      <strong>Note:</strong> These KPIs represent a mix of geopolitical, economic, technological, social, environmental, and security factors influencing global trade dynamics. Data is illustrative.
+    </div>
   </section>
 );

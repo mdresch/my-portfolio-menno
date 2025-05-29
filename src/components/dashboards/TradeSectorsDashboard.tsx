@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 // Import the specific mock charts needed
 import {
   MockKPICard,
   MockBarChart,
   MockLineChart,
   MockTreemap
-} from './MockVisuals';
+} from "./MockVisuals";
 
 export const TradeSectorsDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">

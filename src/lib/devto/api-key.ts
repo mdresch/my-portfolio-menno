@@ -1,4 +1,4 @@
-import { validateApiKey } from './devto';
+import { validateApiKey } from "./devto";
 
 interface ApiKeyStatus {
   isValid: boolean;
@@ -7,8 +7,8 @@ interface ApiKeyStatus {
 }
 
 export class DevToApiKeyManager {
-  private static readonly STORAGE_KEY = 'devto_api_key';
-  private static readonly TEST_URL = '/api/devto';
+  private static readonly STORAGE_KEY = "devto_api_key";
+  private static readonly TEST_URL = "/api/devto";
 
   static async init(): Promise<ApiKeyStatus> {
     const apiKey = this.getApiKey();
@@ -16,7 +16,7 @@ export class DevToApiKeyManager {
       return {
         isValid: false,
         hasKey: false,
-        message: 'No API key set'
+        message: "No API key set"
       };
     }
 
@@ -25,13 +25,13 @@ export class DevToApiKeyManager {
       return {
         isValid,
         hasKey: true,
-        message: isValid ? message || 'API key is valid' : error || 'Invalid API key'
+        message: isValid ? message || "API key is valid" : error || "Invalid API key"
       };
     } catch (error) {
       return {
         isValid: false,
         hasKey: true,
-        message: 'Error testing API key'
+        message: "Error testing API key"
       };
     }
   }
@@ -54,18 +54,18 @@ export class DevToApiKeyManager {
 
   static async testApiKey(apiKey: string): Promise<{ isValid: boolean; error?: string; message?: string }> {
     if (!apiKey) {
-      return { isValid: false, error: 'API key is required' };
+      return { isValid: false, error: "API key is required" };
     }
 
     try {
       const response = await fetch(this.TEST_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           apiKey,
-          action: 'test'
+          action: "test"
         })
       });
 
@@ -77,7 +77,7 @@ export class DevToApiKeyManager {
       const result = await response.json();
       return { isValid: result.isValid, error: result.error, message: result.message };
     } catch (error) {
-      return { isValid: false, error: 'Error testing API key connection' };
+      return { isValid: false, error: "Error testing API key connection" };
     }
   }
 }

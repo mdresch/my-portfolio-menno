@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useProjects } from '@/hooks/useProjects';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useProjects } from "@/hooks/useProjects";
+import Link from "next/link";
+import Image from "next/image";
 
 // Loading Skeleton
 const ProjectSkeleton = () => (

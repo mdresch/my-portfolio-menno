@@ -1,8 +1,8 @@
-'use client';
-import { useState } from 'react';
-import { notFound } from 'next/navigation';
-import { mockCompanies } from '../../../../data/mockCompanies';
-import { Line } from 'react-chartjs-2';
+"use client";
+import { useState } from "react";
+import { notFound } from "next/navigation";
+import { mockCompanies } from "../../../../data/mockCompanies";
+import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   LineElement,
@@ -11,24 +11,24 @@ import {
   LinearScale,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TABS = [
-  'Summary',
-  'News',
-  'Profile',
-  'Earnings',
-  'Peers',
-  'Financials',
-  'Options',
-  'Ownership',
+  "Summary",
+  "News",
+  "Profile",
+  "Earnings",
+  "Peers",
+  "Financials",
+  "Options",
+  "Ownership",
 ];
 
 export default function CompanyPage({ params }: { params: { ticker: string } }) {
   const company = mockCompanies.find(c => c.ticker.toLowerCase() === params.ticker.toLowerCase());
-  const [tab, setTab] = useState('Summary');
+  const [tab, setTab] = useState("Summary");
   if (!company) return notFound();
 
   return (
@@ -41,7 +41,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
         {TABS.map(t => (
           <button
             key={t}
-            className={`py-2 px-4 -mb-px border-b-2 ${tab === t ? 'border-blue-600 text-blue-700 font-semibold' : 'border-transparent text-gray-500'}`}
+            className={`py-2 px-4 -mb-px border-b-2 ${tab === t ? "border-blue-600 text-blue-700 font-semibold" : "border-transparent text-gray-500"}`}
             onClick={() => setTab(t)}
           >
             {t}
@@ -49,7 +49,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
         ))}
       </div>
       <div>
-        {tab === 'Summary' && (
+        {tab === "Summary" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Summary</h2>
             {company.priceHistory && (
@@ -59,10 +59,10 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
                     labels: company.priceHistory.map(p => p.date),
                     datasets: [
                       {
-                        label: 'Price',
+                        label: "Price",
                         data: company.priceHistory.map(p => p.price),
-                        borderColor: 'rgb(37, 99, 235)',
-                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                        borderColor: "rgb(37, 99, 235)",
+                        backgroundColor: "rgba(37, 99, 235, 0.2)",
                         tension: 0.3,
                         fill: true,
                         pointRadius: 3,
@@ -76,8 +76,8 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
                       tooltip: { enabled: true },
                     },
                     scales: {
-                      x: { title: { display: true, text: 'Date' } },
-                      y: { title: { display: true, text: 'Price (USD)' }, beginAtZero: false },
+                      x: { title: { display: true, text: "Date" } },
+                      y: { title: { display: true, text: "Price (USD)" }, beginAtZero: false },
                     },
                   }}
                   height={80}
@@ -101,7 +101,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             </ul>
           </section>
         )}
-        {tab === 'News' && (
+        {tab === "News" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">News</h2>
             <ul className="text-sm list-disc ml-4">
@@ -113,7 +113,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             </ul>
           </section>
         )}
-        {tab === 'Profile' && (
+        {tab === "Profile" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Profile</h2>
             <p className="mb-2 text-sm">{company.profile.description}</p>
@@ -129,7 +129,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             <div className="mb-2 text-sm"><b>Website:</b> <a href={company.profile.website} className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">{company.profile.website}</a></div>
           </section>
         )}
-        {tab === 'Earnings' && (
+        {tab === "Earnings" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Earnings</h2>
             <ul className="text-sm">
@@ -141,7 +141,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             </ul>
           </section>
         )}
-        {tab === 'Peers' && (
+        {tab === "Peers" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Peers</h2>
             <ul className="text-sm list-disc ml-4">
@@ -151,7 +151,7 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             </ul>
           </section>
         )}
-        {tab === 'Financials' && (
+        {tab === "Financials" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Financials</h2>
             <div className="mb-4">
@@ -180,14 +180,14 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
             </div>
           </section>
         )}
-        {tab === 'Options' && (
+        {tab === "Options" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Options</h2>
             <div className="mb-4">
               <b>Calls:</b>
               <ul className="ml-4 text-sm list-disc">
                 {company.options?.calls?.map(opt => (
-                  <li key={opt.strike + '-' + opt.expiry}>Strike {opt.strike}, Expiry {opt.expiry}, Price {opt.price}, Volume {opt.volume}</li>
+                  <li key={opt.strike + "-" + opt.expiry}>Strike {opt.strike}, Expiry {opt.expiry}, Price {opt.price}, Volume {opt.volume}</li>
                 ))}
               </ul>
             </div>
@@ -195,13 +195,13 @@ export default function CompanyPage({ params }: { params: { ticker: string } }) 
               <b>Puts:</b>
               <ul className="ml-4 text-sm list-disc">
                 {company.options?.puts?.map(opt => (
-                  <li key={opt.strike + '-' + opt.expiry}>Strike {opt.strike}, Expiry {opt.expiry}, Price {opt.price}, Volume {opt.volume}</li>
+                  <li key={opt.strike + "-" + opt.expiry}>Strike {opt.strike}, Expiry {opt.expiry}, Price {opt.price}, Volume {opt.volume}</li>
                 ))}
               </ul>
             </div>
           </section>
         )}
-        {tab === 'Ownership' && (
+        {tab === "Ownership" && (
           <section>
             <h2 className="text-xl font-semibold mb-2">Ownership</h2>
             <ul className="text-sm">

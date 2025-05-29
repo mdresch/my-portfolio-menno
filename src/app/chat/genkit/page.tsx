@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function GenkitDemoPage() {
-  const [theme, setTheme] = useState('seafood');
-  const [suggestion, setSuggestion] = useState('');
+  const [theme, setTheme] = useState("seafood");
+  const [suggestion, setSuggestion] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const getSuggestion = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
-    setSuggestion('');
+    setError("");
+    setSuggestion("");
     try {
-      const res = await fetch('/api/genkit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/genkit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ theme }),
       });
 
@@ -24,11 +24,11 @@ export default function GenkitDemoPage() {
       try {
         data = await res.json();
       } catch {
-        throw new Error('Server returned invalid JSON');
+        throw new Error("Server returned invalid JSON");
       }
 
       if (!res.ok) {
-        throw new Error(data?.error || 'Server error');
+        throw new Error(data?.error || "Server error");
       }
 
       setSuggestion(data.suggestion);
@@ -36,7 +36,7 @@ export default function GenkitDemoPage() {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError('Failed to get suggestion');
+        setError("Failed to get suggestion");
       }
     } finally {
       setLoading(false);
@@ -59,7 +59,7 @@ export default function GenkitDemoPage() {
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           disabled={loading}
         >
-          {loading ? 'Loading...' : 'Suggest Menu Item'}
+          {loading ? "Loading..." : "Suggest Menu Item"}
         </button>
       </form>
       {suggestion && (

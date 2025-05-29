@@ -1,10 +1,10 @@
-import { getSortedPostsData, getPostData } from '../../lib/markdown';
+import { getSortedPostsData, getPostData } from "../../lib/markdown";
 
 export async function GET() {
   const posts = await getSortedPostsData();
-  const baseUrl = 'https://my-portfolio-menno.vercel.app/';
-  const authorName = 'Menno Drescher';
-  const authorEmail = 'menno.drescher@gmail.com'; // Update with your email
+  const baseUrl = "https://my-portfolio-menno.vercel.app/";
+  const authorName = "Menno Drescher";
+  const authorEmail = "menno.drescher@gmail.com"; // Update with your email
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" 
@@ -24,9 +24,9 @@ export async function GET() {
       <link>${baseUrl}</link>
     </image>
     ${await Promise.all(posts.map(async (post) => {
-      // Get full post content for the feed
-      const fullPost = await getPostData(post.slug);
-      return `
+    // Get full post content for the feed
+    const fullPost = await getPostData(post.slug);
+    return `
     <item>
       <title>${post.title}</title>
       <link>${baseUrl}/blog/${post.slug}</link>
@@ -39,17 +39,17 @@ export async function GET() {
 <hr>
 <p>Originally published at <a href="${baseUrl}/blog/${post.slug}">${baseUrl}/blog/${post.slug}</a></p>]]></content:encoded>
       ${post.categories
-        .map((category) => `<category>${category}</category>`)
-        .join('\n      ')}
+    .map((category) => `<category>${category}</category>`)
+    .join("\n      ")}
     </item>`
-    }))}
+  }))}
   </channel>
 </rss>`;
 
   return new Response(rss, {
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 's-maxage=3600, stale-while-revalidate',
+      "Content-Type": "application/xml",
+      "Cache-Control": "s-maxage=3600, stale-while-revalidate",
     },
   });
 }

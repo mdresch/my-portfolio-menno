@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { ProjectService } from '@/lib/api-services';
-import { Project } from '@/types/api';
+import { useState, useEffect } from "react";
+import { ProjectService } from "@/lib/api-services";
+import { Project } from "@/types/api";
 
 export function useProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -15,7 +15,7 @@ export function useProjects() {
         setProjects(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to load projects'));
+        setError(err instanceof Error ? err : new Error("Failed to load projects"));
       } finally {
         setIsLoading(false);
       }

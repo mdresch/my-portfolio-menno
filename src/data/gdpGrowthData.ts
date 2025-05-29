@@ -16,23 +16,23 @@ export const gdpGrowthData = {
 };
 
 export const gdpGrowthYears = [
-  '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
+  "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"
 ];
 
 export const gdpGrowthCountryOptions = [
-  { value: 'World', label: 'World' },
-  { value: 'UnitedStates', label: 'United States' },
-  { value: 'Australia', label: 'Australia' },
-  { value: 'Austria', label: 'Austria' },
-  { value: 'Belgium', label: 'Belgium' },
-  { value: 'Canada', label: 'Canada' },
-  { value: 'France', label: 'France' },
-  { value: 'Germany', label: 'Germany' },
-  { value: 'Italy', label: 'Italy' },
-  { value: 'Japan', label: 'Japan' },
-  { value: 'Korea', label: 'Korea' },
-  { value: 'UnitedKingdom', label: 'United Kingdom' },
-  { value: 'China', label: 'China' },
+  { value: "World", label: "World" },
+  { value: "UnitedStates", label: "United States" },
+  { value: "Australia", label: "Australia" },
+  { value: "Austria", label: "Austria" },
+  { value: "Belgium", label: "Belgium" },
+  { value: "Canada", label: "Canada" },
+  { value: "France", label: "France" },
+  { value: "Germany", label: "Germany" },
+  { value: "Italy", label: "Italy" },
+  { value: "Japan", label: "Japan" },
+  { value: "Korea", label: "Korea" },
+  { value: "UnitedKingdom", label: "United Kingdom" },
+  { value: "China", label: "China" },
 ];
 
 export interface GDPGrowthData {

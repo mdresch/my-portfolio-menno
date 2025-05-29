@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 const FirebaseAITest = () => {
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGenerateResponse = async () => {
@@ -12,27 +12,27 @@ const FirebaseAITest = () => {
 
     setIsLoading(true);
     try {
-      const result = await fetch('/api/ai', {
-        method: 'POST',
+      const result = await fetch("/api/ai", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           prompt,
-          model: 'gemini-2.0-flash-exp',
+          model: "gemini-2.0-flash-exp",
         }),
       });
 
       if (!result.ok) {
         const errorData = await result.json();
-        throw new Error(errorData.error || 'Failed to generate response');
+        throw new Error(errorData.error || "Failed to generate response");
       }
 
       const data = await result.json();
       setResponse(data.response);
     } catch (error) {
-      console.error('Error generating response:', error);
-      setResponse('Error generating response: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      console.error("Error generating response:", error);
+      setResponse("Error generating response: " + (error instanceof Error ? error.message : "Unknown error"));
     } finally {
       setIsLoading(false);
     }
@@ -66,7 +66,7 @@ const FirebaseAITest = () => {
               disabled={isLoading || !prompt.trim()}
               className="mt-4 px-6 py-3 bg-gradient-to-r dark:from-purple-600 dark:to-blue-600 from-blue-600 to-indigo-600 text-white font-semibold rounded-lg dark:hover:from-purple-700 dark:hover:to-blue-700 hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
             >
-              {isLoading ? 'Generating...' : 'Generate Response'}
+              {isLoading ? "Generating..." : "Generate Response"}
             </button>
           </div>
 

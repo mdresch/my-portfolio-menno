@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import { 
   ClimateRiskOverviewChart, 
   SectorExposureChart, 
@@ -9,7 +9,7 @@ import {
   TransitionRiskTimelineChart,
   CarbonPricingScenarioChart,
   InvestmentTrendsChart
-} from '../../../components/risk/ClimateFinancialCharts';
+} from "../../../components/risk/ClimateFinancialCharts";
 
 export default function ClimateFinancialImpactPage() {
   return (
