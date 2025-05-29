@@ -7,5 +7,5 @@ namespace Projects;
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class api_ApiService : global::Aspire.Hosting.IProjectMetadata
 {
-    public string ProjectPath => """C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ApiService\api.ApiService.csproj""";
+    public string ProjectPath => """c:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ApiService\api.ApiService.csproj""";
 }

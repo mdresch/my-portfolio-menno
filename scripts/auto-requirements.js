@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const glob = require('glob');
 
 // Import configuration file
 const config = require('../config/paths.js');
@@ -31,6 +32,28 @@ try {
 
 // 1. Analyze project and generate a problem statement (simple heuristic, can be replaced with LLM call)
 let lastStatement = '';
+
+async function generateBusinessProblemLLM(stack, contextBundle) {
+  const instructions = `You are an expert requirements analyst. Given the technology stack and project context, generate a concise, specific, and actionable business problem statement for a modern developer portfolio platform. Avoid generic or vague language. Use details from the context. Return only the business problem statement as a plain string.`;
+  const response = await fetch(REQUIREMENTS_AGENT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      technologyStack: stack,
+      contextBundle,
+      instructions,
+      requestBusinessProblem: true
+    })
+  });
+  const text = await response.text();
+  console.log('Raw LLM business problem response:', text);
+  try {
+    return text.replace(/^"|"$/g, ''); // Remove quotes if returned as JSON string
+  } catch (e) {
+    console.error('Error parsing LLM business problem statement:', e);
+    throw e;
+  }
+}
 
 function analyzeProject() {
   // 1. Prefer docs/business-problem-statement.md if it exists and is non-empty
@@ -73,23 +96,66 @@ function analyzeProject() {
 }
 
 // 2. Save the business statement and strategic sections
-async function saveBusinessStatementWithLLM(statement) {
+async function saveBusinessStatementWithLLM() {
   const stack = getTechnologyStack();
   const contextBundle = await gatherProjectContext();
-  const strategicSections = await generateStrategicSections(statement, stack, contextBundle);
-  await saveStrategicSections(statement, strategicSections);
+  const businessProblem = await generateBusinessProblemLLM(stack, contextBundle);
+  const strategicSections = await generateStrategicSections(businessProblem, stack, contextBundle);
+  await saveStrategicSections(businessProblem, strategicSections);
 }
 
 async function gatherProjectContext() {
   let contextBundle = '';
-  const files = [
+  // 1. Summarize all markdown files in docs/
+  const docsDir = path.join(__dirname, '../docs');
+  if (fs.existsSync(docsDir)) {
+    const docFiles = glob.sync('**/*.md', { cwd: docsDir });
+    for (const file of docFiles) {
+      const filePath = path.join(docsDir, file);
+      try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        contextBundle += `docs/${file}: ${content.slice(0, 800)}\n`;
+      } catch (error) {
+        console.error(`Error reading docs/${file}:`, error);
+      }
+    }
+  }
+  // 2. Summarize all markdown files in content/blog/
+  const blogDir = path.join(__dirname, '../content/blog');
+  if (fs.existsSync(blogDir)) {
+    const blogFiles = glob.sync('**/*.md', { cwd: blogDir });
+    for (const file of blogFiles) {
+      const filePath = path.join(blogDir, file);
+      try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        contextBundle += `blog/${file}: ${content.slice(0, 500)}\n`;
+      } catch (error) {
+        console.error(`Error reading blog/${file}:`, error);
+      }
+    }
+  }
+  // 3. Summarize all markdown files in content/project/
+  const projectDir = path.join(__dirname, '../content/project');
+  if (fs.existsSync(projectDir)) {
+    const projectFiles = glob.sync('**/*.md', { cwd: projectDir });
+    for (const file of projectFiles) {
+      const filePath = path.join(projectDir, file);
+      try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        contextBundle += `project/${file}: ${content.slice(0, 500)}\n`;
+      } catch (error) {
+        console.error(`Error reading project/${file}:`, error);
+      }
+    }
+  }
+  // 4. Add summaries of key config files
+  const configFiles = [
     { path: '../README.md', key: 'README.md' },
     { path: '../package.json', key: 'package.json description' },
-    { path: '../docs/next-steps.md', key: 'next-steps.md' },
-    { path: '../docs/business-problem-statement.md', key: 'business-problem-statement.md' }
+    { path: '../next.config.js', key: 'next.config.js' },
+    { path: '../tsconfig.json', key: 'tsconfig.json' }
   ];
-
-  for (const file of files) {
+  for (const file of configFiles) {
     const filePath = path.join(__dirname, file.path);
     if (fs.existsSync(filePath)) {
       try {
@@ -102,32 +168,32 @@ async function gatherProjectContext() {
             console.error('Error parsing package.json:', error);
           }
         } else {
-          contextBundle += `${file.key}: ${content.slice(0, 1000)}\n`;
+          contextBundle += `${file.key}: ${content.slice(0, 800)}\n`;
         }
       } catch (error) {
         console.error(`Error reading ${file.key}:`, error);
       }
     }
   }
-
-  // Add up to 1000 chars from the first blog post
-  const blogDir = path.join(__dirname, '../content/blog');
-  if (fs.existsSync(blogDir)) {
-    try {
-      const blogFiles = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
-      if (blogFiles.length > 0) {
-        const blog = fs.readFileSync(path.join(blogDir, blogFiles[0]), 'utf-8');
-        contextBundle += `blog/${blogFiles[0]}: ${blog.slice(0, 1000)}\n`;
-      }
-    } catch (error) {
-      console.error('Error reading blog files:', error);
-    }
-  }
-
   return contextBundle;
 }
 
 async function generateStrategicSections(statement, stack, contextBundle) {
+  const instructions = `
+You are an expert product strategist and requirements analyst. Given the business problem, technology stack, and project context, generate the following for a modern developer portfolio platform:
+- Vision: A clear, aspirational statement of the platform's long-term impact and purpose.
+- Mission: A concise summary of what the platform does and for whom.
+- Core Values: 3-7 guiding principles or beliefs that shape the platform's culture and priorities.
+- Purpose: A short, actionable statement of why the platform exists and the value it delivers.
+Be specific, actionable, and use language appropriate for a professional software product. Avoid generic or vague statements. Tailor the output to a portfolio platform for developers, with features like project showcases, blog publishing, analytics, and integrations.
+Return a JSON object with keys: vision, mission, coreValues (array), and purpose.`;
+  console.log('Sending to LLM (requirements agent):', {
+    businessProblem: statement,
+    technologyStack: stack,
+    requestStrategicSections: true,
+    contextBundle: contextBundle && contextBundle.slice(0, 200) + (contextBundle.length > 200 ? '...' : ''),
+    instructions: instructions.slice(0, 200) + (instructions.length > 200 ? '...' : '')
+  });
   const response = await fetch(REQUIREMENTS_AGENT_API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -135,19 +201,29 @@ async function generateStrategicSections(statement, stack, contextBundle) {
       businessProblem: statement,
       technologyStack: stack,
       requestStrategicSections: true,
-      contextBundle
+      contextBundle,
+      instructions
     })
   });
-  return await response.json();
+  const json = await response.text();
+  console.log('Raw LLM response:', json.slice(0, 500) + (json.length > 500 ? '...' : ''));
+  try {
+    return JSON.parse(json);
+  } catch (e) {
+    console.error('Error parsing LLM response as JSON:', e);
+    throw e;
+  }
 }
 
 async function saveStrategicSections(statement, data) {
+  console.log('LLM strategicSections data received:', JSON.stringify(data, null, 2));
   const { vision, mission, coreValues, purpose } = data;
   const coreValuesSection = coreValues && coreValues.length > 0 ? coreValues.map(v => `- ${v}`).join('\n') : '';
 
   const content = `# Business Statement\n\n${statement}\n---\n\n**Vision:**\n\n${vision || ''}\n\n**Mission:**\n\n${mission || ''}\n\n**Core Values:**\n\n${coreValuesSection}\n\n**Purpose:**\n\n${purpose || ''}\n`;
+  console.log('Writing business-problem.md with content:', content.slice(0, 500) + (content.length > 500 ? '... (truncated)' : ''));
   fs.writeFileSync(PROBLEM_STATEMENT_PATH, content, 'utf-8');
-  console.log('Business statement saved.');
+  console.log('Business statement saved to', PROBLEM_STATEMENT_PATH);
 }
 
 // Generate a vision statement from the business statement
@@ -182,16 +258,19 @@ function shouldRunRequirementsAgent(statement) {
 // 3. Call requirements agent API
 async function callRequirementsAgent(statement) {
   const stack = getTechnologyStack();
+  console.log('Sending to requirements agent:', { businessProblem: statement, technologyStack: stack });
   try {
     const response = await fetch(REQUIREMENTS_AGENT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ businessProblem: statement, technologyStack: stack })
     });
+    const text = await response.text();
+    console.log('Raw requirements agent response:', text.slice(0, 500) + (text.length > 500 ? '...' : ''));
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
+    const data = JSON.parse(text);
     return data.roles || [];
   } catch (error) {
     console.error('Error calling requirements agent:', error);
@@ -277,16 +356,8 @@ function saveDataModel() {
 
 // Main automation flow
 (async function main() {
-  let statement;
   try {
-    statement = analyzeProject();
-  } catch (error) {
-    console.error('Error analyzing project for business statement:', error);
-    process.exit(1);
-  }
-
-  try {
-    await saveBusinessStatementWithLLM(statement);
+    await saveBusinessStatementWithLLM();
   } catch (error) {
     console.error('Error saving business statement with LLM:', error);
   }
@@ -309,9 +380,13 @@ function saveDataModel() {
     console.error('Error saving data model documentation:', error);
   }
 
+  // Always use the latest LLM-generated business problem for requirements agent
   try {
-    if (shouldRunRequirementsAgent(statement)) {
-      const roles = await callRequirementsAgent(statement);
+    const stack = getTechnologyStack();
+    const contextBundle = await gatherProjectContext();
+    const businessProblem = await generateBusinessProblemLLM(stack, contextBundle);
+    if (shouldRunRequirementsAgent(businessProblem)) {
+      const roles = await callRequirementsAgent(businessProblem);
       try {
         saveRequirementsOutput(roles);
       } catch (error) {
