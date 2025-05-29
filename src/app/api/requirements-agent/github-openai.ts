@@ -4,21 +4,22 @@ import { AzureKeyCredential } from "@azure/core-auth";
 // This is a utility to call the GitHub OpenAI model (mocked for now)
 // In the future, replace this with a real call to the GitHub OpenAI API when available
 
-const token = process.env["GITHUB_TOKEN"];
+// Use REQUIREMENTS_AGENT_TOKEN if available, else fallback to GITHUB_TOKEN
+const token = process.env["REQUIREMENTS_AGENT_TOKEN"] || process.env["GITHUB_TOKEN"];
 const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 
 const MOCK_STRATEGIC_SECTIONS = {
-  vision: 'To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
-  mission: 'To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
+  vision: 'MOCK To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
+  mission: 'MOCK To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
   coreValues: [
-    'User empowerment and creativity',
-    'Simplicity and usability',
-    'Openness and integration',
-    'Data privacy and security',
-    'Continuous improvement and innovation'
+    'MOCK User empowerment and creativity',
+    'MOCK Simplicity and usability',
+    'MOCK Openness and integration',
+    'MOCK Data privacy and security',
+    'MOCK Continuous improvement and innovation'
   ],
-  purpose: 'To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
+  purpose: 'MOCK To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
 };
 
 // Utility to sanitize log content and prevent log injection
@@ -27,7 +28,35 @@ function sanitizeLogContent(input: string): string {
   return input.replace(/[\r\n\u2028\u2029]+/g, ' ').replace(/[\x00-\x1F\x7F]+/g, '');
 }
 
-export async function getRequirementsFromGithubAI(businessProblem: string, options?: { includeProcesses?: boolean, technologyStack?: string[], requestStrategicSections?: boolean, contextBundle?: string }) {
+export async function getRequirementsFromGithubAI(businessProblem: string, options?: { includeProcesses?: boolean, technologyStack?: string[], requestStrategicSections?: boolean, contextBundle?: string, instructions?: string }) {
+  if (options && typeof options.instructions === 'string') {
+    // If no token, return mock business problem statement
+    if (!token) {
+      return 'MOCK: This is a mock business problem statement. No LLM token was provided.';
+    }
+    // If instructions are provided, use them as the prompt (for business problem statement)
+    const prompt = options.instructions;
+    const client = ModelClient(endpoint, new AzureKeyCredential(token));
+    const response = await client.path("/chat/completions").post({
+      body: {
+        messages: [
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: prompt }
+        ],
+        temperature: 0.7,
+        top_p: 1.0,
+        model: model
+      }
+    });
+    if (isUnexpected(response)) {
+      throw response.body.error;
+    }
+    const rawContent = response.body.choices[0].message.content ?? '';
+    console.log('[Requirements Agent] Raw LLM output:', sanitizeLogContent(rawContent));
+    // Return as string (plain business problem statement)
+    return rawContent;
+  }
+
   if (!token) {
     // fallback to mock if no token
     if (options?.requestStrategicSections) {
@@ -35,7 +64,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     }
     return [
       {
-        role: 'Project Stakeholder',
+        role: 'MOCK Project Stakeholder',
         needs: [
           'Clear project goals',
           'Regular status updates',
@@ -48,7 +77,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
         ] : undefined
       },
       {
-        role: 'End User',
+        role: 'MOCK End User',
         needs: [
           'Intuitive user interface',
           'Reliable performance',
@@ -113,7 +142,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     console.warn('[Requirements Agent] Using mock data as fallback: Model response could not be parsed as JSON.');
     return [
       {
-        role: 'Project Stakeholder',
+        role: 'MOCK Project Stakeholder',
         needs: [
           'Clear project goals',
           'Regular status updates',
@@ -126,7 +155,7 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
         ] : undefined
       },
       {
-        role: 'End User',
+        role: 'MOCK End User',
         needs: [
           'Intuitive user interface',
           'Reliable performance',

@@ -17,13 +17,13 @@ using System.Reflection;
     "xt\\")]
 [assembly: System.Reflection.AssemblyMetadata("dcpbinpath", "C:\\Users\\menno\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\8.2.2\\tools\\e" +
     "xt\\bin\\")]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost")]
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", "C:\\Users\\menno\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\8.2.2\\tools\\Aspire.Da" +
     "shboard.exe")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb24ee067738214291c84a403cebd5976e147628")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e8b23207cc8b286c50b44dde72f957abafd58de")]
 [assembly: System.Reflection.AssemblyProductAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
