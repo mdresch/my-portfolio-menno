@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const executiveSummary = `The “Universal Trump Tariffs,” announced on April 2, 2025, with reciprocal tariff increases originally set to take effect on April 9, have now been temporarily paused for three months. While certain newly proposed U.S. tariffs have been temporarily paused, the tariff increases on Chinese imports are still expected to move forward. This limited delay offers only short-term relief, as uncertainty persists for global businesses navigating trade tensions, supply chains, and long-term planning.
 
@@ -11,11 +11,11 @@ In this environment of watchful waiting and mounting complexity, companies aren�
 This whitepaper outlines the key considerations for businesses navigating this critical window: how to respond to uncertainty, protect margins, and build resilience across the enterprise.`;
 
 const keyFindings = [
-  'Pending implementation, all imports entering the U.S. from foreign entities and geographic regions were subject to a baseline 10% increase in IEEPA universal tariffs.',
-  'Reciprocal tariffs were proposed to range from 29% to 54%, depending on the country.',
-  'China, Vietnam, South Korea, Japan, and the EU were expected to be hit hardest by the increases, with China now facing a 125% tariff on imports to the U.S.',
-  'Canada and Mexico were slated for a baseline 25% tariff increase over the original universal baseline.',
-  'Tariff regulations under Section 232 remain in effect and continue to apply as previously enacted.'
+  "Pending implementation, all imports entering the U.S. from foreign entities and geographic regions were subject to a baseline 10% increase in IEEPA universal tariffs.",
+  "Reciprocal tariffs were proposed to range from 29% to 54%, depending on the country.",
+  "China, Vietnam, South Korea, Japan, and the EU were expected to be hit hardest by the increases, with China now facing a 125% tariff on imports to the U.S.",
+  "Canada and Mexico were slated for a baseline 25% tariff increase over the original universal baseline.",
+  "Tariff regulations under Section 232 remain in effect and continue to apply as previously enacted."
 ];
 
 export default function RiskPage() {

@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // Helper to generate a slug from the project title
 function normalizeSlug(title: string) {
-  return title?.toLowerCase().replace(/\s+/g, '-');
+  return title?.toLowerCase().replace(/\s+/g, "-");
 }
 
 interface Project {
@@ -27,15 +27,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const router = useRouter();
   const slug =
     project.slug ||
-    (project.title ? normalizeSlug(project.title) : project.id?.toString() || '');
+    (project.title ? normalizeSlug(project.title) : project.id?.toString() || "");
 
   return (
     <div className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
       <Image
         src={
-          project.imageUrl && project.imageUrl.startsWith('http')
+          project.imageUrl && project.imageUrl.startsWith("http")
             ? project.imageUrl
-            : project.image && project.image.startsWith('http')
+            : project.image && project.image.startsWith("http")
               ? project.image
               : "/images/default-project-image.jpg"
         }

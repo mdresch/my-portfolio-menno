@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup
-} from 'react-simple-maps';
-import { getCountriesByRegion } from '@/lib/riskData';
+} from "react-simple-maps";
+import { getCountriesByRegion } from "@/lib/riskData";
 
 // Get Americas country data
 const americasCountryData = getCountriesByRegion("Americas");
@@ -98,7 +98,7 @@ const AmericasComplexityMap: React.FC = () => {
   // Update map size on window resize
   useEffect(() => {
     const handleResize = () => {
-      const container = document.querySelector('.map-container');
+      const container = document.querySelector(".map-container");
       if (container) {
         setMapWidth(container.clientWidth);
         setMapHeight(container.clientHeight);
@@ -106,8 +106,8 @@ const AmericasComplexityMap: React.FC = () => {
     };
     
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {

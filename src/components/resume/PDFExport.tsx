@@ -1,27 +1,27 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 export default function PDFExport() {
   const generatePDF = async () => {
     // Dynamically import html2pdf to avoid SSR issues
-    const html2pdf = (await import('html2pdf.js')).default;
+    const html2pdf = (await import("html2pdf.js")).default;
     
-    const element = document.getElementById('resume-content');
+    const element = document.getElementById("resume-content");
     const opt = {
       margin: [10, 10],
-      filename: 'menno-drescher-resume.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
+      filename: "menno-drescher-resume.pdf",
+      image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
     };
     
     // Add class for PDF-specific styling
-    document.body.classList.add('generating-pdf');
+    document.body.classList.add("generating-pdf");
     
     // Generate PDF
     html2pdf().set(opt).from(element).save().then(() => {
-      document.body.classList.remove('generating-pdf');
+      document.body.classList.remove("generating-pdf");
     });
   };
   

@@ -1,10 +1,10 @@
 // Firebase App Check utilities
-import { initializeAppCheck, ReCaptchaV3Provider, getToken } from 'firebase/app-check';
-import { FirebaseApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider, getToken } from "firebase/app-check";
+import { FirebaseApp } from "firebase/app";
 
 export interface AppCheckConfig {
   isEnabled: boolean;
-  provider?: 'recaptcha-v3' | 'recaptcha-enterprise';
+  provider?: "recaptcha-v3" | "recaptcha-enterprise";
   siteKey?: string;
   isTokenAutoRefreshEnabled?: boolean;
 }
@@ -28,27 +28,27 @@ export class AppCheckManager {
 
   private initializeAppCheck(app: FirebaseApp): void {
     // Only initialize in browser environment
-    if (typeof window === 'undefined') {
-      console.log('App Check: Skipping initialization (server-side)');
+    if (typeof window === "undefined") {
+      console.log("App Check: Skipping initialization (server-side)");
       return;
     }
 
     if (!this.config.isEnabled) {
-      console.log('App Check: Disabled in configuration');
+      console.log("App Check: Disabled in configuration");
       return;
     }
 
     if (!this.config.siteKey) {
-      console.warn('App Check: No reCAPTCHA site key provided. Add NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY to environment variables.');
+      console.warn("App Check: No reCAPTCHA site key provided. Add NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY to environment variables.");
       return;
     }
 
     try {
       // Enable debug mode in development
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === "development") {
         // @ts-ignore
         window.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
-        console.log('App Check: Debug mode enabled for development');
+        console.log("App Check: Debug mode enabled for development");
       }
 
       this.appCheck = initializeAppCheck(app, {
@@ -56,10 +56,10 @@ export class AppCheckManager {
         isTokenAutoRefreshEnabled: this.config.isTokenAutoRefreshEnabled ?? true
       });
 
-      console.log('App Check: Initialized successfully');
+      console.log("App Check: Initialized successfully");
     } catch (error) {
-      console.warn('App Check: Initialization failed:', error);
-      console.info('Continuing without App Check protection');
+      console.warn("App Check: Initialization failed:", error);
+      console.info("Continuing without App Check protection");
     }
   }
 
@@ -72,7 +72,7 @@ export class AppCheckManager {
       const tokenResponse = await getToken(this.appCheck);
       return tokenResponse.token;
     } catch (error) {
-      console.warn('App Check: Failed to get token:', error);
+      console.warn("App Check: Failed to get token:", error);
       return null;
     }
   }
@@ -89,7 +89,7 @@ export class AppCheckManager {
 // Default configuration
 export const getAppCheckConfig = (): AppCheckConfig => ({
   isEnabled: true,
-  provider: 'recaptcha-v3',
+  provider: "recaptcha-v3",
   siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY,
   isTokenAutoRefreshEnabled: true
 });
@@ -105,7 +105,7 @@ export const addAppCheckToken = async (
 
   const token = await appCheckManager.getToken();
   if (token) {
-    headers['X-Firebase-AppCheck'] = token;
+    headers["X-Firebase-AppCheck"] = token;
   }
 
   return headers;

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   LineChart,
   Line,
@@ -29,104 +29,104 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis
-} from 'recharts';
+} from "recharts";
 
 // Sample data for charts
 const debtToGDPData = [
-  { region: 'Advanced Economies', '2021': 121, '2022': 118, '2023': 115, '2024': 114 },
-  { region: 'Emerging Markets', '2021': 65, '2022': 68, '2023': 70, '2024': 72 },
-  { region: 'Low Income', '2021': 50, '2022': 54, '2023': 57, '2024': 59 },
-  { region: 'Global', '2021': 98, '2022': 97, '2023': 96, '2024': 97 }
+  { region: "Advanced Economies", "2021": 121, "2022": 118, "2023": 115, "2024": 114 },
+  { region: "Emerging Markets", "2021": 65, "2022": 68, "2023": 70, "2024": 72 },
+  { region: "Low Income", "2021": 50, "2022": 54, "2023": 57, "2024": 59 },
+  { region: "Global", "2021": 98, "2022": 97, "2023": 96, "2024": 97 }
 ];
 
 const interestPaymentsData = [
-  { country: 'United States', percent: 12.4 },
-  { country: 'Italy', percent: 9.8 },
-  { country: 'Japan', percent: 9.2 },
-  { country: 'France', percent: 7.5 },
-  { country: 'Spain', percent: 6.8 },
-  { country: 'United Kingdom', percent: 6.2 },
-  { country: 'Brazil', percent: 13.8 },
-  { country: 'South Africa', percent: 15.2 },
-  { country: 'India', percent: 11.7 },
-  { country: 'Ghana', percent: 38.5 },
-  { country: 'Argentina', percent: 22.6 },
-  { country: 'Egypt', percent: 18.3 }
+  { country: "United States", percent: 12.4 },
+  { country: "Italy", percent: 9.8 },
+  { country: "Japan", percent: 9.2 },
+  { country: "France", percent: 7.5 },
+  { country: "Spain", percent: 6.8 },
+  { country: "United Kingdom", percent: 6.2 },
+  { country: "Brazil", percent: 13.8 },
+  { country: "South Africa", percent: 15.2 },
+  { country: "India", percent: 11.7 },
+  { country: "Ghana", percent: 38.5 },
+  { country: "Argentina", percent: 22.6 },
+  { country: "Egypt", percent: 18.3 }
 ];
 
 const debtMaturityData = [
-  { country: 'USA', shortTerm: 25, mediumTerm: 35, longTerm: 40 },
-  { country: 'Japan', shortTerm: 15, mediumTerm: 30, longTerm: 55 },
-  { country: 'Germany', shortTerm: 10, mediumTerm: 45, longTerm: 45 },
-  { country: 'UK', shortTerm: 18, mediumTerm: 42, longTerm: 40 },
-  { country: 'Italy', shortTerm: 22, mediumTerm: 38, longTerm: 40 },
-  { country: 'Brazil', shortTerm: 32, mediumTerm: 45, longTerm: 23 },
-  { country: 'India', shortTerm: 28, mediumTerm: 42, longTerm: 30 },
-  { country: 'South Africa', shortTerm: 35, mediumTerm: 40, longTerm: 25 }
+  { country: "USA", shortTerm: 25, mediumTerm: 35, longTerm: 40 },
+  { country: "Japan", shortTerm: 15, mediumTerm: 30, longTerm: 55 },
+  { country: "Germany", shortTerm: 10, mediumTerm: 45, longTerm: 45 },
+  { country: "UK", shortTerm: 18, mediumTerm: 42, longTerm: 40 },
+  { country: "Italy", shortTerm: 22, mediumTerm: 38, longTerm: 40 },
+  { country: "Brazil", shortTerm: 32, mediumTerm: 45, longTerm: 23 },
+  { country: "India", shortTerm: 28, mediumTerm: 42, longTerm: 30 },
+  { country: "South Africa", shortTerm: 35, mediumTerm: 40, longTerm: 25 }
 ];
 
 const vulnerabilityScoresData = [
-  { name: 'Ghana', score: 89, risk: 'Extreme' },
-  { name: 'Argentina', score: 85, risk: 'Extreme' },
-  { name: 'Egypt', score: 82, risk: 'Extreme' },
-  { name: 'Pakistan', score: 78, risk: 'High' },
-  { name: 'Tunisia', score: 76, risk: 'High' },
-  { name: 'El Salvador', score: 74, risk: 'High' },
-  { name: 'Kenya', score: 71, risk: 'High' },
-  { name: 'Ethiopia', score: 68, risk: 'Medium-High' },
-  { name: 'Turkey', score: 65, risk: 'Medium-High' },
-  { name: 'South Africa', score: 62, risk: 'Medium-High' }
+  { name: "Ghana", score: 89, risk: "Extreme" },
+  { name: "Argentina", score: 85, risk: "Extreme" },
+  { name: "Egypt", score: 82, risk: "Extreme" },
+  { name: "Pakistan", score: 78, risk: "High" },
+  { name: "Tunisia", score: 76, risk: "High" },
+  { name: "El Salvador", score: 74, risk: "High" },
+  { name: "Kenya", score: 71, risk: "High" },
+  { name: "Ethiopia", score: 68, risk: "Medium-High" },
+  { name: "Turkey", score: 65, risk: "Medium-High" },
+  { name: "South Africa", score: 62, risk: "Medium-High" }
 ];
 
 const histDebtCrisisData = [
-  { decade: '1980s', count: 46 },
-  { decade: '1990s', count: 38 },
-  { decade: '2000s', count: 23 },
-  { decade: '2010s', count: 15 },
-  { decade: '2020-24', count: 8 }
+  { decade: "1980s", count: 46 },
+  { decade: "1990s", count: 38 },
+  { decade: "2000s", count: 23 },
+  { decade: "2010s", count: 15 },
+  { decade: "2020-24", count: 8 }
 ];
 
 const debtCompositionData = [
   {
-    subject: 'Local Currency',
-    'Advanced Economies': 85,
-    'Emerging Markets': 62,
-    'Low Income': 35,
+    subject: "Local Currency",
+    "Advanced Economies": 85,
+    "Emerging Markets": 62,
+    "Low Income": 35,
     fullMark: 100
   },
   {
-    subject: 'Foreign Currency',
-    'Advanced Economies': 15,
-    'Emerging Markets': 38,
-    'Low Income': 65,
+    subject: "Foreign Currency",
+    "Advanced Economies": 15,
+    "Emerging Markets": 38,
+    "Low Income": 65,
     fullMark: 100
   },
   {
-    subject: 'Market Held',
-    'Advanced Economies': 78,
-    'Emerging Markets': 55,
-    'Low Income': 25,
+    subject: "Market Held",
+    "Advanced Economies": 78,
+    "Emerging Markets": 55,
+    "Low Income": 25,
     fullMark: 100
   },
   {
-    subject: 'Official Sector',
-    'Advanced Economies': 22,
-    'Emerging Markets': 45,
-    'Low Income': 75,
+    subject: "Official Sector",
+    "Advanced Economies": 22,
+    "Emerging Markets": 45,
+    "Low Income": 75,
     fullMark: 100
   },
   {
-    subject: 'Long Maturity',
-    'Advanced Economies': 70,
-    'Emerging Markets': 55,
-    'Low Income': 35,
+    subject: "Long Maturity",
+    "Advanced Economies": 70,
+    "Emerging Markets": 55,
+    "Low Income": 35,
     fullMark: 100
   },
   {
-    subject: 'Fixed Rate',
-    'Advanced Economies': 90,
-    'Emerging Markets': 65,
-    'Low Income': 40,
+    subject: "Fixed Rate",
+    "Advanced Economies": 90,
+    "Emerging Markets": 65,
+    "Low Income": 40,
     fullMark: 100
   }
 ];
@@ -143,7 +143,7 @@ const DebtToGDPTrendsChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="region" />
-          <YAxis domain={[0, 140]} label={{ value: '% of GDP', angle: -90, position: 'insideLeft' }} />
+          <YAxis domain={[0, 140]} label={{ value: "% of GDP", angle: -90, position: "insideLeft" }} />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="2021" name="2021" stroke="#8884d8" strokeWidth={2} dot={{ r: 4 }} />
@@ -179,9 +179,9 @@ const InterestPaymentsChart = () => {
               <Cell 
                 key={`cell-${index}`} 
                 fill={
-                  entry.percent > 20 ? '#d32f2f' : 
-                  entry.percent > 10 ? '#f57c00' : 
-                  '#2e7d32'
+                  entry.percent > 20 ? "#d32f2f" : 
+                    entry.percent > 10 ? "#f57c00" : 
+                      "#2e7d32"
                 } 
               />
             ))}
@@ -206,7 +206,7 @@ const DebtMaturityProfileChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="country" />
-          <YAxis domain={[0, 100]} label={{ value: 'Percentage of Total Debt', angle: -90, position: 'insideLeft' }} />
+          <YAxis domain={[0, 100]} label={{ value: "Percentage of Total Debt", angle: -90, position: "insideLeft" }} />
           <Tooltip formatter={(value) => `${value}%`} />
           <Legend />
           <Bar dataKey="shortTerm" name="< 1 Year" stackId="a" fill="#ff8042" />
@@ -241,10 +241,10 @@ const VulnerabilityScoresChart = () => {
               <Cell 
                 key={`cell-${index}`} 
                 fill={
-                  entry.score > 80 ? '#d32f2f' : 
-                  entry.score > 70 ? '#f57c00' : 
-                  entry.score > 60 ? '#ff9800' : 
-                  '#2e7d32'
+                  entry.score > 80 ? "#d32f2f" : 
+                    entry.score > 70 ? "#f57c00" : 
+                      entry.score > 60 ? "#ff9800" : 
+                        "#2e7d32"
                 } 
               />
             ))}

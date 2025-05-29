@@ -1,12 +1,12 @@
-import React from 'react';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import React from "react";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 // Removed unused Link import
-import { getAllPostIds, getPostDataFromFile, getSortedPostsData } from '../../../lib/markdown';
-import PostNavigation from '../../../components/PostNavigation';
+import { getAllPostIds, getPostDataFromFile, getSortedPostsData } from "../../../lib/markdown";
+import PostNavigation from "../../../components/PostNavigation";
 // import Comments from '@/components/Comments'; // Removed as the module is missing
-import BlogPost from '../../../components/blog/BlogPost';
-import GiscusComments from '../../../components/comments/Giscus';
+import BlogPost from "../../../components/blog/BlogPost";
+import GiscusComments from "../../../components/comments/Giscus";
 
 // Generate static paths at build time
 export async function generateStaticParams() {
@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getPostDataFromFile(slug);
   if (!post) {
     return {
-      title: 'Post Not Found',
-      description: 'The requested blog post could not be found'
+      title: "Post Not Found",
+      description: "The requested blog post could not be found"
     };
   }
   // Define base URL - should match the one in layout.tsx
-  const baseUrl = 'https://my-portfolio-menno.vercel.app/';
+  const baseUrl = "https://my-portfolio-menno.vercel.app/";
   const postUrl = `${baseUrl}/blog/${post.slug}`;
   return {
     title: post.title,
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      type: 'article',
+      type: "article",
       publishedTime: post.date,
       authors: [post.author],
       tags: post.categories,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       images: [post.coverImage || `${baseUrl}/images/showcase-dataviz.jpg`],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
       images: [post.coverImage || `${baseUrl}/images/showcase-dataviz.jpg`],
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     alternates: {
       canonical: postUrl,
     },
-    keywords: [...post.categories, 'blog', 'web development', 'Menno Drescher'],
+    keywords: [...post.categories, "blog", "web development", "Menno Drescher"],
   };
 }
 

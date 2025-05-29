@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { StrictNavigationMenuLink } from "./StrictNavigationMenuLink";
 
 import { cn } from "../lib/utils"
@@ -105,53 +105,53 @@ const components: ComponentItem[] = [
 ]
 
 const componentseconomics: ComponentItem[] = [
-    {
-      title: "Balance of Trade",
-      href: "/dashboards/balance-of-trade",
-      description:
+  {
+    title: "Balance of Trade",
+    href: "/dashboards/balance-of-trade",
+    description:
         "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-      title: "Currencies",
-      href: "/dashboards/currencies",
-      description:
+  },
+  {
+    title: "Currencies",
+    href: "/dashboards/currencies",
+    description:
         "For sighted users to preview content available behind a link.",
-    },
-    {
-      title: "Economic Indicators",
-      href: "/dashboards/economic-indicators",
-      description:
+  },
+  {
+    title: "Economic Indicators",
+    href: "/dashboards/economic-indicators",
+    description:
         "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-      title: "Macroeconomics",
-      href: "/dashboards/macro",
-      description: "Visually or semantically separates content.",
-    },
-    {
-      title: "Major Economics",
-      href: "/dashboards/major-economics",
-      description:
+  },
+  {
+    title: "Macroeconomics",
+    href: "/dashboards/macro",
+    description: "Visually or semantically separates content.",
+  },
+  {
+    title: "Major Economics",
+    href: "/dashboards/major-economics",
+    description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Stocks",
-      href: "/dashboards/stocks",
-      description:
+  },
+  {
+    title: "Stocks",
+    href: "/dashboards/stocks",
+    description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Policy Impact",
-      href: "/dashboards/policy-impact",
-      description:
+  },
+  {
+    title: "Policy Impact",
+    href: "/dashboards/policy-impact",
+    description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Policy Impact Dashboard",
-      href: "/dashboards/policyimpact-dashboard",
-      description:
+  },
+  {
+    title: "Policy Impact Dashboard",
+    href: "/dashboards/policyimpact-dashboard",
+    description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
+  },
 ]
 
 export function DarkModeToggle({}: DarkModeToggleProps) {
@@ -161,8 +161,8 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
   // Set default theme to light
   useEffect(() => {
     setMounted(true);
-    if (!localStorage.getItem('theme')) {
-      setTheme('light');
+    if (!localStorage.getItem("theme")) {
+      setTheme("light");
     }
   }, [setTheme]);
   
@@ -173,11 +173,11 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
       <button
         aria-label="Switch to Light Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
-          theme === 'light' 
-            ? 'bg-sky-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
+          theme === "light" 
+            ? "bg-sky-500 text-white" 
+            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
         }`}
-        onClick={() => setTheme('light')}
+        onClick={() => setTheme("light")}
       >
         <span className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -189,11 +189,11 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
       <button
         aria-label="Switch to Dark Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
-          theme === 'dark' 
-            ? 'bg-sky-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
+          theme === "dark" 
+            ? "bg-sky-500 text-white" 
+            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
         }`}
-        onClick={() => setTheme('dark')}
+        onClick={() => setTheme("dark")}
       >
         <span className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -259,8 +259,8 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -283,7 +283,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
         components={components}
         componentseconomics={componentseconomics}
       />
-        {/* Desktop menu */}
+      {/* Desktop menu */}
       <div className="hidden md:block">
         <NavigationMenu className="flex justify-center mx-auto">
           <NavigationMenuList>

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // Helper function to detect default branch (same as above)
 async function getDefaultBranch(owner: string, repo: string, token: string) {
@@ -6,8 +6,8 @@ async function getDefaultBranch(owner: string, repo: string, token: string) {
   
   const response = await fetch(repoUrl, {
     headers: {
-      'Accept': 'application/vnd.github.v3+json',
-      'Authorization': `token ${token}`
+      "Accept": "application/vnd.github.v3+json",
+      "Authorization": `token ${token}`
     }
   });
   
@@ -22,18 +22,18 @@ async function getDefaultBranch(owner: string, repo: string, token: string) {
 export async function POST(request: NextRequest) {
   try {
     // Get token from header for better security
-    const token = request.headers.get('X-GitHub-Token');
+    const token = request.headers.get("X-GitHub-Token");
     const { content, path, message } = await request.json();
     
     if (!token || !content || !path) {
       return NextResponse.json({ 
-        error: 'Missing required parameters' 
+        error: "Missing required parameters" 
       }, { status: 400 });
     }
     
     // GitHub API details
-    const owner = 'mdresch'; // Your GitHub username
-    const repo = 'my-portfolio-menno'; // Your repository name
+    const owner = "mdresch"; // Your GitHub username
+    const repo = "my-portfolio-menno"; // Your repository name
     
     // Get the default branch name dynamically
     const defaultBranch = await getDefaultBranch(owner, repo, token);
@@ -42,15 +42,15 @@ export async function POST(request: NextRequest) {
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
     
     // Encode content to base64
-    const contentBase64 = Buffer.from(content).toString('base64');
+    const contentBase64 = Buffer.from(content).toString("base64");
     
     // Make request to GitHub API
     const response = await fetch(apiUrl, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'Authorization': `token ${token}`,
-        'Content-Type': 'application/json'
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         message,
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('GitHub API error:', {
+      console.error("GitHub API error:", {
         status: response.status,
         message: errorData.message,
         errors: errorData.errors,
@@ -73,12 +73,12 @@ export async function POST(request: NextRequest) {
       let errorMessage = errorData.message || `Error: ${response.status}`;
       
       // Add more context for specific error cases
-      if (errorData.message?.includes('branch not found')) {
+      if (errorData.message?.includes("branch not found")) {
         errorMessage = `Branch not found. Detected branch name '${defaultBranch}'. Please check your repository settings.`;
-      } else if (errorData.message?.includes('Not Found')) {
+      } else if (errorData.message?.includes("Not Found")) {
         errorMessage = `Repository not found. Please verify owner (${owner}) and repo name (${repo}).`;
-      } else if (errorData.message?.includes('Bad credentials')) {
-        errorMessage = 'Invalid GitHub token. Please check your personal access token.';
+      } else if (errorData.message?.includes("Bad credentials")) {
+        errorMessage = "Invalid GitHub token. Please check your personal access token.";
       }
       
       return NextResponse.json({
@@ -96,9 +96,9 @@ export async function POST(request: NextRequest) {
     });
     
   } catch (error) {
-    console.error('Error creating post via GitHub:', error);
+    console.error("Error creating post via GitHub:", error);
     return NextResponse.json({
-      error: error instanceof Error ? error.message : 'An unknown error occurred'
+      error: error instanceof Error ? error.message : "An unknown error occurred"
     }, { status: 500 });
   }
 }

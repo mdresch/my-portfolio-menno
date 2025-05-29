@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useAuth } from '../lib/auth';
-import Link from 'next/link';
+import { useState } from "react";
+import { useAuth } from "../lib/auth";
+import Link from "next/link";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
@@ -21,7 +21,7 @@ export default function LoginForm() {
       await login({ email, password });
       // Login successful, Firebase will handle state updates
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed. Please check your credentials.');
+      setError(err instanceof Error ? err.message : "Login failed. Please check your credentials.");
     } finally {
       setIsSubmitting(false);
     }
@@ -87,7 +87,7 @@ export default function LoginForm() {
           disabled={isSubmitting}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50"
         >
-          {isSubmitting ? 'Logging in...' : 'Login'}
+          {isSubmitting ? "Logging in..." : "Login"}
         </button>
       </form>
       
@@ -98,7 +98,7 @@ export default function LoginForm() {
           </Link>
         </p>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <Link href="/signup" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium">
             Sign up here
           </Link>

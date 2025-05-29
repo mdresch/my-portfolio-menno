@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import TextareaAutosize from 'react-textarea-autosize';
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import TextareaAutosize from "react-textarea-autosize";
 
 interface Message {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
   metadata?: {
     sources?: string[];
@@ -66,7 +66,7 @@ const CopyButton = ({ text }: { text: string }) => {
 };
 
 // Metadata display component
-const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
+const MetadataDisplay = ({ metadata }: { metadata?: Message["metadata"] }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   if (!metadata || !metadata.sources || metadata.sources.length === 0) return null;
@@ -84,7 +84,7 @@ const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
         className="text-xs text-gray-500 hover:text-gray-700 flex items-center"
       >
         <svg 
-          className={`w-3 h-3 mr-1 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+          className={`w-3 h-3 mr-1 transition-transform ${isExpanded ? "rotate-90" : ""}`} 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ const MetadataDisplay = ({ metadata }: { metadata?: Message['metadata'] }) => {
 
 export default function RAGChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -134,19 +134,19 @@ export default function RAGChatPage() {
     if (!inputValue.trim() || isLoading) return;
     
     const userMessage: Message = {
-      role: 'user',
+      role: "user",
       content: inputValue
     };
     
     setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
+    setInputValue("");
     setIsLoading(true);
     
     try {
-      const response = await fetch('/api/rag-chat', {
-        method: 'POST',
+      const response = await fetch("/api/rag-chat", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           message: userMessage.content,
@@ -158,21 +158,21 @@ export default function RAGChatPage() {
       
       if (data.error) {
         setMessages(prev => [...prev, { 
-          role: 'assistant', 
+          role: "assistant", 
           content: `Error: ${data.error}` 
         }]);
       } else {
         setMessages(prev => [...prev, { 
-          role: 'assistant', 
+          role: "assistant", 
           content: data.response,
           metadata: data.metadata
         }]);
       }
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error("Error sending message:", error);
       setMessages(prev => [...prev, { 
-        role: 'assistant', 
-        content: 'Sorry, there was an error processing your request.' 
+        role: "assistant", 
+        content: "Sorry, there was an error processing your request." 
       }]);
     } finally {
       setIsLoading(false);
@@ -229,20 +229,20 @@ export default function RAGChatPage() {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
                   className={`flex gap-3 max-w-[80%] ${
-                    message.role === 'user' ? 'flex-row-reverse' : ''
+                    message.role === "user" ? "flex-row-reverse" : ""
                   }`}
                 >
-                  {message.role === 'user' ? <UserAvatar /> : <AIAvatar />}
+                  {message.role === "user" ? <UserAvatar /> : <AIAvatar />}
                   <div>
                     <div
                       className={`p-3 rounded-lg ${
-                        message.role === 'user'
-                          ? 'bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-200'
-                          : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200'
+                        message.role === "user"
+                          ? "bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-200"
+                          : "bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
                       }`}
                     >
                       <div className="flex justify-between items-start">
@@ -275,7 +275,7 @@ export default function RAGChatPage() {
               onChange={(e) => setInputValue(e.target.value)}
               maxRows={5}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
+                if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
                   handleSubmit(e);
                 }
@@ -287,8 +287,8 @@ export default function RAGChatPage() {
             disabled={isLoading || !inputValue.trim()}
             className={`p-2 rounded-lg ${
               isLoading || !inputValue.trim()
-                ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700'
+                ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700"
             } text-white transition`}
             title="Send message"
           >

@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+"use client";
+import React, { useState } from "react";
+import { Line, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,83 +11,83 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { gdpGrowthData, gdpGrowthYears, gdpGrowthCountryOptions } from '../../../data/gdpGrowthData';
-import { inflationData } from '../../../data/inflationData';
+} from "chart.js";
+import { gdpGrowthData, gdpGrowthYears, gdpGrowthCountryOptions } from "../../../data/gdpGrowthData";
+import { inflationData } from "../../../data/inflationData";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 const groupedBarCountries = [
   // EMEA
-  { value: 'Germany', label: 'Germany', region: 'EMEA' },
-  { value: 'France', label: 'France', region: 'EMEA' },
-  { value: 'UnitedKingdom', label: 'United Kingdom', region: 'EMEA' },
-  { value: 'Italy', label: 'Italy', region: 'EMEA' },
-  { value: 'Denmark', label: 'Denmark', region: 'EMEA' },
-  { value: 'Greece', label: 'Greece', region: 'EMEA' },
+  { value: "Germany", label: "Germany", region: "EMEA" },
+  { value: "France", label: "France", region: "EMEA" },
+  { value: "UnitedKingdom", label: "United Kingdom", region: "EMEA" },
+  { value: "Italy", label: "Italy", region: "EMEA" },
+  { value: "Denmark", label: "Denmark", region: "EMEA" },
+  { value: "Greece", label: "Greece", region: "EMEA" },
   // Americas
-  { value: 'UnitedStates', label: 'United States', region: 'Americas' },
-  { value: 'Canada', label: 'Canada', region: 'Americas' },
-  { value: 'Brazil', label: 'Brazil', region: 'Americas' },
-  { value: 'Argentina', label: 'Argentina', region: 'Americas' },
+  { value: "UnitedStates", label: "United States", region: "Americas" },
+  { value: "Canada", label: "Canada", region: "Americas" },
+  { value: "Brazil", label: "Brazil", region: "Americas" },
+  { value: "Argentina", label: "Argentina", region: "Americas" },
   // APAC
-  { value: 'China', label: 'China', region: 'APAC' },
-  { value: 'Japan', label: 'Japan', region: 'APAC' },
-  { value: 'Australia', label: 'Australia', region: 'APAC' },
-  { value: 'Singapore', label: 'Singapore', region: 'APAC' },
-  { value: 'Indonesia', label: 'Indonesia', region: 'APAC' },
-  { value: 'HongKong', label: 'Hong Kong', region: 'APAC' },
+  { value: "China", label: "China", region: "APAC" },
+  { value: "Japan", label: "Japan", region: "APAC" },
+  { value: "Australia", label: "Australia", region: "APAC" },
+  { value: "Singapore", label: "Singapore", region: "APAC" },
+  { value: "Indonesia", label: "Indonesia", region: "APAC" },
+  { value: "HongKong", label: "Hong Kong", region: "APAC" },
 ];
 
 const regionColors = {
-  EMEA: 'rgba(59, 130, 246, 0.7)', // blue
-  Americas: 'rgba(16, 185, 129, 0.7)', // green
-  APAC: 'rgba(251, 191, 36, 0.7)', // yellow
+  EMEA: "rgba(59, 130, 246, 0.7)", // blue
+  Americas: "rgba(16, 185, 129, 0.7)", // green
+  APAC: "rgba(251, 191, 36, 0.7)", // yellow
 };
 
 function getGDPGrowthSummary(country: string): string {
   switch (country) {
-    case 'World':
-      return 'The chart above shows projected GDP growth rates for major economies and the world from 2023 to 2030. The data reveals that global growth is expected to remain moderate, with most advanced economies experiencing a slowdown in 2024–2025 before stabilizing. The United States and Canada show a gradual decline in growth rates, while the Euro Area (Germany, France, Italy) sees a dip in 2024 followed by a slow recovery. China and India maintain higher growth rates compared to advanced economies, but their growth also trends downward over the period. Japan and the United Kingdom display relatively low but stable growth. Overall, the chart highlights persistent global economic uncertainty, with emerging markets outpacing advanced economies but facing their own headwinds. The outlook underscores the importance of policy stability and international cooperation to support sustained growth.';
-    case 'UnitedStates':
-      return 'The United States is projected to see a gradual slowdown in GDP growth from 2.9% in 2023 to around 1.7% by 2026, reflecting tighter monetary policy and waning post-pandemic momentum. Growth stabilizes near 2.1% from 2027 onward, indicating a return to long-term trend rates. The chart highlights the impact of higher interest rates and global uncertainty on the US economy, with a soft landing expected as inflation moderates.';
-    case 'Australia':
-      return 'Australia’s GDP growth is forecast to dip from 2.1% in 2023 to just over 1% in 2024, before rebounding to above 2% by 2027. The chart shows a V-shaped recovery, with growth supported by strong commodity exports and resilient domestic demand. The outlook reflects Australia’s exposure to global trade trends and its ability to weather external shocks.';
-    case 'Austria':
-      return 'Austria faces a contraction in 2023 and 2024, with negative growth rates, before returning to positive territory in 2025 and gradually accelerating to over 1% by 2027. The chart highlights the impact of weak Euro Area demand and energy price shocks, with a slow but steady recovery expected.';
-    case 'Belgium':
-      return 'Belgium’s growth slows from 1.3% in 2023 to below 1% in 2025, then gradually recovers to above 1% by 2027. The chart shows a modest dip and recovery, reflecting the country’s integration with the Euro Area and sensitivity to regional economic conditions.';
-    case 'Canada':
-      return 'Canada’s GDP growth moderates from 1.5% in 2023 to just under 2% by 2025, then stabilizes near 1.6% through 2030. The chart highlights the effects of tighter financial conditions and lower global demand, with growth remaining positive but subdued.';
-    case 'France':
-      return 'France experiences a slowdown in 2024, with growth dipping to 0.6%, before recovering to above 1% by 2026. The chart shows a shallow dip and gradual improvement, reflecting the impact of energy prices, policy tightening, and Euro Area headwinds.';
-    case 'Germany':
-      return 'Germany faces a mild contraction in 2023 and 2024, with growth turning slightly negative, before rebounding to over 1% by 2027. The chart highlights the impact of energy shocks, weak exports, and industrial challenges, with a slow recovery as global demand improves.';
-    case 'Italy':
-      return 'Italy’s growth slows to 0.4% in 2025 after a stronger 2023, then stabilizes near 0.7% through 2030. The chart shows a modest dip and steady outlook, reflecting structural challenges and the need for continued reforms.';
-    case 'Japan':
-      return 'Japan’s growth is projected to remain low but stable, fluctuating between 0.1% and 0.6% through 2030. The chart highlights persistent demographic headwinds and subdued domestic demand, with limited upside despite global recovery.';
-    case 'Korea':
-      return 'Korea’s GDP growth is expected to rebound from 1.4% in 2023 to above 2% in 2024, then moderate to around 1.8% by 2027. The chart shows a recovery driven by exports and technology, but growth remains below pre-pandemic averages.';
-    case 'UnitedKingdom':
-      return 'The United Kingdom’s growth recovers from a weak 2023, rising to over 1% by 2025 and stabilizing near 1.4% through 2030. The chart highlights the impact of Brexit, inflation, and policy tightening, with a gradual return to trend growth.';
-    case 'China':
-      return 'China’s growth remains the highest among major economies, starting at 5.2% in 2023 and gradually declining to 4% by 2030. The chart shows a steady slowdown as the economy matures, with structural reforms and external demand shaping the outlook.';
-    default:
-      return 'The selected country’s GDP growth shows a pattern of post-pandemic normalization, with a slowdown in 2024–2025 followed by stabilization or modest recovery. The chart highlights the influence of global headwinds, policy changes, and domestic factors on the growth trajectory.';
+  case "World":
+    return "The chart above shows projected GDP growth rates for major economies and the world from 2023 to 2030. The data reveals that global growth is expected to remain moderate, with most advanced economies experiencing a slowdown in 2024–2025 before stabilizing. The United States and Canada show a gradual decline in growth rates, while the Euro Area (Germany, France, Italy) sees a dip in 2024 followed by a slow recovery. China and India maintain higher growth rates compared to advanced economies, but their growth also trends downward over the period. Japan and the United Kingdom display relatively low but stable growth. Overall, the chart highlights persistent global economic uncertainty, with emerging markets outpacing advanced economies but facing their own headwinds. The outlook underscores the importance of policy stability and international cooperation to support sustained growth.";
+  case "UnitedStates":
+    return "The United States is projected to see a gradual slowdown in GDP growth from 2.9% in 2023 to around 1.7% by 2026, reflecting tighter monetary policy and waning post-pandemic momentum. Growth stabilizes near 2.1% from 2027 onward, indicating a return to long-term trend rates. The chart highlights the impact of higher interest rates and global uncertainty on the US economy, with a soft landing expected as inflation moderates.";
+  case "Australia":
+    return "Australia’s GDP growth is forecast to dip from 2.1% in 2023 to just over 1% in 2024, before rebounding to above 2% by 2027. The chart shows a V-shaped recovery, with growth supported by strong commodity exports and resilient domestic demand. The outlook reflects Australia’s exposure to global trade trends and its ability to weather external shocks.";
+  case "Austria":
+    return "Austria faces a contraction in 2023 and 2024, with negative growth rates, before returning to positive territory in 2025 and gradually accelerating to over 1% by 2027. The chart highlights the impact of weak Euro Area demand and energy price shocks, with a slow but steady recovery expected.";
+  case "Belgium":
+    return "Belgium’s growth slows from 1.3% in 2023 to below 1% in 2025, then gradually recovers to above 1% by 2027. The chart shows a modest dip and recovery, reflecting the country’s integration with the Euro Area and sensitivity to regional economic conditions.";
+  case "Canada":
+    return "Canada’s GDP growth moderates from 1.5% in 2023 to just under 2% by 2025, then stabilizes near 1.6% through 2030. The chart highlights the effects of tighter financial conditions and lower global demand, with growth remaining positive but subdued.";
+  case "France":
+    return "France experiences a slowdown in 2024, with growth dipping to 0.6%, before recovering to above 1% by 2026. The chart shows a shallow dip and gradual improvement, reflecting the impact of energy prices, policy tightening, and Euro Area headwinds.";
+  case "Germany":
+    return "Germany faces a mild contraction in 2023 and 2024, with growth turning slightly negative, before rebounding to over 1% by 2027. The chart highlights the impact of energy shocks, weak exports, and industrial challenges, with a slow recovery as global demand improves.";
+  case "Italy":
+    return "Italy’s growth slows to 0.4% in 2025 after a stronger 2023, then stabilizes near 0.7% through 2030. The chart shows a modest dip and steady outlook, reflecting structural challenges and the need for continued reforms.";
+  case "Japan":
+    return "Japan’s growth is projected to remain low but stable, fluctuating between 0.1% and 0.6% through 2030. The chart highlights persistent demographic headwinds and subdued domestic demand, with limited upside despite global recovery.";
+  case "Korea":
+    return "Korea’s GDP growth is expected to rebound from 1.4% in 2023 to above 2% in 2024, then moderate to around 1.8% by 2027. The chart shows a recovery driven by exports and technology, but growth remains below pre-pandemic averages.";
+  case "UnitedKingdom":
+    return "The United Kingdom’s growth recovers from a weak 2023, rising to over 1% by 2025 and stabilizing near 1.4% through 2030. The chart highlights the impact of Brexit, inflation, and policy tightening, with a gradual return to trend growth.";
+  case "China":
+    return "China’s growth remains the highest among major economies, starting at 5.2% in 2023 and gradually declining to 4% by 2030. The chart shows a steady slowdown as the economy matures, with structural reforms and external demand shaping the outlook.";
+  default:
+    return "The selected country’s GDP growth shows a pattern of post-pandemic normalization, with a slowdown in 2024–2025 followed by stabilization or modest recovery. The chart highlights the influence of global headwinds, policy changes, and domestic factors on the growth trajectory.";
   }
 }
 
 function GDPGrowthLineChart() {
-  const [country, setCountry] = useState('World');
+  const [country, setCountry] = useState("World");
   const data = {
     labels: gdpGrowthYears,
     datasets: [
       {
         label: `${gdpGrowthCountryOptions.find(c => c.value === country)?.label} GDP Growth (%)`,
         data: gdpGrowthData[country],
-        borderColor: 'rgb(37, 99, 235)',
-        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+        borderColor: "rgb(37, 99, 235)",
+        backgroundColor: "rgba(37, 99, 235, 0.2)",
         tension: 0.3,
         pointRadius: 4,
         pointHoverRadius: 6,
@@ -97,17 +97,17 @@ function GDPGrowthLineChart() {
   const options = {
     responsive: true,
     plugins: {
-      legend: { display: true, position: 'top' },
+      legend: { display: true, position: "top" },
       title: { display: false },
       tooltip: { callbacks: { label: ctx => `${ctx.parsed.y}%` } },
     },
     scales: {
       y: {
-        title: { display: true, text: 'GDP Growth (%)' },
+        title: { display: true, text: "GDP Growth (%)" },
         beginAtZero: false,
       },
       x: {
-        title: { display: true, text: 'Year' },
+        title: { display: true, text: "Year" },
       },
     },
   };
@@ -160,7 +160,7 @@ function RegionalGDPGrowthBarChart() {
     labels,
     datasets: [
       {
-        label: '2025 GDP Growth (%)',
+        label: "2025 GDP Growth (%)",
         data: groupedBarCountries.map(c => gdpGrowth2025[c.value]),
         backgroundColor: backgroundColors,
       },
@@ -170,12 +170,12 @@ function RegionalGDPGrowthBarChart() {
     responsive: true,
     plugins: {
       legend: { display: false },
-      title: { display: true, text: '2025 GDP Growth by Country/Region' },
+      title: { display: true, text: "2025 GDP Growth by Country/Region" },
       tooltip: { callbacks: { label: ctx => `${ctx.parsed.y}%` } },
     },
     scales: {
       y: {
-        title: { display: true, text: 'GDP Growth (%)' },
+        title: { display: true, text: "GDP Growth (%)" },
         beginAtZero: false,
       },
       x: {
@@ -187,9 +187,9 @@ function RegionalGDPGrowthBarChart() {
     <div className="mb-8">
       <Bar data={data} options={options} height={320} />
       <div className="flex gap-4 mt-2 text-xs">
-        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{background: regionColors.EMEA}}></span>EMEA</span>
-        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{background: regionColors.Americas}}></span>Americas</span>
-        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{background: regionColors.APAC}}></span>APAC</span>
+        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{ background: regionColors.EMEA }}></span>EMEA</span>
+        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{ background: regionColors.Americas }}></span>Americas</span>
+        <span className="inline-flex items-center"><span className="w-3 h-3 rounded-full mr-1" style={{ background: regionColors.APAC }}></span>APAC</span>
       </div>
     </div>
   );
@@ -198,25 +198,25 @@ function RegionalGDPGrowthBarChart() {
 function InflationLineChart() {
   // Select a few major economies and the US, Euro Area, and World if available
   const countries = [
-    'United States',
-    'Germany',
-    'France',
-    'Italy',
-    'Japan',
-    'United Kingdom',
-    'Canada',
-    'Australia',
+    "United States",
+    "Germany",
+    "France",
+    "Italy",
+    "Japan",
+    "United Kingdom",
+    "Canada",
+    "Australia",
   ];
   const years = [2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
   const colors = [
-    'rgb(37, 99, 235)', // US - blue
-    'rgb(59, 130, 246)', // Germany - lighter blue
-    'rgb(251, 191, 36)', // France - yellow
-    'rgb(16, 185, 129)', // Italy - green
-    'rgb(139, 92, 246)', // Japan - purple
-    'rgb(239, 68, 68)', // UK - red
-    'rgb(34, 197, 94)', // Canada - green
-    'rgb(255, 99, 132)', // Australia - pink
+    "rgb(37, 99, 235)", // US - blue
+    "rgb(59, 130, 246)", // Germany - lighter blue
+    "rgb(251, 191, 36)", // France - yellow
+    "rgb(16, 185, 129)", // Italy - green
+    "rgb(139, 92, 246)", // Japan - purple
+    "rgb(239, 68, 68)", // UK - red
+    "rgb(34, 197, 94)", // Canada - green
+    "rgb(255, 99, 132)", // Australia - pink
   ];
   const data = {
     labels: years.map(String),
@@ -234,17 +234,17 @@ function InflationLineChart() {
   const options = {
     responsive: true,
     plugins: {
-      legend: { display: true, position: 'top' },
+      legend: { display: true, position: "top" },
       title: { display: false },
       tooltip: { callbacks: { label: ctx => `${ctx.parsed.y}%` } },
     },
     scales: {
       y: {
-        title: { display: true, text: 'Inflation Rate (%)' },
+        title: { display: true, text: "Inflation Rate (%)" },
         beginAtZero: false,
       },
       x: {
-        title: { display: true, text: 'Year' },
+        title: { display: true, text: "Year" },
       },
     },
   };

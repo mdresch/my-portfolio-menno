@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import type { BlogPost } from '@/lib/markdown';
+import Link from "next/link";
+import type { BlogPost } from "@/lib/markdown";
 
 interface PostNavigationProps {
   currentSlug: string;
-  allPosts: Omit<BlogPost, 'content'>[];
+  allPosts: Omit<BlogPost, "content">[];
 }
 
 export default function PostNavigation({ currentSlug, allPosts }: PostNavigationProps) {

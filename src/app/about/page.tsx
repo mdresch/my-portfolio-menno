@@ -1,5 +1,5 @@
-import React from 'react';
-import { Metadata } from 'next';
+import React from "react";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Menno Drescher | HCM, Finance & Tech Specialist",

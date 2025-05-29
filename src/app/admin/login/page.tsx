@@ -1,8 +1,8 @@
-import LoginForm from '../../../components/LoginForm';
+import LoginForm from "../../../components/LoginForm";
 
 export const metadata = {
-  title: 'Admin Login | Portfolio',
-  description: 'Login to the admin dashboard to manage portfolio content',
+  title: "Admin Login | Portfolio",
+  description: "Login to the admin dashboard to manage portfolio content",
 };
 
 export default function AdminLogin() {

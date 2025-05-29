@@ -1,8 +1,8 @@
-'use client'; // Assuming potential for client-side interactions later
+"use client"; // Assuming potential for client-side interactions later
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image'; // Import Image component
+import React from "react";
+import Link from "next/link";
+import Image from "next/image"; // Import Image component
 
 export default function PodcastSpecialEditionTradePage() {
   return (

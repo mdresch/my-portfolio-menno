@@ -3,8 +3,8 @@
  * Uses basic NLP techniques and user behavior analysis to suggest relevant content
  */
 
-import { BlogPost } from './markdown';
-import { UserPreferences } from './userPreferences';
+import { BlogPost } from "./markdown";
+import { UserPreferences } from "./userPreferences";
 
 // Weight factors for different recommendation signals
 const WEIGHTS = {
@@ -18,10 +18,10 @@ const WEIGHTS = {
  */
 export function getRecommendations(
   userPreferences: UserPreferences,
-  availablePosts: Omit<BlogPost, 'content'>[],
+  availablePosts: Omit<BlogPost, "content">[],
   currentPostId?: string,
   count: number = 3
-): Omit<BlogPost, 'content'>[] {
+): Omit<BlogPost, "content">[] {
   // Filter out the current post if specified
   const postsToConsider = currentPostId
     ? availablePosts.filter(post => post.id !== currentPostId)
@@ -44,7 +44,7 @@ export function getRecommendations(
  * Calculate a recommendation score for a post based on user preferences
  */
 function calculateRecommendationScore(
-  post: Omit<BlogPost, 'content'>,
+  post: Omit<BlogPost, "content">,
   userPreferences: UserPreferences
 ): number {
   const categoryScore = calculateCategoryScore(post.categories, userPreferences.categoryPreferences);

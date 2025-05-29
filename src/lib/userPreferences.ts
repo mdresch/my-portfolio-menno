@@ -16,14 +16,14 @@ export interface UserPreferences {
   lastVisit: number;
 }
 
-const USER_PREFS_KEY = 'user_blog_preferences';
+const USER_PREFS_KEY = "user_blog_preferences";
 
 /**
  * Initialize user preferences if they don't exist
  */
 export function initializeUserPreferences(): UserPreferences {
   // Only run on client side
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     return getDefaultPreferences();
   }
   
@@ -38,7 +38,7 @@ export function initializeUserPreferences(): UserPreferences {
     return JSON.parse(existing) as UserPreferences;
   } catch (error) {
     // In case of corrupted data, reset to defaults
-    console.error('Error parsing user preferences:', error);
+    console.error("Error parsing user preferences:", error);
     const defaults = getDefaultPreferences();
     localStorage.setItem(USER_PREFS_KEY, JSON.stringify(defaults));
     return defaults;
@@ -61,7 +61,7 @@ function getDefaultPreferences(): UserPreferences {
  */
 export function saveUserPreferences(prefs: UserPreferences): void {
   // Only run on client side
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
   
   localStorage.setItem(USER_PREFS_KEY, JSON.stringify(prefs));
 }
@@ -76,7 +76,7 @@ export function recordPostRead(
   completionPercentage: number = 0
 ): void {
   // Only run on client side
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
   
   const prefs = initializeUserPreferences();
   

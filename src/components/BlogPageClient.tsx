@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useMemo, useEffect } from 'react';
-import BlogSearch from './BlogSearch';
-import BlogPosts from './BlogPosts';
-import { BlogPost } from '../lib/markdown';
-import SearchWidget from './SearchWidget';
+import React, { useState, useMemo, useEffect } from "react";
+import BlogSearch from "./BlogSearch";
+import BlogPosts from "./BlogPosts";
+import { BlogPost } from "../lib/markdown";
+import SearchWidget from "./SearchWidget";
 
 // Helper for debouncing
 function useDebounce<T>(value: T, delay: number): T {
@@ -22,10 +22,10 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue;
 }
 
-export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'content'>[] }) {
-  const [query, setQuery] = useState('');
+export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, "content">[] }) {
+  const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedYear, setSelectedYear] = useState("");
   // Pagination state
   const [page, setPage] = useState(1);
   const pageSize = 10; // Number of posts per page
@@ -36,14 +36,14 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
   // Memoize expensive computations
   const categories = useMemo(() => 
     Array.from(new Set(posts.flatMap(post => post.categories || []))),
-    [posts]
+  [posts]
   );
 
   const years = useMemo(() => 
     Array.from(new Set(posts.map(post => 
       new Date(post.date).getFullYear().toString())
     )).sort((a, b) => b.localeCompare(a)),
-    [posts]
+  [posts]
   );
 
   // Memoize filtered posts to avoid recalculation on every render
@@ -89,7 +89,7 @@ export default function BlogPageClient({ posts }: { posts: Omit<BlogPost, 'conte
           <select
             id="category-select"
             className="h-full border rounded px-3 py-2 min-w-[160px]"
-            value={selectedCategory || ''}
+            value={selectedCategory || ""}
             onChange={e => setSelectedCategory(e.target.value || null)}
           >
             <option value="">All Categories</option>

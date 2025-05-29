@@ -225,12 +225,12 @@ export default function IndicatorsTradeDashboard() {
       <div className="mb-8 p-4 bg-gray-50 rounded">
         <h2 className="text-2xl font-semibold mb-2">{selectedCountry} Overview</h2>
         <ul className="list-disc ml-6 text-gray-800">
-          <li><strong>GDP:</strong> {indicators.find(i => i.indicator === 'GDP')?.value} trillion USD</li>
-          <li><strong>Trade Balance:</strong> {indicators.find(i => i.indicator === 'Trade Balance')?.value} USD billions ({indicators.find(i => i.indicator === 'Trade Balance')?.trend})</li>
-          <li><strong>Net Exports:</strong> {indicators.find(i => i.indicator === 'Net Exports')?.value} USD billions</li>
-          <li><strong>Export Volume:</strong> {indicators.find(i => i.indicator === 'Export Volume')?.value} million tons</li>
-          <li><strong>Import Volume:</strong> {indicators.find(i => i.indicator === 'Import Volume')?.value} million tons</li>
-          <li><strong>Current Account Balance:</strong> {indicators.find(i => i.indicator === 'Current Account Balance')?.value} of GDP</li>
+          <li><strong>GDP:</strong> {indicators.find(i => i.indicator === "GDP")?.value} trillion USD</li>
+          <li><strong>Trade Balance:</strong> {indicators.find(i => i.indicator === "Trade Balance")?.value} USD billions ({indicators.find(i => i.indicator === "Trade Balance")?.trend})</li>
+          <li><strong>Net Exports:</strong> {indicators.find(i => i.indicator === "Net Exports")?.value} USD billions</li>
+          <li><strong>Export Volume:</strong> {indicators.find(i => i.indicator === "Export Volume")?.value} million tons</li>
+          <li><strong>Import Volume:</strong> {indicators.find(i => i.indicator === "Import Volume")?.value} million tons</li>
+          <li><strong>Current Account Balance:</strong> {indicators.find(i => i.indicator === "Current Account Balance")?.value} of GDP</li>
         </ul>
       </div>
       <div className="overflow-x-auto">

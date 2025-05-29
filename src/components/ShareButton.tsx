@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 export default function ShareButton({ url, title }: { url: string; title: string }) {
   const handleShare = async () => {
@@ -9,12 +9,12 @@ export default function ShareButton({ url, title }: { url: string; title: string
           url
         });
       } catch (err) {
-        console.error('Error sharing:', err);
+        console.error("Error sharing:", err);
       }
     } else {
       // Fallback
       navigator.clipboard.writeText(url);
-      alert('Link copied to clipboard!');
+      alert("Link copied to clipboard!");
     }
   };
   

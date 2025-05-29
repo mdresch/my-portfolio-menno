@@ -1,58 +1,58 @@
 // filepath: src/components/dashboards/OverviewDashboard.tsx (adjust path if needed)
-import React from 'react';
+import React from "react";
 // Correct named import from the correct location
-import { MockKPICard, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from '../../components/dashboards/MockVisuals';
+import { MockKPICard, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from "../../components/dashboards/MockVisuals";
 // Or relative path: import { MockKPICard, MockChartPlaceholder, MockPPICPIChart, MockPayrollEmploymentChart, MockAverageHourlyEarningsChart, MockEmploymentCostIndexChart } from './MockVisuals';
 
 // --- Import/Export Price Indexes Mock Data ---
 const importExportKPIs = [
-  { title: 'Import Prices (MoM)', value: '-0.1%', change: '↓', description: 'March 2025' },
-  { title: 'Import Prices (YoY)', value: '+0.9%', change: '↑', description: 'Mar 2024–Mar 2025' },
-  { title: 'Export Prices (MoM)', value: '0.0%', change: '→', description: 'March 2025' },
-  { title: 'Export Prices (YoY)', value: '+2.4%', change: '↑', description: 'Mar 2024–Mar 2025' },
-  { title: 'Fuel Import Prices (MoM)', value: '-2.3%', change: '↓', description: 'March 2025' },
-  { title: 'Fuel Import Prices (YoY)', value: '-5.2%', change: '↓', description: 'Mar 2024–Mar 2025' },
-  { title: 'Nonfuel Import Prices (MoM)', value: '+0.1%', change: '↑', description: 'March 2025' },
-  { title: 'Nonfuel Import Prices (YoY)', value: '+1.5%', change: '↑', description: 'Mar 2024–Mar 2025' },
-  { title: 'Agri Export Prices (MoM)', value: '0.0%', change: '→', description: 'March 2025' },
-  { title: 'Agri Export Prices (YoY)', value: '+1.4%', change: '↑', description: 'Mar 2024–Mar 2025' },
-  { title: 'Non-Agri Export Prices (MoM)', value: '-0.1%', change: '↓', description: 'March 2025' },
-  { title: 'Non-Agri Export Prices (YoY)', value: '+2.5%', change: '↑', description: 'Mar 2024–Mar 2025' },
+  { title: "Import Prices (MoM)", value: "-0.1%", change: "↓", description: "March 2025" },
+  { title: "Import Prices (YoY)", value: "+0.9%", change: "↑", description: "Mar 2024–Mar 2025" },
+  { title: "Export Prices (MoM)", value: "0.0%", change: "→", description: "March 2025" },
+  { title: "Export Prices (YoY)", value: "+2.4%", change: "↑", description: "Mar 2024–Mar 2025" },
+  { title: "Fuel Import Prices (MoM)", value: "-2.3%", change: "↓", description: "March 2025" },
+  { title: "Fuel Import Prices (YoY)", value: "-5.2%", change: "↓", description: "Mar 2024–Mar 2025" },
+  { title: "Nonfuel Import Prices (MoM)", value: "+0.1%", change: "↑", description: "March 2025" },
+  { title: "Nonfuel Import Prices (YoY)", value: "+1.5%", change: "↑", description: "Mar 2024–Mar 2025" },
+  { title: "Agri Export Prices (MoM)", value: "0.0%", change: "→", description: "March 2025" },
+  { title: "Agri Export Prices (YoY)", value: "+1.4%", change: "↑", description: "Mar 2024–Mar 2025" },
+  { title: "Non-Agri Export Prices (MoM)", value: "-0.1%", change: "↓", description: "March 2025" },
+  { title: "Non-Agri Export Prices (YoY)", value: "+2.5%", change: "↑", description: "Mar 2024–Mar 2025" },
 ];
 
 const importExportPriceData = [
-  { month: '2024-12', import: 0.1, export: 0.5 },
-  { month: '2025-01', import: 0.2, export: 1.4 },
-  { month: '2025-02', import: 0.2, export: 0.5 },
-  { month: '2025-03', import: -0.1, export: 0.0 },
+  { month: "2024-12", import: 0.1, export: 0.5 },
+  { month: "2025-01", import: 0.2, export: 1.4 },
+  { month: "2025-02", import: 0.2, export: 0.5 },
+  { month: "2025-03", import: -0.1, export: 0.0 },
 ];
 
 const fuelImportPriceData = [
-  { month: '2024-12', value: 1.2 },
-  { month: '2025-01', value: 2.7 },
-  { month: '2025-02', value: 1.6 },
-  { month: '2025-03', value: -2.3 },
+  { month: "2024-12", value: 1.2 },
+  { month: "2025-01", value: 2.7 },
+  { month: "2025-02", value: 1.6 },
+  { month: "2025-03", value: -2.3 },
 ];
 
 const nonfuelImportPriceData = [
-  { month: '2024-12', value: 0.0 },
-  { month: '2025-01', value: 0.0 },
-  { month: '2025-02', value: 0.1 },
-  { month: '2025-03', value: 0.1 },
+  { month: "2024-12", value: 0.0 },
+  { month: "2025-01", value: 0.0 },
+  { month: "2025-02", value: 0.1 },
+  { month: "2025-03", value: 0.1 },
 ];
 
 const agriExportPriceData = [
-  { month: '2024-12', value: 0.7 },
-  { month: '2025-01', value: -0.2 },
-  { month: '2025-02', value: 0.6 },
-  { month: '2025-03', value: 0.0 },
+  { month: "2024-12", value: 0.7 },
+  { month: "2025-01", value: -0.2 },
+  { month: "2025-02", value: 0.6 },
+  { month: "2025-03", value: 0.0 },
 ];
 
 const nonAgriExportPriceData = [
-  { month: '2024-12', value: 0.4 },
-  { month: '2025-01', value: 1.5 },
-  { month: '2025-02', value: 0.5 },
-  { month: '2025-03', value: -0.1 },
+  { month: "2024-12", value: 0.4 },
+  { month: "2025-01", value: 1.5 },
+  { month: "2025-02", value: 0.5 },
+  { month: "2025-03", value: -0.1 },
 ];
 
 // --- Chart Components ---

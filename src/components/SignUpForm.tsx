@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useAuth } from '../lib/auth';
-import Link from 'next/link';
+import { useState } from "react";
+import { useAuth } from "../lib/auth";
+import Link from "next/link";
 
 export default function SignUpForm() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -23,27 +23,27 @@ export default function SignUpForm() {
     
     // Basic validation
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       setIsSubmitting(false);
       return;
     }
     
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError("Password must be at least 6 characters long");
       setIsSubmitting(false);
       return;
     }
     
     try {
       await signUp({ username, email, password });
-      setSuccess('Account created successfully! You are now logged in.');
+      setSuccess("Account created successfully! You are now logged in.");
       // Clear form
-      setUsername('');
-      setEmail('');
-      setPassword('');
-      setConfirmPassword('');
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign up failed. Please try again.');
+      setError(err instanceof Error ? err.message : "Sign up failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -147,13 +147,13 @@ export default function SignUpForm() {
           disabled={isSubmitting}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50"
         >
-          {isSubmitting ? 'Creating Account...' : 'Sign Up'}
+          {isSubmitting ? "Creating Account..." : "Sign Up"}
         </button>
       </form>
       
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link href="/login" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium">
             Sign in here
           </Link>

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
 // Dynamically import the editor to avoid SSR issues
-const MarkdownEditor = dynamic(() => import('../../../components/admin/MarkdownEditor'), {
+const MarkdownEditor = dynamic(() => import("../../../components/admin/MarkdownEditor"), {
   ssr: false,
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });
@@ -16,27 +16,27 @@ export default function NewPostPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   
   // Form state
-  const [title, setTitle] = useState('');
-  const [slug, setSlug] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [categories, setCategories] = useState<string[]>(['']);
-  const [content, setContent] = useState('');
-  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [categories, setCategories] = useState<string[]>([""]);
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
   
   // GitHub credentials
-  const [githubToken, setGithubToken] = useState('');
+  const [githubToken, setGithubToken] = useState("");
   
   useEffect(() => {
     // Check if user is authenticated
-    const adminAuth = localStorage.getItem('adminAuth');
-    const token = localStorage.getItem('githubToken');
+    const adminAuth = localStorage.getItem("adminAuth");
+    const token = localStorage.getItem("githubToken");
     
     if (!adminAuth) {
-      router.push('/admin');
+      router.push("/admin");
       return;
     }
     
@@ -51,8 +51,8 @@ export default function NewPostPage() {
   const generateSlug = (title: string): string => {
     return title
       .toLowerCase()
-      .replace(/[^\w\s]/gi, '')
-      .replace(/\s+/g, '-');
+      .replace(/[^\w\s]/gi, "")
+      .replace(/\s+/g, "-");
   };
   
   // Handle title change
@@ -71,7 +71,7 @@ export default function NewPostPage() {
   
   // Add new category field
   const addCategory = (): void => {
-    setCategories([...categories, '']);
+    setCategories([...categories, ""]);
   };
   
   // Remove category field
@@ -88,30 +88,30 @@ export default function NewPostPage() {
     e.preventDefault();
     
     if (!githubToken) {
-      setError('GitHub token is required. Please add it in Settings tab.');
+      setError("GitHub token is required. Please add it in Settings tab.");
       return;
     }
     
     if (!title || !slug || !content) {
-      setError('Title, slug, and content are required fields.');
+      setError("Title, slug, and content are required fields.");
       return;
     }
     
     setIsSaving(true);
-    setError('');
+    setError("");
     // Filter out empty categories
-    const filteredCategories = categories.filter(cat => cat.trim() !== '');
+    const filteredCategories = categories.filter(cat => cat.trim() !== "");
     
-    const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
     
     // Create frontmatter with proper YAML formatting for categories
     let categoriesYAML;
     if (filteredCategories.length > 0) {
       // Use block style for categories (more YAML compatible)
-      categoriesYAML = `categories:\n${filteredCategories.map(cat => `  - "${cat}"`).join('\n')}`;
+      categoriesYAML = `categories:\n${filteredCategories.map(cat => `  - "${cat}"`).join("\n")}`;
     } else {
       // Use proper spacing for empty array
-      categoriesYAML = 'categories: []';
+      categoriesYAML = "categories: []";
     }
 
     const frontmatter = `---
@@ -127,11 +127,11 @@ ${content}`;
     console.log("Generated Frontmatter:\n", frontmatter); // Add log for debugging
 
     try {
-      const response = await fetch('/api/github/create-post', {
-        method: 'POST',
+      const response = await fetch("/api/github/create-post", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'X-GitHub-Token': githubToken // Send token in header instead of body
+          "Content-Type": "application/json",
+          "X-GitHub-Token": githubToken // Send token in header instead of body
         },
         body: JSON.stringify({
           content: frontmatter, // Use the updated frontmatter
@@ -143,18 +143,18 @@ ${content}`;
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to create post');
+        throw new Error(data.error || "Failed to create post");
       }
       
       setSuccess(true);
       // Redirect after short delay
       setTimeout(() => {
-        router.push('/admin');
+        router.push("/admin");
       }, 2000);
       
     } catch (err: unknown) {
-      console.error('Error creating post:', err);
-      setError(err instanceof Error ? err.message : 'Failed to create post. Please try again.');
+      console.error("Error creating post:", err);
+      setError(err instanceof Error ? err.message : "Failed to create post. Please try again.");
     } finally {
       setIsSaving(false);
     }
@@ -338,11 +338,11 @@ ${content}`;
                 disabled={isSaving}
                 className={`px-4 py-2 rounded-md font-medium ${
                   isSaving 
-                    ? 'bg-blue-400 cursor-not-allowed' 
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                    ? "bg-blue-400 cursor-not-allowed" 
+                    : "bg-blue-600 text-white hover:bg-blue-700"
                 }`}
               >
-                {isSaving ? 'Creating Post...' : 'Create Post'}
+                {isSaving ? "Creating Post..." : "Create Post"}
               </button>
             </div>
           </form>

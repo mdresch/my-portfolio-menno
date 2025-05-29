@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect, RefObject } from 'react';
+import { useState, useEffect, RefObject } from "react";
 
 export default function ReadingProgress({ targetRef }: { targetRef: RefObject<HTMLElement> }) {
   const [readingProgress, setReadingProgress] = useState(0);
@@ -26,8 +26,8 @@ export default function ReadingProgress({ targetRef }: { targetRef: RefObject<HT
       setReadingProgress((windowScrollTop / totalHeight) * 100);
     };
     
-    window.addEventListener('scroll', scrollListener);
-    return () => window.removeEventListener('scroll', scrollListener);
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
   }, [targetRef]);
   
   return (

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import resumeData from '../../data/resume';
-import ResumeHeader from './ResumeHeader';
-import ResumeSection from './ResumeSection';
-import SkillsVisualization from './SkillsVisualization';
-import ExperienceItem from './ExperienceItem';
-import EducationItem from './EducationItem';
-import PDFExport from './PDFExport';
-import ResumeJsonLd from '../../components/SEO/ResumeJsonLd';
+import React, { useState } from "react";
+import resumeData from "../../data/resume";
+import ResumeHeader from "./ResumeHeader";
+import ResumeSection from "./ResumeSection";
+import SkillsVisualization from "./SkillsVisualization";
+import ExperienceItem from "./ExperienceItem";
+import EducationItem from "./EducationItem";
+import PDFExport from "./PDFExport";
+import ResumeJsonLd from "../../components/SEO/ResumeJsonLd";
 
 export default function ResumeContainer() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(['summary', 'experience', 'skills'])
+    new Set(["summary", "experience", "skills"])
   );
 
   const toggleSection = (section: string) => {
@@ -69,8 +69,8 @@ export default function ResumeContainer() {
           <ResumeSection 
             title="Summary" 
             id="summary"
-            isExpanded={expandedSections.has('summary')}
-            onToggle={() => toggleSection('summary')}
+            isExpanded={expandedSections.has("summary")}
+            onToggle={() => toggleSection("summary")}
           >
             <p className="text-gray-700">{resumeData.summary}</p>
           </ResumeSection>
@@ -78,8 +78,8 @@ export default function ResumeContainer() {
           <ResumeSection 
             title="Skills" 
             id="skills"
-            isExpanded={expandedSections.has('skills')}
-            onToggle={() => toggleSection('skills')}
+            isExpanded={expandedSections.has("skills")}
+            onToggle={() => toggleSection("skills")}
           >
             <SkillsVisualization skills={resumeData.skills} />
           </ResumeSection>
@@ -87,8 +87,8 @@ export default function ResumeContainer() {
           <ResumeSection 
             title="Experience" 
             id="experience"
-            isExpanded={expandedSections.has('experience')}
-            onToggle={() => toggleSection('experience')}
+            isExpanded={expandedSections.has("experience")}
+            onToggle={() => toggleSection("experience")}
           >
             {resumeData.workExperience.map((experience, index) => (
               <ExperienceItem key={index} experience={experience} />
@@ -98,8 +98,8 @@ export default function ResumeContainer() {
           <ResumeSection 
             title="Education" 
             id="education"
-            isExpanded={expandedSections.has('education')}
-            onToggle={() => toggleSection('education')}
+            isExpanded={expandedSections.has("education")}
+            onToggle={() => toggleSection("education")}
           >
             {resumeData.education.map((education, index) => (
               <EducationItem key={index} education={education} />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { OverviewDashboard } from '../../../components/dashboards/OverviewDashboard';
+import React from "react";
+import { OverviewDashboard } from "../../../components/dashboards/OverviewDashboard";
 
 export default function EconomicIndicatorsPage() {
   return (

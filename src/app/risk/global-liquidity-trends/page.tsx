@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import { 
   GlobalLiquidityIndexChart, 
   CentralBankBalanceSheetsChart, 
@@ -9,7 +9,7 @@ import {
   InterestRateEnvironmentChart,
   CrossBorderFlowsChart,
   EmergingMarketLiquidityChart
-} from '../../../components/risk/GlobalLiquidityCharts';
+} from "../../../components/risk/GlobalLiquidityCharts";
 
 export default function GlobalLiquidityTrendsPage() {
   return (

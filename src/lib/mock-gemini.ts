@@ -31,7 +31,7 @@ const SYSTEM_PROMPT_MARKER = "You are an AI assistant for Menno's portfolio webs
  */
 export function createMockGeminiResponse(request: MockRequest): MockResponse {
   // Extract the user message and context
-  const userMessages = request.contents.filter(content => content.role === 'user');
+  const userMessages = request.contents.filter(content => content.role === "user");
   
   if (userMessages.length === 0) {
     return mockError("No user message found in request");
@@ -49,7 +49,7 @@ export function createMockGeminiResponse(request: MockRequest): MockResponse {
     // Extract sources from the prompt if present
     const sourceMatches = systemPrompt.match(/Source: ([^\n]+)/g);
     if (sourceMatches) {
-      sources = sourceMatches.map(match => match.replace('Source: ', '').trim());
+      sources = sourceMatches.map(match => match.replace("Source: ", "").trim());
     }
     
     // Get the actual user query (usually the last user message)

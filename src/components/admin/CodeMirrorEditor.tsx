@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { EditorView } from '@codemirror/view';
-import { EditorState } from '@codemirror/state';
-import CodeMirror from '@uiw/react-codemirror';
-import { markdown } from '@codemirror/lang-markdown';
+import React from "react";
+import { EditorView } from "@codemirror/view";
+import { EditorState } from "@codemirror/state";
+import CodeMirror from "@uiw/react-codemirror";
+import { markdown } from "@codemirror/lang-markdown";
 
 interface CodeMirrorEditorProps {
   value: string;

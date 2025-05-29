@@ -1,4 +1,4 @@
-import { BlogPost } from './markdown';
+import { BlogPost } from "./markdown";
 
 interface HashnodeResponse {
   data?: {
@@ -15,7 +15,7 @@ interface HashnodeResponse {
 export async function crossPostToHashnode(post: BlogPost, personalToken: string): Promise<{success: boolean, url?: string, error?: string}> {
   try {
     // Hashnode GraphQL API endpoint
-    const endpoint = 'https://api.hashnode.com/';
+    const endpoint = "https://api.hashnode.com/";
     
     // Prepare markdown content - fix image URLs to be absolute
     const content = post.content.replace(
@@ -44,7 +44,7 @@ export async function crossPostToHashnode(post: BlogPost, personalToken: string)
         title: post.title,
         contentMarkdown: content,
         tags: post.categories.map(category => ({
-          slug: category.toLowerCase().replace(/\s+/g, '-'),
+          slug: category.toLowerCase().replace(/\s+/g, "-"),
           name: category
         })),
         isRepublished: {
@@ -55,10 +55,10 @@ export async function crossPostToHashnode(post: BlogPost, personalToken: string)
     
     // Make the API request
     const response = await fetch(endpoint, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': personalToken
+        "Content-Type": "application/json",
+        "Authorization": personalToken
       },
       body: JSON.stringify({
         query: mutation,
@@ -84,12 +84,12 @@ export async function crossPostToHashnode(post: BlogPost, personalToken: string)
     
     return {
       success: false,
-      error: 'Unknown error occurred'
+      error: "Unknown error occurred"
     };
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'An unknown error occurred'
+      error: error instanceof Error ? error.message : "An unknown error occurred"
     };
   }
 }

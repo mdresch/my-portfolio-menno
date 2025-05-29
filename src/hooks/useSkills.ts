@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { SkillService } from '@/lib/api-services';
-import { Skill } from '@/types/api';
+import { useState, useEffect } from "react";
+import { SkillService } from "@/lib/api-services";
+import { Skill } from "@/types/api";
 
 export function useSkills() {
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -20,7 +20,7 @@ export function useSkills() {
         setCategories(categoriesData);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to load skills'));
+        setError(err instanceof Error ? err : new Error("Failed to load skills"));
       } finally {
         setIsLoading(false);
       }

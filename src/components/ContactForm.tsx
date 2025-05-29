@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ContactService } from '@/lib/api-services';
+import { useState } from "react";
+import { ContactService } from "@/lib/api-services";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
   });
   
   const [submitting, setSubmitting] = useState(false);
@@ -38,7 +38,7 @@ export default function ContactForm() {
       });
       
       // Reset form and show success
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setSubmitted(true);
       
       // Hide success message after 5 seconds
@@ -47,7 +47,7 @@ export default function ContactForm() {
       }, 5000);
       
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to submit form');
+      setError(err instanceof Error ? err.message : "Failed to submit form");
     } finally {
       setSubmitting(false);
     }
@@ -135,7 +135,7 @@ export default function ContactForm() {
             disabled={submitting}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {submitting ? 'Sending...' : 'Send Message'}
+            {submitting ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>
