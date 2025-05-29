@@ -109,8 +109,10 @@ jobs:
         
       - name: Setup test environment
         run: |
-          mkdir -p docs/requirements
-          touch docs/requirements/requirements-agent-output.md
+          echo "Creating required directories and files for tests..."
+          mkdir -p docs/requirements || { echo "Failed to create docs/requirements directory"; exit 1; }
+          touch docs/requirements/requirements-agent-output.md || { echo "Failed to create requirements-agent-output.md file"; exit 1; }
+          echo "Test environment setup complete"
         
       - name: Run auto-requirements tests
         run: npx jest scripts/auto-requirements.test.js --verbose
