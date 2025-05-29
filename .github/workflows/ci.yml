@@ -18,16 +18,29 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '18.17.0'  # Specify exact version that works with Next.js
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+        run: |
+          echo "Installing dependencies..."
+          npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+          echo "Dependencies installed successfully"
+          npm list
         
       - name: Run tests
-        run: npm test
+        run: |
+          echo "Running tests..."
+          npm test
         env:
           CI: true
+          DEBUG: '*'
+          
+      - name: Setup Environment
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "NEXT_TELEMETRY_DISABLED=1" >> $GITHUB_ENV
+          echo "NODE_OPTIONS=--max-old-space-size=4096" >> $GITHUB_ENV
 
   lint:
     name: Run Linting
@@ -40,7 +53,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '18.17.0'  # Specify exact version that works with Next.js
           cache: 'npm'
           
       - name: Install dependencies
@@ -48,6 +61,12 @@ jobs:
         
       - name: Run ESLint
         run: echo "Running ESLint in verbose mode" && npm run lint -- --verbose || (echo "ESLint failed: Showing detailed errors" && npx next lint --verbose)
+        
+      - name: Setup Environment
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "NEXT_TELEMETRY_DISABLED=1" >> $GITHUB_ENV
+          echo "NODE_OPTIONS=--max-old-space-size=4096" >> $GITHUB_ENV
 
   build:
     name: Build Application
@@ -60,7 +79,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '18.17.0'  # Specify exact version that works with Next.js
           cache: 'npm'
           
       - name: Install dependencies
@@ -75,6 +94,12 @@ jobs:
           name: build-files
           path: .next/
           retention-days: 7
+          
+      - name: Setup Environment
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "NEXT_TELEMETRY_DISABLED=1" >> $GITHUB_ENV
+          echo "NODE_OPTIONS=--max-old-space-size=4096" >> $GITHUB_ENV
 
   auto-requirements-test:
     name: Auto Requirements Script Tests
@@ -87,13 +112,25 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '18.17.0'  # Specify exact version that works with Next.js
           cache: 'npm'
           
       - name: Install dependencies
         run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
         
       - name: Run auto-requirements tests
-        run: npx jest scripts/auto-requirements.test.js --verbose
+        run: |
+          echo "Setting up test environment..."
+          mkdir -p docs/requirements
+          touch docs/requirements/requirements-agent-output.md
+          echo "Running auto-requirements tests..."
+          npx jest scripts/auto-requirements.test.js --verbose
         env:
           CI: true
+          NODE_ENV: test
+          
+      - name: Setup Environment
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "NEXT_TELEMETRY_DISABLED=1" >> $GITHUB_ENV
+          echo "NODE_OPTIONS=--max-old-space-size=4096" >> $GITHUB_ENV
