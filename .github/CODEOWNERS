@@ -1,0 +1,22 @@
+# Global code owners - require review from repository owner for all files
+* @mdresch
+
+# Specific ownership for critical files
+/.github/workflows/ @mdresch
+/scripts/ @mdresch
+/docs/ @mdresch
+/config/ @mdresch
+
+# API and backend code
+/api/ @mdresch
+/src/app/api/ @mdresch
+
+# Infrastructure and configuration
+/infra/ @mdresch
+*.json @mdresch
+*.yaml @mdresch
+*.yml @mdresch
+
+# Security-sensitive files
+/SECURITY.md @mdresch
+/.github/ @mdresch
