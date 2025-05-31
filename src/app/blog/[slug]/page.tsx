@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from "react";
+import type { PageProps } from "next/app";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 // Removed unused Link import
@@ -56,9 +57,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Update the page component
-// @ts-ignore: bypass Next.js PageProps type constraint
-const BlogPostPage = async (props: any) => {
-  const slug = props.params.slug;
+export default async function BlogPostPage({ params }: PageProps<{ slug: string }>) {
+  // `params` can be a promise or plain object, so await it
+  const realParams = await params;
+  const slug = realParams.slug;
   const post = await getPostDataFromFile(slug);
   // Fetch all posts for navigation (Omit<BlogPost, 'content'>[])
   const allPosts = await getSortedPostsData();
@@ -81,5 +83,3 @@ const BlogPostPage = async (props: any) => {
     </div>
   );
 };
-
-export default BlogPostPage;
