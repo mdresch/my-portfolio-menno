@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../lib/auth";
 import Link from "next/link";
 
@@ -60,7 +60,7 @@ export default function ForgotPasswordForm() {
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white"
           />
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            We'll send you a link to reset your password
+            We&apos;ll send you a link to reset your password
           </p>
         </div>
         

@@ -57,6 +57,6 @@ export default function ReadingTracker({ postId, categories }: ReadingTrackerPro
     };
   }, [postId, categories, startTime, maxScrollPercentage]);
   
-  // This component doesn't render anything visible
+  // This component doesn&apos;t render anything visible
   return null;
 }

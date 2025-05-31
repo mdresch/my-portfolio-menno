@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import type { RequestInit } from "next/dist/server/web/spec-extension/request";
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);

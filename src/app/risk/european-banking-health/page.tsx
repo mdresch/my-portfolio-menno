@@ -152,7 +152,7 @@ export default function EuropeanBankingHealthPage() {
               well above the 100% regulatory minimum. Net Stable Funding Ratios (NSFR) are similarly robust, averaging 124%.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-              The end of the European Central Bank's Targeted Longer-Term Refinancing Operations (TLTRO) program has been 
+              The end of the European Central Bank&apos;s Targeted Longer-Term Refinancing Operations (TLTRO) program has been 
               managed without significant market disruption, though it has increased funding costs for some banks, particularly 
               in southern Europe.
             </p>
@@ -222,7 +222,7 @@ export default function EuropeanBankingHealthPage() {
           <div>
             <h3 className="text-xl font-semibold text-sky-800 dark:text-sky-300 mb-3 transition-colors">Short-term Risks</h3>
             <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              <li><strong>Credit quality deterioration</strong> as higher interest rates impact borrowers' debt servicing capacity</li>
+              <li><strong>Credit quality deterioration</strong> as higher interest rates impact borrowers&apos; debt servicing capacity</li>
               <li><strong>Commercial real estate corrections</strong> affecting loan collateral values and specialized lenders</li>
               <li><strong>Liquidity risk</strong> from increased competition for deposits and changing customer behavior</li>
               <li><strong>Market risk</strong> from potential asset price corrections and volatility in fixed income markets</li>
@@ -285,8 +285,8 @@ export default function EuropeanBankingHealthPage() {
           margins but also introduced new risks that require careful monitoring.
         </p>
         <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4">
-          "European banks are better capitalized and more resilient than before previous crises, but structural 
-          challenges to profitability and emerging risks require continued vigilance from both supervisors and bank management."
+          &quot;European banks are better capitalized and more resilient than before previous crises, but structural 
+          challenges to profitability and emerging risks require continued vigilance from both supervisors and bank management.&quot;
           <footer className="text-sm text-gray-600 dark:text-gray-400 mt-2">— European Financial Stability Institute, 2025</footer>
         </blockquote>
       </section>

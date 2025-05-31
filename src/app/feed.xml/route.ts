@@ -41,7 +41,7 @@ export async function GET() {
       ${post.categories
     .map((category) => `<category>${category}</category>`)
     .join("\n      ")}
-    </item>`
+    </item>`;
   }))}
   </channel>
 </rss>`;
