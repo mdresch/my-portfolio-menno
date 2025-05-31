@@ -111,6 +111,8 @@ api/.env*
 # Firebase Admin SDK service account key
 my-portfolio-menno-firebase-adminsdk-fbsvc-be51664a5d.json
 
-# Google Cloud service account key
+# Google Cloud service account keys (wildcard pattern to catch all)
+my-portfolio-menno-*.json
 my-portfolio-menno-1c10fc787618.json
+service-account-key-single-line.json
 .env.local
