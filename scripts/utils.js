@@ -174,7 +174,32 @@ function getFilesByGlob(pattern, cwd = process.cwd()) {
     return [];
   }
   try {
-    return glob.sync(pattern, { cwd });
+}
+
+/**
+ * Gets files matching a glob pattern in a directory (async for better performance).
+ * @param {string} pattern The glob pattern to match.
+ * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
+ * @returns {Promise<string[]>} A promise that resolves to an array of matching file paths, or an empty array on error.
+ */
+async function getFilesByGlob(pattern, cwd = process.cwd()) {
+  if (typeof pattern !== 'string' || pattern.trim() === '') {
+    logError('Error with glob: Pattern must be a non-empty string.', { pattern });
+    return [];
+  }
+  // Validate cwd
+  if (typeof cwd !== 'string' || cwd.trim() === '') {
+    logError('Error with glob: CWD must be a non-empty string.', { cwd });
+    return [];
+  }
+  try {
+    const { glob } = await import('glob');
+    return await glob(pattern, { cwd });
+  } catch (error) {
+    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
+    return [];
+  }
+}
   } catch (error) {
     logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
     return [];

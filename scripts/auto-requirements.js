@@ -44,7 +44,15 @@ async function generateBusinessProblemLLM(stack, contextBundle) {
     let parsed;
     try {
       parsed = JSON.parse(text);
-    } catch { /* not JSON, treat as plain string */ }
+let parsed;
+    try {
+      parsed = JSON.parse(text);
+    } catch (error) {
+      console.warn('Failed to parse LLM response as JSON:', error);
+    }
+    if (parsed && parsed.error) {
+      console.warn('[FALLBACK] LLM API returned error, using fallback business problem statement.');
+      utils.logInfo('Using fallback for business problem statement due to LLM API error.');
     if (parsed && parsed.error) {
       console.warn('[FALLBACK] LLM API returned error, using fallback business problem statement.');
       utils.logInfo('Using fallback for business problem statement due to LLM API error.');
@@ -115,7 +123,25 @@ async function gatherProjectContext() {
   const docsDir = path.join(__dirname, '../docs');
   const docFiles = utils.getFilesByGlob('**/*.md', docsDir);
   if (docFiles.length) {
-    for (const file of docFiles) {
+const docsDir = path.join(__dirname, '../docs');
+  const docFiles = utils.getFilesByGlob('**/*.md', docsDir);
+  if (docFiles.length) {
+    const docPromises = docFiles.map(async (file) => {
+      const filePath = path.join(docsDir, file);
+      try {
+        const content = await utils.safeReadFile(filePath);
+        if (content) return `docs/${file}: ${content.slice(0, 800)}
+`;
+      } catch (error) {
+        utils.logError(`Error reading docs/${file}:`, error);
+      }
+      return '';
+    });
+    const docResults = await Promise.all(docPromises);
+    contextBundle += docResults.join('');
+  }
+  // 2. Summarize all markdown files in content/blog/
+  const blogDir = path.join(__dirname, '../content/blog');
       const filePath = path.join(docsDir, file);
       try {
         const content = await utils.safeReadFile(filePath);
@@ -237,9 +263,18 @@ async function generateStrategicSections(statement, stack, contextBundle) {
     const json = await response.text();
     console.log('Raw LLM response:', json.slice(0, 500) + (json.length > 500 ? '...' : ''));
     let parsed;
+let parsed;
     try {
       parsed = JSON.parse(json);
-    } catch { parsed = null; }
+    } catch (error) {
+      console.error('Error parsing JSON response:', error);
+      parsed = null;
+    }
+    if (parsed && parsed.error) {
+      console.warn('[FALLBACK] LLM API returned error, using fallback strategic sections.');
+      utils.logInfo('Using fallback for strategic sections due to LLM API error.');
+      parsed = JSON.parse(json);
+    } catch (e) { parsed = null; }
     if (parsed && parsed.error) {
       console.warn('[FALLBACK] LLM API returned error, using fallback strategic sections.');
       utils.logInfo('Using fallback for strategic sections due to LLM API error.');
