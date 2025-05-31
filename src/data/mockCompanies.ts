@@ -437,511 +437,511 @@ export const mockCompanies = [
     priceHistory: [ { date: "2025-04-16", price: 1390 }, { date: "2025-04-17", price: 1400 }, { date: "2025-04-18", price: 1400 }, { date: "2025-04-19", price: 1400 } ]
   },
   {
-    name: "Unilever",
-    ticker: "UNA.AS",
-    sector: "Consumer Staples",
-    index: "AEX",
+    name: 'Unilever',
+    ticker: 'UNA.AS',
+    sector: 'Consumer Staples',
+    index: 'AEX',
     price: 50,
-    change: "+0.3%",
-    summary: { marketCap: "130B", pe: 18.0, eps: 2.8, dividend: 1.7, yield: "3.4%", beta: 0.9, volume: "1.5M", shares: "2.6B", roe: "18.0%", revenue: "60.0B", grossMargin: "45.0%", netMargin: "12.0%", debtToEquity: "70.0%" },
-    news: [ { title: "Unilever launches new sustainability initiative", date: "2025-04-13", url: "#" } ],
-    profile: { description: "Unilever N.V. is a British-Dutch multinational consumer goods company.", executives: [ { name: "Hein Schumacher", title: "CEO" } ], address: "Weena 455, 3013 AL Rotterdam, Netherlands", website: "https://www.unilever.com/" },
-    earnings: { nextEarningsDate: "2025-05-18", lastEarningsDate: "2025-02-18", epsActual: 0.8, epsEstimate: 0.78, revenueActual: "15.0B", revenueEstimate: "14.8B", surprise: "+1.9%" },
-    peers: [ { name: "Ahold Del", ticker: "AD.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "60.0B", netIncome: "7.2B" } ], balanceSheet: [ { year: 2024, assets: "80.0B", liabilities: "50.0B", equity: "30.0B" } ], cashFlow: [ { year: 2024, operating: "8.0B", investing: "-2.0B", financing: "-1.0B" } ] },
-    options: { calls: [ { strike: 52, expiry: "2025-05-17", price: 0.6, volume: 40 } ], puts: [ { strike: 48, expiry: "2025-05-17", price: 0.4, volume: 30 } ] },
-    ownership: { institutional: "65%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "6.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 49.8 }, { date: "2025-04-17", price: 50 }, { date: "2025-04-18", price: 50 }, { date: "2025-04-19", price: 50 } ]
+    change: '+0.3%',
+    summary: { marketCap: '130B', pe: 18.0, eps: 2.8, dividend: 1.7, yield: '3.4%', beta: 0.9, volume: '1.5M', shares: '2.6B', roe: '18.0%', revenue: '60.0B', grossMargin: '45.0%', netMargin: '12.0%', debtToEquity: '70.0%' },
+    news: [ { title: 'Unilever launches new sustainability initiative', date: '2025-04-13', url: '#' } ],
+    profile: { description: 'Unilever N.V. is a British-Dutch multinational consumer goods company.', executives: [ { name: 'Hein Schumacher', title: 'CEO' } ], address: 'Weena 455, 3013 AL Rotterdam, Netherlands', website: 'https://www.unilever.com/' },
+    earnings: { nextEarningsDate: '2025-05-18', lastEarningsDate: '2025-02-18', epsActual: 0.8, epsEstimate: 0.78, revenueActual: '15.0B', revenueEstimate: '14.8B', surprise: '+1.9%' },
+    peers: [ { name: 'Ahold Del', ticker: 'AD.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '60.0B', netIncome: '7.2B' } ], balanceSheet: [ { year: 2024, assets: '80.0B', liabilities: '50.0B', equity: '30.0B' } ], cashFlow: [ { year: 2024, operating: '8.0B', investing: '-2.0B', financing: '-1.0B' } ] },
+    options: { calls: [ { strike: 52, expiry: '2025-05-17', price: 0.6, volume: 40 } ], puts: [ { strike: 48, expiry: '2025-05-17', price: 0.4, volume: 30 } ] },
+    ownership: { institutional: '65%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 49.8 }, { date: '2025-04-17', price: 50 }, { date: '2025-04-18', price: 50 }, { date: '2025-04-19', price: 50 } ]
   },
   {
-    name: "Heineken",
-    ticker: "HEIA.AS",
-    sector: "Consumer Staples",
-    index: "AEX",
+    name: 'Heineken',
+    ticker: 'HEIA.AS',
+    sector: 'Consumer Staples',
+    index: 'AEX',
     price: 90,
-    change: "+0.4%",
-    summary: { marketCap: "50B", pe: 20.0, eps: 4.5, dividend: 1.8, yield: "2.0%", beta: 1.0, volume: "0.7M", shares: "0.6B", roe: "16.0%", revenue: "28.0B", grossMargin: "55.0%", netMargin: "10.0%", debtToEquity: "60.0%" },
-    news: [ { title: "Heineken opens new brewery in Asia", date: "2025-04-12", url: "#" } ],
-    profile: { description: "Heineken N.V. is a Dutch multinational brewing company.", executives: [ { name: "Dolf van den Brink", title: "Chairman & CEO" } ], address: "Tweede Weteringplantsoen 21, 1017 ZD Amsterdam, Netherlands", website: "https://www.theheinekencompany.com/" },
-    earnings: { nextEarningsDate: "2025-05-19", lastEarningsDate: "2025-02-19", epsActual: 1.2, epsEstimate: 1.18, revenueActual: "7.0B", revenueEstimate: "6.8B", surprise: "+2.9%" },
-    peers: [ { name: "Unilever", ticker: "UNA.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "28.0B", netIncome: "2.8B" } ], balanceSheet: [ { year: 2024, assets: "30.0B", liabilities: "18.0B", equity: "12.0B" } ], cashFlow: [ { year: 2024, operating: "3.0B", investing: "-1.0B", financing: "-0.5B" } ] },
-    options: { calls: [ { strike: 92, expiry: "2025-05-17", price: 0.8, volume: 20 } ], puts: [ { strike: 88, expiry: "2025-05-17", price: 0.6, volume: 10 } ] },
-    ownership: { institutional: "60%", insider: "0.01%", topHolders: [ { name: "Heineken Holding", percent: "50.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 89.8 }, { date: "2025-04-17", price: 90 }, { date: "2025-04-18", price: 90 }, { date: "2025-04-19", price: 90 } ]
+    change: '+0.4%',
+    summary: { marketCap: '50B', pe: 20.0, eps: 4.5, dividend: 1.8, yield: '2.0%', beta: 1.0, volume: '0.7M', shares: '0.6B', roe: '16.0%', revenue: '28.0B', grossMargin: '55.0%', netMargin: '10.0%', debtToEquity: '60.0%' },
+    news: [ { title: 'Heineken opens new brewery in Asia', date: '2025-04-12', url: '#' } ],
+    profile: { description: 'Heineken N.V. is a Dutch multinational brewing company.', executives: [ { name: 'Dolf van den Brink', title: 'Chairman & CEO' } ], address: 'Tweede Weteringplantsoen 21, 1017 ZD Amsterdam, Netherlands', website: 'https://www.theheinekencompany.com/' },
+    earnings: { nextEarningsDate: '2025-05-19', lastEarningsDate: '2025-02-19', epsActual: 1.2, epsEstimate: 1.18, revenueActual: '7.0B', revenueEstimate: '6.8B', surprise: '+2.9%' },
+    peers: [ { name: 'Unilever', ticker: 'UNA.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '28.0B', netIncome: '2.8B' } ], balanceSheet: [ { year: 2024, assets: '30.0B', liabilities: '18.0B', equity: '12.0B' } ], cashFlow: [ { year: 2024, operating: '3.0B', investing: '-1.0B', financing: '-0.5B' } ] },
+    options: { calls: [ { strike: 92, expiry: '2025-05-17', price: 0.8, volume: 20 } ], puts: [ { strike: 88, expiry: '2025-05-17', price: 0.6, volume: 10 } ] },
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'Heineken Holding', percent: '50.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 89.8 }, { date: '2025-04-17', price: 90 }, { date: '2025-04-18', price: 90 }, { date: '2025-04-19', price: 90 } ]
   },
   {
-    name: "KPN Kon",
-    ticker: "KPN.AS",
-    sector: "Communication Services",
-    index: "AEX",
+    name: 'KPN Kon',
+    ticker: 'KPN.AS',
+    sector: 'Communication Services',
+    index: 'AEX',
     price: 3.5,
-    change: "+0.1%",
-    summary: { marketCap: "15B", pe: 15.0, eps: 0.23, dividend: 0.14, yield: "4.0%", beta: 0.8, volume: "2.0M", shares: "4.3B", roe: "8.0%", revenue: "5.5B", grossMargin: "45.0%", netMargin: "8.0%", debtToEquity: "70.0%" },
-    news: [ { title: "KPN expands fiber network", date: "2025-04-11", url: "#" } ],
-    profile: { description: "Koninklijke KPN N.V. is a Dutch landline and mobile telecommunications company.", executives: [ { name: "Joost Farwerck", title: "CEO" } ], address: "Wilhelminakade 123, 3072 AP Rotterdam, Netherlands", website: "https://www.kpn.com/" },
-    earnings: { nextEarningsDate: "2025-05-20", lastEarningsDate: "2025-02-20", epsActual: 0.06, epsEstimate: 0.05, revenueActual: "1.4B", revenueEstimate: "1.3B", surprise: "+2.0%" },
-    peers: [ { name: "Relx", ticker: "REN.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "5.5B", netIncome: "0.44B" } ], balanceSheet: [ { year: 2024, assets: "10.0B", liabilities: "7.0B", equity: "3.0B" } ], cashFlow: [ { year: 2024, operating: "0.8B", investing: "-0.2B", financing: "-0.1B" } ] },
-    options: { calls: [ { strike: 3.7, expiry: "2025-05-17", price: 0.05, volume: 10 } ], puts: [ { strike: 3.3, expiry: "2025-05-17", price: 0.03, volume: 8 } ] },
-    ownership: { institutional: "55%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "5.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 3.48 }, { date: "2025-04-17", price: 3.5 }, { date: "2025-04-18", price: 3.5 }, { date: "2025-04-19", price: 3.5 } ]
+    change: '+0.1%',
+    summary: { marketCap: '15B', pe: 15.0, eps: 0.23, dividend: 0.14, yield: '4.0%', beta: 0.8, volume: '2.0M', shares: '4.3B', roe: '8.0%', revenue: '5.5B', grossMargin: '45.0%', netMargin: '8.0%', debtToEquity: '70.0%' },
+    news: [ { title: 'KPN expands fiber network', date: '2025-04-11', url: '#' } ],
+    profile: { description: 'Koninklijke KPN N.V. is a Dutch landline and mobile telecommunications company.', executives: [ { name: 'Joost Farwerck', title: 'CEO' } ], address: 'Wilhelminakade 123, 3072 AP Rotterdam, Netherlands', website: 'https://www.kpn.com/' },
+    earnings: { nextEarningsDate: '2025-05-20', lastEarningsDate: '2025-02-20', epsActual: 0.06, epsEstimate: 0.05, revenueActual: '1.4B', revenueEstimate: '1.3B', surprise: '+2.0%' },
+    peers: [ { name: 'Relx', ticker: 'REN.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '5.5B', netIncome: '0.44B' } ], balanceSheet: [ { year: 2024, assets: '10.0B', liabilities: '7.0B', equity: '3.0B' } ], cashFlow: [ { year: 2024, operating: '0.8B', investing: '-0.2B', financing: '-0.1B' } ] },
+    options: { calls: [ { strike: 3.7, expiry: '2025-05-17', price: 0.05, volume: 10 } ], puts: [ { strike: 3.3, expiry: '2025-05-17', price: 0.03, volume: 8 } ] },
+    ownership: { institutional: '55%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '5.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 3.48 }, { date: '2025-04-17', price: 3.5 }, { date: '2025-04-18', price: 3.5 }, { date: '2025-04-19', price: 3.5 } ]
   },
   {
-    name: "BE Semiconductor",
-    ticker: "BESI.AS",
-    sector: "Information Technology",
-    index: "AEX",
+    name: 'BE Semiconductor',
+    ticker: 'BESI.AS',
+    sector: 'Information Technology',
+    index: 'AEX',
     price: 150,
-    change: "+0.8%",
-    summary: { marketCap: "12B", pe: 25.0, eps: 6.0, dividend: 2.0, yield: "1.3%", beta: 1.2, volume: "0.4M", shares: "0.08B", roe: "30.0%", revenue: "1.5B", grossMargin: "55.0%", netMargin: "22.0%", debtToEquity: "20.0%" },
-    news: [ { title: "BESI wins major chip contract", date: "2025-04-10", url: "#" } ],
-    profile: { description: "BE Semiconductor Industries N.V. is a Dutch multinational company that designs and manufactures semiconductor equipment.", executives: [ { name: "Richard Blickman", title: "CEO" } ], address: "Ratio 6, 6921 RW Duiven, Netherlands", website: "https://www.besi.com/" },
-    earnings: { nextEarningsDate: "2025-05-21", lastEarningsDate: "2025-02-21", epsActual: 1.5, epsEstimate: 1.4, revenueActual: "0.4B", revenueEstimate: "0.38B", surprise: "+2.6%" },
-    peers: [ { name: "ASML Holding", ticker: "ASML.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "1.5B", netIncome: "0.33B" } ], balanceSheet: [ { year: 2024, assets: "2.0B", liabilities: "0.5B", equity: "1.5B" } ], cashFlow: [ { year: 2024, operating: "0.4B", investing: "-0.1B", financing: "-0.05B" } ] },
-    options: { calls: [ { strike: 155, expiry: "2025-05-17", price: 1.5, volume: 8 } ], puts: [ { strike: 145, expiry: "2025-05-17", price: 1.2, volume: 6 } ] },
-    ownership: { institutional: "60%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "6.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 149 }, { date: "2025-04-17", price: 150 }, { date: "2025-04-18", price: 150 }, { date: "2025-04-19", price: 150 } ]
+    change: '+0.8%',
+    summary: { marketCap: '12B', pe: 25.0, eps: 6.0, dividend: 2.0, yield: '1.3%', beta: 1.2, volume: '0.4M', shares: '0.08B', roe: '30.0%', revenue: '1.5B', grossMargin: '55.0%', netMargin: '22.0%', debtToEquity: '20.0%' },
+    news: [ { title: 'BESI wins major chip contract', date: '2025-04-10', url: '#' } ],
+    profile: { description: 'BE Semiconductor Industries N.V. is a Dutch multinational company that designs and manufactures semiconductor equipment.', executives: [ { name: 'Richard Blickman', title: 'CEO' } ], address: 'Ratio 6, 6921 RW Duiven, Netherlands', website: 'https://www.besi.com/' },
+    earnings: { nextEarningsDate: '2025-05-21', lastEarningsDate: '2025-02-21', epsActual: 1.5, epsEstimate: 1.4, revenueActual: '0.4B', revenueEstimate: '0.38B', surprise: '+2.6%' },
+    peers: [ { name: 'ASML Holding', ticker: 'ASML.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '1.5B', netIncome: '0.33B' } ], balanceSheet: [ { year: 2024, assets: '2.0B', liabilities: '0.5B', equity: '1.5B' } ], cashFlow: [ { year: 2024, operating: '0.4B', investing: '-0.1B', financing: '-0.05B' } ] },
+    options: { calls: [ { strike: 155, expiry: '2025-05-17', price: 1.5, volume: 8 } ], puts: [ { strike: 145, expiry: '2025-05-17', price: 1.2, volume: 6 } ] },
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 149 }, { date: '2025-04-17', price: 150 }, { date: '2025-04-18', price: 150 }, { date: '2025-04-19', price: 150 } ]
   },
   {
-    name: "Relx",
-    ticker: "REN.AS",
-    sector: "Industrials",
-    index: "AEX",
+    name: 'Relx',
+    ticker: 'REN.AS',
+    sector: 'Industrials',
+    index: 'AEX',
     price: 35,
-    change: "+0.2%",
-    summary: { marketCap: "70B", pe: 28.0, eps: 1.25, dividend: 0.6, yield: "1.7%", beta: 0.9, volume: "0.5M", shares: "2.0B", roe: "25.0%", revenue: "10.0B", grossMargin: "65.0%", netMargin: "18.0%", debtToEquity: "30.0%" },
-    news: [ { title: "Relx expands data analytics business", date: "2025-04-09", url: "#" } ],
-    profile: { description: "RELX PLC is a British multinational information and analytics company.", executives: [ { name: "Erik Engstrom", title: "CEO" } ], address: "Radarweg 29, 1043 NX Amsterdam, Netherlands", website: "https://www.relx.com/" },
-    earnings: { nextEarningsDate: "2025-05-22", lastEarningsDate: "2025-02-22", epsActual: 0.32, epsEstimate: 0.31, revenueActual: "2.5B", revenueEstimate: "2.4B", surprise: "+2.1%" },
-    peers: [ { name: "Wolters Kluwer", ticker: "WKL.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "10.0B", netIncome: "1.8B" } ], balanceSheet: [ { year: 2024, assets: "15.0B", liabilities: "5.0B", equity: "10.0B" } ], cashFlow: [ { year: 2024, operating: "2.0B", investing: "-0.5B", financing: "-0.2B" } ] },
-    options: { calls: [ { strike: 36, expiry: "2025-05-17", price: 0.3, volume: 10 } ], puts: [ { strike: 34, expiry: "2025-05-17", price: 0.2, volume: 8 } ] },
-    ownership: { institutional: "65%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "6.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 34.8 }, { date: "2025-04-17", price: 35 }, { date: "2025-04-18", price: 35 }, { date: "2025-04-19", price: 35 } ]
+    change: '+0.2%',
+    summary: { marketCap: '70B', pe: 28.0, eps: 1.25, dividend: 0.6, yield: '1.7%', beta: 0.9, volume: '0.5M', shares: '2.0B', roe: '25.0%', revenue: '10.0B', grossMargin: '65.0%', netMargin: '18.0%', debtToEquity: '30.0%' },
+    news: [ { title: 'Relx expands data analytics business', date: '2025-04-09', url: '#' } ],
+    profile: { description: 'RELX PLC is a British multinational information and analytics company.', executives: [ { name: 'Erik Engstrom', title: 'CEO' } ], address: 'Radarweg 29, 1043 NX Amsterdam, Netherlands', website: 'https://www.relx.com/' },
+    earnings: { nextEarningsDate: '2025-05-22', lastEarningsDate: '2025-02-22', epsActual: 0.32, epsEstimate: 0.31, revenueActual: '2.5B', revenueEstimate: '2.4B', surprise: '+2.1%' },
+    peers: [ { name: 'Wolters Kluwer', ticker: 'WKL.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '10.0B', netIncome: '1.8B' } ], balanceSheet: [ { year: 2024, assets: '15.0B', liabilities: '5.0B', equity: '10.0B' } ], cashFlow: [ { year: 2024, operating: '2.0B', investing: '-0.5B', financing: '-0.2B' } ] },
+    options: { calls: [ { strike: 36, expiry: '2025-05-17', price: 0.3, volume: 10 } ], puts: [ { strike: 34, expiry: '2025-05-17', price: 0.2, volume: 8 } ] },
+    ownership: { institutional: '65%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 34.8 }, { date: '2025-04-17', price: 35 }, { date: '2025-04-18', price: 35 }, { date: '2025-04-19', price: 35 } ]
   },
   {
-    name: "ABN Amro Bank NV",
-    ticker: "ABN.AS",
-    sector: "Financials",
-    index: "AEX",
+    name: 'ABN Amro Bank NV',
+    ticker: 'ABN.AS',
+    sector: 'Financials',
+    index: 'AEX',
     price: 15,
-    change: "+0.2%",
-    summary: { marketCap: "14B", pe: 6.5, eps: 2.3, dividend: 0.7, yield: "4.7%", beta: 1.0, volume: "0.9M", shares: "1.0B", roe: "9.0%", revenue: "7.0B", grossMargin: "N/A", netMargin: "18.0%", debtToEquity: "80.0%" },
-    news: [ { title: "ABN Amro launches new digital platform", date: "2025-04-08", url: "#" } ],
-    profile: { description: "ABN AMRO Bank N.V. is a Dutch bank with headquarters in Amsterdam.", executives: [ { name: "Robert Swaak", title: "CEO" } ], address: "Gustav Mahlerlaan 10, 1082 PP Amsterdam, Netherlands", website: "https://www.abnamro.com/" },
-    earnings: { nextEarningsDate: "2025-05-23", lastEarningsDate: "2025-02-23", epsActual: 0.6, epsEstimate: 0.58, revenueActual: "1.8B", revenueEstimate: "1.7B", surprise: "+2.5%" },
-    peers: [ { name: "ING Groep NV", ticker: "INGA.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "7.0B", netIncome: "1.3B" } ], balanceSheet: [ { year: 2024, assets: "400.0B", liabilities: "380.0B", equity: "20.0B" } ], cashFlow: [ { year: 2024, operating: "1.5B", investing: "-0.3B", financing: "-0.1B" } ] },
-    options: { calls: [ { strike: 16, expiry: "2025-05-17", price: 0.2, volume: 10 } ], puts: [ { strike: 14, expiry: "2025-05-17", price: 0.1, volume: 8 } ] },
-    ownership: { institutional: "60%", insider: "0.01%", topHolders: [ { name: "Dutch State", percent: "56.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 14.8 }, { date: "2025-04-17", price: 15 }, { date: "2025-04-18", price: 15 }, { date: "2025-04-19", price: 15 } ]
+    change: '+0.2%',
+    summary: { marketCap: '14B', pe: 6.5, eps: 2.3, dividend: 0.7, yield: '4.7%', beta: 1.0, volume: '0.9M', shares: '1.0B', roe: '9.0%', revenue: '7.0B', grossMargin: 'N/A', netMargin: '18.0%', debtToEquity: '80.0%' },
+    news: [ { title: 'ABN Amro launches new digital platform', date: '2025-04-08', url: '#' } ],
+    profile: { description: 'ABN AMRO Bank N.V. is a Dutch bank with headquarters in Amsterdam.', executives: [ { name: 'Robert Swaak', title: 'CEO' } ], address: 'Gustav Mahlerlaan 10, 1082 PP Amsterdam, Netherlands', website: 'https://www.abnamro.com/' },
+    earnings: { nextEarningsDate: '2025-05-23', lastEarningsDate: '2025-02-23', epsActual: 0.6, epsEstimate: 0.58, revenueActual: '1.8B', revenueEstimate: '1.7B', surprise: '+2.5%' },
+    peers: [ { name: 'ING Groep NV', ticker: 'INGA.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '7.0B', netIncome: '1.3B' } ], balanceSheet: [ { year: 2024, assets: '400.0B', liabilities: '380.0B', equity: '20.0B' } ], cashFlow: [ { year: 2024, operating: '1.5B', investing: '-0.3B', financing: '-0.1B' } ] },
+    options: { calls: [ { strike: 16, expiry: '2025-05-17', price: 0.2, volume: 10 } ], puts: [ { strike: 14, expiry: '2025-05-17', price: 0.1, volume: 8 } ] },
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'Dutch State', percent: '56.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 14.8 }, { date: '2025-04-17', price: 15 }, { date: '2025-04-18', price: 15 }, { date: '2025-04-19', price: 15 } ]
   },
   {
-    name: "NN Group",
-    ticker: "NN.AS",
-    sector: "Financials",
-    index: "AEX",
+    name: 'NN Group',
+    ticker: 'NN.AS',
+    sector: 'Financials',
+    index: 'AEX',
     price: 38,
-    change: "+0.3%",
-    summary: { marketCap: "12B", pe: 8.0, eps: 4.8, dividend: 2.0, yield: "5.3%", beta: 1.0, volume: "0.5M", shares: "0.3B", roe: "10.0%", revenue: "7.5B", grossMargin: "N/A", netMargin: "15.0%", debtToEquity: "60.0%" },
-    news: [ { title: "NN Group acquires insurance portfolio", date: "2025-04-07", url: "#" } ],
-    profile: { description: "NN Group N.V. is a Dutch insurance and asset management company.", executives: [ { name: "David Knibbe", title: "CEO" } ], address: "Schenkkade 65, 2595 AS The Hague, Netherlands", website: "https://www.nn-group.com/" },
-    earnings: { nextEarningsDate: "2025-05-24", lastEarningsDate: "2025-02-24", epsActual: 1.2, epsEstimate: 1.18, revenueActual: "2.0B", revenueEstimate: "1.9B", surprise: "+2.1%" },
-    peers: [ { name: "Aegon", ticker: "AGN.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "7.5B", netIncome: "1.1B" } ], balanceSheet: [ { year: 2024, assets: "50.0B", liabilities: "40.0B", equity: "10.0B" } ], cashFlow: [ { year: 2024, operating: "1.2B", investing: "-0.3B", financing: "-0.1B" } ] },
-    options: { calls: [ { strike: 40, expiry: "2025-05-17", price: 0.3, volume: 8 } ], puts: [ { strike: 36, expiry: "2025-05-17", price: 0.2, volume: 6 } ] },
-    ownership: { institutional: "55%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "5.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 37.8 }, { date: "2025-04-17", price: 38 }, { date: "2025-04-18", price: 38 }, { date: "2025-04-19", price: 38 } ]
+    change: '+0.3%',
+    summary: { marketCap: '12B', pe: 8.0, eps: 4.8, dividend: 2.0, yield: '5.3%', beta: 1.0, volume: '0.5M', shares: '0.3B', roe: '10.0%', revenue: '7.5B', grossMargin: 'N/A', netMargin: '15.0%', debtToEquity: '60.0%' },
+    news: [ { title: 'NN Group acquires insurance portfolio', date: '2025-04-07', url: '#' } ],
+    profile: { description: 'NN Group N.V. is a Dutch insurance and asset management company.', executives: [ { name: 'David Knibbe', title: 'CEO' } ], address: 'Schenkkade 65, 2595 AS The Hague, Netherlands', website: 'https://www.nn-group.com/' },
+    earnings: { nextEarningsDate: '2025-05-24', lastEarningsDate: '2025-02-24', epsActual: 1.2, epsEstimate: 1.18, revenueActual: '2.0B', revenueEstimate: '1.9B', surprise: '+2.1%' },
+    peers: [ { name: 'Aegon', ticker: 'AGN.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '7.5B', netIncome: '1.1B' } ], balanceSheet: [ { year: 2024, assets: '50.0B', liabilities: '40.0B', equity: '10.0B' } ], cashFlow: [ { year: 2024, operating: '1.2B', investing: '-0.3B', financing: '-0.1B' } ] },
+    options: { calls: [ { strike: 40, expiry: '2025-05-17', price: 0.3, volume: 8 } ], puts: [ { strike: 36, expiry: '2025-05-17', price: 0.2, volume: 6 } ] },
+    ownership: { institutional: '55%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '5.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 37.8 }, { date: '2025-04-17', price: 38 }, { date: '2025-04-18', price: 38 }, { date: '2025-04-19', price: 38 } ]
   },
   {
-    name: "Akzo Nobel",
-    ticker: "AKZA.AS",
-    sector: "Materials",
-    index: "AEX",
+    name: 'Akzo Nobel',
+    ticker: 'AKZA.AS',
+    sector: 'Materials',
+    index: 'AEX',
     price: 70,
-    change: "+0.2%",
-    summary: { marketCap: "12B", pe: 16.0, eps: 4.4, dividend: 1.8, yield: "2.6%", beta: 1.1, volume: "0.4M", shares: "0.17B", roe: "12.0%", revenue: "10.0B", grossMargin: "40.0%", netMargin: "10.0%", debtToEquity: "50.0%" },
-    news: [ { title: "Akzo Nobel launches new paint line", date: "2025-04-06", url: "#" } ],
-    profile: { description: "Akzo Nobel N.V. is a Dutch multinational company which creates paints and performance coatings.", executives: [ { name: "Gregoire Poux-Guillaume", title: "CEO" } ], address: "Christian Neefestraat 2, 1077 WW Amsterdam, Netherlands", website: "https://www.akzonobel.com/" },
-    earnings: { nextEarningsDate: "2025-05-25", lastEarningsDate: "2025-02-25", epsActual: 1.1, epsEstimate: 1.08, revenueActual: "2.5B", revenueEstimate: "2.4B", surprise: "+1.9%" },
-    peers: [ { name: "Randstad", ticker: "RAND.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "10.0B", netIncome: "1.0B" } ], balanceSheet: [ { year: 2024, assets: "12.0B", liabilities: "6.0B", equity: "6.0B" } ], cashFlow: [ { year: 2024, operating: "1.2B", investing: "-0.3B", financing: "-0.1B" } ] },
-    options: { calls: [ { strike: 72, expiry: "2025-05-17", price: 0.4, volume: 8 } ], puts: [ { strike: 68, expiry: "2025-05-17", price: 0.3, volume: 6 } ] },
-    ownership: { institutional: "60%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "6.0%" } ] },
-    priceHistory: [ { date: "2025-04-16", price: 69.8 }, { date: "2025-04-17", price: 70 }, { date: "2025-04-18", price: 70 }, { date: "2025-04-19", price: 70 } ]
+    change: '+0.2%',
+    summary: { marketCap: '12B', pe: 16.0, eps: 4.4, dividend: 1.8, yield: '2.6%', beta: 1.1, volume: '0.4M', shares: '0.17B', roe: '12.0%', revenue: '10.0B', grossMargin: '40.0%', netMargin: '10.0%', debtToEquity: '50.0%' },
+    news: [ { title: 'Akzo Nobel launches new paint line', date: '2025-04-06', url: '#' } ],
+    profile: { description: 'Akzo Nobel N.V. is a Dutch multinational company which creates paints and performance coatings.', executives: [ { name: 'Gregoire Poux-Guillaume', title: 'CEO' } ], address: 'Christian Neefestraat 2, 1077 WW Amsterdam, Netherlands', website: 'https://www.akzonobel.com/' },
+    earnings: { nextEarningsDate: '2025-05-25', lastEarningsDate: '2025-02-25', epsActual: 1.1, epsEstimate: 1.08, revenueActual: '2.5B', revenueEstimate: '2.4B', surprise: '+1.9%' },
+    peers: [ { name: 'Randstad', ticker: 'RAND.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '10.0B', netIncome: '1.0B' } ], balanceSheet: [ { year: 2024, assets: '12.0B', liabilities: '6.0B', equity: '6.0B' } ], cashFlow: [ { year: 2024, operating: '1.2B', investing: '-0.3B', financing: '-0.1B' } ] },
+    options: { calls: [ { strike: 72, expiry: '2025-05-17', price: 0.4, volume: 8 } ], puts: [ { strike: 68, expiry: '2025-05-17', price: 0.3, volume: 6 } ] },
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },
+    priceHistory: [ { date: '2025-04-16', price: 69.8 }, { date: '2025-04-17', price: 70 }, { date: '2025-04-18', price: 70 }, { date: '2025-04-19', price: 70 } ]
   },
   {
-    name: "Randstad",
-    ticker: "RAND.AS",
-    sector: "Industrials",
-    index: "AEX",
+    name: 'Randstad',
+    ticker: 'RAND.AS',
+    sector: 'Industrials',
+    index: 'AEX',
     price: 60,
-    change: "+0.3%",
-    summary: { marketCap: "11B", pe: 13.0, eps: 4.6, dividend: 2.2, yield: "3.7%", beta: 1.0, volume: "0.3M", shares: "0.18B", roe: "14.0%", revenue: "25.0B", grossMargin: "20.0%", netMargin: "6.0%", debtToEquity: "40.0%" },
-    news: [ { title: "Randstad expands HR tech services", date: "2025-04-05", url: "#" } ],
-    profile: { description: "Randstad N.V. is a Dutch multinational human resource consulting firm.", executives: [ { name: "Sander van t Noordende", title: "CEO" } ], address: "Diemermere 25, 1112 TC Diemen, Netherlands", website: "https://www.randstad.com/" },
-    earnings: { nextEarningsDate: "2025-05-26", lastEarningsDate: "2025-02-26", epsActual: 1.2, epsEstimate: 1.18, revenueActual: "6.5B", revenueEstimate: "6.3B", surprise: "+2.5%" },
-    peers: [ { name: "Akzo Nobel", ticker: "AKZA.AS" } ],
-    financials: { incomeStatement: [ { year: 2024, revenue: "25.0B", netIncome: "1.5B" } ], balanceSheet: [ { year: 2024, assets: "10.0B", liabilities: "5.0B", equity: "5.0B" } ], cashFlow: [ { year: 2024, operating: "1.5B", investing: "-0.4B", financing: "-0.2B" } ] },
-    options: { calls: [ { strike: 62, expiry: "2025-05-17", price: 0.5, volume: 8 } ], puts: [ { strike: 58, expiry: "2025-05-17", price: 0.4, volume: 6 } ] },
-    ownership: { institutional: "60%", insider: "0.01%", topHolders: [ { name: "BlackRock", percent: "6.0%" } ] },    priceHistory: [ { date: "2025-04-16", price: 59.8 }, { date: "2025-04-17", price: 60 }, { date: "2025-04-18", price: 60 }, { date: "2025-04-19", price: 60 } ]
+    change: '+0.3%',
+    summary: { marketCap: '11B', pe: 13.0, eps: 4.6, dividend: 2.2, yield: '3.7%', beta: 1.0, volume: '0.3M', shares: '0.18B', roe: '14.0%', revenue: '25.0B', grossMargin: '20.0%', netMargin: '6.0%', debtToEquity: '40.0%' },
+    news: [ { title: 'Randstad expands HR tech services', date: '2025-04-05', url: '#' } ],
+    profile: { description: 'Randstad N.V. is a Dutch multinational human resource consulting firm.', executives: [ { name: 'Sander van t Noordende', title: 'CEO' } ], address: 'Diemermere 25, 1112 TC Diemen, Netherlands', website: 'https://www.randstad.com/' },
+    earnings: { nextEarningsDate: '2025-05-26', lastEarningsDate: '2025-02-26', epsActual: 1.2, epsEstimate: 1.18, revenueActual: '6.5B', revenueEstimate: '6.3B', surprise: '+2.5%' },
+    peers: [ { name: 'Akzo Nobel', ticker: 'AKZA.AS' } ],
+    financials: { incomeStatement: [ { year: 2024, revenue: '25.0B', netIncome: '1.5B' } ], balanceSheet: [ { year: 2024, assets: '10.0B', liabilities: '5.0B', equity: '5.0B' } ], cashFlow: [ { year: 2024, operating: '1.5B', investing: '-0.4B', financing: '-0.2B' } ] },
+    options: { calls: [ { strike: 62, expiry: '2025-05-17', price: 0.5, volume: 8 } ], puts: [ { strike: 58, expiry: '2025-05-17', price: 0.4, volume: 6 } ] },
+    ownership: { institutional: '60%', insider: '0.01%', topHolders: [ { name: 'BlackRock', percent: '6.0%' } ] },    priceHistory: [ { date: '2025-04-16', price: 59.8 }, { date: '2025-04-17', price: 60 }, { date: '2025-04-18', price: 60 }, { date: '2025-04-19', price: 60 } ]
   },
   {
-    name: "Toyota",
-    ticker: "TM",
-    sector: "Consumer Discretionary",
-    index: "Nikkei 225",
+    name: 'Toyota',
+    ticker: 'TM',
+    sector: 'Consumer Discretionary',
+    index: 'Nikkei 225',
     price: 215,
-    change: "+1.2%",
+    change: '+1.2%',
     summary: {
-      marketCap: "350B",
+      marketCap: '350B',
       pe: 12.5,
       eps: 17.2,
       dividend: 5.4,
-      yield: "2.5%",
+      yield: '2.5%',
       beta: 0.85,
-      volume: "2.1M",
-      shares: "1.63B",
-      roe: "14.2%",
-      revenue: "320.0B",
-      grossMargin: "18.5%",
-      netMargin: "8.4%",
-      debtToEquity: "110.0%"
+      volume: '2.1M',
+      shares: '1.63B',
+      roe: '14.2%',
+      revenue: '320.0B',
+      grossMargin: '18.5%',
+      netMargin: '8.4%',
+      debtToEquity: '110.0%'
     },    news: [
-      { title: "Toyota reports 21% decline in full-year profit due to tariff impacts", date: "2025-05-13", url: "https://news.example.com/toyota-profit-decline-tariffs" },
-      { title: "Toyota plans to mitigate impact of tariffs with investments in next-gen technologies", date: "2025-05-12", url: "https://news.example.com/toyota-tariff-mitigation" },
-      { title: "Toyota-Maruti partnership faces challenges as Maruti prioritizes exports", date: "2025-05-11", url: "https://news.example.com/toyota-maruti-challenges" },
-      { title: "Toyota unveils new hydrogen-electric hybrid vehicle", date: "2025-04-15", url: "https://news.example.com/toyota-hydrogen-electric" },
-      { title: "Toyota expands EV production capacity", date: "2025-04-10", url: "https://news.example.com/toyota-ev-production" }
+      { title: 'Toyota reports 21% decline in full-year profit due to tariff impacts', date: '2025-05-13', url: 'https://news.example.com/toyota-profit-decline-tariffs' },
+      { title: 'Toyota plans to mitigate impact of tariffs with investments in next-gen technologies', date: '2025-05-12', url: 'https://news.example.com/toyota-tariff-mitigation' },
+      { title: 'Toyota-Maruti partnership faces challenges as Maruti prioritizes exports', date: '2025-05-11', url: 'https://news.example.com/toyota-maruti-challenges' },
+      { title: 'Toyota unveils new hydrogen-electric hybrid vehicle', date: '2025-04-15', url: 'https://news.example.com/toyota-hydrogen-electric' },
+      { title: 'Toyota expands EV production capacity', date: '2025-04-10', url: 'https://news.example.com/toyota-ev-production' }
     ],
     profile: {
-      description: "Toyota Motor Corporation is a Japanese multinational automotive manufacturer headquartered in Toyota City, Japan. It is the global leader in hybrid electric vehicle sales.",
+      description: 'Toyota Motor Corporation is a Japanese multinational automotive manufacturer headquartered in Toyota City, Japan. It is the global leader in hybrid electric vehicle sales.',
       executives: [
-        { name: "Koji Sato", title: "Chief Executive Officer" },
-        { name: "Akio Toyoda", title: "Chairman" }
+        { name: 'Koji Sato', title: 'Chief Executive Officer' },
+        { name: 'Akio Toyoda', title: 'Chairman' }
       ],
-      address: "1 Toyota-Cho, Toyota City, Aichi Prefecture 471-8571, Japan",
-      website: "https://global.toyota/"
+      address: '1 Toyota-Cho, Toyota City, Aichi Prefecture 471-8571, Japan',
+      website: 'https://global.toyota/'
     },
     earnings: {
-      nextEarningsDate: "2025-05-08",
-      lastEarningsDate: "2025-02-08",
+      nextEarningsDate: '2025-05-08',
+      lastEarningsDate: '2025-02-08',
       epsActual: 4.35,
       epsEstimate: 4.20,
-      revenueActual: "82.0B",
-      revenueEstimate: "80.5B",
-      surprise: "+3.6%"
+      revenueActual: '82.0B',
+      revenueEstimate: '80.5B',
+      surprise: '+3.6%'
     },
     peers: [
-      { name: "Honda", ticker: "HMC" },
-      { name: "Volkswagen", ticker: "VWAGY" },
-      { name: "Ford", ticker: "F" }
+      { name: 'Honda', ticker: 'HMC' },
+      { name: 'Volkswagen', ticker: 'VWAGY' },
+      { name: 'Ford', ticker: 'F' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "320.0B", netIncome: "27.0B" },
-        { year: 2023, revenue: "310.0B", netIncome: "25.5B" }
+        { year: 2024, revenue: '320.0B', netIncome: '27.0B' },
+        { year: 2023, revenue: '310.0B', netIncome: '25.5B' }
       ],
       balanceSheet: [
-        { year: 2024, assets: "550.0B", liabilities: "340.0B", equity: "210.0B" }
+        { year: 2024, assets: '550.0B', liabilities: '340.0B', equity: '210.0B' }
       ],
       cashFlow: [
-        { year: 2024, operating: "45.0B", investing: "-22.0B", financing: "-12.0B" }
+        { year: 2024, operating: '45.0B', investing: '-22.0B', financing: '-12.0B' }
       ]
     },
     options: {
       calls: [
-        { strike: 225, expiry: "2025-05-20", price: 3.8, volume: 450 },
-        { strike: 235, expiry: "2025-05-20", price: 2.1, volume: 320 }
+        { strike: 225, expiry: '2025-05-20', price: 3.8, volume: 450 },
+        { strike: 235, expiry: '2025-05-20', price: 2.1, volume: 320 }
       ],
       puts: [
-        { strike: 205, expiry: "2025-05-20", price: 2.9, volume: 380 },
-        { strike: 195, expiry: "2025-05-20", price: 1.5, volume: 240 }
+        { strike: 205, expiry: '2025-05-20', price: 2.9, volume: 380 },
+        { strike: 195, expiry: '2025-05-20', price: 1.5, volume: 240 }
       ]
     },
     ownership: {
-      institutional: "12%",
-      insider: "0.5%",
+      institutional: '12%',
+      insider: '0.5%',
       topHolders: [
-        { name: "Toyota Industries", percent: "8.7%" },
-        { name: "Nippon Life Insurance", percent: "4.2%" },
-        { name: "Bank of Japan", percent: "3.9%" }
+        { name: 'Toyota Industries', percent: '8.7%' },
+        { name: 'Nippon Life Insurance', percent: '4.2%' },
+        { name: 'Bank of Japan', percent: '3.9%' }
       ]
     },
     priceHistory: [
-      { date: "2025-04-16", price: 212 },
-      { date: "2025-04-17", price: 213 },
-      { date: "2025-04-18", price: 214 },
-      { date: "2025-04-19", price: 215 },
-      { date: "2025-04-20", price: 215 }
+      { date: '2025-04-16', price: 212 },
+      { date: '2025-04-17', price: 213 },
+      { date: '2025-04-18', price: 214 },
+      { date: '2025-04-19', price: 215 },
+      { date: '2025-04-20', price: 215 }
     ]
   },
   {
-    name: "Nestle",
-    ticker: "NSRGY",
-    sector: "Consumer Staples",
-    index: "SMI",
+    name: 'Nestle',
+    ticker: 'NSRGY',
+    sector: 'Consumer Staples',
+    index: 'SMI',
     price: 115,
-    change: "+0.5%",
+    change: '+0.5%',
     summary: {
-      marketCap: "310B",
+      marketCap: '310B',
       pe: 19.3,
       eps: 5.96,
       dividend: 3.12,
-      yield: "2.7%",
+      yield: '2.7%',
       beta: 0.45,
-      volume: "1.8M",
-      shares: "2.7B",
-      roe: "28.5%",
-      revenue: "95.0B",
-      grossMargin: "47.5%",
-      netMargin: "16.2%",
-      debtToEquity: "80.0%"
+      volume: '1.8M',
+      shares: '2.7B',
+      roe: '28.5%',
+      revenue: '95.0B',
+      grossMargin: '47.5%',
+      netMargin: '16.2%',
+      debtToEquity: '80.0%'
     },
     news: [
-      { title: "Nestle expands plant-based product line", date: "2025-04-18", url: "https://news.example.com/nestle-plant-based" },
-      { title: "Nestle acquires premium coffee brand", date: "2025-04-12", url: "https://news.example.com/nestle-coffee-acquisition" }
+      { title: 'Nestle expands plant-based product line', date: '2025-04-18', url: 'https://news.example.com/nestle-plant-based' },
+      { title: 'Nestle acquires premium coffee brand', date: '2025-04-12', url: 'https://news.example.com/nestle-coffee-acquisition' }
     ],
     profile: {
-      description: "Nestle S.A. is a Swiss multinational food and drink processing company headquartered in Vevey, Switzerland. It is the largest food company in the world.",
+      description: 'Nestle S.A. is a Swiss multinational food and drink processing company headquartered in Vevey, Switzerland. It is the largest food company in the world.',
       executives: [
-        { name: "Mark Schneider", title: "Chief Executive Officer" },
-        { name: "Paul Bulcke", title: "Chairman" }
+        { name: 'Mark Schneider', title: 'Chief Executive Officer' },
+        { name: 'Paul Bulcke', title: 'Chairman' }
       ],
-      address: "Avenue Nestlé 55, 1800 Vevey, Switzerland",
-      website: "https://www.nestle.com/"
+      address: 'Avenue Nestlé 55, 1800 Vevey, Switzerland',
+      website: 'https://www.nestle.com/'
     },
     earnings: {
-      nextEarningsDate: "2025-05-22",
-      lastEarningsDate: "2025-02-15",
+      nextEarningsDate: '2025-05-22',
+      lastEarningsDate: '2025-02-15',
       epsActual: 1.48,
       epsEstimate: 1.45,
-      revenueActual: "24.5B",
-      revenueEstimate: "24.1B",
-      surprise: "+2.1%"
+      revenueActual: '24.5B',
+      revenueEstimate: '24.1B',
+      surprise: '+2.1%'
     },
     peers: [
-      { name: "Unilever", ticker: "UL" },
-      { name: "PepsiCo", ticker: "PEP" },
-      { name: "Danone", ticker: "DANOY" }
+      { name: 'Unilever', ticker: 'UL' },
+      { name: 'PepsiCo', ticker: 'PEP' },
+      { name: 'Danone', ticker: 'DANOY' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "95.0B", netIncome: "15.4B" },
-        { year: 2023, revenue: "93.2B", netIncome: "14.8B" }
+        { year: 2024, revenue: '95.0B', netIncome: '15.4B' },
+        { year: 2023, revenue: '93.2B', netIncome: '14.8B' }
       ],
       balanceSheet: [
-        { year: 2024, assets: "130.0B", liabilities: "75.0B", equity: "55.0B" }
+        { year: 2024, assets: '130.0B', liabilities: '75.0B', equity: '55.0B' }
       ],
       cashFlow: [
-        { year: 2024, operating: "18.0B", investing: "-5.8B", financing: "-8.2B" }
+        { year: 2024, operating: '18.0B', investing: '-5.8B', financing: '-8.2B' }
       ]
     },
     options: {
       calls: [
-        { strike: 120, expiry: "2025-05-15", price: 2.5, volume: 320 },
-        { strike: 125, expiry: "2025-05-15", price: 1.3, volume: 210 }
+        { strike: 120, expiry: '2025-05-15', price: 2.5, volume: 320 },
+        { strike: 125, expiry: '2025-05-15', price: 1.3, volume: 210 }
       ],
       puts: [
-        { strike: 110, expiry: "2025-05-15", price: 1.8, volume: 280 },
-        { strike: 105, expiry: "2025-05-15", price: 1.0, volume: 150 }
+        { strike: 110, expiry: '2025-05-15', price: 1.8, volume: 280 },
+        { strike: 105, expiry: '2025-05-15', price: 1.0, volume: 150 }
       ]
     },
     ownership: {
-      institutional: "44%",
-      insider: "0.08%",
+      institutional: '44%',
+      insider: '0.08%',
       topHolders: [
-        { name: "Vanguard Group", percent: "5.2%" },
-        { name: "BlackRock", percent: "4.8%" },
-        { name: "Norges Bank Investment", percent: "2.3%" }
+        { name: 'Vanguard Group', percent: '5.2%' },
+        { name: 'BlackRock', percent: '4.8%' },
+        { name: 'Norges Bank Investment', percent: '2.3%' }
       ]
     },
     priceHistory: [
-      { date: "2025-04-16", price: 114 },
-      { date: "2025-04-17", price: 114.5 },
-      { date: "2025-04-18", price: 114.8 },
-      { date: "2025-04-19", price: 115 },
-      { date: "2025-04-20", price: 115 }
+      { date: '2025-04-16', price: 114 },
+      { date: '2025-04-17', price: 114.5 },
+      { date: '2025-04-18', price: 114.8 },
+      { date: '2025-04-19', price: 115 },
+      { date: '2025-04-20', price: 115 }
     ]
   },
   {
-    name: "BMW",
-    ticker: "BMW.DE",
-    sector: "Consumer Discretionary",
-    index: "DAX",
+    name: 'BMW',
+    ticker: 'BMW.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
     price: 92,
-    change: "-0.8%",
+    change: '-0.8%',
     summary: {
-      marketCap: "60B",
+      marketCap: '60B',
       pe: 6.4,
       eps: 14.38,
       dividend: 6.00,
-      yield: "6.5%",
+      yield: '6.5%',
       beta: 1.15,
-      volume: "0.9M",
-      shares: "0.65B",
-      roe: "12.3%",
-      revenue: "155.0B",
-      grossMargin: "19.8%",
-      netMargin: "7.1%",
-      debtToEquity: "145.2%"
+      volume: '0.9M',
+      shares: '0.65B',
+      roe: '12.3%',
+      revenue: '155.0B',
+      grossMargin: '19.8%',
+      netMargin: '7.1%',
+      debtToEquity: '145.2%'
     },    news: [
-      { title: "BMW faces low three-digit million impact from EV tariffs on Chinese imports to EU", date: "2025-05-13", url: "https://news.example.com/bmw-ev-tariff-impact" },
-      { title: "BMW Q1 revenues miss analyst estimates by 3.6%, decrease 7.8% to EUR33.8 billion", date: "2025-05-13", url: "https://news.example.com/bmw-q1-revenue-miss" },
-      { title: "BMW introduces improved X3 hybrid powertrain with redesigned intake and injection systems", date: "2025-05-13", url: "https://news.example.com/bmw-x3-hybrid-powertrain" },
-      { title: "BMW's new X3 G45 model expected to boost sales performance", date: "2025-05-13", url: "https://news.example.com/bmw-x3-g45-sales" },
-      { title: "BMW aims for 50% electric vehicle production to reduce costs amid revenue decline", date: "2025-05-12", url: "https://news.example.com/bmw-ev-production-target" },
-      { title: "BMW reports 7.8% revenue decline and 26.4% drop in net profit in Q1 2025", date: "2025-05-11", url: "https://news.example.com/bmw-q1-results" },
-      { title: "BMW faces FX volatility and raw material cost increases", date: "2025-05-08", url: "https://news.example.com/bmw-challenges-2025" }
+      { title: 'BMW faces low three-digit million impact from EV tariffs on Chinese imports to EU', date: '2025-05-13', url: 'https://news.example.com/bmw-ev-tariff-impact' },
+      { title: 'BMW Q1 revenues miss analyst estimates by 3.6%, decrease 7.8% to EUR33.8 billion', date: '2025-05-13', url: 'https://news.example.com/bmw-q1-revenue-miss' },
+      { title: 'BMW introduces improved X3 hybrid powertrain with redesigned intake and injection systems', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-hybrid-powertrain' },
+      { title: 'BMW\'s new X3 G45 model expected to boost sales performance', date: '2025-05-13', url: 'https://news.example.com/bmw-x3-g45-sales' },
+      { title: 'BMW aims for 50% electric vehicle production to reduce costs amid revenue decline', date: '2025-05-12', url: 'https://news.example.com/bmw-ev-production-target' },
+      { title: 'BMW reports 7.8% revenue decline and 26.4% drop in net profit in Q1 2025', date: '2025-05-11', url: 'https://news.example.com/bmw-q1-results' },
+      { title: 'BMW faces FX volatility and raw material cost increases', date: '2025-05-08', url: 'https://news.example.com/bmw-challenges-2025' }
     ],
     profile: {
-      description: "Bayerische Motoren Werke AG (BMW) is a German multinational corporation which produces luxury vehicles and motorcycles.",
+      description: 'Bayerische Motoren Werke AG (BMW) is a German multinational corporation which produces luxury vehicles and motorcycles.',
       executives: [
-        { name: "Oliver Zipse", title: "Chairman of the Board of Management" },
-        { name: "Nicolas Peter", title: "Chief Financial Officer" }
+        { name: 'Oliver Zipse', title: 'Chairman of the Board of Management' },
+        { name: 'Nicolas Peter', title: 'Chief Financial Officer' }
       ],
-      address: "Petuelring 130, 80788 Munich, Germany",
-      website: "https://www.bmwgroup.com/"
+      address: 'Petuelring 130, 80788 Munich, Germany',
+      website: 'https://www.bmwgroup.com/'
     },
     earnings: {
-      nextEarningsDate: "2025-08-03",
-      lastEarningsDate: "2025-05-02",
+      nextEarningsDate: '2025-08-03',
+      lastEarningsDate: '2025-05-02',
       epsActual: 3.25,
       epsEstimate: 3.60,
-      revenueActual: "36.5B",
-      revenueEstimate: "38.2B",
-      surprise: "-9.7%"
+      revenueActual: '36.5B',
+      revenueEstimate: '38.2B',
+      surprise: '-9.7%'
     },
     peers: [
-      { name: "Mercedes-Benz Group", ticker: "MBG.DE" },
-      { name: "Volkswagen", ticker: "VOW3.DE" },
-      { name: "Porsche", ticker: "P911.DE" }
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' },
+      { name: 'Volkswagen', ticker: 'VOW3.DE' },
+      { name: 'Porsche', ticker: 'P911.DE' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "155.0B", netIncome: "10.5B" },
-        { year: 2023, revenue: "150.7B", netIncome: "12.6B" }
+        { year: 2024, revenue: '155.0B', netIncome: '10.5B' },
+        { year: 2023, revenue: '150.7B', netIncome: '12.6B' }
       ],
       balanceSheet: [
-        { year: 2024, assets: "250.0B", liabilities: "190.0B", equity: "60.0B" }
+        { year: 2024, assets: '250.0B', liabilities: '190.0B', equity: '60.0B' }
       ],
       cashFlow: [
-        { year: 2024, operating: "22.0B", investing: "-12.0B", financing: "-8.0B" }
+        { year: 2024, operating: '22.0B', investing: '-12.0B', financing: '-8.0B' }
       ]
     },
     options: {
       calls: [
-        { strike: 95, expiry: "2025-06-20", price: 2.1, volume: 350 },
-        { strike: 100, expiry: "2025-06-20", price: 1.4, volume: 220 }
+        { strike: 95, expiry: '2025-06-20', price: 2.1, volume: 350 },
+        { strike: 100, expiry: '2025-06-20', price: 1.4, volume: 220 }
       ],
       puts: [
-        { strike: 90, expiry: "2025-06-20", price: 2.5, volume: 410 },
-        { strike: 85, expiry: "2025-06-20", price: 1.7, volume: 280 }
+        { strike: 90, expiry: '2025-06-20', price: 2.5, volume: 410 },
+        { strike: 85, expiry: '2025-06-20', price: 1.7, volume: 280 }
       ]
     },
     ownership: {
-      institutional: "55%",
-      insider: "25%",
+      institutional: '55%',
+      insider: '25%',
       topHolders: [
-        { name: "Quandt Family", percent: "29.0%" },
-        { name: "Norges Bank Investment", percent: "3.2%" },
-        { name: "Vanguard Group", percent: "2.4%" }
+        { name: 'Quandt Family', percent: '29.0%' },
+        { name: 'Norges Bank Investment', percent: '3.2%' },
+        { name: 'Vanguard Group', percent: '2.4%' }
       ]
     },
     priceHistory: [
-      { date: "2025-05-05", price: 95 },
-      { date: "2025-05-06", price: 94 },
-      { date: "2025-05-07", price: 92.5 },
-      { date: "2025-05-08", price: 92 }
+      { date: '2025-05-05', price: 95 },
+      { date: '2025-05-06', price: 94 },
+      { date: '2025-05-07', price: 92.5 },
+      { date: '2025-05-08', price: 92 }
     ]
   },
   {
-    name: "Volkswagen AG",
-    ticker: "VOW3.DE",
-    sector: "Consumer Discretionary",
-    index: "DAX",
+    name: 'Volkswagen AG',
+    ticker: 'VOW3.DE',
+    sector: 'Consumer Discretionary',
+    index: 'DAX',
     price: 118,
-    change: "-1.5%",
+    change: '-1.5%',
     summary: {
-      marketCap: "70B",
+      marketCap: '70B',
       pe: 4.3,
       eps: 27.44,
       dividend: 9.06,
-      yield: "7.7%",
+      yield: '7.7%',
       beta: 1.35,
-      volume: "1.2M",
-      shares: "0.5B",
-      roe: "10.4%",
-      revenue: "322.0B",
-      grossMargin: "20.4%",
-      netMargin: "5.1%",
-      debtToEquity: "157.0%"
+      volume: '1.2M',
+      shares: '0.5B',
+      roe: '10.4%',
+      revenue: '322.0B',
+      grossMargin: '20.4%',
+      netMargin: '5.1%',
+      debtToEquity: '157.0%'
     },    news: [
-      { title: "Volkswagen reinvents Golf as advanced electric car in major EV strategy pivot", date: "2025-05-12", url: "https://news.example.com/volkswagen-id-golf" },
-      { title: "Volkswagen reports 46.3% decline in Q1 operating profit", date: "2025-05-05", url: "https://news.example.com/volkswagen-q1-2025" },
-      { title: "Volkswagen struggles with inventory write-downs linked to US tariffs", date: "2025-04-28", url: "https://news.example.com/volkswagen-tariff-impact" }
+      { title: 'Volkswagen reinvents Golf as advanced electric car in major EV strategy pivot', date: '2025-05-12', url: 'https://news.example.com/volkswagen-id-golf' },
+      { title: 'Volkswagen reports 46.3% decline in Q1 operating profit', date: '2025-05-05', url: 'https://news.example.com/volkswagen-q1-2025' },
+      { title: 'Volkswagen struggles with inventory write-downs linked to US tariffs', date: '2025-04-28', url: 'https://news.example.com/volkswagen-tariff-impact' }
     ],
     profile: {
-      description: "Volkswagen AG is a German multinational automotive manufacturing company headquartered in Wolfsburg, Germany. It is the largest automaker by production worldwide.",
+      description: 'Volkswagen AG is a German multinational automotive manufacturing company headquartered in Wolfsburg, Germany. It is the largest automaker by production worldwide.',
       executives: [
-        { name: "Oliver Blume", title: "Chief Executive Officer" },
-        { name: "Arno Antlitz", title: "Chief Financial Officer" }
+        { name: 'Oliver Blume', title: 'Chief Executive Officer' },
+        { name: 'Arno Antlitz', title: 'Chief Financial Officer' }
       ],
-      address: "Berliner Ring 2, 38440 Wolfsburg, Germany",
-      website: "https://www.volkswagenag.com/"
+      address: 'Berliner Ring 2, 38440 Wolfsburg, Germany',
+      website: 'https://www.volkswagenag.com/'
     },
     earnings: {
-      nextEarningsDate: "2025-07-27",
-      lastEarningsDate: "2025-04-30",
+      nextEarningsDate: '2025-07-27',
+      lastEarningsDate: '2025-04-30',
       epsActual: 4.50,
       epsEstimate: 7.60,
-      revenueActual: "76.5B",
-      revenueEstimate: "82.0B",
-      surprise: "-40.8%"
+      revenueActual: '76.5B',
+      revenueEstimate: '82.0B',
+      surprise: '-40.8%'
     },
     peers: [
-      { name: "BMW", ticker: "BMW.DE" },
-      { name: "Mercedes-Benz Group", ticker: "MBG.DE" },
-      { name: "Stellantis", ticker: "STLA" }
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' },
+      { name: 'Stellantis', ticker: 'STLA' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "322.0B", netIncome: "14.9B" },
-        { year: 2023, revenue: "310.5B", netIncome: "26.8B" }
+        { year: 2024, revenue: '322.0B', netIncome: '14.9B' },
+        { year: 2023, revenue: '310.5B', netIncome: '26.8B' }
       ],
       balanceSheet: [
-        { year: 2024, assets: "580.0B", liabilities: "430.0B", equity: "150.0B" }
+        { year: 2024, assets: '580.0B', liabilities: '430.0B', equity: '150.0B' }
       ],
       cashFlow: [
-        { year: 2024, operating: "38.0B", investing: "-23.0B", financing: "-10.0B" }
+        { year: 2024, operating: '38.0B', investing: '-23.0B', financing: '-10.0B' }
       ]
     },
     options: {
       calls: [
-        { strike: 125, expiry: "2025-06-15", price: 1.8, volume: 420 },
-        { strike: 130, expiry: "2025-06-15", price: 1.2, volume: 260 }
+        { strike: 125, expiry: '2025-06-15', price: 1.8, volume: 420 },
+        { strike: 130, expiry: '2025-06-15', price: 1.2, volume: 260 }
       ],
       puts: [
-        { strike: 115, expiry: "2025-06-15", price: 2.7, volume: 540 },
-        { strike: 110, expiry: "2025-06-15", price: 1.9, volume: 320 }
+        { strike: 115, expiry: '2025-06-15', price: 2.7, volume: 540 },
+        { strike: 110, expiry: '2025-06-15', price: 1.9, volume: 320 }
       ]
     },
     ownership: {
-      institutional: "40%",
-      insider: "30.8%",
+      institutional: '40%',
+      insider: '30.8%',
       topHolders: [
-        { name: "Porsche Automobil Holding SE", percent: "31.4%" },
-        { name: "State of Lower Saxony", percent: "11.8%" },
-        { name: "Qatar Investment Authority", percent: "10.5%" }
+        { name: 'Porsche Automobil Holding SE', percent: '31.4%' },
+        { name: 'State of Lower Saxony', percent: '11.8%' },
+        { name: 'Qatar Investment Authority', percent: '10.5%' }
       ]
     },
     priceHistory: [
-      { date: "2025-05-05", price: 122 },
-      { date: "2025-05-06", price: 120 },
-      { date: "2025-05-07", price: 119 },
-      { date: "2025-05-08", price: 118 }
+      { date: '2025-05-05', price: 122 },
+      { date: '2025-05-06', price: 120 },
+      { date: '2025-05-07', price: 119 },
+      { date: '2025-05-08', price: 118 }
     ]
   },
   {
@@ -967,11 +967,11 @@ export const mockCompanies = [
       debtToEquity: "124.5%"
     },
     news: [
-      { title: "Mercedes-Benz pulls earnings forecasts due to tariff uncertainty", date: "2025-05-13", url: "https://news.example.com/mercedes-tariff-uncertainty" },
-      { title: "Mercedes-Benz earnings fell 28 percent to EUR10 billion, dividend cut by a fifth", date: "2025-05-13", url: "https://news.example.com/mercedes-earnings-dividend-cut" },
-      { title: "Mercedes-Benz launches new CLA in UK, featuring electric and hybrid options built on MMA", date: "2025-05-13", url: "https://news.example.com/mercedes-cla-uk-launch" },
-      { title: "Mercedes-Benz revenue declined by 7.4% in Q1 2025", date: "2025-05-04", url: "https://news.example.com/mercedes-q1-2025" },
-      { title: "Mercedes-Benz cuts dividend as net income drops 43% in Q1", date: "2025-04-26", url: "https://news.example.com/mercedes-dividend-cut" }
+      { title: 'Mercedes-Benz pulls earnings forecasts due to tariff uncertainty', date: '2025-05-13', url: 'https://news.example.com/mercedes-tariff-uncertainty' },
+      { title: 'Mercedes-Benz earnings fell 28 percent to EUR10 billion, dividend cut by a fifth', date: '2025-05-13', url: 'https://news.example.com/mercedes-earnings-dividend-cut' },
+      { title: 'Mercedes-Benz launches new CLA in UK, featuring electric and hybrid options built on MMA', date: '2025-05-13', url: 'https://news.example.com/mercedes-cla-uk-launch' },
+      { title: 'Mercedes-Benz revenue declined by 7.4% in Q1 2025', date: '2025-05-04', url: 'https://news.example.com/mercedes-q1-2025' },
+      { title: 'Mercedes-Benz cuts dividend as net income drops 43% in Q1', date: '2025-04-26', url: 'https://news.example.com/mercedes-dividend-cut' }
     ],
     profile: {
       description: "Mercedes-Benz Group AG, formerly Daimler AG, is a German multinational automotive corporation headquartered in Stuttgart, known for luxury vehicles, trucks, and buses.",
@@ -1146,12 +1146,12 @@ export const mockCompanies = [
       debtToEquity: "95.0%"
     },
     news: [
-      { title: "Porsche completes acquisition of majority stake in V4Smart GmbH for battery technology", date: "2025-05-13", url: "https://news.example.com/porsche-v4smart-acquisition" },
-      { title: "Porsche invests over €200 million in strategic projects during Q1 2025", date: "2025-05-13", url: "https://news.example.com/porsche-q1-investments" },
-      { title: "Porsche partners with VARTA for high-performance battery cell development", date: "2025-05-13", url: "https://news.example.com/porsche-varta-partnership" },
-      { title: "Porsche signs e-Fuels agreement with HIF Global and Shell for Chilean facility", date: "2025-05-13", url: "https://news.example.com/porsche-efuels-chile" },
-      { title: "Porsche reports 43.8% drop in operating profit", date: "2025-05-06", url: "https://news.example.com/porsche-profit-drop" },
-      { title: "Porsche plans to cut 2,000 jobs amid financial pressure", date: "2025-04-30", url: "https://news.example.com/porsche-job-cuts" }
+      { title: 'Porsche completes acquisition of majority stake in V4Smart GmbH for battery technology', date: '2025-05-13', url: 'https://news.example.com/porsche-v4smart-acquisition' },
+      { title: 'Porsche invests over €200 million in strategic projects during Q1 2025', date: '2025-05-13', url: 'https://news.example.com/porsche-q1-investments' },
+      { title: 'Porsche partners with VARTA for high-performance battery cell development', date: '2025-05-13', url: 'https://news.example.com/porsche-varta-partnership' },
+      { title: 'Porsche signs e-Fuels agreement with HIF Global and Shell for Chilean facility', date: '2025-05-13', url: 'https://news.example.com/porsche-efuels-chile' },
+      { title: 'Porsche reports 43.8% drop in operating profit', date: '2025-05-06', url: 'https://news.example.com/porsche-profit-drop' },
+      { title: 'Porsche plans to cut 2,000 jobs amid financial pressure', date: '2025-04-30', url: 'https://news.example.com/porsche-job-cuts' }
     ],
     profile: {
       description: "Dr. Ing. h.c. F. Porsche AG is a German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans.",
@@ -1236,10 +1236,10 @@ export const mockCompanies = [
       debtToEquity: "70.5%"
     },
     news: [
-      { title: "Ferrari Elettrica expected to benefit from favorable Chinese tax structure", date: "2025-05-13", url: "https://news.example.com/ferrari-elettrica-china" },
-      { title: "Ferrari reports 25% sales drop in greater China region", date: "2025-05-08", url: "https://news.example.com/ferrari-china-sales" },
-      { title: "Ferrari global shipments up 1% despite regional challenges", date: "2025-05-03", url: "https://news.example.com/ferrari-shipments-2025" },
-      { title: "Ferrari maintains confident 2025 outlook despite tariffs, first EV deliveries expected", date: "2025-05-10", url: "" }
+      { title: 'Ferrari Elettrica expected to benefit from favorable Chinese tax structure', date: '2025-05-13', url: 'https://news.example.com/ferrari-elettrica-china' },
+      { title: 'Ferrari reports 25% sales drop in greater China region', date: '2025-05-08', url: 'https://news.example.com/ferrari-china-sales' },
+      { title: 'Ferrari global shipments up 1% despite regional challenges', date: '2025-05-03', url: 'https://news.example.com/ferrari-shipments-2025' },
+      { title: 'Ferrari maintains confident 2025 outlook despite tariffs, first EV deliveries expected', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: "Ferrari N.V. is an Italian luxury sports car manufacturer based in Maranello, Italy. Founded by Enzo Ferrari in 1939.",
@@ -1260,9 +1260,9 @@ export const mockCompanies = [
       surprise: "-5.9%"
     },
     peers: [
-      { name: "Porsche AG", ticker: "P911.DE" },
-      { name: "Lamborghini", ticker: "LAMBO.MI" },
-      { name: "Aston Martin", ticker: "AML.L" }
+      { name: 'Porsche AG', ticker: 'P911.DE' },
+      { name: 'Lamborghini', ticker: 'LAMBO.MI' },
+      { name: 'Aston Martin', ticker: 'AML.L' }
     ],
     financials: {
       incomeStatement: [
@@ -1296,10 +1296,10 @@ export const mockCompanies = [
       ]
     },
     priceHistory: [
-      { date: "2025-05-05", price: 397 },
-      { date: "2025-05-06", price: 396 },
-      { date: "2025-05-07", price: 395.5 },
-      { date: "2025-05-08", price: 395 }
+      { date: '2025-05-05', price: 397 },
+      { date: '2025-05-06', price: 396 },
+      { date: '2025-05-07', price: 395.5 },
+      { date: '2025-05-08', price: 395 }
     ]
   },
   {
@@ -1414,13 +1414,13 @@ export const mockCompanies = [
       netMargin: "8.5%",
       debtToEquity: "75.0%"
     },    news: [
-      { title: "BYD faces delays in Brazilian factory completion due to labor abuse accusations", date: "2025-05-13", url: "https://news.example.com/byd-brazil-factory-delays" },
-      { title: "BYD expands lithium-ion battery recycling capabilities in Oceania with Livium", date: "2025-05-13", url: "https://news.example.com/byd-battery-recycling" },
-      { title: "BYD adjusts Chile supply chain plans due to lithium price crash, focuses on Chinese facilities", date: "2025-05-12", url: "https://news.example.com/byd-chile-plan-changes" },
-      { title: "BYD emphasizes Europe expansion as pivotal to 2030 target amid US market lockout", date: "2025-05-11", url: "https://news.example.com/byd-europe-expansion" },
-      { title: "BYD scraps plans for Chile lithium plants due to global market conditions", date: "2025-05-06", url: "https://news.example.com/byd-lithium-chile" },
-      { title: "BYD surpasses Tesla in global EV sales for second consecutive quarter", date: "2025-04-29", url: "https://news.example.com/byd-tesla-ev-sales" },
-      { title: "BYD aims for 5 million global sales, 80% from China, expands into Europe despite geopolitical challenges", date: "2025-05-10", url: "" }
+      { title: 'BYD faces delays in Brazilian factory completion due to labor abuse accusations', date: '2025-05-13', url: 'https://news.example.com/byd-brazil-factory-delays' },
+      { title: 'BYD expands lithium-ion battery recycling capabilities in Oceania with Livium', date: '2025-05-13', url: 'https://news.example.com/byd-battery-recycling' },
+      { title: 'BYD adjusts Chile supply chain plans due to lithium price crash, focuses on Chinese facilities', date: '2025-05-12', url: 'https://news.example.com/byd-chile-plan-changes' },
+      { title: 'BYD emphasizes Europe expansion as pivotal to 2030 target amid US market lockout', date: '2025-05-11', url: 'https://news.example.com/byd-europe-expansion' },
+      { title: 'BYD scraps plans for Chile lithium plants due to global market conditions', date: '2025-05-06', url: 'https://news.example.com/byd-lithium-chile' },
+      { title: 'BYD surpasses Tesla in global EV sales for second consecutive quarter', date: '2025-04-29', url: 'https://news.example.com/byd-tesla-ev-sales' },
+      { title: 'BYD aims for 5 million global sales, 80% from China, expands into Europe despite geopolitical challenges', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: "BYD Company Limited is a Chinese manufacturing company based in Shenzhen, Guangdong, China, focusing on automobiles, battery-powered bicycles, buses, forklifts, solar panels, and rechargeable batteries.",
@@ -1506,8 +1506,8 @@ export const mockCompanies = [
       debtToEquity: "32.0%"
     },
     news: [
-      { title: "Rivian impacted by punitive tariffs on EVs imported from China", date: "2025-05-04", url: "https://news.example.com/rivian-tariff-impact" },
-      { title: "Rivian ramps up production as demand grows for R2 SUV", date: "2025-04-22", url: "https://news.example.com/rivian-r2-production" }
+      { title: 'Rivian impacted by punitive tariffs on EVs imported from China', date: '2025-05-04', url: 'https://news.example.com/rivian-tariff-impact' },
+      { title: 'Rivian ramps up production as demand grows for R2 SUV', date: '2025-04-22', url: 'https://news.example.com/rivian-r2-production' }
     ],
     profile: {
       description: "Rivian Automotive, Inc. is an American electric vehicle manufacturer and automotive technology company founded in 2009.",
@@ -1592,12 +1592,12 @@ export const mockCompanies = [
       netMargin: "9.3%",
       debtToEquity: "65.0%"
     },    news: [
-      { title: "Volvo AB faces market challenges due to Chinese ownership", date: "2025-05-12", url: "https://news.example.com/volvo-chinese-ownership" },
-      { title: "Volvo and Daimler Truck announce joint venture for software-defined vehicle platform", date: "2025-05-11", url: "https://news.example.com/volvo-daimler-jv" },
-      { title: "Volvo recalls 413,151 vehicles due to camera display issue", date: "2025-05-09", url: "https://news.example.com/volvo-recall-camera" },
-      { title: "Volvo recalls 73,000 plug-in hybrid vehicles over fire risk", date: "2025-05-05", url: "https://news.example.com/volvo-recall-hybrids" },
-      { title: "Volvo drops S90 from U.S. market due to tariffs", date: "2025-04-26", url: "https://news.example.com/volvo-s90-us-market" },
-      { title: "Volvo closes Silicon Valley innovation hub, delivers 5,000+ battery-electric trucks globally, sees increased demand for gas-powered trucks", date: "2025-05-10", url: "" }
+      { title: 'Volvo AB faces market challenges due to Chinese ownership', date: '2025-05-12', url: 'https://news.example.com/volvo-chinese-ownership' },
+      { title: 'Volvo and Daimler Truck announce joint venture for software-defined vehicle platform', date: '2025-05-11', url: 'https://news.example.com/volvo-daimler-jv' },
+      { title: 'Volvo recalls 413,151 vehicles due to camera display issue', date: '2025-05-09', url: 'https://news.example.com/volvo-recall-camera' },
+      { title: 'Volvo recalls 73,000 plug-in hybrid vehicles over fire risk', date: '2025-05-05', url: 'https://news.example.com/volvo-recall-hybrids' },
+      { title: 'Volvo drops S90 from U.S. market due to tariffs', date: '2025-04-26', url: 'https://news.example.com/volvo-s90-us-market' },
+      { title: 'Volvo closes Silicon Valley innovation hub, delivers 5,000+ battery-electric trucks globally, sees increased demand for gas-powered trucks', date: '2025-05-10', url: '' }
     ],
     profile: {
       description: "Volvo AB is a Swedish multinational manufacturing company headquartered in Gothenburg, Sweden, focusing on trucks, buses, construction equipment, marine and industrial power systems.",
@@ -1682,11 +1682,11 @@ export const mockCompanies = [
       netMargin: "7.4%",
       debtToEquity: "45.0%"
     },    news: [
-      { title: "Amazon enters quantum-computing race with launch of Ocelot quantum chip", date: "2025-05-12", url: "https://news.example.com/amazon-quantum-chip" },
-      { title: "Amazon faces backlash from Trump administration over labor practices", date: "2025-05-10", url: "https://news.example.com/amazon-trump-labor" },
-      { title: "Amazon fails to stop NLRB from acting on labor practice allegations", date: "2025-05-09", url: "https://news.example.com/amazon-nlrb-decision" },
-      { title: "Amazon stock slips on weaker operating profit forecast", date: "2025-05-04", url: "https://news.example.com/amazon-profit-forecast" },
-      { title: "Amazon cites tariffs and trade policies as challenges to growth", date: "2025-04-28", url: "https://news.example.com/amazon-tariff-impact" }
+      { title: 'Amazon enters quantum-computing race with launch of Ocelot quantum chip', date: '2025-05-12', url: 'https://news.example.com/amazon-quantum-chip' },
+      { title: 'Amazon faces backlash from Trump administration over labor practices', date: '2025-05-10', url: 'https://news.example.com/amazon-trump-labor' },
+      { title: 'Amazon fails to stop NLRB from acting on labor practice allegations', date: '2025-05-09', url: 'https://news.example.com/amazon-nlrb-decision' },
+      { title: 'Amazon stock slips on weaker operating profit forecast', date: '2025-05-04', url: 'https://news.example.com/amazon-profit-forecast' },
+      { title: 'Amazon cites tariffs and trade policies as challenges to growth', date: '2025-04-28', url: 'https://news.example.com/amazon-tariff-impact' }
     ],
     profile: {
       description: "Amazon.com, Inc. is an American multinational technology company focusing on e-commerce, cloud computing, online advertising, digital streaming, and artificial intelligence.",
@@ -2268,11 +2268,11 @@ export const mockCompanies = [
       debtToEquity: "N/A"
     },
     news: [
-      { title: "Waymo faces increased regulatory scrutiny with crash rate of 1,000 per 100 million miles", date: "2025-05-13", url: "https://news.example.com/waymo-regulatory-scrutiny" },
-      { title: "Waymo partnership with Uber evolving, Austin pilot exceeds expectations", date: "2025-05-12", url: "https://news.example.com/waymo-uber-partnership" },
-      { title: "Uber expands partnerships with WeRide and Volkswagen beyond Waymo", date: "2025-05-11", url: "https://news.example.com/uber-autonomous-partnerships" },
-      { title: "Waymo plans rollout of autonomous ride service in Atlanta", date: "2025-05-08", url: "https://news.example.com/waymo-atlanta-rollout" },
-      { title: "Waymo involved in multi-car crash in Scottsdale, Arizona", date: "2025-05-05", url: "https://news.example.com/waymo-arizona-crash" }
+      { title: 'Waymo faces increased regulatory scrutiny with crash rate of 1,000 per 100 million miles', date: '2025-05-13', url: 'https://news.example.com/waymo-regulatory-scrutiny' },
+      { title: 'Waymo partnership with Uber evolving, Austin pilot exceeds expectations', date: '2025-05-12', url: 'https://news.example.com/waymo-uber-partnership' },
+      { title: 'Uber expands partnerships with WeRide and Volkswagen beyond Waymo', date: '2025-05-11', url: 'https://news.example.com/uber-autonomous-partnerships' },
+      { title: 'Waymo plans rollout of autonomous ride service in Atlanta', date: '2025-05-08', url: 'https://news.example.com/waymo-atlanta-rollout' },
+      { title: 'Waymo involved in multi-car crash in Scottsdale, Arizona', date: '2025-05-05', url: 'https://news.example.com/waymo-arizona-crash' }
     ],
     profile: {
       description: "Waymo LLC is an American autonomous driving technology company and subsidiary of Alphabet Inc. The company develops autonomous driving technology for ride-hailing services, trucking, and last-mile delivery.",
@@ -2411,205 +2411,205 @@ export const mockCompanies = [
     ]
   },
   {
-    name: "IBM Corp.",
-    ticker: "IBM",
-    sector: "Information Technology",
-    index: "S&P 500",
+    name: 'IBM Corp.',
+    ticker: 'IBM',
+    sector: 'Information Technology',
+    index: 'S&P 500',
     price: 178.25,
-    change: "+0.8%",
+    change: '+0.8%',
     summary: {
-      marketCap: "163B",
+      marketCap: '163B',
       pe: 21.7,
       eps: 8.21,
       dividend: 6.64,
-      yield: "3.72%",
+      yield: '3.72%',
       beta: 0.85,
-      volume: "4.2M",
-      shares: "0.91B",
-      roe: "26.8%",
-      revenue: "62.5B",
-      grossMargin: "55.4%",
-      netMargin: "12.5%",
-      debtToEquity: "220.0%"
+      volume: '4.2M',
+      shares: '0.91B',
+      roe: '26.8%',
+      revenue: '62.5B',
+      grossMargin: '55.4%',
+      netMargin: '12.5%',
+      debtToEquity: '220.0%'
     },
     news: [
-      { title: "IBM stock drops 7.5% despite better-than-expected Q1 results due to weak consulting sales", date: "2025-05-13", url: "https://news.example.com/ibm-stock-drop-consulting" },
-      { title: "IBM positions z17 mainframe to reclaim workloads from x86 servers and cloud platforms", date: "2025-05-13", url: "https://news.example.com/ibm-z17-mainframe" },
-      { title: "IBM expands watsonx AI platform with new foundation models", date: "2025-05-10", url: "https://news.example.com/ibm-watsonx-expansion" },
-      { title: "IBM completes acquisition of HashiCorp to enhance hybrid cloud strategy", date: "2025-05-02", url: "https://news.example.com/ibm-hashicorp-acquisition" },
-      { title: "IBM reports Q1 2025 revenue growth of 2.6%, driven by software segment", date: "2025-04-24", url: "https://news.example.com/ibm-q1-2025-earnings" }
+      { title: 'IBM stock drops 7.5% despite better-than-expected Q1 results due to weak consulting sales', date: '2025-05-13', url: 'https://news.example.com/ibm-stock-drop-consulting' },
+      { title: 'IBM positions z17 mainframe to reclaim workloads from x86 servers and cloud platforms', date: '2025-05-13', url: 'https://news.example.com/ibm-z17-mainframe' },
+      { title: 'IBM expands watsonx AI platform with new foundation models', date: '2025-05-10', url: 'https://news.example.com/ibm-watsonx-expansion' },
+      { title: 'IBM completes acquisition of HashiCorp to enhance hybrid cloud strategy', date: '2025-05-02', url: 'https://news.example.com/ibm-hashicorp-acquisition' },
+      { title: 'IBM reports Q1 2025 revenue growth of 2.6%, driven by software segment', date: '2025-04-24', url: 'https://news.example.com/ibm-q1-2025-earnings' }
     ],
     profile: {
-      description: "International Business Machines Corporation (IBM) is an American multinational technology corporation headquartered in Armonk, New York, specializing in cloud computing, artificial intelligence, and quantum computing.",
+      description: 'International Business Machines Corporation (IBM) is an American multinational technology corporation headquartered in Armonk, New York, specializing in cloud computing, artificial intelligence, and quantum computing.',
       executives: [
-        { name: "Arvind Krishna", title: "Chairman & Chief Executive Officer" },
-        { name: "James Kavanaugh", title: "Senior Vice President & Chief Financial Officer" }
+        { name: 'Arvind Krishna', title: 'Chairman & Chief Executive Officer' },
+        { name: 'James Kavanaugh', title: 'Senior Vice President & Chief Financial Officer' }
       ],
-      address: "1 New Orchard Road, Armonk, NY 10504, United States",
-      website: "https://www.ibm.com/"
+      address: '1 New Orchard Road, Armonk, NY 10504, United States',
+      website: 'https://www.ibm.com/'
     },
     earnings: {
-      nextEarningsDate: "2025-07-18",
-      lastEarningsDate: "2025-04-24",
+      nextEarningsDate: '2025-07-18',
+      lastEarningsDate: '2025-04-24',
       epsActual: 1.68,
       epsEstimate: 1.65,
-      revenueActual: "15.3B",
-      revenueEstimate: "15.1B",
-      surprise: "+1.8%"
+      revenueActual: '15.3B',
+      revenueEstimate: '15.1B',
+      surprise: '+1.8%'
     },
     peers: [
-      { name: "Microsoft", ticker: "MSFT" },
-      { name: "Oracle", ticker: "ORCL" },
-      { name: "Hewlett Packard Enterprise", ticker: "HPE" }
+      { name: 'Microsoft', ticker: 'MSFT' },
+      { name: 'Oracle', ticker: 'ORCL' },
+      { name: 'Hewlett Packard Enterprise', ticker: 'HPE' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "62.5B", netIncome: "7.8B" },
-        { year: 2023, revenue: "60.8B", netIncome: "7.2B" }
+        { year: 2024, revenue: '62.5B', netIncome: '7.8B' },
+        { year: 2023, revenue: '60.8B', netIncome: '7.2B' }
       ],
       balanceSheet: [
-        { year: 2024, assets: "150.2B", liabilities: "124.5B", equity: "25.7B" }
+        { year: 2024, assets: '150.2B', liabilities: '124.5B', equity: '25.7B' }
       ],
       cashFlow: [
-        { year: 2024, operating: "13.5B", investing: "-5.8B", financing: "-7.1B" }
+        { year: 2024, operating: '13.5B', investing: '-5.8B', financing: '-7.1B' }
       ]
     },
     options: {
       calls: [
-        { strike: 185, expiry: "2025-06-20", price: 3.85, volume: 850 },
-        { strike: 195, expiry: "2025-06-20", price: 1.65, volume: 620 }
+        { strike: 185, expiry: '2025-06-20', price: 3.85, volume: 850 },
+        { strike: 195, expiry: '2025-06-20', price: 1.65, volume: 620 }
       ],
       puts: [
-        { strike: 170, expiry: "2025-06-20", price: 3.20, volume: 780 },
-        { strike: 160, expiry: "2025-06-20", price: 1.75, volume: 560 }
+        { strike: 170, expiry: '2025-06-20', price: 3.20, volume: 780 },
+        { strike: 160, expiry: '2025-06-20', price: 1.75, volume: 560 }
       ]
     },
     ownership: {
-      institutional: "72%",
-      insider: "0.12%",
+      institutional: '72%',
+      insider: '0.12%',
       topHolders: [
-        { name: "Vanguard Group", percent: "8.8%" },
-        { name: "BlackRock", percent: "7.9%" },
-        { name: "State Street Global Advisors", percent: "5.6%" }
+        { name: 'Vanguard Group', percent: '8.8%' },
+        { name: 'BlackRock', percent: '7.9%' },
+        { name: 'State Street Global Advisors', percent: '5.6%' }
       ]
     },
     priceHistory: [
-      { date: "2025-05-08", price: 175.80 },
-      { date: "2025-05-09", price: 176.45 },
-      { date: "2025-05-10", price: 177.20 },
-      { date: "2025-05-11", price: 177.85 },
-      { date: "2025-05-12", price: 178.25 }
+      { date: '2025-05-08', price: 175.80 },
+      { date: '2025-05-09', price: 176.45 },
+      { date: '2025-05-10', price: 177.20 },
+      { date: '2025-05-11', price: 177.85 },
+      { date: '2025-05-12', price: 178.25 }
     ]
   },
   {
-    name: "Volvo Car AB",
-    ticker: "VOLCAR.B.ST",
-    sector: "Consumer Discretionary",
-    index: "OMX Stockholm",
+    name: 'Volvo Car AB',
+    ticker: 'VOLCAR.B.ST',
+    sector: 'Consumer Discretionary',
+    index: 'OMX Stockholm',
     price: 220, // SEK
-    change: "-1.8%",
+    change: '-1.8%',
     summary: {
-      marketCap: "72B", // SEK (billion)
+      marketCap: '72B', // SEK (billion)
       pe: 11.5,
-      eps: "19.13", // SEK
-      dividend: "5.50", // SEK
-      yield: "2.5%",
+      eps: '19.13', // SEK
+      dividend: '5.50', // SEK
+      yield: '2.5%',
       beta: 1.15,
-      volume: "2.5M",
-      shares: "0.33B",
-      roe: "14.5%",
-      revenue: "400B", // SEK (billion)
-      grossMargin: "20.8%",
-      netMargin: "7.5%",
-      debtToEquity: "55.0%"
+      volume: '2.5M',
+      shares: '0.33B',
+      roe: '14.5%',
+      revenue: '400B', // SEK (billion)
+      grossMargin: '20.8%',
+      netMargin: '7.5%',
+      debtToEquity: '55.0%'
     },
     news: [
-      { title: "Volvo Car revenue drops to 82.9bn krona from 93.9bn krona year-on-year", date: "2025-05-13", url: "https://news.example.com/volvo-car-revenue-drop" },
-      { title: "Volvo Car EBIT margin decreased to 2.3% from 5% year-on-year", date: "2025-05-13", url: "https://news.example.com/volvo-car-ebit-margin" },
-      { title: "Volvo Car expands plug-in hybrid lineup across European markets", date: "2025-05-05", url: "https://news.example.com/volvo-car-hybrid-expansion" },
-      { title: "Volvo Car reports slower than expected EV sales growth in Q1", date: "2025-04-28", url: "https://news.example.com/volvo-car-ev-sales" }
+      { title: 'Volvo Car revenue drops to 82.9bn krona from 93.9bn krona year-on-year', date: '2025-05-13', url: 'https://news.example.com/volvo-car-revenue-drop' },
+      { title: 'Volvo Car EBIT margin decreased to 2.3% from 5% year-on-year', date: '2025-05-13', url: 'https://news.example.com/volvo-car-ebit-margin' },
+      { title: 'Volvo Car expands plug-in hybrid lineup across European markets', date: '2025-05-05', url: 'https://news.example.com/volvo-car-hybrid-expansion' },
+      { title: 'Volvo Car reports slower than expected EV sales growth in Q1', date: '2025-04-28', url: 'https://news.example.com/volvo-car-ev-sales' }
     ],
     profile: {
-      description: "Volvo Car AB is a Swedish automotive manufacturer of luxury vehicles headquartered in Gothenburg, Sweden. It is a subsidiary of the Chinese automotive company Geely Holding Group.",
+      description: 'Volvo Car AB is a Swedish automotive manufacturer of luxury vehicles headquartered in Gothenburg, Sweden. It is a subsidiary of the Chinese automotive company Geely Holding Group.',
       executives: [
-        { name: "Jim Rowan", title: "Chief Executive Officer" },
-        { name: "Johan Ekdahl", title: "Chief Financial Officer" }
+        { name: 'Jim Rowan', title: 'Chief Executive Officer' },
+        { name: 'Johan Ekdahl', title: 'Chief Financial Officer' }
       ],
-      address: "Assar Gabrielssons Väg, 405 31 Gothenburg, Sweden",
-      website: "https://www.volvocars.com/"
+      address: 'Assar Gabrielssons Väg, 405 31 Gothenburg, Sweden',
+      website: 'https://www.volvocars.com/'
     },
     earnings: {
-      nextEarningsDate: "2025-07-20",
-      lastEarningsDate: "2025-04-25",
-      epsActual: "4.65", // SEK
-      epsEstimate: "5.10", // SEK
-      revenueActual: "82.9B", // SEK (billion)
-      revenueEstimate: "88.5B", // SEK (billion)
-      surprise: "-8.8%"
+      nextEarningsDate: '2025-07-20',
+      lastEarningsDate: '2025-04-25',
+      epsActual: '4.65', // SEK
+      epsEstimate: '5.10', // SEK
+      revenueActual: '82.9B', // SEK (billion)
+      revenueEstimate: '88.5B', // SEK (billion)
+      surprise: '-8.8%'
     },
     peers: [
-      { name: "Volvo AB", ticker: "VOLV-B.ST" },
-      { name: "BMW", ticker: "BMW.DE" },
-      { name: "Mercedes-Benz Group", ticker: "MBG.DE" }
+      { name: 'Volvo AB', ticker: 'VOLV-B.ST' },
+      { name: 'BMW', ticker: 'BMW.DE' },
+      { name: 'Mercedes-Benz Group', ticker: 'MBG.DE' }
     ],
     financials: {
       incomeStatement: [
-        { year: 2024, revenue: "400B", netIncome: "30B" }, // SEK (billion)
-        { year: 2023, revenue: "380B", netIncome: "32B" } // SEK (billion)
+        { year: 2024, revenue: '400B', netIncome: '30B' }, // SEK (billion)
+        { year: 2023, revenue: '380B', netIncome: '32B' } // SEK (billion)
       ],
       balanceSheet: [
-        { year: 2024, assets: "500B", liabilities: "280B", equity: "220B" } // SEK (billion)
+        { year: 2024, assets: '500B', liabilities: '280B', equity: '220B' } // SEK (billion)
       ],
       cashFlow: [
-        { year: 2024, operating: "45B", investing: "-25B", financing: "-8B" } // SEK (billion)
+        { year: 2024, operating: '45B', investing: '-25B', financing: '-8B' } // SEK (billion)
       ]
     },
     options: {
       calls: [
-        { strike: 230, expiry: "2025-06-20", price: 4.5, volume: 320 },
-        { strike: 240, expiry: "2025-06-20", price: 2.8, volume: 240 }
+        { strike: 230, expiry: '2025-06-20', price: 4.5, volume: 320 },
+        { strike: 240, expiry: '2025-06-20', price: 2.8, volume: 240 }
       ],
       puts: [
-        { strike: 210, expiry: "2025-06-20", price: 3.8, volume: 380 },
-        { strike: 200, expiry: "2025-06-20", price: 2.2, volume: 290 }
+        { strike: 210, expiry: '2025-06-20', price: 3.8, volume: 380 },
+        { strike: 200, expiry: '2025-06-20', price: 2.2, volume: 290 }
       ]
     },
     ownership: {
-      institutional: "40%",
-      insider: "50.6%",
+      institutional: '40%',
+      insider: '50.6%',
       topHolders: [
-        { name: "Geely Holding Group", percent: "51.0%" },
-        { name: "AMF Pension", percent: "5.8%" },
-        { name: "Folksam", percent: "4.2%" }
+        { name: 'Geely Holding Group', percent: '51.0%' },
+        { name: 'AMF Pension', percent: '5.8%' },
+        { name: 'Folksam', percent: '4.2%' }
       ]
     },
     priceHistory: [
-      { date: "2025-05-08", price: 226 },
-      { date: "2025-05-09", price: 224 },
-      { date: "2025-05-10", price: 223 },
-      { date: "2025-05-11", price: 221 },
-      { date: "2025-05-12", price: 220 }
+      { date: '2025-05-08', price: 226 },
+      { date: '2025-05-09', price: 224 },
+      { date: '2025-05-10', price: 223 },
+      { date: '2025-05-11', price: 221 },
+      { date: '2025-05-12', price: 220 }
     ]
   },
   {
-    name: "Ola Electric",
-    ticker: "",
-    sector: "Automotive",
-    index: "",
+    name: 'Ola Electric',
+    ticker: '',
+    sector: 'Automotive',
+    index: '',
     price: null,
     change: null,
     summary: {},
     news: [
-      { title: "Vanguard cuts Ola Electric valuation to $1.25 billion due to IPO uncertainty", date: "2025-05-13", url: "https://news.example.com/ola-valuation-cut" },
-      { title: "Ola Electric faces delayed sales growth and higher cash burn rates", date: "2025-05-13", url: "https://news.example.com/ola-delayed-growth" },
-      { title: "Ola Electric expands charging network by 50% in major cities", date: "2025-05-05", url: "https://news.example.com/ola-charging-network" },
-      { title: "Ola Electric launches new scooter model with improved range", date: "2025-04-28", url: "https://news.example.com/ola-new-scooter" }
+      { title: 'Vanguard cuts Ola Electric valuation to $1.25 billion due to IPO uncertainty', date: '2025-05-13', url: 'https://news.example.com/ola-valuation-cut' },
+      { title: 'Ola Electric faces delayed sales growth and higher cash burn rates', date: '2025-05-13', url: 'https://news.example.com/ola-delayed-growth' },
+      { title: 'Ola Electric expands charging network by 50% in major cities', date: '2025-05-05', url: 'https://news.example.com/ola-charging-network' },
+      { title: 'Ola Electric launches new scooter model with improved range', date: '2025-04-28', url: 'https://news.example.com/ola-new-scooter' }
     ],
     profile: {
-      description: "Ola Electric is an Indian electric vehicle manufacturer focused on producing electric scooters and expanding charging infrastructure.",
+      description: 'Ola Electric is an Indian electric vehicle manufacturer focused on producing electric scooters and expanding charging infrastructure.',
       executives: [],
-      address: "",
-      website: "https://olaelectric.com/"
+      address: '',
+      website: 'https://olaelectric.com/'
     },
     earnings: {},
     peers: [],
