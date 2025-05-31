@@ -31,7 +31,7 @@ export const USDStrengthDashboard = () => (
 
     {/* Context Note */}
     <div className="mt-6 p-3 bg-indigo-50 border border-indigo-200 rounded text-indigo-800 text-sm">
-      <strong>Note:</strong> The US Dollar's value (currently ~102.7) reflects interest rates, inflation, growth, trade, and sentiment. It has seen a slight decline recently and over the past year. Data is illustrative. {/* Updated note */}
+      <strong>Note:</strong> The US Dollar&apos;s value (currently ~102.7) reflects interest rates, inflation, growth, trade, and sentiment. It has seen a slight decline recently and over the past year. Data is illustrative. {/* Updated note */}
     </div>
   </section>
 );

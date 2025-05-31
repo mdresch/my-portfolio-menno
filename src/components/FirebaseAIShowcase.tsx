@@ -64,7 +64,7 @@ try {
     throw new Error("Firebase configuration is incomplete");
   }
 
-  // Initialize Firebase only if it hasn't been initialized already
+  // Initialize Firebase only if it hasn&apos;t been initialized already
   if (getApps().length === 0) {
     app = initializeApp(firebaseConfig);
   } else {

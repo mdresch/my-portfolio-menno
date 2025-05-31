@@ -92,7 +92,7 @@ export default function ClimateFinancialImpactPage() {
           <div>
             <h3 className="text-xl font-semibold text-green-800 dark:text-green-300 mb-3 transition-colors">Financial System Implications</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-              Financial institutions' lending and investment exposures to these high-risk sectors could lead to increased 
+              Financial institutions&apos; lending and investment exposures to these high-risk sectors could lead to increased 
               credit losses, market volatility, and liquidity challenges. Our analysis estimates that global financial 
               system exposure to high-carbon sectors that face significant transition risks exceeds $7 trillion.
             </p>
@@ -190,7 +190,7 @@ export default function ClimateFinancialImpactPage() {
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               While this represents a positive trend for financing the low-carbon transition, challenges remain in ensuring 
-              effective capital allocation to genuine climate solutions rather than "greenwashing." The development of robust 
+              effective capital allocation to genuine climate solutions rather than &quot;greenwashing.&quot; The development of robust 
               taxonomies, standards, and disclosure requirements is critical to supporting market integrity.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
@@ -243,8 +243,8 @@ export default function ClimateFinancialImpactPage() {
           through this transformation.
         </p>
         <blockquote className="border-l-4 border-green-500 dark:border-green-400 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4">
-          "The financial risks from climate change are unprecedented in their breadth, magnitude, and potential for systemic impact. 
-          Yet they also represent an opportunity to build a more resilient financial system that can support the transition to a sustainable economy."
+          &quot;The financial risks from climate change are unprecedented in their breadth, magnitude, and potential for systemic impact. 
+          Yet they also represent an opportunity to build a more resilient financial system that can support the transition to a sustainable economy.&quot;
           <footer className="text-sm text-gray-600 dark:text-gray-400 mt-2">— Climate Finance Institute, 2025</footer>
         </blockquote>
       </section>

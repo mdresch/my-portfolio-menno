@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
   dotenv.config({ path: ".env.local" });
 }
 
+import React from "react";
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";

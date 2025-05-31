@@ -32,7 +32,7 @@ export default function AboutPage() {
       <h1 className="text-4xl font-bold mb-6">About Me</h1>
       <div className="prose lg:prose-xl">
         <p className="mb-8">
-          I'm Menno Drescher, a results-driven professional with over 25 years of experience in Finance and Human Resources Consultancy. Currently, I work as a Managed HCM Services Specialist at CBA Consult, where I help organizations enhance performance through strategic HR solutions and cutting-edge technology.
+          I&apos;m Menno Drescher, a results-driven professional with over 25 years of experience in Finance and Human Resources Consultancy. Currently, I work as a Managed HCM Services Specialist at CBA Consult, where I help organizations enhance performance through strategic HR solutions and cutting-edge technology.
         </p>
 
         <section className="mb-8">
@@ -79,14 +79,14 @@ export default function AboutPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">My Approach</h2>
           <p className="mb-4">
-            I’m passionate about innovation and continuous improvement. I thrive at the intersection of business and technology—where strategic goals meet practical execution. Whether it's optimizing HR systems or exploring the latest in web development, I bring curiosity, clarity, and commitment to every challenge.
+            I&apos;m passionate about innovation and continuous improvement. I thrive at the intersection of business and technology—where strategic goals meet practical execution. Whether it&apos;s optimizing HR systems or exploring the latest in web development, I bring curiosity, clarity, and commitment to every challenge.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Let’s Connect</h2>
+          <h2 className="text-2xl font-semibold mb-4">Let&apos;s Connect</h2>
           <p className="mb-4">
-            I’m always open to new ideas, partnerships, and opportunities to collaborate. If you're looking to explore tech-enabled solutions or simply want to exchange insights—<a href="/contact" className="text-cyan-700 underline hover:text-cyan-900">let’s connect and create something impactful</a>.
+            I&apos;m always open to new ideas, partnerships, and opportunities to collaborate. If you&apos;re looking to explore tech-enabled solutions or simply want to exchange insights—<a href="/contact" className="text-cyan-700 underline hover:text-cyan-900">let&apos;s connect and create something impactful</a>.
           </p>
         </section>
 

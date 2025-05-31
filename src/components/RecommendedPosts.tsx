@@ -41,7 +41,7 @@ export default function RecommendedPosts({ currentPostId, allPosts }: Recommende
     );
   }
 
-  // Don't show the section if we don't have recommendations
+  // Don&apos;t show the section if we don&apos;t have recommendations
   if (recommendations.length === 0) return null;
 
   return (

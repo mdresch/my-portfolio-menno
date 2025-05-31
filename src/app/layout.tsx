@@ -13,6 +13,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientAnalytics from "../components/ClientAnalytics";
 import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
+import React from "react";
 
 const geist = Geist({
   subsets: ["latin"],

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../lib/auth";
 import { useRouter } from "next/navigation";
 import LoginForm from "../../components/LoginForm";
@@ -10,18 +10,18 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
 
   // If not authenticated and not loading, redirect to admin login
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       router.replace("/admin/login");
     }
-  }, [isLoading, isAuthenticated, router]);
+  }, [loading, isAuthenticated, router]);
 
   // Show loading state
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>

@@ -11,7 +11,7 @@ enableFirebaseTelemetry();
 const ai = genkit({
   plugins: [googleAI()],
   model: gemini15Flash,
-})
+});
 
 
 export async function POST(req: NextRequest) {

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { DarkModeToggle } from "./NavigationMenuDemo"; // Import DarkModeToggle from NavigationMenuDemo

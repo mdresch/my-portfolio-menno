@@ -1,5 +1,4 @@
 import { Project, BlogPost, Skill, ContactMessage } from "@/types/api";
-import { useAuthToken } from "@/lib/auth";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
 
@@ -198,3 +197,8 @@ export const CrossPostService = {
     return fetchAPI<any[]>(`/blogcrosspost/blog/${blogId}`);
   },
 };
+
+// Add RequestInit type for Node.js and browser compatibility
+import type { RequestInit } from "node-fetch";
+// If you are running in a browser, RequestInit is available globally.
+// For Node.js, install @types/node-fetch if not already present.

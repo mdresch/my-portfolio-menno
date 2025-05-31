@@ -234,7 +234,7 @@ const GlobalComplexityMap: React.FC = () => {
                     }}
                   />
                 );
-              })
+              });
             }}
           </Geographies>
         </ZoomableGroup>

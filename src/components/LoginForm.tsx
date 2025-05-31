@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../lib/auth";
 import Link from "next/link";
 
@@ -98,7 +98,7 @@ export default function LoginForm() {
           </Link>
         </p>
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup" className="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium">
             Sign up here
           </Link>
