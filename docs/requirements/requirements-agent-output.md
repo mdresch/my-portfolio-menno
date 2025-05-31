@@ -1,40 +1,73 @@
 # Requirements Agent Output: Roles, Needs, and Processes
 
-## End User
+## Developer User
 **Needs:**
-- Intuitive and user-friendly interface
-- Fast, responsive performance across devices
-- Reliable functionality and minimal downtime
-- Clear navigation and information architecture
-- Accessible design for users with disabilities
-- Data security and privacy protection
-- Help documentation and support resources
-- Customization options for personal preferences
-- Integration with commonly used tools and services
-- Regular updates and feature improvements
+- Unified platform for portfolio and blog management
+- Markdown and rich media support
+- Seamless content creation and editing
+- Integration with GitHub and Dev.to
+- Real-time analytics and project insights
+- Access to AI-powered features (e.g., content suggestions, chat)
+- Data visualization tools
+- Secure, scalable cloud hosting
+- User-friendly interface
 **Processes:**
-- User onboarding and account setup
-- Daily usage and feature utilization
-- Help-seeking and support interaction
-- Feedback provision and feature requests
-- Account management and data export
+- Authoring and editing content
+- Publishing and versioning projects/blog posts
+- Connecting to external developer services
+- Viewing and interpreting analytics
+- Interacting with AI chat/features
+- Customizing portfolio appearance
+- Managing account and security settings
 
-## Administrator
+## Platform Admin
 **Needs:**
 - User management and access control
-- System monitoring and performance analytics
-- Content moderation and quality control
-- Backup and data recovery capabilities
-- Security audit trails and compliance reporting
-- Integration management and API access
-- Scalability planning and resource optimization
-- Bug tracking and issue resolution tools
-- Update deployment and version control
-- Customer support tools and ticket management
+- Monitoring platform usage and system health
+- Maintaining data integrity and backups
+- Ensuring security and compliance
+- Managing integrations with third-party services
+- Handling platform configuration and deployment
 **Processes:**
-- System administration and maintenance workflow
-- User support and issue resolution process
-- Security monitoring and incident response
-- Performance optimization and scaling decisions
-- Feature deployment and rollback procedures
+- Onboarding and supporting users
+- Overseeing content moderation
+- Managing API keys and integrations
+- Monitoring error logs and analytics
+- Configuring deployment and scaling infrastructure
+
+## AI Feature Maintainer
+**Needs:**
+- Access to AI model configurations
+- Monitoring AI feature performance
+- Ensuring quality and relevance of AI outputs
+- Managing AI integrations (Genkit, Azure AI, Google Vertex AI)
+- Updating AI-driven tools and prompts
+**Processes:**
+- Deploying and updating AI features
+- Tuning model parameters
+- Monitoring feedback and usage analytics
+- Troubleshooting AI-related issues
+
+## Content Moderator
+**Needs:**
+- Tools for reviewing user-generated content
+- Automated moderation alerts
+- Ability to flag, approve, or remove content
+- Audit trails for moderation actions
+**Processes:**
+- Reviewing new and updated content
+- Handling content reports and disputes
+- Maintaining moderation logs
+
+## Data Analyst
+**Needs:**
+- Access to user engagement and content analytics
+- Customizable data visualization dashboards
+- Export capabilities for data analysis
+- Integration with Chart.js/Recharts
+**Processes:**
+- Generating analytics reports
+- Configuring dashboards
+- Analyzing user and content trends
+- Sharing insights with stakeholders
 

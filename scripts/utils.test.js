@@ -8,36 +8,50 @@ const utils = require('./utils');
 describe('utils.js', () => {
   const tmpFile = path.join(__dirname, 'tmp-test-file.txt');
   const tmpDir = path.join(__dirname, 'tmp-test-dir');
+  const tmpJsonFile = path.join(__dirname, 'tmp-test-file.json');
 
-  afterEach(() => {
+  afterEach(async () => {
     if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
-    if (fs.existsSync(tmpDir)) fs.rmdirSync(tmpDir, { recursive: true });
+    if (fs.existsSync(tmpJsonFile)) fs.unlinkSync(tmpJsonFile);
+    if (fs.existsSync(tmpDir)) fs.rmSync(tmpDir, { recursive: true, force: true });
   });
 
-  test('safeReadFile and safeWriteFile', () => {
-    expect(utils.safeWriteFile(tmpFile, 'hello')).toBe(true);
-    expect(utils.safeReadFile(tmpFile)).toBe('hello');
-    expect(utils.safeReadFile('nonexistent.txt')).toBeNull();
+  test('safeReadFile and safeWriteFile (async)', async () => {
+    await utils.safeWriteFile(tmpFile, 'hello');
+    const content = await utils.safeReadFile(tmpFile);
+    expect(content).toBe('hello');
+    const missing = await utils.safeReadFile('nonexistent.txt');
+    expect(missing).toBeNull();
   });
 
-  test('safeParseJSON and safeStringifyJSON', () => {
+  test('safeParseJson and safeStringifyJson', () => {
     const obj = { a: 1 };
-    const str = utils.safeStringifyJSON(obj);
+    const str = utils.safeStringifyJson(obj);
     expect(str).toBe(JSON.stringify(obj, null, 2));
-    expect(utils.safeParseJSON(str)).toEqual(obj);
-    expect(utils.safeParseJSON('not json')).toBeNull();
-    expect(utils.safeStringifyJSON(undefined)).toBeNull();
+    expect(utils.safeParseJson(str)).toEqual(obj);
+    expect(utils.safeParseJson('not json')).toBeNull();
+    expect(utils.safeStringifyJson(undefined)).toBeNull();
   });
 
-  test('ensureDirExists', () => {
-    utils.ensureDirExists(tmpDir);
-    expect(fs.existsSync(tmpDir)).toBe(true);
+  test('ensureDirectory and pathExists (async)', async () => {
+    await utils.ensureDirectory(tmpDir);
+    const exists = await utils.pathExists(tmpDir);
+    expect(exists).toBe(true);
   });
 
-  test('getFilesByGlob', () => {
-    utils.safeWriteFile(tmpFile, 'glob test');
-    const files = utils.getFilesByGlob('*.txt', __dirname);
-    expect(files).toContain('tmp-test-file.txt');
+  test('loadJsonFile (async)', async () => {
+    const obj = { test: 123 };
+    await utils.safeWriteFile(tmpJsonFile, JSON.stringify(obj));
+    const loaded = await utils.loadJsonFile(tmpJsonFile);
+    expect(loaded).toEqual(obj);
+    const missing = await utils.loadJsonFile('nonexistent.json');
+    expect(missing).toBeNull();
+  });
+
+  test('logInfo, logWarning, logError', () => {
+    expect(() => utils.logInfo('Test info')).not.toThrow();
+    expect(() => utils.logWarning('Test warning')).not.toThrow();
+    expect(() => utils.logError('Test error', new Error('fail'))).not.toThrow();
   });
 
   test('extractFirstParagraph', () => {
@@ -49,10 +63,5 @@ describe('utils.js', () => {
   test('truncateString', () => {
     expect(utils.truncateString('abcdef', 4)).toBe('abcd...');
     expect(utils.truncateString('abc', 4)).toBe('abc');
-  });
-
-  test('logError', () => {
-    // Should not throw
-    expect(() => utils.logError('Test error', new Error('fail'))).not.toThrow();
   });
 });
