@@ -40,6 +40,21 @@ console.log('SCRIPT_INFO: REQUIREMENTS_DIR is:', REQUIREMENTS_DIR); // Diagnosti
 // Define the Requirements Agent API endpoint
 const REQUIREMENTS_AGENT_API = 'http://localhost:3000/api/requirements-agent';
 
+// Security function to sanitize content for logging
+function sanitizeForLogging(content) {
+  if (typeof content !== 'string') {
+    content = String(content);
+  }
+  // Remove or escape potentially dangerous characters for log injection
+  return content
+    .replace(/[\r\n]/g, ' ') // Replace newlines with spaces
+    .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+    .replace(/[<>'"&]/g, (char) => { // Escape HTML/XML chars
+      const escapeMap = { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' };
+      return escapeMap[char] || char;
+    });
+}
+
 // 1. Analyze project and generate a problem statement (simple heuristic, can be replaced with LLM call)
 let lastStatement = '';
 
@@ -317,7 +332,11 @@ async function saveStrategicSections(statement, data) {
   const coreValuesSection = coreValues && coreValues.length > 0 ? coreValues.map(v => `- ${v}`).join('\n') : '';
 
   const content = `# Business Statement\n\n${statement}\n---\n\n**Vision:**\n\n${vision || ''}\n\n**Mission:**\n\n${mission || ''}\n\n**Core Values:**\n\n${coreValuesSection}\n\n**Purpose:**\n\n${purpose || ''}\n`;
-  console.log('Writing business-problem.md with content:', content.slice(0, 500) + (content.length > 500 ? '... (truncated)' : ''));
+  
+  // Sanitize content before logging to prevent log injection
+  const sanitizedPreview = sanitizeForLogging(content.slice(0, 500) + (content.length > 500 ? '... (truncated)' : ''));
+  console.log('Writing business-problem.md with content:', sanitizedPreview);
+  
   await safeWriteFile(PROBLEM_STATEMENT_PATH, content);
   logInfo(`Business statement saved to ${PROBLEM_STATEMENT_PATH}`);
 }

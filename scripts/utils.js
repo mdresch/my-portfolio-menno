@@ -6,6 +6,26 @@ import path from 'path';
 import { glob } from 'glob';
 
 /**
+ * Security function to sanitize content for logging
+ * Prevents log injection attacks by sanitizing user input before logging
+ * @param {string} content - Content to sanitize
+ * @returns {string} Sanitized content safe for logging
+ */
+function sanitizeForLogging(content) {
+  if (typeof content !== 'string') {
+    content = String(content);
+  }
+  // Remove or escape potentially dangerous characters for log injection
+  return content
+    .replace(/[\r\n]/g, ' ') // Replace newlines with spaces
+    .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+    .replace(/[<>'"&]/g, (char) => { // Escape HTML/XML chars
+      const escapeMap = { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' };
+      return escapeMap[char] || char;
+    });
+}
+
+/**
  * Reads a file and returns its contents as a string.
  * Returns null if the file does not exist or an error occurs.
  * @param {string} filePath
@@ -208,6 +228,7 @@ async function getFilesByGlob(pattern, cwd = process.cwd()) {
 
 // At the end of the file, export all functions as named exports
 export {
+  sanitizeForLogging,
   safeReadFile,
   safeWriteFile,
   pathExists,

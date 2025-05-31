@@ -4,7 +4,7 @@
 
 console.log('SCRIPT_TOP: auto-requirements.js starting');
 
-import { ensureDirectory, logInfo } from './utils.js';
+import { ensureDirectory, logInfo, sanitizeForLogging } from './utils.js';
 import { REQUIREMENTS_DIR } from '../config/paths.js';
 
 // Import refactored modules
@@ -27,6 +27,25 @@ import { getTechnologyStack, saveTechnologyStack } from './modules/technology-st
 import { saveProcessFlows, saveDataModel } from './modules/documentation-generators.js';
 
 console.log('SCRIPT_INFO: REQUIREMENTS_DIR is:', REQUIREMENTS_DIR);
+
+/**
+ * Security function to sanitize content for logging
+ * @param {string} content - Content to sanitize
+ * @returns {string} Sanitized content safe for logging
+ */
+function sanitizeForLogging(content) {
+  if (typeof content !== 'string') {
+    content = String(content);
+  }
+  // Remove or escape potentially dangerous characters for log injection
+  return content
+    .replace(/[\r\n]/g, ' ') // Replace newlines with spaces
+    .replace(/[\x00-\x1F\x7F]/g, '') // Remove control characters
+    .replace(/[<>'"&]/g, (char) => { // Escape HTML/XML chars
+      const escapeMap = { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' };
+      return escapeMap[char] || char;
+    });
+}
 
 /**
  * Generate business statement and strategic documentation using AI
@@ -60,7 +79,9 @@ async function generateUserRequirements(businessProblem) {
   // Use fresh business problem or analyze project
   const statement = businessProblem || await analyzeProject();
   
-  console.log('MAIN_IIFE_DEBUG: Business problem for agent (first 100 chars):', statement.slice(0, 100));
+  // Sanitize statement before logging to prevent log injection
+  const sanitizedStatement = sanitizeForLogging(statement.slice(0, 100));
+  console.log('MAIN_IIFE_DEBUG: Business problem for agent (first 100 chars):', sanitizedStatement);
   console.log('MAIN_IIFE_DEBUG: Running requirements agent...');
   
   let roles = [];
