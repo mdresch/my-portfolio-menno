@@ -1,14 +1,15 @@
-// @ts-nocheck
 import React from "react";
-import type { PageProps } from "next/app";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-// Removed unused Link import
 import { getAllPostIds, getPostDataFromFile, getSortedPostsData } from "../../../lib/markdown";
 import PostNavigation from "../../../components/PostNavigation";
-// import Comments from '@/components/Comments'; // Removed as the module is missing
 import BlogPost from "../../../components/blog/BlogPost";
 import GiscusComments from "../../../components/comments/Giscus";
+
+// Define proper types for App Router
+interface BlogPageProps {
+  params: Promise<{ slug: string }>;
+}
 
 // Generate static paths at build time
 export async function generateStaticParams() {
@@ -17,9 +18,8 @@ export async function generateStaticParams() {
 }
 
 // Update the metadata function
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const awaitedParams = await params; // Await params as suggested by the error
-  const slug = awaitedParams.slug;
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
   const post = await getPostDataFromFile(slug);
   if (!post) {
     return {
@@ -57,12 +57,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Update the page component
-export default async function BlogPostPage({ params }: PageProps<{ slug: string }>) {
-  // `params` can be a promise or plain object, so await it
-  const realParams = await params;
-  const slug = realParams.slug;
+export default async function BlogPostPage({ params }: BlogPageProps) {
+  const { slug } = await params;
   const post = await getPostDataFromFile(slug);
-  // Fetch all posts for navigation (Omit<BlogPost, 'content'>[])
+  // Fetch all posts for navigation
   const allPosts = await getSortedPostsData();
   if (!post) {
     notFound();

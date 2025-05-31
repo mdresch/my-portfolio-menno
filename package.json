@@ -5,7 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build --no-lint",
+    "build": "NODE_OPTIONS=\"--max_old_space_size=3072\" next build --no-lint",
+    "build:minimal": "cp next.config.minimal.cjs next.config.js && NEXT_MINIMAL_BUILD=true NODE_OPTIONS=\"--max_old_space_size=4096 --v8-pool-size=0\" next build --no-lint",
+    "build:prod": "cp next.config.cjs next.config.js && NODE_OPTIONS=\"--max_old_space_size=4096\" next build --no-lint",
+    "build:optimized": "./scripts/build-optimized.sh",
+    "build:optimized:minimal": "./scripts/build-optimized.sh true",
+    "clean": "rm -rf .next && rm -rf out",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
