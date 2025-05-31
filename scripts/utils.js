@@ -1,9 +1,9 @@
 // scripts/utils.js
 // Utility functions for file system, JSON, string, and logging operations
 
-const fs = require('fs/promises');
-const path = require('path');
-const glob = require('glob');
+import fs from 'fs/promises';
+import path from 'path';
+import { glob } from 'glob';
 
 /**
  * Reads a file and returns its contents as a string.
@@ -175,7 +175,6 @@ function getFilesByGlobSync(pattern, cwd = process.cwd()) {
   }
   try {
     // Use glob.sync for synchronous matching
-    const glob = require('glob');
     return glob.sync(pattern, { cwd });
   } catch (error) {
     logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
@@ -200,7 +199,6 @@ async function getFilesByGlob(pattern, cwd = process.cwd()) {
     return [];
   }
   try {
-    const { glob } = await import('glob');
     return await glob(pattern, { cwd });
   } catch (error) {
     logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
@@ -208,7 +206,8 @@ async function getFilesByGlob(pattern, cwd = process.cwd()) {
   }
 }
 
-module.exports = {
+// At the end of the file, export all functions as named exports
+export {
   safeReadFile,
   safeWriteFile,
   pathExists,

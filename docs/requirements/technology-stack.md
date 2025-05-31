@@ -1,21 +1,20 @@
 # Technology Stack
 
+- Azure AI Inference
+- Chart.js
+- ESLint
+- Firebase
+- Framer Motion
+- Genkit AI
+- Google Vertex AI
+- Hotjar
+- Markdown/Remark/Marked
 - Next.js
 - React
-- Tailwind CSS
-- Firebase
-- Genkit AI
-- Azure AI Inference
-- Google Vertex AI
-- Chart.js
 - Recharts
-- Framer Motion
-- Sentry
-- Hotjar
-- Toast UI Editor
-- Markdown/Remark/Marked
 - Rehype Highlight
+- Sentry
+- Tailwind CSS
+- TypeScript
 - clsx
 - dotenv
-- TypeScript
-- ESLint

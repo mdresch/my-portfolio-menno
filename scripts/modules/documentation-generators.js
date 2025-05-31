@@ -1,4 +1,18 @@
-# Concept Process Flows for Requirements Agent Output
+// scripts/modules/documentation-generators.js
+// Template-based documentation generators for process flows and data models
+
+import {
+  safeWriteFile,
+  logInfo
+} from '../utils.js';
+import { REQUIREMENTS_DIR } from '../../config/paths.js';
+import path from 'path';
+
+/**
+ * Generate and save process flows documentation
+ */
+export async function saveProcessFlows() {
+  const content = `# Concept Process Flows for Requirements Agent Output
 
 ## Portfolio Owner
 
@@ -69,3 +83,86 @@
 3. Updates are deployed and tested.
 4. System returns to normal operation.
 5. Users are notified of changes.
+`;
+
+  const flowsPath = path.join(REQUIREMENTS_DIR, 'process-flows.md');
+  await safeWriteFile(flowsPath, content);
+  logInfo('Process flows documentation saved.');
+}
+
+/**
+ * Generate and save data model documentation
+ */
+export async function saveDataModel() {
+  const content = `# Data Model for Portfolio Platform
+
+## Users
+- id (PK)
+- username
+- email
+- password_hash
+- role (owner, visitor, admin, editor)
+- profile_info (JSON or separate fields)
+- created_at
+- updated_at
+
+## Projects
+- id (PK)
+- user_id (FK to Users)
+- title
+- description
+- repo_url
+- tags
+- created_at
+- updated_at
+
+## BlogPosts
+- id (PK)
+- user_id (FK to Users)
+- title
+- content (Markdown/HTML)
+- status (draft/published)
+- created_at
+- updated_at
+
+## Analytics
+- id (PK)
+- user_id (FK to Users)
+- event_type (page_view, project_view, contact_form)
+- event_data (JSON)
+- timestamp
+- visitor_id (for tracking unique visitors)
+
+## Integrations
+- id (PK)
+- user_id (FK to Users)
+- service_name (github, devto, linkedin)
+- access_token (encrypted)
+- refresh_token (encrypted)
+- config (JSON)
+- last_sync
+- status (active/inactive/error)
+
+## Media
+- id (PK)
+- user_id (FK to Users)
+- filename
+- file_path
+- file_size
+- mime_type
+- uploaded_at
+
+## Comments (if enabled)
+- id (PK)
+- post_id (FK to BlogPosts)
+- author_name
+- author_email
+- content
+- status (pending/approved/spam)
+- created_at
+`;
+
+  const modelPath = path.join(REQUIREMENTS_DIR, 'data-model.md');
+  await safeWriteFile(modelPath, content);
+  logInfo('Data model documentation saved.');
+}

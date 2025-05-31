@@ -2,72 +2,61 @@
 
 ## Developer User
 **Needs:**
-- Unified platform for portfolio and blog management
-- Markdown and rich media support
-- Seamless content creation and editing
-- Integration with GitHub and Dev.to
-- Real-time analytics and project insights
-- Access to AI-powered features (e.g., content suggestions, chat)
-- Data visualization tools
-- Secure, scalable cloud hosting
-- User-friendly interface
+- Showcase real-time coding activity
+- Integrate AI-assisted projects
+- Visualize data-driven impact
+- Personalize portfolio content
+- Analyze live performance metrics
 **Processes:**
-- Authoring and editing content
-- Publishing and versioning projects/blog posts
-- Connecting to external developer services
-- Viewing and interpreting analytics
-- Interacting with AI chat/features
-- Customizing portfolio appearance
-- Managing account and security settings
+- Connect coding platforms and AI tools
+- Upload or link project repositories
+- Customize portfolio layouts and content
+- View and interpret interactive charts
+- Receive feedback on activity analytics
 
-## Platform Admin
+## Employer/Recruiter
 **Needs:**
-- User management and access control
-- Monitoring platform usage and system health
-- Maintaining data integrity and backups
-- Ensuring security and compliance
-- Managing integrations with third-party services
-- Handling platform configuration and deployment
+- Evaluate developer skills visually
+- Access real-time coding demonstrations
+- Assess AI project involvement
+- Review data-driven impact metrics
 **Processes:**
-- Onboarding and supporting users
-- Overseeing content moderation
-- Managing API keys and integrations
-- Monitoring error logs and analytics
-- Configuring deployment and scaling infrastructure
+- Browse developer portfolios
+- Filter/search by skill or technology
+- View interactive analytics and charts
+- Contact developers for opportunities
 
-## AI Feature Maintainer
+## Collaborator/Peer
 **Needs:**
-- Access to AI model configurations
-- Monitoring AI feature performance
-- Ensuring quality and relevance of AI outputs
-- Managing AI integrations (Genkit, Azure AI, Google Vertex AI)
-- Updating AI-driven tools and prompts
+- Discover potential project partners
+- Review coding styles and contributions
+- Analyze AI project participation
+- Interact with portfolio content
 **Processes:**
-- Deploying and updating AI features
-- Tuning model parameters
-- Monitoring feedback and usage analytics
-- Troubleshooting AI-related issues
+- Search for developers by interest or skill
+- View and comment on showcased projects
+- Connect and initiate collaborations
+- Follow real-time updates
 
-## Content Moderator
+## Platform Administrator
 **Needs:**
-- Tools for reviewing user-generated content
-- Automated moderation alerts
-- Ability to flag, approve, or remove content
-- Audit trails for moderation actions
+- Manage user accounts and roles
+- Monitor platform performance and analytics
+- Ensure data security and privacy
+- Handle content moderation
 **Processes:**
-- Reviewing new and updated content
-- Handling content reports and disputes
-- Maintaining moderation logs
+- Approve or remove user content
+- Monitor error logs and analytics
+- Manage user permissions
+- Enforce platform policies
 
-## Data Analyst
+## Content Curator
 **Needs:**
-- Access to user engagement and content analytics
-- Customizable data visualization dashboards
-- Export capabilities for data analysis
-- Integration with Chart.js/Recharts
+- Highlight exemplary portfolios
+- Feature trending projects or analytics
+- Curate learning resources for users
 **Processes:**
-- Generating analytics reports
-- Configuring dashboards
-- Analyzing user and content trends
-- Sharing insights with stakeholders
+- Select and promote top portfolios
+- Monitor user engagement metrics
+- Organize and update featured content
 
