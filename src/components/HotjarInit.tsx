@@ -16,5 +16,5 @@ export default function HotjarInit() {
     }
   }, []);
 
-  return null; // This component doesn't render anything
+  return null; // This component doesn&apos;t render anything
 }

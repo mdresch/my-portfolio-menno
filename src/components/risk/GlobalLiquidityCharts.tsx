@@ -783,7 +783,7 @@ export const CentralBankBalanceSheetsChart = () => {
           <Bar dataKey="ecb" name="European Central Bank" stackId="a" fill="#00C49F" />
           <Bar dataKey="boj" name="Bank of Japan" stackId="a" fill="#FFBB28" />
           <Bar dataKey="boe" name="Bank of England" stackId="a" fill="#FF8042" />
-          <Bar dataKey="pboc" name="People's Bank of China" stackId="a" fill="#8884d8" />
+          <Bar dataKey="pboc" name="People&apos;s Bank of China" stackId="a" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
       <div className="text-xs text-gray-500 dark:text-gray-400 mt-3 transition-colors">
@@ -814,7 +814,7 @@ export const CentralBankBalanceSheetsChartNew = () => {
           <Bar dataKey="ecb" name="European Central Bank" stackId="a" fill="#00C49F" />
           <Bar dataKey="boj" name="Bank of Japan" stackId="a" fill="#FFBB28" />
           <Bar dataKey="boe" name="Bank of England" stackId="a" fill="#FF8042" />
-          <Bar dataKey="pboc" name="People's Bank of China" stackId="a" fill="#8884d8" />
+          <Bar dataKey="pboc" name="People&apos;s Bank of China" stackId="a" fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
       <div className="text-xs text-gray-500 dark:text-gray-400 mt-3 transition-colors">

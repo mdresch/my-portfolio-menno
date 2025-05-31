@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { AuthProvider } from "@/lib/auth";
 import { isFirebaseInitialized } from "@/lib/firebase";
 import { useEffect, useState } from "react";

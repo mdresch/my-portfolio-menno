@@ -30,7 +30,7 @@ export default function CanadianFinancialStabilityPage() {
         <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-6 shadow-md border border-blue-100 dark:border-blue-900/50 transition-colors">
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Executive Summary</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-            The Bank of Canada's Financial Stability Report 2025 indicates that while Canada's financial system remains resilient, 
+            The Bank of Canada&apos;s Financial Stability Report 2025 indicates that while Canada&apos;s financial system remains resilient, 
             the recent trade war initiated by the United States poses significant risks to financial stability. Canadian households, 
             businesses, banks, and non-bank financial intermediaries have weathered the pandemic, inflation, and interest rate increases, 
             but US trade policy uncertainty threatens to test this resilience.
@@ -100,7 +100,7 @@ export default function CanadianFinancialStabilityPage() {
           <div>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               The global financial system is highly interconnected, with shocks in one region often spreading rapidly to others. 
-              Canada's economy is particularly sensitive to developments in the United States due to deep trade and financial linkages.
+              Canada&apos;s economy is particularly sensitive to developments in the United States due to deep trade and financial linkages.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               The current trade war increases the risk of financial contagion from international markets to Canada. A deterioration 
@@ -109,7 +109,7 @@ export default function CanadianFinancialStabilityPage() {
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
               While European and Asian markets also present contagion risk, the US remains the dominant channel through which external 
-              financial shocks could impact Canada's financial stability.
+              financial shocks could impact Canada&apos;s financial stability.
             </p>
           </div>
           <InternationalContagionChart />
@@ -226,16 +226,16 @@ export default function CanadianFinancialStabilityPage() {
       <section className="mb-12 bg-gray-50 dark:bg-neutral-900/50 p-6 rounded-lg border border-gray-100 dark:border-neutral-800 transition-colors">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Conclusion</h2>
         <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-          The Bank of Canada's analysis shows that Canada's financial system entered 2025 with increased resilience. This resilience provides a buffer against the 
+          The Bank of Canada&apos;s analysis shows that Canada&apos;s financial system entered 2025 with increased resilience. This resilience provides a buffer against the 
           risks posed by the current trade war and associated economic uncertainties. While markets have experienced increased volatility, they continue to function well.
         </p>
         <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-          The Bank will work closely with federal and provincial financial authorities to monitor and assess the health of Canada's financial system 
+          The Bank will work closely with federal and provincial financial authorities to monitor and assess the health of Canada&apos;s financial system 
           and to address potential emerging issues. The objective is to foster a stable and resilient financial system that absorbs shocks and can 
           support the economy through periods of turbulence.
         </p>
         <blockquote className="border-l-4 border-blue-500 dark:border-blue-400 pl-4 py-2 italic text-gray-700 dark:text-gray-300 my-4">
-          "A stable and resilient financial system—one that absorbs shocks and does not amplify them—can help the economy through periods of turbulence."
+          &quot;A stable and resilient financial system—one that absorbs shocks and does not amplify them—can help the economy through periods of turbulence.&quot;
           <footer className="text-sm text-gray-600 dark:text-gray-400 mt-2">— Bank of Canada Financial Stability Report, 2025</footer>
         </blockquote>
       </section>

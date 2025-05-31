@@ -25,7 +25,7 @@ const model = getGenerativeModel(ai, { model: "gemini-2.0-flash" });
 // Wrap in an async function so you can use await
 async function run() {
   // Provide a prompt that contains text
-  const prompt = "Write a story about a magic backpack."
+  const prompt = "Write a story about a magic backpack.";
 
   // To generate text output, call generateContent with the text input
   const result = await model.generateContent(prompt);

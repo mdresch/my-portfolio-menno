@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { StrictNavigationMenuLink } from "./StrictNavigationMenuLink";
 
-import { cn } from "../lib/utils"
+import { cn } from "../lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,9 +15,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "./ui/navigation-menu"
-import { MobileMenu } from "./MobileMenu"
-import { ComponentItem } from "../types/navigation"
+} from "./ui/navigation-menu";
+import { MobileMenu } from "./MobileMenu";
+import { ComponentItem } from "../types/navigation";
 
 // Define interfaces for component props
 interface IconProps {
@@ -102,7 +102,7 @@ const components: ComponentItem[] = [
     description:
       "Cost Optimization in a Volatile Economy",
   }
-]
+];
 
 const componentseconomics: ComponentItem[] = [
   {
@@ -152,7 +152,7 @@ const componentseconomics: ComponentItem[] = [
     description:
         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
-]
+];
 
 export function DarkModeToggle({}: DarkModeToggleProps) {
   const { theme, setTheme } = useTheme();
