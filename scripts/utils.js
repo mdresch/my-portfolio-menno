@@ -114,12 +114,24 @@ function truncateString(text, maxLength) {
 }
 
 /**
- * Standardized error logging.
+ * Standardized error logging with log injection mitigation.
+ * Sanitizes the message to prevent log line splitting.
  * @param {string} message
- * @param {Error} error
+ * @param {Error|any} error  // JSDoc updated to reflect 'any' for the error param
  */
 function logError(message, error) {
-  console.error(`[ERROR] ${message}\n`, error && error.stack ? error.stack : error);
+  // Sanitize message: replace \r and \n with spaces to prevent log line splitting
+  const sanitizedMessage = String(message).replace(/[\r\n]+/g, ' ');
+  if (error instanceof Error) {
+    // Let console.error handle Error objects for full stack trace readability
+    console.error(`[ERROR] ${sanitizedMessage}\n`, error);
+  } else if (error !== undefined) {
+    // Sanitize non-Error error values
+    const sanitizedError = String(error).replace(/[\r\n]+/g, ' ');
+    console.error(`[ERROR] ${sanitizedMessage}\n`, sanitizedError);
+  } else {
+    console.error(`[ERROR] ${sanitizedMessage}`);
+  }
 }
 
 module.exports = {
