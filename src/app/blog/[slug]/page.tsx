@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 // Update the page component
 // @ts-ignore: bypass Next.js PageProps type constraint
-export default async function BlogPostPage(props: any) {
+const BlogPostPage = async (props: any) => {
   const slug = props.params.slug;
   const post = await getPostDataFromFile(slug);
   // Fetch all posts for navigation (Omit<BlogPost, 'content'>[])
@@ -79,4 +79,6 @@ export default async function BlogPostPage(props: any) {
       </article>
     </div>
   );
-}
+};
+
+export default BlogPostPage;
