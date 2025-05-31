@@ -35,7 +35,9 @@ const eslintConfig = [
     rules: {
       "no-unused-vars": ["warn"],
       "no-undef": ["error"],
-      "semi": ["warn", "always"]
+      "semi": ["warn", "always"],
+      // Disable rule that errors on unescaped entities in JSX
+      "react/no-unescaped-entities": ["off"]
     }
   },
 ];
