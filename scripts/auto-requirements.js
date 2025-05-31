@@ -298,8 +298,9 @@ function saveRequirementsOutput(roles) {
 
 function getTechnologyStack() {
   const pkgPath = path.join(__dirname, '../package.json');
-  if (!utils.safeReadFile(pkgPath)) return [];
-  const pkg = utils.safeParseJSON(utils.safeReadFile(pkgPath));
+  const pkgContent = utils.safeReadFile(pkgPath);
+  if (!pkgContent) return [];
+  const pkg = utils.safeParseJSON(pkgContent);
   if (!pkg) return [];
   const deps = Object.keys(pkg.dependencies || {});
   const devDeps = Object.keys(pkg.devDependencies || {});
@@ -389,4 +390,11 @@ function saveDataModel() {
       const roles = await callRequirementsAgent(businessProblem);
       try {
         saveRequirementsOutput(roles);
-      } catch (error
+      } catch (error) {
+        utils.logError('Error saving requirements output:', error);
+      }
+    }
+  } catch (error) {
+    utils.logError('Error in main automation flow:', error);
+  }
+})();
