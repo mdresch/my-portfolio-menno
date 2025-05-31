@@ -78,15 +78,23 @@ function ensureDirExists(dirPath) {
 
 /**
  * Gets files matching a glob pattern in a directory.
- * @param {string} pattern
- * @param {string} cwd
- * @returns {string[]}
+ * @param {string} pattern The glob pattern to match.
+ * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
+ * @returns {string[]} An array of matching file paths, or an empty array on error.
  */
-function getFilesByGlob(pattern, cwd) {
+function getFilesByGlob(pattern, cwd = process.cwd()) {
+  if (typeof pattern !== 'string' || pattern.trim() === '') {
+    logError('Error with glob: Pattern must be a non-empty string.', { pattern });
+    return [];
+  }
+  if (typeof cwd !== 'string' || cwd.trim() === '') {
+    logError('Error with glob: CWD must be a non-empty string.', { cwd });
+    return [];
+  }
   try {
     return glob.sync(pattern, { cwd });
   } catch (error) {
-    logError(`Error with glob pattern: ${pattern} in ${cwd}`, error);
+    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
     return [];
   }
 }
