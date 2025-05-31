@@ -55,9 +55,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // Update the page component
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const awaitedParams = await params; // Await params as suggested by the error
-  const slug = awaitedParams.slug;
+export default async function BlogPostPage(props: any) {
+  const slug = props.params.slug;
   const post = await getPostDataFromFile(slug);
   // Fetch all posts for navigation (Omit<BlogPost, 'content'>[])
   const allPosts = await getSortedPostsData();

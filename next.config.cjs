@@ -52,6 +52,20 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // Exclude these heavy packages from server component bundling to reduce build memory
+    serverComponentsExternalPackages: [
+      /^@opentelemetry\//,
+      /^@genkit-ai\//,
+      'genkit',
+      'dotprompt',
+      'handlebars',
+    ],
+  },
+  // Disable SWC minification to lower memory usage during build
+  swcMinify: false,
+  // Disable source maps for production bundles
+  productionBrowserSourceMaps: false,
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -102,6 +116,19 @@ const nextConfig = {
       { message: /require\.extensions is not supported by webpack/ },
       { message: /Critical dependency: the request of a dependency is an expression/ },
     ];
+    // Exclude heavy instrumentation modules from server bundles
+    if (isServer) {
+      const externalRegexes = [
+        /^@opentelemetry\//,
+        /^@genkit-ai\//,
+        /^genkit\//,
+        /^dotprompt/, 
+        /^handlebars/,
+      ];
+      config.externals = Array.isArray(config.externals)
+        ? config.externals.concat(externalRegexes)
+        : [config.externals, ...externalRegexes];
+    }
     return config;
   },
 };
