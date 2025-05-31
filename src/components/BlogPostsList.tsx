@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useBlogPosts } from '@/hooks/useBlogPosts';
-import Link from 'next/link';
-import { formatDate } from '@/lib/utils';
+import { useBlogPosts } from "@/hooks/useBlogPosts";
+import Link from "next/link";
+import { formatDate } from "@/lib/utils";
 
 // Loading Skeleton
 const BlogPostSkeleton = () => (

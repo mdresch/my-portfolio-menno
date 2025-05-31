@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   BarChart,
   Bar,
@@ -18,72 +18,72 @@ import {
   Legend,
   ResponsiveContainer,
   Scatter
-} from 'recharts';
+} from "recharts";
 
 // Colors for charts
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-const BLUES = ['#0088FE', '#4dabf5', '#84c5f7', '#b7ddf9', '#e2f1fd'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const BLUES = ["#0088FE", "#4dabf5", "#84c5f7", "#b7ddf9", "#e2f1fd"];
 
 // Capital Adequacy Data
 const capitalAdequacyData = [
   { 
-    country: 'Nordic', 
+    country: "Nordic", 
     cet1: 17.8, 
     tier1: 1.5, 
     tier2: 1.2,
     min: 8.0
   },
   { 
-    country: 'Switzerland', 
+    country: "Switzerland", 
     cet1: 17.1, 
     tier1: 1.6, 
     tier2: 1.5,
     min: 8.0
   },
   { 
-    country: 'UK', 
+    country: "UK", 
     cet1: 16.3, 
     tier1: 2.1, 
     tier2: 2.3,
     min: 8.0
   },
   { 
-    country: 'Benelux', 
+    country: "Benelux", 
     cet1: 15.9, 
     tier1: 1.8, 
     tier2: 2.1,
     min: 8.0
   },
   { 
-    country: 'Germany', 
+    country: "Germany", 
     cet1: 15.2, 
     tier1: 1.7, 
     tier2: 1.9,
     min: 8.0
   },
   { 
-    country: 'France', 
+    country: "France", 
     cet1: 14.8, 
     tier1: 1.9, 
     tier2: 2.2,
     min: 8.0
   },
   { 
-    country: 'Spain', 
+    country: "Spain", 
     cet1: 13.5, 
     tier1: 1.8, 
     tier2: 2.0,
     min: 8.0
   },
   { 
-    country: 'Italy', 
+    country: "Italy", 
     cet1: 12.9, 
     tier1: 1.7, 
     tier2: 2.3,
     min: 8.0
   },
   { 
-    country: 'Greece', 
+    country: "Greece", 
     cet1: 12.3, 
     tier1: 1.5, 
     tier2: 1.9,
@@ -94,49 +94,49 @@ const capitalAdequacyData = [
 // NPL Ratio Data
 const nplRatioData = [
   { 
-    year: '2017', 
+    year: "2017", 
     total: 5.4,
     southern: 11.2, 
     northern: 2.1 
   },
   { 
-    year: '2018', 
+    year: "2018", 
     total: 4.9,
     southern: 9.8, 
     northern: 1.9 
   },
   { 
-    year: '2019', 
+    year: "2019", 
     total: 4.1,
     southern: 8.5, 
     northern: 1.7 
   },
   { 
-    year: '2020', 
+    year: "2020", 
     total: 3.6,
     southern: 7.4, 
     northern: 1.6 
   },
   { 
-    year: '2021', 
+    year: "2021", 
     total: 3.2,
     southern: 6.7, 
     northern: 1.5 
   },
   { 
-    year: '2022', 
+    year: "2022", 
     total: 2.8,
     southern: 5.9, 
     northern: 1.4
   },
   { 
-    year: '2023', 
+    year: "2023", 
     total: 2.4,
     southern: 4.9, 
     northern: 1.3
   },
   { 
-    year: '2024', 
+    year: "2024", 
     total: 2.1,
     southern: 4.3, 
     northern: 1.2
@@ -146,49 +146,49 @@ const nplRatioData = [
 // Stress Test Results Data
 const stressTestResultsData = [
   { 
-    name: 'Nordic', 
+    name: "Nordic", 
     baseline: 17.8, 
     adverse: 13.6, 
     depletion: 4.2
   },
   { 
-    name: 'Benelux', 
+    name: "Benelux", 
     baseline: 15.9, 
     adverse: 11.8, 
     depletion: 4.1
   },
   { 
-    name: 'Germany', 
+    name: "Germany", 
     baseline: 15.2, 
     adverse: 10.9, 
     depletion: 4.3
   },
   { 
-    name: 'France', 
+    name: "France", 
     baseline: 14.8, 
     adverse: 10.5, 
     depletion: 4.3
   },
   { 
-    name: 'UK', 
+    name: "UK", 
     baseline: 16.3, 
     adverse: 11.7, 
     depletion: 4.6
   },
   { 
-    name: 'Spain', 
+    name: "Spain", 
     baseline: 13.5, 
     adverse: 8.3, 
     depletion: 5.2
   },
   { 
-    name: 'Italy', 
+    name: "Italy", 
     baseline: 12.9, 
     adverse: 7.5, 
     depletion: 5.4
   },
   { 
-    name: 'Greece', 
+    name: "Greece", 
     baseline: 12.3, 
     adverse: 6.5, 
     depletion: 5.8
@@ -198,27 +198,27 @@ const stressTestResultsData = [
 // Liquidity Coverage Data
 const liquidityCoverageData = [
   { 
-    bank: 'Average', 
+    bank: "Average", 
     lcr: 156, 
     nsfr: 124
   },
   { 
-    bank: 'Large Universal', 
+    bank: "Large Universal", 
     lcr: 148, 
     nsfr: 120
   },
   { 
-    bank: 'G-SIBs', 
+    bank: "G-SIBs", 
     lcr: 142, 
     nsfr: 118
   },
   { 
-    bank: 'Regional', 
+    bank: "Regional", 
     lcr: 165, 
     nsfr: 131
   },
   { 
-    bank: 'Specialized', 
+    bank: "Specialized", 
     lcr: 172, 
     nsfr: 127
   },
@@ -227,37 +227,37 @@ const liquidityCoverageData = [
 // Profitability Trends Data
 const profitabilityTrendsData = [
   { 
-    year: '2019', 
+    year: "2019", 
     roe: 5.7, 
     nim: 1.43, 
     cir: 66.5
   },
   { 
-    year: '2020', 
+    year: "2020", 
     roe: 2.1, 
     nim: 1.35, 
     cir: 69.8
   },
   { 
-    year: '2021', 
+    year: "2021", 
     roe: 3.9, 
     nim: 1.32, 
     cir: 67.2
   },
   { 
-    year: '2022', 
+    year: "2022", 
     roe: 5.2, 
     nim: 1.38, 
     cir: 65.4
   },
   { 
-    year: '2023', 
+    year: "2023", 
     roe: 6.5, 
     nim: 1.63, 
     cir: 63.8
   },
   { 
-    year: '2024', 
+    year: "2024", 
     roe: 7.9, 
     nim: 1.82, 
     cir: 62.1
@@ -266,16 +266,16 @@ const profitabilityTrendsData = [
 
 // Country Risk Data
 const countryRiskData = [
-  { name: 'Sweden', capital: 90, asset: 85, profitability: 88, liquidity: 92, overall: 89 },
-  { name: 'Denmark', capital: 92, asset: 80, profitability: 85, liquidity: 88, overall: 86 },
-  { name: 'Netherlands', capital: 87, asset: 82, profitability: 83, liquidity: 90, overall: 85 },
-  { name: 'Germany', capital: 85, asset: 78, profitability: 70, liquidity: 87, overall: 80 },
-  { name: 'France', capital: 82, asset: 75, profitability: 72, liquidity: 85, overall: 78 },
-  { name: 'UK', capital: 86, asset: 78, profitability: 76, liquidity: 83, overall: 81 },
-  { name: 'Spain', capital: 77, asset: 68, profitability: 75, liquidity: 80, overall: 75 },
-  { name: 'Italy', capital: 73, asset: 62, profitability: 65, liquidity: 78, overall: 70 },
-  { name: 'Portugal', capital: 75, asset: 65, profitability: 68, liquidity: 77, overall: 71 },
-  { name: 'Greece', capital: 70, asset: 58, profitability: 62, liquidity: 72, overall: 65 },
+  { name: "Sweden", capital: 90, asset: 85, profitability: 88, liquidity: 92, overall: 89 },
+  { name: "Denmark", capital: 92, asset: 80, profitability: 85, liquidity: 88, overall: 86 },
+  { name: "Netherlands", capital: 87, asset: 82, profitability: 83, liquidity: 90, overall: 85 },
+  { name: "Germany", capital: 85, asset: 78, profitability: 70, liquidity: 87, overall: 80 },
+  { name: "France", capital: 82, asset: 75, profitability: 72, liquidity: 85, overall: 78 },
+  { name: "UK", capital: 86, asset: 78, profitability: 76, liquidity: 83, overall: 81 },
+  { name: "Spain", capital: 77, asset: 68, profitability: 75, liquidity: 80, overall: 75 },
+  { name: "Italy", capital: 73, asset: 62, profitability: 65, liquidity: 78, overall: 70 },
+  { name: "Portugal", capital: 75, asset: 65, profitability: 68, liquidity: 77, overall: 71 },
+  { name: "Greece", capital: 70, asset: 58, profitability: 62, liquidity: 72, overall: 65 },
 ];
 
 export const CapitalAdequacyChart = () => {

@@ -1,0 +1,27 @@
+# Global code owners
+* @mdresch
+
+# Documentation
+docs/ @mdresch
+*.md @mdresch
+
+# Scripts and automation
+scripts/ @mdresch
+
+# Configuration files
+.github/ @mdresch
+config/ @mdresch
+
+# Core application files
+src/ @mdresch
+pages/ @mdresch
+
+# Build and deployment
+.github/workflows/ @mdresch
+next.config.js @mdresch
+package.json @mdresch
+
+# Security and critical files
+SECURITY.md @mdresch
+.env* @mdresch
+firebase.json @mdresch

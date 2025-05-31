@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 interface SocialShareProps {
   url: string;
@@ -11,7 +11,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
 
   const shareLinks = [
     {
-      name: 'Twitter',
+      name: "Twitter",
       url: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -20,7 +20,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
       ),
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
       ),
     },
     {
-      name: 'Facebook',
+      name: "Facebook",
       url: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export default function SocialShare({ url, title }: SocialShareProps) {
       {shareLinks.map((link) => (
         <button
           key={link.name}
-          onClick={() => window.open(link.url, '_blank', 'width=550,height=435')}
+          onClick={() => window.open(link.url, "_blank", "width=550,height=435")}
           className="p-2 text-gray-600 hover:text-blue-600 transition-colors rounded-full hover:bg-blue-50"
           aria-label={`Share on ${link.name}`}
         >

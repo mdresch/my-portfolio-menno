@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   LineChart,
   Line,
@@ -31,131 +31,131 @@ import {
   Radar,
   Sankey,
   Treemap
-} from 'recharts';
+} from "recharts";
 
 // Sample data for charts
 const disruptionFrequencyData = [
-  { year: '2015', natural: 32, geopolitical: 18, technological: 12, operational: 24 },
-  { year: '2016', natural: 28, geopolitical: 22, technological: 15, operational: 26 },
-  { year: '2017', natural: 34, geopolitical: 25, technological: 18, operational: 28 },
-  { year: '2018', natural: 36, geopolitical: 23, technological: 22, operational: 31 },
-  { year: '2019', natural: 31, geopolitical: 27, technological: 26, operational: 33 },
-  { year: '2020', natural: 38, geopolitical: 42, technological: 35, operational: 48 },
-  { year: '2021', natural: 42, geopolitical: 36, technological: 32, operational: 38 },
-  { year: '2022', natural: 39, geopolitical: 45, technological: 29, operational: 35 },
-  { year: '2023', natural: 44, geopolitical: 41, technological: 30, operational: 37 },
-  { year: '2024', natural: 48, geopolitical: 52, technological: 33, operational: 39 }
+  { year: "2015", natural: 32, geopolitical: 18, technological: 12, operational: 24 },
+  { year: "2016", natural: 28, geopolitical: 22, technological: 15, operational: 26 },
+  { year: "2017", natural: 34, geopolitical: 25, technological: 18, operational: 28 },
+  { year: "2018", natural: 36, geopolitical: 23, technological: 22, operational: 31 },
+  { year: "2019", natural: 31, geopolitical: 27, technological: 26, operational: 33 },
+  { year: "2020", natural: 38, geopolitical: 42, technological: 35, operational: 48 },
+  { year: "2021", natural: 42, geopolitical: 36, technological: 32, operational: 38 },
+  { year: "2022", natural: 39, geopolitical: 45, technological: 29, operational: 35 },
+  { year: "2023", natural: 44, geopolitical: 41, technological: 30, operational: 37 },
+  { year: "2024", natural: 48, geopolitical: 52, technological: 33, operational: 39 }
 ];
 
 const financialImpactData = [
-  { industry: 'Electronics', directCosts: 4.2, indirectCosts: 7.8, total: 12.0 },
-  { industry: 'Automotive', directCosts: 5.8, indirectCosts: 9.2, total: 15.0 },
-  { industry: 'Pharmaceuticals', directCosts: 3.1, indirectCosts: 5.4, total: 8.5 },
-  { industry: 'Food & Beverage', directCosts: 2.8, indirectCosts: 4.3, total: 7.1 },
-  { industry: 'Apparel', directCosts: 2.5, indirectCosts: 3.9, total: 6.4 },
-  { industry: 'Industrial Equipment', directCosts: 3.7, indirectCosts: 5.9, total: 9.6 },
-  { industry: 'Aerospace', directCosts: 4.5, indirectCosts: 7.1, total: 11.6 },
-  { industry: 'Chemicals', directCosts: 3.3, indirectCosts: 5.2, total: 8.5 }
+  { industry: "Electronics", directCosts: 4.2, indirectCosts: 7.8, total: 12.0 },
+  { industry: "Automotive", directCosts: 5.8, indirectCosts: 9.2, total: 15.0 },
+  { industry: "Pharmaceuticals", directCosts: 3.1, indirectCosts: 5.4, total: 8.5 },
+  { industry: "Food & Beverage", directCosts: 2.8, indirectCosts: 4.3, total: 7.1 },
+  { industry: "Apparel", directCosts: 2.5, indirectCosts: 3.9, total: 6.4 },
+  { industry: "Industrial Equipment", directCosts: 3.7, indirectCosts: 5.9, total: 9.6 },
+  { industry: "Aerospace", directCosts: 4.5, indirectCosts: 7.1, total: 11.6 },
+  { industry: "Chemicals", directCosts: 3.3, indirectCosts: 5.2, total: 8.5 }
 ];
 
 const resilienceScoreData = [
-  { company: 'Company A', score: 82, industry: 'Electronics' },
-  { company: 'Company B', score: 68, industry: 'Automotive' },
-  { company: 'Company C', score: 75, industry: 'Pharmaceuticals' },
-  { company: 'Company D', score: 91, industry: 'Electronics' },
-  { company: 'Company E', score: 58, industry: 'Industrial' },
-  { company: 'Company F', score: 63, industry: 'Automotive' },
-  { company: 'Company G', score: 87, industry: 'Pharmaceuticals' },
-  { company: 'Company H', score: 72, industry: 'Food & Beverage' },
-  { company: 'Company I', score: 54, industry: 'Apparel' },
-  { company: 'Company J', score: 79, industry: 'Industrial' }
+  { company: "Company A", score: 82, industry: "Electronics" },
+  { company: "Company B", score: 68, industry: "Automotive" },
+  { company: "Company C", score: 75, industry: "Pharmaceuticals" },
+  { company: "Company D", score: 91, industry: "Electronics" },
+  { company: "Company E", score: 58, industry: "Industrial" },
+  { company: "Company F", score: 63, industry: "Automotive" },
+  { company: "Company G", score: 87, industry: "Pharmaceuticals" },
+  { company: "Company H", score: 72, industry: "Food & Beverage" },
+  { company: "Company I", score: 54, industry: "Apparel" },
+  { company: "Company J", score: 79, industry: "Industrial" }
 ];
 
 const supplierRiskData = [
   {
-    name: 'Tier 1',
+    name: "Tier 1",
     children: [
-      { name: 'Low Risk', size: 35 },
-      { name: 'Medium Risk', size: 45 },
-      { name: 'High Risk', size: 20 }
+      { name: "Low Risk", size: 35 },
+      { name: "Medium Risk", size: 45 },
+      { name: "High Risk", size: 20 }
     ]
   },
   {
-    name: 'Tier 2',
+    name: "Tier 2",
     children: [
-      { name: 'Low Risk', size: 22 },
-      { name: 'Medium Risk', size: 38 },
-      { name: 'High Risk', size: 40 }
+      { name: "Low Risk", size: 22 },
+      { name: "Medium Risk", size: 38 },
+      { name: "High Risk", size: 40 }
     ]
   },
   {
-    name: 'Tier 3',
+    name: "Tier 3",
     children: [
-      { name: 'Low Risk', size: 15 },
-      { name: 'Medium Risk', size: 35 },
-      { name: 'High Risk', size: 50 }
+      { name: "Low Risk", size: 15 },
+      { name: "Medium Risk", size: 35 },
+      { name: "High Risk", size: 50 }
     ]
   }
 ];
 
 const recuperationTimeData = [
-  { disruption: 'Natural Disaster', weeks: 18 },
-  { disruption: 'Geopolitical Conflict', weeks: 24 },
-  { disruption: 'Pandemic', weeks: 35 },
-  { disruption: 'Cybersecurity Breach', weeks: 16 },
-  { disruption: 'Transportation Blockage', weeks: 12 },
-  { disruption: 'Major Supplier Bankruptcy', weeks: 28 },
-  { disruption: 'Labor Dispute', weeks: 10 },
-  { disruption: 'Regulatory Change', weeks: 21 }
+  { disruption: "Natural Disaster", weeks: 18 },
+  { disruption: "Geopolitical Conflict", weeks: 24 },
+  { disruption: "Pandemic", weeks: 35 },
+  { disruption: "Cybersecurity Breach", weeks: 16 },
+  { disruption: "Transportation Blockage", weeks: 12 },
+  { disruption: "Major Supplier Bankruptcy", weeks: 28 },
+  { disruption: "Labor Dispute", weeks: 10 },
+  { disruption: "Regulatory Change", weeks: 21 }
 ];
 
 const vulnerabilityMapData = [
   {
-    subject: 'Supplier Concentration',
-    'Automotive': 65,
-    'Electronics': 72,
-    'Pharmaceuticals': 58,
-    'Food & Beverage': 48,
+    subject: "Supplier Concentration",
+    "Automotive": 65,
+    "Electronics": 72,
+    "Pharmaceuticals": 58,
+    "Food & Beverage": 48,
     fullMark: 100
   },
   {
-    subject: 'Geographic Concentration',
-    'Automotive': 78,
-    'Electronics': 85,
-    'Pharmaceuticals': 65,
-    'Food & Beverage': 55,
+    subject: "Geographic Concentration",
+    "Automotive": 78,
+    "Electronics": 85,
+    "Pharmaceuticals": 65,
+    "Food & Beverage": 55,
     fullMark: 100
   },
   {
-    subject: 'Transportation Dependency',
-    'Automotive': 82,
-    'Electronics': 68,
-    'Pharmaceuticals': 72,
-    'Food & Beverage': 85,
+    subject: "Transportation Dependency",
+    "Automotive": 82,
+    "Electronics": 68,
+    "Pharmaceuticals": 72,
+    "Food & Beverage": 85,
     fullMark: 100
   },
   {
-    subject: 'Inventory Practices',
-    'Automotive': 55,
-    'Electronics': 62,
-    'Pharmaceuticals': 75,
-    'Food & Beverage': 68,
+    subject: "Inventory Practices",
+    "Automotive": 55,
+    "Electronics": 62,
+    "Pharmaceuticals": 75,
+    "Food & Beverage": 68,
     fullMark: 100
   },
   {
-    subject: 'Information Flow',
-    'Automotive': 42,
-    'Electronics': 75,
-    'Pharmaceuticals': 60,
-    'Food & Beverage': 45,
+    subject: "Information Flow",
+    "Automotive": 42,
+    "Electronics": 75,
+    "Pharmaceuticals": 60,
+    "Food & Beverage": 45,
     fullMark: 100
   },
   {
-    subject: 'Regulatory Exposure',
-    'Automotive': 58,
-    'Electronics': 65,
-    'Pharmaceuticals': 88,
-    'Food & Beverage': 72,
+    subject: "Regulatory Exposure",
+    "Automotive": 58,
+    "Electronics": 65,
+    "Pharmaceuticals": 88,
+    "Food & Beverage": 72,
     fullMark: 100
   }
 ];
@@ -199,7 +199,7 @@ const FinancialImpactChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="industry" />
-          <YAxis domain={[0, 16]} label={{ value: '% of Annual Revenue', angle: -90, position: 'insideLeft' }} />
+          <YAxis domain={[0, 16]} label={{ value: "% of Annual Revenue", angle: -90, position: "insideLeft" }} />
           <Tooltip formatter={(value) => `${value}%`} />
           <Legend />
           <Bar dataKey="directCosts" name="Direct Disruption Costs" stackId="a" fill="#8884d8" />
@@ -224,13 +224,13 @@ const ResilienceScoreChart = () => {
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis type="category" dataKey="company" name="Company" />
           <YAxis type="number" dataKey="score" name="Resilience Score" domain={[40, 100]} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
           <Legend />
           <Scatter name="Resilience Score" data={resilienceScoreData} fill="#8884d8">
             {resilienceScoreData.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={entry.score >= 80 ? '#4caf50' : entry.score >= 65 ? '#ff9800' : '#f44336'}
+                fill={entry.score >= 80 ? "#4caf50" : entry.score >= 65 ? "#ff9800" : "#f44336"}
               />
             ))}
           </Scatter>
@@ -244,7 +244,7 @@ const ResilienceScoreChart = () => {
 };
 
 const SupplierRiskTreemap = () => {
-  const COLORS = ['#4caf50', '#ff9800', '#f44336'];
+  const COLORS = ["#4caf50", "#ff9800", "#f44336"];
   
   const CustomizedContent = (props) => {
     const { depth, x, y, width, height, index, name, size } = props;
@@ -257,8 +257,8 @@ const SupplierRiskTreemap = () => {
           width={width}
           height={height}
           style={{
-            fill: depth < 1 ? '#263238' : COLORS[index % COLORS.length],
-            stroke: '#fff',
+            fill: depth < 1 ? "#263238" : COLORS[index % COLORS.length],
+            stroke: "#fff",
             strokeWidth: 2 / (depth + 1e-10),
             strokeOpacity: 1 / (depth + 1e-10),
           }}
@@ -320,7 +320,7 @@ const RecuperationTimeChart = () => {
           layout="vertical"
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis type="number" domain={[0, 40]} label={{ value: 'Weeks to Full Recovery', position: 'insideBottom', offset: -5 }} />
+          <XAxis type="number" domain={[0, 40]} label={{ value: "Weeks to Full Recovery", position: "insideBottom", offset: -5 }} />
           <YAxis type="category" dataKey="disruption" width={150} />
           <Tooltip formatter={(value) => `${value} weeks`} />
           <Legend />
@@ -328,7 +328,7 @@ const RecuperationTimeChart = () => {
             {recuperationTimeData.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={entry.weeks > 25 ? '#f44336' : entry.weeks > 15 ? '#ff9800' : '#4caf50'}
+                fill={entry.weeks > 25 ? "#f44336" : entry.weeks > 15 ? "#ff9800" : "#4caf50"}
               />
             ))}
           </Bar>

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { allCountryData, getComplexityColor } from '../../../../lib/riskData';
+import React, { useState } from "react";
+import Link from "next/link";
+import { allCountryData, getComplexityColor } from "../../../../lib/riskData";
 
 // Trend icons
 const TrendIcon = ({ trend }: { trend: string }) => {
@@ -252,7 +252,7 @@ export default function RankingsPage() {
                     {country.rank}
                   </td>
                   <td className="px-4 py-3 font-medium">
-                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, '-')}`} className="text-blue-600 hover:underline">
+                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, "-")}`} className="text-blue-600 hover:underline">
                       {country.country}
                     </Link>
                   </td>

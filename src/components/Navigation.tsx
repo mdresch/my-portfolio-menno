@@ -1,15 +1,15 @@
-'use client'
+"use client"
 
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 import {
   UserCircleIcon,
   CodeBracketIcon,
   ShieldExclamationIcon,
   DocumentTextIcon,
   ChartBarIcon
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 
 interface MenuItem {
@@ -23,90 +23,90 @@ interface MenuItem {
 // Grouped menuItems for better space usage and logical categorization
 const menuGroups = [
   {
-    label: 'Profile',
+    label: "Profile",
     items: [
       {
-        title: 'About',
-        href: '/about',
-        description: 'Learn more about my background and experience',
+        title: "About",
+        href: "/about",
+        description: "Learn more about my background and experience",
         icon: <UserCircleIcon className="w-6 h-6" />,
         items: [
-          { title: 'Background', href: '/about#background' },
-          { title: 'Skills', href: '/about#skills' },
-          { title: 'Experience', href: '/about#experience' },
-          { title: 'Now', href: '/now' },
-          { title: 'Resume', href: '/resume', icon: <DocumentTextIcon className="w-5 h-5 mr-2 inline" /> },
-          { title: 'Contact', href: '/contact' },
+          { title: "Background", href: "/about#background" },
+          { title: "Skills", href: "/about#skills" },
+          { title: "Experience", href: "/about#experience" },
+          { title: "Now", href: "/now" },
+          { title: "Resume", href: "/resume", icon: <DocumentTextIcon className="w-5 h-5 mr-2 inline" /> },
+          { title: "Contact", href: "/contact" },
         ]
       },
     ]
   },
   {
-    label: 'Work',
+    label: "Work",
     items: [
       {
-        title: 'Projects',
-        href: '/projects',
-        description: 'Explore my portfolio of work',
+        title: "Projects",
+        href: "/projects",
+        description: "Explore my portfolio of work",
         icon: <CodeBracketIcon className="w-6 h-6" />,
         items: [
-          { title: 'Featured Projects', href: '/projects#featured' },
-          { title: 'Case Studies', href: '/projects#case-studies' },
-          { title: 'Open Source', href: '/projects#open-source' },
+          { title: "Featured Projects", href: "/projects#featured" },
+          { title: "Case Studies", href: "/projects#case-studies" },
+          { title: "Open Source", href: "/projects#open-source" },
         ]
       },
       {
-        title: 'Blog',
-        href: '/blog',
-        description: 'Articles and insights',
+        title: "Blog",
+        href: "/blog",
+        description: "Articles and insights",
         icon: <DocumentTextIcon className="w-6 h-6" />,
         items: [
-          { title: 'All Posts', href: '/blog' },
-          { title: 'Visualization Showcase', href: '/dashboards/visualizations-showcase' }
+          { title: "All Posts", href: "/blog" },
+          { title: "Visualization Showcase", href: "/dashboards/visualizations-showcase" }
         ]
       },
 
     ]
   },
   {
-    label: 'Dashboards',
+    label: "Dashboards",
     items: [
       {
-        title: 'Economics',
-        href: '/dashboards',
-        description: 'Economic insights, global indices, and market analysis',
+        title: "Economics",
+        href: "/dashboards",
+        description: "Economic insights, global indices, and market analysis",
         icon: <ChartBarIcon className="w-6 h-6" />,
         items: [
-          { title: 'Market Trends', href: '/dashboards/market-trends' },
-          { title: 'Macroeconomics', href: '/dashboards/macro' },
-          { title: 'Policy Impact', href: '/dashboards/policy-impact' },
-          { title: 'Economic Indicators', href: '/dashboards/economic-indicators' },
-          { title: 'Balance of Trade', href: '/dashboards/balance-of-trade' },
-          { title: 'Indicators Trade', href: '/dashboards/indicators-trade' },
-          { title: 'Stocks & Global Indices', href: '/dashboards/stocks' },
-          { title: 'Sectors', href: '/dashboards/stocks#sectors' },
-          { title: 'Companies', href: '/dashboards/stocks#companies' },
-          { title: 'Currencies', href: '/dashboards/currencies' },
-          { title: 'Major Economics', href: '/dashboards/major-economics' },
+          { title: "Market Trends", href: "/dashboards/market-trends" },
+          { title: "Macroeconomics", href: "/dashboards/macro" },
+          { title: "Policy Impact", href: "/dashboards/policy-impact" },
+          { title: "Economic Indicators", href: "/dashboards/economic-indicators" },
+          { title: "Balance of Trade", href: "/dashboards/balance-of-trade" },
+          { title: "Indicators Trade", href: "/dashboards/indicators-trade" },
+          { title: "Stocks & Global Indices", href: "/dashboards/stocks" },
+          { title: "Sectors", href: "/dashboards/stocks#sectors" },
+          { title: "Companies", href: "/dashboards/stocks#companies" },
+          { title: "Currencies", href: "/dashboards/currencies" },
+          { title: "Major Economics", href: "/dashboards/major-economics" },
         ]
       },
       {
-        title: 'Risk',
-        href: '/risk',
-        description: 'Risk analysis and management insights',
+        title: "Risk",
+        href: "/risk",
+        description: "Risk analysis and management insights",
         icon: <ShieldExclamationIcon className="w-6 h-6" />,
         items: [
-          { title: 'Supply Chain Risk', href: '/risk/supply-chain-top-25' },
-          { title: 'Business Complexity', href: '/risk/global-business-complexity-index' },
-          { title: 'Risk Analysis', href: '/risk/gartner-regulatory-risk-survey' },
-          { title: 'Risk Landscape', href: '/risk'},
-          { title: 'Global Tariffs', href: '/risk/trump-tariffs' },
+          { title: "Supply Chain Risk", href: "/risk/supply-chain-top-25" },
+          { title: "Business Complexity", href: "/risk/global-business-complexity-index" },
+          { title: "Risk Analysis", href: "/risk/gartner-regulatory-risk-survey" },
+          { title: "Risk Landscape", href: "/risk" },
+          { title: "Global Tariffs", href: "/risk/trump-tariffs" },
         ]
       },
       {
-        title: 'Docs',
-        href: 'https://iq4fun.gitbook.io/my-portfolio-menno/',
-        description: 'Project and portfolio documentation (GitBook)',
+        title: "Docs",
+        href: "https://iq4fun.gitbook.io/my-portfolio-menno/",
+        description: "Project and portfolio documentation (GitBook)",
         icon: <DocumentTextIcon className="w-6 h-6" />
       },
     ]
@@ -120,8 +120,8 @@ function DarkModeToggle() {
   // Set default theme to light
   useEffect(() => {
     setMounted(true);
-    if (!localStorage.getItem('theme')) {
-      setTheme('light');
+    if (!localStorage.getItem("theme")) {
+      setTheme("light");
     }
   }, [setTheme]);
   
@@ -132,11 +132,11 @@ function DarkModeToggle() {
       <button
         aria-label="Switch to Light Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
-          theme === 'light' 
-            ? 'bg-sky-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
+          theme === "light" 
+            ? "bg-sky-500 text-white" 
+            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
         }`}
-        onClick={() => setTheme('light')}
+        onClick={() => setTheme("light")}
       >
         <span className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,11 +148,11 @@ function DarkModeToggle() {
       <button
         aria-label="Switch to Dark Mode"
         className={`px-3 py-1.5 text-sm font-medium transition-colors ${
-          theme === 'dark' 
-            ? 'bg-sky-500 text-white' 
-            : 'bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700'
+          theme === "dark" 
+            ? "bg-sky-500 text-white" 
+            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
         }`}
-        onClick={() => setTheme('dark')}
+        onClick={() => setTheme("dark")}
       >
         <span className="flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

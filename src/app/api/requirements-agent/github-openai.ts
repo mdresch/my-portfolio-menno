@@ -10,29 +10,29 @@ const endpoint = "https://models.github.ai/inference";
 const model = "openai/gpt-4.1";
 
 const MOCK_STRATEGIC_SECTIONS = {
-  vision: 'MOCK To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.',
-  mission: 'MOCK To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.',
+  vision: "MOCK To be the leading platform for individuals to showcase their work, connect with opportunities, and inspire others through their digital presence.",
+  mission: "MOCK To provide an intuitive, feature-rich platform that enables users to easily build, manage, and share their personal portfolios and content, while integrating with leading developer services and ensuring data security and scalability.",
   coreValues: [
-    'MOCK User empowerment and creativity',
-    'MOCK Simplicity and usability',
-    'MOCK Openness and integration',
-    'MOCK Data privacy and security',
-    'MOCK Continuous improvement and innovation'
+    "MOCK User empowerment and creativity",
+    "MOCK Simplicity and usability",
+    "MOCK Openness and integration",
+    "MOCK Data privacy and security",
+    "MOCK Continuous improvement and innovation"
   ],
-  purpose: 'MOCK To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world.'
+  purpose: "MOCK To help individuals and professionals effectively showcase their skills, projects, and stories, fostering opportunities for collaboration, recognition, and personal growth in the digital world."
 };
 
 // Utility to sanitize log content and prevent log injection
 function sanitizeLogContent(input: string): string {
   // Remove or encode newlines and control characters
-  return input.replace(/[\r\n\u2028\u2029]+/g, ' ').replace(/[\x00-\x1F\x7F]+/g, '');
+  return input.replace(/[\r\n\u2028\u2029]+/g, " ").replace(/[\x00-\x1F\x7F]+/g, "");
 }
 
 export async function getRequirementsFromGithubAI(businessProblem: string, options?: { includeProcesses?: boolean, technologyStack?: string[], requestStrategicSections?: boolean, contextBundle?: string, instructions?: string }) {
-  if (options && typeof options.instructions === 'string') {
+  if (options && typeof options.instructions === "string") {
     // If no token, return mock business problem statement
     if (!token) {
-      return 'MOCK: This is a mock business problem statement. No LLM token was provided.';
+      return "MOCK: This is a mock business problem statement. No LLM token was provided.";
     }
     // If instructions are provided, use them as the prompt (for business problem statement)
     const prompt = options.instructions;
@@ -51,8 +51,8 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     if (isUnexpected(response)) {
       throw response.body.error;
     }
-    const rawContent = response.body.choices[0].message.content ?? '';
-    console.log('[Requirements Agent] Raw LLM output:', sanitizeLogContent(rawContent));
+    const rawContent = response.body.choices[0].message.content ?? "";
+    console.log("[Requirements Agent] Raw LLM output:", sanitizeLogContent(rawContent));
     // Return as string (plain business problem statement)
     return rawContent;
   }
@@ -64,39 +64,39 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     }
     return [
       {
-        role: 'MOCK Project Stakeholder',
+        role: "MOCK Project Stakeholder",
         needs: [
-          'Clear project goals',
-          'Regular status updates',
-          'Risk management',
+          "Clear project goals",
+          "Regular status updates",
+          "Risk management",
         ],
         processes: options?.includeProcesses ? [
-          'Project planning and review',
-          'Stakeholder communication',
-          'Risk assessment and mitigation'
+          "Project planning and review",
+          "Stakeholder communication",
+          "Risk assessment and mitigation"
         ] : undefined
       },
       {
-        role: 'MOCK End User',
+        role: "MOCK End User",
         needs: [
-          'Intuitive user interface',
-          'Reliable performance',
-          'Accessible support',
+          "Intuitive user interface",
+          "Reliable performance",
+          "Accessible support",
         ],
         processes: options?.includeProcesses ? [
-          'User onboarding',
-          'Support request handling',
-          'Feedback collection'
+          "User onboarding",
+          "Support request handling",
+          "Feedback collection"
         ] : undefined
       },
     ];
   }
 
   const techStackText = options?.technologyStack && options.technologyStack.length > 0
-    ? `\nTechnology stack: ${options.technologyStack.join(', ')}`
-    : '';
+    ? `\nTechnology stack: ${options.technologyStack.join(", ")}`
+    : "";
 
-  const contextBundle = options?.contextBundle ? `\nContext: ${options.contextBundle}` : '';
+  const contextBundle = options?.contextBundle ? `\nContext: ${options.contextBundle}` : "";
 
   let prompt;
   if (options?.requestStrategicSections) {
@@ -127,8 +127,8 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
   }
 
   // Debug: Output raw LLM response to console
-  const rawContent = response.body.choices[0].message.content ?? '';
-  console.log('[Requirements Agent] Raw LLM output:', sanitizeLogContent(rawContent));
+  const rawContent = response.body.choices[0].message.content ?? "";
+  console.log("[Requirements Agent] Raw LLM output:", sanitizeLogContent(rawContent));
 
   // Try to parse the model's response as JSON
   try {
@@ -139,32 +139,32 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     if (options?.requestStrategicSections) {
       return MOCK_STRATEGIC_SECTIONS;
     }
-    console.warn('[Requirements Agent] Using mock data as fallback: Model response could not be parsed as JSON.');
+    console.warn("[Requirements Agent] Using mock data as fallback: Model response could not be parsed as JSON.");
     return [
       {
-        role: 'MOCK Project Stakeholder',
+        role: "MOCK Project Stakeholder",
         needs: [
-          'Clear project goals',
-          'Regular status updates',
-          'Risk management',
+          "Clear project goals",
+          "Regular status updates",
+          "Risk management",
         ],
         processes: options?.includeProcesses ? [
-          'Project planning and review',
-          'Stakeholder communication',
-          'Risk assessment and mitigation'
+          "Project planning and review",
+          "Stakeholder communication",
+          "Risk assessment and mitigation"
         ] : undefined
       },
       {
-        role: 'MOCK End User',
+        role: "MOCK End User",
         needs: [
-          'Intuitive user interface',
-          'Reliable performance',
-          'Accessible support',
+          "Intuitive user interface",
+          "Reliable performance",
+          "Accessible support",
         ],
         processes: options?.includeProcesses ? [
-          'User onboarding',
-          'Support request handling',
-          'Feedback collection'
+          "User onboarding",
+          "Support request handling",
+          "Feedback collection"
         ] : undefined
       },
     ];

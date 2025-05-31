@@ -1,5 +1,5 @@
-declare module 'react-simple-maps' {
-  import React from 'react';
+declare module "react-simple-maps" {
+  import React from "react";
 
   export interface ComposableMapProps {
     projection?: string;

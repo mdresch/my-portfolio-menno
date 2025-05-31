@@ -1,7 +1,7 @@
-import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
-import { getAuth, Auth } from 'firebase/auth';
-import { getFirestore, Firestore } from 'firebase/firestore';
-import React, { useState } from 'react';
+import { initializeApp, getApps, FirebaseApp } from "firebase/app";
+import { getAuth, Auth } from "firebase/auth";
+import { getFirestore, Firestore } from "firebase/firestore";
+import React, { useState } from "react";
 
 // Firebase configuration using environment variables
 const firebaseConfig = {
@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 // Debug: Log Firebase env variables at runtime
-console.log('FIREBASE ENV VARS:', {
+console.log("FIREBASE ENV VARS:", {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -27,27 +27,27 @@ console.log('FIREBASE ENV VARS:', {
 
 // Available models with default fallback
 export const availableModels: string[] = [
-  'gemini-2.0-flash-exp',
-  'gemini-1.5-pro',
-  'gemini-1.5-flash',
-  'gemini-2.0-flash'
+  "gemini-2.0-flash-exp",
+  "gemini-1.5-pro",
+  "gemini-1.5-flash",
+  "gemini-2.0-flash"
 ];
 
 // Validate configuration
 function validateFirebaseConfig() {
   const requiredEnvVars = [
-    'NEXT_PUBLIC_FIREBASE_API_KEY',
-    'NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN',
-    'NEXT_PUBLIC_FIREBASE_PROJECT_ID',
-    'NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET',
-    'NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID',
-    'NEXT_PUBLIC_FIREBASE_APP_ID'
+    "NEXT_PUBLIC_FIREBASE_API_KEY",
+    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
+    "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
+    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
+    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+    "NEXT_PUBLIC_FIREBASE_APP_ID"
   ];
 
   const missing = requiredEnvVars.filter(envVar => !process.env[envVar]);
   
   if (missing.length > 0) {
-    console.error('Missing Firebase environment variables:', missing);
+    console.error("Missing Firebase environment variables:", missing);
     return false;
   }
   
@@ -61,7 +61,7 @@ let db: Firestore;
 
 try {
   if (!validateFirebaseConfig()) {
-    throw new Error('Firebase configuration is incomplete');
+    throw new Error("Firebase configuration is incomplete");
   }
 
   // Initialize Firebase only if it hasn't been initialized already
@@ -76,7 +76,7 @@ try {
   db = getFirestore(app);
 
 } catch (error) {
-  console.error('Firebase initialization error:', error);
+  console.error("Firebase initialization error:", error);
   // Create dummy objects to prevent undefined errors
   app = {} as FirebaseApp;
   auth = {} as Auth;
@@ -84,23 +84,23 @@ try {
 }
 
 // AI Response functions with improved error handling
-export async function generateAIResponse(prompt: string, model: string = 'gemini-2.0-flash-exp'): Promise<string> {
+export async function generateAIResponse(prompt: string, model: string = "gemini-2.0-flash-exp"): Promise<string> {
   try {
     // Validate inputs
-    if (!prompt || typeof prompt !== 'string' || prompt.trim().length === 0) {
-      throw new Error('Invalid prompt provided');
+    if (!prompt || typeof prompt !== "string" || prompt.trim().length === 0) {
+      throw new Error("Invalid prompt provided");
     }
 
-    if (!model || typeof model !== 'string') {
-      throw new Error('Invalid model specified');
+    if (!model || typeof model !== "string") {
+      throw new Error("Invalid model specified");
     }
 
     console.log(`Generating AI response with model: ${model}`);
 
-    const response = await fetch('/api/ai', {
-      method: 'POST',
+    const response = await fetch("/api/ai", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
         prompt: prompt.trim(), 
@@ -110,13 +110,13 @@ export async function generateAIResponse(prompt: string, model: string = 'gemini
 
     // Check if the response is ok
     if (!response.ok) {
-      let errorMessage = 'Failed to generate response';
+      let errorMessage = "Failed to generate response";
       
       try {
         const errorData = await response.json();
         errorMessage = errorData.error || errorMessage;
       } catch (parseError) {
-        console.error('Failed to parse error response:', parseError);
+        console.error("Failed to parse error response:", parseError);
         errorMessage = `HTTP ${response.status}: ${response.statusText}`;
       }
       
@@ -126,40 +126,40 @@ export async function generateAIResponse(prompt: string, model: string = 'gemini
     const data = await response.json();
     
     if (!data.response) {
-      throw new Error('No response data received from AI service');
+      throw new Error("No response data received from AI service");
     }
 
     return data.response;
 
   } catch (error) {
-    console.error('Error in generateAIResponse:', error);
+    console.error("Error in generateAIResponse:", error);
     
     // Provide user-friendly error messages
-    if (error instanceof TypeError && error.message.includes('fetch')) {
-      throw new Error('Network error: Unable to connect to AI service. Please check your connection and try again.');
+    if (error instanceof TypeError && error.message.includes("fetch")) {
+      throw new Error("Network error: Unable to connect to AI service. Please check your connection and try again.");
     }
     
     if (error instanceof Error) {
       throw error;
     }
     
-    throw new Error('An unexpected error occurred while generating the response');
+    throw new Error("An unexpected error occurred while generating the response");
   }
 }
 
-export async function generateAIResponseDirect(prompt: string, model: string = 'gemini-2.0-flash-exp'): Promise<string> {
+export async function generateAIResponseDirect(prompt: string, model: string = "gemini-2.0-flash-exp"): Promise<string> {
   try {
     // For now, use the API route method
     // In the future, you can implement direct Firebase AI calls here
     return await generateAIResponse(prompt, model);
   } catch (error) {
-    console.error('Error in generateAIResponseDirect:', error);
+    console.error("Error in generateAIResponseDirect:", error);
     
     if (error instanceof Error) {
       throw new Error(`Direct AI generation failed: ${error.message}`);
     }
     
-    throw new Error('Failed to generate AI response using direct method');
+    throw new Error("Failed to generate AI response using direct method");
   }
 }
 
@@ -171,49 +171,49 @@ export function isFirebaseInitialized(): boolean {
   try {
     return getApps().length > 0 && !!auth && !!db;
   } catch (error) {
-    console.error('Error checking Firebase initialization:', error);
+    console.error("Error checking Firebase initialization:", error);
     return false;
   }
 }
 
 // Example prompts for the AI playground
 const examplePrompts = [
-  'Summarize my portfolio in 2 sentences.',
-  'What is the most impressive project in this portfolio?',
-  'Suggest improvements for my portfolio website.',
-  'List the technologies used in my projects.',
-  'Write a short bio for the portfolio owner.'
+  "Summarize my portfolio in 2 sentences.",
+  "What is the most impressive project in this portfolio?",
+  "Suggest improvements for my portfolio website.",
+  "List the technologies used in my projects.",
+  "Write a short bio for the portfolio owner."
 ];
 
 // Default export: export a real React component for use in pages
 const FirebaseAIShowcase: React.FC = () => {
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState("");
   const [model, setModel] = useState(availableModels[0]);
-  const [method, setMethod] = useState<'api' | 'direct'>('api');
-  const [response, setResponse] = useState('');
+  const [method, setMethod] = useState<"api" | "direct">("api");
+  const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handlePromptChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setPrompt(e.target.value);
   const handleModelChange = (e: React.ChangeEvent<HTMLSelectElement>) => setModel(e.target.value);
-  const handleMethodChange = (e: React.ChangeEvent<HTMLInputElement>) => setMethod(e.target.value as 'api' | 'direct');
+  const handleMethodChange = (e: React.ChangeEvent<HTMLInputElement>) => setMethod(e.target.value as "api" | "direct");
   const handleExample = (ex: string) => setPrompt(ex);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setResponse('');
+    setResponse("");
     try {
-      let aiResponse = '';
-      if (method === 'api') {
+      let aiResponse = "";
+      if (method === "api") {
         aiResponse = await generateAIResponse(prompt, model);
       } else {
         aiResponse = await generateAIResponseDirect(prompt, model);
       }
       setResponse(aiResponse);
     } catch (err: any) {
-      setError(err.message || 'Unknown error');
+      setError(err.message || "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -267,7 +267,7 @@ const FirebaseAIShowcase: React.FC = () => {
                   type="radio"
                   name="method"
                   value="api"
-                  checked={method === 'api'}
+                  checked={method === "api"}
                   onChange={handleMethodChange}
                   className="mr-1"
                 />
@@ -278,7 +278,7 @@ const FirebaseAIShowcase: React.FC = () => {
                   type="radio"
                   name="method"
                   value="direct"
-                  checked={method === 'direct'}
+                  checked={method === "direct"}
                   onChange={handleMethodChange}
                   className="mr-1"
                 />
@@ -291,7 +291,7 @@ const FirebaseAIShowcase: React.FC = () => {
             className="ml-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold disabled:opacity-50"
             disabled={loading || !prompt.trim()}
           >
-            {loading ? 'Generating...' : 'Send'}
+            {loading ? "Generating..." : "Send"}
           </button>
         </div>
       </form>
@@ -310,8 +310,8 @@ const FirebaseAIShowcase: React.FC = () => {
         )}
       </div>
       <div className="mt-8 text-xs text-slate-400">
-        <div>Firebase initialized: <span className={isFirebaseInitialized() ? 'text-green-400' : 'text-red-400'}>{isFirebaseInitialized() ? 'Yes' : 'No'}</span></div>
-        <div>Available models: {availableModels.join(', ')}</div>
+        <div>Firebase initialized: <span className={isFirebaseInitialized() ? "text-green-400" : "text-red-400"}>{isFirebaseInitialized() ? "Yes" : "No"}</span></div>
+        <div>Available models: {availableModels.join(", ")}</div>
         <div>Method: <span className="font-mono">{method}</span></div>
       </div>
     </div>

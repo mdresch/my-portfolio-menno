@@ -95,22 +95,22 @@ export default function TrumpEconomicAgendaRiskPage() {
 
       <section>
         <h2>Infographic: Tariff Burden on Households</h2>
-        <div style={{ width: 320, margin: '0 auto', position: 'relative' }}>
-          <Doughnut data={tariffImpactData} options={{ cutout: '70%' }} />
+        <div style={{ width: 320, margin: "0 auto", position: "relative" }}>
+          <Doughnut data={tariffImpactData} options={{ cutout: "70%" }} />
           <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '85%',
-            transform: 'translate(-50%, -50%)',
-            textAlign: 'center',
-            fontWeight: 'bold',
+            position: "absolute",
+            top: "50%",
+            left: "85%",
+            transform: "translate(-50%, -50%)",
+            textAlign: "center",
+            fontWeight: "bold",
             fontSize: 16,
-            color: '#333',
-            pointerEvents: 'none',
+            color: "#333",
+            pointerEvents: "none",
             minWidth: 120
           }}>
             ${averageHouseholdBudget.toLocaleString()}<br />
-            <span style={{ fontSize: 12, fontWeight: 'normal' }}>Avg. Household Budget 2025</span>
+            <span style={{ fontSize: 12, fontWeight: "normal" }}>Avg. Household Budget 2025</span>
           </div>
         </div>
         <p className="text-center text-sm">Estimated average annual household burden from tariffs: <b>$4,700</b></p>

@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
-import { BlogPost as BlogPostType } from '../../lib/markdown';
-import ShareButton from '../ShareButton';
-import TableOfContents from '../TableOfContents';
-import ReadingProgress from '../ReadingProgress';
-import SocialShare from '../SocialShare';
-import BlogPostJsonLd from './BlogPostJsonLd';
-import Breadcrumbs from '../SEO/Breadcrumbs';
-import Giscus from '../comments/Giscus';
-import { formatDate } from '../../lib/utils';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
+import { BlogPost as BlogPostType } from "../../lib/markdown";
+import ShareButton from "../ShareButton";
+import TableOfContents from "../TableOfContents";
+import ReadingProgress from "../ReadingProgress";
+import SocialShare from "../SocialShare";
+import BlogPostJsonLd from "./BlogPostJsonLd";
+import Breadcrumbs from "../SEO/Breadcrumbs";
+import Giscus from "../comments/Giscus";
+import { formatDate } from "../../lib/utils";
+import Image from "next/image";
 
 interface BlogPostProps {
   post: BlogPostType;
@@ -26,7 +26,7 @@ function MostViewedPosts({ allPosts }: { allPosts: BlogPostType[] }) {
     // Get view counts from localStorage
     const viewCounts = allPosts.map(post => {
       const key = `blog_views_${post.slug}`;
-      const views = parseInt(typeof window !== 'undefined' ? localStorage.getItem(key) || '0' : '0', 10);
+      const views = parseInt(typeof window !== "undefined" ? localStorage.getItem(key) || "0" : "0", 10);
       return { slug: post.slug, title: post.title, views: isNaN(views) ? 0 : views };
     });
     // Sort by views descending and take top 5
@@ -43,7 +43,7 @@ function MostViewedPosts({ allPosts }: { allPosts: BlogPostType[] }) {
             <Link href={`/blog/${post.slug}`} className="text-blue-700 hover:underline text-sm">
               {post.title}
             </Link>
-            <span className="text-xs text-gray-500">{post.views} view{post.views === 1 ? '' : 's'}</span>
+            <span className="text-xs text-gray-500">{post.views} view{post.views === 1 ? "" : "s"}</span>
           </li>
         ))}
       </ul>
@@ -60,10 +60,10 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
   // Extract headings for table of contents on component mount
   useEffect(() => {
     if (post && articleRef.current) {
-      const headingElements = articleRef.current.querySelectorAll('h2, h3, h4');
+      const headingElements = articleRef.current.querySelectorAll("h2, h3, h4");
       const extractedHeadings = Array.from(headingElements).map(heading => ({
         id: heading.id,
-        text: heading.textContent || '',
+        text: heading.textContent || "",
         level: parseInt(heading.tagName.charAt(1))
       }));
       setHeadings(extractedHeadings);
@@ -74,7 +74,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
   useEffect(() => {
     if (post?.slug) {
       const key = `blog_views_${post.slug}`;
-      let count = parseInt(localStorage.getItem(key) || '0', 10);
+      let count = parseInt(localStorage.getItem(key) || "0", 10);
       count = isNaN(count) ? 1 : count + 1;
       localStorage.setItem(key, count.toString());
       setViewCount(count);
@@ -91,7 +91,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
 
   // Define breadcrumb items
   const breadcrumbItems = [
-    { name: 'Blog', url: '/blog' },
+    { name: "Blog", url: "/blog" },
     { name: post.title, url: `/blog/${post.slug}` }
   ];
 
@@ -125,16 +125,16 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
             
             <div className="flex flex-wrap items-center text-gray-600 text-sm mb-4">
               <time dateTime={post.date}>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric'
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric"
                 })}
               </time>
               <span className="mx-2">•</span>
               <span>{post.readingTime}</span>
               <span className="mx-2">•</span>
-              <span>{viewCount} view{viewCount === 1 ? '' : 's'}</span>
+              <span>{viewCount} view{viewCount === 1 ? "" : "s"}</span>
               {post.categories.length > 0 && (
                 <>
                   <span className="mx-2">•</span>
@@ -166,7 +166,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
               <div className="mb-4 sm:mb-0">
                 <span className="text-gray-600 text-sm">Share this post:</span>
                 <SocialShare 
-                  url={typeof window !== 'undefined' ? window.location.href : ''}
+                  url={typeof window !== "undefined" ? window.location.href : ""}
                   title={post.title}
                 />
               </div>
@@ -205,7 +205,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
             <div className="bg-gray-50 rounded-lg p-6 mb-8">
               <h3 className="text-lg font-medium mb-2">About the Author</h3>
               <p className="text-gray-600 text-sm">
-                {post.author || 'Anonymous'} is a passionate developer sharing knowledge and insights about web development and technology.
+                {post.author || "Anonymous"} is a passionate developer sharing knowledge and insights about web development and technology.
               </p>
             </div>
             
@@ -217,7 +217,7 @@ export default function BlogPost({ post, allPosts }: BlogPostProps & { allPosts?
             {/* Share Button */}
             <div className="mt-8">
               <ShareButton 
-                url={typeof window !== 'undefined' ? window.location.href : ''} 
+                url={typeof window !== "undefined" ? window.location.href : ""} 
                 title={post.title}
               />
             </div>

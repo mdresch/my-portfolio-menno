@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useSkills } from '@/hooks/useSkills';
-import { useState } from 'react';
+import { useSkills } from "@/hooks/useSkills";
+import { useState } from "react";
 
 // Skill level indicator
 const SkillLevel = ({ level }: { level: number }) => {
@@ -13,7 +13,7 @@ const SkillLevel = ({ level }: { level: number }) => {
       <div
         key={i}
         className={`w-3 h-3 rounded-full ${
-          i <= level ? 'bg-blue-600' : 'bg-gray-200'
+          i <= level ? "bg-blue-600" : "bg-gray-200"
         }`}
       />
     );
@@ -77,7 +77,7 @@ export default function SkillsDisplay() {
   // Get all categories from the skills or use the ones from the API
   const uniqueCategories = categories.length > 0 
     ? categories 
-    : [...new Set(skills.map((skill) => skill.category || 'Uncategorized'))];
+    : [...new Set(skills.map((skill) => skill.category || "Uncategorized"))];
   
   // Filter skills by active category or show all if none selected
   const filteredSkills = activeCategory
@@ -92,8 +92,8 @@ export default function SkillsDisplay() {
           onClick={() => setActiveCategory(null)}
           className={`px-4 py-2 rounded-full text-sm font-medium ${
             activeCategory === null
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
           }`}
         >
           All Skills
@@ -105,8 +105,8 @@ export default function SkillsDisplay() {
             onClick={() => setActiveCategory(category)}
             className={`px-4 py-2 rounded-full text-sm font-medium ${
               activeCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                ? "bg-blue-600 text-white"
+                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
             }`}
           >
             {category}

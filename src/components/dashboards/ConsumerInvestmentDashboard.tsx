@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // Import necessary mock components
-import { MockKPICard, MockPieChart, MockBarChart } from './MockVisuals';
+import { MockKPICard, MockPieChart, MockBarChart } from "./MockVisuals";
 
 export const ConsumerInvestmentDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">
@@ -21,16 +21,16 @@ export const ConsumerInvestmentDashboard = () => (
 
     {/* Chart Row for Investment Breakdown */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <MockPieChart title="Estimated Share of Consumer Investment Spending" />
-        <MockBarChart title="Growth Rate by Investment Area (YoY)" />
-        {/* Optional: Could add a line chart for a specific trend */}
-        {/* <MockLineChart title="Trend in Sustainable Product Spending" /> */}
+      <MockPieChart title="Estimated Share of Consumer Investment Spending" />
+      <MockBarChart title="Growth Rate by Investment Area (YoY)" />
+      {/* Optional: Could add a line chart for a specific trend */}
+      {/* <MockLineChart title="Trend in Sustainable Product Spending" /> */}
     </div>
 
 
-     {/* Context Note */}
-     <div className="mt-6 p-3 bg-purple-50 border border-purple-200 rounded text-purple-800 text-sm">
-        <strong>Note:</strong> This dashboard categorizes consumer spending that often carries an investment characteristic, focusing on personal growth, asset building, or future value. Data is illustrative.
-      </div>
+    {/* Context Note */}
+    <div className="mt-6 p-3 bg-purple-50 border border-purple-200 rounded text-purple-800 text-sm">
+      <strong>Note:</strong> This dashboard categorizes consumer spending that often carries an investment characteristic, focusing on personal growth, asset building, or future value. Data is illustrative.
+    </div>
   </section>
 );

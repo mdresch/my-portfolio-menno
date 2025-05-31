@@ -1,26 +1,26 @@
 import ProjectDetail from "../ProjectDetail";
-import type { ApiProject } from '../../../types/api';
-import { notFound } from 'next/navigation';
+import type { ApiProject } from "../../../types/api";
+import { notFound } from "next/navigation";
 
 
 
 // Helper to normalize API data to ProjectDetail type
 function normalizeProject(p: ApiProject) {
   return {
-    title: p.title ?? '',
-    description: p.description ?? '',
+    title: p.title ?? "",
+    description: p.description ?? "",
     technologies: p.technologies ?? [],
-    imageUrl: p.imageUrl ?? '/default-project-image.jpg',
-    gitHubUrl: p.gitHubUrl ?? '',
-    liveUrl: p.liveUrl ?? '',
+    imageUrl: p.imageUrl ?? "/default-project-image.jpg",
+    gitHubUrl: p.gitHubUrl ?? "",
+    liveUrl: p.liveUrl ?? "",
   };
 }
 
 // Example implementation: fetch projects from a local JSON file or API endpoint
 async function fetchProjects(): Promise<ApiProject[]> {
   // Replace the URL below with your actual API endpoint or data source
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || ''}/api/projects`, {
-    cache: 'no-store',
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || ""}/api/projects`, {
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -38,14 +38,14 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   try {
     projects = await fetchProjects();
   } catch (error) {
-    console.error('Error fetching projects:', error);
+    console.error("Error fetching projects:", error);
     return <div>Error loading projects. Please try again later.</div>;
   }
 
   const project = projects
     .map(normalizeProject)
     .find(
-      (p) => p.title.toLowerCase().replace(/\s+/g, '-') === params.slug
+      (p) => p.title.toLowerCase().replace(/\s+/g, "-") === params.slug
     );
 
   if (!project) return notFound();

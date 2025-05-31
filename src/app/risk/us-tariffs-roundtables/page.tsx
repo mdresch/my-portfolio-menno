@@ -177,7 +177,7 @@ export default function UsTariffsRoundtablesPage() {
       <section className="max-w-3xl mx-auto bg-gray-50 rounded-lg shadow-sm p-8 mb-10 border border-gray-200">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">Registration</h2>
         <p className="text-gray-700 mb-4">
-          To register for a roundtable session, please indicate your preference in the registration form on the{' '}
+          To register for a roundtable session, please indicate your preference in the registration form on the{" "}
           <a href="https://www.pwc.be/en/events-courses/2025/US-tariffs-roundtables.html#" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">PwC event page</a>.
         </p>
       </section>

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,8 +9,8 @@ import {
   Title,
   Tooltip,
   Legend
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
 // Register Chart.js components
 ChartJS.register(
@@ -48,7 +48,7 @@ const RegionalComparisonChart: React.FC<RegionalComparisonChartProps> = ({
   regionalAverages 
 }) => {
   // Categories to display
-  const categories = ['Overall', 'Regulatory', 'Tax', 'Corporate', 'Employment'];
+  const categories = ["Overall", "Regulatory", "Tax", "Corporate", "Employment"];
   
   // Data mapping for country and regional averages
   const countryValues = [
@@ -74,15 +74,15 @@ const RegionalComparisonChart: React.FC<RegionalComparisonChartProps> = ({
       {
         label: countryData.country,
         data: countryValues,
-        backgroundColor: 'rgba(53, 162, 235, 0.8)',
-        borderColor: 'rgba(53, 162, 235, 1)',
+        backgroundColor: "rgba(53, 162, 235, 0.8)",
+        borderColor: "rgba(53, 162, 235, 1)",
         borderWidth: 1,
       },
       {
         label: `${regionalAverages.region} Average`,
         data: regionalValues,
-        backgroundColor: 'rgba(175, 175, 175, 0.8)',
-        borderColor: 'rgba(175, 175, 175, 1)',
+        backgroundColor: "rgba(175, 175, 175, 0.8)",
+        borderColor: "rgba(175, 175, 175, 1)",
         borderWidth: 1,
       },
     ],
@@ -101,31 +101,31 @@ const RegionalComparisonChart: React.FC<RegionalComparisonChartProps> = ({
         },
         title: {
           display: true,
-          text: 'Complexity Score',
+          text: "Complexity Score",
           font: {
-            weight: 'bold' as const,
+            weight: "bold" as const,
           },
         },
       },
       x: {
         title: {
           display: true,
-          text: 'Complexity Categories',
+          text: "Complexity Categories",
           font: {
-            weight: 'bold' as const,
+            weight: "bold" as const,
           },
         },
       },
     },
     plugins: {
       legend: {
-        position: 'top' as const,
-        align: 'start' as const,
+        position: "top" as const,
+        align: "start" as const,
       },
       tooltip: {
         callbacks: {
           label: function(context: any) {
-            const label = context.dataset.label || '';
+            const label = context.dataset.label || "";
             const value = context.raw || 0;
             return `${label}: ${value}/100`;
           },

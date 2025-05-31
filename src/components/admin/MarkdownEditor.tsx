@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useRef, useEffect } from 'react';
-import { Editor } from '@toast-ui/react-editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
+import { useRef, useEffect } from "react";
+import { Editor } from "@toast-ui/react-editor";
+import "@toast-ui/editor/dist/toastui-editor.css";
 
 interface MarkdownEditorProps {
   value: string;
@@ -10,7 +10,7 @@ interface MarkdownEditorProps {
   height?: string;
 }
 
-export default function MarkdownEditor({ value, onChange, height = '300px' }: MarkdownEditorProps) {
+export default function MarkdownEditor({ value, onChange, height = "300px" }: MarkdownEditorProps) {
   const editorRef = useRef<Editor>(null);
   
   useEffect(() => {
@@ -37,11 +37,11 @@ export default function MarkdownEditor({ value, onChange, height = '300px' }: Ma
       useCommandShortcut={true}
       onChange={handleChange}
       toolbarItems={[
-        ['heading', 'bold', 'italic', 'strike'],
-        ['hr', 'quote'],
-        ['ul', 'ol', 'task', 'indent', 'outdent'],
-        ['table', 'image', 'link'],
-        ['code', 'codeblock'],
+        ["heading", "bold", "italic", "strike"],
+        ["hr", "quote"],
+        ["ul", "ol", "task", "indent", "outdent"],
+        ["table", "image", "link"],
+        ["code", "codeblock"],
       ]}
     />
   );

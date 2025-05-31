@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useAuth } from '../../lib/auth';
-import { useRouter } from 'next/navigation';
-import LoginForm from '../../components/LoginForm';
+import { useEffect } from "react";
+import { useAuth } from "../../lib/auth";
+import { useRouter } from "next/navigation";
+import LoginForm from "../../components/LoginForm";
 
 export default function AdminLayout({
   children,
@@ -16,7 +16,7 @@ export default function AdminLayout({
   // If not authenticated and not loading, redirect to admin login
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace('/admin/login');
+      router.replace("/admin/login");
     }
   }, [isLoading, isAuthenticated, router]);
 

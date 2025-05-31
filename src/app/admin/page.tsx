@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useAuth } from '../../lib/auth';
-import Link from 'next/link';
-import { ProjectService, BlogService, ContactService } from '../../lib/api-services';
+import { useState, useEffect } from "react";
+import { useAuth } from "../../lib/auth";
+import Link from "next/link";
+import { ProjectService, BlogService, ContactService } from "../../lib/api-services";
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
         // Count blog posts from markdown files in content/blog (serverless API route)
         let blogPostsCount = blogPosts.length;
         try {
-          const res = await fetch('/api/posts');
+          const res = await fetch("/api/posts");
           if (res.ok) {
             const posts = await res.json();
             if (Array.isArray(posts)) {
@@ -44,7 +44,7 @@ export default function AdminDashboard() {
           unreadMessagesCount: 0, // Would need a specific API endpoint
         });
       } catch (error) {
-        console.error('Error fetching stats:', error);
+        console.error("Error fetching stats:", error);
       } finally {
         setLoading(false);
       }
@@ -57,7 +57,7 @@ export default function AdminDashboard() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-xl font-semibold">Welcome back, {user?.username || 'Admin'}</h2>
+          <h2 className="text-xl font-semibold">Welcome back, {user?.username || "Admin"}</h2>
           <p className="text-gray-600 dark:text-gray-300">Manage your portfolio content</p>
         </div>
         

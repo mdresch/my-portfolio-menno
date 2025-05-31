@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // Hashnode's current GraphQL API endpoint
-const HASHNODE_API_URL = 'https://gql.hashnode.com';
+const HASHNODE_API_URL = "https://gql.hashnode.com";
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,20 +9,20 @@ export async function POST(request: NextRequest) {
 
     if (!post || !token) {
       return NextResponse.json({ 
-        error: 'Post data and token are required' 
+        error: "Post data and token are required" 
       }, { status: 400 });
     }
     
     // Verify originalArticleURL is valid
     if (!originalArticleURL) {
       return NextResponse.json({
-        error: 'Original article URL is required'
+        error: "Original article URL is required"
       }, { status: 400 });
     }    try {
       new URL(originalArticleURL);
     } catch {
       return NextResponse.json({
-        error: 'Invalid original article URL'
+        error: "Invalid original article URL"
       }, { status: 400 });
     }
 
@@ -30,35 +30,35 @@ export async function POST(request: NextRequest) {
     const tags = post.categories?.map((category: string) => ({
       name: category, // Keep original name
       slug: category.toLowerCase()
-        .replace(/\s+/g, '-')    // Replace spaces with hyphens
-        .replace(/\./g, '-')     // Replace periods with hyphens
-        .replace(/[^a-z0-9-]/g, '') // Remove any other non-allowed characters
+        .replace(/\s+/g, "-")    // Replace spaces with hyphens
+        .replace(/\./g, "-")     // Replace periods with hyphens
+        .replace(/[^a-z0-9-]/g, "") // Remove any other non-allowed characters
     })).slice(0, 5) || []; // Hashnode only allows 5 tags max
 
     // Clean up the markdown content for Hashnode
     let contentMarkdown = post.content;
 
     // If the content is HTML (happens with some posts), do basic conversion to markdown
-    if (contentMarkdown.includes('<h1>') || contentMarkdown.includes('<p>')) {
+    if (contentMarkdown.includes("<h1>") || contentMarkdown.includes("<p>")) {
       contentMarkdown = contentMarkdown
-        .replace(/<h1>(.*?)<\/h1>/g, '# $1\n\n')
-        .replace(/<h2>(.*?)<\/h2>/g, '## $1\n\n')
-        .replace(/<h3>(.*?)<\/h3>/g, '### $1\n\n')
-        .replace(/<p>(.*?)<\/p>/g, '$1\n\n')
-        .replace(/<a href="(.*?)">(.*?)<\/a>/g, '[$2]($1)')
-        .replace(/<code>(.*?)<\/code>/g, '`$1`')
-        .replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, '```\n$1\n```\n')
-        .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
-        .replace(/<em>(.*?)<\/em>/g, '*$1*')
+        .replace(/<h1>(.*?)<\/h1>/g, "# $1\n\n")
+        .replace(/<h2>(.*?)<\/h2>/g, "## $1\n\n")
+        .replace(/<h3>(.*?)<\/h3>/g, "### $1\n\n")
+        .replace(/<p>(.*?)<\/p>/g, "$1\n\n")
+        .replace(/<a href="(.*?)">(.*?)<\/a>/g, "[$2]($1)")
+        .replace(/<code>(.*?)<\/code>/g, "`$1`")
+        .replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, "```\n$1\n```\n")
+        .replace(/<strong>(.*?)<\/strong>/g, "**$1**")
+        .replace(/<em>(.*?)<\/em>/g, "*$1*")
         .replace(/<ul>([\s\S]*?)<\/ul>/g, (match: string) => {
           return match
-            .replace(/<li>(.*?)<\/li>/g, '- $1\n')
-            .replace(/<ul>|<\/ul>/g, '');
+            .replace(/<li>(.*?)<\/li>/g, "- $1\n")
+            .replace(/<ul>|<\/ul>/g, "");
         })        .replace(/<ol>([\s\S]*?)<\/ol>/g, (match: string) => {
           let num = 1;
           return match
             .replace(/<li>(.*?)<\/li>/g, () => `${num++}. $1\n`)
-            .replace(/<ol>|<\/ol>/g, '');
+            .replace(/<ol>|<\/ol>/g, "");
         });
     }
 
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     const publicationId = process.env.HASHNODE_PUBLICATION_ID;
     if (!publicationId) {
       return NextResponse.json({
-        error: 'HASHNODE_PUBLICATION_ID environment variable is not set. Please set it in your .env.local file.'
+        error: "HASHNODE_PUBLICATION_ID environment variable is not set. Please set it in your .env.local file."
       }, { status: 500 });
     }
     
@@ -99,28 +99,28 @@ export async function POST(request: NextRequest) {
       }
     };
 
-    console.log('Creating draft on Hashnode with data:', {
+    console.log("Creating draft on Hashnode with data:", {
       title: post.title,
       tagsCount: tags.length,
-      publicationId: process.env.HASHNODE_PUBLICATION_ID || 'not set'
+      publicationId: process.env.HASHNODE_PUBLICATION_ID || "not set"
     });
 
     // Make the API request to create draft
     const draftResponse = await fetch(HASHNODE_API_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
+        "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify(createDraftQuery)
     });
 
     const draftData = await draftResponse.json();
-    console.log('Hashnode create draft response:', JSON.stringify(draftData, null, 2));
+    console.log("Hashnode create draft response:", JSON.stringify(draftData, null, 2));
 
     // Check for GraphQL errors in draft creation
     if (draftData.errors) {
-      const errorMessage = draftData.errors.map((e: { message: string }) => e.message).join(', ');
+      const errorMessage = draftData.errors.map((e: { message: string }) => e.message).join(", ");
       return NextResponse.json({
         error: `GraphQL Error: ${errorMessage}`,
         details: draftData.errors
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
     // Check if we have draft data
     if (!draftData.data?.createDraft?.draft?.id) {
       return NextResponse.json({
-        error: 'Failed to create draft on Hashnode: No draft ID returned',
+        error: "Failed to create draft on Hashnode: No draft ID returned",
         details: draftData
       }, { status: 400 });
     }
@@ -163,24 +163,24 @@ export async function POST(request: NextRequest) {
       }
     };
 
-    console.log('Publishing draft with input:', JSON.stringify(publishInput, null, 2));
+    console.log("Publishing draft with input:", JSON.stringify(publishInput, null, 2));
 
     // Make the API request to publish the draft
     const publishResponse = await fetch(HASHNODE_API_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
+        "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify(publishQuery)
     });
 
     const publishData = await publishResponse.json();
-    console.log('Hashnode publish response:', JSON.stringify(publishData, null, 2));
+    console.log("Hashnode publish response:", JSON.stringify(publishData, null, 2));
 
     // Check for GraphQL errors in publishing
     if (publishData.errors) {
-      const errorMessage = publishData.errors.map((e: { message: string }) => e.message).join(', ');
+      const errorMessage = publishData.errors.map((e: { message: string }) => e.message).join(", ");
       return NextResponse.json({
         error: `GraphQL Error when publishing: ${errorMessage}`,
         details: publishData.errors,
@@ -193,7 +193,7 @@ export async function POST(request: NextRequest) {
       // Check if the response indicates success even without post data (unlikely but possible)
       // Adapt this check based on actual Hashnode API behavior if needed
       return NextResponse.json({
-        error: 'Draft created but failed to publish on Hashnode: No post data returned',
+        error: "Draft created but failed to publish on Hashnode: No post data returned",
         draftId: draftId,
         details: publishData
       }, { status: 400 });
@@ -204,16 +204,16 @@ export async function POST(request: NextRequest) {
     // Return success with post info
     return NextResponse.json({
       success: true,
-      message: 'Post successfully published to Hashnode',
+      message: "Post successfully published to Hashnode",
       url: publishedPost.url || `https://hashnode.com/draft/${draftId}`, // Fallback URL
       postId: publishedPost.id,
       slug: publishedPost.slug
     });
 
   } catch (error) {
-    console.error('Error in Hashnode cross-post API:', error);
+    console.error("Error in Hashnode cross-post API:", error);
     return NextResponse.json({
-      error: error instanceof Error ? error.message : 'Unknown error occurred'
+      error: error instanceof Error ? error.message : "Unknown error occurred"
     }, { status: 500 });
   }
 }

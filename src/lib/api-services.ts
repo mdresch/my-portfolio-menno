@@ -1,7 +1,7 @@
-import { Project, BlogPost, Skill, ContactMessage } from '@/types/api';
-import { useAuthToken } from '@/lib/auth';
+import { Project, BlogPost, Skill, ContactMessage } from "@/types/api";
+import { useAuthToken } from "@/lib/auth";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5154/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
 
 // Helper function to get auth header (safe for both server and client)
 export function getAuthHeader(): Record<string, string> {
@@ -15,7 +15,7 @@ export function getAuthHeader(): Record<string, string> {
 // Helper function for HTTP requests
 async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const baseHeaders: Record<string, string> = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     ...getAuthHeader(),
   };
   const headers: Record<string, string> = {
@@ -30,7 +30,7 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
 
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(error || response.statusText || 'API request failed');
+    throw new Error(error || response.statusText || "API request failed");
   }
 
   // For 204 No Content responses
@@ -44,37 +44,37 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
 // API Services
 export const ProjectService = {
   async getAll(): Promise<Project[]> {
-    return fetchAPI<Project[]>('/projects');
+    return fetchAPI<Project[]>("/projects");
   },
 
   async getById(id: number): Promise<Project> {
     return fetchAPI<Project>(`/projects/${id}`);
   },
 
-  async create(project: Omit<Project, 'id'>): Promise<Project> {
-    return fetchAPI<Project>('/projects', {
-      method: 'POST',
+  async create(project: Omit<Project, "id">): Promise<Project> {
+    return fetchAPI<Project>("/projects", {
+      method: "POST",
       body: JSON.stringify(project),
     });
   },
 
   async update(id: number, project: Partial<Project>): Promise<Project> {
     return fetchAPI<Project>(`/projects/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(project),
     });
   },
 
   async delete(id: number): Promise<void> {
     return fetchAPI<void>(`/projects/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   },
 };
 
 export const BlogService = {
   async getAll(): Promise<BlogPost[]> {
-    return fetchAPI<BlogPost[]>('/blogposts');
+    return fetchAPI<BlogPost[]>("/blogposts");
   },
 
   async getBySlug(slug: string): Promise<BlogPost> {
@@ -85,23 +85,23 @@ export const BlogService = {
     return fetchAPI<BlogPost>(`/blogposts/${id}`);
   },
 
-  async create(blogPost: Omit<BlogPost, 'id'>): Promise<BlogPost> {
-    return fetchAPI<BlogPost>('/blogposts', {
-      method: 'POST',
+  async create(blogPost: Omit<BlogPost, "id">): Promise<BlogPost> {
+    return fetchAPI<BlogPost>("/blogposts", {
+      method: "POST",
       body: JSON.stringify(blogPost),
     });
   },
 
   async update(id: number, blogPost: Partial<BlogPost>): Promise<BlogPost> {
     return fetchAPI<BlogPost>(`/blogposts/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(blogPost),
     });
   },
 
   async delete(id: number): Promise<void> {
     return fetchAPI<void>(`/blogposts/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   },
 };
@@ -110,19 +110,19 @@ export const SkillService = {
   async getAll(): Promise<Skill[]> {
     try {
       // Try the .NET backend first
-      return await fetchAPI<Skill[]>('/skills');
+      return await fetchAPI<Skill[]>("/skills");
     } catch (error) {
-      console.warn('Backend API not available, falling back to Next.js API:', error);
+      console.warn("Backend API not available, falling back to Next.js API:", error);
       try {
         // Fallback to Next.js API route
-        const response = await fetch('/api/skills');
+        const response = await fetch("/api/skills");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return await response.json();
       } catch (fallbackError) {
-        console.error('Both backend and fallback API failed:', fallbackError);
-        throw new Error('Unable to fetch skills from any source');
+        console.error("Both backend and fallback API failed:", fallbackError);
+        throw new Error("Unable to fetch skills from any source");
       }
     }
   },
@@ -132,13 +132,13 @@ export const SkillService = {
       // Try the .NET backend first
       return await fetchAPI<Skill[]>(`/skills/category/${category}`);
     } catch (error) {
-      console.warn('Backend API not available, filtering locally:', error);
+      console.warn("Backend API not available, filtering locally:", error);
       try {
         // Fallback: get all skills and filter locally
         const allSkills = await this.getAll();
         return allSkills.filter(skill => skill.category === category);
       } catch (fallbackError) {
-        console.error('Failed to get skills by category:', fallbackError);
+        console.error("Failed to get skills by category:", fallbackError);
         throw new Error(`Unable to fetch skills for category: ${category}`);
       }
     }
@@ -147,27 +147,27 @@ export const SkillService = {
   async getCategories(): Promise<string[]> {
     try {
       // Try the .NET backend first
-      return await fetchAPI<string[]>('/skills/categories');
+      return await fetchAPI<string[]>("/skills/categories");
     } catch (error) {
-      console.warn('Backend API not available, falling back to Next.js API:', error);
+      console.warn("Backend API not available, falling back to Next.js API:", error);
       try {
         // Fallback to Next.js API route
-        const response = await fetch('/api/skills/categories');
+        const response = await fetch("/api/skills/categories");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return await response.json();
       } catch (fallbackError) {
-        console.error('Both backend and fallback API failed:', fallbackError);
-        throw new Error('Unable to fetch skill categories from any source');
+        console.error("Both backend and fallback API failed:", fallbackError);
+        throw new Error("Unable to fetch skill categories from any source");
       }
     }
   },
 
-  async create(skill: Omit<Skill, 'id'>): Promise<Skill> {
+  async create(skill: Omit<Skill, "id">): Promise<Skill> {
     // This operation requires the backend as Next.js API is read-only
-    return fetchAPI<Skill>('/skills', {
-      method: 'POST',
+    return fetchAPI<Skill>("/skills", {
+      method: "POST",
       body: JSON.stringify(skill),
     });
   },
@@ -175,15 +175,15 @@ export const SkillService = {
   async delete(id: number): Promise<void> {
     // This operation requires the backend as Next.js API is read-only
     return fetchAPI<void>(`/skills/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   },
 };
 
 export const ContactService = {
-  async submitMessage(message: Omit<ContactMessage, 'id' | 'receivedAt' | 'isRead'>): Promise<void> {
-    return fetchAPI<void>('/contact', {
-      method: 'POST',
+  async submitMessage(message: Omit<ContactMessage, "id" | "receivedAt" | "isRead">): Promise<void> {
+    return fetchAPI<void>("/contact", {
+      method: "POST",
       body: JSON.stringify(message),
     });
   },
@@ -191,7 +191,7 @@ export const ContactService = {
 
 export const CrossPostService = {
   async getStatistics(): Promise<any[]> {
-    return fetchAPI<any[]>('/blogcrosspost');
+    return fetchAPI<any[]>("/blogcrosspost");
   },
   
   async getCrossPostsByBlogId(blogId: number): Promise<any[]> {

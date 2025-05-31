@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import InteractiveRiskMap from '../../components/risk/InteractiveRiskMap'; // Adjust path
-import RiskReportCard from '../../components/risk/RiskReportCard';
+import React from "react";
+import Link from "next/link";
+import InteractiveRiskMap from "../../components/risk/InteractiveRiskMap"; // Adjust path
+import RiskReportCard from "../../components/risk/RiskReportCard";
 
 export default function RiskOverviewPage() {
   return (

@@ -13,30 +13,30 @@ export function formatDevToArticle(post: any): any {
   // Add 1 minute to ensure it's in the future
   now.setMinutes(now.getMinutes() + 1);
   // Format timestamp according to DEV.to's requirements
-  const futureTimestamp = now.toISOString().replace('T', ' ').replace('Z', '');
+  const futureTimestamp = now.toISOString().replace("T", " ").replace("Z", "");
   
   // Format tags according to DEV.to requirements
   const formatTag = (tag: string): string => {
     // Convert to lowercase
     let formatted = tag.toLowerCase();
     // Replace spaces with hyphens
-    formatted = formatted.replace(/\s+/g, '-');
+    formatted = formatted.replace(/\s+/g, "-");
     // Remove any non-alphanumeric characters except hyphens
-    formatted = formatted.replace(/[^a-z0-9-]/g, '');
+    formatted = formatted.replace(/[^a-z0-9-]/g, "");
     // Remove consecutive hyphens
-    formatted = formatted.replace(/-{2,}/g, '-');
+    formatted = formatted.replace(/-{2,}/g, "-");
     // Remove leading/trailing hyphens
-    formatted = formatted.replace(/^-|-$/g, '');
+    formatted = formatted.replace(/^-|-$/g, "");
     
     // Special handling for known tags
     const tagMap: { [key: string]: string } = {
-      'tutorial': 'tutorial',
-      'next.js': 'nextjs',
-      'react': 'react'
+      "tutorial": "tutorial",
+      "next.js": "nextjs",
+      "react": "react"
     };
     
     // Use mapped tag if available, otherwise use formatted tag
-    return tagMap[formatted] || formatted || 'webdevelopment';
+    return tagMap[formatted] || formatted || "webdevelopment";
   };
 
   // Get and format the tags
@@ -46,7 +46,7 @@ export function formatDevToArticle(post: any): any {
   // Add default tags if none are valid
   const validTags = formattedTags.filter(tag => tag.length > 0);
   if (validTags.length === 0) {
-    validTags.push('webdevelopment');
+    validTags.push("webdevelopment");
   }
 
   // Ensure tags are unique
@@ -57,10 +57,10 @@ export function formatDevToArticle(post: any): any {
     body_markdown: post.content,
     published: true,
     tags: uniqueTags,
-    canonical_url: post.canonical_url || '',
+    canonical_url: post.canonical_url || "",
     description: post.excerpt || post.title,
-    main_image: post.image || '',
-    series: '',
+    main_image: post.image || "",
+    series: "",
     published_at: futureTimestamp,
     organization_id: null
   };
@@ -68,7 +68,7 @@ export function formatDevToArticle(post: any): any {
   // Clean up any undefined values
   Object.keys(article).forEach(key => {
     if (article[key] === undefined || article[key] === null) {
-      article[key] = '';
+      article[key] = "";
     }
   });
 

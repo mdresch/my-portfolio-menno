@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Skill } from '../../data/resume';
+import React, { useState } from "react";
+import { Skill } from "../../data/resume";
 
 interface SkillsVisualizationProps {
   skills: Skill[];
 }
 
 export default function SkillsVisualization({ skills }: SkillsVisualizationProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('soft');
+  const [activeCategory, setActiveCategory] = useState<string>("soft");
   
-  const categories = ['all', ...Array.from(new Set(skills.map(skill => skill.category)))];
+  const categories = ["all", ...Array.from(new Set(skills.map(skill => skill.category)))];
   
-  const filteredSkills = activeCategory === 'all' 
+  const filteredSkills = activeCategory === "all" 
     ? skills 
     : skills.filter(skill => skill.category === activeCategory);
   
@@ -23,8 +23,8 @@ export default function SkillsVisualization({ skills }: SkillsVisualizationProps
             onClick={() => setActiveCategory(category)}
             className={`px-3 py-1 text-sm rounded-full ${
               activeCategory === category 
-                ? 'bg-blue-600 text-white' 
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? "bg-blue-600 text-white" 
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
-} from 'react-simple-maps';
-import { feature } from 'topojson-client';
+} from "react-simple-maps";
+import { feature } from "topojson-client";
 
 // APAC country complexity data
 const apacComplexityData: Record<string, { score: number, rank: number, highlight: string }> = {
@@ -191,7 +191,7 @@ const ApacComplexityMap: React.FC = () => {
             scale: 250,
             center: [100, 15] // Centered on APAC region
           }}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: "100%", height: "100%" }}
         >
           <ZoomableGroup center={[100, 15]} zoom={1}>
             <Geographies geography={geoData}>
@@ -218,21 +218,21 @@ const ApacComplexityMap: React.FC = () => {
                       onMouseLeave={handleMouseLeave}
                       style={{
                         default: {
-                          fill: complexityData ? getComplexityColor(complexityData.score) : '#F1F5F9',
-                          stroke: '#FFFFFF',
+                          fill: complexityData ? getComplexityColor(complexityData.score) : "#F1F5F9",
+                          stroke: "#FFFFFF",
                           strokeWidth: 0.5,
-                          outline: 'none',
+                          outline: "none",
                         },
                         hover: {
-                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
-                          stroke: '#FFFFFF',
+                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : "#F1F5F9",
+                          stroke: "#FFFFFF",
                           strokeWidth: 0.5,
-                          outline: 'none',
-                          cursor: complexityData ? 'pointer' : 'default',
+                          outline: "none",
+                          cursor: complexityData ? "pointer" : "default",
                         },
                         pressed: {
-                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : '#F1F5F9',
-                          outline: 'none',
+                          fill: complexityData ? getComplexityHoverColor(complexityData.score) : "#F1F5F9",
+                          outline: "none",
                         },
                       }}
                     />

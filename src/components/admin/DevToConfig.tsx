@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
+import { useState, useEffect } from "react";
+import { FiCheckCircle, FiXCircle } from "react-icons/fi";
 
 interface DevToConfigProps {
   onApiKeyChange: (apiKey: string) => void;
@@ -15,7 +15,7 @@ interface ErrorDetails {
 }
 
 export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
-  const [apiKey, setApiKey] = useState('');
+  const [apiKey, setApiKey] = useState("");
   const [isTesting, setIsTesting] = useState(false);
   const [testResult, setTestResult] = useState<{
     success: boolean;
@@ -23,7 +23,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
   } | null>(null);
 
   useEffect(() => {
-    const savedApiKey = sessionStorage.getItem('devto_api_key');
+    const savedApiKey = sessionStorage.getItem("devto_api_key");
     if (savedApiKey) {
       setApiKey(savedApiKey);
       onApiKeyChange(savedApiKey);
@@ -32,7 +32,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
 
   const handleTestConnection = async () => {
     if (!apiKey) {
-      setTestResult({ success: false, message: 'Please enter your API key first' });
+      setTestResult({ success: false, message: "Please enter your API key first" });
       return;
     }
 
@@ -41,20 +41,20 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
 
     try {
       // Test the API key by making a request to our server-side API
-      const response = await fetch('/api/devto', {
-        method: 'POST',
+      const response = await fetch("/api/devto", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           apiKey,
-          action: 'test'
+          action: "test"
         })
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-        console.error('Server API Response:', {
+        const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
+        console.error("Server API Response:", {
           status: response.status,
           errorData
         });
@@ -67,7 +67,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
       }
 
       const data = await response.json();
-      console.log('Server API Success Response:', {
+      console.log("Server API Success Response:", {
         status: response.status,
         data
       });
@@ -76,21 +76,21 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
         success: true,
         message: `Successfully connected to DEV.to! Found ${data.length} articles.`
       });
-      sessionStorage.setItem('devto_api_key', apiKey);
+      sessionStorage.setItem("devto_api_key", apiKey);
       onApiKeyChange(apiKey);
     } catch (error: unknown) {
-      console.error('Error Details:', {
+      console.error("Error Details:", {
         error,
         name: error instanceof Error ? error.name : undefined,
         message: error instanceof Error ? error.message : undefined,
         stack: error instanceof Error ? error.stack : undefined
       });
       
-      let errorMessage = 'Connection failed';
+      let errorMessage = "Connection failed";
       if (error instanceof Error) {
         errorMessage = error.message;
       } else {
-        errorMessage = 'An unexpected error occurred while testing the connection.';
+        errorMessage = "An unexpected error occurred while testing the connection.";
       }
       
       setTestResult({
@@ -127,7 +127,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
             disabled={isTesting}
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 rounded-md disabled:opacity-50"
           >
-            {isTesting ? 'Testing...' : 'Test Connection'}
+            {isTesting ? "Testing..." : "Test Connection"}
           </button>
 
           {testResult && (
@@ -137,7 +137,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
               ) : (
                 <FiXCircle className="text-red-500" />
               )}
-              <span className={testResult.success ? 'text-green-600' : 'text-red-600'}>
+              <span className={testResult.success ? "text-green-600" : "text-red-600"}>
                 {testResult.message}
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function DevToConfig({ onApiKeyChange }: DevToConfigProps) {
         </div>
 
         <div className="text-sm text-gray-500">
-          Get your API key from{' '}
+          Get your API key from{" "}
           <a 
             href="https://dev.to/settings/extensions" 
             target="_blank" 

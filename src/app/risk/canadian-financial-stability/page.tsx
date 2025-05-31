@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import { 
   MortgageArrearsChart, 
   BusinessVulnerabilityChart, 
@@ -11,8 +11,8 @@ import {
   HousingVulnerabilityChart,
   InternationalContagionChart,
   ClimateRiskChart
-} from '../../../components/risk/CanadianFinancialCharts';
-import RiskReportCard from '../../../components/risk/RiskReportCard';
+} from "../../../components/risk/CanadianFinancialCharts";
+import RiskReportCard from "../../../components/risk/RiskReportCard";
 
 export default function CanadianFinancialStabilityPage() {
   return (
