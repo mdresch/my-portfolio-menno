@@ -163,7 +163,7 @@ function logWarning(message) {
  * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
  * @returns {string[]} An array of matching file paths, or an empty array on error.
  */
-function getFilesByGlob(pattern, cwd = process.cwd()) {
+function getFilesByGlobSync(pattern, cwd = process.cwd()) {
   if (typeof pattern !== 'string' || pattern.trim() === '') {
     logError('Error with glob: Pattern must be a non-empty string.', { pattern });
     return [];
@@ -174,6 +174,13 @@ function getFilesByGlob(pattern, cwd = process.cwd()) {
     return [];
   }
   try {
+    // Use glob.sync for synchronous matching
+    const glob = require('glob');
+    return glob.sync(pattern, { cwd });
+  } catch (error) {
+    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
+    return [];
+  }
 }
 
 /**
@@ -200,11 +207,6 @@ async function getFilesByGlob(pattern, cwd = process.cwd()) {
     return [];
   }
 }
-  } catch (error) {
-    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
-    return [];
-  }
-}
 
 module.exports = {
   safeReadFile,
@@ -218,6 +220,7 @@ module.exports = {
   logWarning,
   logError,
   getFilesByGlob,
+  getFilesByGlobSync,
   extractFirstParagraph,
   truncateString,
 };
