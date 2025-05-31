@@ -1,7 +1,6 @@
-"use client";
-
 import CrossPostClient from "./CrossPostClient";
 
-export default function CrossPostPage({ params }: { params: { slug: string } }) {
+// Loose typing for Next.js PageProps compatibility
+export default function CrossPostPage({ params }: any) {
   return <CrossPostClient slug={params.slug} />;
 }
