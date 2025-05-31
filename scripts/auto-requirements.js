@@ -22,8 +22,11 @@ const REQUIREMENTS_AGENT_API = 'http://localhost:3000/api/requirements-agent';
 // Ensure requirements directory exists
 try {
   utils.ensureDirExists(REQUIREMENTS_DIR);
+  // Potentially other critical setup steps that could throw
 } catch (error) {
-  utils.logError('Error creating requirements directory:', error);
+  utils.logError('Error during critical setup (e.g., creating requirements directory):', error);
+  // No explicit cleanup needed; nothing to clean up at this stage.
+  console.error('The script encountered an unrecoverable error during setup and will now exit.');
   process.exit(1);
 }
 
@@ -386,13 +389,4 @@ function saveDataModel() {
       const roles = await callRequirementsAgent(businessProblem);
       try {
         saveRequirementsOutput(roles);
-      } catch (error) {
-        utils.logError('Error saving requirements agent output:', error);
-      }
-    } else {
-      console.log('Requirements agent output not updated because the business problem statement did not change.');
-    }
-  } catch (error) {
-    utils.logError('Error running requirements agent or saving output:', error);
-  }
-})();
+      } catch (error
