@@ -1,102 +1,101 @@
 // scripts/utils.js
 // Utility functions for file system, JSON, string, and logging operations
 
-const fs = require('fs');
+const fs = require('fs/promises');
 const path = require('path');
 const glob = require('glob');
 
 /**
- * Safely reads a file and returns its content, or null if error.
+ * Reads a file and returns its contents as a string.
+ * Returns null if the file does not exist or an error occurs.
  * @param {string} filePath
- * @param {string} [encoding='utf-8']
- * @returns {string|null}
+ * @returns {Promise<string|null>}
  */
-function safeReadFile(filePath, encoding = 'utf-8') {
+async function safeReadFile(filePath) {
   try {
-    return fs.readFileSync(filePath, encoding);
-  } catch (error) {
-    logError(`Error reading file: ${filePath}`, error);
+    return await fs.readFile(filePath, 'utf8');
+  } catch (err) {
     return null;
   }
 }
 
 /**
- * Safely writes content to a file, returns true if successful.
+ * Writes data to a file. Creates the parent directory if it doesn't exist.
  * @param {string} filePath
- * @param {string} content
- * @param {string} [encoding='utf-8']
- * @returns {boolean}
+ * @param {string|Buffer} data
+ * @returns {Promise<void>}
  */
-function safeWriteFile(filePath, content, encoding = 'utf-8') {
+async function safeWriteFile(filePath, data) {
   try {
-    fs.writeFileSync(filePath, content, encoding);
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, data);
+  } catch (err) {
+    throw err;
+  }
+}
+
+/**
+ * Checks if a given path exists.
+ * @param {string} targetPath
+ * @returns {Promise<boolean>}
+ */
+async function pathExists(targetPath) {
+  try {
+    await fs.access(targetPath);
     return true;
-  } catch (error) {
-    logError(`Error writing file: ${filePath}`, error);
+  } catch {
     return false;
   }
 }
 
 /**
- * Safely parses a JSON string, returns object or null if error.
- * @param {string} str
- * @returns {object|null}
+ * Ensures a directory exists, creating it if necessary.
+ * @param {string} dirPath
+ * @returns {Promise<void>}
  */
-function safeParseJSON(str) {
+async function ensureDirectory(dirPath) {
+  await fs.mkdir(dirPath, { recursive: true });
+}
+
+/**
+ * Parses a JSON string or file contents safely.
+ * Returns null if parsing fails.
+ * @param {string} jsonString
+ * @returns {any|null}
+ */
+function safeParseJson(jsonString) {
   try {
-    return JSON.parse(str);
-  } catch (error) {
-    logError('Error parsing JSON string', error);
+    return JSON.parse(jsonString);
+  } catch {
     return null;
   }
 }
 
 /**
- * Safely stringifies an object to JSON, returns string or null if error.
- * @param {object} obj
+ * Stringifies an object to JSON with standard indentation (2 spaces).
+ * Returns null if stringification fails.
+ * @param {any} obj
  * @returns {string|null}
  */
-function safeStringifyJSON(obj) {
+function safeStringifyJson(obj) {
   if (obj === undefined || obj === null) return null;
   try {
     return JSON.stringify(obj, null, 2);
-  } catch (error) {
-    logError('Error stringifying JSON object', error);
+  } catch {
     return null;
   }
 }
 
 /**
- * Ensures a directory exists, creates it if not present.
- * @param {string} dirPath
+ * Loads and parses a JSON file safely.
+ * Returns null if the file does not exist or parsing fails.
+ * @param {string} filePath
+ * @returns {Promise<any|null>}
  */
-function ensureDirExists(dirPath) {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-}
-
-/**
- * Gets files matching a glob pattern in a directory.
- * @param {string} pattern The glob pattern to match.
- * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
- * @returns {string[]} An array of matching file paths, or an empty array on error.
- */
-function getFilesByGlob(pattern, cwd = process.cwd()) {
-  if (typeof pattern !== 'string' || pattern.trim() === '') {
-    logError('Error with glob: Pattern must be a non-empty string.', { pattern });
-    return [];
-  }
-  if (typeof cwd !== 'string' || cwd.trim() === '') {
-    logError('Error with glob: CWD must be a non-empty string.', { cwd });
-    return [];
-  }
-  try {
-    return glob.sync(pattern, { cwd });
-  } catch (error) {
-    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
-    return [];
-  }
+async function loadJsonFile(filePath) {
+  const content = await safeReadFile(filePath);
+  if (content === null) return null;
+  return safeParseJson(content);
 }
 
 /**
@@ -142,14 +141,86 @@ function logError(message, error) {
   }
 }
 
+/**
+ * Logs an info message with a standard prefix.
+ * @param {string} message
+ */
+function logInfo(message) {
+  console.log(`[INFO] ${message}`);
+}
+
+/**
+ * Logs a warning message with a standard prefix.
+ * @param {string} message
+ */
+function logWarning(message) {
+  console.warn(`[WARN] ${message}`);
+}
+
+/**
+ * Gets files matching a glob pattern in a directory (sync for compatibility).
+ * @param {string} pattern The glob pattern to match.
+ * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
+ * @returns {string[]} An array of matching file paths, or an empty array on error.
+ */
+function getFilesByGlobSync(pattern, cwd = process.cwd()) {
+  if (typeof pattern !== 'string' || pattern.trim() === '') {
+    logError('Error with glob: Pattern must be a non-empty string.', { pattern });
+    return [];
+  }
+  // Validate cwd
+  if (typeof cwd !== 'string' || cwd.trim() === '') {
+    logError('Error with glob: CWD must be a non-empty string.', { cwd });
+    return [];
+  }
+  try {
+    // Use glob.sync for synchronous matching
+    const glob = require('glob');
+    return glob.sync(pattern, { cwd });
+  } catch (error) {
+    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
+    return [];
+  }
+}
+
+/**
+ * Gets files matching a glob pattern in a directory (async for better performance).
+ * @param {string} pattern The glob pattern to match.
+ * @param {string} [cwd=process.cwd()] Optional. The current working directory. Defaults to `process.cwd()`.
+ * @returns {Promise<string[]>} A promise that resolves to an array of matching file paths, or an empty array on error.
+ */
+async function getFilesByGlob(pattern, cwd = process.cwd()) {
+  if (typeof pattern !== 'string' || pattern.trim() === '') {
+    logError('Error with glob: Pattern must be a non-empty string.', { pattern });
+    return [];
+  }
+  // Validate cwd
+  if (typeof cwd !== 'string' || cwd.trim() === '') {
+    logError('Error with glob: CWD must be a non-empty string.', { cwd });
+    return [];
+  }
+  try {
+    const { glob } = await import('glob');
+    return await glob(pattern, { cwd });
+  } catch (error) {
+    logError(`Error with glob pattern: "${pattern}" in CWD: "${cwd}"`, error);
+    return [];
+  }
+}
+
 module.exports = {
   safeReadFile,
   safeWriteFile,
-  safeParseJSON,
-  safeStringifyJSON,
-  ensureDirExists,
+  pathExists,
+  ensureDirectory,
+  safeParseJson,
+  safeStringifyJson,
+  loadJsonFile,
+  logInfo,
+  logWarning,
+  logError,
   getFilesByGlob,
+  getFilesByGlobSync,
   extractFirstParagraph,
   truncateString,
-  logError
 };
