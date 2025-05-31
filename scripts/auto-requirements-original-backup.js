@@ -327,7 +327,9 @@ async function generateStrategicSections(statement, stack, contextBundle) {
 }
 
 async function saveStrategicSections(statement, data) {
-  console.log('LLM strategicSections data received:', JSON.stringify(data, null, 2));
+  // Sanitize data before logging to prevent log injection
+  const sanitizedData = sanitizeForLogging(JSON.stringify(data, null, 2));
+  console.log('LLM strategicSections data received:', sanitizedData);
   const { vision, mission, coreValues, purpose } = data;
   const coreValuesSection = coreValues && coreValues.length > 0 ? coreValues.map(v => `- ${v}`).join('\n') : '';
 

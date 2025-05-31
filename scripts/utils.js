@@ -1,9 +1,9 @@
 // scripts/utils.js
 // Utility functions for file system, JSON, string, and logging operations
 
-import fs from 'fs/promises';
-import path from 'path';
-import { glob } from 'glob';
+const fs = require('fs/promises');
+const path = require('path');
+const { glob } = require('glob');
 
 /**
  * Security function to sanitize content for logging
@@ -227,7 +227,7 @@ async function getFilesByGlob(pattern, cwd = process.cwd()) {
 }
 
 // At the end of the file, export all functions as named exports
-export {
+module.exports = {
   sanitizeForLogging,
   safeReadFile,
   safeWriteFile,
