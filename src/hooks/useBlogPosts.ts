@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { BlogService } from '@/lib/api-services';
-import { BlogPost } from '@/types/api';
+import { useState, useEffect } from "react";
+import { BlogService } from "@/lib/api-services";
+import { BlogPost } from "@/types/api";
 
 export function useBlogPosts() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -15,7 +15,7 @@ export function useBlogPosts() {
         setBlogPosts(data);
         setError(null);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Failed to load blog posts'));
+        setError(err instanceof Error ? err : new Error("Failed to load blog posts"));
       } finally {
         setIsLoading(false);
       }

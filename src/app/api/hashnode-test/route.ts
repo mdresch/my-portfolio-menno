@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
@@ -6,16 +6,16 @@ export async function POST(request: NextRequest) {
     
     if (!query || !token) {
       return NextResponse.json({
-        error: 'Query and token are required'
+        error: "Query and token are required"
       }, { status: 400 });
     }
     
     // Execute the provided GraphQL query
-    const response = await fetch('https://gql.hashnode.com', {
-      method: 'POST',
+    const response = await fetch("https://gql.hashnode.com", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
+        "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify({ query })
     });
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error instanceof Error ? error.message : 'Unknown error'
+      error: error instanceof Error ? error.message : "Unknown error"
     }, { status: 500 });
   }
 }

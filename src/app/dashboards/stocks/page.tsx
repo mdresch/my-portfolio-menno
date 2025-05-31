@@ -1,32 +1,32 @@
 "use client";
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { mockCompanies } from '../../../data/mockCompanies';
+import React, { useState } from "react";
+import Link from "next/link";
+import { mockCompanies } from "../../../data/mockCompanies";
 
 // Mock data for global indices
 const indices = [
-  { name: 'S&P 500', region: 'US', value: 5200, change: '+0.8%', companies: 500, sectors: 11, segments: ['Large Cap', 'Growth', 'Value'] },
-  { name: 'Dow Jones', region: 'US', value: 39000, change: '+0.5%', companies: 30, sectors: 9, segments: ['Blue Chip'] },
-  { name: 'NASDAQ', region: 'US', value: 16500, change: '+1.2%', companies: 3500, sectors: 11, segments: ['Tech', 'Growth'] },
-  { name: 'FTSE 100', region: 'UK', value: 8000, change: '+0.3%', companies: 100, sectors: 10, segments: ['Large Cap'] },
-  { name: 'DAX', region: 'Germany', value: 18500, change: '+0.6%', companies: 40, sectors: 10, segments: ['Large Cap'] },
-  { name: 'Nikkei 225', region: 'Japan', value: 40000, change: '+1.0%', companies: 225, sectors: 10, segments: ['Large Cap'] },
-  { name: 'Hang Seng', region: 'Hong Kong', value: 18000, change: '-0.2%', companies: 50, sectors: 10, segments: ['Large Cap'] },
-  { name: 'CAC 40', region: 'France', value: 8200, change: '+0.4%', companies: 40, sectors: 10, segments: ['Large Cap'] },
-  { name: 'SSE Composite', region: 'China', value: 3200, change: '+0.1%', companies: 1500, sectors: 11, segments: ['All Cap'] },
-  { name: 'SMI', region: 'Switzerland', value: 11200, change: '+0.3%', companies: 20, sectors: 10, segments: ['Large Cap'] },
-  { name: 'AEX', region: 'Netherlands', value: 880, change: '+0.5%', companies: 25, sectors: 9, segments: ['Large Cap'] },
+  { name: "S&P 500", region: "US", value: 5200, change: "+0.8%", companies: 500, sectors: 11, segments: ["Large Cap", "Growth", "Value"] },
+  { name: "Dow Jones", region: "US", value: 39000, change: "+0.5%", companies: 30, sectors: 9, segments: ["Blue Chip"] },
+  { name: "NASDAQ", region: "US", value: 16500, change: "+1.2%", companies: 3500, sectors: 11, segments: ["Tech", "Growth"] },
+  { name: "FTSE 100", region: "UK", value: 8000, change: "+0.3%", companies: 100, sectors: 10, segments: ["Large Cap"] },
+  { name: "DAX", region: "Germany", value: 18500, change: "+0.6%", companies: 40, sectors: 10, segments: ["Large Cap"] },
+  { name: "Nikkei 225", region: "Japan", value: 40000, change: "+1.0%", companies: 225, sectors: 10, segments: ["Large Cap"] },
+  { name: "Hang Seng", region: "Hong Kong", value: 18000, change: "-0.2%", companies: 50, sectors: 10, segments: ["Large Cap"] },
+  { name: "CAC 40", region: "France", value: 8200, change: "+0.4%", companies: 40, sectors: 10, segments: ["Large Cap"] },
+  { name: "SSE Composite", region: "China", value: 3200, change: "+0.1%", companies: 1500, sectors: 11, segments: ["All Cap"] },
+  { name: "SMI", region: "Switzerland", value: 11200, change: "+0.3%", companies: 20, sectors: 10, segments: ["Large Cap"] },
+  { name: "AEX", region: "Netherlands", value: 880, change: "+0.5%", companies: 25, sectors: 9, segments: ["Large Cap"] },
 ];
 
 const sectors = [
-  'Information Technology', 'Health Care', 'Financials', 'Consumer Discretionary',
-  'Communication Services', 'Industrials', 'Consumer Staples', 'Energy',
-  'Utilities', 'Real Estate', 'Materials'
+  "Information Technology", "Health Care", "Financials", "Consumer Discretionary",
+  "Communication Services", "Industrials", "Consumer Staples", "Energy",
+  "Utilities", "Real Estate", "Materials"
 ];
 
 export default function StocksDashboardPage() {
-  const [selectedSector, setSelectedSector] = useState('All');
-  const [selectedIndex, setSelectedIndex] = useState('All');
+  const [selectedSector, setSelectedSector] = useState("All");
+  const [selectedIndex, setSelectedIndex] = useState("All");
 
   // Get unique indices from mockCompanies, filter out empty/falsey values
   const indicesList = Array.from(new Set(mockCompanies.map(c => c.index).filter(index => !!index)));
@@ -35,8 +35,8 @@ export default function StocksDashboardPage() {
 
   // Filter companies based on selected sector and index
   const filteredCompanies = mockCompanies.filter(c => {
-    const sectorMatch = selectedSector === 'All' || c.sector === selectedSector;
-    const indexMatch = selectedIndex === 'All' || c.index === selectedIndex;
+    const sectorMatch = selectedSector === "All" || c.sector === selectedSector;
+    const indexMatch = selectedIndex === "All" || c.index === selectedIndex;
     return sectorMatch && indexMatch;
   });
 
@@ -67,7 +67,7 @@ export default function StocksDashboardPage() {
                   <td className="px-3 py-2">{idx.change}</td>
                   <td className="px-3 py-2">{idx.companies}</td>
                   <td className="px-3 py-2">{idx.sectors}</td>
-                  <td className="px-3 py-2">{idx.segments.join(', ')}</td>
+                  <td className="px-3 py-2">{idx.segments.join(", ")}</td>
                 </tr>
               ))}
             </tbody>
@@ -145,7 +145,7 @@ export default function StocksDashboardPage() {
                   <td className="px-3 py-2">{c.sector}</td>
                   <td className="px-3 py-2">{c.index}</td>
                   <td className="px-3 py-2">{c.price}</td>
-                  <td className={`px-3 py-2 ${typeof c.change === 'string' && c.change.startsWith('+') ? 'text-green-600 dark:text-green-300' : typeof c.change === 'string' && c.change.startsWith('-') ? 'text-red-600 dark:text-red-300' : 'text-gray-500 dark:text-gray-400'}`}>{c.change}</td>
+                  <td className={`px-3 py-2 ${typeof c.change === "string" && c.change.startsWith("+") ? "text-green-600 dark:text-green-300" : typeof c.change === "string" && c.change.startsWith("-") ? "text-red-600 dark:text-red-300" : "text-gray-500 dark:text-gray-400"}`}>{c.change}</td>
                   <td className="px-3 py-2">{c.summary.marketCap}</td>
                   <td className="px-3 py-2">{c.summary.pe}</td>
                   <td className="px-3 py-2">{c.summary.yield}</td>
@@ -165,8 +165,8 @@ export default function StocksDashboardPage() {
                 <h3 className="text-xl font-bold">{company.name}</h3>
                 <div className="text-right">
                   <p className="text-lg font-semibold">{company.price}</p>
-                  <p className={`text-sm ${typeof company.change === 'string' && company.change.startsWith('+') ? 'text-green-600 dark:text-green-300' : typeof company.change === 'string' && company.change.startsWith('-') ? 'text-red-600 dark:text-red-300' : 'text-gray-500 dark:text-gray-400'}`}>
-                    {company.change ?? 'N/A'}
+                  <p className={`text-sm ${typeof company.change === "string" && company.change.startsWith("+") ? "text-green-600 dark:text-green-300" : typeof company.change === "string" && company.change.startsWith("-") ? "text-red-600 dark:text-red-300" : "text-gray-500 dark:text-gray-400"}`}>
+                    {company.change ?? "N/A"}
                   </p>
                 </div>
               </div>

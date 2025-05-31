@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { generateAIResponse, generateAIResponseDirect, availableModels } from '@/lib/firebase';
-import FirebaseAIShowcase from '@/components/FirebaseAIShowcase';
+import { useState, useEffect } from "react";
+import { generateAIResponse, generateAIResponseDirect, availableModels } from "@/lib/firebase";
+import FirebaseAIShowcase from "@/components/FirebaseAIShowcase";
 
 const AILogicPage = () => {
-  const [activeTab, setActiveTab] = useState<'showcase' | 'custom'>('showcase');
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
+  const [activeTab, setActiveTab] = useState<"showcase" | "custom">("showcase");
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash');
+  const [selectedModel, setSelectedModel] = useState("gemini-2.0-flash");
   const [useDirectAPI, setUseDirectAPI] = useState(true);
 
   const handleGenerateResponse = async () => {
@@ -25,8 +25,8 @@ const AILogicPage = () => {
       }
       setResponse(result);
     } catch (error) {
-      console.error('Error generating response:', error);
-      setResponse('Error generating response. Please check your Firebase configuration and try again.');
+      console.error("Error generating response:", error);
+      setResponse("Error generating response. Please check your Firebase configuration and try again.");
     } finally {
       setIsLoading(false);
     }
@@ -50,21 +50,21 @@ const AILogicPage = () => {
           <div className="flex justify-center mb-8">
             <div className="bg-white/10 backdrop-blur-md rounded-lg p-1">
               <button
-                onClick={() => setActiveTab('showcase')}
+                onClick={() => setActiveTab("showcase")}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                  activeTab === 'showcase'
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                    : 'text-white/70 hover:text-white'
+                  activeTab === "showcase"
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 AI Showcase
               </button>
               <button
-                onClick={() => setActiveTab('custom')}
+                onClick={() => setActiveTab("custom")}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                  activeTab === 'custom'
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                    : 'text-white/70 hover:text-white'
+                  activeTab === "custom"
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 Custom Chat
@@ -73,7 +73,7 @@ const AILogicPage = () => {
           </div>
 
           {/* Content based on active tab */}
-          {activeTab === 'showcase' ? (
+          {activeTab === "showcase" ? (
             <FirebaseAIShowcase />
           ) : (
             <div className="space-y-6">
@@ -124,7 +124,7 @@ const AILogicPage = () => {
                 >
                   {availableModels.map((modelName) => (
                     <option key={modelName} value={modelName} className="text-black">
-                      {modelName.replace('-', ' ').replace('exp', 'Experimental')}
+                      {modelName.replace("-", " ").replace("exp", "Experimental")}
                     </option>
                   ))}
                 </select>
@@ -146,7 +146,7 @@ const AILogicPage = () => {
                   disabled={isLoading || !prompt.trim()}
                   className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
-                  {isLoading ? 'Generating...' : 'Generate Response'}
+                  {isLoading ? "Generating..." : "Generate Response"}
                 </button>
               </div>
 

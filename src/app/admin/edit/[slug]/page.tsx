@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
 // Dynamically import the editor to avoid SSR issues
-const MarkdownEditor = dynamic(() => import('../../../../components/admin/MarkdownEditor'), {
+const MarkdownEditor = dynamic(() => import("../../../../components/admin/MarkdownEditor"), {
   ssr: false,
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });
@@ -31,24 +31,24 @@ export default function EditPostPage() {
   const [success, setSuccess] = useState(false);
 
   // Form state
-  const [title, setTitle] = useState('');
-  const [postSlug, setPostSlug] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [categories, setCategories] = useState(['']);
-  const [content, setContent] = useState('');
-  const [date, setDate] = useState('');
-  const [author, setAuthor] = useState('');
-  const [originalContent, setOriginalContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [postSlug, setPostSlug] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [categories, setCategories] = useState([""]);
+  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+  const [author, setAuthor] = useState("");
+  const [originalContent, setOriginalContent] = useState("");
 
   // GitHub credentials
-  const [githubToken, setGithubToken] = useState('');
+  const [githubToken, setGithubToken] = useState("");
   useEffect(() => {
     // Check if user is authenticated
-    const adminAuth = localStorage.getItem('adminAuth');
-    const token = localStorage.getItem('githubToken');
+    const adminAuth = localStorage.getItem("adminAuth");
+    const token = localStorage.getItem("githubToken");
 
     if (!adminAuth) {
-      router.push('/admin');
+      router.push("/admin");
       return;
     }
 
@@ -57,7 +57,7 @@ export default function EditPostPage() {
       setGithubToken(token);
       // Fetch the post data
       fetchPost(slug, token);    } else {
-      setError('GitHub token is required to edit posts. Please add it in Settings.');
+      setError("GitHub token is required to edit posts. Please add it in Settings.");
     }
     setIsLoading(false);
   }, [slug, router]);
@@ -66,7 +66,7 @@ export default function EditPostPage() {
   const fetchPost = async (slug, token) => {
     try {
       setIsLoading(true);
-      setError('');
+      setError("");
 
       const endpoint = token
         ? `/api/github-posts?slug=${slug}&token=${token}`
@@ -82,19 +82,19 @@ export default function EditPostPage() {
       const post = await response.json();
 
       // Populate form with post data
-      setTitle(post.title || '');
+      setTitle(post.title || "");
       setPostSlug(post.slug || slug);
-      setExcerpt(post.excerpt || '');
-      setCategories(post.categories && post.categories.length > 0 ? post.categories : ['']);
-      setContent(post.content || '');
-      setDate(post.date ? new Date(post.date).toISOString().split('T')[0] : '');
-      setAuthor(post.author || '');
-      setOriginalContent(post.content || '');
+      setExcerpt(post.excerpt || "");
+      setCategories(post.categories && post.categories.length > 0 ? post.categories : [""]);
+      setContent(post.content || "");
+      setDate(post.date ? new Date(post.date).toISOString().split("T")[0] : "");
+      setAuthor(post.author || "");
+      setOriginalContent(post.content || "");
       setPost(post); // <-- Fix: set the post state so the form renders
 
     } catch (err) {
-      console.error('Error fetching post:', err);
-      setError(err.message || 'Failed to fetch post');
+      console.error("Error fetching post:", err);
+      setError(err.message || "Failed to fetch post");
     } finally {
       setIsLoading(false);
     }
@@ -104,8 +104,8 @@ export default function EditPostPage() {
   const generateSlug = (title) => {
     return title
       .toLowerCase()
-      .replace(/[^\w\s]/gi, '')
-      .replace(/\s+/g, '-');
+      .replace(/[^\w\s]/gi, "")
+      .replace(/\s+/g, "-");
   };
 
   // Handle title change
@@ -114,7 +114,7 @@ export default function EditPostPage() {
     setTitle(newTitle);
 
     // Only auto-update slug if it hasn't been manually edited or is the same as original
-    if (postSlug === slug || postSlug === '') {
+    if (postSlug === slug || postSlug === "") {
       setPostSlug(generateSlug(newTitle));
     }
   };
@@ -128,7 +128,7 @@ export default function EditPostPage() {
 
   // Add new category field
   const addCategory = () => {
-    setCategories([...categories, '']);
+    setCategories([...categories, ""]);
   };
 
   // Remove category field
@@ -145,37 +145,37 @@ export default function EditPostPage() {
     e.preventDefault();
 
     if (!githubToken) {
-      setError('GitHub token is required. Please add it in Settings tab.');
+      setError("GitHub token is required. Please add it in Settings tab.");
       return;
     }
 
     if (!title || !postSlug || !content) {
-      setError('Title, slug, and content are required fields.');
+      setError("Title, slug, and content are required fields.");
       return;
     }
 
     setIsSaving(true);
-    setError('');
+    setError("");
 
     // Filter out empty categories
-    const filteredCategories = categories.filter(cat => cat.trim() !== '');
+    const filteredCategories = categories.filter(cat => cat.trim() !== "");
 
     // Create frontmatter
     const frontmatter = `---
 title: ${title}
-date: ${date || new Date().toISOString().split('T')[0]}
+date: ${date || new Date().toISOString().split("T")[0]}
 author: ${author}
 excerpt: ${excerpt}
-categories: [${filteredCategories.join(', ')}]
+categories: [${filteredCategories.join(", ")}]
 ---
 
 ${content}`;
 
     try {
-      const response = await fetch('/api/github/update-post', {
-        method: 'POST',
+      const response = await fetch("/api/github/update-post", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           token: githubToken,
@@ -189,18 +189,18 @@ ${content}`;
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to update post');
+        throw new Error(data.error || "Failed to update post");
       }
 
       setSuccess(true);
       // Redirect after short delay
       setTimeout(() => {
-        router.push('/admin');
+        router.push("/admin");
       }, 2000);
 
     } catch (err) {
-      console.error('Error updating post:', err);
-      setError(err.message || 'Failed to update post. Please try again.');
+      console.error("Error updating post:", err);
+      setError(err.message || "Failed to update post. Please try again.");
     } finally {
       setIsSaving(false);
     }
@@ -218,7 +218,7 @@ ${content}`;
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
         <h1 className="text-xl font-semibold text-red-600 mb-4">Error</h1>
-        <p>{error || 'Post not found'}</p>
+        <p>{error || "Post not found"}</p>
         <Link href="/admin/dashboard" className="text-blue-600 hover:underline mt-4 inline-block">
           Back to Admin
         </Link>
@@ -409,11 +409,11 @@ ${content}`;
                 disabled={isSaving}
                 className={`px-4 py-2 rounded-md font-medium ${
                   isSaving
-                    ? 'bg-blue-400 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                    ? "bg-blue-400 cursor-not-allowed"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
                 }`}
               >
-                {isSaving ? 'Updating Post...' : 'Update Post'}
+                {isSaving ? "Updating Post..." : "Update Post"}
               </button>
             </div>
           </form>

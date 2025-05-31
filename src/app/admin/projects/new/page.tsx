@@ -1,7 +1,7 @@
 "use client";
-import ProjectForm from '../../../../components/ProjectForm';
-import { useRouter } from 'next/navigation';
-import type { Project } from '../../../../components/ProjectForm';
+import ProjectForm from "../../../../components/ProjectForm";
+import { useRouter } from "next/navigation";
+import type { Project } from "../../../../components/ProjectForm";
 
 export default function NewProjectPage() {
   const router = useRouter();
@@ -9,15 +9,15 @@ export default function NewProjectPage() {
   const handleSubmit = async (project: Project) => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/projects`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(project),
       });
-      if (!res.ok) throw new Error('Failed to create project');
-      router.push('/admin');
+      if (!res.ok) throw new Error("Failed to create project");
+      router.push("/admin");
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      alert('Error creating project: ' + message);
+      alert("Error creating project: " + message);
     }
   };
 

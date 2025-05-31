@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { genkit } from 'genkit';
-import { enableFirebaseTelemetry } from '@genkit-ai/firebase';
-import { gemini15Flash, googleAI } from '@genkit-ai/googleai';
+import { NextRequest, NextResponse } from "next/server";
+import { genkit } from "genkit";
+import { enableFirebaseTelemetry } from "@genkit-ai/firebase";
+import { gemini15Flash, googleAI } from "@genkit-ai/googleai";
 
 enableFirebaseTelemetry();
 
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ suggestion: text });
   } catch (err: unknown) {
-    const errorMessage = err instanceof Error ? err.message : 'Genkit POST error';
+    const errorMessage = err instanceof Error ? err.message : "Genkit POST error";
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

@@ -1,30 +1,30 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 import Link from "next/link";
 
 // Mock data for major currency pairs and strength
 const currencyPairs = [
-  { pair: 'EUR/USD', rate: 1.08, change: '+0.2%', base: 'EUR', quote: 'USD', strength: 'Neutral' },
-  { pair: 'USD/JPY', rate: 154.2, change: '-0.1%', base: 'USD', quote: 'JPY', strength: 'Strong USD' },
-  { pair: 'GBP/USD', rate: 1.25, change: '+0.1%', base: 'GBP', quote: 'USD', strength: 'Neutral' },
-  { pair: 'USD/CHF', rate: 0.91, change: '+0.3%', base: 'USD', quote: 'CHF', strength: 'Strong USD' },
-  { pair: 'AUD/USD', rate: 0.65, change: '-0.2%', base: 'AUD', quote: 'USD', strength: 'Weak AUD' },
-  { pair: 'USD/CAD', rate: 1.37, change: '+0.1%', base: 'USD', quote: 'CAD', strength: 'Strong USD' },
-  { pair: 'EUR/GBP', rate: 0.86, change: '0.0%', base: 'EUR', quote: 'GBP', strength: 'Neutral' },
-  { pair: 'EUR/JPY', rate: 166.5, change: '+0.1%', base: 'EUR', quote: 'JPY', strength: 'Strong EUR' },
-  { pair: 'USD/CNY', rate: 7.24, change: '+0.1%', base: 'USD', quote: 'CNY', strength: 'Strong USD' },
-  { pair: 'USD/INR', rate: 83.4, change: '+0.1%', base: 'USD', quote: 'INR', strength: 'Strong USD' },
+  { pair: "EUR/USD", rate: 1.08, change: "+0.2%", base: "EUR", quote: "USD", strength: "Neutral" },
+  { pair: "USD/JPY", rate: 154.2, change: "-0.1%", base: "USD", quote: "JPY", strength: "Strong USD" },
+  { pair: "GBP/USD", rate: 1.25, change: "+0.1%", base: "GBP", quote: "USD", strength: "Neutral" },
+  { pair: "USD/CHF", rate: 0.91, change: "+0.3%", base: "USD", quote: "CHF", strength: "Strong USD" },
+  { pair: "AUD/USD", rate: 0.65, change: "-0.2%", base: "AUD", quote: "USD", strength: "Weak AUD" },
+  { pair: "USD/CAD", rate: 1.37, change: "+0.1%", base: "USD", quote: "CAD", strength: "Strong USD" },
+  { pair: "EUR/GBP", rate: 0.86, change: "0.0%", base: "EUR", quote: "GBP", strength: "Neutral" },
+  { pair: "EUR/JPY", rate: 166.5, change: "+0.1%", base: "EUR", quote: "JPY", strength: "Strong EUR" },
+  { pair: "USD/CNY", rate: 7.24, change: "+0.1%", base: "USD", quote: "CNY", strength: "Strong USD" },
+  { pair: "USD/INR", rate: 83.4, change: "+0.1%", base: "USD", quote: "INR", strength: "Strong USD" },
 ];
 
 export default function CurrenciesPage() {
   const handleRowClick = (pair: string) => {
-    window.location.assign(`/dashboards/currencies/${pair.replace('/', '-')}`);
+    window.location.assign(`/dashboards/currencies/${pair.replace("/", "-")}`);
   };
 
   const handleRowKeyDown = (e: React.KeyboardEvent<HTMLTableRowElement>, pair: string) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      window.location.assign(`/dashboards/currencies/${pair.replace('/', '-')}`);
+    if (e.key === "Enter" || e.key === " ") {
+      window.location.assign(`/dashboards/currencies/${pair.replace("/", "-")}`);
     }
   };
 
@@ -56,7 +56,7 @@ export default function CurrenciesPage() {
                   aria-label={`View details for ${pair.pair}`}
                 >
                   <td className="px-3 py-2 font-medium text-gray-900 dark:text-gray-100 underline">
-                    <Link href={`/dashboards/currencies/${pair.pair.replace('/', '-')}`}>{pair.pair}</Link>
+                    <Link href={`/dashboards/currencies/${pair.pair.replace("/", "-")}`}>{pair.pair}</Link>
                   </td>
                   <td className="px-3 py-2 text-gray-700 dark:text-gray-200">{pair.rate}</td>
                   <td className="px-3 py-2 text-gray-700 dark:text-gray-200">{pair.change}</td>

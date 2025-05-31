@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export default function Top10MostComplexPage() {
   return (
@@ -93,7 +93,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '95%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "95%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -102,7 +102,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -111,7 +111,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium-High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '70%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "70%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -120,7 +120,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -192,7 +192,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -201,7 +201,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '88%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "88%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -210,7 +210,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '65%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "65%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -219,7 +219,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -279,7 +279,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '88%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "88%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -288,7 +288,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -297,7 +297,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Low</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '75%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "75%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -306,7 +306,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -367,7 +367,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '82%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "82%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -376,7 +376,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '78%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "78%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -385,7 +385,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium-High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '68%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "68%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -394,7 +394,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -462,7 +462,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '86%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "86%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -471,7 +471,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -480,7 +480,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Low</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '25%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "25%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -489,7 +489,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Low</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '30%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "30%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -550,7 +550,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -559,7 +559,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very Low</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '20%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "20%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -568,7 +568,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '95%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "95%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -577,7 +577,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -648,7 +648,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -657,7 +657,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -666,7 +666,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -675,7 +675,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '60%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "60%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -737,7 +737,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -746,7 +746,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '82%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "82%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -755,7 +755,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '60%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "60%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -764,7 +764,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '78%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "78%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -825,7 +825,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very Low</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '20%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "20%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -834,7 +834,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '82%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "82%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -843,7 +843,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '85%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "85%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -852,7 +852,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -923,7 +923,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Very High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '88%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "88%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -932,7 +932,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '82%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "82%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -941,7 +941,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">High</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: '78%' }}></div>
+                        <div className="bg-red-500 h-2.5 rounded-full" style={{ width: "78%" }}></div>
                       </div>
                     </div>
                     <div>
@@ -950,7 +950,7 @@ export default function Top10MostComplexPage() {
                         <span className="text-sm font-medium">Medium</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '55%' }}></div>
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: "55%" }}></div>
                       </div>
                     </div>
                   </div>
@@ -991,7 +991,7 @@ export default function Top10MostComplexPage() {
                     <span className="text-sm font-medium">43%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-yellow-500 h-2.5 rounded-full" style={{ width: '43%' }}></div>
+                    <div className="bg-yellow-500 h-2.5 rounded-full" style={{ width: "43%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -1000,7 +1000,7 @@ export default function Top10MostComplexPage() {
                     <span className="text-sm font-medium">80%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: "80%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -1009,7 +1009,7 @@ export default function Top10MostComplexPage() {
                     <span className="text-sm font-medium">79%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '79%' }}></div>
+                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: "79%" }}></div>
                   </div>
                 </div>
                 <div>
@@ -1018,7 +1018,7 @@ export default function Top10MostComplexPage() {
                     <span className="text-sm font-medium">90%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                    <div className="bg-green-500 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                   </div>
                 </div>
               </div>
@@ -1157,7 +1157,7 @@ export default function Top10MostComplexPage() {
                       <span className="text-sm font-medium">88%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '88%' }}></div>
+                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: "88%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -1166,7 +1166,7 @@ export default function Top10MostComplexPage() {
                       <span className="text-sm font-medium">90%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '90%' }}></div>
+                      <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: "90%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -1175,7 +1175,7 @@ export default function Top10MostComplexPage() {
                       <span className="text-sm font-medium">56%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: '56%' }}></div>
+                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: "56%" }}></div>
                     </div>
                   </div>
                   <div>
@@ -1184,7 +1184,7 @@ export default function Top10MostComplexPage() {
                       <span className="text-sm font-medium">62%</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: '62%' }}></div>
+                      <div className="bg-green-600 h-2.5 rounded-full" style={{ width: "62%" }}></div>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // Import necessary mock components
-import { MockKPICard, MockPieChart, MockLineChart } from './MockVisuals';
+import { MockKPICard, MockPieChart, MockLineChart } from "./MockVisuals";
 
 export const InvestmentScoreboardDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">
@@ -22,14 +22,14 @@ export const InvestmentScoreboardDashboard = () => (
 
     {/* Chart Row for Investment Breakdown */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <MockPieChart title="Levy Reinvestment Allocation by Sector (Q1)" />
-        <MockLineChart title="Reinvestment Trend Over Time" />
+      <MockPieChart title="Levy Reinvestment Allocation by Sector (Q1)" />
+      <MockLineChart title="Reinvestment Trend Over Time" />
     </div>
 
 
-     {/* Context Note */}
-     <div className="mt-6 p-3 bg-teal-50 border border-teal-200 rounded text-teal-800 text-sm">
-        <strong>Note:</strong> This scoreboard illustrates the hypothetical reinvestment of funds from import levies into strategic areas and estimates potential impacts like consumer spending. Data is illustrative. {/* Updated note */}
-      </div>
+    {/* Context Note */}
+    <div className="mt-6 p-3 bg-teal-50 border border-teal-200 rounded text-teal-800 text-sm">
+      <strong>Note:</strong> This scoreboard illustrates the hypothetical reinvestment of funds from import levies into strategic areas and estimates potential impacts like consumer spending. Data is illustrative. {/* Updated note */}
+    </div>
   </section>
 );

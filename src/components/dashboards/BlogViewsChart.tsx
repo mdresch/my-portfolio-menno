@@ -4,17 +4,17 @@
 // For SSR, recharts charts should only render on the client side.
 
 // Add 'use client' directive for Next.js app directory compatibility
-'use client';
+"use client";
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 // Mock data for demonstration; replace with real analytics as needed
 const data = [
-  { title: 'Getting Started with Next.js', views: 120 },
-  { title: 'Web Development Tips', views: 95 },
-  { title: 'Unlocking Strategic HR Analytics', views: 80 },
-  { title: 'Risks in International Trade', views: 60 },
-  { title: 'SDG 17: Partnerships', views: 45 },
+  { title: "Getting Started with Next.js", views: 120 },
+  { title: "Web Development Tips", views: 95 },
+  { title: "Unlocking Strategic HR Analytics", views: 80 },
+  { title: "Risks in International Trade", views: 60 },
+  { title: "SDG 17: Partnerships", views: 45 },
 ];
 
 export default function BlogViewsChart() {

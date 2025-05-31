@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { allCountryData, getComplexityColor, regionalAverages } from '../../../../../lib/riskData';
-import ComplexityRadarChart from '../../../../../components/risk/ComplexityRadarChart';
-import RegionalComparisonChart from '../../../../../components/risk/RegionalComparisonChart';
+import React from "react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { allCountryData, getComplexityColor, regionalAverages } from "../../../../../lib/riskData";
+import ComplexityRadarChart from "../../../../../components/risk/ComplexityRadarChart";
+import RegionalComparisonChart from "../../../../../components/risk/RegionalComparisonChart";
 
 export default function CountryPage({ params }: { params: { slug: string } }) {
   // Convert slug to country name for matching (e.g., "united-states" -> "United States")
   const countryNameFromSlug = params.slug
-    .split('-')
+    .split("-")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    .join(" ");
   
   // Find the country data that matches the slug
   const countryData = allCountryData.find(
@@ -197,8 +197,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
                 {countryData.overall >= 70 
                   ? "Expect extended timeframes for business registration and licensing due to complex procedures and documentation requirements."
                   : countryData.overall >= 40
-                  ? "Moderate setup complexity with some administrative hurdles, but generally predictable timeframes."
-                  : "Relatively streamlined setup process with efficient digital procedures for most business types."
+                    ? "Moderate setup complexity with some administrative hurdles, but generally predictable timeframes."
+                    : "Relatively streamlined setup process with efficient digital procedures for most business types."
                 }
               </p>
             </div>
@@ -209,8 +209,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
                 {countryData.regulatory >= 70 || countryData.tax >= 70
                   ? "Significant ongoing compliance burden requiring dedicated resources and specialist expertise."
                   : countryData.regulatory >= 40 || countryData.tax >= 40
-                  ? "Moderate compliance requirements with periodic reporting obligations and regulatory monitoring needed."
-                  : "Relatively manageable compliance environment with straightforward requirements and good support infrastructure."
+                    ? "Moderate compliance requirements with periodic reporting obligations and regulatory monitoring needed."
+                    : "Relatively manageable compliance environment with straightforward requirements and good support infrastructure."
                 }
               </p>
             </div>
@@ -221,8 +221,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
                 {countryData.overall >= 70 
                   ? "Budget for significant local expertise and additional administrative resources compared to lower-complexity markets."
                   : countryData.overall >= 40
-                  ? "Moderate resource allocation needed, particularly for tax compliance and regulatory monitoring."
-                  : "Standard resource allocation sufficient with minimal additional complexity costs."
+                    ? "Moderate resource allocation needed, particularly for tax compliance and regulatory monitoring."
+                    : "Standard resource allocation sufficient with minimal additional complexity costs."
                 }
               </p>
             </div>
@@ -238,8 +238,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
                   {countryData.overall >= 70 
                     ? "Essential to maintain dedicated in-country expertise for compliance and regulatory navigation."
                     : countryData.overall >= 40
-                    ? "Beneficial to have access to local expertise, particularly for specialized areas like tax and employment."
-                    : "Standard international business practices are generally effective with minimal need for specialized local knowledge."
+                      ? "Beneficial to have access to local expertise, particularly for specialized areas like tax and employment."
+                      : "Standard international business practices are generally effective with minimal need for specialized local knowledge."
                   }
                 </p>
               </div>
@@ -250,8 +250,8 @@ export default function CountryPage({ params }: { params: { slug: string } }) {
                   {countryData.overall >= 70 
                     ? "Implement robust tracking systems for compliance deadlines and documentation requirements."
                     : countryData.overall >= 40
-                    ? "Maintain standard compliance calendars with country-specific adaptations for key deadlines."
-                    : "Standard international compliance processes are generally sufficient with minimal adaptation needed."
+                      ? "Maintain standard compliance calendars with country-specific adaptations for key deadlines."
+                      : "Standard international compliance processes are generally sufficient with minimal adaptation needed."
                   }
                 </p>
               </div>

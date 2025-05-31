@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { 
   ComposableMap, 
   Geographies, 
   Geography, 
   ZoomableGroup 
-} from 'react-simple-maps';
-import { allCountryData, getComplexityColor } from '../../lib/riskData';
+} from "react-simple-maps";
+import { allCountryData, getComplexityColor } from "../../lib/riskData";
 
 // Type definitions
 interface CountryData {
@@ -194,7 +194,7 @@ const GlobalComplexityMap: React.FC = () => {
                 // Default fill for countries without data
                 const fillColor = isInteractive 
                   ? getComplexityFillColor(countryData.score) 
-                  : '#F1F5F9';  // Light gray for countries without data
+                  : "#F1F5F9";  // Light gray for countries without data
 
                 return (
                   <Geography
@@ -215,21 +215,21 @@ const GlobalComplexityMap: React.FC = () => {
                     style={{
                       default: {
                         fill: fillColor,
-                        stroke: '#FFFFFF',
+                        stroke: "#FFFFFF",
                         strokeWidth: 0.5,
-                        outline: 'none',
+                        outline: "none",
                         opacity: isInteractive ? 1 : 0.7, // Make countries without data slightly transparent
                       },
                       hover: {
                         fill: isInteractive ? getComplexityHoverColor(countryData.score) : fillColor,
-                        stroke: '#FFFFFF',
+                        stroke: "#FFFFFF",
                         strokeWidth: 0.5,
-                        outline: 'none',
-                        cursor: isInteractive ? 'pointer' : 'default',
+                        outline: "none",
+                        cursor: isInteractive ? "pointer" : "default",
                       },
                       pressed: {
                         fill: isInteractive ? getComplexityHoverColor(countryData.score) : fillColor,
-                        outline: 'none',
+                        outline: "none",
                       },
                     }}
                   />
@@ -243,11 +243,11 @@ const GlobalComplexityMap: React.FC = () => {
       {/* Tooltip that follows mouse */}
       {hoveredCountry && (
         <div className="absolute bg-white p-3 rounded shadow-lg border border-gray-200 z-10 w-64"
-             style={{ 
-               top: "10px", 
-               right: "10px",
-               maxWidth: "calc(100% - 20px)" 
-             }}>
+          style={{ 
+            top: "10px", 
+            right: "10px",
+            maxWidth: "calc(100% - 20px)" 
+          }}>
           <div className="flex justify-between items-center mb-1">
             <h3 className="font-medium text-gray-900">{hoveredCountry.name}</h3>
             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getComplexityColor(hoveredCountry.score)}`}>

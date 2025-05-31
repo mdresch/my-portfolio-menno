@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import matter from 'gray-matter';
+import { NextRequest, NextResponse } from "next/server";
+import matter from "gray-matter";
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     
     if (!frontmatter) {
       return NextResponse.json({ 
-        error: 'Missing frontmatter parameter' 
+        error: "Missing frontmatter parameter" 
       }, { status: 400 });
     }
     
@@ -27,15 +27,15 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     return NextResponse.json({
-      error: 'Server error while processing YAML'
+      error: "Server error while processing YAML"
     }, { status: 500 });
   }
 }
 
 function suggestFix(yaml: string, errorMsg: string) {
   // For the specific error in the prompt
-  if (errorMsg.includes('incomplete explicit mapping pair')) {
-    if (errorMsg.includes('considerations and awareness points:')) {
+  if (errorMsg.includes("incomplete explicit mapping pair")) {
+    if (errorMsg.includes("considerations and awareness points:")) {
       return `It looks like there's an issue with a field called 'considerations and awareness points:'. 
       
 Possible fixes:

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // Import MockBarChart if not already imported
-import { MockKPICard, MockChartPlaceholder, MockBarChart } from './MockVisuals';
+import { MockKPICard, MockChartPlaceholder, MockBarChart } from "./MockVisuals";
 
 export const GoodsTradeMetricsDashboard = () => (
   <section className="bg-white rounded-lg shadow-md p-6">
@@ -24,23 +24,23 @@ export const GoodsTradeMetricsDashboard = () => (
     {/* KPI Row 2 for Import Levy Revenue */}
     <h3 className="text-xl font-semibold mb-3 mt-8 border-t pt-4">Import Levy Revenue</h3>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <MockKPICard title="Total Levy Revenue (Q1)" value="$2.1B" change="+5%" />
-        <MockKPICard title="Avg. Effective Levy Rate" value="3.8%" change="-0.2%" />
-        <MockKPICard title="Revenue from China" value="$0.8B" change="+2%" />
-        <MockKPICard title="Revenue from EU" value="$0.5B" change="+8%" />
+      <MockKPICard title="Total Levy Revenue (Q1)" value="$2.1B" change="+5%" />
+      <MockKPICard title="Avg. Effective Levy Rate" value="3.8%" change="-0.2%" />
+      <MockKPICard title="Revenue from China" value="$0.8B" change="+2%" />
+      <MockKPICard title="Revenue from EU" value="$0.5B" change="+8%" />
     </div>
 
     {/* Chart for Levy Revenue Breakdown */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <MockBarChart title="Import Levy Revenue by Top Countries (Q1)" />
-        {/* Optional: Add another relevant chart or placeholder */}
-        <MockChartPlaceholder title="Levy Revenue vs. Import Value" type="Scatter Plot" />
+      <MockBarChart title="Import Levy Revenue by Top Countries (Q1)" />
+      {/* Optional: Add another relevant chart or placeholder */}
+      <MockChartPlaceholder title="Levy Revenue vs. Import Value" type="Scatter Plot" />
     </div>
 
 
-     {/* Context Note */}
-     <div className="mt-6 p-3 bg-gray-100 border border-gray-200 rounded text-gray-700 text-sm">
-        <strong>Note:</strong> Metrics monitor operational aspects and revenue from import levies. Data is illustrative.
-      </div>
+    {/* Context Note */}
+    <div className="mt-6 p-3 bg-gray-100 border border-gray-200 rounded text-gray-700 text-sm">
+      <strong>Note:</strong> Metrics monitor operational aspects and revenue from import levies. Data is illustrative.
+    </div>
   </section>
 );

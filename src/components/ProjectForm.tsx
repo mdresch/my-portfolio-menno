@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent } from "react";
 
 export interface Project {
   id: string;
@@ -23,29 +23,29 @@ interface ProjectFormProps {
 }
 
 const techOptions = [
-  'React', 'Node.js', 'MongoDB', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Material UI'
+  "React", "Node.js", "MongoDB", "TypeScript", "Next.js", "Tailwind CSS", "Material UI"
 ];
 
 const categoryOptions = [
-  'WebApplication', 'BusinessApplication', 'AI', 'Dashboard', 'Other'
+  "WebApplication", "BusinessApplication", "AI", "Dashboard", "Other"
 ];
 
 export default function ProjectForm({ initialProject, onSubmit, onCancel }: ProjectFormProps) {
   const [project, setProject] = useState<Project>(
     initialProject || {
-      id: '',
-      title: '',
-      description: '',
+      id: "",
+      title: "",
+      description: "",
       technologies: [],
-      link: '',
-      datePublished: '',
-      category: '',
-      image: '',
-      caseStudy: '',
+      link: "",
+      datePublished: "",
+      category: "",
+      image: "",
+      caseStudy: "",
       screenshots: [],
       outcomes: [],
-      gitHubUrl: '', // Added
-      liveUrl: '',   // Added
+      gitHubUrl: "", // Added
+      liveUrl: "",   // Added
     }
   );
 
@@ -60,11 +60,11 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
   };
 
   const handleScreenshotsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProject(prev => ({ ...prev, screenshots: e.target.value.split(',').map(s => s.trim()) }));
+    setProject(prev => ({ ...prev, screenshots: e.target.value.split(",").map(s => s.trim()) }));
   };
 
   const handleOutcomesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setProject(prev => ({ ...prev, outcomes: e.target.value.split('\n').map(s => s.trim()).filter(Boolean) }));
+    setProject(prev => ({ ...prev, outcomes: e.target.value.split("\n").map(s => s.trim()).filter(Boolean) }));
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -74,7 +74,7 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded shadow-md max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">{initialProject ? 'Edit Project' : 'New Project'}</h2>
+      <h2 className="text-2xl font-bold mb-4">{initialProject ? "Edit Project" : "New Project"}</h2>
       <div>
         <label className="block font-semibold">Title</label>
         <input name="title" value={project.title} onChange={handleChange} className="border rounded px-3 py-2 w-full" required placeholder="Enter project title" />
@@ -103,38 +103,38 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       </div>
       <div>
         <label className="block font-semibold">Link</label>
-        <input name="link" value={project.link || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Optional link" />
+        <input name="link" value={project.link || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Optional link" />
       </div>
       <div>
         <label className="block font-semibold">Date Published</label>
-        <input name="datePublished" type="date" value={project.datePublished || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select publication date" />
+        <input name="datePublished" type="date" value={project.datePublished || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select publication date" />
       </div>
       <div>
         <label className="block font-semibold">Image URL</label>
-        <input name="image" value={project.image || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Image URL" />
+        <input name="image" value={project.image || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Image URL" />
       </div>
       <div>
         <label className="block font-semibold">Case Study</label>
-        <textarea name="caseStudy" value={project.caseStudy || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Case study content" />
+        <textarea name="caseStudy" value={project.caseStudy || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Case study content" />
       </div>
       <div>
         <label className="block font-semibold">Screenshots (comma separated URLs)</label>
-        <input name="screenshots" value={project.screenshots?.join(', ') || ''} onChange={handleScreenshotsChange} className="border rounded px-3 py-2 w-full" placeholder="Screenshot URLs (comma separated)" />
+        <input name="screenshots" value={project.screenshots?.join(", ") || ""} onChange={handleScreenshotsChange} className="border rounded px-3 py-2 w-full" placeholder="Screenshot URLs (comma separated)" />
       </div>
       <div>
         <label className="block font-semibold">Outcomes (one per line)</label>
-        <textarea name="outcomes" value={project.outcomes?.join('\n') || ''} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" placeholder="Project outcomes (one per line)" />
+        <textarea name="outcomes" value={project.outcomes?.join("\n") || ""} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" placeholder="Project outcomes (one per line)" />
       </div>
       <div>
         <label className="block font-semibold">GitHub URL</label>
-        <input name="gitHubUrl" value={project.gitHubUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="GitHub repository URL" />
+        <input name="gitHubUrl" value={project.gitHubUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="GitHub repository URL" />
       </div>
       <div>
         <label className="block font-semibold">Live URL</label>
-        <input name="liveUrl" value={project.liveUrl || ''} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Live demo URL" />
+        <input name="liveUrl" value={project.liveUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Live demo URL" />
       </div>
       <div className="flex gap-4 mt-4">
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{initialProject ? 'Update' : 'Create'}</button>
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{initialProject ? "Update" : "Create"}</button>
         {onCancel && (
           <button type="button" onClick={onCancel} className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Cancel</button>
         )}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface PlaceholderImageProps {
   title?: string;
@@ -8,23 +8,23 @@ interface PlaceholderImageProps {
 }
 
 export default function PlaceholderImage({ 
-  title = 'Report Image', 
-  category = 'Risk Analysis',
-  className = '', 
-  height = 'h-48' 
+  title = "Report Image", 
+  category = "Risk Analysis",
+  className = "", 
+  height = "h-48" 
 }: PlaceholderImageProps) {
   // Generate a deterministic color based on the category
   const getColorClass = (category: string) => {
     const categories: {[key: string]: string} = {
-      'Financial Risk': 'from-blue-200 to-blue-300 dark:from-blue-900/40 dark:to-blue-800/40',
-      'Geopolitical Risk': 'from-red-200 to-red-300 dark:from-red-900/40 dark:to-red-800/40',
-      'Environmental Risk': 'from-green-200 to-green-300 dark:from-green-900/40 dark:to-green-800/40',
-      'Regulatory Risk': 'from-purple-200 to-purple-300 dark:from-purple-900/40 dark:to-purple-800/40',
-      'Cybersecurity Risk': 'from-yellow-200 to-yellow-300 dark:from-yellow-900/40 dark:to-yellow-800/40',
-      'default': 'from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800'
+      "Financial Risk": "from-blue-200 to-blue-300 dark:from-blue-900/40 dark:to-blue-800/40",
+      "Geopolitical Risk": "from-red-200 to-red-300 dark:from-red-900/40 dark:to-red-800/40",
+      "Environmental Risk": "from-green-200 to-green-300 dark:from-green-900/40 dark:to-green-800/40",
+      "Regulatory Risk": "from-purple-200 to-purple-300 dark:from-purple-900/40 dark:to-purple-800/40",
+      "Cybersecurity Risk": "from-yellow-200 to-yellow-300 dark:from-yellow-900/40 dark:to-yellow-800/40",
+      "default": "from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800"
     };
     
-    return categories[category] || categories['default'];
+    return categories[category] || categories["default"];
   };
   
   const colorClass = getColorClass(category);

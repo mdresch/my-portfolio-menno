@@ -1,9 +1,9 @@
-import React from 'react';
-import LoginForm from '../../components/LoginForm';
+import React from "react";
+import LoginForm from "../../components/LoginForm";
 
 export const metadata = {
-  title: 'Admin Login | Menno Drescher Portfolio',
-  description: 'Login to access admin features for Menno Drescher’s portfolio site.',
+  title: "Admin Login | Menno Drescher Portfolio",
+  description: "Login to access admin features for Menno Drescher’s portfolio site.",
 };
 
 export default function LoginPage() {

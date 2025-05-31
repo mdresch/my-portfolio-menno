@@ -1,7 +1,7 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\components\SEO\ResumeJsonLd.tsx
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 interface ResumeJsonLdProps {
   name: string;
@@ -37,42 +37,42 @@ export default function ResumeJsonLd({
   workExperience = []
 }: ResumeJsonLdProps) {
   // Define base URL - should match the one in layout.tsx
-  const baseUrl = 'https://my-portfolio-menno.vercel.app/';
+  const baseUrl = "https://my-portfolio-menno.vercel.app/";
   
   const resumeJsonLd = {
-    '@context': 'https://schema.org/',
-    '@type': 'Person',
-    'name': name,
-    'description': description,
-    'jobTitle': jobTitle,
-    'url': baseUrl,
-    'sameAs': [
-      'https://linkedin.com/in/mennodrescher',
-      'https://github.com/mdresch',
-      'https://twitter.com/mennodre'
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": name,
+    "description": description,
+    "jobTitle": jobTitle,
+    "url": baseUrl,
+    "sameAs": [
+      "https://linkedin.com/in/mennodrescher",
+      "https://github.com/mdresch",
+      "https://twitter.com/mennodre"
     ],
-    'knowsAbout': skills,
-    'hasCredential': education.map(edu => ({
-      '@type': 'EducationalOccupationalCredential',
-      'credentialCategory': 'degree',
-      'name': edu.degree,
-      'recognizedBy': {
-        '@type': 'Organization',
-        'name': edu.institution
+    "knowsAbout": skills,
+    "hasCredential": education.map(edu => ({
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "name": edu.degree,
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": edu.institution
       },
-      'startDate': edu.startDate,
-      'endDate': edu.endDate
+      "startDate": edu.startDate,
+      "endDate": edu.endDate
     })),
-    'worksFor': workExperience.map(work => ({
-      '@type': 'Organization',
-      'name': work.organization,
-      'member': {
-        '@type': 'OrganizationRole',
-        'roleName': work.position,
-        'startDate': work.startDate,
-        'endDate': work.endDate || 'Present'
+    "worksFor": workExperience.map(work => ({
+      "@type": "Organization",
+      "name": work.organization,
+      "member": {
+        "@type": "OrganizationRole",
+        "roleName": work.position,
+        "startDate": work.startDate,
+        "endDate": work.endDate || "Present"
       },
-      'description': work.description
+      "description": work.description
     }))
   };
 

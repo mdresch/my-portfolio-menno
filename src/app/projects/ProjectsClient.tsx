@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import ProjectForm from '../../components/ProjectForm';
-import { ProjectService } from '../../lib/api-services';
+import React, { useState, useEffect } from "react";
+import ProjectForm from "../../components/ProjectForm";
+import { ProjectService } from "../../lib/api-services";
 // Define ApiProject type locally (copied from src/types/api.ts)
 interface ApiProject {
   id: number;
@@ -18,7 +18,7 @@ interface ApiProject {
   outcomes?: string[];
   challenges?: string[];
 }
-import ProjectCard from './ProjectCard';
+import ProjectCard from "./ProjectCard";
 
 interface ProjectsClientProps {
   projects: Project[];
@@ -45,26 +45,26 @@ export interface Project {
 function normalizeProject(p: ApiProject): Project {
   return {
     id: p.id,
-    title: p.title ?? '',
-    description: p.description ?? '',
+    title: p.title ?? "",
+    description: p.description ?? "",
     technologies: p.technologies ?? [],
-    link: '', // Not present in API, fallback to empty string
-    datePublished: '', // Not present in API, fallback to empty string
-    category: '', // Not present in API, fallback to empty string
-    image: p.imageUrl ?? '/default-project-image.png',
-    caseStudy: p.caseStudy ?? '',
+    link: "", // Not present in API, fallback to empty string
+    datePublished: "", // Not present in API, fallback to empty string
+    category: "", // Not present in API, fallback to empty string
+    image: p.imageUrl ?? "/default-project-image.png",
+    caseStudy: p.caseStudy ?? "",
     screenshots: p.screenshots ?? [],
     outcomes: p.outcomes ?? [],
-    gitHubUrl: p.gitHubUrl ?? '',
-    liveUrl: p.liveUrl ?? '',
+    gitHubUrl: p.gitHubUrl ?? "",
+    liveUrl: p.liveUrl ?? "",
     challenges: p.challenges ?? [],
   };
 }
 
 export default function ProjectsClient({ projects: initialProjects }: ProjectsClientProps) {
-  const [query, setQuery] = useState('');
-  const [selectedTech, setSelectedTech] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [query, setQuery] = useState("");
+  const [selectedTech, setSelectedTech] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [projectList, setProjectList] = useState<Project[]>(initialProjects);
@@ -80,7 +80,7 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
         setLoading(false);
       })
       .catch(() => {
-        setError('Failed to load projects from Azure SQL.');
+        setError("Failed to load projects from Azure SQL.");
         setLoading(false);
       });
   }, []);
@@ -89,10 +89,10 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
   const allCategories = Array.from(new Set(projectList.map((p) => p.category).filter(Boolean)));
 
   const filteredProjects = projectList.filter((project) => {
-    const title = typeof project.title === 'string' ? project.title : '';
-    const description = typeof project.description === 'string' ? project.description : '';
+    const title = typeof project.title === "string" ? project.title : "";
+    const description = typeof project.description === "string" ? project.description : "";
     const technologies = Array.isArray(project.technologies) ? project.technologies : [];
-    const category = typeof project.category === 'string' ? project.category : '';
+    const category = typeof project.category === "string" ? project.category : "";
     const matchesQuery =
       title.toLowerCase().includes(query.toLowerCase()) ||
       description.toLowerCase().includes(query.toLowerCase());
@@ -113,14 +113,14 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
           title: project.title,
           description: project.description,
           technologies: project.technologies ?? [],
-          imageUrl: project.image || '',
-          gitHubUrl: project.gitHubUrl || '',
-          liveUrl: project.liveUrl || '',
+          imageUrl: project.image || "",
+          gitHubUrl: project.gitHubUrl || "",
+          liveUrl: project.liveUrl || "",
           created: new Date().toISOString(),
-          link: project.link || '',
-          datePublished: project.datePublished || '',
-          category: project.category || '',
-          caseStudy: project.caseStudy || '',
+          link: project.link || "",
+          datePublished: project.datePublished || "",
+          category: project.category || "",
+          caseStudy: project.caseStudy || "",
           screenshots: project.screenshots ?? [],
           outcomes: project.outcomes ?? [],
           challenges: project.challenges ?? [],
@@ -133,7 +133,7 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
       setShowForm(false);
       setEditIndex(null);
     } catch {
-      setError('Failed to save project.');
+      setError("Failed to save project.");
     } finally {
       setLoading(false);
     }

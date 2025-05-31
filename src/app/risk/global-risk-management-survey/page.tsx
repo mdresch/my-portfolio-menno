@@ -1,15 +1,15 @@
-'use client'; // Assuming potential for client-side interactions later
+"use client"; // Assuming potential for client-side interactions later
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image'; // Import Image component
+import React from "react";
+import Link from "next/link";
+import Image from "next/image"; // Import Image component
 
 // Helper component for content cards
 const ContentCard = ({ type, time, title, href, imgSrc, imgAlt }: { type: string, time: string, title: string, href: string, imgSrc?: string, imgAlt?: string }) => (
   <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row mb-4 border border-gray-200">
     {/* Placeholder for Image */}
     <div className="w-full md:w-1/4 h-32 md:h-auto bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
-      {imgSrc ? <Image src={imgSrc} alt={imgAlt || title} width={150} height={100} className="object-cover w-full h-full" /> : '[Image Placeholder]'}
+      {imgSrc ? <Image src={imgSrc} alt={imgAlt || title} width={150} height={100} className="object-cover w-full h-full" /> : "[Image Placeholder]"}
     </div>
     <div className="p-4 flex flex-col justify-between flex-grow w-full md:w-3/4">
       <div>
@@ -111,9 +111,9 @@ export default function GlobalRiskManagementSurveyPage() {
             Reach out to our team to understand how to make better decisions around macro trends and why they matter to businesses.
           </p>
           <div className="mt-4">
-             <Link href="/contact" className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition duration-200 text-sm">
+            <Link href="/contact" className="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition duration-200 text-sm">
                 Contact Our Team {/* Assuming a contact page exists */}
-             </Link>
+            </Link>
           </div>
         </div>
 

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import { 
   CapitalAdequacyChart, 
   NPLRatioChart, 
@@ -9,7 +9,7 @@ import {
   LiquidityCoverageChart,
   ProfitabilityTrendsChart,
   CountryRiskHeatmapChart
-} from '../../../components/risk/EuropeanBankingCharts';
+} from "../../../components/risk/EuropeanBankingCharts";
 
 export default function EuropeanBankingHealthPage() {
   return (

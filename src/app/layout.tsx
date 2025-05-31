@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import ConditionalFooter from "../components/ConditionalFooter";
 import "./globals.css";
-import '../styles/markdown-fix.css';
-import '../styles/resume-print.css'; // Add print styles
+import "../styles/markdown-fix.css";
+import "../styles/resume-print.css"; // Add print styles
 import { Analytics } from "@vercel/analytics/next";
-import { ThemeProvider } from 'next-themes';
-import { Theme as RadixTheme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
+import { ThemeProvider } from "next-themes";
+import { Theme as RadixTheme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import { NavigationMenuDemo } from "../components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import ClientAnalytics from '../components/ClientAnalytics';
-import Providers from './providers';
-import ClientAuthProvider from '@/components/ClientAuthProvider';
+import ClientAnalytics from "../components/ClientAnalytics";
+import Providers from "./providers";
+import ClientAuthProvider from "@/components/ClientAuthProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     types: {
-      'application/rss+xml': [
+      "application/rss+xml": [
         {
-          url: 'feed.xml',
+          url: "feed.xml",
           title: "Menno Drescher's Blog RSS Feed"
         },
       ],
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-video-preview': -1,
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
     },
   },
 };

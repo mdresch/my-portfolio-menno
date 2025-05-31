@@ -1,6 +1,6 @@
 // filepath: c:\Users\menno\CascadeProjects\personal-website\src\components\SEO\DefaultSEO.tsx
-import React from 'react';
-import Script from 'next/script';
+import React from "react";
+import Script from "next/script";
 
 type DefaultSEOProps = {
   /** Enable verification for Google Search Console */

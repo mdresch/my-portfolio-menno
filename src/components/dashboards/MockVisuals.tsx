@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 // Adjust the import path here:
-import { MockMapPlaceholder as ImportedMockMapPlaceholder } from '@/components/dashboards/MockVisuals'; // Assuming the file is in src/components/dashboards/
+import { MockMapPlaceholder as ImportedMockMapPlaceholder } from "@/components/dashboards/MockVisuals"; // Assuming the file is in src/components/dashboards/
 
 // Simple placeholder for any chart type (Can keep as fallback or remove)
 const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
@@ -76,21 +76,21 @@ export const MockBarChart = ({ title }: { title: string }) => (
 
 // Mock Area Chart
 export const MockAreaChart = ({ title }: { title: string }) => (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
-      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
-      <div className="flex-grow flex items-end space-x-0 overflow-hidden relative">
-          {/* Simulate filled area segments */}
-          <div className="w-1/6 h-1/3 bg-purple-200"></div>
-          <div className="w-1/6 h-1/2 bg-purple-200"></div>
-          <div className="w-1/6 h-2/5 bg-purple-200"></div>
-          <div className="w-1/6 h-3/4 bg-purple-200"></div>
-          <div className="w-1/6 h-2/3 bg-purple-200"></div>
-          <div className="w-1/6 h-1/2 bg-purple-200"></div>
-          {/* Add a border top to mimic the line */}
-          <div className="absolute top-0 left-0 right-0 h-full border-t-2 border-purple-500 pointer-events-none"></div>
-      </div>
+  <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
+    <div className="flex-grow flex items-end space-x-0 overflow-hidden relative">
+      {/* Simulate filled area segments */}
+      <div className="w-1/6 h-1/3 bg-purple-200"></div>
+      <div className="w-1/6 h-1/2 bg-purple-200"></div>
+      <div className="w-1/6 h-2/5 bg-purple-200"></div>
+      <div className="w-1/6 h-3/4 bg-purple-200"></div>
+      <div className="w-1/6 h-2/3 bg-purple-200"></div>
+      <div className="w-1/6 h-1/2 bg-purple-200"></div>
+      {/* Add a border top to mimic the line */}
+      <div className="absolute top-0 left-0 right-0 h-full border-t-2 border-purple-500 pointer-events-none"></div>
     </div>
-  );
+  </div>
+);
 
 // Mock Treemap
 export const MockTreemap = ({ title }: { title: string }) => (
@@ -123,9 +123,9 @@ export const MockPieChart = ({ title }: { title: string }) => (
 
 // Mock Stacked Bar Chart for Population by Age and Gender
 const populationData = [
-  { age: '0-14', male: 16, female: 17 },
-  { age: '15-64', male: 110, female: 111 },
-  { age: '65+', male: 13, female: 15 },
+  { age: "0-14", male: 16, female: 17 },
+  { age: "15-64", male: 110, female: 111 },
+  { age: "65+", male: 13, female: 15 },
 ];
 
 export const MockStackedBarChart = ({ title }: { title: string }) => (
@@ -143,7 +143,7 @@ export const MockStackedBarChart = ({ title }: { title: string }) => (
           {/* Male bar (stacked below) */}
           <div
             className="w-8 bg-blue-400 rounded-b-sm"
-            style={{ height: `${group.male * 1.2}px`, marginTop: '-2px' }}
+            style={{ height: `${group.male * 1.2}px`, marginTop: "-2px" }}
             title={`Male: ${group.male}M`}
           ></div>
           <span className="text-xs mt-1">{group.age}</span>
@@ -305,15 +305,15 @@ export const MockAverageHourlyEarningsChart = ({ title }: { title: string }) => 
 
 // Updated mock data for Employment Cost Index (ECI) over time (2017=100, quarterly)
 const employmentCostIndexData = [
-  { label: '2022 Q4', eci: 116.0 },
-  { label: '2023 Q1', eci: 116.9 },
-  { label: '2023 Q2', eci: 117.7 },
-  { label: '2023 Q3', eci: 118.0 },
-  { label: '2023 Q4', eci: 118.4 },
-  { label: '2024 Q1', eci: 120.7 },
-  { label: '2024 Q2', eci: 120.4 },
-  { label: '2024 Q3', eci: 119.9 },
-  { label: '2024 Q4', eci: 120.6 },
+  { label: "2022 Q4", eci: 116.0 },
+  { label: "2023 Q1", eci: 116.9 },
+  { label: "2023 Q2", eci: 117.7 },
+  { label: "2023 Q3", eci: 118.0 },
+  { label: "2023 Q4", eci: 118.4 },
+  { label: "2024 Q1", eci: 120.7 },
+  { label: "2024 Q2", eci: 120.4 },
+  { label: "2024 Q3", eci: 119.9 },
+  { label: "2024 Q4", eci: 120.6 },
 ];
 
 export const MockEmploymentCostIndexChart = ({ title }: { title: string }) => (
@@ -340,7 +340,7 @@ export const MockKPICard = ({ title, value, change }: { title: string; value: st
   <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
     <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">{title}</p>
     <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{value}</p>
-    {change && <p className={`text-xs ${change.startsWith('+') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{change}</p>}
+    {change && <p className={`text-xs ${change.startsWith("+") ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>{change}</p>}
   </div>
 );
 
@@ -354,9 +354,9 @@ export const MockTablePlaceholder = ({ title }: { title: string }) => (
 
 // Placeholder for a map
 export const LocalMockMapPlaceholder = ({ title }: { title: string }) => (
-    <div className="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50 dark:bg-neutral-900">
-      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{title}</p>
-      <p className="text-xs text-gray-500 dark:text-gray-400">(Map Placeholder)</p>
-    </div>
-  );
+  <div className="border border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col justify-center items-center bg-gray-50 dark:bg-neutral-900">
+    <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{title}</p>
+    <p className="text-xs text-gray-500 dark:text-gray-400">(Map Placeholder)</p>
+  </div>
+);
 

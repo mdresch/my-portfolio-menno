@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   LineChart,
   Line,
@@ -24,63 +24,63 @@ import {
   ScatterChart,
   ZAxis,
   ReferenceLine
-} from 'recharts';
+} from "recharts";
 
 // Sample data for charts
 const cryptoPriceVolatilityData = [
-  { month: 'Jan', bitcoin: 45, ethereum: 35, traditional: 12 },
-  { month: 'Feb', bitcoin: 52, ethereum: 48, traditional: 14 },
-  { month: 'Mar', bitcoin: 38, ethereum: 42, traditional: 15 },
-  { month: 'Apr', bitcoin: 65, ethereum: 58, traditional: 13 },
-  { month: 'May', bitcoin: 72, ethereum: 62, traditional: 16 },
-  { month: 'Jun', bitcoin: 55, ethereum: 49, traditional: 18 },
-  { month: 'Jul', bitcoin: 48, ethereum: 43, traditional: 15 },
-  { month: 'Aug', bitcoin: 67, ethereum: 59, traditional: 14 },
-  { month: 'Sep', bitcoin: 59, ethereum: 51, traditional: 17 },
-  { month: 'Oct', bitcoin: 42, ethereum: 38, traditional: 16 },
-  { month: 'Nov', bitcoin: 39, ethereum: 35, traditional: 13 },
-  { month: 'Dec', bitcoin: 58, ethereum: 49, traditional: 15 }
+  { month: "Jan", bitcoin: 45, ethereum: 35, traditional: 12 },
+  { month: "Feb", bitcoin: 52, ethereum: 48, traditional: 14 },
+  { month: "Mar", bitcoin: 38, ethereum: 42, traditional: 15 },
+  { month: "Apr", bitcoin: 65, ethereum: 58, traditional: 13 },
+  { month: "May", bitcoin: 72, ethereum: 62, traditional: 16 },
+  { month: "Jun", bitcoin: 55, ethereum: 49, traditional: 18 },
+  { month: "Jul", bitcoin: 48, ethereum: 43, traditional: 15 },
+  { month: "Aug", bitcoin: 67, ethereum: 59, traditional: 14 },
+  { month: "Sep", bitcoin: 59, ethereum: 51, traditional: 17 },
+  { month: "Oct", bitcoin: 42, ethereum: 38, traditional: 16 },
+  { month: "Nov", bitcoin: 39, ethereum: 35, traditional: 13 },
+  { month: "Dec", bitcoin: 58, ethereum: 49, traditional: 15 }
 ];
 
 const marketCapDistributionData = [
-  { name: 'Bitcoin', value: 42 },
-  { name: 'Ethereum', value: 18 },
-  { name: 'Stablecoins', value: 12 },
-  { name: 'Layer 1 Alternatives', value: 10 },
-  { name: 'DeFi', value: 8 },
-  { name: 'Other', value: 10 }
+  { name: "Bitcoin", value: 42 },
+  { name: "Ethereum", value: 18 },
+  { name: "Stablecoins", value: 12 },
+  { name: "Layer 1 Alternatives", value: 10 },
+  { name: "DeFi", value: 8 },
+  { name: "Other", value: 10 }
 ];
 
 const regulatoryDevelopmentData = [
-  { region: 'North America', favorable: 45, neutral: 30, restrictive: 25 },
-  { region: 'European Union', favorable: 35, neutral: 25, restrictive: 40 },
-  { region: 'UK', favorable: 50, neutral: 30, restrictive: 20 },
-  { region: 'East Asia', favorable: 20, neutral: 35, restrictive: 45 },
-  { region: 'Southeast Asia', favorable: 55, neutral: 25, restrictive: 20 },
-  { region: 'Latin America', favorable: 60, neutral: 25, restrictive: 15 },
-  { region: 'Middle East', favorable: 40, neutral: 40, restrictive: 20 },
-  { region: 'Africa', favorable: 45, neutral: 40, restrictive: 15 }
+  { region: "North America", favorable: 45, neutral: 30, restrictive: 25 },
+  { region: "European Union", favorable: 35, neutral: 25, restrictive: 40 },
+  { region: "UK", favorable: 50, neutral: 30, restrictive: 20 },
+  { region: "East Asia", favorable: 20, neutral: 35, restrictive: 45 },
+  { region: "Southeast Asia", favorable: 55, neutral: 25, restrictive: 20 },
+  { region: "Latin America", favorable: 60, neutral: 25, restrictive: 15 },
+  { region: "Middle East", favorable: 40, neutral: 40, restrictive: 20 },
+  { region: "Africa", favorable: 45, neutral: 40, restrictive: 15 }
 ];
 
 const institutionalAdoptionData = [
-  { quarter: 'Q1 2023', holdings: 15, volume: 22 },
-  { quarter: 'Q2 2023', holdings: 18, volume: 26 },
-  { quarter: 'Q3 2023', holdings: 24, volume: 32 },
-  { quarter: 'Q4 2023', holdings: 30, volume: 38 },
-  { quarter: 'Q1 2024', holdings: 35, volume: 42 },
-  { quarter: 'Q2 2024', holdings: 42, volume: 48 },
-  { quarter: 'Q3 2024', holdings: 48, volume: 54 },
-  { quarter: 'Q4 2024', holdings: 56, volume: 62 }
+  { quarter: "Q1 2023", holdings: 15, volume: 22 },
+  { quarter: "Q2 2023", holdings: 18, volume: 26 },
+  { quarter: "Q3 2023", holdings: 24, volume: 32 },
+  { quarter: "Q4 2023", holdings: 30, volume: 38 },
+  { quarter: "Q1 2024", holdings: 35, volume: 42 },
+  { quarter: "Q2 2024", holdings: 42, volume: 48 },
+  { quarter: "Q3 2024", holdings: 48, volume: 54 },
+  { quarter: "Q4 2024", holdings: 56, volume: 62 }
 ];
 
 const riskCorrelationData = [
-  { name: 'Bitcoin', x: 75, y: 85, z: 20 },
-  { name: 'Ethereum', x: 65, y: 78, z: 15 },
-  { name: 'Tech Stocks', x: 60, y: 55, z: 18 },
-  { name: 'Gold', x: 30, y: 25, z: 12 },
-  { name: 'S&P 500', x: 45, y: 40, z: 25 },
-  { name: 'Bonds', x: 20, y: 15, z: 30 },
-  { name: 'Real Estate', x: 35, y: 30, z: 22 }
+  { name: "Bitcoin", x: 75, y: 85, z: 20 },
+  { name: "Ethereum", x: 65, y: 78, z: 15 },
+  { name: "Tech Stocks", x: 60, y: 55, z: 18 },
+  { name: "Gold", x: 30, y: 25, z: 12 },
+  { name: "S&P 500", x: 45, y: 40, z: 25 },
+  { name: "Bonds", x: 20, y: 15, z: 30 },
+  { name: "Real Estate", x: 35, y: 30, z: 22 }
 ];
 
 // Components for the charts
@@ -95,7 +95,7 @@ const VolatilityComparisonChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="month" />
-          <YAxis label={{ value: 'Volatility Index', angle: -90, position: 'insideLeft' }} />
+          <YAxis label={{ value: "Volatility Index", angle: -90, position: "insideLeft" }} />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="bitcoin" name="Bitcoin" stroke="#F7931A" strokeWidth={2} dot={{ r: 4 }} />
@@ -111,7 +111,7 @@ const VolatilityComparisonChart = () => {
 };
 
 const MarketCapDistributionChart = () => {
-  const COLORS = ['#F7931A', '#62688F', '#3E73C4', '#CF8D2E', '#26C17E', '#8884d8'];
+  const COLORS = ["#F7931A", "#62688F", "#3E73C4", "#CF8D2E", "#26C17E", "#8884d8"];
   
   return (
     <div className="bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
@@ -180,7 +180,7 @@ const InstitutionalAdoptionChart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis dataKey="quarter" />
-          <YAxis yAxisId="left" label={{ value: 'Billions USD', angle: -90, position: 'insideLeft' }} />
+          <YAxis yAxisId="left" label={{ value: "Billions USD", angle: -90, position: "insideLeft" }} />
           <Tooltip formatter={(value) => `$${value}B`} />
           <Legend />
           <Bar yAxisId="left" dataKey="holdings" name="Institutional Holdings" fill="#F7931A" />
@@ -206,18 +206,18 @@ const RiskCorrelationChart = () => {
           <XAxis 
             dataKey="x" 
             name="Volatility" 
-            label={{ value: 'Volatility Score', position: 'bottom', offset: 0 }} 
+            label={{ value: "Volatility Score", position: "bottom", offset: 0 }} 
             domain={[0, 100]} 
           />
           <YAxis 
             dataKey="y" 
             name="Correlation to Traditional Markets" 
-            label={{ value: 'Market Correlation Score', angle: -90, position: 'insideLeft' }}
+            label={{ value: "Market Correlation Score", angle: -90, position: "insideLeft" }}
             domain={[0, 100]} 
           />
           <ZAxis dataKey="z" range={[50, 400]} name="Market Cap" />
           <Tooltip 
-            cursor={{ strokeDasharray: '3 3' }}
+            cursor={{ strokeDasharray: "3 3" }}
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 return (
@@ -237,7 +237,7 @@ const RiskCorrelationChart = () => {
             {riskCorrelationData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={entry.name.includes('coin') || entry.name === 'Bitcoin' || entry.name === 'Ethereum' ? '#F7931A' : '#3E73C4'}
+                fill={entry.name.includes("coin") || entry.name === "Bitcoin" || entry.name === "Ethereum" ? "#F7931A" : "#3E73C4"}
               />
             ))}
           </Scatter>

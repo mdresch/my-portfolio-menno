@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   try {
-    const token = request.headers.get('authorization');
+    const token = request.headers.get("authorization");
     
     if (!token) {
-      return NextResponse.json({ error: 'Authorization token required' }, { status: 401 });
+      return NextResponse.json({ error: "Authorization token required" }, { status: 401 });
     }
     
     // GraphQL introspection query to get schema details
@@ -33,11 +33,11 @@ export async function GET(request: NextRequest) {
       }
     `;
     
-    const response = await fetch('https://gql.hashnode.com', {
-      method: 'POST',
+    const response = await fetch("https://gql.hashnode.com", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
+        "Content-Type": "application/json",
+        "Authorization": token
       },
       body: JSON.stringify({ query })
     });
@@ -50,15 +50,15 @@ export async function GET(request: NextRequest) {
     
     // Filter to just the types we care about for simplicity
     const filteredTypes = data.data.__schema.types.filter(type => 
-      type.name.includes('Draft') || 
-      type.name.includes('Post') || 
-      type.name.includes('Publish')
+      type.name.includes("Draft") || 
+      type.name.includes("Post") || 
+      type.name.includes("Publish")
     );
     
     return NextResponse.json({ types: filteredTypes });
   } catch (error) {
     return NextResponse.json({
-      error: error instanceof Error ? error.message : 'Unknown error occurred'
+      error: error instanceof Error ? error.message : "Unknown error occurred"
     }, { status: 500 });
   }
 }

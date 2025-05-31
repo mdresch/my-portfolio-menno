@@ -1,7 +1,7 @@
-'use client'; // Assuming potential for client-side interactions later
+"use client"; // Assuming potential for client-side interactions later
 
-import React from 'react';
-import Link from 'next/link'; // Optional: If you link back or to other sections
+import React from "react";
+import Link from "next/link"; // Optional: If you link back or to other sections
 
 export default function DeepDiveTradePage() {
   return (
@@ -195,9 +195,9 @@ export default function DeepDiveTradePage() {
               While the economic outlook can impact when and how businesses exercise their capital, whether through internal investments — such as risk management — or external transactions — such as M&A activities — data and analytics will remain the bedrock of better decisions. We have seen this help in three scenarios:
             </p>
             <ul className="list-decimal list-inside space-y-2 text-gray-700 mb-4 pl-4 text-sm">
-                <li>The company already has information on its supply chain. It hopes to revisit its insurance program to see what kind of coverage is in place and if it can cover the losses the company may incur due to an interruption from a third-party supplier.</li>
-                <li>The company is uncomfortable accepting its current level of risk and wants to enhance risk management. Data and analytics can support the assessment of supplier risk and the auditing of supplier risk management. This includes understanding levels of supplier utilization and determining fallback positions in the event of an interruption. This type of analysis helps companies decide whether they need to adjust their supply chain risk management, like identifying a dual source supplier.</li>
-                <li>The company has recognized that the risk exposure is significant. Therefore, they address it in the supply chain strategy by bringing production closer, changing suppliers, assessing deal sourcing, inventory management or holding more stock.</li>
+              <li>The company already has information on its supply chain. It hopes to revisit its insurance program to see what kind of coverage is in place and if it can cover the losses the company may incur due to an interruption from a third-party supplier.</li>
+              <li>The company is uncomfortable accepting its current level of risk and wants to enhance risk management. Data and analytics can support the assessment of supplier risk and the auditing of supplier risk management. This includes understanding levels of supplier utilization and determining fallback positions in the event of an interruption. This type of analysis helps companies decide whether they need to adjust their supply chain risk management, like identifying a dual source supplier.</li>
+              <li>The company has recognized that the risk exposure is significant. Therefore, they address it in the supply chain strategy by bringing production closer, changing suppliers, assessing deal sourcing, inventory management or holding more stock.</li>
             </ul>
             <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4 text-sm">
               “Supply chain risk management should be truly enterprise-wide, connecting risk and insurance professionals with senior directors in supply chain, procurement, treasury, strategy and operations, around a common set of data and decision making.”
@@ -217,7 +217,7 @@ export default function DeepDiveTradePage() {
               “Our insurance markets are adept at accepting risk transfer of known and unknown risks, including tax and contingent risks and breaches of reps and warranties, which allows a more economically efficient structure to protect a buyer and a cleaner exit for a seller.”
               <footer className="text-xs text-gray-500 mt-1 not-italic">— Gary Blitz</footer>
             </blockquote>
-             <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               In response, supply chains may shorten as more businesses consider the use of nearshoring as an operational strategy to overcome evolving supply chain risks. Data will be central to decision making. Improved insights around where and how risk impacts the supply chain can help inform business leaders as they prepare for unplanned events and volatile supplier performance.
             </p>
           </div>

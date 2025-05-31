@@ -17,8 +17,8 @@ export default function CategoryFilter({
           onClick={() => onSelectCategory(null)}
           className={`px-3 py-1 rounded-full text-sm ${
             selectedCategory === null
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
         >
           All
@@ -29,8 +29,8 @@ export default function CategoryFilter({
             onClick={() => onSelectCategory(category)}
             className={`px-3 py-1 rounded-full text-sm ${
               selectedCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? "bg-blue-600 text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
             {category}

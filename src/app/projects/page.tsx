@@ -1,23 +1,23 @@
-import ProjectsClient from './ProjectsClient';
-import { ProjectService } from '../../lib/api-services';
-import type { ApiProject } from '../../types/api';
+import ProjectsClient from "./ProjectsClient";
+import { ProjectService } from "../../lib/api-services";
+import type { ApiProject } from "../../types/api";
 
 // Helper to normalize API data to ProjectClient type
 function normalizeProject(p: ApiProject) {
   return {
     id: p.id,
-    title: p.title ?? '',
-    description: p.description ?? '',
+    title: p.title ?? "",
+    description: p.description ?? "",
     technologies: p.technologies ?? [],
-    link: '',
-    datePublished: '',
-    category: '',
-    image: p.imageUrl ?? '',
-    caseStudy: '',
+    link: "",
+    datePublished: "",
+    category: "",
+    image: p.imageUrl ?? "",
+    caseStudy: "",
     screenshots: [],
     outcomes: [],
-    gitHubUrl: p.gitHubUrl ?? '',
-    liveUrl: p.liveUrl ?? '',
+    gitHubUrl: p.gitHubUrl ?? "",
+    liveUrl: p.liveUrl ?? "",
   };
 }
 
@@ -28,7 +28,7 @@ export default async function ProjectsPage() {
     return <ProjectsClient projects={projects} />;
   } catch (err) {
     // Optionally log the error
-    console.error('Error fetching projects:', err);
+    console.error("Error fetching projects:", err);
     return <div>Failed to load projects. Please try again later.</div>;
   }
 }

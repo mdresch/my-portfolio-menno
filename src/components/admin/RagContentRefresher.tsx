@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function RagContentRefresher() {
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -20,19 +20,19 @@ export default function RagContentRefresher() {
     try {
       // Get the token from somewhere secure (this is just a placeholder)
       // In a real app, you'd store this in a secure environment variable or get it from auth
-      const refreshToken = process.env.NEXT_PUBLIC_REFRESH_RAG_TOKEN || prompt('Enter refresh token:');
+      const refreshToken = process.env.NEXT_PUBLIC_REFRESH_RAG_TOKEN || prompt("Enter refresh token:");
       
       if (!refreshToken) {
-        setResult({ success: false, error: 'No refresh token provided' });
+        setResult({ success: false, error: "No refresh token provided" });
         setIsRefreshing(false);
         return;
       }
 
-      const response = await fetch('/api/refresh-rag', {
-        method: 'POST',
+      const response = await fetch("/api/refresh-rag", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${refreshToken}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${refreshToken}`
         }
       });
 
@@ -41,19 +41,19 @@ export default function RagContentRefresher() {
       if (response.ok) {
         setResult({
           success: true,
-          message: data.message || 'Content refreshed successfully',
+          message: data.message || "Content refreshed successfully",
           timestamp: data.timestamp
         });
       } else {
         setResult({
           success: false,
-          error: data.error || 'Unknown error refreshing content'
+          error: data.error || "Unknown error refreshing content"
         });
       }
     } catch (error) {
       setResult({
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to refresh content'
+        error: error instanceof Error ? error.message : "Failed to refresh content"
       });
     } finally {
       setIsRefreshing(false);
@@ -73,8 +73,8 @@ export default function RagContentRefresher() {
         className={`
           px-4 py-2 rounded-md text-white font-medium
           ${isRefreshing 
-            ? 'bg-gray-400 cursor-not-allowed' 
-            : 'bg-blue-600 hover:bg-blue-700'}
+      ? "bg-gray-400 cursor-not-allowed" 
+      : "bg-blue-600 hover:bg-blue-700"}
           transition-colors
         `}
       >
@@ -86,11 +86,11 @@ export default function RagContentRefresher() {
             </svg>
             Refreshing...
           </span>
-        ) : 'Refresh RAG Content'}
+        ) : "Refresh RAG Content"}
       </button>
       
       {result && (
-        <div className={`mt-4 p-3 rounded ${result.success ? 'bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400'}`}>
+        <div className={`mt-4 p-3 rounded ${result.success ? "bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400" : "bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400"}`}>
           {result.success ? (
             <>
               <p className="font-medium">{result.message}</p>

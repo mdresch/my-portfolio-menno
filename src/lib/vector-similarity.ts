@@ -22,7 +22,7 @@ export function magnitude(vec: number[]): number {
  */
 export function cosineSimilarity(vecA: number[], vecB: number[]): number {
   if (vecA.length !== vecB.length) {
-    throw new Error('Vectors must have the same dimensions');
+    throw new Error("Vectors must have the same dimensions");
   }
   
   const magA = magnitude(vecA);
@@ -51,7 +51,7 @@ export function cosineDistance(vecA: number[], vecB: number[]): number {
  */
 export function euclideanDistance(vecA: number[], vecB: number[]): number {
   if (vecA.length !== vecB.length) {
-    throw new Error('Vectors must have the same dimensions');
+    throw new Error("Vectors must have the same dimensions");
   }
   
   let sum = 0;

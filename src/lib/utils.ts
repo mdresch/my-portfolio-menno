@@ -11,24 +11,24 @@ export function cn(...inputs: ClassValue[]) {
  * @returns Formatted date string (e.g., "May 8, 2025")
  */
 export function formatDate(dateString: string): string {
-  if (!dateString) return '';
+  if (!dateString) return "";
   
   try {
     const date = new Date(dateString);
     
     // Check if date is valid
     if (isNaN(date.getTime())) {
-      return '';
+      return "";
     }
     
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
     });
   } catch (error) {
-    console.error('Error formatting date:', error);
-    return '';
+    console.error("Error formatting date:", error);
+    return "";
   }
 }
 
@@ -38,26 +38,26 @@ export function formatDate(dateString: string): string {
  * @returns Formatted date with time (e.g., "May 8, 2025, 2:30 PM")
  */
 export function formatDateTime(dateString: string): string {
-  if (!dateString) return '';
+  if (!dateString) return "";
   
   try {
     const date = new Date(dateString);
     
     // Check if date is valid
     if (isNaN(date.getTime())) {
-      return '';
+      return "";
     }
     
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
     });
   } catch (error) {
-    console.error('Error formatting date with time:', error);
-    return '';
+    console.error("Error formatting date with time:", error);
+    return "";
   }
 }
 
@@ -67,14 +67,14 @@ export function formatDateTime(dateString: string): string {
  * @returns Relative time string
  */
 export function formatRelativeTime(dateString: string): string {
-  if (!dateString) return '';
+  if (!dateString) return "";
   
   try {
     const date = new Date(dateString);
     
     // Check if date is valid
     if (isNaN(date.getTime())) {
-      return '';
+      return "";
     }
     
     const now = new Date();
@@ -86,28 +86,28 @@ export function formatRelativeTime(dateString: string): string {
     
     const diffInMinutes = Math.floor(diffInSeconds / 60);
     if (diffInMinutes < 60) {
-      return `${diffInMinutes} ${diffInMinutes === 1 ? 'minute' : 'minutes'} ago`;
+      return `${diffInMinutes} ${diffInMinutes === 1 ? "minute" : "minutes"} ago`;
     }
     
     const diffInHours = Math.floor(diffInMinutes / 60);
     if (diffInHours < 24) {
-      return `${diffInHours} ${diffInHours === 1 ? 'hour' : 'hours'} ago`;
+      return `${diffInHours} ${diffInHours === 1 ? "hour" : "hours"} ago`;
     }
     
     const diffInDays = Math.floor(diffInHours / 24);
     if (diffInDays < 30) {
-      return `${diffInDays} ${diffInDays === 1 ? 'day' : 'days'} ago`;
+      return `${diffInDays} ${diffInDays === 1 ? "day" : "days"} ago`;
     }
     
     const diffInMonths = Math.floor(diffInDays / 30);
     if (diffInMonths < 12) {
-      return `${diffInMonths} ${diffInMonths === 1 ? 'month' : 'months'} ago`;
+      return `${diffInMonths} ${diffInMonths === 1 ? "month" : "months"} ago`;
     }
     
     const diffInYears = Math.floor(diffInMonths / 12);
-    return `${diffInYears} ${diffInYears === 1 ? 'year' : 'years'} ago`;
+    return `${diffInYears} ${diffInYears === 1 ? "year" : "years"} ago`;
   } catch (error) {
-    console.error('Error formatting relative time:', error);
-    return '';
+    console.error("Error formatting relative time:", error);
+    return "";
   }
 }

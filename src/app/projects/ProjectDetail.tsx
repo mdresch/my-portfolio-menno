@@ -21,7 +21,7 @@ interface ProjectDetailProps {
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const router = useRouter();
-  const slug = project.slug || project.title?.toLowerCase().replace(/\s+/g, '-');
+  const slug = project.slug || project.title?.toLowerCase().replace(/\s+/g, "-");
 
   useEffect(() => {
     // Only increment if project has an id or slug

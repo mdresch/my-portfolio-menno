@@ -1,54 +1,54 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import { 
   AreaChart, Area, BarChart, Bar, LineChart, Line, PieChart, Pie, 
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell
-} from 'recharts';
-import Image from 'next/image';
-import Link from 'next/link';
+} from "recharts";
+import Image from "next/image";
+import Link from "next/link";
 
 // Sample data for visualizations
 const threatEvolutionData = [
-  { year: '2022', malware: 30, ransomware: 45, dataBreach: 25, supplyChain: 15, apiAttacks: 10 },
-  { year: '2023', malware: 28, ransomware: 55, dataBreach: 35, supplyChain: 20, apiAttacks: 18 },
-  { year: '2024', malware: 25, ransomware: 60, dataBreach: 40, supplyChain: 28, apiAttacks: 30 },
-  { year: '2025 (Proj)', malware: 22, ransomware: 68, dataBreach: 48, supplyChain: 35, apiAttacks: 45 },
+  { year: "2022", malware: 30, ransomware: 45, dataBreach: 25, supplyChain: 15, apiAttacks: 10 },
+  { year: "2023", malware: 28, ransomware: 55, dataBreach: 35, supplyChain: 20, apiAttacks: 18 },
+  { year: "2024", malware: 25, ransomware: 60, dataBreach: 40, supplyChain: 28, apiAttacks: 30 },
+  { year: "2025 (Proj)", malware: 22, ransomware: 68, dataBreach: 48, supplyChain: 35, apiAttacks: 45 },
 ];
 
 const financialImpactData = [
-  { name: 'Banks', value: 42 },
-  { name: 'Insurance', value: 28 },
-  { name: 'Investment Firms', value: 15 },
-  { name: 'Payment Processors', value: 10 },
-  { name: 'FinTech', value: 5 },
+  { name: "Banks", value: 42 },
+  { name: "Insurance", value: 28 },
+  { name: "Investment Firms", value: 15 },
+  { name: "Payment Processors", value: 10 },
+  { name: "FinTech", value: 5 },
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
 const vulnerabilityScoresData = [
-  { subject: 'Authentication', A: 80, B: 55, fullMark: 100 },
-  { subject: 'Network Security', A: 75, B: 60, fullMark: 100 },
-  { subject: 'App Security', A: 65, B: 70, fullMark: 100 },
-  { subject: 'Data Protection', A: 90, B: 62, fullMark: 100 },
-  { subject: 'Incident Response', A: 85, B: 58, fullMark: 100 },
-  { subject: 'Cloud Security', A: 72, B: 65, fullMark: 100 },
+  { subject: "Authentication", A: 80, B: 55, fullMark: 100 },
+  { subject: "Network Security", A: 75, B: 60, fullMark: 100 },
+  { subject: "App Security", A: 65, B: 70, fullMark: 100 },
+  { subject: "Data Protection", A: 90, B: 62, fullMark: 100 },
+  { subject: "Incident Response", A: 85, B: 58, fullMark: 100 },
+  { subject: "Cloud Security", A: 72, B: 65, fullMark: 100 },
 ];
 
 const costPerBreachData = [
-  { year: '2022', cost: 4.35 },
-  { year: '2023', cost: 4.88 },
-  { year: '2024', cost: 5.34 },
-  { year: '2025 (Proj)', cost: 6.25 },
+  { year: "2022", cost: 4.35 },
+  { year: "2023", cost: 4.88 },
+  { year: "2024", cost: 5.34 },
+  { year: "2025 (Proj)", cost: 6.25 },
 ];
 
 const mitigationStrategiesData = [
-  { name: 'MFA Implementation', effectivenessScore: 8.5, adoptionRate: 70, costEfficiency: 9.5 },
-  { name: 'AI-powered Monitoring', effectivenessScore: 9.2, adoptionRate: 45, costEfficiency: 7.5 },
-  { name: 'Zero Trust Architecture', effectivenessScore: 9.0, adoptionRate: 35, costEfficiency: 6.8 },
-  { name: 'Quantum-Resistant Crypto', effectivenessScore: 9.5, adoptionRate: 20, costEfficiency: 5.0 },
-  { name: 'Employee Security Training', effectivenessScore: 8.0, adoptionRate: 80, costEfficiency: 9.0 },
+  { name: "MFA Implementation", effectivenessScore: 8.5, adoptionRate: 70, costEfficiency: 9.5 },
+  { name: "AI-powered Monitoring", effectivenessScore: 9.2, adoptionRate: 45, costEfficiency: 7.5 },
+  { name: "Zero Trust Architecture", effectivenessScore: 9.0, adoptionRate: 35, costEfficiency: 6.8 },
+  { name: "Quantum-Resistant Crypto", effectivenessScore: 9.5, adoptionRate: 20, costEfficiency: 5.0 },
+  { name: "Employee Security Training", effectivenessScore: 8.0, adoptionRate: 80, costEfficiency: 9.0 },
 ];
 
 export default function CybersecurityFinancialRiskPage() {
@@ -161,7 +161,7 @@ export default function CybersecurityFinancialRiskPage() {
                       outerRadius={100}
                       fill="#8884d8"
                       dataKey="value"
-                      label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                      label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                     >
                       {financialImpactData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -195,8 +195,8 @@ export default function CybersecurityFinancialRiskPage() {
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="year" />
-                    <YAxis domain={[4, 7]} label={{ value: 'USD Millions', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip formatter={(value) => [`$${value}M`, 'Cost']} />
+                    <YAxis domain={[4, 7]} label={{ value: "USD Millions", angle: -90, position: "insideLeft" }} />
+                    <Tooltip formatter={(value) => [`$${value}M`, "Cost"]} />
                     <Legend />
                     <Line type="monotone" dataKey="cost" stroke="#8884d8" activeDot={{ r: 8 }} strokeWidth={2} />
                   </LineChart>

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { getCountriesByRegion, getComplexityColor } from '../../../../lib/riskData';
-import ApacComplexityMap from '../../../../components/risk/ApacComplexityMap';
+import React from "react";
+import Link from "next/link";
+import { getCountriesByRegion, getComplexityColor } from "../../../../lib/riskData";
+import ApacComplexityMap from "../../../../components/risk/ApacComplexityMap";
 
 // Get APAC country data
 const apacCountryData = getCountriesByRegion("APAC");
@@ -81,7 +81,7 @@ export default function ApacPage() {
                 <tr key={country.country} className="hover:bg-gray-50">
                   <td className="px-4 py-3 whitespace-nowrap">{country.rank}</td>
                   <td className="px-4 py-3 whitespace-nowrap font-medium">
-                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, '-')}`} className="text-blue-600 hover:underline">
+                    <Link href={`/risk/global-business-complexity-index/country/${country.country.toLowerCase().replace(/\s+/g, "-")}`} className="text-blue-600 hover:underline">
                       {country.country}
                     </Link>
                   </td>
