@@ -64,6 +64,15 @@ The chatbot includes a mock implementation for development purposes:
 - **Conversation History**: The chatbot maintains context across multiple messages
 - **Fallback Mode**: Automatically falls back to mock implementation if the Gemini API is unavailable
 
+## Requirements Automation & Utilities
+
+This project includes an automated requirements gathering script and supporting utilities:
+
+- **scripts/auto-requirements.js**: Automates project review, business problem statement generation, requirements agent calls, and documentation updates. It leverages a robust internal utility module for all file system, JSON, glob, and error handling operations.
+- **scripts/utils.js**: Internal utility module providing safe and consistent functions for file I/O, JSON parsing/stringifying, glob pattern matching, string manipulation, and standardized error logging. Used by auto-requirements.js and intended for internal use by scripts in this project.
+
+All utility functions are thoroughly unit tested. See `TEST_SUMMARY.md` for details.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
