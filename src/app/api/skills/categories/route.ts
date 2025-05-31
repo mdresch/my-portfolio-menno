@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resumeData } from "@/data/resume";
+import resumeData from "@/data/resume";
 
 // This API route serves skill categories directly from resume.ts
 

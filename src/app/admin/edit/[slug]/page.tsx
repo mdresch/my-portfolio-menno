@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -11,10 +11,13 @@ const MarkdownEditor = dynamic(() => import("../../../../components/admin/Markdo
   loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-md"></div>
 });
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
+interface Post {
+  slug: string;
+  title: string;
+  content: string;
+  published: boolean;
+  publishDate: string;
+  tags: string[];
 }
 
 export default function EditPostPage() {
