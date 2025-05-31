@@ -81,6 +81,29 @@ const nextConfig = {
       },
     ],
   },
+  webpack(config, { isServer }) {
+    // Exclude certain server-only modules from client bundles
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        'fs': false,
+        '@opentelemetry/winston-transport': false,
+        '@opentelemetry/exporter-jaeger': false,
+      };
+      // Null-loader for handlebars in client bundle
+      config.module.rules.push({
+        test: /handlebars\/lib\/index\.js$/,
+        use: 'null-loader',
+      });
+    }
+    // Suppress warnings about require.extensions and critical dependencies
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      { message: /require\.extensions is not supported by webpack/ },
+      { message: /Critical dependency: the request of a dependency is an expression/ },
+    ];
+    return config;
+  },
 };
 
 module.exports = withSentryConfig(nextConfig, {
