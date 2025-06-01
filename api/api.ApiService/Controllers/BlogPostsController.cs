@@ -22,11 +22,31 @@ public class BlogPostsController : ControllerBase
 
     // GET: api/blogposts
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<BlogPost>>> GetBlogPosts()
+    public async Task<ActionResult<IEnumerable<BlogPostDto>>> GetBlogPosts()
     {
-        var posts = await _context.BlogPosts
-            .OrderByDescending(b => b.PublishedDate)
-            .ToListAsync();
-        return posts;
+        try
+        {
+            var posts = await _context.BlogPosts
+                .OrderByDescending(b => b.PublishedDate)
+                .Select(b => new BlogPostDto
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Content = b.Content,
+                    PublishedDate = b.PublishedDate
+                    // Add other properties as needed
+                })
+                .ToListAsync();
+            return posts;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while fetching blog posts");
+#if DEBUG
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+#else
+            return StatusCode(500, "An error occurred while processing your request");
+#endif
+        }
     }
 }

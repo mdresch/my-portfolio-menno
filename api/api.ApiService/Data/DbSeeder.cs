@@ -97,6 +97,7 @@ namespace api.ApiService.Data
                     return;
                 }
 
+                var existingSlugs = await context.BlogPosts.Select(b => b.Slug).ToListAsync();
                 var blogPostsToSeed = new List<BlogPost>();
                 foreach (var dto in blogPostDtos)
                 {
@@ -109,7 +110,7 @@ namespace api.ApiService.Data
                         continue;
                     }
 
-                    if (await context.BlogPosts.AnyAsync(b => b.Slug == slug) || blogPostsToSeed.Any(b => b.Slug == slug))
+                    if (existingSlugs.Contains(slug) || blogPostsToSeed.Any(b => b.Slug == slug))
                     {
                         logger.LogWarning("Skipping blog post with title '{Title}' due to duplicate slug: '{Slug}'.", title, slug);
                         continue;
@@ -159,11 +160,7 @@ namespace api.ApiService.Data
         {
             try
             {
-                if (await context.Skills.AnyAsync())
-                {
-                    logger.LogInformation("Skills already exist. Skipping skill seeding.");
-                    return;
-                }
+                var existingSkillNames = await context.Skills.Select(s => s.Name.ToLower()).ToListAsync();
 
                 // Option 1: Hardcode skills (update to match Skill model)
                 var skillsToSeed = new List<Skill>
@@ -207,8 +204,7 @@ namespace api.ApiService.Data
 
                 if (skillsToSeed.Any())
                 {
-                    var existingSkillNames = await context.Skills.Select(s => s.Name).ToListAsync();
-                    var newSkills = skillsToSeed.Where(s => !existingSkillNames.Contains(s.Name, StringComparer.OrdinalIgnoreCase)).ToList();
+                    var newSkills = skillsToSeed.Where(s => !existingSkillNames.Contains(s.Name.ToLower())).ToList();
 
                     if (newSkills.Any())
                     {
@@ -313,9 +309,10 @@ namespace api.ApiService.Data
             }
 
             // Remove invalid chars
-            string str = Regex.Replace(phrase, @"[^a-zA-Z0-9\s-]", "");
+            string str = Regex.Replace(phrase, @"[^a-zA-Z0-9\s-]", "", RegexOptions.None, TimeSpan.FromSeconds(1));
+
             // Convert multiple spaces/hyphens into one hyphen
-            str = Regex.Replace(str, @"[\s-]+", "-").Trim('-');
+            str = Regex.Replace(str, @"[\s-]+", "-", RegexOptions.None, TimeSpan.FromSeconds(1)).Trim('-');
             // Convert to lowercase
             str = str.ToLowerInvariant();
 

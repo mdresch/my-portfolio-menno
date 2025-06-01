@@ -3,7 +3,7 @@ import { VertexAI } from "@google-cloud/vertexai";
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.DOTNET_API_BASE_URL;
 const vertexAI = new VertexAI({
-  project: process.env.VERTEX_AI_PROJECT_ID,
+  project: process.env.VERTEX_AI_PROJECT_ID || "my-portfolio-menno",
   location: process.env.VERTEX_AI_LOCATION || "us-central1",
 });
 const model = vertexAI.getGenerativeModel({ model: "gemini-pro" });
@@ -35,6 +35,18 @@ export async function POST(req: NextRequest) {
   try {
     const { message: userQuestion } = await req.json();
 
+    // Check required environment variables
+    const missingVars = [];
+    if (!process.env.NEXT_PUBLIC_API_BASE_URL && !process.env.DOTNET_API_BASE_URL) missingVars.push('NEXT_PUBLIC_API_BASE_URL or DOTNET_API_BASE_URL');
+    if (!process.env.VERTEX_AI_PROJECT_ID) missingVars.push('VERTEX_AI_PROJECT_ID');
+    if (!process.env.VERTEX_AI_LOCATION) missingVars.push('VERTEX_AI_LOCATION');
+    if (missingVars.length > 0) {
+      return NextResponse.json({
+        error: 'Missing required environment variables',
+        missing: missingVars
+      }, { status: 500 });
+    }
+
     // Fetch portfolio data from .NET API
     const [skillsRes, blogPostsRes, projectsRes] = await Promise.all([
       fetch(`${apiBaseUrl}/api/skills`),
@@ -42,7 +54,14 @@ export async function POST(req: NextRequest) {
       fetch(`${apiBaseUrl}/api/projects`)
     ]);
     if (!skillsRes.ok || !blogPostsRes.ok || !projectsRes.ok) {
-      return NextResponse.json({ error: "Failed to fetch portfolio data" }, { status: 500 });
+      return NextResponse.json({
+        error: "Failed to fetch portfolio data",
+        details: {
+          skills: skillsRes.status,
+          blogPosts: blogPostsRes.status,
+          projects: projectsRes.status
+        }
+      }, { status: 500 });
     }
     const [skills, blogPosts, projects] = await Promise.all([
       skillsRes.json(),
@@ -53,15 +72,26 @@ export async function POST(req: NextRequest) {
     // Build prompt and call Gemini
     const prompt = buildPrompt({ skills, blogPosts, projects }, userQuestion);
 
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.2, maxOutputTokens: 512 },
-    });
-
-    const aiResponse = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "No answer generated.";
+    let aiResponse: string;
+    try {
+      const result = await model.generateContent({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.2, maxOutputTokens: 512 },
+      });
+      aiResponse = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text || "No answer generated.";
+    } catch (modelErr: any) {
+      return NextResponse.json({
+        error: "VertexAI model call failed",
+        details: modelErr?.message || modelErr,
+        fullError: typeof modelErr === 'object' ? JSON.stringify(modelErr, Object.getOwnPropertyNames(modelErr)) : String(modelErr)
+      }, { status: 500 });
+    }
 
     return NextResponse.json({ response: aiResponse });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Unknown error" }, { status: 500 });
+    return NextResponse.json({
+      error: err.message || "Unknown error",
+      fullError: typeof err === 'object' ? JSON.stringify(err, Object.getOwnPropertyNames(err)) : String(err)
+    }, { status: 500 });
   }
 }
