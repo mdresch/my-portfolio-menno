@@ -146,10 +146,14 @@ try
                 {
                     logger.LogInformation("Connected to development database, seeding data");
                     // Use fully qualified type name to avoid ambiguity
-                    // Dynamically load and call the method to avoid ambiguity
+                    // Dynamically load and call the async method
                     var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
-                    var seedMethod = dbSeederType?.GetMethod("Seed");
-                    seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, "Development" });
+                    var seedMethod = dbSeederType?.GetMethod("SeedAsync");
+                    var task = seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, "Development" }) as Task;
+                    if (task != null)
+                    {
+                        await task;
+                    }
                 }
                 else
                 {
@@ -177,10 +181,14 @@ try
             var context = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
             
             // In production, use a regular timeout but with retry policy (already configured)
-            // Dynamically load and call the method to avoid ambiguity
+            // Dynamically load and call the async method
             var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
-            var seedMethod = dbSeederType?.GetMethod("Seed");
-            seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env });
+            var seedMethod = dbSeederType?.GetMethod("SeedAsync");
+            var task = seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env }) as Task;
+            if (task != null)
+            {
+                await task;
+            }
         }
     }
 }

@@ -501,15 +501,15 @@ namespace api.ApiService.Data
     // Add Seed entry point for runtime invocation
     public static class DbSeederRunner
     {
-        public static void Seed(IServiceProvider services, string environmentName)
+        public static async Task SeedAsync(IServiceProvider services, string environmentName)
         {
             using var scope = services.CreateScope();
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
             var context = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
             var loggerFactory = scope.ServiceProvider.GetRequiredService<ILoggerFactory>();
             var logger = loggerFactory.CreateLogger("DbSeeder");
-            // Run seeding synchronously
-            DbSeeder.SeedDataAsync(context, env, logger).GetAwaiter().GetResult();
+            // Run seeding asynchronously
+            await DbSeeder.SeedDataAsync(context, env, logger);
         }
     }
 }

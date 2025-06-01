@@ -8,5 +8,5 @@ namespace Projects;
 public class api_AppHost
 {
     private api_AppHost() { }
-    public static string ProjectPath => """c:\Users\menno\Source\Repos\my-portfolio-menno\api\api.AppHost""";
+    public static string ProjectPath => """/workspaces/my-portfolio-menno/api/api.AppHost""";
 }
