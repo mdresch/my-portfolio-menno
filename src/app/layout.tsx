@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import ConditionalFooter from "../components/ConditionalFooter";
@@ -13,7 +14,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientAnalytics from "../components/ClientAnalytics";
 import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
-import React from "react";
 
 const geist = Geist({
   subsets: ["latin"],

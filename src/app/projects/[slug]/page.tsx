@@ -32,7 +32,13 @@ async function fetchProjects(): Promise<ApiProject[]> {
   return data as ApiProject[];
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+// Define proper types for App Router
+interface ProjectPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
   let projects: ApiProject[] = [];
 
   try {
@@ -45,7 +51,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   const project = projects
     .map(normalizeProject)
     .find(
-      (p) => p.title.toLowerCase().replace(/\s+/g, "-") === params.slug
+      (p) => p.title.toLowerCase().replace(/\s+/g, "-") === slug
     );
 
   if (!project) return notFound();

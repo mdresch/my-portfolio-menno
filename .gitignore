@@ -116,3 +116,5 @@ my-portfolio-menno-*.json
 my-portfolio-menno-1c10fc787618.json
 service-account-key-single-line.json
 .env.local
+
+docs/requirements/gathered-project-context.txt

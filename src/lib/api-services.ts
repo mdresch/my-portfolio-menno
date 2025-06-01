@@ -12,7 +12,7 @@ export function getAuthHeader(): Record<string, string> {
 }
 
 // Helper function for HTTP requests
-async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}): Promise<T> {
   const baseHeaders: Record<string, string> = {
     "Content-Type": "application/json",
     ...getAuthHeader(),

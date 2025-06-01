@@ -29,60 +29,38 @@
 - created_at
 - updated_at
 
-## MediaFiles
+## Analytics
 - id (PK)
 - user_id (FK to Users)
-- file_url
-- file_type
-- linked_project_id (nullable, FK to Projects)
-- linked_blogpost_id (nullable, FK to BlogPosts)
-- uploaded_at
+- event_type (page_view, project_view, contact_form)
+- event_data (JSON)
+- timestamp
+- visitor_id (for tracking unique visitors)
 
 ## Integrations
 - id (PK)
 - user_id (FK to Users)
-- service_name (GitHub, Dev.to, etc.)
+- service_name (github, devto, linkedin)
 - access_token (encrypted)
-- status
-- last_synced_at
+- refresh_token (encrypted)
+- config (JSON)
+- last_sync
+- status (active/inactive/error)
 
-## Analytics
+## Media
 - id (PK)
 - user_id (FK to Users)
-- type (project_view, blog_view, etc.)
-- target_id (FK to Projects or BlogPosts)
-- count
-- date
+- filename
+- file_path
+- file_size
+- mime_type
+- uploaded_at
 
-## Notifications
+## Comments (if enabled)
 - id (PK)
-- user_id (FK to Users)
-- type
-- message
-- is_read
-- created_at
-
-## Comments
-- id (PK)
-- blogpost_id (FK to BlogPosts)
-- user_id (FK to Users, nullable for anonymous)
+- post_id (FK to BlogPosts)
+- author_name
+- author_email
 - content
+- status (pending/approved/spam)
 - created_at
-
-## SupportTickets
-- id (PK)
-- user_id (FK to Users)
-- subject
-- description
-- status (open, closed, pending)
-- created_at
-- updated_at
-
-## Drafts
-- id (PK)
-- user_id (FK to Users)
-- type (project, blogpost)
-- content
-- version
-- created_at
-- updated_at

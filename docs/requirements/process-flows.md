@@ -29,80 +29,43 @@
 4. User views charts and insights.
 
 ### Media file management
-1. User uploads, edits, or deletes media files.
-2. System validates file type/size.
-3. Media is stored and linked to relevant content.
-4. User can preview or remove media.
+1. User uploads media files (images, videos, documents).
+2. System validates file type and size.
+3. Files are stored securely in cloud storage.
+4. User can reference files in content.
 
-### Profile customization
-1. User accesses profile settings.
-2. User updates appearance, layout, or personal info.
-3. System saves changes and updates portfolio view.
+## Visitors
 
-### Notification management
-1. System detects relevant event (e.g., new comment, integration error).
-2. Notification is generated and sent to user (in-app or email).
-3. User views and manages notifications.
-
-## Portfolio Visitor
-
-### Portfolio and blog content rendering
+### Portfolio browsing and interaction
 1. Visitor accesses portfolio URL.
-2. System fetches and renders projects and blog posts.
-3. Visitor browses content.
+2. System loads and displays portfolio content.
+3. Visitor navigates through projects and blog posts.
+4. System tracks engagement metrics.
+5. Visitor can contact portfolio owner or engage with content.
 
-### External link and integration access
-1. Visitor clicks external link (e.g., GitHub).
-2. System verifies link and redirects visitor.
+### Search and filtering
+1. Visitor uses search functionality.
+2. System queries content database.
+3. Results are filtered and displayed.
+4. Visitor refines search or browses results.
 
-### Visitor interaction management
-1. Visitor submits comment or contact form (if enabled).
-2. System validates and stores interaction.
-3. Portfolio owner is notified.
+## System Administrator
 
-### Content loading and navigation
-1. Visitor navigates between pages or sections.
-2. System loads content dynamically for fast experience.
+### User management and moderation
+1. Admin accesses admin panel.
+2. Admin views user accounts and activity.
+3. Admin can suspend/activate accounts or moderate content.
+4. System logs admin actions for audit purposes.
 
-## Platform Administrator
+### Analytics and reporting
+1. Admin requests platform-wide analytics.
+2. System aggregates data from all users.
+3. Reports are generated and displayed.
+4. Admin can export data or configure alerts.
 
-### User and account management
-1. Admin logs in to admin dashboard.
-2. Admin views, edits, or deletes user accounts.
-3. System updates user records and permissions.
-
-### System monitoring and logging
-1. System collects performance and activity logs.
-2. Admin reviews logs and system health metrics.
-3. Admin takes action if anomalies are detected.
-
-### Security and compliance management
-1. System runs security checks and compliance audits.
-2. Admin reviews reports and addresses issues.
-
-### Integration status monitoring
-1. System checks health of external integrations.
-2. Admin is alerted to failures or issues.
-3. Admin investigates and resolves problems.
-
-### Support ticketing and resolution
-1. User submits support request.
-2. System logs ticket and notifies admin.
-3. Admin reviews, responds, and resolves the issue.
-4. User is notified of resolution.
-
-## Content Editor
-
-### Collaborative content editing
-1. Editor and owner access shared draft.
-2. Both make edits in real time or asynchronously.
-3. System tracks changes and resolves conflicts.
-
-### Draft management and version control
-1. Editor creates or updates a draft.
-2. System saves versions and allows rollback.
-3. Final draft is published upon approval.
-
-### Media asset management
-1. Editor uploads or organizes media assets.
-2. System links assets to content and manages storage.
+### System maintenance and updates
+1. Admin schedules maintenance window.
+2. System enters maintenance mode.
+3. Updates are deployed and tested.
+4. System returns to normal operation.
+5. Users are notified of changes.

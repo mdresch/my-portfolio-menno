@@ -7,9 +7,15 @@ import { allCountryData, getComplexityColor, regionalAverages } from "../../../.
 import ComplexityRadarChart from "../../../../../components/risk/ComplexityRadarChart";
 import RegionalComparisonChart from "../../../../../components/risk/RegionalComparisonChart";
 
-export default function CountryPage({ params }: { params: { slug: string } }) {
+// Define proper types for App Router
+interface CountryPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function CountryPage({ params }: CountryPageProps) {
+  const { slug } = await params;
   // Convert slug to country name for matching (e.g., "united-states" -> "United States")
-  const countryNameFromSlug = params.slug
+  const countryNameFromSlug = slug
     .split("-")
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
