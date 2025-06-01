@@ -5,9 +5,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using PortfolioApi.Models;
+using api.ApiService.Models;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     public static class DatabaseInitializer
     {

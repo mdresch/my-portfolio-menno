@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PortfolioApi.Models
+namespace api.ApiService.Models
 {
     /// <summary>
     /// Represents a professional skill

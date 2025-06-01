@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using PortfolioApi.Data;
-using PortfolioApi.Models;
+using api.ApiService.Data;
+using api.ApiService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PortfolioApi.Services
+namespace api.ApiService.Services
 {
     /// <summary>
     /// Provides extension methods optimizing Entity Framework Core queries for Azure SQL

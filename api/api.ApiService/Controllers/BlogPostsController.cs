@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PortfolioApi.Models;
-using PortfolioApi.DTOs;
+using api.ApiService.Models;
+using api.ApiService.DTOs;
 using System.Text.Json;
-using PortfolioApi.Data;
+using api.ApiService.Data;
 
-namespace PortfolioApi.Controllers;
+namespace api.ApiService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -1,10 +1,12 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using api.ApiService.Data;
+using api.ApiService.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     /// <summary>
     /// Helper for resilient Azure SQL Database operations

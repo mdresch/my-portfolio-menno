@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using PortfolioApi.Models;
-using PortfolioApi.Data;
+using api.ApiService.Models;
+using api.ApiService.Data;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -12,9 +12,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Logging;
-using PortfolioApi.Extensions;
-using PortfolioApi.Monitoring;
-using PortfolioApi.Configuration;
+using api.ApiService.Monitoring;
 
 // Azure Best Practice: Keep Program.cs as the only file with top-level statements
 var builder = WebApplication.CreateBuilder(args);

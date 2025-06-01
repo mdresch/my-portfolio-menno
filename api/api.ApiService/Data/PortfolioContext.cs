@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using PortfolioApi.Models;
+using api.ApiService.Models;
 using System;
 using System.Linq;
 using System.Threading;
@@ -102,7 +102,8 @@ namespace api.ApiService.Data
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
             var builder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
+                // Use current directory for EF Core CLI compatibility
+                .SetBasePath(System.IO.Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false)
                 .AddJsonFile($"appsettings.{environment}.json", optional: true)
                 .AddEnvironmentVariables();

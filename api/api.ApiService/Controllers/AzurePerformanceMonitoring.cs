@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Logging;
-using PortfolioApi.Data;
+using api.ApiService.Data;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace PortfolioApi.Monitoring
+namespace api.ApiService.Monitoring
 {
     /// <summary>
     /// Azure Best Practice: Monitor database performance with structured logging

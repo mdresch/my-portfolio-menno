@@ -2,10 +2,10 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PortfolioApi.Data; // Add this for PortfolioContext
+using api.ApiService.Data; // Add this for PortfolioContext
 using System;
 
-namespace PortfolioApi.Extensions
+namespace api.ApiService.Extensions
 {
     /// <summary>
     /// Azure Best Practice: Separate service registration extensions for better organization
