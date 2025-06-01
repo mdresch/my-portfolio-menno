@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PortfolioApi.Models
+namespace api.ApiService.Models
 {
     /// <summary>
     /// Base entity class with common properties for Azure SQL entities

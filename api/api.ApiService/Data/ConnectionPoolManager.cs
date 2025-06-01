@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     /// <summary>
     /// Azure Best Practice: Manages connection pooling for optimal Azure SQL Database performance

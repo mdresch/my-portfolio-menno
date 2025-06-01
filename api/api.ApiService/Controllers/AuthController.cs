@@ -3,10 +3,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using PortfolioApi.Models;
-using PortfolioApi.Data;
+using api.ApiService.Models;
+using api.ApiService.Data;
 
-namespace PortfolioApi.Controllers;
+namespace api.ApiService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PortfolioApi.Data;
+using api.ApiService.Data;
 using System;
 
-namespace PortfolioApi.Extensions
+namespace api.ApiService.Extensions
 {
     // Azure Best Practice: Use static extension methods for service registration
     public static class ServiceCollectionExtensions 

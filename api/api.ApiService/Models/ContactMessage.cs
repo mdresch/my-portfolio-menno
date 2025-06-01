@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PortfolioApi.Models
+namespace api.ApiService.Models
 {
     /// <summary>
     /// Represents a contact form message following Azure best practices

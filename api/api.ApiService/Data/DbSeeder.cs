@@ -1,11 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
-using PortfolioApi.Data;
-using PortfolioApi.Models;
+using api.ApiService.Data;
+using api.ApiService.Models;
 using System;
 using System.IO;
 using System.Text.Json;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     public static class DbSeeder
     {

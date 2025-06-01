@@ -1,9 +1,11 @@
-using Microsoft.Extensions.Logging;
-using PortfolioApi.Data;
 using System;
-using System.Threading.Tasks;
+using System.Data.Common;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
+using api.ApiService.Data;
+using api.ApiService.Models;
 
-namespace PortfolioApi.Data
+namespace api.ApiService.Data
 {
     /// <summary>
     /// Azure Best Practice: Monitor SQL connection health for Azure SQL
