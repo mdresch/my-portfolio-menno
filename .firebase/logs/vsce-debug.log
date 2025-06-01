@@ -1,0 +1,18 @@
+[debug] [2025-06-01T01:25:18.096Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Unable to check firebase-tools installation: TypeError: fetch failed
+[debug] [2025-06-01T01:27:35.070Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-06-01T01:27:35.102Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-01T01:27:35.103Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-06-01T01:27:35.116Z] Checked if tokens are valid: false, expires at: 1748698356954
+[debug] [2025-06-01T01:27:35.117Z] Checked if tokens are valid: false, expires at: 1748698356954
+[debug] [2025-06-01T01:27:35.117Z] > refreshing access token with scopes: []
+[debug] [2025-06-01T01:27:35.121Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-06-01T01:27:35.122Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-01T01:27:52.114Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-06-01T01:27:52.115Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-01T01:27:52.162Z] [Firebase Plugin] User found:  menno.drescher@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-06-01T01:27:52.165Z] Checked if tokens are valid: true, expires at: 1748744871116
+[debug] [2025-06-01T01:27:52.168Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-06-01T01:31:20.227Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-06-01T01:31:20.228Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
