@@ -1,0 +1,60 @@
+Starting optimized build process...
+Sun Jun  1 00:08:05 UTC 2025
+Cleaning previous build artifacts...
+
+> personal-website@0.1.0 clean
+> rm -rf .next && rm -rf out
+
+Validating environment setup...
+Found .env.local file
+Running PRODUCTION build with 4096 MB memory limit...
+
+> personal-website@0.1.0 build:prod
+> cp next.config.cjs next.config.js && NODE_OPTIONS="--max_old_space_size=4096" next build --no-lint
+
+ ⚠ Linting is disabled.
+ ⚠ Invalid next.config.js options detected: 
+ ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+ ⚠     Unrecognized key(s) in object: 'swcMinify'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.js file accordingly.
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 15.3.0
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · clientTraceMetadata
+
+   Creating an optimized production build ...
+
+> Build error occurred
+TypeError: p.replace is not a function
+    at Array.map (<anonymous>)
+Build failed with exit code 1
+Check build.log for details
+Last 20 lines of build log:
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.js file accordingly.
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   ▲ Next.js 15.3.0
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · clientTraceMetadata
+
+   Creating an optimized production build ...
+
+> Build error occurred
+TypeError: p.replace is not a function
+    at Array.map (<anonymous>)
+Build failed with exit code 1
+Check build.log for details
+Last 20 lines of build log:
+Build process complete.
+Sun Jun  1 00:08:07 UTC 2025
