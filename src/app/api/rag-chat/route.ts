@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { VertexAI } from "@google-cloud/vertexai";
 
-const apiBaseUrl = process.env.DOTNET_API_BASE_URL;
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.DOTNET_API_BASE_URL;
 const vertexAI = new VertexAI({
   project: process.env.VERTEX_AI_PROJECT_ID,
   location: process.env.VERTEX_AI_LOCATION || "us-central1",
