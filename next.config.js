@@ -23,6 +23,10 @@ const nextConfig = {
   },
   // Minimal webpack configuration
   webpack(config) {
+    config.ignoreWarnings = [
+      (warning) =>
+        warning.message.includes("Critical dependency: the request of a dependency is an expression"),
+    ];
     return config;
   },
 };

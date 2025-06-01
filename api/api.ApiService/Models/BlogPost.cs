@@ -6,6 +6,39 @@ using System.Text.Json.Serialization;
 
 namespace api.ApiService.Models
 {
+    public class BlogPost : BaseEntity
+    {
+        [Required]
+        [MaxLength(200)]
+        public string Title { get; set; } = string.Empty;
+
+        [Required]
+        public string Content { get; set; } = string.Empty;
+
+        [MaxLength(500)]
+        public string? Excerpt { get; set; }
+
+        [Required]
+        [MaxLength(250)]
+        public string Slug { get; set; } = string.Empty;
+
+        public DateTime? PublishedDate { get; set; }
+
+        public bool IsPublished { get; set; } = false;
+
+        [MaxLength(100)]
+        public string? Author { get; set; }
+
+        [MaxLength(255)]
+        public string? CoverImageUrl { get; set; }
+
+        public string? Categories { get; set; }
+
+        public string? Tags { get; set; }
+
+        public virtual ICollection<CrossPost> CrossPosts { get; set; } = new List<CrossPost>();
+    }
+
     public class CrossPost : BaseEntity
     {
         [Required]
@@ -22,6 +55,7 @@ namespace api.ApiService.Models
         public string? Status { get; set; } = "Published";
         
         public int BlogPostId { get; set; }
+        public BlogPost? BlogPost { get; set; }
         
         [NotMapped]
         public string URL 

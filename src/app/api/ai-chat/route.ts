@@ -8,14 +8,19 @@ const GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIAL
 const PORTFOLIO_API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
 
 async function fetchPortfolioData() {
-  // Fetch projects and blog posts as context
-  const [projectsRes, blogRes] = await Promise.all([
-    fetch(`${PORTFOLIO_API_BASE}/projects`),
-    fetch(`${PORTFOLIO_API_BASE}/blogposts`)
-  ]);
-  const projects = projectsRes.ok ? await projectsRes.json() : [];
-  const blogposts = blogRes.ok ? await blogRes.json() : [];
-  return { projects, blogposts };
+  // Fetch real data from your .NET API
+  try {
+    const [projectsRes, blogRes] = await Promise.all([
+      fetch(`${PORTFOLIO_API_BASE}/projects`),
+      fetch(`${PORTFOLIO_API_BASE}/blogposts`)
+    ]);
+    const projects = projectsRes.ok ? await projectsRes.json() : [];
+    const blogposts = blogRes.ok ? await blogRes.json() : [];
+    return { projects, blogposts };
+  } catch (err) {
+    console.error("Error fetching portfolio data:", err);
+    return { projects: [], blogposts: [] };
+  }
 }
 
 async function getAccessToken() {

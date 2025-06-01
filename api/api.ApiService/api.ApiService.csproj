@@ -34,8 +34,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.5" />
   </ItemGroup>
   
-  <!-- Azure Best Practice: Add package vulnerabilities mitigation and update plan -->
+
+  <!-- Ensure projects.json is copied to output directory for seeding -->
   <ItemGroup>
+    <None Include="../../content/project/projects.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 

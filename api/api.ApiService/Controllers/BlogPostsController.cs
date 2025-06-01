@@ -19,4 +19,14 @@ public class BlogPostsController : ControllerBase
         _context = context;
         _logger = logger;
     }
+
+    // GET: api/blogposts
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<BlogPost>>> GetBlogPosts()
+    {
+        var posts = await _context.BlogPosts
+            .OrderByDescending(b => b.PublishedDate)
+            .ToListAsync();
+        return posts;
+    }
 }
