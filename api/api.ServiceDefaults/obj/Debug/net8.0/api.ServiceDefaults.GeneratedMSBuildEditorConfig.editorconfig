@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = api.ServiceDefaults
-build_property.ProjectDir = c:\Users\menno\Source\Repos\my-portfolio-menno\api\api.ServiceDefaults\
+build_property.ProjectDir = /workspaces/my-portfolio-menno/api/api.ServiceDefaults/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

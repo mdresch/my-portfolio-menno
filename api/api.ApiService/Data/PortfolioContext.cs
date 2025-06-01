@@ -21,6 +21,7 @@ namespace api.ApiService.Data
         public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
         public DbSet<BlogPost> BlogPosts { get; set; } = null!;
+        public DbSet<RagDocument> RagDocuments { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

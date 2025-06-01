@@ -77,6 +77,21 @@ builder.Services.AddDbContext<PortfolioContext>(options =>
 
 var app = builder.Build();
 
+using (var migrationScope = app.Services.CreateScope())
+{
+    var migrationContext = migrationScope.ServiceProvider.GetRequiredService<PortfolioContext>();
+    // Only reset DB when using localdev connection (avoid dropping remote Azure SQL)
+    // Get connection string (default to empty to avoid null)
+    var connStr = builder.Configuration.GetConnectionString(
+        builder.Environment.IsProduction() ? "AzureSqlConnection" : "DefaultConnection")
+        ?? string.Empty;
+    if (app.Environment.IsDevelopment() && connStr.Contains("localhost", StringComparison.OrdinalIgnoreCase))
+    {
+        migrationContext.Database.EnsureDeleted();
+    }
+    migrationContext.Database.EnsureCreated();
+}
+
 // Register global exception middleware (must be before other middleware)
 app.UseMiddleware<PortfolioApi.Middleware.GlobalExceptionMiddleware>();
 
@@ -132,7 +147,7 @@ try
                     logger.LogInformation("Connected to development database, seeding data");
                     // Use fully qualified type name to avoid ambiguity
                     // Dynamically load and call the method to avoid ambiguity
-                    var dbSeederType = Type.GetType("PortfolioApi.Data.DbSeeder, api.ApiService");
+                    var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
                     var seedMethod = dbSeederType?.GetMethod("Seed");
                     seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, "Development" });
                 }
@@ -163,7 +178,7 @@ try
             
             // In production, use a regular timeout but with retry policy (already configured)
             // Dynamically load and call the method to avoid ambiguity
-            var dbSeederType = Type.GetType("PortfolioApi.Data.DbSeeder, api.ApiService");
+            var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
             var seedMethod = dbSeederType?.GetMethod("Seed");
             seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env });
         }

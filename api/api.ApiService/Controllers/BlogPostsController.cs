@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using api.ApiService.Models;
-using api.ApiService.DTOs;
-using System.Text.Json;
 using api.ApiService.Data;
+using Dtos = api.ApiService.DTOs;
+using System.Text.Json;
 
 namespace api.ApiService.Controllers;
 
@@ -22,13 +22,13 @@ public class BlogPostsController : ControllerBase
 
     // GET: api/blogposts
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<BlogPostDto>>> GetBlogPosts()
+    public async Task<ActionResult<IEnumerable<Dtos.BlogPostDto>>> GetBlogPosts()
     {
         try
         {
             var posts = await _context.BlogPosts
                 .OrderByDescending(b => b.PublishedDate)
-                .Select(b => new BlogPostDto
+                .Select(b => new Dtos.BlogPostDto
                 {
                     Id = b.Id,
                     Title = b.Title,
@@ -37,7 +37,7 @@ public class BlogPostsController : ControllerBase
                     // Add other properties as needed
                 })
                 .ToListAsync();
-            return posts;
+            return Ok(posts);
         }
         catch (Exception ex)
         {

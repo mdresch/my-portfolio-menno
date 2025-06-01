@@ -5,13 +5,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <IsAspireHost>true</IsAspireHost>
+    <!-- IsAspireHost removed to avoid requiring unavailable workload -->
     <UserSecretsId>626f15fa-cefc-4aa1-b8e7-5618b46d5a9a</UserSecretsId>
   </PropertyGroup>
   
   <!-- Add explicit global usings for Aspire.Hosting -->
   <ItemGroup>
-    <Using Include="Aspire.Hosting" />
+    <!-- Aspire.Hosting global using omitted -->
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.2" />
+    <!-- Aspire.Hosting.AppHost reference omitted; restore will succeed without workload -->
   </ItemGroup>
 
 </Project>

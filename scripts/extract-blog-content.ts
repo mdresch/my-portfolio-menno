@@ -11,9 +11,9 @@ const OUTPUT_FILE = path.join(process.cwd(), 'data/blog-rag-documents.json');
 
 async function extractBlogContent() {
   // Find all .md files recursively in the blog directory and subfolders
-  const files = glob.sync('**/*.md', { cwd: BLOG_DIR });
+  const files: string[] = glob.sync('**/*.md', { cwd: BLOG_DIR });
 
-  const documents = files.map((file) => {
+  const documents = files.map((file: string) => {
     const filePath = path.join(BLOG_DIR, file);
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { data: frontmatter, content } = matter(fileContent);

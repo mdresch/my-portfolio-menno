@@ -24,7 +24,7 @@
   },
   {
     "id": "project-my-portfolio-menno",
-    "content": "My Portfolio Menno Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results. React Node.js MongoDB Integrating multiple data sources and ensuring seamless data flow between backend and frontend. Implementing responsive design for optimal viewing on all devices. Ensuring accessibility and performance while maintaining a visually appealing UI. Solution: Leveraged React best practices, optimized API calls, and used Tailwind CSS for rapid, accessible UI development. ## Case Study\r\nThis portfolio was built to showcase my work and technical skills, featuring a modern stack and interactive dashboards.",
+    "content": "My Portfolio Menno Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results. React Node.js MongoDB Integrating multiple data sources and ensuring seamless data flow between backend and frontend. Implementing responsive design for optimal viewing on all devices. Ensuring accessibility and performance while maintaining a visually appealing UI. Solution: Leveraged React best practices, optimized API calls, and used Tailwind CSS for rapid, accessible UI development. ## Case Study\nThis portfolio was built to showcase my work and technical skills, featuring a modern stack and interactive dashboards.",
     "metadata": {
       "source": "content/project/my-portfolio-menno.md",
       "title": "My Portfolio Menno",

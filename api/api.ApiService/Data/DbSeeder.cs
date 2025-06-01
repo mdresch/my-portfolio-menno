@@ -1,4 +1,5 @@
 using api.ApiService.Models;
+using api.ApiService.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting; // For IWebHostEnvironment
 using Microsoft.Extensions.Logging; // For ILogger
@@ -8,6 +9,7 @@ using System.Globalization; // For CultureInfo if doing custom date parsing
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions; // For Slugify
 using System.Threading.Tasks;
 
@@ -29,7 +31,32 @@ namespace api.ApiService.Data
         public string? Author { get; set; }
         public bool IsPublished { get; set; } = false; // Default to false
         public string? CoverImageUrl { get; set; }
-        public string? Categories { get; set; }
+        
+        // Handle both string and array formats for categories
+        [JsonPropertyName("categories")]
+        public JsonElement CategoriesElement { get; set; }
+        
+        [JsonIgnore]
+        public string? Categories 
+        { 
+            get 
+            {
+                if (CategoriesElement.ValueKind == JsonValueKind.Array)
+                {
+                    var categories = CategoriesElement.EnumerateArray()
+                        .Select(element => element.GetString())
+                        .Where(s => !string.IsNullOrEmpty(s))
+                        .ToArray();
+                    return string.Join(", ", categories);
+                }
+                else if (CategoriesElement.ValueKind == JsonValueKind.String)
+                {
+                    return CategoriesElement.GetString();
+                }
+                return null;
+            }
+        }
+        
         public string? Tags { get; set; }
     }
 
@@ -46,12 +73,16 @@ namespace api.ApiService.Data
     }
 
     // If you have a projects.json, define its DTO here
-    // public class ProjectDto
-    // {
-    //     public string Name { get; set; }
-    //     public string Description { get; set; }
-    //     // ... other properties
-    // }
+    public class ProjectDto
+    {
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? GitHubUrl { get; set; }
+        public string? LiveUrl { get; set; }
+        public DateTime? Created { get; set; }
+        public List<string>? Technologies { get; set; }
+    }
 
     public static class DbSeeder
     {
@@ -62,7 +93,10 @@ namespace api.ApiService.Data
 
             await SeedBlogPostsAsync(context, env, logger);
             await SeedSkillsAsync(context, env, logger);
-            // await SeedProjectsAsync(context, env, logger); // Uncomment when Project entity and seeder are ready
+            await SeedProjectsAsync(context, env, logger);
+            await SeedBlogRagDocumentsAsync(context, env, logger);
+            await SeedRiskRagDocumentsAsync(context, env, logger);
+            await SeedProjectRagDocumentsAsync(context, env, logger);
 
             logger.LogInformation("Data seeding process completed.");
         }
@@ -78,7 +112,8 @@ namespace api.ApiService.Data
                     return;
                 }
 
-                var filePath = Path.Combine(env.ContentRootPath, "blogposts.json");
+                // Look for JSON in workspace-level content folder
+                var filePath = Path.Combine(env.ContentRootPath, "..", "..", "content", "blog", "blogposts.json");
                 if (!File.Exists(filePath))
                 {
                     logger.LogWarning("'blogposts.json' not found at {FilePath}. Skipping blog post seeding.", filePath);
@@ -161,65 +196,56 @@ namespace api.ApiService.Data
             try
             {
                 var existingSkillNames = await context.Skills.Select(s => s.Name.ToLower()).ToListAsync();
-
-                // Option 1: Hardcode skills (update to match Skill model)
-                var skillsToSeed = new List<Skill>
+                List<Skill> skillsToSeed;
+                var skillsFile = Path.Combine(env.ContentRootPath, "skills.json");
+                if (File.Exists(skillsFile))
                 {
-                    new Skill { Name = "C#", Category = "Language", ProficiencyLevel = 5, YearsOfExperience = 7, Description = ".NET, LINQ, async/await", IconUrl = "/icons/csharp.svg" },
-                    new Skill { Name = ".NET Core", Category = "Backend", ProficiencyLevel = 5, YearsOfExperience = 5, Description = ".NET Core, ASP.NET, Entity Framework", IconUrl = "/icons/dotnet.svg" },
-                    new Skill { Name = "ASP.NET Core", Category = "Backend", ProficiencyLevel = 5, YearsOfExperience = 5, Description = "Web APIs, MVC, Razor Pages", IconUrl = "/icons/aspnetcore.svg" },
-                    new Skill { Name = "Entity Framework Core", Category = "ORM", ProficiencyLevel = 4, YearsOfExperience = 4, Description = "EF Core, LINQ, Migrations", IconUrl = "/icons/efcore.svg" },
-                    new Skill { Name = "JavaScript", Category = "Frontend", ProficiencyLevel = 4, YearsOfExperience = 6, Description = "ES6+, DOM, Fetch API", IconUrl = "/icons/javascript.svg" },
-                    new Skill { Name = "React", Category = "Frontend", ProficiencyLevel = 4, YearsOfExperience = 4, Description = "Hooks, Context, Next.js", IconUrl = "/icons/react.svg" },
-                    new Skill { Name = "SQL Server", Category = "Database", ProficiencyLevel = 4, YearsOfExperience = 5, Description = "T-SQL, Query Optimization", IconUrl = "/icons/sqlserver.svg" },
-                    new Skill { Name = "Git", Category = "Tool", ProficiencyLevel = 4, YearsOfExperience = 7, Description = "GitHub, GitLab, CI/CD", IconUrl = "/icons/git.svg" }
-                };
-
-                // Option 2: Load from a skills.json file (Uncomment and adapt if needed)
-                // var filePath = Path.Combine(env.ContentRootPath, "skills.json");
-                // if (File.Exists(filePath))
-                // {
-                //     var jsonData = await File.ReadAllTextAsync(filePath);
-                //     var skillDtos = JsonSerializer.Deserialize<List<SkillDto>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                //     if (skillDtos != null && skillDtos.Any())
-                //     {
-                //         logger.LogInformation("Loading skills from skills.json");
-                //         skillsToSeed.Clear();
-                //         foreach (var dto in skillDtos)
-                //         {
-                //             if (!skillsToSeed.Any(s => s.Name != null && s.Name.Equals(dto.Name, StringComparison.OrdinalIgnoreCase)))
-                //             {
-                //                 skillsToSeed.Add(new Skill {
-                //                     Name = dto.Name ?? string.Empty,
-                //                     Category = dto.Category ?? string.Empty,
-                //                     ProficiencyLevel = dto.ProficiencyLevel,
-                //                     YearsOfExperience = dto.YearsOfExperience,
-                //                     Description = dto.Description,
-                //                     IconUrl = dto.IconUrl
-                //                 });
-                //             }
-                //         }
-                //     }
-                // }
-
-                if (skillsToSeed.Any())
-                {
-                    var newSkills = skillsToSeed.Where(s => !existingSkillNames.Contains(s.Name.ToLower())).ToList();
-
-                    if (newSkills.Any())
-                    {
-                        await context.Skills.AddRangeAsync(newSkills);
-                        await context.SaveChangesAsync();
-                        logger.LogInformation("Successfully seeded {Count} new skills.", newSkills.Count);
-                    }
-                    else
-                    {
-                        logger.LogInformation("No new skills to seed (all provided skills might already exist).");
-                    }
+                    logger.LogInformation("Loading skills from skills.json");
+                    var jsonData = await File.ReadAllTextAsync(skillsFile);
+                    var skillDtos = JsonSerializer.Deserialize<List<SkillDto>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                                     ?? new List<SkillDto>();
+                    skillsToSeed = skillDtos
+                        .Where(dto => !string.IsNullOrWhiteSpace(dto.Name))
+                        .Select(dto => new Skill {
+                            Name = dto.Name!,
+                            Category = dto.Category ?? string.Empty,
+                            ProficiencyLevel = dto.ProficiencyLevel,
+                            YearsOfExperience = dto.YearsOfExperience,
+                            Description = dto.Description,
+                            IconUrl = dto.IconUrl
+                        })
+                        .ToList();
                 }
                 else
                 {
-                    logger.LogInformation("No skills were configured for seeding.");
+                    // Fallback: hardcoded skills
+                    skillsToSeed = new List<Skill>
+                    {
+                        new Skill { Name = "C#", Category = "Language", ProficiencyLevel = 5, YearsOfExperience = 7, Description = ".NET, LINQ, async/await", IconUrl = "/icons/csharp.svg" },
+                        new Skill { Name = ".NET Core", Category = "Backend", ProficiencyLevel = 5, YearsOfExperience = 5, Description = ".NET Core, ASP.NET, Entity Framework", IconUrl = "/icons/dotnet.svg" },
+                        new Skill { Name = "ASP.NET Core", Category = "Backend", ProficiencyLevel = 5, YearsOfExperience = 5, Description = "Web APIs, MVC, Razor Pages", IconUrl = "/icons/aspnetcore.svg" },
+                        new Skill { Name = "Entity Framework Core", Category = "ORM", ProficiencyLevel = 4, YearsOfExperience = 4, Description = "EF Core, LINQ, Migrations", IconUrl = "/icons/efcore.svg" },
+                        new Skill { Name = "JavaScript", Category = "Frontend", ProficiencyLevel = 4, YearsOfExperience = 6, Description = "ES6+, DOM, Fetch API", IconUrl = "/icons/javascript.svg" },
+                        new Skill { Name = "React", Category = "Frontend", ProficiencyLevel = 4, YearsOfExperience = 4, Description = "Hooks, Context, Next.js", IconUrl = "/icons/react.svg" },
+                        new Skill { Name = "SQL Server", Category = "Database", ProficiencyLevel = 4, YearsOfExperience = 5, Description = "T-SQL, Query Optimization", IconUrl = "/icons/sqlserver.svg" },
+                        new Skill { Name = "Git", Category = "Tool", ProficiencyLevel = 4, YearsOfExperience = 7, Description = "GitHub, GitLab, CI/CD", IconUrl = "/icons/git.svg" }
+                    };
+                }
+
+                // Filter out already existing skills
+                var newSkills = skillsToSeed
+                    .Where(s => !existingSkillNames.Contains(s.Name.ToLower()))
+                    .ToList();
+
+                if (newSkills.Any())
+                {
+                    await context.Skills.AddRangeAsync(newSkills);
+                    await context.SaveChangesAsync();
+                    logger.LogInformation("Successfully seeded {Count} new skills.", newSkills.Count);
+                }
+                else
+                {
+                    logger.LogInformation("No new skills to seed (all provided skills might already exist).");
                 }
             }
             catch (Exception ex)
@@ -228,52 +254,201 @@ namespace api.ApiService.Data
             }
         }
 
-        // --- Project Seeding (Placeholder) ---
-        // private static async Task SeedProjectsAsync(PortfolioContext context, IWebHostEnvironment env, ILogger logger)
-        // {
-        //     try
-        //     {
-        //         if (await context.Projects.AnyAsync()) // Assuming you have a DbSet<Project> Projects
-        //         {
-        //             logger.LogInformation("Projects already exist. Skipping project seeding.");
-        //             return;
-        //         }
-        //
-        //         // var filePath = Path.Combine(env.ContentRootPath, "projects.json");
-        //         // if (!File.Exists(filePath))
-        //         // {
-        //         //     logger.LogWarning("'projects.json' not found. Skipping project seeding.");
-        //         //     return;
-        //         // }
-        //         //
-        //         // var jsonData = await File.ReadAllTextAsync(filePath);
-        //         // var projectDtos = JsonSerializer.Deserialize<List<ProjectDto>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        //         //
-        //         // if (projectDtos == null || !projectDtos.Any())
-        //         // {
-        //         //     logger.LogInformation("No projects found in 'projects.json' or file is empty.");
-        //         //     return;
-        //         // }
-        //         //
-        //         // var projectsToSeed = projectDtos.Select(dto => new Project
-        //         // {
-        //         //     Name = dto.Name,
-        //         //     Description = dto.Description,
-        //         //     // ... map other properties ...
-        //         // }).ToList();
-        //         //
-        //         // if (projectsToSeed.Any())
-        //         // {
-        //         //     await context.Projects.AddRangeAsync(projectsToSeed);
-        //         //     await context.SaveChangesAsync();
-        //         //     logger.LogInformation("Successfully seeded {Count} projects.", projectsToSeed.Count);
-        //         // }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         logger.LogError(ex, "An error occurred while seeding projects.");
-        //     }
-        // }
+        // --- Project Seeding ---
+        private static async Task SeedProjectsAsync(PortfolioContext context, IWebHostEnvironment env, ILogger logger)
+        {
+            try
+            {
+                if (await context.Projects.AnyAsync())
+                {
+                    logger.LogInformation("Projects already exist. Skipping project seeding.");
+                    return;
+                }
+                var filePath = Path.Combine(env.ContentRootPath, "..", "..", "content", "project", "projects.json");
+                if (!File.Exists(filePath))
+                {
+                    logger.LogWarning("'projects.json' not found at {FilePath}. Skipping project seeding.", filePath);
+                    return;
+                }
+                var jsonData = await File.ReadAllTextAsync(filePath);
+                var projectDtos = JsonSerializer.Deserialize<List<ProjectDto>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                                  ?? new List<ProjectDto>();
+                if (!projectDtos.Any())
+                {
+                    logger.LogInformation("No projects found in 'projects.json' or the file is empty.");
+                    return;
+                }
+                var existingTitles = await context.Projects.Select(p => p.Title).ToListAsync();
+                var entities = projectDtos.Select(dto => new Project
+                {
+                    Title = dto.Title ?? string.Empty,
+                    Slug = Slugify(dto.Title ?? string.Empty),
+                    Description = dto.Description ?? string.Empty,
+                    ImageUrl = dto.ImageUrl,
+                    GitHubUrl = dto.GitHubUrl,
+                    LiveUrl = dto.LiveUrl,
+                    Created = dto.Created ?? DateTime.UtcNow,
+                    Technologies = dto.Technologies
+                }).ToList();
+                // Filter new entities by title to avoid duplicates
+                var newEntities = entities.Where(e => !existingTitles.Contains(e.Title)).ToList();
+                if (!newEntities.Any())
+                {
+                    logger.LogInformation("No new projects to seed.");
+                    return;
+                }
+                context.ChangeTracker.Clear();
+                await context.Projects.AddRangeAsync(newEntities);
+                await context.SaveChangesAsync();
+                logger.LogInformation("Seeded {Count} projects.", newEntities.Count);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while seeding projects.");
+            }
+        }
+
+
+        // --- RAG Document Seeding ---
+        private static async Task SeedBlogRagDocumentsAsync(PortfolioContext context, IWebHostEnvironment env, ILogger logger)
+        {
+            // Look for JSON in workspace-level data folder
+            var filePath = Path.Combine(env.ContentRootPath, "..", "..", "data", "blog-rag-documents.json");
+            if (!File.Exists(filePath)) { logger.LogWarning("blog-rag-documents.json not found. Skipping RAG blog seeding."); return; }
+            try {
+                var json = await File.ReadAllTextAsync(filePath);
+                var docs = JsonSerializer.Deserialize<List<RagDocumentDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<RagDocumentDto>();
+                logger.LogInformation("Loaded {Count} RAG blog documents from JSON file.", docs.Count);
+                
+                // Map RagDocumentDto to your entity, e.g. RagDocument
+                var entities = docs.Select(d => new RagDocument {
+                    Id = d.Id,
+                    Content = d.Content,
+                    Source = d.Metadata.Source,
+                    Title = d.Metadata.Title,
+                    Date = d.Metadata.Date,
+                    Tags = string.Join(',', d.Metadata.Tags)
+                }).ToList();
+                // Deduplicate by Id to avoid duplicate-tracking errors
+                entities = entities.GroupBy(e => e.Id).Select(g => g.First()).ToList();
+                logger.LogInformation("After deduplication: {Count} unique RAG blog documents.", entities.Count);
+                
+                // Filter out already existing documents by Id
+                // Clear any tracked entities before querying existing IDs
+                context.ChangeTracker.Clear();
+                var existingIds = await context.RagDocuments.AsNoTracking().Select(r => r.Id).ToListAsync();
+                logger.LogInformation("Found {Count} existing RAG documents in database.", existingIds.Count);
+                
+                var newEntities = entities.Where(e => !existingIds.Contains(e.Id)).ToList();
+                logger.LogInformation("After filtering existing IDs: {Count} new RAG blog documents to seed.", newEntities.Count);
+                
+                if (!newEntities.Any()) {
+                    logger.LogInformation("No new RAG blog documents to seed.");
+                    return;
+                }
+                // Detach any tracked entities before adding new ones
+                context.ChangeTracker.Clear();
+                await context.RagDocuments.AddRangeAsync(newEntities);
+                await context.SaveChangesAsync();
+                // Detach tracked entities to avoid duplicate tracking in subsequent seeding
+                context.ChangeTracker.Clear();
+                logger.LogInformation("Seeded {Count} RAG blog documents.", newEntities.Count);
+            } catch (Exception ex) {
+                logger.LogError(ex, "Error seeding RAG blog documents.");
+            }
+        }
+
+        private static async Task SeedRiskRagDocumentsAsync(PortfolioContext context, IWebHostEnvironment env, ILogger logger)
+        {
+            // Look for JSON in workspace-level data folder
+            var filePath = Path.Combine(env.ContentRootPath, "..", "..", "data", "blog-rag-risk-documents.json");
+            if (!File.Exists(filePath)) { logger.LogWarning("blog-rag-risk-documents.json not found. Skipping RAG risk seeding."); return; }
+            try {
+                var json = await File.ReadAllTextAsync(filePath);
+                var docs = JsonSerializer.Deserialize<List<RagDocumentDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<RagDocumentDto>();
+                logger.LogInformation("Loaded {Count} RAG risk documents from JSON file.", docs.Count);
+                
+                var entities = docs.Select(d => new RagDocument {
+                    Id = d.Id,
+                    Content = d.Content,
+                    Source = d.Metadata.Source,
+                    Title = d.Metadata.Title,
+                    Date = d.Metadata.Date,
+                    Tags = string.Join(',', d.Metadata.Tags)
+                }).ToList();
+                // Deduplicate by Id to avoid duplicate-tracking errors
+                entities = entities.GroupBy(e => e.Id).Select(g => g.First()).ToList();
+                logger.LogInformation("After deduplication: {Count} unique RAG risk documents.", entities.Count);
+                
+                // Filter out already existing documents by Id
+                // Clear any tracked entities before querying existing IDs
+                context.ChangeTracker.Clear();
+                var existingIds = await context.RagDocuments.AsNoTracking().Select(r => r.Id).ToListAsync();
+                logger.LogInformation("Found {Count} existing RAG documents in database.", existingIds.Count);
+                
+                var newEntities = entities.Where(e => !existingIds.Contains(e.Id)).ToList();
+                logger.LogInformation("After filtering existing IDs: {Count} new RAG risk documents to seed.", newEntities.Count);
+                
+                if (!newEntities.Any()) {
+                    logger.LogInformation("No new RAG risk documents to seed.");
+                    return;
+                }
+                // Detach any tracked entities before adding new ones
+                context.ChangeTracker.Clear();
+                await context.RagDocuments.AddRangeAsync(newEntities);
+                await context.SaveChangesAsync();
+                context.ChangeTracker.Clear();
+                logger.LogInformation("Seeded {Count} RAG risk documents.", newEntities.Count);
+            } catch (Exception ex) {
+                logger.LogError(ex, "Error seeding RAG risk documents.");
+            }
+        }
+
+        private static async Task SeedProjectRagDocumentsAsync(PortfolioContext context, IWebHostEnvironment env, ILogger logger)
+        {
+            // Look for JSON in workspace-level data folder
+            var filePath = Path.Combine(env.ContentRootPath, "..", "..", "data", "project-rag-documents.json");
+            if (!File.Exists(filePath)) { logger.LogWarning("project-rag-documents.json not found. Skipping RAG project seeding."); return; }
+            try {
+                var json = await File.ReadAllTextAsync(filePath);
+                var docs = JsonSerializer.Deserialize<List<RagDocumentDto>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<RagDocumentDto>();
+                logger.LogInformation("Loaded {Count} RAG project documents from JSON file.", docs.Count);
+                
+                var entities = docs.Select(d => new RagDocument {
+                    Id = d.Id,
+                    Content = d.Content,
+                    Source = d.Metadata.Source,
+                    Title = d.Metadata.Title,
+                    Date = d.Metadata.Date,
+                    Tags = string.Join(',', d.Metadata.Tags)
+                }).ToList();
+                // Deduplicate by Id to avoid duplicate-tracking errors
+                entities = entities.GroupBy(e => e.Id).Select(g => g.First()).ToList();
+                logger.LogInformation("After deduplication: {Count} unique RAG project documents.", entities.Count);
+                
+                // Filter out already existing documents by Id
+                // Clear any tracked entities before querying existing IDs
+                context.ChangeTracker.Clear();
+                var existingIds = await context.RagDocuments.AsNoTracking().Select(r => r.Id).ToListAsync();
+                logger.LogInformation("Found {Count} existing RAG documents in database.", existingIds.Count);
+                
+                var newEntities = entities.Where(e => !existingIds.Contains(e.Id)).ToList();
+                logger.LogInformation("After filtering existing IDs: {Count} new RAG project documents to seed.", newEntities.Count);
+                
+                if (!newEntities.Any()) {
+                    logger.LogInformation("No new RAG project documents to seed.");
+                    return;
+                }
+                // Detach any tracked entities before adding new ones
+                context.ChangeTracker.Clear();
+                await context.RagDocuments.AddRangeAsync(newEntities);
+                await context.SaveChangesAsync();
+                context.ChangeTracker.Clear();
+                logger.LogInformation("Seeded {Count} RAG project documents.", newEntities.Count);
+            } catch (Exception ex) {
+                logger.LogError(ex, "Error seeding RAG project documents.");
+            }
+        }
 
 
         // --- Helper Utilities ---
@@ -320,6 +495,21 @@ namespace api.ApiService.Data
                 return string.Empty;
 
             return str;
+        }
+    } // end of DbSeeder class
+
+    // Add Seed entry point for runtime invocation
+    public static class DbSeederRunner
+    {
+        public static void Seed(IServiceProvider services, string environmentName)
+        {
+            using var scope = services.CreateScope();
+            var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
+            var context = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
+            var loggerFactory = scope.ServiceProvider.GetRequiredService<ILoggerFactory>();
+            var logger = loggerFactory.CreateLogger("DbSeeder");
+            // Run seeding synchronously
+            DbSeeder.SeedDataAsync(context, env, logger).GetAwaiter().GetResult();
         }
     }
 }

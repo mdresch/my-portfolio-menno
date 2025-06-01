@@ -23,9 +23,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "extract-blog-content": "ts-node scripts/extract-blog-content.ts",
-    "extract-project-content": "ts-node scripts/extract-project-content.ts",
-    "extract-risk-content": "ts-node scripts/extract-risk-content.ts",
+    "extract-blog-content": "tsx scripts/extract-blog-content.ts",
+    "extract-project-content": "tsx scripts/extract-project-content.ts",
+    "extract-risk-content": "tsx scripts/extract-risk-content.ts",
     "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content"
   },
   "dependencies": {
@@ -62,7 +62,7 @@
     "html2pdf.js": "^0.10.3",
     "lucide-react": "^0.507.0",
     "marked": "^15.0.8",
-    "next": "15.3.0",
+    "next": "^15.3.0",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
