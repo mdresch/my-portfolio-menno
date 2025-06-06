@@ -252,6 +252,33 @@ namespace api.ApiService.Migrations
                             }));
                 });
 
+            modelBuilder.Entity("api.ApiService.Models.RagDocument", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RagDocuments");
+                });
+
             modelBuilder.Entity("api.ApiService.Models.Skill", b =>
                 {
                     b.Property<int>("Id")

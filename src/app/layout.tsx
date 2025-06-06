@@ -14,6 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientAnalytics from "../components/ClientAnalytics";
 import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
+import ClientChatWidget from "../../components/ClientChatWidget";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -104,14 +105,14 @@ export default function RootLayout({
               <ClientAuthProvider>
                 <div className="flex items-center justify-center">
                   <NavigationMenuDemo />
-                </div>
-                <main className="flex-1">
+                </div>                <main className="flex-1">
                   {children}
                   <Analytics />
                   <SpeedInsights />
                   <ClientAnalytics />
                 </main>
                 <ConditionalFooter />
+                <ClientChatWidget />
               </ClientAuthProvider>
             </RadixTheme>
           </ThemeProvider>

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using PortfolioApi.Extensions;
 using PortfolioApi.Monitoring;
@@ -99,10 +100,35 @@ app.Lifetime.ApplicationStarted.Register(async () =>
 });
 
 // Azure Best Practice: Seed the database with environment-specific data at startup
-using (var scope = app.Services.CreateScope())
+try
 {
-    var env = app.Environment.EnvironmentName;
-    PortfolioApi.Data.DbSeeder.Seed(scope.ServiceProvider, env);
+    using (var scope = app.Services.CreateScope())
+    {
+        var env = app.Environment.EnvironmentName;
+        var logger = app.Services.GetRequiredService<ILogger<Program>>();
+        logger.LogInformation("Seeding database in {Environment} environment", env);
+        
+        // Get the context directly from the service provider
+        var context = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
+        
+        // Dynamically load and call the async method
+        var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
+        var seedMethod = dbSeederType?.GetMethod("SeedAsync");
+        var task = seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env }) as Task;
+        if (task != null)
+        {
+            await task;
+        }
+        else
+        {
+            logger.LogWarning("DbSeederRunner.SeedAsync method not found. Skipping database seeding.");
+        }
+    }
+}
+catch (Exception ex)
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occurred while seeding the database. Application will continue without seeding.");
 }
 
 app.Run();

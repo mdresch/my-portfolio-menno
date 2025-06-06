@@ -80,14 +80,10 @@
           "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/HealthChecks.UI.Client.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/HealthChecks.UI.Client.dll": {}
         },
         "runtime": {
-          "lib/net8.0/HealthChecks.UI.Client.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/HealthChecks.UI.Client.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -100,14 +96,10 @@
           "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.0"
         },
         "compile": {
-          "lib/net6.0/HealthChecks.UI.Core.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/HealthChecks.UI.Core.dll": {}
         },
         "runtime": {
-          "lib/net6.0/HealthChecks.UI.Core.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/HealthChecks.UI.Core.dll": {}
         }
       },
       "Azure.Core/1.46.1": {
@@ -118,14 +110,10 @@
           "System.Memory.Data": "6.0.1"
         },
         "compile": {
-          "lib/net8.0/Azure.Core.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Core.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Azure.Core.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Core.dll": {}
         }
       },
       "Azure.Extensions.AspNetCore.Configuration.Secrets/1.4.0": {
@@ -136,14 +124,10 @@
           "Microsoft.Extensions.Configuration": "2.1.0"
         },
         "compile": {
-          "lib/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll": {}
         }
       },
       "Azure.Identity/1.14.0": {
@@ -155,14 +139,10 @@
           "System.Memory": "4.5.5"
         },
         "compile": {
-          "lib/net8.0/Azure.Identity.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Identity.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Azure.Identity.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Azure.Identity.dll": {}
         }
       },
       "Azure.Security.KeyVault.Secrets/4.6.0": {
@@ -174,14 +154,10 @@
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
         "compile": {
-          "lib/netstandard2.0/Azure.Security.KeyVault.Secrets.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Azure.Security.KeyVault.Secrets.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Azure.Security.KeyVault.Secrets.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Azure.Security.KeyVault.Secrets.dll": {}
         }
       },
       "Fractions/7.3.0": {
@@ -702,14 +678,10 @@
           "Microsoft.OpenApi": "1.4.3"
         },
         "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -722,27 +694,19 @@
           "System.Text.Encodings.Web": "4.5.0"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
         }
       },
       "Microsoft.Data.SqlClient/5.1.5": {
@@ -764,12 +728,12 @@
         },
         "compile": {
           "ref/net6.0/Microsoft.Data.SqlClient.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net6.0/Microsoft.Data.SqlClient.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtimeTargets": {
@@ -813,14 +777,10 @@
           "Microsoft.Extensions.Logging": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {}
         },
         "build": {
           "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props": {}
@@ -829,14 +789,10 @@
       "Microsoft.EntityFrameworkCore.Abstractions/8.0.5": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/8.0.5": {
@@ -855,14 +811,10 @@
           "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.SqlServer/8.0.5": {
@@ -872,14 +824,10 @@
           "Microsoft.EntityFrameworkCore.Relational": "8.0.5"
         },
         "compile": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
       "Microsoft.Extensions.AmbientMetadata.Application/8.10.0": {
@@ -890,14 +838,10 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {}
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
@@ -918,14 +862,10 @@
           "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {}
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
@@ -2015,26 +1955,22 @@
           "System.Buffers": "4.5.0"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
       "Microsoft.OpenApi/1.4.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         }
       },
@@ -2042,26 +1978,22 @@
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         }
       },
       "Microsoft.Win32.SystemEvents/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2081,14 +2013,10 @@
           "OpenTelemetry.Api.ProviderBuilderExtensions": "1.9.0"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.dll": {}
         }
       },
       "OpenTelemetry.Api/1.9.0": {
@@ -2097,14 +2025,10 @@
           "System.Diagnostics.DiagnosticSource": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Api.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Api.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Api.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Api.dll": {}
         }
       },
       "OpenTelemetry.Api.ProviderBuilderExtensions/1.9.0": {
@@ -2114,14 +2038,10 @@
           "OpenTelemetry.Api": "1.9.0"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll": {}
         }
       },
       "OpenTelemetry.Exporter.OpenTelemetryProtocol/1.9.0": {
@@ -2133,14 +2053,10 @@
           "OpenTelemetry": "1.9.0"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Exporter.OpenTelemetryProtocol.dll": {}
         }
       },
       "OpenTelemetry.Extensions.Hosting/1.9.0": {
@@ -2150,14 +2066,10 @@
           "OpenTelemetry": "1.9.0"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Extensions.Hosting.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Extensions.Hosting.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Extensions.Hosting.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Extensions.Hosting.dll": {}
         }
       },
       "OpenTelemetry.Instrumentation.AspNetCore/1.9.0": {
@@ -2166,14 +2078,10 @@
           "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.9.0, 2.0.0)"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Instrumentation.AspNetCore.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -2187,14 +2095,10 @@
           "OpenTelemetry.Api.ProviderBuilderExtensions": "[1.9.0, 2.0.0)"
         },
         "compile": {
-          "lib/net8.0/OpenTelemetry.Instrumentation.Http.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Instrumentation.Http.dll": {}
         },
         "runtime": {
-          "lib/net8.0/OpenTelemetry.Instrumentation.Http.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/OpenTelemetry.Instrumentation.Http.dll": {}
         }
       },
       "OpenTelemetry.Instrumentation.Runtime/1.9.0": {
@@ -2203,14 +2107,10 @@
           "OpenTelemetry.Api": "[1.9.0, 2.0.0)"
         },
         "compile": {
-          "lib/net6.0/OpenTelemetry.Instrumentation.Runtime.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/OpenTelemetry.Instrumentation.Runtime.dll": {}
         },
         "runtime": {
-          "lib/net6.0/OpenTelemetry.Instrumentation.Runtime.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/OpenTelemetry.Instrumentation.Runtime.dll": {}
         }
       },
       "Polly.Core/8.4.2": {
@@ -2235,12 +2135,12 @@
         },
         "compile": {
           "lib/net8.0/Polly.Extensions.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net8.0/Polly.Extensions.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         }
       },
@@ -2252,12 +2152,12 @@
         },
         "compile": {
           "lib/net8.0/Polly.RateLimiting.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net8.0/Polly.RateLimiting.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         }
       },
@@ -2280,12 +2180,12 @@
         },
         "compile": {
           "lib/net7.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net7.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "frameworkReferences": [
@@ -2299,12 +2199,12 @@
         },
         "compile": {
           "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         }
       },
@@ -2312,12 +2212,12 @@
         "type": "package",
         "compile": {
           "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "runtime": {
           "lib/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
+            "related": ".pdb"
           }
         },
         "frameworkReferences": [
@@ -2340,14 +2240,10 @@
           "System.Memory.Data": "6.0.1"
         },
         "compile": {
-          "lib/net8.0/System.ClientModel.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.ClientModel.dll": {}
         },
         "runtime": {
-          "lib/net8.0/System.ClientModel.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.ClientModel.dll": {}
         }
       },
       "System.Configuration.ConfigurationManager/6.0.1": {
@@ -2357,14 +2253,10 @@
           "System.Security.Permissions": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Configuration.ConfigurationManager.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2373,14 +2265,10 @@
       "System.Diagnostics.DiagnosticSource/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
-          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
@@ -2418,14 +2306,10 @@
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Diagnostics.PerformanceCounter.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Diagnostics.PerformanceCounter.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Diagnostics.PerformanceCounter.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Diagnostics.PerformanceCounter.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2443,14 +2327,10 @@
           "Microsoft.Win32.SystemEvents": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Drawing.Common.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Drawing.Common.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Drawing.Common.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2469,14 +2349,10 @@
       "System.Formats.Asn1/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/_._": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/_._": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Formats.Asn1.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Formats.Asn1.dll": {}
         }
       },
       "System.IdentityModel.Tokens.Jwt/7.1.2": {
@@ -2503,14 +2379,10 @@
           "System.Security.Principal.Windows": "4.7.0"
         },
         "compile": {
-          "ref/netstandard2.0/System.IO.FileSystem.AccessControl.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard2.0/System.IO.FileSystem.AccessControl.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.IO.FileSystem.AccessControl.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.IO.FileSystem.AccessControl.dll": {}
         },
         "runtimeTargets": {
           "runtimes/win/lib/netstandard2.0/System.IO.FileSystem.AccessControl.dll": {
@@ -2531,14 +2403,10 @@
       "System.Memory.Data/6.0.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Memory.Data.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Memory.Data.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Memory.Data.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Memory.Data.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2547,14 +2415,10 @@
       "System.Reflection.Metadata/1.6.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/System.Reflection.Metadata.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Reflection.Metadata.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
         }
       },
       "System.Runtime.Caching/6.0.0": {
@@ -2563,14 +2427,10 @@
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
-            "related": ".xml"
-          }
+          "lib/net6.0/_._": {}
         },
         "runtime": {
-          "lib/net6.0/System.Runtime.Caching.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Runtime.Caching.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2585,14 +2445,10 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2601,14 +2457,10 @@
       "System.Security.AccessControl/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Security.AccessControl.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.AccessControl.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Security.AccessControl.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.AccessControl.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2626,14 +2478,10 @@
           "System.Formats.Asn1": "5.0.0"
         },
         "compile": {
-          "ref/netcoreapp3.0/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+          "ref/netcoreapp3.0/System.Security.Cryptography.Cng.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/System.Security.Cryptography.Cng.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.0/System.Security.Cryptography.Cng.dll": {}
         },
         "runtimeTargets": {
           "runtimes/win/lib/netcoreapp3.0/System.Security.Cryptography.Cng.dll": {
@@ -2645,14 +2493,10 @@
       "System.Security.Cryptography.ProtectedData/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.Cryptography.ProtectedData.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2671,14 +2515,10 @@
           "System.Windows.Extensions": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Security.Permissions.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.Permissions.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Security.Permissions.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Security.Permissions.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2687,14 +2527,10 @@
       "System.Security.Principal.Windows/5.0.0": {
         "type": "package",
         "compile": {
-          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {
-            "related": ".xml"
-          }
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
@@ -2713,14 +2549,10 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
-            "related": ".xml"
-          }
+          "lib/net6.0/_._": {}
         },
         "runtime": {
-          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2738,14 +2570,10 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Text.Encodings.Web.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Text.Encodings.Web.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -2760,27 +2588,19 @@
       "System.Text.Json/4.7.2": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/System.Text.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
       "System.Threading.RateLimiting/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net8.0/System.Threading.RateLimiting.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.Threading.RateLimiting.dll": {}
         },
         "runtime": {
-          "lib/net8.0/System.Threading.RateLimiting.dll": {
-            "related": ".xml"
-          }
+          "lib/net8.0/System.Threading.RateLimiting.dll": {}
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
@@ -2844,6 +2664,7 @@
           "Microsoft.AspNetCore.OpenApi": "8.0.5",
           "Microsoft.EntityFrameworkCore": "8.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.5",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
           "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "8.0.5",
           "Microsoft.Extensions.Logging.ApplicationInsights": "2.23.0",
           "Swashbuckle.AspNetCore": "6.5.0",
@@ -2863,6 +2684,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
           "Microsoft.Extensions.Http.Resilience": "8.10.0",
           "Microsoft.Extensions.ServiceDiscovery": "8.2.2",
           "OpenTelemetry.Exporter.OpenTelemetryProtocol": "1.9.0",
