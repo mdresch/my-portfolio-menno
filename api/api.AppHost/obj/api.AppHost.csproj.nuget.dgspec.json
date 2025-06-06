@@ -1,33 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/my-portfolio-menno/api/api.AppHost/api.AppHost.csproj": {}
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost\\api.AppHost.csproj": {}
   },
   "projects": {
-    "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj": {
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj",
+        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
         "projectName": "api.ApiService",
-        "projectPath": "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/my-portfolio-menno/api/api.ApiService/obj/",
+        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
+        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
-                "projectPath": "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj"
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
               }
             }
           }
@@ -139,37 +146,44 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/workspaces/my-portfolio-menno/api/api.AppHost/api.AppHost.csproj": {
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost\\api.AppHost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/my-portfolio-menno/api/api.AppHost/api.AppHost.csproj",
+        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost\\api.AppHost.csproj",
         "projectName": "api.AppHost",
-        "projectPath": "/workspaces/my-portfolio-menno/api/api.AppHost/api.AppHost.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/my-portfolio-menno/api/api.AppHost/obj/",
+        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost\\api.AppHost.csproj",
+        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj": {
-                "projectPath": "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj"
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj"
               },
-              "/workspaces/my-portfolio-menno/api/api.Web/api.Web.csproj": {
-                "projectPath": "/workspaces/my-portfolio-menno/api/api.Web/api.Web.csproj"
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj"
               }
             }
           }
@@ -204,26 +218,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj",
+        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj",
         "projectName": "api.ServiceDefaults",
-        "projectPath": "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/obj/",
+        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj",
+        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -299,37 +320,44 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/workspaces/my-portfolio-menno/api/api.Web/api.Web.csproj": {
+    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/my-portfolio-menno/api/api.Web/api.Web.csproj",
+        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
         "projectName": "api.Web",
-        "projectPath": "/workspaces/my-portfolio-menno/api/api.Web/api.Web.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/my-portfolio-menno/api/api.Web/obj/",
+        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
+        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj": {
-                "projectPath": "/workspaces/my-portfolio-menno/api/api.ApiService/api.ApiService.csproj"
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj"
               },
-              "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
-                "projectPath": "/workspaces/my-portfolio-menno/api/api.ServiceDefaults/api.ServiceDefaults.csproj"
+              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
+                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
               }
             }
           }
@@ -367,7 +395,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
