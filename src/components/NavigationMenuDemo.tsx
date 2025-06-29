@@ -11,7 +11,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -264,7 +263,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
   }, []);
 
   return (
-    <div className="relative w-full sticky top-0 z-50 bg-white dark:bg-gray-900 shadow">
+    <div className="w-full sticky top-0 z-50 bg-white dark:bg-gray-900 shadow">
       {/* Mobile menu button */}
       <div className="md:hidden flex justify-end py-4">
         <button
@@ -333,6 +332,16 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                           <span className="text-sm font-medium leading-none">Resume</span>
                           <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
                             Interactive Resume - My Work Experience
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/friends-contact" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">🚀 Friends Contact</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Elio-inspired cosmic contact form for friends
                           </span>
                         </div>
                       </Link>
