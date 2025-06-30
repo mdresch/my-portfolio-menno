@@ -17,8 +17,6 @@ image: "/images/showcase-dataviz.jpg"
   <!-- Replace '/images/hero-image-techcorp.jpg' with your actual hero image path -->
 </div>
 
-# A Disruptive Rebel: Risk for Planned Business Engagement and Nonlinear Risk Management and Accountability
-
 Engaging a disruptive rebel in a business context can be both a risk and an opportunity. While such individuals often challenge the status quo and drive innovation, their approach may also create friction within established boundaries and processes.
 
 ## What is a Disruptive Rebel?

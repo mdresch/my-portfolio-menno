@@ -2176,6 +2176,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.Extensions.Configuration.Binder >= 8.0.2",
       "Microsoft.Extensions.Http.Resilience >= 8.10.0",
       "Microsoft.Extensions.ServiceDiscovery >= 8.2.2",
       "OpenTelemetry.Exporter.OpenTelemetryProtocol >= 1.9.0",
@@ -2235,6 +2236,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.Extensions.Configuration.Binder": {
+            "target": "Package",
+            "version": "[8.0.2, )"
+          },
           "Microsoft.Extensions.Http.Resilience": {
             "target": "Package",
             "version": "[8.10.0, )"

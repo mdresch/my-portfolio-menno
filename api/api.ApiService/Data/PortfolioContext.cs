@@ -20,10 +20,22 @@ namespace api.ApiService.Data
         public DbSet<Project> Projects { get; set; } = null!;
         public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
+        public DbSet<BlogPost> BlogPosts { get; set; } = null!;
+        public DbSet<RagDocument> RagDocuments { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // BlogPost entity configuration
+            modelBuilder.Entity<BlogPost>(entity =>
+            {
+                entity.HasIndex(e => e.Slug).IsUnique();
+                entity.HasMany(b => b.CrossPosts)
+                      .WithOne(c => c.BlogPost)
+                      .HasForeignKey(c => c.BlogPostId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
             // Azure Best Practice: Configure indexes for efficient Azure SQL performance
             modelBuilder.Entity<Project>()

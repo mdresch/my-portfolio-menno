@@ -13,7 +13,6 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { MobileMenu } from "./MobileMenu";
 import { ComponentItem } from "../types/navigation";
@@ -168,37 +167,37 @@ export function DarkModeToggle({}: DarkModeToggleProps) {
   if (!mounted) return null;
   
   return (
-    <div className="flex items-center border border-gray-200 dark:border-gray-600 rounded-lg overflow-hidden shadow-sm">
+    <div className="flex items-center bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl overflow-hidden shadow-xl border border-white/30 dark:border-gray-700/30 hover:shadow-2xl transition-all duration-300">
       <button
         aria-label="Switch to Light Mode"
-        className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+        className={`px-4 py-2.5 text-sm font-semibold transition-all duration-300 flex items-center relative overflow-hidden ${
           theme === "light" 
-            ? "bg-sky-500 text-white" 
-            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
+            ? "bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-500 text-white shadow-lg transform scale-105 hover:shadow-xl hover:from-amber-500 hover:via-orange-600 hover:to-yellow-600" 
+            : "bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-amber-400/20 hover:to-orange-500/20 hover:text-orange-600 dark:hover:text-orange-400 hover:scale-105"
         }`}
         onClick={() => setTheme("light")}
       >
-        <span className="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span className="flex items-center relative z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-          
+          Light
         </span>
       </button>
       <button
         aria-label="Switch to Dark Mode"
-        className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+        className={`px-4 py-2.5 text-sm font-semibold transition-all duration-300 flex items-center relative overflow-hidden ${
           theme === "dark" 
-            ? "bg-sky-500 text-white" 
-            : "bg-white dark:bg-gray-800 text-sky-700 dark:text-sky-200 hover:bg-sky-50 dark:hover:bg-gray-700"
+            ? "bg-gradient-to-r from-indigo-500 via-purple-600 to-blue-600 text-white shadow-lg transform scale-105 hover:shadow-xl hover:from-indigo-600 hover:via-purple-700 hover:to-blue-700" 
+            : "bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-indigo-500/20 hover:to-purple-600/20 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105"
         }`}
         onClick={() => setTheme("dark")}
       >
-        <span className="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span className="flex items-center relative z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
-          
+          Dark
         </span>
       </button>
     </div>
@@ -261,20 +260,22 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  
   return (
-    <div className="w-full sticky top-0 z-50 bg-white dark:bg-gray-900 shadow">
+    <div className="w-full sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/20 shadow-lg">
       {/* Mobile menu button */}
-      <div className="md:hidden flex justify-end py-4">
+      <div className="md:hidden flex justify-end py-4 px-4">
         <button
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          aria-label="Open main menu"
         >
-          {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
         </button>
       </div>
-      
+
       {/* Mobile menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
@@ -282,55 +283,54 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
         components={components}
         componentseconomics={componentseconomics}
       />
+      
       {/* Desktop menu */}
       <div className="hidden md:block">
-        <NavigationMenu className="flex justify-center mx-auto">
-          <NavigationMenuList>
+        <NavigationMenu className="flex justify-center mx-auto py-2">
+          <NavigationMenuList className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl px-2 py-1 shadow-2xl border border-gray-200/30 dark:border-gray-700/30">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>About</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-700/50 shadow-sm hover:shadow-md">About</NavigationMenuTrigger>
               <NavigationMenuContent>                
-                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
-                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
                       href="/"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
                     >
                       <div className="flex flex-col">
-                        <span className="mb-2 mt-4 text-lg font-medium">
+                        <span className="mb-2 mt-4 text-lg font-semibold">
                           Portfolio Menno
                         </span>
-                        <span className="text-sm leading-tight text-muted-foreground">
+                        <span className="text-sm leading-tight text-white/90">
                           Learn more about my background and experience
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>
-                  <div className="grid gap-1">
+                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/about" className={cn("block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground")}>
+                      <Link href="/about" className={cn("block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50")}>
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">About Me</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">About Me</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Professional Expertise and Technical Skills
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/now" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/now" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Now</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Now</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             What I&apos;m Doing Now - Maturity Dashboard
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/resume" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/resume" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Resume</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Resume</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Interactive Resume - My Work Experience
                           </span>
                         </div>
@@ -349,52 +349,48 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                   </div>
                 </div>
               </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>News</NavigationMenuTrigger>
+            </NavigationMenuItem>            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 hover:from-green-100 hover:to-blue-100 dark:hover:from-green-800/30 dark:hover:to-blue-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-green-200 dark:hover:border-green-700/50 shadow-sm hover:shadow-md">News</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
-                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
                       href="/"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-green-500 via-blue-500 to-purple-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
                     >
-                      <div className="flex flex-col">
-                        <span className="mb-2 mt-4 text-lg font-medium">
+                      <div className="flex flex-col">                        <span className="mb-2 mt-4 text-lg font-semibold">
                           Blog and Projects
                         </span>
-                        <span className="text-sm leading-tight text-muted-foreground">
+                        <span className="text-sm leading-tight text-white/90">
                           Learn more about my posts and projects
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>
-                  <div className="grid gap-1">
+                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/projects" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/projects" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Projects</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Projects</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Professional Expertise and Technical Skills
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/blog" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/blog" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Blog</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Blog</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             What I&apos;m Doing Now - Maturity Dashboard
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/admin" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/admin" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Admin</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Admin</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Interactive Resume - My Work Experience
                           </span>
                         </div>
@@ -404,26 +400,23 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger>Risk</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 hover:from-red-100 hover:to-orange-100 dark:hover:from-red-800/30 dark:hover:to-orange-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-red-200 dark:hover:border-red-700/50 shadow-sm hover:shadow-md">Risk</NavigationMenuTrigger>
               <NavigationMenuContent>                
-                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
-                  {/* Risk landing page link */}
+                <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Risk landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-sky-50 dark:bg-sky-900/40 hover:bg-sky-100 dark:hover:bg-sky-800/60 mb-2">
+                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
                       <div className="flex flex-col">
-                        <span className="text-base font-semibold text-sky-700 dark:text-sky-200">Risk Dashboards Home</span>
-                        <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all risk dashboards</span>
+                        <span className="text-base font-bold text-white">Risk Dashboards Home</span>
+                        <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all risk dashboards</span>
                       </div>
                     </Link>
                   </StrictNavigationMenuLink>
-                  {/* Risk components */}
-
-                  {components.map((component) => (
+                  {/* Risk components */}                  {components.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 dark:hover:from-red-900/20 dark:hover:to-orange-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-red-200/50 dark:hover:border-red-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">{component.title}</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             {component.description}
                           </span>
                         </div>
@@ -433,24 +426,22 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger>Economics</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 hover:from-emerald-100 hover:to-teal-100 dark:hover:from-emerald-800/30 dark:hover:to-teal-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-700/50 shadow-sm hover:shadow-md">Economics</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[600px] gap-3 p-4 grid-cols-2">
-                  {/* Economics landing page link */}
+                <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Economics landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors bg-sky-50 dark:bg-sky-900/40 hover:bg-sky-100 dark:hover:bg-sky-800/60 mb-2">
+                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
                       <div className="flex flex-col">
-                        <span className="text-base font-semibold text-sky-700 dark:text-sky-200">Economics Dashboards Home</span>
-                        <span className="text-xs leading-tight text-muted-foreground mt-1">Overview & links to all economics dashboards</span>
+                        <span className="text-base font-bold text-white">Economics Dashboards Home</span>
+                        <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all economics dashboards</span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>
-                  {componentseconomics.map((component) => (
+                  </StrictNavigationMenuLink>                  {componentseconomics.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 dark:hover:from-emerald-900/20 dark:hover:to-teal-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-emerald-200/50 dark:hover:border-emerald-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">{component.title}</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             {component.description}
                           </span>
                         </div>
@@ -460,75 +451,72 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <StrictNavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+              <StrictNavigationMenuLink className="bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900/20 dark:to-gray-900/20 hover:from-slate-100 hover:to-gray-100 dark:hover:from-slate-800/30 dark:hover:to-gray-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-slate-200 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md px-4 py-2 font-medium" asChild>
                 <Link href="https://iq4fun.gitbook.io/my-portfolio-menno/">Docs</Link>
               </StrictNavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>AI Chat</NavigationMenuTrigger>
+            </NavigationMenuItem>            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 hover:from-violet-100 hover:to-indigo-100 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-700/50 shadow-sm hover:shadow-md">AI Chat</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
-                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
                       href="/chat"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-violet-500 via-purple-500 to-indigo-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
                     >
                       <div className="flex flex-col">
-                        <span className="mb-2 mt-4 text-lg font-medium">
+                        <span className="mb-2 mt-4 text-lg font-semibold">
                           AI Chat Hub
                         </span>
-                        <span className="text-sm leading-tight text-muted-foreground">
+                        <span className="text-sm leading-tight text-white/90">
                           Explore AI-powered chat and testing interfaces
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>
-                  <div className="grid gap-1">
+                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Chat Interface</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Chat Interface</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Main AI chat interface and conversation tools
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">AI Logic</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">AI Logic</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             AI reasoning and logic processing interface
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">GenKit</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">GenKit</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Firebase GenKit AI development and testing
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Firebase AI Test</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Firebase AI Test</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Firebase integration testing for AI services
                           </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">Vertex AI Chat</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Vertex AI Chat</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Chat with Vertex AI using portfolio data
                           </span>
                         </div>
@@ -538,8 +526,8 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          </NavigationMenuList>        </NavigationMenu>        
+        <div className="absolute right-6 top-1/2 -translate-y-1/2">
           <DarkModeToggle />
         </div>
       </div>
