@@ -452,13 +452,14 @@ export default function FriendsContactPage() {
                   className="w-5 h-5 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 mt-1"
                 />
                 <label htmlFor="dutchConsent" className="ml-3 text-white text-sm leading-relaxed">
-                    Zoals op het kinderdagverblijf aan Menno als handreiking is gegeven heeft de binnendienst te samen met de brandweer een kluisje geinstalleerd in de kledingkast. Dit kluisje treft u in elke hotel kamer terug daar kunt u de bijbel uit elkaar leggen zodat het magazijn niet geladen achterblijft. Door invoer van uw pincode kan gecontroleerd worden of het kluisje opengaat mocht deze samen met uw gegevens opengaan ben ik zo met de juiste voorlichting bij u. Mocht u de pincode uit de tas van uw vader of moeder moeten halen om deze hier in te voeren zal u gevraagd worden bij het open gaan van het kluisje deze kant op te komen. Gezamelijk komen wij geladen door het enthousiasme van de een goede film zo bij u terug.
+                    Zoals op het kinderdagverblijf van mijn Moeder vroeger en de belofte aan Menno als handreiking is gegeven heeft de binnendienst te samen met de brandweer een kluisje geinstalleerd in de kledingkast. Dit kluisje treft u in elke hotel kamer terug daar kunt u de bijbel uit elkaar leggen zodat het magazijn niet geladen achterblijft. Door invoer van uw pincode kan gecontroleerd worden of het kluisje opengaat mocht deze samen met uw gegevens opengaan ben ik zo met de juiste voorlichting bij u. Mocht u de pincode uit de tas van uw vader of moeder moeten halen om deze hier in te voeren zal u gevraagd worden bij het open gaan van het kluisje deze kant op te komen. Gezamelijk komen wij geladen door het enthousiasme van de een goede film zo bij u terug.
+                    <p>
                     As was done for Menno at the daycare, the internal team, together with the fire department, has installed a small safe in the wardrobe. You’ll find this safe in every hotel room. It’s meant for storing the Bible in separate parts, so that the magazine (possibly referring to a loaded item) is not left intact.
 
-You can open the safe by entering your personal PIN code. If the safe opens and your details match, I’ll be there shortly to provide the right guidance.
+You can open the safe by entering your personal PIN code. If the safe opens and your details match, I’ll be there shortly to provide you with some guidance.
 
-If you need to get the PIN code from your father’s or mother’s bag, you’ll be asked to come this way once the safe opens. Together, we’ll return to you, energized by the excitement of a good movie
-                </label>
+                    If you need to get the PIN code from your father’s or mother’s bag, you’ll be better off coming this way. As always the maturity levels will be evaluated and assessed where serious UPO and Senior Unaccompanied Minors to these subjects advised not to worry he/she will be back well enthusiastic and fully loaded to blow you away.
+                  </p>
               </div>
               {errors.dutchConsent && (
                 <p className="text-red-300 text-sm mt-2">{errors.dutchConsent}</p>
