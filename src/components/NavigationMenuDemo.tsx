@@ -260,29 +260,35 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
   return (
     <div className="w-full sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/20 shadow-lg">
       {/* Mobile menu button */}
       <div className="md:hidden flex justify-end py-4 px-4">
         <button
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          aria-label="Open main menu"
         >
-          {isMobileMenuOpen ? <CloseIcon className="w-5 h-5" /> : <HamburgerIcon className="w-5 h-5" />}
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
         </button>
       </div>
-      
+
       {/* Mobile menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         components={components}
         componentseconomics={componentseconomics}
-      />      {/* Desktop menu */}
+      />
+      
+      {/* Desktop menu */}
       <div className="hidden md:block">
         <NavigationMenu className="flex justify-center mx-auto py-2">
-          <NavigationMenuList className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl px-2 py-1 shadow-2xl border border-gray-200/30 dark:border-gray-700/30">            <NavigationMenuItem>
+          <NavigationMenuList className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl px-2 py-1 shadow-2xl border border-gray-200/30 dark:border-gray-700/30">
+            <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-700/50 shadow-sm hover:shadow-md">About</NavigationMenuTrigger>
               <NavigationMenuContent>                
                 <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
@@ -326,6 +332,16 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Resume</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Interactive Resume - My Work Experience
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/friends-contact" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium leading-none">🚀 Friends Contact</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                            Elio-inspired cosmic contact form for friends
                           </span>
                         </div>
                       </Link>

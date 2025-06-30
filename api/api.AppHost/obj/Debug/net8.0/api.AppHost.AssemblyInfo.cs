@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e1a568b7527213cb5a89d33753de248347011bb")]
+=======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9740c58a2829d1913f4197002e674a0c3a14da49")]
+>>>>>>> origin/master
 [assembly: System.Reflection.AssemblyProductAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
