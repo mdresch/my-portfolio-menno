@@ -13,6 +13,18 @@ param principalId string
 var abbrs = loadJsonContent('./abbreviations.json')
 var resourceToken = uniqueString(subscription().id, resourceGroup().id, location)
 
+// Azure SQL Database module
+module database 'modules/database.bicep' = {
+  name: 'database'
+  params: {
+    location: location
+    tags: tags
+    resourceToken: resourceToken
+    principalId: principalId
+    environmentName: 'portfolio'
+  }
+}
+
 // Monitor application with Azure Monitor
 module monitoring 'br/public:avm/ptn/azd/monitoring:0.1.0' = {
   name: 'monitoring'
@@ -97,6 +109,14 @@ module api 'br/public:avm/res/app/container-app:0.8.0' = {
             value: apiIdentity.outputs.clientId
           }
           {
+            name: 'ASPNETCORE_ENVIRONMENT'
+            value: 'Production'
+          }
+          {
+            name: 'ConnectionStrings__AzureSqlConnection'
+            value: database.outputs.connectionString
+          }
+          {
             name: 'PORT'
             value: '8080'
           }
@@ -120,3 +140,6 @@ module api 'br/public:avm/res/app/container-app:0.8.0' = {
 }
 output AZURE_CONTAINER_REGISTRY_ENDPOINT string = containerRegistry.outputs.loginServer
 output AZURE_RESOURCE_API_ID string = api.outputs.resourceId
+output AZURE_SQL_SERVER_NAME string = database.outputs.sqlServerName
+output AZURE_SQL_DATABASE_NAME string = database.outputs.sqlDatabaseName
+output AZURE_SQL_CONNECTION_STRING string = database.outputs.connectionString
