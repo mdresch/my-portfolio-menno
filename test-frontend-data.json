@@ -1,0 +1,19 @@
+{
+  "name": "Frontend Test",
+  "alienName": "React Tester",
+  "age": "30",
+  "birthday": "1994-05-15",
+  "currentResidence": "Internet",
+  "birthPlace": "Web Browser",
+  "favoriteColor": "CSS Blue",
+  "spaceFood": "Digital cookies",
+  "spaceGear": "Keyboard and mouse",
+  "heroReason": "Builds awesome UIs",
+  "alienHobbies": "Component debugging",
+  "danceBattleSong": "JavaScript Blues",
+  "favoriteDisneyFilm": "Big Hero 6",
+  "spaceMessage": "Hello from the frontend!",
+  "ageVerification": true,
+  "consentGiven": true,
+  "dutchConsent": true
+}

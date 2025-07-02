@@ -62,17 +62,33 @@ builder.Services.AddDbContext<PortfolioContext>(options =>
         builder.Environment.IsProduction() ? "AzureSqlConnection" : "DefaultConnection"
     ) ?? throw new InvalidOperationException("Connection string not found");
     
-    options.UseSqlServer(connectionString, sqlServerOptions =>
+    if (builder.Environment.IsProduction())
     {
-        // Add execution strategy for transient errors with exponential backoff
-        sqlServerOptions.EnableRetryOnFailure(
-            maxRetryCount: 5,
-            maxRetryDelay: TimeSpan.FromSeconds(30),
-            errorNumbersToAdd: null);
-            
-        // Set command timeout to 30 seconds
-        sqlServerOptions.CommandTimeout(30);
-    });
+        // Use SQL Server for production with Azure SQL best practices
+        options.UseSqlServer(connectionString, sqlServerOptions =>
+        {
+            // Enable connection resiliency for Azure SQL
+            sqlServerOptions.EnableRetryOnFailure(
+                maxRetryCount: 3,
+                maxRetryDelay: TimeSpan.FromSeconds(5),
+                errorNumbersToAdd: null);
+                
+            // Set command timeout for Azure SQL
+            sqlServerOptions.CommandTimeout(60);
+        });
+        
+        // Don't log sensitive data in production
+        if (!builder.Environment.IsProduction())
+        {
+            options.EnableSensitiveDataLogging();
+        }
+    }
+    else
+    {
+        // Use SQLite for development
+        options.UseSqlite(connectionString);
+        options.EnableSensitiveDataLogging(); // OK for development
+    }
 });
 
 var app = builder.Build();

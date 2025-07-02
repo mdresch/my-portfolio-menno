@@ -199,6 +199,25 @@ export default function RiskOverviewPage() {
             />
           </div>
 
+          {/* GDP Per Capita Trade War Risk */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="GDP Per Capita & Trade War Risk"
+              description="Strategic analysis of how GDP per capita growth can be leveraged to mitigate trade war risks, with focus on Canadian economic indicators and policy recommendations."
+              date="July 2, 2025"
+              category="Economic Risk"
+              tags={["GDP Growth", "Trade War", "Economic Policy"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/gdp-per-capita-trade-war"
+              usePlaceholder={false}
+              downloadLinks={[
+                { format: "CSV", url: "/data/gdp-trade-war-data.csv" },
+                { format: "JSON", url: "/data/gdp-trade-war-data.json" },
+                { format: "XML", url: "/data/gdp-trade-war-data.xml" }
+              ]}
+            />
+          </div>
+
         </div>
       </section>
 
@@ -240,6 +259,25 @@ export default function RiskOverviewPage() {
                 { format: "CSV", url: "/data/canadian-financial-stability-2025.csv" },
                 { format: "JSON", url: "/data/canadian-financial-stability-2025.json" },
                 { format: "XML", url: "/data/canadian-financial-stability-2025.xml" }
+              ]}
+            />
+          </div>
+
+          {/* GDP Per Capita Trade War Risk */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="GDP Per Capita & Trade War Risk"
+              description="Strategic analysis of how GDP per capita growth can be leveraged to mitigate trade war risks, with focus on Canadian economic indicators and policy recommendations."
+              date="July 2, 2025"
+              category="Economic Risk"
+              tags={["GDP Growth", "Trade War", "Economic Policy"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/gdp-per-capita-trade-war"
+              usePlaceholder={false}
+              downloadLinks={[
+                { format: "CSV", url: "/data/gdp-trade-war-data.csv" },
+                { format: "JSON", url: "/data/gdp-trade-war-data.json" },
+                { format: "XML", url: "/data/gdp-trade-war-data.xml" }
               ]}
             />
           </div>
