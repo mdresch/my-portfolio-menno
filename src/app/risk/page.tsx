@@ -452,6 +452,17 @@ export default function RiskOverviewPage() {
           </div>
         </div>
       </section>
+
+      {/* New WTO Section */}
+      <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 className="text-2xl font-semibold mb-4">World Trade Organization (WTO)</h2>
+        <p className="mb-4">
+          Understanding the global trade framework and implications for international business.
+        </p>
+        <Link href="/risk/wto" className="text-blue-600 hover:underline">
+          Learn more
+        </Link>
+      </div>
     </div>
   );
 }
