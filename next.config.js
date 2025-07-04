@@ -11,6 +11,17 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Add logging for debugging
+  onDemandEntries: {
+    // Keep pages in memory for longer
+    maxInactiveAge: 60 * 60 * 1000, // 1 hour
+  },
+  logging: {
+    fullUrl: true,
+    fetches: {
+      fullUrl: true,
+    },
+  },
   // Basic image configuration
   images: {
     unoptimized: true, // For static exports
