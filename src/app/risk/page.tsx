@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 import InteractiveRiskMap from "../../components/risk/InteractiveRiskMap"; // Adjust path
@@ -615,7 +614,7 @@ export default function RiskOverviewPage() {
         <Link href="/risk/wto" className="text-blue-600 hover:underline">
           Learn more
         </Link>
-      </div>
+      </section>
     </div>
   );
 }
