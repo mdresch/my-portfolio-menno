@@ -1,6 +1,5 @@
 // Simple script to load and display RAG content
 const fs = require('fs').promises;
-const fsSync = require('fs');
 const path = require('path');
 
 // Paths to RAG documents
@@ -8,7 +7,12 @@ const BLOG_RAG_PATH = path.join(process.cwd(), 'data/blog-rag-documents.json');
 const PROJECT_RAG_PATH = path.join(process.cwd(), 'data/project-rag-documents.json');
 const RISK_RAG_PATH = path.join(process.cwd(), 'data/blog-rag-risk-documents.json');
 
-// Function to load and display RAG documents
+// Define global variables for documents
+let blogDocs = [];
+let projectDocs = [];
+let riskDocs = [];
+
+// Hardened error handling for JSON parsing and array validation
 async function loadRagDocuments() {
   try {
     // Load the documents
@@ -17,52 +21,72 @@ async function loadRagDocuments() {
       fs.readFile(PROJECT_RAG_PATH, 'utf8'),
       fs.readFile(RISK_RAG_PATH, 'utf8')
     ]);
-    
-    const blogDocs = JSON.parse(blogContent);
-    const projectDocs = JSON.parse(projectContent);
-    const riskDocs = JSON.parse(riskContent);
-    
-    console.log(`Loaded ${blogDocs.length} blog documents`);
-    console.log(`Loaded ${projectDocs.length} project documents`);
-    console.log(`Loaded ${riskDocs.length} risk documents`);
-    
+
+    const parseJsonSafely = (content, type) => {
+      try {
+        console.log(`Raw ${type} content:`, content.substring(0, 500));
+        const parsed = JSON.parse(content);
+        if (Array.isArray(parsed)) {
+          console.log(`Loaded ${parsed.length} ${type} documents`);
+          parsed.forEach((entry, index) => {
+            if (typeof entry !== 'object' || entry === null) {
+              console.warn(`${type} document at index ${index} is not a valid object:`, entry);
+            }
+          });
+          return parsed;
+        } else {
+          console.warn(`${type} documents are not an array`);
+          return [];
+        }
+      } catch (error) {
+        console.error(`Error parsing ${type} documents:`, error);
+        return [];
+      }
+    };
+
+    blogDocs = parseJsonSafely(blogContent, 'blog');
+    projectDocs = parseJsonSafely(projectContent, 'project');
+    riskDocs = parseJsonSafely(riskContent, 'risk');
+
     // Display a sample of each type
-    console.log('\nBlog Document Sample:');
-    console.log(JSON.stringify(blogDocs[0], null, 2).substring(0, 500) + '...');
-    
-    console.log('\nProject Document Sample:');
-    console.log(JSON.stringify(projectDocs[0], null, 2).substring(0, 500) + '...');
-    
-    console.log('\nRisk Document Sample:');
-    console.log(JSON.stringify(riskDocs[0], null, 2).substring(0, 500) + '...');
-    
+    const displaySample = (docs, type) => {
+      if (docs.length > 0) {
+        console.log(`\n${type} Document Sample:`);
+        console.log(JSON.stringify(docs[0], null, 2).substring(0, 500) + '...');
+      } else {
+        console.log(`\nNo ${type} documents available to display.`);
+      }
+    };
+
+    displaySample(blogDocs, 'Blog');
+    displaySample(projectDocs, 'Project');
+    displaySample(riskDocs, 'Risk');
+
     // Get file modification times
     const [blogStats, projectStats, riskStats] = await Promise.all([
       fs.stat(BLOG_RAG_PATH),
       fs.stat(PROJECT_RAG_PATH),
       fs.stat(RISK_RAG_PATH)
     ]);
-    
+
     const blogModified = blogStats.mtime;
     const projectModified = projectStats.mtime;
     const riskModified = riskStats.mtime;
-    
+
     console.log('\nFile Last Modified:');
     console.log(`Blog documents: ${blogModified}`);
     console.log(`Project documents: ${projectModified}`);
     console.log(`Risk documents: ${riskModified}`);
-    
+
     // Calculate age of the files
     const now = new Date();
-    const blogAge = Math.floor((now - blogModified) / (1000 * 60 * 60 * 24)); // days
-    const projectAge = Math.floor((now - projectModified) / (1000 * 60 * 60 * 24)); // days
-    const riskAge = Math.floor((now - riskModified) / (1000 * 60 * 60 * 24)); // days
-    
+    const calculateAge = (modifiedTime) => Math.floor((now - modifiedTime) / (1000 * 60 * 60 * 24));
+
     console.log('\nFile Age (days):');
-    console.log(`Blog documents: ${blogAge} days old`);
-    console.log(`Project documents: ${projectAge} days old`);
-    console.log(`Risk documents: ${riskAge} days old`);
-    
+    console.log(`Blog documents: ${calculateAge(blogModified)} days old`);
+    console.log(`Project documents: ${calculateAge(projectModified)} days old`);
+    console.log(`Risk documents: ${calculateAge(riskModified)} days old`);
+
     return true;
   } catch (error) {
     console.error('Error loading RAG documents:', error);
