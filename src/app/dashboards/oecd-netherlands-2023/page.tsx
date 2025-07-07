@@ -111,7 +111,7 @@ export default function OECDNetherlandsPage() {
               </p>
             </div>
             <div className="border-l-4 border-orange-500 pl-4">
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100">Boosting Labour Supply and Productivity</h3>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">Boosting Labor Supply and Productivity</h3>
               <p className="text-gray-700 dark:text-gray-300">
                 Focus on increasing labor supply and productivity as key drivers for sustained economic 
                 growth in the medium to long term.
