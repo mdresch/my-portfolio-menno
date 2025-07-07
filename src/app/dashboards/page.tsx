@@ -58,6 +58,11 @@ const dashboards = [
     description: "Analyze the effects of policy changes on economic indicators and market outcomes.",
     href: "/dashboards/policyimpact-dashboard",
   },
+  {
+    title: "OECD Economic Surveys Netherlands 2023",
+    description: "Comprehensive analysis of the Dutch economy, key challenges, and OECD recommendations from the 2023 Economic Survey.",
+    href: "/dashboards/oecd-netherlands-2023",
+  },
 ];
 
 export default function EconomicsLandingPage() {
