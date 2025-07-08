@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using api.ApiService.Models;
-using api.ApiService.DTOs;
-using System.Text.Json;
 using api.ApiService.Data;
+using Dtos = api.ApiService.DTOs;
+using System.Text.Json;
 
 namespace api.ApiService.Controllers;
 
@@ -18,5 +18,35 @@ public class BlogPostsController : ControllerBase
     {
         _context = context;
         _logger = logger;
+    }
+
+    // GET: api/blogposts
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Dtos.BlogPostDto>>> GetBlogPosts()
+    {
+        try
+        {
+            var posts = await _context.BlogPosts
+                .OrderByDescending(b => b.PublishedDate)
+                .Select(b => new Dtos.BlogPostDto
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Content = b.Content,
+                    PublishedDate = b.PublishedDate
+                    // Add other properties as needed
+                })
+                .ToListAsync();
+            return Ok(posts);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while fetching blog posts");
+#if DEBUG
+            return StatusCode(500, $"An error occurred: {ex.Message}");
+#else
+            return StatusCode(500, "An error occurred while processing your request");
+#endif
+        }
     }
 }

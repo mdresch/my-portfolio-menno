@@ -11,19 +11,14 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("626f15fa-cefc-4aa1-b8e7-5618b46d5a9a")]
-[assembly: System.Reflection.AssemblyMetadata("dcpclipath", "C:\\Users\\menno\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\8.2.2\\tools\\d" +
-    "cp.exe")]
-[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", "C:\\Users\\menno\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\8.2.2\\tools\\e" +
-    "xt\\")]
-[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", "C:\\Users\\menno\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\8.2.2\\tools\\e" +
-    "xt\\bin\\")]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.AppHost")]
-[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", "C:\\Users\\menno\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\8.2.2\\tools\\Aspire.Da" +
-    "shboard.exe")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d29d4bf30307f869246b0c30fb24ed6cc93f4211")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e1a568b7527213cb5a89d33753de248347011bb")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9740c58a2829d1913f4197002e674a0c3a14da49")]
+>>>>>>> origin/master
 [assembly: System.Reflection.AssemblyProductAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("api.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

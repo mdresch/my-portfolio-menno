@@ -62,20 +62,51 @@ builder.Services.AddDbContext<PortfolioContext>(options =>
         builder.Environment.IsProduction() ? "AzureSqlConnection" : "DefaultConnection"
     ) ?? throw new InvalidOperationException("Connection string not found");
     
-    options.UseSqlServer(connectionString, sqlServerOptions =>
+    if (builder.Environment.IsProduction())
     {
-        // Add execution strategy for transient errors with exponential backoff
-        sqlServerOptions.EnableRetryOnFailure(
-            maxRetryCount: 5,
-            maxRetryDelay: TimeSpan.FromSeconds(30),
-            errorNumbersToAdd: null);
-            
-        // Set command timeout to 30 seconds
-        sqlServerOptions.CommandTimeout(30);
-    });
+        // Use SQL Server for production with Azure SQL best practices
+        options.UseSqlServer(connectionString, sqlServerOptions =>
+        {
+            // Enable connection resiliency for Azure SQL
+            sqlServerOptions.EnableRetryOnFailure(
+                maxRetryCount: 3,
+                maxRetryDelay: TimeSpan.FromSeconds(5),
+                errorNumbersToAdd: null);
+                
+            // Set command timeout for Azure SQL
+            sqlServerOptions.CommandTimeout(60);
+        });
+        
+        // Don't log sensitive data in production
+        if (!builder.Environment.IsProduction())
+        {
+            options.EnableSensitiveDataLogging();
+        }
+    }
+    else
+    {
+        // Use SQLite for development
+        options.UseSqlite(connectionString);
+        options.EnableSensitiveDataLogging(); // OK for development
+    }
 });
 
 var app = builder.Build();
+
+using (var migrationScope = app.Services.CreateScope())
+{
+    var migrationContext = migrationScope.ServiceProvider.GetRequiredService<PortfolioContext>();
+    // Only reset DB when using localdev connection (avoid dropping remote Azure SQL)
+    // Get connection string (default to empty to avoid null)
+    var connStr = builder.Configuration.GetConnectionString(
+        builder.Environment.IsProduction() ? "AzureSqlConnection" : "DefaultConnection")
+        ?? string.Empty;
+    if (app.Environment.IsDevelopment() && connStr.Contains("localhost", StringComparison.OrdinalIgnoreCase))
+    {
+        migrationContext.Database.EnsureDeleted();
+    }
+    migrationContext.Database.EnsureCreated();
+}
 
 // Register global exception middleware (must be before other middleware)
 app.UseMiddleware<PortfolioApi.Middleware.GlobalExceptionMiddleware>();
@@ -131,10 +162,14 @@ try
                 {
                     logger.LogInformation("Connected to development database, seeding data");
                     // Use fully qualified type name to avoid ambiguity
-                    // Dynamically load and call the method to avoid ambiguity
-                    var dbSeederType = Type.GetType("PortfolioApi.Data.DbSeeder, api.ApiService");
-                    var seedMethod = dbSeederType?.GetMethod("Seed");
-                    seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, "Development" });
+                    // Dynamically load and call the async method
+                    var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
+                    var seedMethod = dbSeederType?.GetMethod("SeedAsync");
+                    var task = seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, "Development" }) as Task;
+                    if (task != null)
+                    {
+                        await task;
+                    }
                 }
                 else
                 {
@@ -162,10 +197,14 @@ try
             var context = scope.ServiceProvider.GetRequiredService<PortfolioContext>();
             
             // In production, use a regular timeout but with retry policy (already configured)
-            // Dynamically load and call the method to avoid ambiguity
-            var dbSeederType = Type.GetType("PortfolioApi.Data.DbSeeder, api.ApiService");
-            var seedMethod = dbSeederType?.GetMethod("Seed");
-            seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env });
+            // Dynamically load and call the async method
+            var dbSeederType = Type.GetType("api.ApiService.Data.DbSeederRunner, api.ApiService");
+            var seedMethod = dbSeederType?.GetMethod("SeedAsync");
+            var task = seedMethod?.Invoke(null, new object[] { scope.ServiceProvider, env }) as Task;
+            if (task != null)
+            {
+                await task;
+            }
         }
     }
 }

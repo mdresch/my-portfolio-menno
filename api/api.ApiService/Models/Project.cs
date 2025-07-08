@@ -24,7 +24,6 @@ namespace api.ApiService.Models
         public string Description { get; set; } = null!;
 
         // Azure Best Practice: Store as JSON for flexible schema and easy querying
-        [Column(TypeName = "nvarchar(MAX)")]
         public string? TechnologiesJson { get; set; }
 
         [NotMapped]

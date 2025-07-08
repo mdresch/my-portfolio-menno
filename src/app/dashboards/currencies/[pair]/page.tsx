@@ -6,16 +6,16 @@ import Link from "next/link";
 
 // Mock data for demonstration (in a real app, fetch from API or DB)
 const currencyPairs = [
-  { pair: "EUR/USD", rate: 1.08, change: "+0.2%", base: "EUR", quote: "USD", strength: "Neutral", history: [1.07, 1.08, 1.09, 1.08, 1.08] },
-  { pair: "USD/JPY", rate: 154.2, change: "-0.1%", base: "USD", quote: "JPY", strength: "Strong USD", history: [153.8, 154.0, 154.5, 154.3, 154.2] },
-  { pair: "GBP/USD", rate: 1.25, change: "+0.1%", base: "GBP", quote: "USD", strength: "Neutral", history: [1.24, 1.25, 1.26, 1.25, 1.25] },
-  { pair: "USD/CHF", rate: 0.91, change: "+0.3%", base: "USD", quote: "CHF", strength: "Strong USD", history: [0.90, 0.91, 0.92, 0.91, 0.91] },
-  { pair: "AUD/USD", rate: 0.65, change: "-0.2%", base: "AUD", quote: "USD", strength: "Weak AUD", history: [0.66, 0.65, 0.65, 0.64, 0.65] },
-  { pair: "USD/CAD", rate: 1.37, change: "+0.1%", base: "USD", quote: "CAD", strength: "Strong USD", history: [1.36, 1.37, 1.38, 1.37, 1.37] },
-  { pair: "EUR/GBP", rate: 0.86, change: "0.0%", base: "EUR", quote: "GBP", strength: "Neutral", history: [0.85, 0.86, 0.87, 0.86, 0.86] },
-  { pair: "EUR/JPY", rate: 166.5, change: "+0.1%", base: "EUR", quote: "JPY", strength: "Strong EUR", history: [166.0, 166.2, 166.7, 166.4, 166.5] },
-  { pair: "USD/CNY", rate: 7.24, change: "+0.1%", base: "USD", quote: "CNY", strength: "Strong USD", history: [7.23, 7.24, 7.25, 7.24, 7.24] },
-  { pair: "USD/INR", rate: 83.4, change: "+0.1%", base: "USD", quote: "INR", strength: "Strong USD", history: [83.3, 83.4, 83.5, 83.4, 83.4] },
+  { pair: "EUR/USD", rate: 1.10, change: "+0.3%", base: "EUR", quote: "USD", strength: "Neutral", history: [1.09, 1.10, 1.11, 1.10, 1.10] },
+  { pair: "USD/JPY", rate: 155.0, change: "+0.5%", base: "USD", quote: "JPY", strength: "Strong USD", history: [154.5, 154.7, 155.2, 155.0, 155.0] },
+  { pair: "GBP/USD", rate: 1.27, change: "+0.2%", base: "GBP", quote: "USD", strength: "Neutral", history: [1.26, 1.27, 1.28, 1.27, 1.27] },
+  { pair: "USD/CHF", rate: 0.92, change: "+0.4%", base: "USD", quote: "CHF", strength: "Strong USD", history: [0.91, 0.92, 0.93, 0.92, 0.92] },
+  { pair: "AUD/USD", rate: 0.64, change: "-0.1%", base: "AUD", quote: "USD", strength: "Weak AUD", history: [0.65, 0.64, 0.64, 0.63, 0.64] },
+  { pair: "USD/CAD", rate: 1.38, change: "+0.2%", base: "USD", quote: "CAD", strength: "Strong USD", history: [1.37, 1.38, 1.39, 1.38, 1.38] },
+  { pair: "EUR/GBP", rate: 0.87, change: "+0.1%", base: "EUR", quote: "GBP", strength: "Neutral", history: [0.86, 0.87, 0.88, 0.87, 0.87] },
+  { pair: "EUR/JPY", rate: 167.0, change: "+0.3%", base: "EUR", quote: "JPY", strength: "Strong EUR", history: [166.5, 166.7, 167.2, 167.0, 167.0] },
+  { pair: "USD/CNY", rate: 7.26, change: "+0.2%", base: "USD", quote: "CNY", strength: "Strong USD", history: [7.25, 7.26, 7.27, 7.26, 7.26] },
+  { pair: "USD/INR", rate: 83.6, change: "+0.2%", base: "USD", quote: "INR", strength: "Strong USD", history: [83.5, 83.6, 83.7, 83.6, 83.6] },
 ];
 
 export default function CurrencyPairDetailPage() {

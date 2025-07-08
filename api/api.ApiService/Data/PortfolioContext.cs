@@ -20,10 +20,23 @@ namespace api.ApiService.Data
         public DbSet<Project> Projects { get; set; } = null!;
         public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
+        public DbSet<BlogPost> BlogPosts { get; set; } = null!;
+        public DbSet<RagDocument> RagDocuments { get; set; } = null!;
+        public DbSet<FriendContact> FriendContacts { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // BlogPost entity configuration
+            modelBuilder.Entity<BlogPost>(entity =>
+            {
+                entity.HasIndex(e => e.Slug).IsUnique();
+                entity.HasMany(b => b.CrossPosts)
+                      .WithOne(c => c.BlogPost)
+                      .HasForeignKey(c => c.BlogPostId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
             // Azure Best Practice: Configure indexes for efficient Azure SQL performance
             modelBuilder.Entity<Project>()
@@ -52,6 +65,37 @@ namespace api.ApiService.Data
                 
             modelBuilder.Entity<ContactMessage>()
                 .HasIndex(c => c.IsRead);
+                
+            // FriendContact entity configuration
+            modelBuilder.Entity<FriendContact>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                    
+                entity.Property(e => e.AlienName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                    
+                // Use database-specific default values for SubmittedAt
+                if (Database.IsSqlServer())
+                {
+                    entity.Property(e => e.SubmittedAt)
+                        .HasDefaultValueSql("GETUTCDATE()");
+                }
+                else
+                {
+                    // SQLite uses datetime('now') for current timestamp
+                    entity.Property(e => e.SubmittedAt)
+                        .HasDefaultValueSql("datetime('now')");
+                }
+                    
+                // Add indexes for common queries
+                entity.HasIndex(e => e.SubmittedAt);
+                entity.HasIndex(e => e.Name);
+            });
                 
             // Add seed data
             // SeedData(modelBuilder); // Commented out to avoid duplicate/conflicting seeding. Use DbSeeder instead.
@@ -109,14 +153,48 @@ namespace api.ApiService.Data
                 .AddEnvironmentVariables();
             var config = builder.Build();
             var optionsBuilder = new DbContextOptionsBuilder<PortfolioContext>();
-            var connStr = config.GetConnectionString(
-                environment == "Production" ? "AzureSqlConnection" : "DefaultConnection"
-            );
-            if (string.IsNullOrEmpty(connStr))
+            
+            // Azure SQL for production, SQLite for development
+            if (environment == "Production")
             {
-                throw new InvalidOperationException($"No connection string found for environment '{environment}'.");
+                var connStr = config.GetConnectionString("AzureSqlConnection");
+                if (string.IsNullOrEmpty(connStr))
+                {
+                    throw new InvalidOperationException("Azure SQL connection string not found for Production environment.");
+                }
+                
+                // Configure for Azure SQL with best practices
+                optionsBuilder.UseSqlServer(connStr, options =>
+                {
+                    // Enable connection resiliency for Azure SQL
+                    options.EnableRetryOnFailure(
+                        maxRetryCount: 3,
+                        maxRetryDelay: TimeSpan.FromSeconds(5),
+                        errorNumbersToAdd: null);
+                    
+                    // Set command timeout for large operations
+                    options.CommandTimeout(60);
+                });
+                
+                // Enable sensitive data logging only in non-production for debugging
+                if (environment != "Production")
+                {
+                    optionsBuilder.EnableSensitiveDataLogging();
+                }
             }
-            optionsBuilder.UseSqlServer(connStr);
+            else
+            {
+                // SQLite for development
+                var connStr = config.GetConnectionString("DefaultConnection");
+                if (string.IsNullOrEmpty(connStr))
+                {
+                    throw new InvalidOperationException("SQLite connection string not found for Development environment.");
+                }
+                
+                optionsBuilder.UseSqlite(connStr);
+                optionsBuilder.EnableSensitiveDataLogging(); // OK for development
+            }
+            
             return new PortfolioContext(optionsBuilder.Options);
         }
     }

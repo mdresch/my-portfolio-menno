@@ -1,0 +1,83 @@
+[
+  {
+    "Title": "Portfolio Website",
+    "Description": "A personal portfolio website built with Next.js and .NET API backend, deployed on Azure.",
+    "ImageUrl": "/images/projects/portfolio.jpg",
+    "GitHubUrl": "https://github.com/yourusername/portfolio-website",
+    "LiveUrl": "https://your-portfolio.com",
+    "Created": "2025-05-15T01:17:20.74469",
+    "Technologies": ["Next.js", ".NET", "Azure SQL", "EF Core"]
+  },
+  {
+    "Title": "Dev Only Project",
+    "Description": "This project only exists in the development environment.",
+    "ImageUrl": "/images/projects/dev-only.jpg",
+    "GitHubUrl": "https://github.com/yourusername/dev-only-project",
+    "LiveUrl": "https://dev-only-project.com",
+    "Created": "2025-05-15T01:17:20.74469",
+    "Technologies": [".NET", "EF Core"]
+  },
+  {
+    "Title": "My Portfolio Menno",
+    "Description": "Welcome to Menno's Portfolio! A curated showcase of creativity, innovation, and dedication. Explore projects that reflect a passion for problem-solving, a knack for design, and a commitment to delivering impactful results.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/3/",
+    "LiveUrl": "",
+    "Created": "2023-06-15T00:00:00.000Z",
+    "Technologies": ["React", "Node.js", "MongoDB"]
+  },
+  {
+    "Title": "hr-insights-dashboard",
+    "Description": "The hr-insights-dashboard is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/5/",
+    "LiveUrl": "",
+    "Created": "2023-01-01T00:00:00.000Z",
+    "Technologies": ["React", "Node.js", "MongoDB"]
+  },
+  {
+    "Title": "CBA AI Foundry",
+    "Description": "The CBA AI Foundry is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/2",
+    "LiveUrl": "",
+    "Created": "2023-01-01T00:00:00.000Z",
+    "Technologies": ["TypeScript", "Next.js", "Tailwind CSS"]
+  },
+  {
+    "Title": "AI Agent Life Cycle Management",
+    "Description": "The AI Agent Life Cycle Management is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/4/",
+    "LiveUrl": "",
+    "Created": "2023-01-01T00:00:00.000Z",
+    "Technologies": ["React", "Node.js", "MongoDB"]
+  },
+  {
+    "Title": "ICT Governance Management Framework",
+    "Description": "The ICT Governance Framework Application and the CBA Consult IT Management Framework are initiatives aimed at optimizing governance in multi-cloud environments.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/1",
+    "LiveUrl": "",
+    "Created": "2023-03-10T00:00:00.000Z",
+    "Technologies": ["TypeScript", "Next.js", "Tailwind CSS"]
+  },
+  {
+    "Title": "Money Market and Foereign Exchange",
+    "Description": "The Money Market and Foreign Exchange an Introduction to Supply Demand Interst Rates Inflation and 6 Trilion a day Market.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/7/",
+    "LiveUrl": "",
+    "Created": "2023-01-01T00:00:00.000Z",
+    "Technologies": ["React", "Node.js", "Material UI", "Next JS"]
+  },
+  {
+    "Title": "Risk Reports",
+    "Description": "The Risk Reports is a platform for building and deploying AI models. It seems you're diving deep into AI and machine learning frameworks.",
+    "ImageUrl": "",
+    "GitHubUrl": "https://github.com/users/mdresch/projects/6/",
+    "LiveUrl": "",
+    "Created": "2023-01-01T00:00:00.000Z",
+    "Technologies": ["React", "Node.js", "MongoDB"]
+  }
+]
