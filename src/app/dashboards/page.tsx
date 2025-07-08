@@ -63,6 +63,11 @@ const dashboards = [
     description: "Comprehensive analysis of the Dutch economy, key challenges, and OECD recommendations from the 2023 Economic Survey.",
     href: "/dashboards/oecd-netherlands-2023",
   },
+  {
+    title: "Economic Indicators for the Netherlands",
+    description: "Current key economic indicators for the Netherlands including GDP, inflation, unemployment, and purchasing power from OECD, IMF, CBS, and CPB.",
+    href: "/dashboards/netherlands-economic-indicators",
+  },
 ];
 
 export default function EconomicsLandingPage() {
