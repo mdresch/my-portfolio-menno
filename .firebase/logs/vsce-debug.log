@@ -16,3 +16,44 @@
 [debug] [2025-06-01T01:27:52.168Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
 [debug] [2025-06-01T01:31:20.227Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
 [debug] [2025-06-01T01:31:20.228Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-07-08T04:03:55.191Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2025-07-08T04:03:55.944Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-07-08T04:03:55.947Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-08T04:03:55.947Z] > authorizing via signed-in user (menno.drescher@gmail.com)
+[debug] [2025-07-08T04:03:55.953Z] Checked if tokens are valid: true, expires at: 1751950870439
+[debug] [2025-07-08T04:03:55.953Z] Checked if tokens are valid: true, expires at: 1751950870439
+[debug] [2025-07-08T04:03:55.953Z] [Firebase Plugin] User found:  menno.drescher@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-07-08T04:03:55.955Z] Checked if tokens are valid: true, expires at: 1751950870439
+[debug] [2025-07-08T04:03:55.957Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 2.8.0) on port 50001
+[debug] [2025-07-08T04:03:57.100Z] I0708 06:03:57.025717   37416 control.go:84] [/emulator/my-portfolio-menno 2594] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.025717   37416 control.go:84] [/emulator/my-portfolio-menno 2594] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\mutations.gql [1266B] connector\\queries.gql [1880B] \n"}}
+[debug] [2025-07-08T04:03:57.101Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-07-08T04:03:57.102Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2025-07-08T04:03:57.102Z] Starting Data Connect Emulator with command {"binary":"C:\\Users\\menno\\.cache\\firebase\\emulators\\dataconnect-emulator-2.8.0.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\menno\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-2.8.0.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2025-07-08T04:03:57.164Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-07-08T04:03:57.165Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-07-08T04:03:57.220Z] I0708 06:03:57.204589   39820 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.204589   39820 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2025-07-08T04:03:57.324Z] I0708 06:03:57.266380   39820 control.go:84] [/emulator/my-portfolio-menno 1475] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+I0708 06:03:57.312493   39820 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+I0708 06:03:57.322332   39820 collector.go:107] schema extensions wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [71203B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.266380   39820 control.go:84] [/emulator/my-portfolio-menno 1475] UpdateResources(): done\nSchema: sources: schema\\schema.gql [2140B] \nConnector \"default\": sources: connector\\mutations.gql [1266B] connector\\queries.gql [1880B] \nI0708 06:03:57.312493   39820 codegen.go:82] [connector \"default\" javascriptSdk] Generating sources into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nI0708 06:03:57.322332   39820 collector.go:107] schema extensions wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: prelude.gql [71203B] \n"}}
+[debug] [2025-07-08T04:03:57.368Z] I0708 06:03:57.366284   39820 collector.go:107] connector "default" javascriptSdk wrote into "c:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+Generated sources: README.md [2896B] react\index.d.ts [228B] react\README.md [5474B] esm\index.esm.js [122B] index.cjs.js [157B] react\package.json [468B] react\esm\package.json [17B] react\index.cjs.js [0B] react\esm\index.esm.js [0B] index.d.ts [246B] esm\package.json [17B] package.json [860B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.366284   39820 collector.go:107] connector \"default\" javascriptSdk wrote into \"c:\\\\Users\\\\menno\\\\Source\\\\Repos\\\\my-portfolio-menno\\\\dataconnect-generated\\\\js\\\\default-connector\"\nGenerated sources: README.md [2896B] react\\index.d.ts [228B] react\\README.md [5474B] esm\\index.esm.js [122B] index.cjs.js [157B] react\\package.json [468B] react\\esm\\package.json [17B] react\\index.cjs.js [0B] react\\esm\\index.esm.js [0B] index.d.ts [246B] esm\\package.json [17B] package.json [860B] \n"}}
+[debug] [2025-07-08T04:03:57.426Z] I0708 06:03:57.409736   39820 installsdk.go:86] Running command: npm install file:dataconnect-generated\js\default-connector
+E0708 06:03:57.409736   39820 installsdk.go:88] Failed to install package: exec: "npm": executable file not found in %PATH%
+I0708 06:03:57.409736   39820 load.go:115] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.409736   39820 installsdk.go:86] Running command: npm install file:dataconnect-generated\\js\\default-connector\nE0708 06:03:57.409736   39820 installsdk.go:88] Failed to install package: exec: \"npm\": executable file not found in %PATH%\nI0708 06:03:57.409736   39820 load.go:115] Finished reloading\n"}}
+[debug] [2025-07-08T04:03:57.521Z] I0708 06:03:57.515746   39820 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.515746   39820 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2025-07-08T04:03:57.660Z] I0708 06:03:57.631181   39820 engine.go:170] [/emulator/my-portfolio-menno 1475] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0708 06:03:57.631181   39820 engine.go:170] [/emulator/my-portfolio-menno 1475] ExecuteGraphqlRead IntrospectionQuery: succeeded. \n"}}
