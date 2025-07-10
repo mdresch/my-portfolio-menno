@@ -1,40 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj": {}
+    "/mnt/persist/workspace/api/api.Web/api.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+    "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
+        "projectUniqueName": "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj",
         "projectName": "api.ApiService",
-        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj",
-        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\obj\\",
+        "projectPath": "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj",
+        "packagesPath": "/home/augment-agent/.nuget/packages/",
+        "outputPath": "/mnt/persist/workspace/api/api.ApiService/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/augment-agent/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
-                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
+              "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
+                "projectPath": "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj"
               }
             }
           }
@@ -150,33 +143,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
+    "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj",
+        "projectUniqueName": "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj",
         "projectName": "api.ServiceDefaults",
-        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj",
-        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\obj\\",
+        "projectPath": "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj",
+        "packagesPath": "/home/augment-agent/.nuget/packages/",
+        "outputPath": "/mnt/persist/workspace/api/api.ServiceDefaults/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/augment-agent/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -252,44 +238,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj": {
+    "/mnt/persist/workspace/api/api.Web/api.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
+        "projectUniqueName": "/mnt/persist/workspace/api/api.Web/api.Web.csproj",
         "projectName": "api.Web",
-        "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
-        "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\obj\\",
+        "projectPath": "/mnt/persist/workspace/api/api.Web/api.Web.csproj",
+        "packagesPath": "/home/augment-agent/.nuget/packages/",
+        "outputPath": "/mnt/persist/workspace/api/api.Web/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/augment-agent/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
-                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj"
+              "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj": {
+                "projectPath": "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj"
               },
-              "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
-                "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
+              "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
+                "projectPath": "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj"
               }
             }
           }
@@ -327,7 +306,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

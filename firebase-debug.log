@@ -1,0 +1,462 @@
+[debug] [2025-07-10T22:23:15.915Z] ----------------------------------------------------------------------
+[debug] [2025-07-10T22:23:15.917Z] Command:       /usr/bin/node /mnt/persist/workspace/node_modules/.bin/firebase emulators:start --only functions
+[debug] [2025-07-10T22:23:15.917Z] CLI Version:   14.10.1
+[debug] [2025-07-10T22:23:15.918Z] Platform:      linux
+[debug] [2025-07-10T22:23:15.918Z] Node Version:  v22.16.0
+[debug] [2025-07-10T22:23:15.918Z] Time:          Thu Jul 10 2025 22:23:15 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-07-10T22:23:15.918Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-10T22:23:15.920Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-07-10T22:23:16.196Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] Failed to authenticate, have you run firebase login?
+[warn] ⚠  emulators: You are not currently authenticated so some features may not work correctly. Please run firebase login to authenticate the CLI. 
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[warn] ⚠  hub: Error when trying to check port 4400 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4400 {"metadata":{"emulator":{"name":"hub"},"message":"Error when trying to check port 4400 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4400"}}
+[warn] ⚠  hub: Port 4400 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"hub"},"message":"Port 4400 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  hub: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"hub"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  ui: Error when trying to check port 4000 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4000 {"metadata":{"emulator":{"name":"ui"},"message":"Error when trying to check port 4000 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4000"}}
+[warn] ⚠  ui: Port 4000 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"ui"},"message":"Port 4000 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  ui: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"ui"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  logging: Error when trying to check port 4500 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4500 {"metadata":{"emulator":{"name":"logging"},"message":"Error when trying to check port 4500 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4500"}}
+[warn] ⚠  logging: Port 4500 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"logging"},"message":"Port 4500 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  logging: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"logging"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[debug] [2025-07-10T22:23:16.228Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-07-10T22:23:16.231Z] [hub] writing locator at /tmp/hub-my-portfolio-menno.json
+[warn] ⚠  functions: Error when trying to check port 5001 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:5001 {"metadata":{"emulator":{"name":"functions"},"message":"Error when trying to check port 5001 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:5001"}}
+[warn] ⚠  functions: Port 5001 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"functions"},"message":"Port 5001 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  functions: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"functions"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  eventarc: Error when trying to check port 9299 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9299 {"metadata":{"emulator":{"name":"eventarc"},"message":"Error when trying to check port 9299 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9299"}}
+[warn] ⚠  eventarc: Port 9299 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"eventarc"},"message":"Port 9299 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  eventarc: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"eventarc"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  tasks: Error when trying to check port 9499 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9499 {"metadata":{"emulator":{"name":"tasks"},"message":"Error when trying to check port 9499 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9499"}}
+[warn] ⚠  tasks: Port 9499 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"tasks"},"message":"Port 9499 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  tasks: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"tasks"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[debug] [2025-07-10T22:23:16.239Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect"}}
+[debug] [2025-07-10T22:23:16.240Z] No OAuth tokens found
+[debug] [2025-07-10T22:23:16.241Z] No OAuth tokens found
+[debug] [2025-07-10T22:23:16.241Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-10T22:23:16.241Z] Failed to get Admin SDK config for my-portfolio-menno, falling back to cache Failed to get Admin SDK for Firebase project my-portfolio-menno. Please make sure the project exists and your account has permission to access it. {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Admin SDK for Firebase project my-portfolio-menno. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"exit":1,"message":"Failed to authenticate, have you run firebase login?","original":{},"status":500},"status":500}
+[warn] ⚠  functions: Unable to fetch project Admin SDK configuration, Admin SDK behavior in Cloud Functions emulator may be incorrect. {"metadata":{"emulator":{"name":"functions"},"message":"Unable to fetch project Admin SDK configuration, Admin SDK behavior in Cloud Functions emulator may be incorrect."}}
+[info] i  ui: downloading ui-v1.15.0.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.15.0.zip..."}}
+[debug] [2025-07-10T22:23:16.256Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 
+[debug] [2025-07-10T22:23:16.261Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-07-10T22:23:16.261Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-07-10T22:23:16.326Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip 200
+[debug] [2025-07-10T22:23:16.326Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.15.0.zip [stream]
+[debug] [2025-07-10T22:23:16.415Z] Data is 3538469
+[debug] [2025-07-10T22:23:16.416Z] [unzip] Entry: client/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.416Z] [unzip] Processing entry: client/
+[debug] [2025-07-10T22:23:16.416Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/
+[debug] [2025-07-10T22:23:16.417Z] [unzip] Entry: client/favicon-16x16.png (compressed_size=293 bytes, uncompressed_size=293 bytes)
+[debug] [2025-07-10T22:23:16.417Z] [unzip] Processing entry: client/favicon-16x16.png
+[debug] [2025-07-10T22:23:16.417Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.418Z] [unzip] Writing file: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/favicon-16x16.png
+[debug] [2025-07-10T22:23:16.419Z] [unzip] Entry: client/safari-pinned-tab.svg (compressed_size=1433 bytes, uncompressed_size=2611 bytes)
+[debug] [2025-07-10T22:23:16.419Z] [unzip] Processing entry: client/safari-pinned-tab.svg
+[debug] [2025-07-10T22:23:16.419Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.420Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/safari-pinned-tab.svg
+[debug] [2025-07-10T22:23:16.424Z] [unzip] Entry: client/favicon.ico (compressed_size=2933 bytes, uncompressed_size=13294 bytes)
+[debug] [2025-07-10T22:23:16.424Z] [unzip] Processing entry: client/favicon.ico
+[debug] [2025-07-10T22:23:16.424Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.424Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/favicon.ico
+[debug] [2025-07-10T22:23:16.426Z] [unzip] Entry: client/index.html (compressed_size=1364 bytes, uncompressed_size=3071 bytes)
+[debug] [2025-07-10T22:23:16.426Z] [unzip] Processing entry: client/index.html
+[debug] [2025-07-10T22:23:16.426Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.427Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/index.html
+[debug] [2025-07-10T22:23:16.428Z] [unzip] Entry: client/android-chrome-192x192.png (compressed_size=2684 bytes, uncompressed_size=2684 bytes)
+[debug] [2025-07-10T22:23:16.429Z] [unzip] Processing entry: client/android-chrome-192x192.png
+[debug] [2025-07-10T22:23:16.429Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.429Z] [unzip] Writing file: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-192x192.png
+[debug] [2025-07-10T22:23:16.430Z] [unzip] Entry: client/apple-touch-icon.png (compressed_size=2123 bytes, uncompressed_size=2152 bytes)
+[debug] [2025-07-10T22:23:16.430Z] [unzip] Processing entry: client/apple-touch-icon.png
+[debug] [2025-07-10T22:23:16.430Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.430Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/apple-touch-icon.png
+[debug] [2025-07-10T22:23:16.432Z] [unzip] Entry: client/android-chrome-512x512.png (compressed_size=5369 bytes, uncompressed_size=5411 bytes)
+[debug] [2025-07-10T22:23:16.432Z] [unzip] Processing entry: client/android-chrome-512x512.png
+[debug] [2025-07-10T22:23:16.432Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.432Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/android-chrome-512x512.png
+[debug] [2025-07-10T22:23:16.434Z] [unzip] Entry: client/manifest.json (compressed_size=245 bytes, uncompressed_size=551 bytes)
+[debug] [2025-07-10T22:23:16.434Z] [unzip] Processing entry: client/manifest.json
+[debug] [2025-07-10T22:23:16.434Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.434Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/manifest.json
+[debug] [2025-07-10T22:23:16.436Z] [unzip] Entry: client/robots.txt (compressed_size=26 bytes, uncompressed_size=26 bytes)
+[debug] [2025-07-10T22:23:16.436Z] [unzip] Processing entry: client/robots.txt
+[debug] [2025-07-10T22:23:16.436Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.437Z] [unzip] Writing file: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/robots.txt
+[debug] [2025-07-10T22:23:16.437Z] [unzip] Entry: client/mstile-150x150.png (compressed_size=2034 bytes, uncompressed_size=2034 bytes)
+[debug] [2025-07-10T22:23:16.437Z] [unzip] Processing entry: client/mstile-150x150.png
+[debug] [2025-07-10T22:23:16.438Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.438Z] [unzip] Writing file: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/mstile-150x150.png
+[debug] [2025-07-10T22:23:16.439Z] [unzip] Entry: client/assets/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.439Z] [unzip] Processing entry: client/assets/
+[debug] [2025-07-10T22:23:16.439Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/
+[debug] [2025-07-10T22:23:16.439Z] [unzip] Entry: client/assets/index-BX-A56oj.js (compressed_size=582089 bytes, uncompressed_size=2092775 bytes)
+[debug] [2025-07-10T22:23:16.439Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js
+[debug] [2025-07-10T22:23:16.439Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-07-10T22:23:16.439Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js
+[debug] [2025-07-10T22:23:16.476Z] [unzip] Entry: client/assets/index-CjB9C900.css (compressed_size=35979 bytes, uncompressed_size=298654 bytes)
+[debug] [2025-07-10T22:23:16.477Z] [unzip] Processing entry: client/assets/index-CjB9C900.css
+[debug] [2025-07-10T22:23:16.477Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-07-10T22:23:16.477Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-CjB9C900.css
+[debug] [2025-07-10T22:23:16.483Z] [unzip] Entry: client/assets/index-BX-A56oj.js.map (compressed_size=2362482 bytes, uncompressed_size=10036679 bytes)
+[debug] [2025-07-10T22:23:16.483Z] [unzip] Processing entry: client/assets/index-BX-A56oj.js.map
+[debug] [2025-07-10T22:23:16.483Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets
+[debug] [2025-07-10T22:23:16.483Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/index-BX-A56oj.js.map
+[debug] [2025-07-10T22:23:16.652Z] [unzip] Entry: client/assets/extensions/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.652Z] [unzip] Processing entry: client/assets/extensions/
+[debug] [2025-07-10T22:23:16.652Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/
+[debug] [2025-07-10T22:23:16.653Z] [unzip] Entry: client/assets/extensions/default-extension.png (compressed_size=1646 bytes, uncompressed_size=1657 bytes)
+[debug] [2025-07-10T22:23:16.653Z] [unzip] Processing entry: client/assets/extensions/default-extension.png
+[debug] [2025-07-10T22:23:16.653Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions
+[debug] [2025-07-10T22:23:16.653Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/extensions/default-extension.png
+[debug] [2025-07-10T22:23:16.655Z] [unzip] Entry: client/assets/img/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.655Z] [unzip] Processing entry: client/assets/img/
+[debug] [2025-07-10T22:23:16.655Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/
+[debug] [2025-07-10T22:23:16.655Z] [unzip] Entry: client/assets/img/database.png (compressed_size=29449 bytes, uncompressed_size=29988 bytes)
+[debug] [2025-07-10T22:23:16.655Z] [unzip] Processing entry: client/assets/img/database.png
+[debug] [2025-07-10T22:23:16.655Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/img
+[debug] [2025-07-10T22:23:16.656Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/img/database.png
+[debug] [2025-07-10T22:23:16.657Z] [unzip] Entry: client/assets/provider-icons/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.657Z] [unzip] Processing entry: client/assets/provider-icons/
+[debug] [2025-07-10T22:23:16.657Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/
+[debug] [2025-07-10T22:23:16.658Z] [unzip] Entry: client/assets/provider-icons/auth_service_saml.svg (compressed_size=575 bytes, uncompressed_size=1226 bytes)
+[debug] [2025-07-10T22:23:16.658Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_saml.svg
+[debug] [2025-07-10T22:23:16.658Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.658Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_saml.svg
+[debug] [2025-07-10T22:23:16.659Z] [unzip] Entry: client/assets/provider-icons/auth_service_phone.svg (compressed_size=261 bytes, uncompressed_size=414 bytes)
+[debug] [2025-07-10T22:23:16.659Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_phone.svg
+[debug] [2025-07-10T22:23:16.659Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.660Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_phone.svg
+[debug] [2025-07-10T22:23:16.661Z] [unzip] Entry: client/assets/provider-icons/auth_service_facebook.svg (compressed_size=289 bytes, uncompressed_size=457 bytes)
+[debug] [2025-07-10T22:23:16.661Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2025-07-10T22:23:16.661Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.662Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_facebook.svg
+[debug] [2025-07-10T22:23:16.663Z] [unzip] Entry: client/assets/provider-icons/auth_service_game_center.svg (compressed_size=991 bytes, uncompressed_size=3921 bytes)
+[debug] [2025-07-10T22:23:16.663Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2025-07-10T22:23:16.663Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.664Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_game_center.svg
+[debug] [2025-07-10T22:23:16.665Z] [unzip] Entry: client/assets/provider-icons/auth_service_apple.svg (compressed_size=230 bytes, uncompressed_size=334 bytes)
+[debug] [2025-07-10T22:23:16.665Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_apple.svg
+[debug] [2025-07-10T22:23:16.665Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.666Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_apple.svg
+[debug] [2025-07-10T22:23:16.667Z] [unzip] Entry: client/assets/provider-icons/auth_service_github.svg (compressed_size=466 bytes, uncompressed_size=838 bytes)
+[debug] [2025-07-10T22:23:16.667Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_github.svg
+[debug] [2025-07-10T22:23:16.667Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.668Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_github.svg
+[debug] [2025-07-10T22:23:16.669Z] [unzip] Entry: client/assets/provider-icons/auth_service_mslive.svg (compressed_size=203 bytes, uncompressed_size=378 bytes)
+[debug] [2025-07-10T22:23:16.669Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2025-07-10T22:23:16.669Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.670Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_mslive.svg
+[debug] [2025-07-10T22:23:16.671Z] [unzip] Entry: client/assets/provider-icons/auth_service_yahoo.svg (compressed_size=577 bytes, uncompressed_size=1182 bytes)
+[debug] [2025-07-10T22:23:16.671Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2025-07-10T22:23:16.671Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.671Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_yahoo.svg
+[debug] [2025-07-10T22:23:16.673Z] [unzip] Entry: client/assets/provider-icons/auth_service_twitter.svg (compressed_size=444 bytes, uncompressed_size=751 bytes)
+[debug] [2025-07-10T22:23:16.673Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2025-07-10T22:23:16.673Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.673Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_twitter.svg
+[debug] [2025-07-10T22:23:16.674Z] [unzip] Entry: client/assets/provider-icons/auth_service_play_games.svg (compressed_size=565 bytes, uncompressed_size=1173 bytes)
+[debug] [2025-07-10T22:23:16.675Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2025-07-10T22:23:16.675Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.675Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_play_games.svg
+[debug] [2025-07-10T22:23:16.676Z] [unzip] Entry: client/assets/provider-icons/auth_service_email.svg (compressed_size=228 bytes, uncompressed_size=326 bytes)
+[debug] [2025-07-10T22:23:16.676Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_email.svg
+[debug] [2025-07-10T22:23:16.676Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.677Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_email.svg
+[debug] [2025-07-10T22:23:16.678Z] [unzip] Entry: client/assets/provider-icons/auth_service_google.svg (compressed_size=409 bytes, uncompressed_size=720 bytes)
+[debug] [2025-07-10T22:23:16.678Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_google.svg
+[debug] [2025-07-10T22:23:16.678Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.679Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_google.svg
+[debug] [2025-07-10T22:23:16.680Z] [unzip] Entry: client/assets/provider-icons/auth_service_oidc.svg (compressed_size=414 bytes, uncompressed_size=858 bytes)
+[debug] [2025-07-10T22:23:16.680Z] [unzip] Processing entry: client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2025-07-10T22:23:16.681Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons
+[debug] [2025-07-10T22:23:16.681Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/assets/provider-icons/auth_service_oidc.svg
+[debug] [2025-07-10T22:23:16.682Z] [unzip] Entry: client/browserconfig.xml (compressed_size=491 bytes, uncompressed_size=822 bytes)
+[debug] [2025-07-10T22:23:16.683Z] [unzip] Processing entry: client/browserconfig.xml
+[debug] [2025-07-10T22:23:16.683Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.683Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/browserconfig.xml
+[debug] [2025-07-10T22:23:16.684Z] [unzip] Entry: client/favicon-32x32.png (compressed_size=475 bytes, uncompressed_size=475 bytes)
+[debug] [2025-07-10T22:23:16.684Z] [unzip] Processing entry: client/favicon-32x32.png
+[debug] [2025-07-10T22:23:16.684Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client
+[debug] [2025-07-10T22:23:16.685Z] [unzip] Writing file: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/client/favicon-32x32.png
+[debug] [2025-07-10T22:23:16.685Z] [unzip] Entry: server/ (compressed_size=0 bytes, uncompressed_size=0 bytes)
+[debug] [2025-07-10T22:23:16.686Z] [unzip] Processing entry: server/
+[debug] [2025-07-10T22:23:16.686Z] [unzip] mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/server/
+[debug] [2025-07-10T22:23:16.686Z] [unzip] Entry: server/server.mjs.map (compressed_size=217845 bytes, uncompressed_size=944978 bytes)
+[debug] [2025-07-10T22:23:16.686Z] [unzip] Processing entry: server/server.mjs.map
+[debug] [2025-07-10T22:23:16.686Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2025-07-10T22:23:16.687Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs.map
+[debug] [2025-07-10T22:23:16.706Z] [unzip] Entry: server/server.mjs (compressed_size=276407 bytes, uncompressed_size=933701 bytes)
+[debug] [2025-07-10T22:23:16.707Z] [unzip] Processing entry: server/server.mjs
+[debug] [2025-07-10T22:23:16.707Z] [unzip] else mkdir: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/server
+[debug] [2025-07-10T22:23:16.707Z] [unzip] deflating: /home/augment-agent/.cache/firebase/emulators/ui-v1.15.0/server/server.mjs
+[info] i  functions: Watching "/mnt/persist/workspace/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/mnt/persist/workspace/functions\" for Cloud Functions..."}}
+[debug] [2025-07-10T22:23:16.731Z] Validating nodejs source
+[debug] [2025-07-10T22:23:17.212Z] > [functions] package.json contents: {
+  "main": "lib/index.js",
+  "scripts": {
+    "genkit:start": "genkit start -- tsx --watch src/genkit-sample.ts",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "clean": "rimraf lib",
+    "build": "npm run clean && tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "name": "functions",
+  "type": "module",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "@genkit-ai/flow": "^0.5.17",
+    "express": "^5.1.0",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "genkit": "^1.10.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.31.0",
+    "firebase-functions-test": "^3.1.0",
+    "tsx": "^4.19.4",
+    "typescript": "^4.9.5",
+    "typescript-eslint": "^8.32.1"
+  },
+  "private": true
+}
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: There was an error reading functions/package.json:
+
+ functions/lib/index.js does not exist, can't deploy Cloud Functions {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: There was an error reading functions/package.json:\n\n functions/lib/index.js does not exist, can't deploy Cloud Functions"}}
+[info] i  functions: Watching "/mnt/persist/workspace/my-portfolio-menno" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/mnt/persist/workspace/my-portfolio-menno\" for Cloud Functions..."}}
+[debug] [2025-07-10T22:23:17.214Z] Validating nodejs source
+[warn] ⚠  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
+[debug] [2025-07-10T22:23:17.215Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+Require stack:
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/prepare.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/controller.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/commands/database-get.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/commands/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/bin/cli.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/bin/firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/prepare.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulator.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/controller.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/commandUtils.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/commands/database-get.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/commands/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/bin/cli.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/bin/firebase.js"]}
+[debug] [2025-07-10T22:23:17.215Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2025-07-10T22:23:17.215Z] > [functions] package.json contents: {
+  "main": "lib/index.js",
+  "scripts": {
+    "genkit:start": "genkit start -- tsx --watch src/genkit-sample.ts",
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "name": "functions",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "genkit": "^1.10.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "tsx": "^4.19.4",
+    "typescript": "^4.9.5"
+  },
+  "private": true
+}
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: There was an error reading my-portfolio-menno/package.json:
+
+ my-portfolio-menno/lib/index.js does not exist, can't deploy Cloud Functions {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: There was an error reading my-portfolio-menno/package.json:\n\n my-portfolio-menno/lib/index.js does not exist, can't deploy Cloud Functions"}}
+[info] i  functions: Watching "/mnt/persist/workspace/my-functions-menno" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/mnt/persist/workspace/my-functions-menno\" for Cloud Functions..."}}
+[debug] [2025-07-10T22:23:17.221Z] Validating nodejs source
+[warn] ⚠  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
+[debug] [2025-07-10T22:23:17.221Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+Require stack:
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/prepare.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/controller.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/commands/database-get.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/commands/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/bin/cli.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/bin/firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/prepare.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/functionsEmulator.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/controller.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/emulator/commandUtils.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/commands/database-get.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/commands/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/index.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/bin/cli.js","/mnt/persist/workspace/node_modules/firebase-tools/lib/bin/firebase.js"]}
+[debug] [2025-07-10T22:23:17.221Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2025-07-10T22:23:17.221Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2025-07-10T22:23:17.222Z] Building nodejs source
+[debug] [2025-07-10T22:23:17.222Z] Failed to find version of module node: reached end of search path /mnt/persist/workspace/my-functions-menno/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-07-10T22:23:17.223Z] Could not parse firebase-functions version '' into semver. Falling back to parseTriggers.
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: Error parsing triggers: Cannot find module 'firebase-functions/v2/https'
+Require stack:
+- /mnt/persist/workspace/my-functions-menno/index.js
+- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/triggerParser.js
+
+Try running "npm install" in your functions directory before deploying. {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: Error parsing triggers: Cannot find module 'firebase-functions/v2/https'\nRequire stack:\n- /mnt/persist/workspace/my-functions-menno/index.js\n- /mnt/persist/workspace/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/triggerParser.js\n\nTry running \"npm install\" in your functions directory before deploying."}}
+[debug] [2025-07-10T22:23:17.296Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED 127.0.0.1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-07-10T22:25:33.870Z] ----------------------------------------------------------------------
+[debug] [2025-07-10T22:25:33.872Z] Command:       /usr/bin/node /mnt/persist/workspace/node_modules/.bin/firebase emulators:start --only dataconnect
+[debug] [2025-07-10T22:25:33.873Z] CLI Version:   14.10.1
+[debug] [2025-07-10T22:25:33.873Z] Platform:      linux
+[debug] [2025-07-10T22:25:33.873Z] Node Version:  v22.16.0
+[debug] [2025-07-10T22:25:33.873Z] Time:          Thu Jul 10 2025 22:25:33 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-07-10T22:25:33.873Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-10T22:25:34.155Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] Failed to authenticate, have you run firebase login?
+[warn] ⚠  emulators: You are not currently authenticated so some features may not work correctly. Please run firebase login to authenticate the CLI. 
+[info] i  emulators: Starting emulators: dataconnect {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: dataconnect"}}
+[warn] ⚠  dataconnect: Error when trying to check port 9399 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9399 {"metadata":{"emulator":{"name":"dataconnect"},"message":"Error when trying to check port 9399 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:9399"}}
+[warn] ⚠  dataconnect: Port 9399 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"dataconnect"},"message":"Port 9399 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  dataconnect: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"dataconnect"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  dataconnect.postgres: Error when trying to check port 5432 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:5432 {"metadata":{"emulator":{"name":"dataconnect"},"message":"Error when trying to check port 5432 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:5432"}}
+[warn] ⚠  dataconnect: Port 5432 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"dataconnect"},"message":"Port 5432 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  dataconnect: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"dataconnect"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  hub: Error when trying to check port 4401 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4401 {"metadata":{"emulator":{"name":"hub"},"message":"Error when trying to check port 4401 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4401"}}
+[warn] ⚠  hub: Port 4400 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"hub"},"message":"Port 4400 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  hub: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"hub"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  hub: emulator hub unable to start on port 4400, starting on 4401 instead. {"metadata":{"emulator":{"name":"hub"},"message":"emulator hub unable to start on port 4400, starting on 4401 instead."}}
+[warn] ⚠  logging: Error when trying to check port 4501 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4501 {"metadata":{"emulator":{"name":"logging"},"message":"Error when trying to check port 4501 on ::1: Error: listen EADDRNOTAVAIL: address not available ::1:4501"}}
+[warn] ⚠  logging: Port 4500 is available on 127.0.0.1 but not ::1. This may cause issues with some clients. {"metadata":{"emulator":{"name":"logging"},"message":"Port 4500 is available on 127.0.0.1 but not ::1. This may cause issues with some clients."}}
+[warn] ⚠  logging: If you encounter connectivity issues, consider switching to a different port or explicitly specifying "host": "<ip address>" instead of hostname in firebase.json {"metadata":{"emulator":{"name":"logging"},"message":"If you encounter connectivity issues, consider switching to a different port or explicitly specifying \"host\": \"<ip address>\" instead of hostname in firebase.json"}}
+[warn] ⚠  logging: Logging Emulator unable to start on port 4500, starting on 4501 instead. {"metadata":{"emulator":{"name":"logging"},"message":"Logging Emulator unable to start on port 4500, starting on 4501 instead."}}
+[debug] [2025-07-10T22:25:34.198Z] assigned listening specs for emulators {"user":{"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}],"hub":[{"address":"127.0.0.1","family":"IPv4","port":4401}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project my-portfolio-menno. This may result in unexpected behavior. 
+[debug] [2025-07-10T22:25:34.201Z] [hub] writing locator at /tmp/hub-my-portfolio-menno.json
+[info] i  dataconnect: downloading dataconnect-emulator-2.9.1... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-2.9.1..."}}
+[debug] [2025-07-10T22:25:34.217Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-linux-v2.9.1 
+[debug] [2025-07-10T22:25:34.329Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-linux-v2.9.1 200
+[debug] [2025-07-10T22:25:34.329Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-linux-v2.9.1 [stream]
+[debug] [2025-07-10T22:25:34.997Z] I0710 22:25:34.983645    2157 control.go:84] [/emulator/my-portfolio-menno 4486] UpdateResources(): done
+Schema: sources: schema/schema.gql [2088B] 
+Connector "default": sources: connector/mutations.gql [1233B] connector/queries.gql [1802B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:34.983645    2157 control.go:84] [/emulator/my-portfolio-menno 4486] UpdateResources(): done\nSchema: sources: schema/schema.gql [2088B] \nConnector \"default\": sources: connector/mutations.gql [1233B] connector/queries.gql [1802B] \n"}}
+[debug] [2025-07-10T22:25:34.998Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-07-10T22:25:34.998Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2025-07-10T22:25:34.998Z] Starting Data Connect Emulator with command {"binary":"/home/augment-agent/.cache/firebase/emulators/dataconnect-emulator-2.9.1","args":["--logtostderr","-v=2","dev","--listen=127.0.0.1:9399","--config_dir=/mnt/persist/workspace/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/home/augment-agent/.cache/firebase/emulators/dataconnect-emulator-2.9.1\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=127.0.0.1:9399\",\"--config_dir=/mnt/persist/workspace/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to dataconnect-debug.log"}}
+[info] i  dataconnect: Started up Postgres server, listening on {"address":"127.0.0.1","family":"IPv4","port":5432} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Started up Postgres server, listening on {\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":5432}"}}
+[debug] [2025-07-10T22:25:35.020Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/postgres?sslmode=disable}...
+[debug] [2025-07-10T22:25:35.021Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2025-07-10T22:25:35.021Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/postgres?sslmode=disable","database":"postgres","serviceId":"my-portfolio-menno","maxOpenConnections":1}
+[debug] [2025-07-10T22:25:35.023Z] I0710 22:25:35.019759    2164 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.019759    2164 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2025-07-10T22:25:35.024Z] *** [apiv2] error from fetch(http://127.0.0.1:9399/emulator/configure, {"headers":{},"method":"POST","body":"{\"connectionString\":\"postgres://127.0.0.1:5432/postgres?sslmode=disable\",\"database\":\"postgres\",\"serviceId\":\"my-portfolio-menno\",\"maxOpenConnections\":1}"}): FetchError: request to http://127.0.0.1:9399/emulator/configure failed, reason: connect ECONNREFUSED 127.0.0.1:9399
+[debug] [2025-07-10T22:25:35.024Z] [Data Connect] Retrying connectToPostgress call (1 of 3 attempts): FirebaseError: Data Connect emulator: undefined
+[debug] [2025-07-10T22:25:35.047Z] I0710 22:25:35.047408    2164 control.go:84] [/emulator/my-portfolio-menno ef05] UpdateResources(): done
+Schema: sources: schema/schema.gql [2088B] 
+Connector "default": sources: connector/mutations.gql [1233B] connector/queries.gql [1802B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.047408    2164 control.go:84] [/emulator/my-portfolio-menno ef05] UpdateResources(): done\nSchema: sources: schema/schema.gql [2088B] \nConnector \"default\": sources: connector/mutations.gql [1233B] connector/queries.gql [1802B] \n"}}
+[debug] [2025-07-10T22:25:35.073Z] I0710 22:25:35.073473    2164 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "/mnt/persist/workspace/dataconnect/connector/..\\..\\dataconnect-generated\\js\\default-connector"
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.073473    2164 codegen.go:82] [connector \"default\" javascriptSdk] Generating sources into \"/mnt/persist/workspace/dataconnect/connector/..\\\\..\\\\dataconnect-generated\\\\js\\\\default-connector\"\n"}}
+[debug] [2025-07-10T22:25:35.081Z] I0710 22:25:35.081301    2164 collector.go:107] schema extensions wrote into "/mnt/persist/workspace/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [71649B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.081301    2164 collector.go:107] schema extensions wrote into \"/mnt/persist/workspace/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [71649B] \n"}}
+[debug] [2025-07-10T22:25:35.082Z] I0710 22:25:35.081900    2164 collector.go:107] connector "default" javascriptSdk wrote into "/mnt/persist/workspace/dataconnect/connector/..\\..\\dataconnect-generated\\js\\default-connector"
+Generated sources: package.json [860B] react/index.d.ts [228B] react/index.cjs.js [0B] react/README.md [5505B] index.d.ts [248B] esm/index.esm.js [122B] esm/package.json [17B] index.cjs.js [157B] README.md [2927B] react/package.json [468B] react/esm/package.json [17B] react/esm/index.esm.js [0B] 
+I0710 22:25:35.081930    2164 installsdk.go:35] Unable to find package.json. Skipping automatic installation of @firebasegen/default-connector
+I0710 22:25:35.081947    2164 load.go:115] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.081900    2164 collector.go:107] connector \"default\" javascriptSdk wrote into \"/mnt/persist/workspace/dataconnect/connector/..\\\\..\\\\dataconnect-generated\\\\js\\\\default-connector\"\nGenerated sources: package.json [860B] react/index.d.ts [228B] react/index.cjs.js [0B] react/README.md [5505B] index.d.ts [248B] esm/index.esm.js [122B] esm/package.json [17B] index.cjs.js [157B] README.md [2927B] react/package.json [468B] react/esm/package.json [17B] react/esm/index.esm.js [0B] \nI0710 22:25:35.081930    2164 installsdk.go:35] Unable to find package.json. Skipping automatic installation of @firebasegen/default-connector\nI0710 22:25:35.081947    2164 load.go:115] Finished reloading\n"}}
+[debug] [2025-07-10T22:25:35.082Z] I0710 22:25:35.082767    2164 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:35.082767    2164 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399\n"}}
+[debug] [2025-07-10T22:25:37.026Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/postgres?sslmode=disable}...
+[debug] [2025-07-10T22:25:37.027Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2025-07-10T22:25:37.027Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/postgres?sslmode=disable","database":"postgres","serviceId":"my-portfolio-menno","maxOpenConnections":1}
+[debug] [2025-07-10T22:25:39.633Z] I0710 22:25:39.633164    2164 control.go:84] [/emulator/my-portfolio-menno fda8] UpdateResources(): done
+Schema: sources: schema/schema.gql [2088B] 
+Connector "default": sources: connector/queries.gql [1802B] connector/mutations.gql [1233B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0710 22:25:39.633164    2164 control.go:84] [/emulator/my-portfolio-menno fda8] UpdateResources(): done\nSchema: sources: schema/schema.gql [2088B] \nConnector \"default\": sources: connector/queries.gql [1802B] connector/mutations.gql [1233B] \n"}}
+[debug] [2025-07-10T22:25:39.649Z] <<< [apiv2][status] POST http://127.0.0.1:9399/emulator/configure 200
+[debug] [2025-07-10T22:25:39.649Z] <<< [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {}
+[debug] [2025-07-10T22:25:39.649Z] [Data Connect] Successfully connected to postgres://127.0.0.1:5432/postgres?sslmode=disable}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[debug] [2025-07-10T22:25:39.655Z] >>> [apiv2][query] GET http://127.0.0.1:9399/emulator/info [none]
+[debug] [2025-07-10T22:25:39.658Z] <<< [apiv2][status] GET http://127.0.0.1:9399/emulator/info 200
+[debug] [2025-07-10T22:25:39.658Z] <<< [apiv2][body] GET http://127.0.0.1:9399/emulator/info {"version":"","services":[{"serviceId":"my-portfolio-menno","connectionString":"dbname='postgres' host='127.0.0.1' port='5432' sslmode='disable' dbname='postgres'"}]}
+[debug] [2025-07-10T22:25:39.660Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED 127.0.0.1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────────┬────────────────┐
+│ Emulator     │ Host:Port      │
+├──────────────┼────────────────┤
+│ Data Connect │ 127.0.0.1:9399 │
+└──────────────┴────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4401
+  Other reserved ports: 4501
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
