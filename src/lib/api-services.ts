@@ -1,6 +1,54 @@
 import { Project, BlogPost, Skill, ContactMessage } from "@/types/api";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
+// Enhanced API configuration with environment detection
+const getApiBaseUrl = (): string => {
+  // Production environment - use deployed backend
+  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
+  }
+
+  // Development environment - try local backend first, fallback to deployed
+  if (process.env.NODE_ENV === 'development') {
+    return process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
+  }
+
+  // Default fallback
+  return process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
+};
+
+const API_BASE_URL = getApiBaseUrl();
+
+// API health check and fallback detection
+let isBackendAvailable: boolean | null = null;
+let lastHealthCheck = 0;
+const HEALTH_CHECK_INTERVAL = 5 * 60 * 1000; // 5 minutes
+
+// Health check function
+async function checkBackendHealth(): Promise<boolean> {
+  const now = Date.now();
+
+  // Use cached result if recent
+  if (isBackendAvailable !== null && (now - lastHealthCheck) < HEALTH_CHECK_INTERVAL) {
+    return isBackendAvailable;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/health`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      signal: AbortSignal.timeout(5000), // 5 second timeout
+    });
+
+    isBackendAvailable = response.ok;
+    lastHealthCheck = now;
+    return isBackendAvailable;
+  } catch (error) {
+    console.warn('Backend health check failed:', error);
+    isBackendAvailable = false;
+    lastHealthCheck = now;
+    return false;
+  }
+}
 
 // Helper function to get auth header (safe for both server and client)
 export function getAuthHeader(): Record<string, string> {
@@ -11,7 +59,7 @@ export function getAuthHeader(): Record<string, string> {
   return {};
 }
 
-// Helper function for HTTP requests
+// Enhanced HTTP request function with fallback support
 async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}): Promise<T> {
   const baseHeaders: Record<string, string> = {
     "Content-Type": "application/json",
@@ -22,17 +70,57 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
     ...(options.headers ? options.headers as Record<string, string> : {}),
   };
 
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+  // Add timeout to prevent hanging requests
+  const timeoutMs = options.timeout || 10000; // 10 seconds default
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error || response.statusText || "API request failed");
+    }
+
+    // For 204 No Content responses
+    if (response.status === 204) {
+      return {} as T;
+    }
+
+    return response.json() as Promise<T>;
+  } catch (error) {
+    clearTimeout(timeoutId);
+
+    // Log the error for debugging
+    console.error(`API request failed for ${endpoint}:`, error);
+
+    // Re-throw the error to be handled by the calling service
+    throw error;
+  }
+}
+
+// Fallback function for Next.js API routes
+async function fetchFallbackAPI<T>(endpoint: string, options: Record<string, any> = {}): Promise<T> {
+  const response = await fetch(`/api${endpoint}`, {
     ...options,
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {}),
+    },
   });
 
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(error || response.statusText || "API request failed");
+    throw new Error(error || response.statusText || "Fallback API request failed");
   }
 
-  // For 204 No Content responses
   if (response.status === 204) {
     return {} as T;
   }
