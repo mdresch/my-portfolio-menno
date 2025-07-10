@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { GitHubActivitySkeleton } from "./ui/SkeletonComponents";
+import { ApiError, useRetry } from "./ui/ErrorComponents";
 
 interface GitHubStats {
   totalContributions: number;
@@ -33,45 +35,52 @@ export default function GitHubActivity() {
   const [events, setEvents] = useState<GitHubEvent[]>([]);
   const [stats, setStats] = useState<GitHubStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   const [filter, setFilter] = useState<string>("all");
+  const { retry, isRetrying } = useRetry();
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const [userResponse, reposResponse, followersResponse, eventsResponse] = await Promise.all([
+        fetch("/api/github/user"),
+        fetch("/api/github/repos"),
+        fetch("/api/github/followers"),
+        fetch("/api/github/events")
+      ]);
+
+      // Check if all responses are ok
+      if (!userResponse.ok || !reposResponse.ok || !followersResponse.ok || !eventsResponse.ok) {
+        throw new Error("Failed to fetch GitHub data");
+      }
+
+      const [userData, repos, followers, events] = await Promise.all([
+        userResponse.json(),
+        reposResponse.json(),
+        followersResponse.json(),
+        eventsResponse.json()
+      ]);
+
+      setStats({
+        totalContributions: userData.public_repos + userData.public_gists,
+        repositories: repos.length,
+        followers: followers.length
+      });
+
+      setEvents(events.slice(0, 5)); // Show last 5 events
+    } catch (err) {
+      const error = err instanceof Error ? err : new Error("Failed to fetch GitHub data");
+      setError(error);
+      console.error("Error fetching GitHub data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    async function fetchGitHubStats() {
-      try {
-        const [userResponse, reposResponse, followersResponse] = await Promise.all([
-          fetch("/api/github/user"),
-          fetch("/api/github/repos"),
-          fetch("/api/github/followers")
-        ]);
-
-        const userData = await userResponse.json();
-        const repos = await reposResponse.json();
-        const followers = await followersResponse.json();
-
-        setStats({
-          totalContributions: userData.public_repos + userData.public_gists,
-          repositories: repos.length,
-          followers: followers.length
-        });
-      } catch (error) {
-        console.error("Error fetching GitHub stats:", error);
-      }
-    }
-
-    async function fetchGitHubActivity() {
-      try {
-        const response = await fetch("/api/github/events");
-        const data = await response.json();
-        setEvents(data.slice(0, 5)); // Show last 5 events
-      } catch (error) {
-        console.error("Error fetching GitHub activity:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchGitHubActivity();
-    fetchGitHubStats();
+    fetchData();
   }, []);
 
   const filteredEvents = events.filter(event => {
@@ -109,14 +118,20 @@ export default function GitHubActivity() {
     return new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(diffInDays, "day");
   }
 
-  if (loading) {
-    return (
-      <div className="animate-pulse">
-        <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-        <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
-        <div className="h-4 bg-gray-200 rounded w-4/5 mb-4"></div>
-      </div>
-    );
+  const handleRetry = async () => {
+    try {
+      await retry(fetchData);
+    } catch (err) {
+      // Error is already handled in fetchData
+    }
+  };
+
+  if (loading || isRetrying) {
+    return <GitHubActivitySkeleton />;
+  }
+
+  if (error) {
+    return <ApiError error={error} onRetry={handleRetry} />;
   }
 
   return (
