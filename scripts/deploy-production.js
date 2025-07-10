@@ -105,7 +105,33 @@ function runProductionBuild() {
     console.log('✅ Production build completed successfully');
     
   } catch (error) {
-    console.error('❌ Production build failed:', error.message);
+// Import the DOMPurify library for sanitizing user input
+// DOMPurify is a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG
+import DOMPurify from 'dompurify';
+
+function runProductionBuild() {
+  console.log('🏗️  Running production build...');
+  
+  try {
+    // Clean previous builds
+    console.log('🧹 Cleaning previous builds...');
+    execSync('rm -rf .next', { stdio: 'inherit' });
+    
+    // Install dependencies
+    console.log('📦 Installing dependencies...');
+    execSync('npm ci', { stdio: 'inherit' });
+    
+    // Build for production
+    console.log('🔨 Building for production...');
+    execSync('npm run build', { stdio: 'inherit' });
+    
+    console.log('✅ Production build completed successfully');
+    
+  } catch (error) {
+    console.error('❌ Production build failed:', DOMPurify.sanitize(error.message));
+    process.exit(1);
+  }
+}
     process.exit(1);
   }
 }
