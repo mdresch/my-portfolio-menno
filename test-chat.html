@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #374151;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .feature-list li:before {
+            content: "✅ ";
+            margin-right: 8px;
+        }
+        .instructions {
+            background: #f0f9ff;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🚀 Enhanced Chat Widget - Implementation Complete!</h1>
+        
+        <div class="instructions">
+            <h3>📋 Testing Instructions</h3>
+            <p>The chat widget has been successfully enhanced with all requested features. Look for the chat bubble in the bottom-right corner of your portfolio website.</p>
+        </div>
+
+        <div class="test-section">
+            <h3>✨ New Features Implemented</h3>
+            <ul class="feature-list">
+                <li><strong>Message Persistence:</strong> Chat history is now saved in localStorage and persists between sessions</li>
+                <li><strong>Message Timestamps:</strong> Each message shows when it was sent with smart formatting (e.g., "2m ago", "Just now")</li>
+                <li><strong>Enhanced Typing Indicators:</strong> Better visual feedback when AI is responding</li>
+                <li><strong>Sound Notifications:</strong> Optional sound alerts for new messages (toggle in settings)</li>
+                <li><strong>Message Status Indicators:</strong> Shows sending (⏳), sent (✓), and error (⚠️) states</li>
+                <li><strong>Copy Message Feature:</strong> Click the copy button to copy any message to clipboard</li>
+                <li><strong>Retry Failed Messages:</strong> Retry button appears for failed messages</li>
+                <li><strong>Clear Chat History:</strong> Button to clear all chat history with confirmation</li>
+                <li><strong>Settings Panel:</strong> Toggle sound notifications and other preferences</li>
+                <li><strong>Auto-resizing Input:</strong> Text area grows as you type longer messages</li>
+                <li><strong>Better Mobile Experience:</strong> Improved responsive design for mobile devices</li>
+                <li><strong>Smart Notifications:</strong> Toast notifications for user actions (copy, clear, etc.)</li>
+                <li><strong>Message Cleanup:</strong> Automatic cleanup of old messages (7 days retention)</li>
+                <li><strong>Enhanced Error Handling:</strong> Better error states and retry mechanisms</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 How to Test</h3>
+            <ol>
+                <li><strong>Open your portfolio website</strong> (http://localhost:3000)</li>
+                <li><strong>Click the chat bubble</strong> in the bottom-right corner</li>
+                <li><strong>Send a message</strong> and observe the status indicators</li>
+                <li><strong>Check message timestamps</strong> - they should show relative time</li>
+                <li><strong>Try copying a message</strong> using the copy button</li>
+                <li><strong>Open settings</strong> using the gear icon in the header</li>
+                <li><strong>Toggle sound notifications</strong> and send another message</li>
+                <li><strong>Clear chat history</strong> using the trash icon</li>
+                <li><strong>Refresh the page</strong> and verify messages persist (if not cleared)</li>
+                <li><strong>Test on mobile</strong> by resizing your browser window</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>📱 Mobile Improvements</h3>
+            <ul class="feature-list">
+                <li><strong>Responsive Widget Size:</strong> Adapts to screen size (75% height on mobile)</li>
+                <li><strong>Touch-Friendly Interface:</strong> Larger touch targets and better spacing</li>
+                <li><strong>Improved Layout:</strong> Header actions stack vertically on small screens</li>
+                <li><strong>iOS Keyboard Fix:</strong> Input font-size prevents zoom on iOS devices</li>
+                <li><strong>Better Positioning:</strong> Widget positioning optimized for mobile viewports</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 Technical Improvements</h3>
+            <ul class="feature-list">
+                <li><strong>TypeScript Support:</strong> Full type safety with proper interfaces</li>
+                <li><strong>Performance Optimized:</strong> Efficient message storage and cleanup</li>
+                <li><strong>Memory Management:</strong> Automatic cleanup of old messages and timeouts</li>
+                <li><strong>Error Boundaries:</strong> Graceful handling of storage and API errors</li>
+                <li><strong>Accessibility:</strong> Proper ARIA labels and keyboard navigation</li>
+                <li><strong>Code Organization:</strong> Modular utilities for storage and notifications</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>💾 Storage Features</h3>
+            <ul class="feature-list">
+                <li><strong>Message Persistence:</strong> Up to 100 recent messages stored</li>
+                <li><strong>Auto Cleanup:</strong> Messages older than 7 days automatically removed</li>
+                <li><strong>Settings Storage:</strong> User preferences saved and restored</li>
+                <li><strong>Error Recovery:</strong> Graceful handling of corrupted storage data</li>
+                <li><strong>Performance Optimized:</strong> Efficient storage operations</li>
+            </ul>
+        </div>
+
+        <div class="instructions">
+            <h3>🎉 Ready to Use!</h3>
+            <p>All improvements have been successfully implemented. The chat widget now provides a much better user experience with persistent conversations, better mobile support, and enhanced functionality.</p>
+            <p><strong>Next Steps:</strong> Test the features above and let me know if you'd like any adjustments or additional features!</p>
+        </div>
+    </div>
+</body>
+</html>
