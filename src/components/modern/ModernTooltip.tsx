@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "./ClientMotionWrapper";
 
 interface ModernTooltipProps {
   content: string;
