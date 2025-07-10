@@ -1,6 +1,23 @@
 // filepath: src/app/dashboards/page.tsx
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Economics Dashboards | Menno Drescher",
+  description: "Interactive economic dashboards featuring trade data, currency trends, market analysis, and macroeconomic indicators. Explore comprehensive economic visualizations and insights.",
+  keywords: ["economics dashboards", "trade data", "currency analysis", "market trends", "economic indicators", "data visualization"],
+  openGraph: {
+    title: "Economics Dashboards | Menno Drescher",
+    description: "Interactive economic dashboards featuring trade data, currency trends, market analysis, and macroeconomic indicators.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Economics Dashboards | Menno Drescher",
+    description: "Interactive economic dashboards featuring trade data, currency trends, market analysis, and macroeconomic indicators.",
+  },
+};
 
 const dashboards = [
   {
