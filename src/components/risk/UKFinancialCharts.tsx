@@ -176,7 +176,12 @@ export function UKBankCapitalChart() {
           <XAxis dataKey="year" className="text-xs" />
           <YAxis className="text-xs" />
           <Tooltip 
-            contentStyle={TOOLTIP_CONTENT_STYLE}
+            contentStyle={{ 
+              backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+              border: 'none', 
+              borderRadius: '8px',
+              color: 'white'
+            }}
           />
           <Legend />
           <Line type="monotone" dataKey="cet1" stroke="#dc2626" strokeWidth={2} name="CET1 Ratio" />
@@ -241,7 +246,7 @@ export function UKPropertyMarketChart() {
           <Legend />
           <Line type="monotone" dataKey="housePrices" stroke="#dc2626" strokeWidth={2} name="House Prices" />
           <Line type="monotone" dataKey="transactions" stroke="#ea580c" strokeWidth={2} name="Transactions Volume" />
-          <Line type="monotone" dataKey="comercialRE" stroke="#7c3aed" strokeWidth={2} name="Commercial RE Prices" />
+          <Line type="monotone" dataKey="commercialRE" stroke="#7c3aed" strokeWidth={2} name="Commercial RE Prices" />
         </LineChart>
       </ResponsiveContainer>
       <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
