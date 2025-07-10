@@ -25,9 +25,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Menno Drescher - Portfolio",
-  description: "Personal portfolio showcasing my projects and skills as a software developer.",
-  keywords: ["developer", "portfolio", "software engineer", "web development", "Menno Drescher"],
+  title: "Menno Drescher - Full-Stack Developer | Modern Web Solutions",
+  description: "Full-Stack Developer specializing in C#/.NET, React, and Azure. Building scalable, high-performance applications with modern technologies and best practices.",
+  keywords: ["full-stack developer", "C# developer", ".NET developer", "React developer", "Azure developer", "TypeScript", "Next.js", "web development", "software engineer", "Menno Drescher", "portfolio", "modern web solutions"],
   authors: [{ name: "Menno Drescher" }],
   creator: "Menno Drescher",
   metadataBase: new URL("https://my-portfolio-menno.vercel.app/"), // Update with your actual domain
