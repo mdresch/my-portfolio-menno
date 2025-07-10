@@ -1,0 +1,249 @@
+name: Deploy Backend to Azure
+
+on:
+  push:
+    branches: [main, master]
+    paths: ['api/**', '.github/workflows/deploy-backend.yml']
+  pull_request:
+    branches: [main, master]
+    paths: ['api/**']
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+env:
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: Build and Test API
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./api
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+      working-directory: ./api
+      
+    - name: Test
+      run: dotnet test --no-build --configuration Release --verbosity normal
+      working-directory: ./api
+      
+    - name: Publish
+      run: dotnet publish api.ApiService/api.ApiService.csproj --configuration Release --output ./publish
+      working-directory: ./api
+
+  deploy-infrastructure:
+    runs-on: ubuntu-latest
+    name: Deploy Infrastructure
+    needs: build-and-test
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Setup Azure Developer CLI
+      uses: Azure/setup-azd@v0.1.0
+      
+    - name: Log in with Azure Developer CLI
+      run: |
+        azd auth login \
+          --client-id "${{ env.AZURE_CLIENT_ID }}" \
+          --client-secret "${{ secrets.AZURE_CLIENT_SECRET }}" \
+          --tenant-id "${{ env.AZURE_TENANT_ID }}"
+      working-directory: ./api
+      
+    - name: Deploy Infrastructure
+      run: azd provision --no-prompt
+      working-directory: ./api
+      env:
+        AZURE_ENV_NAME: portfolio-${{ github.event.inputs.environment || 'production' }}
+        AZURE_LOCATION: eastus
+        AZURE_SUBSCRIPTION_ID: ${{ env.AZURE_SUBSCRIPTION_ID }}
+
+  deploy-application:
+    runs-on: ubuntu-latest
+    name: Deploy Application
+    needs: [build-and-test, deploy-infrastructure]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Setup Azure Developer CLI
+      uses: Azure/setup-azd@v0.1.0
+      
+    - name: Log in with Azure Developer CLI
+      run: |
+        azd auth login \
+          --client-id "${{ env.AZURE_CLIENT_ID }}" \
+          --client-secret "${{ secrets.AZURE_CLIENT_SECRET }}" \
+          --tenant-id "${{ env.AZURE_TENANT_ID }}"
+      working-directory: ./api
+      
+    - name: Deploy Application
+      run: azd deploy --no-prompt
+      working-directory: ./api
+      env:
+        AZURE_ENV_NAME: portfolio-${{ github.event.inputs.environment || 'production' }}
+        AZURE_LOCATION: eastus
+        AZURE_SUBSCRIPTION_ID: ${{ env.AZURE_SUBSCRIPTION_ID }}
+        
+    - name: Get API URL
+      id: get-url
+      run: |
+        API_URL=$(azd env get-values | grep AZURE_CONTAINER_APPS_ENDPOINT | cut -d'=' -f2 | tr -d '"')
+        echo "api_url=$API_URL" >> $GITHUB_OUTPUT
+      working-directory: ./api
+
+  test-deployment:
+    runs-on: ubuntu-latest
+    name: Test Deployment
+    needs: deploy-application
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Test API Health
+      run: |
+        API_URL="${{ needs.deploy-application.outputs.api_url }}"
+        if [ -n "$API_URL" ]; then
+          echo "Testing API at: $API_URL"
+          curl -f "$API_URL/api/health" || exit 1
+          echo "Health check passed"
+        else
+          echo "API URL not found"
+          exit 1
+        fi
+        
+    - name: Test API Endpoints
+      run: |
+        API_URL="${{ needs.deploy-application.outputs.api_url }}"
+        if [ -n "$API_URL" ]; then
+          echo "Testing projects endpoint..."
+          curl -f "$API_URL/api/projects" || echo "Projects endpoint failed"
+          
+          echo "Testing skills endpoint..."
+          curl -f "$API_URL/api/skills" || echo "Skills endpoint failed"
+          
+          echo "Testing blog posts endpoint..."
+          curl -f "$API_URL/api/blogposts" || echo "Blog posts endpoint failed"
+        fi
+        
+    - name: Run Integration Tests
+      run: |
+        API_URL="${{ needs.deploy-application.outputs.api_url }}"
+        BACKEND_URL="$API_URL/api" node scripts/test-integration.js
+      env:
+        FRONTEND_URL: https://my-portfolio-menno.vercel.app
+        BACKEND_URL: ${{ needs.deploy-application.outputs.api_url }}/api
+
+  update-vercel:
+    runs-on: ubuntu-latest
+    name: Update Vercel Environment
+    needs: [deploy-application, test-deployment]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Vercel CLI
+      run: npm install -g vercel
+      
+    - name: Update Vercel Environment Variables
+      run: |
+        API_URL="${{ needs.deploy-application.outputs.api_url }}"
+        if [ -n "$API_URL" ]; then
+          echo "Updating Vercel environment with API URL: $API_URL/api"
+          
+          # Update production environment variable
+          vercel env rm NEXT_PUBLIC_API_BASE_URL production --yes || true
+          echo "$API_URL/api" | vercel env add NEXT_PUBLIC_API_BASE_URL production
+          
+          echo "Vercel environment updated successfully"
+        else
+          echo "API URL not found, skipping Vercel update"
+        fi
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        
+    - name: Trigger Vercel Deployment
+      run: |
+        echo "Triggering Vercel deployment to use new backend URL..."
+        vercel --prod --yes
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  notify-completion:
+    runs-on: ubuntu-latest
+    name: Notify Deployment Completion
+    needs: [deploy-application, test-deployment, update-vercel]
+    if: always()
+    
+    steps:
+    - name: Deployment Summary
+      run: |
+        echo "🚀 Backend Deployment Summary"
+        echo "============================="
+        echo "Environment: ${{ github.event.inputs.environment || 'production' }}"
+        echo "API URL: ${{ needs.deploy-application.outputs.api_url }}"
+        echo "Frontend URL: https://my-portfolio-menno.vercel.app"
+        echo ""
+        echo "Deployment Status:"
+        echo "- Infrastructure: ${{ needs.deploy-infrastructure.result }}"
+        echo "- Application: ${{ needs.deploy-application.result }}"
+        echo "- Tests: ${{ needs.test-deployment.result }}"
+        echo "- Vercel Update: ${{ needs.update-vercel.result }}"
+        echo ""
+        if [ "${{ needs.deploy-application.result }}" == "success" ] && [ "${{ needs.test-deployment.result }}" == "success" ]; then
+          echo "✅ Deployment completed successfully!"
+          echo "🔗 API is now available at: ${{ needs.deploy-application.outputs.api_url }}"
+          echo "🌐 Frontend will be updated with new backend URL"
+        else
+          echo "❌ Deployment failed. Check the logs for details."
+        fi
