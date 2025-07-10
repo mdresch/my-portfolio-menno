@@ -149,15 +149,37 @@ export default function FloatingChatWidget() {
 
         @media (max-width: 768px) {
           .floating-chat-widget {
-            width: calc(100vw - 48px);
-            height: 400px;
-            right: 24px;
-            left: 24px;
+            width: calc(100vw - 32px);
+            height: 70vh;
+            max-height: 500px;
+            right: 16px;
+            left: 16px;
+            bottom: 80px;
           }
 
           .chat-toggle {
-            bottom: 20px;
-            right: 20px;
+            bottom: 16px;
+            right: 16px;
+            width: 56px;
+            height: 56px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .floating-chat-widget {
+            width: calc(100vw - 16px);
+            height: 75vh;
+            right: 8px;
+            left: 8px;
+            bottom: 70px;
+            border-radius: 12px;
+          }
+
+          .chat-toggle {
+            bottom: 12px;
+            right: 12px;
+            width: 52px;
+            height: 52px;
           }
         }
       `}</style>
