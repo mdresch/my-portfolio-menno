@@ -182,3 +182,6 @@ c:/Users/menno/Source/Repos/my-portfolio-menno/api/api.Web/obj/Debug/net8.0/api.
 /workspaces/my-portfolio-menno/api/api.Web/obj/Debug/net8.0/api.Web.MvcApplicationPartsAssemblyInfo.cs
 /workspaces/my-portfolio-menno/api/api.Web/obj/Debug/net8.0/api.Web.MvcApplicationPartsAssemblyInfo.cache
 /workspaces/my-portfolio-menno/api/api.Web/obj/Debug/net8.0/api.Web.sourcelink.json
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.Web\obj\Debug\net8.0\api.Web.dll
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.Web\obj\Debug\net8.0\refint\api.Web.dll
+C:\Users\menno\Source\Repos\my-portfolio-menno\api\api.Web\obj\Debug\net8.0\api.Web.pdb

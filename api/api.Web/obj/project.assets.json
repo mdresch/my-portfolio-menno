@@ -388,12 +388,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.ApplicationInsights.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -414,12 +414,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.ApplicationInsights.AspNetCore.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.ApplicationInsights.AspNetCore.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -431,12 +431,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AI.DependencyCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AI.DependencyCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "build": {
@@ -450,12 +450,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AI.EventCounterCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AI.EventCounterCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -468,12 +468,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AI.PerfCounterCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AI.PerfCounterCollector.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "build": {
@@ -491,12 +491,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AI.WindowsServer.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AI.WindowsServer.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "build": {
@@ -511,12 +511,12 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AI.ServerTelemetryChannel.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AI.ServerTelemetryChannel.dll": {
-            "related": ".pdb"
+            "related": ".pdb;.xml"
           }
         },
         "build": {
@@ -529,10 +529,14 @@
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
         },
         "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -544,10 +548,14 @@
           "Microsoft.EntityFrameworkCore.Relational": "8.0.5"
         },
         "compile": {
-          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -571,10 +579,14 @@
           "System.Reflection.Metadata": "1.6.0"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.1.1": {
@@ -585,10 +597,14 @@
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Abstractions.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Abstractions.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Hosting.Server.Abstractions/2.1.1": {
@@ -598,10 +614,14 @@
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Http/2.1.22": {
@@ -614,10 +634,14 @@
           "Microsoft.Net.Http.Headers": "2.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Http.Abstractions/2.1.1": {
@@ -925,10 +949,14 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {}
+          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {}
+          "lib/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
@@ -7289,35 +7317,43 @@
     ]
   },
   "packageFolders": {
-    "/home/augment-agent/.nuget/packages/": {}
+    "C:\\Users\\menno\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/persist/workspace/api/api.Web/api.Web.csproj",
+      "projectUniqueName": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
       "projectName": "api.Web",
-      "projectPath": "/mnt/persist/workspace/api/api.Web/api.Web.csproj",
-      "packagesPath": "/home/augment-agent/.nuget/packages/",
-      "outputPath": "/mnt/persist/workspace/api/api.Web/obj/",
+      "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\api.Web.csproj",
+      "packagesPath": "C:\\Users\\menno\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.Web\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/augment-agent/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\menno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj": {
-              "projectPath": "/mnt/persist/workspace/api/api.ApiService/api.ApiService.csproj"
+            "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj": {
+              "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ApiService\\api.ApiService.csproj"
             },
-            "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj": {
-              "projectPath": "/mnt/persist/workspace/api/api.ServiceDefaults/api.ServiceDefaults.csproj"
+            "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj": {
+              "projectPath": "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\api\\api.ServiceDefaults\\api.ServiceDefaults.csproj"
             }
           }
         }
@@ -7355,7 +7391,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.412/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

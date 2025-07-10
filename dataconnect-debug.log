@@ -1,15 +1,14 @@
-I0710 22:25:35.019759    2164 load.go:37] Reloading schema and connectors...
-I0710 22:25:35.047408    2164 control.go:84] [/emulator/my-portfolio-menno ef05] UpdateResources(): done
-Schema: sources: schema/schema.gql [2088B] 
-Connector "default": sources: connector/mutations.gql [1233B] connector/queries.gql [1802B] 
-I0710 22:25:35.073473    2164 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "/mnt/persist/workspace/dataconnect/connector/..\\..\\dataconnect-generated\\js\\default-connector"
-I0710 22:25:35.081301    2164 collector.go:107] schema extensions wrote into "/mnt/persist/workspace/dataconnect/.dataconnect/schema"
-Generated sources: prelude.gql [71649B] 
-I0710 22:25:35.081900    2164 collector.go:107] connector "default" javascriptSdk wrote into "/mnt/persist/workspace/dataconnect/connector/..\\..\\dataconnect-generated\\js\\default-connector"
-Generated sources: package.json [860B] react/index.d.ts [228B] react/index.cjs.js [0B] react/README.md [5505B] index.d.ts [248B] esm/index.esm.js [122B] esm/package.json [17B] index.cjs.js [157B] README.md [2927B] react/package.json [468B] react/esm/package.json [17B] react/esm/index.esm.js [0B] 
-I0710 22:25:35.081930    2164 installsdk.go:35] Unable to find package.json. Skipping automatic installation of @firebasegen/default-connector
-I0710 22:25:35.081947    2164 load.go:115] Finished reloading
-I0710 22:25:35.082767    2164 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
-I0710 22:25:39.633164    2164 control.go:84] [/emulator/my-portfolio-menno fda8] UpdateResources(): done
-Schema: sources: schema/schema.gql [2088B] 
-Connector "default": sources: connector/queries.gql [1802B] connector/mutations.gql [1233B] 
+I0526 10:28:12.512537  157956 load.go:37] Reloading schema and connectors...
+I0526 10:28:12.538319  157956 control.go:73] [/emulator/my-portfolio-menno 880e] UpdateResources(): done
+Schema: sources: schema\schema.gql [2140B] 
+Connector "default": sources: connector\mutations.gql [1266B] connector\queries.gql [1880B] 
+I0526 10:28:12.562993  157956 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+I0526 10:28:12.580541  157956 collector.go:107] schema extensions wrote into "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [71531B] 
+I0526 10:28:12.591803  157956 collector.go:107] connector "default" javascriptSdk wrote into "C:\\Users\\menno\\Source\\Repos\\my-portfolio-menno\\dataconnect-generated\\js\\default-connector"
+Generated sources: esm\index.esm.js [122B] esm\package.json [17B] package.json [860B] react\index.d.ts [228B] react\package.json [468B] react\esm\package.json [17B] react\index.cjs.js [0B] index.d.ts [246B] react\README.md [5357B] react\esm\index.esm.js [0B] README.md [2774B] index.cjs.js [157B] 
+I0526 10:28:12.637359  157956 installsdk.go:80] Running command: C:\nvm4w\nodejs\npm.cmd install file:dataconnect-generated\js\default-connector
+E0526 10:28:17.701830  157956 installsdk.go:82] Failed to install package: exit status 1
+I0526 10:28:17.701830  157956 load.go:115] Finished reloading
+I0526 10:28:17.708777  157956 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0526 10:28:17.708777  157956 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
