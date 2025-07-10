@@ -11,9 +11,6 @@ export async function GET(request: NextRequest) {
     const fileNames = await readdir(projectsDirectory);
     const projectFiles = fileNames.filter(name => name.endsWith('.md'));
     
-const fileNames = await readdir(projectsDirectory);
-    const projectFiles = fileNames.filter(name => name.endsWith('.md'));
-    
     // TODO: Implement pagination or lazy loading
     // For now, we'll limit the number of projects to process
     const LIMIT = 10;
@@ -21,10 +18,6 @@ const fileNames = await readdir(projectsDirectory);
     
     const projects = await Promise.all(
       limitedProjectFiles.map(async (fileName) => {
-        const fullPath = path.join(projectsDirectory, fileName);
-        const fileContents = await readFile(fullPath, 'utf8');
-        const { data, content } = matter(fileContents);
-      projectFiles.map(async (fileName) => {
         const fullPath = path.join(projectsDirectory, fileName);
         const fileContents = await readFile(fullPath, 'utf8');
         const { data, content } = matter(fileContents);
