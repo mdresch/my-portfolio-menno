@@ -24,7 +24,7 @@ async function testRagEndpoint() {
   // First, check the API status
   try {
     console.log('📊 Checking API status...');
-    const statusResponse = await fetch(`${API_BASE_URL}/api/rag-chat`);
+    const statusResponse = await fetch(`${API_BASE_URL}/api/rag-chat/status`);
     
     if (!statusResponse.ok) {
       throw new Error(`HTTP ${statusResponse.status}: ${statusResponse.statusText}`);
