@@ -315,7 +315,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(`📨 RAG Chat Query: "${message}" (Mode: ${useMockGemini ? 'Mock' : 'Production'})`);
+);
+    }
+
+    // Import the 'he' package for HTML entity encoding
+    // he.encode() is used to sanitize user input before logging
+    console.log(`📨 RAG Chat Query: "${he.encode(message)}" (Mode: ${useMockGemini ? 'Mock' : 'Production'})`);
+
+    // Fetch portfolio context
+    const context = await fetchPortfolioData();
 
     // Fetch portfolio context
     const context = await fetchPortfolioData();
