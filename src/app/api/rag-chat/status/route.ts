@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 
 // Configuration check
-const useMockGemini = process.env.USE_MOCK_GEMINI === 'true' || 
-  (!process.env.GOOGLE_CLOUD_PROJECT_ID || 
-   (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.GOOGLE_SERVICE_ACCOUNT_KEY));
+const isMockGeminiEnabled = process.env.USE_MOCK_GEMINI === 'true';
+const isGoogleCloudProjectMissing = !process.env.GOOGLE_CLOUD_PROJECT_ID;
+const isGoogleCredentialsMissing = !process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+const useMockGemini = isMockGeminiEnabled || isGoogleCloudProjectMissing || isGoogleCredentialsMissing;
 
 const projectId = process.env.VERTEX_AI_PROJECT_ID || process.env.GOOGLE_CLOUD_PROJECT_ID;
 const location = process.env.VERTEX_AI_LOCATION || 'us-central1';
