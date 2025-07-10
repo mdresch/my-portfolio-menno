@@ -20,7 +20,25 @@ const nextConfig = {
   },
   // Disable any non-essential features
   poweredByHeader: false,
-  compress: false,
+},
+  // Disable any non-essential features
+  poweredByHeader: false,
+  compress: process.env.NODE_ENV === 'production',
+  // Reduce memory usage during build
+  experimental: {
+    typedRoutes: false,
+  },
+  webpack: (config, { isServer }) => {
+    // Disable webpack optimizations that consume memory only in development
+    if (process.env.NODE_ENV !== 'production') {
+      config.optimization = {
+        ...config.optimization,
+        minimize: false,
+      };
+    }
+    
+    return config;
+  },
   // Reduce memory usage during build
   experimental: {
     typedRoutes: false,
