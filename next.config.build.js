@@ -2,7 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: true,
+const nextConfig = {
+  reactStrictMode: true,
+  typescript: {
+    // Enable TypeScript build errors for production builds
+    ignoreBuildErrors: process.env.NODE_ENV !== 'production',
+  },
+  eslint: {
+    // Enable ESLint checks for production builds
+    ignoreDuringBuilds: process.env.NODE_ENV !== 'production',
+  },
+  // Disable any non-essential features
+  poweredByHeader: false,
   },
   eslint: {
     ignoreDuringBuilds: true,
