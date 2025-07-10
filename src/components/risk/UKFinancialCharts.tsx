@@ -27,15 +27,15 @@ const ukHouseholdDebtData = [
 
 // UK Property Market Data
 const ukPropertyData = [
-  { quarter: 'Q1 2023', housePrices: 100, transactions: 100, comercialRE: 100 },
-  { quarter: 'Q2 2023', housePrices: 102.1, transactions: 95.2, comercialRE: 98.5 },
-  { quarter: 'Q3 2023', housePrices: 103.8, transactions: 89.1, comercialRE: 94.2 },
-  { quarter: 'Q4 2023', housePrices: 104.2, transactions: 82.3, comercialRE: 88.7 },
-  { quarter: 'Q1 2024', housePrices: 103.9, transactions: 78.9, comercialRE: 82.1 },
-  { quarter: 'Q2 2024', housePrices: 102.8, transactions: 76.4, comercialRE: 79.3 },
-  { quarter: 'Q3 2024', housePrices: 101.2, transactions: 73.2, comercialRE: 75.8 },
-  { quarter: 'Q4 2024', housePrices: 100.8, transactions: 71.1, comercialRE: 72.4 },
-  { quarter: 'Q1 2025', housePrices: 100.3, transactions: 69.8, comercialRE: 69.1 }
+  { quarter: 'Q1 2023', housePrices: 100, transactions: 100, commercialRE: 100 },
+  { quarter: 'Q2 2023', housePrices: 102.1, transactions: 95.2, commercialRE: 98.5 },
+  { quarter: 'Q3 2023', housePrices: 103.8, transactions: 89.1, commercialRE: 94.2 },
+  { quarter: 'Q4 2023', housePrices: 104.2, transactions: 82.3, commercialRE: 88.7 },
+  { quarter: 'Q1 2024', housePrices: 103.9, transactions: 78.9, commercialRE: 82.1 },
+  { quarter: 'Q2 2024', housePrices: 102.8, transactions: 76.4, commercialRE: 79.3 },
+  { quarter: 'Q3 2024', housePrices: 101.2, transactions: 73.2, commercialRE: 75.8 },
+  { quarter: 'Q4 2024', housePrices: 100.8, transactions: 71.1, commercialRE: 72.4 },
+  { quarter: 'Q1 2025', housePrices: 100.3, transactions: 69.8, commercialRE: 69.1 }
 ];
 
 // UK Corporate Debt by Sector
