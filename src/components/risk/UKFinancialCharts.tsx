@@ -176,12 +176,7 @@ export function UKBankCapitalChart() {
           <XAxis dataKey="year" className="text-xs" />
           <YAxis className="text-xs" />
           <Tooltip 
-            contentStyle={{ 
-              backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-              border: 'none', 
-              borderRadius: '8px',
-              color: 'white'
-            }}
+            contentStyle={TOOLTIP_CONTENT_STYLE}
           />
           <Legend />
           <Line type="monotone" dataKey="cet1" stroke="#dc2626" strokeWidth={2} name="CET1 Ratio" />
