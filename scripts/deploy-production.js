@@ -36,7 +36,14 @@ function validateProductionEnvironment() {
     console.error('❌ Missing required environment variables:', missingVars);
     console.log('📋 Please ensure these variables are set in your .env.local file:');
     missingVars.forEach(varName => {
-      console.log(`   ${varName}=your-value`);
+console.error('❌ Missing required environment variables:', missingVars);
+    console.log('📋 Please ensure these variables are set in your .env.local file:');
+    missingVars.forEach(varName => {
+      // Use encodeURIComponent to sanitize the variable name before logging
+      console.log(`   ${encodeURIComponent(varName)}=your-value`);
+    });
+    process.exit(1);
+  }
     });
     process.exit(1);
   }
