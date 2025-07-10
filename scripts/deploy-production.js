@@ -159,7 +159,14 @@ function testProduction() {
     if (error.signal === 'SIGTERM') {
       console.log('✅ Production server started successfully (test timeout reached)');
     } else {
-      console.error('❌ Production server test failed:', error.message);
+if (error.signal === 'SIGTERM') {
+      console.log('✅ Production server started successfully (test timeout reached)');
+    } else {
+      // import { sanitize } from 'dompurify'; // Sanitize user input before logging
+      console.error('❌ Production server test failed:', sanitize(error.message));
+      process.exit(1);
+    }
+  }
       process.exit(1);
     }
   }
