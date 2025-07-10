@@ -15,9 +15,13 @@ import ClientAnalytics from "../components/ClientAnalytics";
 import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
 import ClientChatWidget from "../../components/ClientChatWidget";
+import { LoadingProvider } from "@/components/providers/LoadingProvider";
 
 const geist = Geist({
   subsets: ["latin"],
+  display: "swap", // Optimize font loading
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = {
@@ -102,18 +106,20 @@ export default function RootLayout({
         <Providers>
           <ThemeProvider attribute="class" defaultTheme="light">
             <RadixTheme>
-              <ClientAuthProvider>
-                <div className="flex items-center justify-center">
-                  <NavigationMenuDemo />
-                </div>                <main className="flex-1">
-                  {children}
-                  <Analytics />
-                  <SpeedInsights />
-                  <ClientAnalytics />
-                </main>
-                <ConditionalFooter />
-                <ClientChatWidget />
-              </ClientAuthProvider>
+              <LoadingProvider>
+                <ClientAuthProvider>
+                  <div className="flex items-center justify-center">
+                    <NavigationMenuDemo />
+                  </div>                  <main className="flex-1">
+                    {children}
+                    <Analytics />
+                    <SpeedInsights />
+                    <ClientAnalytics />
+                  </main>
+                  <ConditionalFooter />
+                  <ClientChatWidget />
+                </ClientAuthProvider>
+              </LoadingProvider>
             </RadixTheme>
           </ThemeProvider>
         </Providers>

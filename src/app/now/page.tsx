@@ -1,6 +1,23 @@
 import React from "react";
+import type { Metadata } from "next";
 import { MaturityDashboard } from "../../components/dashboards/MaturityDashboard";
 import { MaturityAssessmentDashboard } from "../../components/dashboards/MaturityAssessmentDashboard";
+
+export const metadata: Metadata = {
+  title: "What I'm Doing Now | Menno Drescher",
+  description: "Current projects, learning initiatives, and focus areas. See what Menno Drescher is working on right now including portfolio maturity assessments and professional development.",
+  keywords: ["current projects", "now page", "professional development", "portfolio maturity", "learning", "focus areas"],
+  openGraph: {
+    title: "What I'm Doing Now | Menno Drescher",
+    description: "Current projects, learning initiatives, and focus areas. See what Menno Drescher is working on right now.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "What I'm Doing Now | Menno Drescher",
+    description: "Current projects, learning initiatives, and focus areas. See what Menno Drescher is working on right now.",
+  },
+};
 
 export default function NowPage() {
   return (
