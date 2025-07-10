@@ -10,10 +10,10 @@ import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { usePerformanceMonitoring } from "../hooks/usePerformanceMonitoring";
 
 // Modern Hero Section with animated elements
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsVisible(true);
   }, []);
 
@@ -112,7 +112,7 @@ const HeroSection = () => {
 };
 
 // Modern Skills Section
-const SkillsSection = () => {
+const SkillsSection: React.FC = () => {
   const skills = [
     {
       category: "Frontend",
@@ -219,7 +219,7 @@ interface ProjectCardProps {
   link: string;
 }
 
-const ProjectCard = ({ title, description, image, tags, link }: ProjectCardProps) => (
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, tags, link }) => (
   <div className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 border border-gray-100 dark:border-gray-700">
     {/* Image Container */}
     <div className="relative overflow-hidden">
@@ -267,7 +267,7 @@ const ProjectCard = ({ title, description, image, tags, link }: ProjectCardProps
   </div>
 );
 
-const ProjectsSection = () => (
+const ProjectsSection: React.FC = () => (
   <section className="py-24 px-6 bg-gray-50 dark:bg-gray-800/50 relative">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -307,7 +307,7 @@ const ProjectsSection = () => (
 );
 
 // Modern Stats Section
-const StatsSection = () => {
+const StatsSection: React.FC = () => {
   const stats = [
     { number: "50+", label: "Projects Completed", icon: "🚀" },
     { number: "5+", label: "Years Experience", icon: "⏱️" },
@@ -343,7 +343,7 @@ const StatsSection = () => {
 };
 
 // Modern CTA Section
-const CTASection = () => (
+const CTASection: React.FC = () => (
   <section className="py-24 px-6 relative overflow-hidden">
     {/* Background */}
     <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700"></div>
@@ -407,11 +407,11 @@ const CTASection = () => (
   </section>
 );
 
-export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+const Home: React.FC = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
   const { trackRender, endRenderTracking } = usePerformanceMonitoring('HomePage');
 
-  useEffect(() => {
+  React.useEffect(() => {
     trackRender();
 
     // Initialize Firebase Analytics
@@ -494,4 +494,6 @@ export default function Home() {
       </main>
     </>
   );
-}
+};
+
+export default Home;
