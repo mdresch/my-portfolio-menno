@@ -296,7 +296,13 @@ async function getGeminiResponse(query: string, context: RagContext): Promise<Ge
       sources: ['Portfolio Data', 'AI Analysis via Gemini Pro'],
       confidence: 0.9
     };
+confidence: 0.9
+    };
   } catch (error) {
+    console.error('❌ Gemini API error:', error instanceof Error ? error.message : String(error));
+    console.log('🔄 Falling back to mock response due to Gemini error');
+    return getMockResponse(query, context);
+  }
     console.error('❌ Gemini API error:', error);
     console.log('🔄 Falling back to mock response due to Gemini error');
     return getMockResponse(query, context);
