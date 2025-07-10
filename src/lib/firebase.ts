@@ -212,7 +212,15 @@ export function isFirebaseInitialized(): boolean {
 export default app;
 
 function validateFirebaseConfig(): boolean {
-  // Check that all required Firebase config values are present and non-empty
+  // In development mode, allow demo/placeholder values
+  if (process.env.NODE_ENV === "development") {
+    return !!(
+      firebaseConfig.apiKey &&
+      firebaseConfig.projectId
+    );
+  }
+  
+  // In production, check that all required Firebase config values are present and non-empty
   return !!(
     firebaseConfig.apiKey &&
     firebaseConfig.authDomain &&
