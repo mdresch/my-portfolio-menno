@@ -207,7 +207,13 @@ async function main() {
     console.log('   4. Monitor logs and performance metrics');
     
   } catch (error) {
-    console.error('❌ Deployment process failed:', error);
+console.log('   4. Monitor logs and performance metrics');
+    
+  } catch (error) {
+    console.error('❌ Deployment process failed:', error.message);
+    process.exit(1);
+  }
+}
     process.exit(1);
   }
 }
