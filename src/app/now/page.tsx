@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata } from "next";
-import { motion } from "framer-motion";
 import { MaturityDashboard } from "../../components/dashboards/MaturityDashboard";
 import { MaturityAssessmentDashboard } from "../../components/dashboards/MaturityAssessmentDashboard";
 import { FloatingActionButton } from "../../components/modern/FloatingActionButton";
@@ -8,6 +7,12 @@ import { ScrollProgress } from "../../components/modern/ScrollProgress";
 import { SectionDivider } from "../../components/modern/SectionDivider";
 import { ModernTooltip } from "../../components/modern/ModernTooltip";
 import { ModernCard, GlassCard } from "../../components/modern/ModernCard";
+import {
+  ClientMotionWrapper,
+  ClientMotionItem,
+  ClientAnimatedBackground,
+  motion
+} from "../../components/modern/ClientMotionWrapper";
 import {
   BookOpenIcon,
   CodeBracketIcon,
@@ -35,49 +40,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  },
-  hover: {
-    scale: 1.02,
-    y: -5,
-    transition: {
-      duration: 0.2,
-      ease: "easeInOut"
-    }
-  }
-};
+// Animation variants are now imported from ClientMotionWrapper
 
 export default function NowPage() {
   return (
@@ -87,45 +50,12 @@ export default function NowPage() {
       <FloatingActionButton />
 
       {/* Animated background elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      </div>
+      <ClientAnimatedBackground />
 
       <main className="relative max-w-4xl mx-auto py-16 px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-8"
-        >
+        <ClientMotionWrapper className="space-y-8">
           {/* Hero Section */}
-          <motion.div 
-            variants={itemVariants}
-            className="text-center mb-16"
-          >
+          <ClientMotionItem className="text-center mb-16">
             <ModernTooltip content="This page is updated regularly to reflect current activities and focus areas">
               <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6 cursor-help"
@@ -160,19 +90,19 @@ export default function NowPage() {
               A real-time snapshot of my current projects, learning journey, and focus areas. 
               Updated regularly to reflect my evolving interests and professional growth.
             </motion.p>
-          </motion.div>
+          </ClientMotionItem>
 
           {/* Maturity Dashboard Section */}
-          <motion.div variants={itemVariants}>
+          <ClientMotionItem>
             <MaturityDashboard />
-          </motion.div>
+          </ClientMotionItem>
 
           <SectionDivider variant="wave" />
 
           {/* Portfolio Maturity Assessment Section */}
-          <motion.div variants={itemVariants}>
+          <ClientMotionItem>
             <MaturityAssessmentDashboard />
-          </motion.div>
+          </ClientMotionItem>
 
           <SectionDivider variant="dots" />
 
@@ -357,10 +287,7 @@ export default function NowPage() {
           </div>
 
           {/* Footer */}
-          <motion.div 
-            variants={itemVariants}
-            className="text-center pt-8"
-          >
+          <ClientMotionItem className="text-center pt-8">
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Inspired by{" "}
               <a 
@@ -373,8 +300,8 @@ export default function NowPage() {
               </a>
               . Last updated: May 2025.
             </p>
-          </motion.div>
-        </motion.div>
+          </ClientMotionItem>
+        </ClientMotionWrapper>
       </main>
     </div>
   );
