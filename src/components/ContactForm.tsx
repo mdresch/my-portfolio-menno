@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { ContactService } from "@/lib/api-services";
+import { LoadingSpinner } from "./ui/LoadingSpinner";
+import { ApiError, useRetry } from "./ui/ErrorComponents";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,10 +12,11 @@ export default function ContactForm() {
     subject: "",
     message: ""
   });
-  
+
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const { retry, isRetrying } = useRetry();
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,12 +50,21 @@ export default function ContactForm() {
       }, 5000);
       
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to submit form");
+      const error = err instanceof Error ? err : new Error("Failed to submit form");
+      setError(error);
     } finally {
       setSubmitting(false);
     }
   };
-  
+
+  const handleRetry = async () => {
+    try {
+      await retry(() => handleSubmit(new Event('submit') as any));
+    } catch (err) {
+      // Error is already handled in handleSubmit
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto">
       {submitted ? (
@@ -61,12 +73,9 @@ export default function ContactForm() {
           <p>Thank you for your message. I'll get back to you soon.</p>
         </div>
       ) : null}
-      
+
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-800 rounded-md p-4 mb-6">
-          <h3 className="text-lg font-medium">Error</h3>
-          <p>{error}</p>
-        </div>
+        <ApiError error={error} onRetry={handleRetry} />
       )}
       
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -132,10 +141,13 @@ export default function ContactForm() {
         <div>
           <button
             type="submit"
-            disabled={submitting}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={submitting || isRetrying}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
           >
-            {submitting ? "Sending..." : "Send Message"}
+            {(submitting || isRetrying) && (
+              <LoadingSpinner size="sm" text="" className="mr-2" />
+            )}
+            {submitting ? "Sending..." : isRetrying ? "Retrying..." : "Send Message"}
           </button>
         </div>
       </form>

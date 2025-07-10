@@ -346,6 +346,16 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="/quick-wins-demo" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">⚡ Quick Wins Demo</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
+                            See frontend improvements in action
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
                   </div>
                 </div>
               </NavigationMenuContent>
