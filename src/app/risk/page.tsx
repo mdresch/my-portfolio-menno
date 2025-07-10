@@ -113,17 +113,17 @@ export default function RiskOverviewPage() {
                 Latest Update
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 transition-colors">
-                May 12, 2025
+                July 10, 2025
               </p>
               <h4 className="text-lg font-medium text-gray-800 dark:text-white mb-2 transition-colors">
-                ECB Financial Stability Report—2025: Navigating a Trade War
+                UK Financial Stability Report—2025: Managing Economic Uncertainties
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-                Analysis of how the ECB financial system is responding to US trade
-                policy uncertainty and market volatility in 2025.
+                Comprehensive analysis of the UK financial system's resilience amid global trade tensions, 
+                post-Brexit adjustments, and evolving monetary policy landscape.
               </p>
               <Link
-                href="/risk/ecb-financial-stability"
+                href="/risk/uk-financial-stability"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
               >
                 View Interactive Report
@@ -152,7 +152,35 @@ export default function RiskOverviewPage() {
           Risk Reports Library
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 0 - ECB Financial Stability */}
+          {/* Card 0 - UK Financial Stability */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="UK Financial Stability Report—2025"
+              description="Comprehensive analysis of the UK financial system's resilience amid global trade tensions, post-Brexit adjustments, and evolving monetary policy landscape."
+              date="July 10, 2025"
+              category="Financial Risk"
+              tags={["UK Banking", "Brexit Impact", "Financial Resilience"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/uk-financial-stability"
+              usePlaceholder={false}
+              isComingSoon={false}
+              downloadLinks={[
+                {
+                  format: "CSV",
+                  url: "/data/uk-financial-stability-2025.csv",
+                },
+                {
+                  format: "JSON",
+                  url: "/data/uk-financial-stability-2025.json",
+                },
+                {
+                  format: "XML",
+                  url: "/data/uk-financial-stability-2025.xml",
+                },
+              ]}
+            />
+          </div>
+          {/* Card 1 - ECB Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="ECB Financial Stability Report—2025"
@@ -180,7 +208,7 @@ export default function RiskOverviewPage() {
               ]}
             />
           </div>
-          {/* Card 1 - Canadian Financial Stability */}
+          {/* Card 2 - Canadian Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="Canadian Financial Stability Report—2025"
@@ -208,7 +236,7 @@ export default function RiskOverviewPage() {
             />
           </div>
 
-          {/* Card 2 - Deep Dive Trade War */}
+          {/* Card 3 - Deep Dive Trade War */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="Global Trade War Analysis"
@@ -357,6 +385,34 @@ export default function RiskOverviewPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* UK Financial Stability */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="UK Financial Stability Report—2025"
+              description="Comprehensive analysis of the UK financial system's resilience amid global trade tensions, post-Brexit adjustments, and evolving monetary policy landscape."
+              date="July 10, 2025"
+              category="Financial Risk"
+              tags={["UK Banking", "Brexit Impact", "Financial Resilience"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/uk-financial-stability"
+              usePlaceholder={false}
+              downloadLinks={[
+                {
+                  format: "CSV",
+                  url: "/data/uk-financial-stability-2025.csv",
+                },
+                {
+                  format: "JSON",
+                  url: "/data/uk-financial-stability-2025.json",
+                },
+                {
+                  format: "XML",
+                  url: "/data/uk-financial-stability-2025.xml",
+                },
+              ]}
+            />
+          </div>
+
           {/* Canadian Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard

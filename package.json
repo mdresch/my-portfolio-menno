@@ -26,7 +26,12 @@
     "extract-blog-content": "tsx scripts/extract-blog-content.ts",
     "extract-project-content": "tsx scripts/extract-project-content.ts",
     "extract-risk-content": "tsx scripts/extract-risk-content.ts",
-    "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content"
+    "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content",
+    "deploy:production": "node scripts/deploy-production.js",
+    "deploy:validate": "node scripts/deploy-production.js --validate-only",
+    "deploy:build": "node scripts/deploy-production.js --build-only",
+    "test:rag": "node scripts/test-rag-production.js",
+    "test:rag:production": "USE_MOCK_GEMINI=false node scripts/test-rag-production.js"
   },
   "dependencies": {
     "@azure-rest/ai-inference": "^1.0.0-beta.6",
@@ -115,5 +120,15 @@
     "tw-animate-css": "^1.2.9",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.0"
+  },
+  "overrides": {
+    "react-simple-maps": {
+      "react": "^19",
+      "react-dom": "^19"
+    },
+    "@toast-ui/react-editor": {
+      "react": "^19",
+      "react-dom": "^19"
+    }
   }
 }
