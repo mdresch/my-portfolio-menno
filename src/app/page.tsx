@@ -1,10 +1,10 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import GitHubActivity from "../components/GitHubActivity";
 import { generatePersonStructuredData, generateWebsiteStructuredData } from "@/lib/structured-data";
 import Image from "next/image";
 import Link from "next/link";
 import { app, isFirebaseInitialized } from "@/lib/firebase";
-import { useEffect, useState } from "react";
 import { getAnalytics } from "firebase/analytics";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { usePerformanceMonitoring } from "../hooks/usePerformanceMonitoring";
