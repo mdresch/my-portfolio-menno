@@ -5,17 +5,18 @@ import { MaturityAssessmentDashboard } from "../../components/dashboards/Maturit
 import { FloatingActionButton } from "../../components/modern/FloatingActionButton";
 import { ScrollProgress } from "../../components/modern/ScrollProgress";
 import { SectionDivider } from "../../components/modern/SectionDivider";
+import { ModernTooltip } from "../../components/modern/ModernTooltip";
 import { ModernCard, GlassCard } from "../../components/modern/ModernCard";
-import { 
-  ClientMotionWrapper, 
-  ClientMotionItem, 
-  ClientAnimatedBackground
+import {
+  ClientMotionWrapper,
+  ClientMotionItem,
+  ClientAnimatedBackground,
+  motion
 } from "../../components/modern/ClientMotionWrapper";
-import { HeroSection } from "../../components/modern/HeroSection";
-import { 
-  BookOpenIcon, 
-  CodeBracketIcon, 
-  LightBulbIcon, 
+import {
+  BookOpenIcon,
+  CodeBracketIcon,
+  LightBulbIcon,
   AcademicCapIcon,
   RocketLaunchIcon,
   SparklesIcon,
@@ -39,21 +40,56 @@ export const metadata: Metadata = {
   },
 };
 
+// Animation variants are now imported from ClientMotionWrapper
+
 export default function NowPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
       {/* Modern UI Components */}
       <ScrollProgress />
       <FloatingActionButton />
-      
+
       {/* Animated background elements */}
       <ClientAnimatedBackground />
 
       <main className="relative max-w-4xl mx-auto py-16 px-4">
         <ClientMotionWrapper className="space-y-8">
           {/* Hero Section */}
-          <ClientMotionItem>
-            <HeroSection />
+          <ClientMotionItem className="text-center mb-16">
+            <ModernTooltip content="This page is updated regularly to reflect current activities and focus areas">
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6 cursor-help"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ClockIcon className="w-4 h-4" />
+                Live Status
+                <motion.div
+                  className="w-2 h-2 bg-green-500 rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.div>
+            </ModernTooltip>
+            
+            <motion.h1 
+              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              What I'm Doing Now
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              A real-time snapshot of my current projects, learning journey, and focus areas. 
+              Updated regularly to reflect my evolving interests and professional growth.
+            </motion.p>
           </ClientMotionItem>
 
           {/* Maturity Dashboard Section */}
@@ -71,7 +107,7 @@ export default function NowPage() {
           <SectionDivider variant="dots" />
 
           {/* Portfolio Assessment Results */}
-          <ModernCard 
+          <ModernCard
             variant="gradient"
             hoverEffect="glow"
             className="p-8"
@@ -137,7 +173,7 @@ export default function NowPage() {
           {/* Current Activities Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Learning Section */}
-            <GlassCard 
+            <GlassCard
               hoverEffect="lift"
               borderColor="border-purple-200/50 dark:border-gray-700/50"
             >
@@ -164,7 +200,7 @@ export default function NowPage() {
             </GlassCard>
 
             {/* Current Projects Section */}
-            <GlassCard 
+            <GlassCard
               hoverEffect="tilt"
               borderColor="border-green-200/50 dark:border-gray-700/50"
             >
@@ -196,7 +232,7 @@ export default function NowPage() {
           {/* Focus Areas and Recent Activities */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Focus Areas Section */}
-            <GlassCard 
+            <GlassCard
               hoverEffect="scale"
               borderColor="border-orange-200/50 dark:border-gray-700/50"
             >
@@ -223,7 +259,7 @@ export default function NowPage() {
             </GlassCard>
 
             {/* Recent Activities Section */}
-            <GlassCard 
+            <GlassCard
               hoverEffect="glow"
               borderColor="border-blue-200/50 dark:border-gray-700/50"
             >
