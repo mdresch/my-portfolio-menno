@@ -54,7 +54,7 @@ if (!useMockGemini && projectId) {
       authConfig.credentials = credentials;
       console.log('✅ Using service account key from environment');
     } else if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-      console.log('✅ Using service account key file:', process.env.GOOGLE_APPLICATION_CREDENTIALS);
+      console.log('✅ Using service account key file:', process.env.GOOGLE_APPLICATION_CREDENTIALS ? '***' + process.env.GOOGLE_APPLICATION_CREDENTIALS.slice(-10) : 'Not Set');
     }
 
     vertexAI = new VertexAI(authConfig);
