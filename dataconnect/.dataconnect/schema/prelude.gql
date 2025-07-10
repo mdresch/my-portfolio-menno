@@ -2126,3 +2126,25 @@ scalar Vector_Embed_Model
 
 # Intentionally left blank.
 
+input String_Pattern {
+  """
+  Match using LIKE semantics (https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-LIKE)
+  """
+  like: String @fdc_oneOf
+  """
+  Match against a POSIX regular expression.
+  """
+  regex: String @fdc_oneOf
+  """
+  If true, match patterns case-insensitively.
+  """
+  ignoreCase: Boolean
+}
+
+extend input String_Filter {
+  """
+  Match based on the provided pattern.
+  """
+  pattern: String_Pattern
+}
+
