@@ -2,6 +2,27 @@ import React from "react";
 import type { Metadata } from "next";
 import { MaturityDashboard } from "../../components/dashboards/MaturityDashboard";
 import { MaturityAssessmentDashboard } from "../../components/dashboards/MaturityAssessmentDashboard";
+import { FloatingActionButton } from "../../components/modern/FloatingActionButton";
+import { ScrollProgress } from "../../components/modern/ScrollProgress";
+import { SectionDivider } from "../../components/modern/SectionDivider";
+import { ModernTooltip } from "../../components/modern/ModernTooltip";
+import { ModernCard, GlassCard } from "../../components/modern/ModernCard";
+import {
+  ClientMotionWrapper,
+  ClientMotionItem,
+  ClientAnimatedBackground,
+  motion
+} from "../../components/modern/ClientMotionWrapper";
+import {
+  BookOpenIcon,
+  CodeBracketIcon,
+  LightBulbIcon,
+  AcademicCapIcon,
+  RocketLaunchIcon,
+  SparklesIcon,
+  ClockIcon,
+  FireIcon
+} from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "What I'm Doing Now | Menno Drescher",
@@ -19,71 +40,269 @@ export const metadata: Metadata = {
   },
 };
 
+// Animation variants are now imported from ClientMotionWrapper
+
 export default function NowPage() {
   return (
-    <main className="max-w-2xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-6">What I’m Doing Now</h1>
-      {/* Maturity Dashboard Section */}
-      <MaturityDashboard />
-      {/* Portfolio Maturity Assessment Section */}
-      <MaturityAssessmentDashboard />
-      {/* Portfolio Maturity Assessment Results - May 2025 */}
-      <section className="mb-8 bg-blue-50 dark:bg-gray-800 rounded-lg p-6 shadow-md border border-blue-200 dark:border-gray-700">
-        <h2 className="text-2xl font-bold mb-2">Portfolio Maturity Assessment <span className="text-base font-normal text-gray-500">(May 2025)</span></h2>
-        <p className="mb-4 text-gray-700 dark:text-gray-200">
-          <strong>Overall Impression:</strong> Clean, modern, and professional portfolio. Clear structure, fast load times, and effective presentation as a Full Stack Developer & AI Enthusiast. Dark theme is well-executed.
-        </p>
-        <ul className="mb-4 text-gray-700 dark:text-gray-200 list-disc pl-6">
-          <li><strong>Design & Aesthetics:</strong> 4.5/5 (Visual appeal, consistency, layout, typography, imagery)</li>
-          <li><strong>Content Quality:</strong> 4.5/5 (Clarity, relevance, writing quality); <span className="text-yellow-600">Depth: 3/5</span> (project details can be expanded)</li>
-          <li><strong>User Experience (UX):</strong> 5/5 (Navigation, mobile, load times, accessibility)</li>
-          <li><strong>Technical Implementation:</strong> 5/5 (Modern stack, code quality, security, performance); <span className="text-yellow-600">SEO: 4/5</span></li>
-          <li><strong>Interactivity & Engagement:</strong> 4/5 (Smooth interactions, contact form, social links)</li>
-          <li><strong>Innovation & Creativity:</strong> 4/5 (Polished, modern, well-executed design)</li>
-        </ul>
-        <h3 className="font-semibold mb-1">Key Outcomes & Recommendations:</h3>
-        <ul className="mb-2 list-disc pl-6 text-gray-700 dark:text-gray-200">
-          <li><strong>Project Depth:</strong> Add detailed case studies for 2-4 key projects (goals, your role, challenges, solutions, results, screenshots, or video demos).</li>
-          <li><strong>SEO:</strong> Update the <code>&lt;title&gt;</code> tag to "Menno Drescher - Full Stack Developer & AI Specialist" for better search visibility.</li>
-          <li><strong>Multimedia:</strong> Embed more screenshots or short video walkthroughs in project case studies.</li>
-          <li><strong>(Optional) User Feedback:</strong> Consider adding a simple feedback button or links to related blog posts for more engagement.</li>
-          <li><strong>(Optional) Personal Touch:</strong> Add a professional photo to the "About Me" section for a more personal connection.</li>
-        </ul>
-        <p className="text-green-700 dark:text-green-300 font-medium mt-2">Conclusion: Your portfolio is excellent—technically sound, visually appealing, and clearly communicates your skills. Adding depth to project showcases will elevate it further. Well done!</p>
-      </section>
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Learning</h2>
-        <ul className="list-disc pl-6 text-gray-700">
-          <li>Deepening expertise in Azure cloud architecture and best practices</li>
-          <li>Exploring advanced data visualization with D3.js and React</li>
-          <li>Experimenting with AI/ML integrations in web apps</li>
-        </ul>
-      </section>
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Current Projects</h2>
-        <ul className="list-disc pl-6 text-gray-700">
-          <li>Enhancing my portfolio with interactive dashboards and a maturity self-assessment</li>
-          <li>Writing blog posts on web security and modern authentication</li>
-          <li>Contributing to open-source HR analytics tools</li>
-        </ul>
-      </section>
-      <section className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Focus Areas</h2>
-        <ul className="list-disc pl-6 text-gray-700">
-          <li>Accessibility and performance optimization</li>
-          <li>Automated testing and CI/CD improvements</li>
-          <li>Personal branding and storytelling</li>
-        </ul>
-      </section>
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Recently Read / Watched / Attended</h2>
-        <ul className="list-disc pl-6 text-gray-700">
-          <li>Azure Well-Architected Framework documentation</li>
-          <li>React Advanced Patterns (video series)</li>
-          <li>Next.js Conf 2024 highlights</li>
-        </ul>
-      </section>
-      <p className="mt-10 text-gray-500 text-sm">Inspired by <a href="https://nownownow.com/about" className="underline" target="_blank" rel="noopener noreferrer">nownownow.com</a>. Last updated: Mei 2025.</p>
-    </main>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
+      {/* Modern UI Components */}
+      <ScrollProgress />
+      <FloatingActionButton />
+
+      {/* Animated background elements */}
+      <ClientAnimatedBackground />
+
+      <main className="relative max-w-4xl mx-auto py-16 px-4">
+        <ClientMotionWrapper className="space-y-8">
+          {/* Hero Section */}
+          <ClientMotionItem className="text-center mb-16">
+            <ModernTooltip content="This page is updated regularly to reflect current activities and focus areas">
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-700 dark:text-blue-300 text-sm font-medium mb-6 cursor-help"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ClockIcon className="w-4 h-4" />
+                Live Status
+                <motion.div
+                  className="w-2 h-2 bg-green-500 rounded-full"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.div>
+            </ModernTooltip>
+            
+            <motion.h1 
+              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              What I'm Doing Now
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              A real-time snapshot of my current projects, learning journey, and focus areas. 
+              Updated regularly to reflect my evolving interests and professional growth.
+            </motion.p>
+          </ClientMotionItem>
+
+          {/* Maturity Dashboard Section */}
+          <ClientMotionItem>
+            <MaturityDashboard />
+          </ClientMotionItem>
+
+          <SectionDivider variant="wave" />
+
+          {/* Portfolio Maturity Assessment Section */}
+          <ClientMotionItem>
+            <MaturityAssessmentDashboard />
+          </ClientMotionItem>
+
+          <SectionDivider variant="dots" />
+
+          {/* Portfolio Assessment Results */}
+          <ModernCard
+            variant="gradient"
+            hoverEffect="glow"
+            className="p-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                <SparklesIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Portfolio Maturity Assessment
+                </h2>
+                <span className="text-sm text-gray-500 dark:text-gray-400">May 2025</span>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-6 mb-6">
+              <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
+                <strong className="text-green-700 dark:text-green-300">Overall Impression:</strong> Clean, modern, and professional portfolio. Clear structure, fast load times, and effective presentation as a Full Stack Developer & AI Enthusiast. Dark theme is well-executed.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">Design & Aesthetics</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">Content Quality</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">User Experience</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">5/5</span>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">Technical Implementation</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">Professional Presentation</span>
+                  <span className="text-green-600 dark:text-green-400 font-bold">5/5</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <span className="font-medium">SEO & Performance</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">4/5</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
+              <p className="text-green-700 dark:text-green-300 font-medium">
+                <strong>Conclusion:</strong> Your portfolio is excellent—technically sound, visually appealing, and clearly communicates your skills. Adding depth to project showcases will elevate it further. Well done!
+              </p>
+            </div>
+          </ModernCard>
+
+          <SectionDivider variant="gradient" />
+
+          {/* Current Activities Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Learning Section */}
+            <GlassCard
+              hoverEffect="lift"
+              borderColor="border-purple-200/50 dark:border-gray-700/50"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <AcademicCapIcon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Learning</h2>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Deepening expertise in Azure cloud architecture and best practices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Exploring advanced data visualization with D3.js and React</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Experimenting with AI/ML integrations in web apps</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Current Projects Section */}
+            <GlassCard
+              hoverEffect="tilt"
+              borderColor="border-green-200/50 dark:border-gray-700/50"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <CodeBracketIcon className="w-6 h-6 text-green-600 dark:text-green-400" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Current Projects</h2>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Enhancing my portfolio with interactive dashboards and a maturity self-assessment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Writing blog posts on web security and modern authentication</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Contributing to open-source HR analytics tools</span>
+                </li>
+              </ul>
+            </GlassCard>
+          </div>
+
+          <SectionDivider variant="zigzag" />
+
+          {/* Focus Areas and Recent Activities */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Focus Areas Section */}
+            <GlassCard
+              hoverEffect="scale"
+              borderColor="border-orange-200/50 dark:border-gray-700/50"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                  <LightBulbIcon className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Focus Areas</h2>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Accessibility and performance optimization</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Automated testing and CI/CD improvements</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Personal branding and storytelling</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Recent Activities Section */}
+            <GlassCard
+              hoverEffect="glow"
+              borderColor="border-blue-200/50 dark:border-gray-700/50"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <BookOpenIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Recently Read / Watched / Attended</h2>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Azure Well-Architected Framework documentation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">React Advanced Patterns (video series)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 dark:text-gray-300">Next.js Conf 2024 highlights</span>
+                </li>
+              </ul>
+            </GlassCard>
+          </div>
+
+          {/* Footer */}
+          <ClientMotionItem className="text-center pt-8">
+            <p className="text-gray-500 dark:text-gray-400 text-sm">
+              Inspired by{" "}
+              <a 
+                href="https://nownownow.com/about" 
+                className="text-blue-600 dark:text-blue-400 hover:underline transition-colors" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                nownownow.com
+              </a>
+              . Last updated: May 2025.
+            </p>
+          </ClientMotionItem>
+        </ClientMotionWrapper>
+      </main>
+    </div>
   );
 }
