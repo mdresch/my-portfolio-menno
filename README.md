@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Portfolio Features
+
+This portfolio showcases comprehensive risk analysis capabilities including:
+
+- **Interactive Risk Analysis Reports**: In-depth assessments of financial, geopolitical, and market risks
+- **Economic Survey Analysis**: Including the latest OECD Economic Survey for Netherlands 2025
+- **Global Risk Mapping**: Interactive visualizations of risk factors across different regions
+- **Multi-format Data Export**: Risk data available in CSV, JSON, and XML formats
+- **Responsive Design**: Optimized for all device types with dark mode support
+
 ## Getting Started
 
 First, run the development server:
@@ -63,6 +73,25 @@ The chatbot includes a mock implementation for development purposes:
 - **Similarity Scores**: See how relevant each source is to your query
 - **Conversation History**: The chatbot maintains context across multiple messages
 - **Fallback Mode**: Automatically falls back to mock implementation if the Gemini API is unavailable
+
+## Risk Analysis & Reports
+
+The portfolio includes a comprehensive risk analysis section featuring:
+
+### Latest Reports
+- **OECD Economic Survey: Netherlands 2025** - Complete economic analysis with policy recommendations
+- **UK Financial Stability Report 2025** - Assessment of post-Brexit financial resilience
+- **Global Trade War Analysis** - Scenario-based geopolitical risk modeling
+- **Climate Risk Financial Impact** - Long-term environmental risk assessment
+
+### Features
+- **Interactive Data Visualizations**: Real-time charts and risk indicators
+- **Global Risk Map**: Interactive world map showing regional risk factors
+- **Multiple Export Formats**: Download data in CSV, JSON, or XML
+- **Responsive Design**: Optimized viewing across all devices
+- **Expert Commentary**: In-depth analysis and scenario modeling
+
+Navigate to `/risk` to explore the complete risk analysis dashboard.
 
 ## Requirements Automation & Utilities
 
