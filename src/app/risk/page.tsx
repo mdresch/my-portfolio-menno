@@ -113,17 +113,17 @@ export default function RiskOverviewPage() {
                 Latest Update
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 transition-colors">
-                July 10, 2025
+                July 11, 2025
               </p>
               <h4 className="text-lg font-medium text-gray-800 dark:text-white mb-2 transition-colors">
-                UK Financial Stability Report—2025: Managing Economic Uncertainties
+                OECD Economic Survey: Netherlands 2025
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-4 transition-colors">
-                Comprehensive analysis of the UK financial system's resilience amid global trade tensions, 
-                post-Brexit adjustments, and evolving monetary policy landscape.
+                Comprehensive analysis of the Dutch economy, policy recommendations, and economic outlook for 2025, 
+                covering housing market reforms, labor market dynamics, and green transition strategies.
               </p>
               <Link
-                href="/risk/uk-financial-stability"
+                href="/risk/oecd-netherlands-2025"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
               >
                 View Interactive Report
@@ -152,7 +152,35 @@ export default function RiskOverviewPage() {
           Risk Reports Library
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 0 - UK Financial Stability */}
+          {/* Card 0 - OECD Netherlands 2025 */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="OECD Economic Survey: Netherlands 2025"
+              description="Comprehensive analysis of the Dutch economy, policy recommendations, and economic outlook for 2025, covering housing market reforms, labor market dynamics, and green transition strategies."
+              date="July 11, 2025"
+              category="Economic Risk"
+              tags={["Netherlands Economy", "OECD Survey", "Economic Policy"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/oecd-netherlands-2025"
+              usePlaceholder={false}
+              isComingSoon={false}
+              downloadLinks={[
+                {
+                  format: "CSV",
+                  url: "/data/oecd-netherlands-2025.csv",
+                },
+                {
+                  format: "JSON",
+                  url: "/data/oecd-netherlands-2025.json",
+                },
+                {
+                  format: "XML",
+                  url: "/data/oecd-netherlands-2025.xml",
+                },
+              ]}
+            />
+          </div>
+          {/* Card 1 - UK Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="UK Financial Stability Report—2025"
@@ -180,7 +208,7 @@ export default function RiskOverviewPage() {
               ]}
             />
           </div>
-          {/* Card 1 - ECB Financial Stability */}
+          {/* Card 2 - ECB Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="ECB Financial Stability Report—2025"
@@ -208,7 +236,7 @@ export default function RiskOverviewPage() {
               ]}
             />
           </div>
-          {/* Card 2 - Canadian Financial Stability */}
+          {/* Card 3 - Canadian Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="Canadian Financial Stability Report—2025"
@@ -236,7 +264,7 @@ export default function RiskOverviewPage() {
             />
           </div>
 
-          {/* Card 3 - Deep Dive Trade War */}
+          {/* Card 4 - Deep Dive Trade War */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="Global Trade War Analysis"
@@ -260,7 +288,7 @@ export default function RiskOverviewPage() {
             />
           </div>
 
-          {/* Card 3 - Climate Financial Impact */}
+          {/* Card 5 - Climate Financial Impact */}
           <div className="risk-card-hover">
             <RiskReportCard
               title="Climate Risk Financial Impact"
@@ -385,6 +413,34 @@ export default function RiskOverviewPage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* OECD Netherlands 2025 */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="OECD Economic Survey: Netherlands 2025"
+              description="Comprehensive analysis of the Dutch economy, policy recommendations, and economic outlook for 2025, covering housing market reforms, labor market dynamics, and green transition strategies."
+              date="July 11, 2025"
+              category="Economic Risk"
+              tags={["Netherlands Economy", "OECD Survey", "Economic Policy"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/oecd-netherlands-2025"
+              usePlaceholder={false}
+              downloadLinks={[
+                {
+                  format: "CSV",
+                  url: "/data/oecd-netherlands-2025.csv",
+                },
+                {
+                  format: "JSON",
+                  url: "/data/oecd-netherlands-2025.json",
+                },
+                {
+                  format: "XML",
+                  url: "/data/oecd-netherlands-2025.xml",
+                },
+              ]}
+            />
+          </div>
+
           {/* UK Financial Stability */}
           <div className="risk-card-hover">
             <RiskReportCard
