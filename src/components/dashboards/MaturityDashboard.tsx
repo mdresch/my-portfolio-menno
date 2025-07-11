@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { MockKPICard } from "../../components/dashboards/MockVisuals";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "../modern/ClientMotionWrapper";
 
 export const MaturityDashboard = () => {
   const [maturityData, setMaturityData] = useState([

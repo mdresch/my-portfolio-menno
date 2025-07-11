@@ -113,4 +113,4 @@ export const ClientAnimatedBackground: React.FC = () => {
   );
 };
 
-export { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+export { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";

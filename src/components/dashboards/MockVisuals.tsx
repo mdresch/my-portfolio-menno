@@ -2,8 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-// Adjust the import path here:
-import { MockMapPlaceholder as ImportedMockMapPlaceholder } from "@/components/dashboards/MockVisuals"; // Assuming the file is in src/components/dashboards/
 
 // Simple placeholder for any chart type (Can keep as fallback or remove)
 const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
