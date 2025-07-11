@@ -113,11 +113,5 @@
   "cleanUrls": true,
   "github": {
     "enabled": false
-  },
-  "crons": [
-    {
-      "path": "/api/health",
-      "schedule": "0 */6 * * *"
-    }
-  ]
+  }
 }
