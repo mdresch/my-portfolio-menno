@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function WtoPage() {
   return (
@@ -208,6 +207,200 @@ export default function WtoPage() {
                 <li>Potential vulnerability to trade disputes and retaliatory measures</li>
                 <li>Balancing global integration with resilience concerns</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-6">WTO Membership Process: Path to (Re)joining</h2>
+        
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-amber-700">
+                  <strong>Hypothetical Scenario:</strong> Following trade war escalations and withdrawal from multilateral agreements, 
+                  this section outlines the process the United States would need to follow to rejoin the WTO as a member.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 className="text-xl font-semibold mb-4">Overview of WTO Accession Process</h3>
+          <p className="mb-6 text-gray-700">
+            The WTO accession process is comprehensive and can take several years to complete. It requires extensive negotiations, 
+            policy reforms, and commitments to align domestic trade policies with WTO rules and principles. For a major economy 
+            like the United States, the process would involve detailed scrutiny of trade practices across all sectors.
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-lg font-medium mb-4">Six-Stage Accession Process</h4>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">1</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Application and Working Party Establishment</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Submit formal application to WTO Director-General. Working Party established to examine application.
+                    </p>
+                    <span className="text-xs text-blue-600 font-medium">Timeline: 2-6 months</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">2</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Fact-Finding Phase</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Submit comprehensive memorandum on trade regime. Working Party reviews all trade policies and laws.
+                    </p>
+                    <span className="text-xs text-blue-600 font-medium">Timeline: 12-18 months</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">3</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Bilateral Market Access Negotiations</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Negotiate with interested WTO members on goods and services market access commitments.
+                    </p>
+                    <span className="text-xs text-blue-600 font-medium">Timeline: 18-36 months</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">4</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Working Party Report Finalization</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Address all concerns raised. Finalize Working Party Report documenting compliance with WTO rules.
+                    </p>
+                    <span className="text-xs text-blue-600 font-medium">Timeline: 6-12 months</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-medium">5</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Final Package Preparation</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Compile accession package including protocol, commitments schedules, and Working Party Report.
+                    </p>
+                    <span className="text-xs text-blue-600 font-medium">Timeline: 3-6 months</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-medium">6</div>
+                  <div className="ml-4">
+                    <h5 className="font-medium">Ministerial Conference Decision</h5>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Ministerial Conference or General Council adopts accession package by consensus.
+                    </p>
+                    <span className="text-xs text-green-600 font-medium">Timeline: 2-4 months</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-medium mb-4">Key Requirements for US Accession</h4>
+              <div className="bg-gray-50 p-5 rounded-lg mb-6">
+                <h5 className="font-medium mb-3 text-gray-800">Trade Policy Reforms</h5>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                  <li>Eliminate discriminatory trade practices</li>
+                  <li>Reduce tariffs to WTO-bound levels</li>
+                  <li>Remove non-tariff barriers inconsistent with WTO rules</li>
+                  <li>Reform agricultural support programs</li>
+                  <li>Align intellectual property laws with TRIPS Agreement</li>
+                  <li>Open services sectors to foreign competition</li>
+                </ul>
+              </div>
+
+              <div className="bg-gray-50 p-5 rounded-lg mb-6">
+                <h5 className="font-medium mb-3 text-gray-800">Institutional Changes</h5>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                  <li>Establish WTO-compliant customs procedures</li>
+                  <li>Create transparent regulatory framework</li>
+                  <li>Implement effective dispute resolution mechanisms</li>
+                  <li>Ensure federal-state compliance coordination</li>
+                  <li>Establish trade policy review processes</li>
+                </ul>
+              </div>
+
+              <div className="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                <h5 className="font-medium mb-3 text-blue-800">Estimated Timeline</h5>
+                <div className="text-sm text-blue-700">
+                  <p className="mb-2"><strong>Minimum Duration:</strong> 3-4 years</p>
+                  <p className="mb-2"><strong>Realistic Timeline:</strong> 5-7 years</p>
+                  <p className="mb-2"><strong>Complex Scenarios:</strong> 8-12 years</p>
+                  <p className="text-xs mt-3 italic">
+                    *Timeline depends on complexity of trade regime, political will, and cooperation from existing WTO members
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-4">Critical Success Factors for US Re-accession</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border-l-4 border-green-500 pl-6">
+              <h4 className="font-medium mb-3 text-green-800">Political and Economic Factors</h4>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                <li><strong>Bipartisan Congressional Support:</strong> Sustained political commitment across election cycles</li>
+                <li><strong>Private Sector Engagement:</strong> Active business community support and lobbying</li>
+                <li><strong>Economic Incentives:</strong> Clear demonstration of trade benefits to key constituencies</li>
+                <li><strong>Federal-State Coordination:</strong> Ensuring state-level compliance with WTO commitments</li>
+                <li><strong>International Relations:</strong> Rebuilding trust with key trading partners</li>
+              </ul>
+            </div>
+
+            <div className="border-l-4 border-blue-500 pl-6">
+              <h4 className="font-medium mb-3 text-blue-800">Technical and Legal Challenges</h4>
+              <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                <li><strong>Legal Framework Alignment:</strong> Comprehensive review of federal and state laws</li>
+                <li><strong>Regulatory Harmonization:</strong> Aligning standards with international practices</li>
+                <li><strong>Market Access Commitments:</strong> Negotiating acceptable terms for sensitive sectors</li>
+                <li><strong>Subsidy Programs:</strong> Reforming domestic support mechanisms</li>
+                <li><strong>Dispute Settlement:</strong> Accepting binding international arbitration</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+            <h4 className="font-medium mb-3 text-yellow-800">Potential Obstacles and Mitigation Strategies</h4>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
+              <div>
+                <h5 className="font-medium mb-2 text-yellow-800">Key Obstacles:</h5>
+                <ul className="list-disc pl-5 space-y-1 text-yellow-700">
+                  <li>Congressional resistance to sovereignty limitations</li>
+                  <li>Industry opposition to increased competition</li>
+                  <li>State-level non-compliance issues</li>
+                  <li>Outstanding trade disputes with existing members</li>
+                  <li>National security exemption conflicts</li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-medium mb-2 text-yellow-800">Mitigation Approaches:</h5>
+                <ul className="list-disc pl-5 space-y-1 text-yellow-700">
+                  <li>Phased implementation with transition periods</li>
+                  <li>Sector-specific carve-outs for sensitive industries</li>
+                  <li>Enhanced consultation mechanisms with Congress</li>
+                  <li>Pre-negotiation of dispute resolution procedures</li>
+                  <li>Clear definition of national security exceptions</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
