@@ -61,18 +61,18 @@ export default function PolicyImpactPage() {
               <tbody>
                 <tr>
                   <td className="px-4 py-2 border font-semibold dark:border-gray-700">Inflation Rate</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 3.5%<br/>Neutral: 2.5%<br/>High: 1.8%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 3.0%<br/>Neutral: 2.2%<br/>High: 1.7%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 2.8%<br/>Neutral: 2.0%<br/>High: 1.5%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 2.7%<br/>Neutral: 2.0%<br/>High: 1.5%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 1.8%<br/>Neutral: 2.5%<br/>High: 3.5%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 1.7%<br/>Neutral: 2.2%<br/>High: 3.0%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 1.5%<br/>Neutral: 2.0%<br/>High: 2.8%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 1.5%<br/>Neutral: 2.0%<br/>High: 2.7%</td>
                   <td className="px-4 py-2 border bg-red-50 dark:bg-red-900/40 dark:text-red-100 dark:border-gray-700">Deflation: -0.5%<br/>or Stagflation: 5%+</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2 border font-semibold dark:border-gray-700">Unemployment Rate</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 4.5%<br/>Neutral: 3.8%<br/>High: 3.2%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 4.2%<br/>Neutral: 3.5%<br/>High: 2.9%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 4.0%<br/>Neutral: 3.2%<br/>High: 2.5%</td>
-                  <td className="px-4 py-2 border dark:border-gray-700">Low: 3.8%<br/>Neutral: 3.0%<br/>High: 2.2%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 3.2%<br/>Neutral: 3.8%<br/>High: 4.5%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 2.9%<br/>Neutral: 3.5%<br/>High: 4.2%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 2.5%<br/>Neutral: 3.2%<br/>High: 4.0%</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">Low: 2.2%<br/>Neutral: 3.0%<br/>High: 3.8%</td>
                   <td className="px-4 py-2 border bg-red-50 dark:bg-red-900/40 dark:text-red-100 dark:border-gray-700">7% - 12% (sharp rise)</td>
                 </tr>
                 <tr>
