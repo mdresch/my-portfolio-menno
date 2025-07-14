@@ -3,18 +3,18 @@
 import React from "react";
 import Link from "next/link";
 
-// Mock data for major currency pairs and strength
+// Mock data for major currency pairs and strength (updated July 2025)
 const currencyPairs = [
-  { pair: "EUR/USD", rate: 1.133, change: "+0.3%", base: "EUR", quote: "USD", strength: "Strong EUR" },
-  { pair: "USD/JPY", rate: 143.0, change: "-0.4%", base: "USD", quote: "JPY", strength: "Neutral" },
-  { pair: "GBP/USD", rate: 1.328, change: "+0.2%", base: "GBP", quote: "USD", strength: "Strong GBP" },
-  { pair: "USD/CHF", rate: 0.826, change: "-0.1%", base: "USD", quote: "CHF", strength: "Neutral" },
-  { pair: "AUD/USD", rate: 0.641, change: "-0.3%", base: "AUD", quote: "USD", strength: "Weak AUD" },
-  { pair: "USD/CAD", rate: 1.379, change: "+0.1%", base: "USD", quote: "CAD", strength: "Strong USD" },
-  { pair: "EUR/GBP", rate: 0.853, change: "+0.1%", base: "EUR", quote: "GBP", strength: "Neutral" },
-  { pair: "EUR/JPY", rate: 162.0, change: "-0.1%", base: "EUR", quote: "JPY", strength: "Strong EUR" },
-  { pair: "USD/CNY", rate: 7.294, change: "+0.2%", base: "USD", quote: "CNY", strength: "Strong USD" },
-  { pair: "USD/INR", rate: 84.55, change: "+0.1%", base: "USD", quote: "INR", strength: "Strong USD" },
+  { pair: "EUR/USD", rate: 1.09, change: "+0.1%", base: "EUR", quote: "USD", strength: "Neutral" },
+  { pair: "USD/JPY", rate: 157.2, change: "-0.2%", base: "USD", quote: "JPY", strength: "Strong USD" },
+  { pair: "GBP/USD", rate: 1.27, change: "+0.2%", base: "GBP", quote: "USD", strength: "Neutral" },
+  { pair: "USD/CHF", rate: 0.89, change: "+0.1%", base: "USD", quote: "CHF", strength: "Neutral" },
+  { pair: "AUD/USD", rate: 0.68, change: "-0.1%", base: "AUD", quote: "USD", strength: "Weak AUD" },
+  { pair: "USD/CAD", rate: 1.36, change: "-0.1%", base: "USD", quote: "CAD", strength: "Neutral" },
+  { pair: "EUR/GBP", rate: 0.86, change: "0.0%", base: "EUR", quote: "GBP", strength: "Neutral" },
+  { pair: "EUR/JPY", rate: 171.5, change: "+0.1%", base: "EUR", quote: "JPY", strength: "Strong EUR" },
+  { pair: "USD/CNY", rate: 7.18, change: "+0.1%", base: "USD", quote: "CNY", strength: "Strong USD" },
+  { pair: "USD/INR", rate: 83.45, change: "+0.1%", base: "USD", quote: "INR", strength: "Strong USD" },
 ];
 
 export default function CurrenciesPage() {
@@ -33,6 +33,7 @@ export default function CurrenciesPage() {
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Major Currencies & Exchange Rates</h1>
       <section>
         <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Major Currency Pairs</h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Rates last updated: July 14, 2025</p>
         <div className="overflow-x-auto">
           <table className="min-w-full border text-sm bg-white dark:bg-neutral-900 border-gray-300 dark:border-gray-700">
             <thead className="bg-gray-100 dark:bg-neutral-800">

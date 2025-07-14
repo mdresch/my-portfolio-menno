@@ -57,7 +57,7 @@ export default function AdminDashboard() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-xl font-semibold">Welcome back, {user?.username || "Admin"}</h2>
+          <h2 className="text-xl font-semibold">Welcome back, {user?.email || "Admin"}</h2>
           <p className="text-gray-600 dark:text-gray-300">Manage your portfolio content</p>
         </div>
         
