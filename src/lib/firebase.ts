@@ -30,68 +30,97 @@ export const availableModels: string[] = [
   "gemini-2.0-flash"
 ];
 
-// Initialize Firebase
-let app: FirebaseApp;
-let auth: Auth;
-let db: Firestore;
-let appCheck: any;
-let remoteConfig: any;
+// Initialize Firebase - guard for SSR and missing config
+let app: FirebaseApp | null = null;
+let auth: Auth | null = null;
+let db: Firestore | null = null;
+let appCheck: any = null;
+let remoteConfig: any = null;
 
-try {
-  // Ensure env.local is loaded before validation
-  if (!validateFirebaseConfig()) {
-    throw new Error("Firebase configuration is incomplete");
-  }
+const isBrowser = typeof window !== "undefined";
 
-  // Initialize Firebase only if it hasn't been initialized already
-  if (getApps().length === 0) {
-    app = initializeApp(firebaseConfig);
-  } else {
-    app = getApps()[0];
-  }
+function createNoOpFirebaseStubs() {
+  // Lightweight no-op replacements so imports won't crash during SSR
+  app = null;
+  auth = null;
+  db = null;
+  appCheck = null;
+  remoteConfig = null;
+}
 
-  // Initialize services
-  auth = getAuth(app);
-  db = getFirestore(app);
-  // Initialize Remote Config
-  if (typeof window !== "undefined") {
-    remoteConfig = getRemoteConfig(app);
-    remoteConfig.settings = { minimumFetchIntervalMillis: 3600000 };
-    fetchAndActivate(remoteConfig).catch((err) => {
-      console.warn("Remote Config fetch failed:", err);
-    });
-  }
-  // Initialize App Check in browser environment only
-  if (typeof window !== "undefined") {
-    try {
-      // Enable debug mode in development
-      if (process.env.NODE_ENV === "development") {
-        // Set debug token for development
-        (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "11CA5EAD-77DD-4977-A6EB-0DB0EEC4B96D";
-        console.log("Firebase App Check debug mode enabled with token");
-      }
-
-      if (process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY) {
-        appCheck = initializeAppCheck(app, {
-          provider: new ReCaptchaV3Provider(process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY),
-          isTokenAutoRefreshEnabled: true
-        });
-        console.log("Firebase App Check initialized successfully with reCAPTCHA v3");
+// Only attempt initialization in browser runtime and when config looks valid
+if (isBrowser) {
+  try {
+    // Ensure env.local is loaded before validation
+    if (!validateFirebaseConfig()) {
+      console.warn("Firebase configuration incomplete — skipping browser initialization.");
+      createNoOpFirebaseStubs();
+    } else {
+      // Initialize Firebase only if it hasn't been initialized already
+      if (getApps().length === 0) {
+        app = initializeApp(firebaseConfig);
       } else {
-        console.warn("NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY not found. App Check not initialized.");
+        app = getApps()[0];
       }
-    } catch (appCheckError) {
-      console.warn("Firebase App Check initialization failed:", appCheckError);
-      console.info("Continuing without App Check. Make sure reCAPTCHA v3 is configured in Firebase Console.");
-    }
-  }
 
-} catch (error) {
-  console.error("Firebase initialization error:", error);
-  // Create dummy objects to prevent undefined errors
-  app = {} as FirebaseApp;
-  auth = {} as Auth;
-  db = {} as Firestore;
+      // Initialize services
+      try {
+        auth = getAuth(app as FirebaseApp);
+      } catch (err) {
+        console.warn("Firebase Auth initialization failed:", err);
+        auth = null;
+      }
+
+      try {
+        db = getFirestore(app as FirebaseApp);
+      } catch (err) {
+        console.warn("Firestore initialization failed:", err);
+        db = null;
+      }
+
+      // Initialize Remote Config in browser
+      try {
+        remoteConfig = getRemoteConfig(app as FirebaseApp);
+        remoteConfig.settings = { minimumFetchIntervalMillis: 3600000 };
+        fetchAndActivate(remoteConfig).catch((err) => {
+          console.warn("Remote Config fetch failed:", err);
+        });
+      } catch (err) {
+        // Not fatal — remote config may not be enabled
+        console.info("Remote Config not initialized:", err);
+        remoteConfig = null;
+      }
+
+      // Initialize App Check if site key provided
+      try {
+        if (process.env.NODE_ENV === "development") {
+          (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "11CA5EAD-77DD-4977-A6EB-0DB0EEC4B96D";
+          console.log("Firebase App Check debug mode enabled with token");
+        }
+
+        if (process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY) {
+          appCheck = initializeAppCheck(app as FirebaseApp, {
+            provider: new ReCaptchaV3Provider(process.env.NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY),
+            isTokenAutoRefreshEnabled: true
+          });
+          console.log("Firebase App Check initialized successfully with reCAPTCHA v3");
+        } else {
+          console.warn("NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY not found. App Check not initialized.");
+          appCheck = null;
+        }
+      } catch (appCheckError) {
+        console.warn("Firebase App Check initialization failed:", appCheckError);
+        appCheck = null;
+      }
+    }
+  } catch (error) {
+    // Avoid throwing during import — log and create safe stubs
+    console.error("Firebase initialization error:", error);
+    createNoOpFirebaseStubs();
+  }
+} else {
+  // Server: don't initialize Firebase, export safe stubs
+  createNoOpFirebaseStubs();
 }
 
 // AI Response functions with improved error handling

@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 
 export interface Project {
-  id: string;
+  id?: number;
   title: string;
   description: string;
   technologies: string[];
@@ -33,7 +33,8 @@ const categoryOptions = [
 export default function ProjectForm({ initialProject, onSubmit, onCancel }: ProjectFormProps) {
   const [project, setProject] = useState<Project>(
     initialProject || {
-      id: "",
+      // id is optional for new projects
+      // when editing, initialProject will supply the numeric id
       title: "",
       description: "",
       technologies: [],

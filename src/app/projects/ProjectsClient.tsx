@@ -18,7 +18,7 @@ interface ApiProject {
   outcomes?: string[];
   challenges?: string[];
 }
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./ProjectCard.client";
 
 interface ProjectsClientProps {
   projects: Project[];
