@@ -10,10 +10,11 @@ import EducationItem from "./EducationItem";
 import PDFExport from "./PDFExport";
 import ResumeJsonLd from "../../components/SEO/ResumeJsonLd";
 import { usePerformanceMonitoring } from "../../hooks/usePerformanceMonitoring";
+import ResumeValidationScores from "./ResumeValidationScores";
 
 export default function ResumeContainer() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(["summary", "experience", "skills"])
+    new Set(["summary", "experience", "skills", "validation-scores"])
   );
   const [isVisible, setIsVisible] = useState(false);
   const { trackRender, endRenderTracking } = usePerformanceMonitoring('ResumeContainer');
@@ -115,6 +116,15 @@ export default function ResumeContainer() {
             {resumeData.education.map((education, index) => (
               <EducationItem key={index} education={education} />
             ))}
+          </ResumeSection>
+
+          <ResumeSection 
+            title="Resume Validation Scores" 
+            id="validation-scores"
+            isExpanded={expandedSections.has("validation-scores")}
+            onToggle={() => toggleSection("validation-scores")}
+          >
+            <ResumeValidationScores />
           </ResumeSection>
           
           {/* Add other sections as needed */}

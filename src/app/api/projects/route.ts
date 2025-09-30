@@ -1,53 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, readdir } from "fs/promises";
-import path from "path";
-import matter from "gray-matter";
-
-const projectsDirectory = path.join(process.cwd(), "content/project");
+import { prisma } from "../../../lib/prisma";
 
 export async function GET(request: NextRequest) {
   try {
-    // Read all markdown files from the projects directory
-    const fileNames = await readdir(projectsDirectory);
-    const projectFiles = fileNames.filter(name => name.endsWith('.md'));
-    
-    // TODO: Implement pagination or lazy loading
-    // For now, we'll limit the number of projects to process
-    const LIMIT = 10;
-    const limitedProjectFiles = projectFiles.slice(0, LIMIT);
-    
-    const projects = await Promise.all(
-      limitedProjectFiles.map(async (fileName) => {
-        const fullPath = path.join(projectsDirectory, fileName);
-        const fileContents = await readFile(fullPath, 'utf8');
-        const { data, content } = matter(fileContents);
-        
-        const slug = fileName.replace(/\.md$/, '');
-        
-        return {
-          id: slug,
-          name: data.title || slug,
-          title: data.title || slug,
-          description: data.description || '',
-          technologies: data.technologies || [],
-          link: data.link || '',
-          datePublished: data.datePublished || '',
-          category: data.category || '',
-          screenshots: data.screenshots || [],
-          outcomes: data.outcomes || [],
-          challenges: data.challenges || [],
-          caseStudy: content || '',
-          slug
-        };
-      })
-    );
+    const url = request.nextUrl;
+    const limitParam = url.searchParams.get("limit");
+    const LIMIT = limitParam ? Math.max(1, Number(limitParam)) : 10;
 
-    return NextResponse.json(projects);
+    // Query projects from the database. Order by datePublished desc when available.
+    const projects = await prisma.project.findMany({
+      take: LIMIT,
+      orderBy: {
+        datePublished: "desc",
+      },
+    });
+
+    const payload = projects.map((p) => ({
+      id: p.id,
+      name: p.title || p.slug,
+      title: p.title,
+      description: p.description || "",
+      technologies: p.technologies || [],
+      link: p.link || "",
+      datePublished: p.datePublished ? p.datePublished.toISOString() : null,
+      category: p.category || "",
+      screenshots: p.screenshots || [],
+      outcomes: p.outcomes || [],
+      challenges: p.challenges || [],
+      caseStudy: p.caseStudy || "",
+      slug: p.slug,
+    }));
+
+    return NextResponse.json(payload);
   } catch (error) {
-    console.error("Error loading projects:", error);
-    return NextResponse.json(
-      { error: "Failed to load projects" },
-      { status: 500 }
-    );
+    console.error("Error loading projects from database:", error);
+    return NextResponse.json({ error: "Failed to load projects" }, { status: 500 });
   }
 }

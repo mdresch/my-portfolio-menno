@@ -3,138 +3,189 @@ export const regionalRiskData: { [key: string]: string[] } = {
   // North America Representative
   "United States of America": [
     "Cyber Attack/Data Breach",
-    "Business Interruption",
     "Economic Slowdown",
-    "Failure to Attract/Retain Talent",
+    "Geopolitical Tensions",
     "Regulatory Changes",
+    "Interest Rate Volatility",
+    "Political Uncertainty",
+    "Supply Chain Disruption",
+    "Inflation Pressure"
   ],
   // UK
   "United Kingdom": [
     "Economic Slowdown",
-    "Business Interruption",
+    "Brexit Impact",
+    "Energy Crisis",
+    "Political Instability",
     "Cyber Attack/Data Breach",
     "Regulatory Changes",
-    "Failure to Attract/Retain Talent",
+    "Labor Shortages",
+    "Inflation Pressure"
   ],
   // Europe Representative (Using Germany as example)
   "Germany": [
-    "Economic Slowdown",
-    "Energy Price Shock", // Example specific risk
-    "Business Interruption",
+    "Energy Crisis",
+    "Economic Recession",
+    "Supply Chain Disruption",
+    "Manufacturing Decline",
     "Cyber Attack/Data Breach",
-    "Supply Chain Failure",
+    "Regulatory Changes",
+    "Labor Shortages",
+    "Geopolitical Tensions"
   ],
   // Asia Pacific Representative (Using China as example)
   "China": [
+    "Geopolitical Tensions",
     "Economic Slowdown",
-    "Supply Chain Failure",
-    "Geopolitical Instability", // Example specific risk
-    "Business Interruption",
-    "Increasing Competition",
+    "Property Market Crisis",
+    "Trade Wars",
+    "Supply Chain Disruption",
+    "Regulatory Crackdowns",
+    "Demographic Challenges",
+    "Technology Restrictions"
   ],
   // Latin America Representative (Using Brazil as example)
   "Brazil": [
-    "Economic Slowdown",
-    "Political Instability", // Example specific risk
-    "Regulatory Changes",
+    "Political Instability",
+    "Economic Volatility",
+    "Currency Fluctuation",
     "Commodity Price Risk",
-    "Business Interruption",
+    "Regulatory Changes",
+    "Social Unrest",
+    "Infrastructure Challenges",
+    "Environmental Risks"
   ],
   // Middle East & Africa Representative (Using South Africa as example)
   "South Africa": [
-    "Business Interruption",
-    "Economic Slowdown",
-    "Infrastructure Failure", // Example specific risk
-    "Unemployment", // Example specific risk
+    "Infrastructure Failure",
+    "Power Crisis",
     "Political Instability",
+    "Economic Stagnation",
+    "Unemployment",
+    "Crime & Security",
+    "Currency Volatility",
+    "Social Unrest"
   ],
   // Netherlands
   "Netherlands": [
+    "Energy Transition Challenges",
+    "Housing Crisis",
     "Regulatory Changes",
-    "Tax Compliance Complexity",
     "Cyber Attack/Data Breach",
-    "Supply Chain Disruption",
-    "Labor Market Shortages"
+    "Labor Market Shortages",
+    "Climate Adaptation",
+    "Agricultural Sector Stress",
+    "Economic Slowdown"
   ],
   // Luxembourg
   "Luxembourg": [
     "International Tax Regulation",
-    "Regulatory Changes",
+    "EU Financial Regulations",
     "Cyber Attack/Data Breach",
     "Economic Slowdown",
-    "Financial Sector Volatility"
+    "Financial Sector Volatility",
+    "Digital Transformation",
+    "Sustainable Finance Compliance",
+    "Cross-Border Data Flows"
   ],
   // France
   "France": [
+    "Social Unrest",
     "Labor Strikes/Disruption",
-    "Regulatory Changes",
+    "Pension Reform Backlash",
     "Economic Slowdown",
+    "Regulatory Changes",
     "Cyber Attack/Data Breach",
-    "Tax Complexity"
+    "Energy Transition",
+    "Public Debt Concerns"
   ],
   // Singapore
   "Singapore": [
+    "Geopolitical Tensions",
+    "Regional Instability",
     "Cyber Attack/Data Breach",
-    "Regulatory Changes",
     "Economic Slowdown",
     "Talent Shortage",
-    "Geopolitical Instability"
+    "Climate Change Impact",
+    "Trade Route Disruption",
+    "Real Estate Bubble Risk"
   ],
   // Australia
   "Australia": [
+    "Climate Change Impact",
     "Natural Catastrophes",
     "Economic Slowdown",
+    "Geopolitical Tensions",
     "Cyber Attack/Data Breach",
+    "Housing Affordability Crisis",
     "Regulatory Changes",
-    "Supply Chain Disruption"
+    "Mining Sector Volatility"
   ],
   // India
   "India": [
+    "Geopolitical Tensions",
+    "Economic Inequality",
     "Regulatory Complexity",
-    "Economic Slowdown",
+    "Climate Change Impact",
     "Cyber Attack/Data Breach",
+    "Infrastructure Gaps",
     "Political Instability",
-    "Talent Shortage"
+    "Water Scarcity"
   ],
   // Denmark
   "Denmark": [
+    "Energy Security",
+    "Economic Slowdown",
     "Cyber Attack/Data Breach",
     "Regulatory Changes",
-    "Economic Slowdown",
+    "Labor Market Shortages",
+    "Climate Transition",
     "Supply Chain Disruption",
-    "Labor Market Shortages"
+    "Healthcare System Pressure"
   ],
   // Spain
   "Spain": [
     "Economic Slowdown",
+    "High Unemployment",
+    "Political Instability",
+    "Energy Dependency",
     "Regulatory Changes",
-    "Unemployment",
     "Cyber Attack/Data Breach",
-    "Political Instability"
+    "Tourism Sector Vulnerability",
+    "Regional Tensions"
   ],
   // Portugal
   "Portugal": [
     "Economic Slowdown",
-    "Regulatory Changes",
     "Labor Market Shortages",
+    "Energy Transition",
+    "Regulatory Changes",
     "Cyber Attack/Data Breach",
-    "Tax Complexity"
+    "Tourism Dependencies",
+    "Public Debt",
+    "Digital Divide"
   ],
   // Italy
   "Italy": [
-    "Economic Slowdown",
-    "Regulatory Changes",
     "Political Instability",
+    "Economic Slowdown",
+    "Public Debt Crisis",
+    "Energy Dependency",
+    "Regulatory Changes",
     "Cyber Attack/Data Breach",
-    "Tax Complexity"
+    "Banking Sector Stress",
+    "Migration Pressures"
   ],
   // Switzerland
   "Switzerland": [
+    "Banking Sector Volatility",
     "Regulatory Changes",
-    "Financial Sector Volatility",
-    "Cyber Attack/Data Breach",
     "Economic Slowdown",
-    "Supply Chain Disruption"
+    "Cyber Attack/Data Breach",
+    "Geopolitical Neutrality Challenges",
+    "Financial Sector Volatility",
+    "Energy Security",
+    "Cross-Border Data Flows"
   ],
   // Add more countries or refine as needed
 };
@@ -2475,10 +2526,10 @@ export const getCountriesByRegion = (region: string) => {
 // Get historical rankings for specific years
 export const getCountriesByHistoricalRank = (year: string) => {
   return allCountryData
-    .filter(country => country.historicalRanks && country.historicalRanks[year])
+    .filter(country => country.historicalRanks && (country.historicalRanks as any)[year])
     .sort((a, b) => {
-      const rankA = a.historicalRanks[year];
-      const rankB = b.historicalRanks[year];
+      const rankA = (a.historicalRanks as any)[year];
+      const rankB = (b.historicalRanks as any)[year];
       
       // Handle "New" entries
       if (rankA === "New") return 1;
@@ -2495,8 +2546,8 @@ export const getRankingChange = (country: string, yearFrom: string, yearTo: stri
   const countryData = allCountryData.find(c => c.country === country);
   if (!countryData?.historicalRanks) return null;
   
-  const rankFrom = countryData.historicalRanks[yearFrom];
-  const rankTo = countryData.historicalRanks[yearTo];
+  const rankFrom = (countryData.historicalRanks as any)[yearFrom];
+  const rankTo = (countryData.historicalRanks as any)[yearTo];
   
   if (rankFrom === "New" || rankTo === "New") return "New";
   if (typeof rankFrom !== "number" || typeof rankTo !== "number") return null;

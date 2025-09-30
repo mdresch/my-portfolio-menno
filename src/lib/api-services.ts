@@ -1,4 +1,26 @@
-import { Project, BlogPost, Skill, ContactMessage } from "@/types/api";
+// Fallback local type declarations to avoid build errors when "@/types/api"
+// does not export the expected members. Replace these with the real imports
+// from "@/types/api" when that module provides the types.
+export type Project = {
+  id?: number;
+  [key: string]: any;
+};
+export type BlogPost = {
+  id?: number;
+  slug?: string;
+  [key: string]: any;
+};
+export type Skill = {
+  id?: number;
+  category?: string;
+  [key: string]: any;
+};
+export type ContactMessage = {
+  id?: number;
+  receivedAt?: string;
+  isRead?: boolean;
+  [key: string]: any;
+};
 
 // Enhanced API configuration with environment detection
 const getApiBaseUrl = (): string => {
@@ -7,13 +29,17 @@ const getApiBaseUrl = (): string => {
     return process.env.NEXT_PUBLIC_API_BASE_URL;
   }
 
-  // Development environment - try local backend first, fallback to deployed
-  if (process.env.NODE_ENV === 'development') {
-    return process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
+  // If an explicit base URL is provided via environment, use it
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) return process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  // When running on the server (SSR), prefer the internal Next.js API routes
+  // This avoids trying to connect to an external backend (which may be down)
+  if (typeof window === 'undefined') {
+    return '/api';
   }
 
-  // Default fallback
-  return process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5154/api";
+  // Development/client-side fallback: try local backend at port 5154 if available
+  return "http://localhost:5154/api";
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -76,7 +102,22 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    // Ensure Node.js receives an absolute URL. If API_BASE_URL is a relative
+    // path (for internal Next.js API routes) and we're on the server, prefix
+    // it with localhost and the current process port (fallback 3000).
+    let requestUrl: string;
+    if (typeof window === 'undefined' && API_BASE_URL.startsWith('/')) {
+      const port = process.env.PORT || 3000;
+      const host = `http://localhost:${port}`;
+      // Build absolute URL to internal Next.js API route. Use API_BASE_URL + endpoint
+      // so a request for "/projects" becomes "http://localhost:3000/api/projects",
+      // avoiding new URL behavior where a leading slash on endpoint overrides the base path.
+      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, host).toString();
+    } else {
+      requestUrl = `${API_BASE_URL}${endpoint}`;
+    }
+
+    const response = await fetch(requestUrl, {
       ...options,
       headers,
       signal: controller.signal,

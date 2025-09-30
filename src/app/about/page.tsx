@@ -136,6 +136,36 @@ const StorySection: React.FC = () => (
                   <p className="text-gray-600 dark:text-gray-400">Measurable Impact</p>
                 </div>
               </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">👥</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-200">Human Resources</h4>
+                  <p className="text-gray-600 dark:text-gray-400">Strategic HR Solutions</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">💰</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-200">Finance</h4>
+                  <p className="text-gray-600 dark:text-gray-400">Financial Excellence</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">💻</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-200">ICT</h4>
+                  <p className="text-gray-600 dark:text-gray-400">Technology Innovation</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -242,6 +272,12 @@ export default function AboutPage() {
                   title: "Stakeholder Collaboration",
                   description: "Building trusted relationships that fuel success",
                   color: "from-pink-500 to-rose-500"
+                },
+                {
+                  icon: "🔄",
+                  title: "Change Management",
+                  description: "Guiding organizations through transformation with proven methodologies and stakeholder buy-in",
+                  color: "from-violet-500 to-purple-600"
                 }
               ].map((item, index) => (
                 <div

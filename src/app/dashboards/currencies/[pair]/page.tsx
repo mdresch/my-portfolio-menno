@@ -3,25 +3,22 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-
-// Mock data for demonstration (in a real app, fetch from API or DB)
-const currencyPairs = [
-  { pair: "EUR/USD", rate: 1.10, change: "+0.3%", base: "EUR", quote: "USD", strength: "Neutral", history: [1.09, 1.10, 1.11, 1.10, 1.10] },
-  { pair: "USD/JPY", rate: 155.0, change: "+0.5%", base: "USD", quote: "JPY", strength: "Strong USD", history: [154.5, 154.7, 155.2, 155.0, 155.0] },
-  { pair: "GBP/USD", rate: 1.27, change: "+0.2%", base: "GBP", quote: "USD", strength: "Neutral", history: [1.26, 1.27, 1.28, 1.27, 1.27] },
-  { pair: "USD/CHF", rate: 0.92, change: "+0.4%", base: "USD", quote: "CHF", strength: "Strong USD", history: [0.91, 0.92, 0.93, 0.92, 0.92] },
-  { pair: "AUD/USD", rate: 0.64, change: "-0.1%", base: "AUD", quote: "USD", strength: "Weak AUD", history: [0.65, 0.64, 0.64, 0.63, 0.64] },
-  { pair: "USD/CAD", rate: 1.38, change: "+0.2%", base: "USD", quote: "CAD", strength: "Strong USD", history: [1.37, 1.38, 1.39, 1.38, 1.38] },
-  { pair: "EUR/GBP", rate: 0.87, change: "+0.1%", base: "EUR", quote: "GBP", strength: "Neutral", history: [0.86, 0.87, 0.88, 0.87, 0.87] },
-  { pair: "EUR/JPY", rate: 167.0, change: "+0.3%", base: "EUR", quote: "JPY", strength: "Strong EUR", history: [166.5, 166.7, 167.2, 167.0, 167.0] },
-  { pair: "USD/CNY", rate: 7.26, change: "+0.2%", base: "USD", quote: "CNY", strength: "Strong USD", history: [7.25, 7.26, 7.27, 7.26, 7.26] },
-  { pair: "USD/INR", rate: 83.6, change: "+0.2%", base: "USD", quote: "INR", strength: "Strong USD", history: [83.5, 83.6, 83.7, 83.6, 83.6] },
-];
+import { currencyPairs, getPriceStatistics } from "../../../../data/currencyPairs";
 
 export default function CurrencyPairDetailPage() {
   const params = useParams();
   // URL param is like "EUR-USD"
   const pairParam = Array.isArray(params.pair) ? params.pair[0] : params.pair;
+  
+  if (!pairParam) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Invalid Currency Pair</h1>
+        <Link href="/dashboards/currencies" className="text-blue-600 dark:text-blue-300 underline">Back to Currencies</Link>
+      </div>
+    );
+  }
+  
   const pairKey = pairParam.replace("-", "/");
   const pairData = currencyPairs.find((p) => p.pair === pairKey);
 
@@ -60,6 +57,64 @@ export default function CurrencyPairDetailPage() {
           ))}
         </div>
         <div className="text-xs text-gray-500 dark:text-gray-400">(Most recent rates, left = oldest, right = newest)</div>
+      </section>
+
+      {/* Price Statistics */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">1-Year Price Statistics</h2>
+        {(() => {
+          const stats = getPriceStatistics(pairData.pair);
+          if (!stats) return <p className="text-gray-600 dark:text-gray-400">Statistics not available</p>;
+          
+          return (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.max.toFixed(4)}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">52-Week High</div>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.min.toFixed(4)}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">52-Week Low</div>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.avg.toFixed(4)}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Average Price</div>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{(stats.volatility * 100).toFixed(2)}%</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">Volatility</div>
+              </div>
+            </div>
+          );
+        })()}
+      </section>
+
+      {/* Recent Daily Rates */}
+      <section className="mb-8">
+        <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">Recent Daily Rates</h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border text-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th className="px-3 py-2 text-gray-900 dark:text-gray-100">Date</th>
+                <th className="px-3 py-2 text-gray-900 dark:text-gray-100">Rate</th>
+                <th className="px-3 py-2 text-gray-900 dark:text-gray-100">High</th>
+                <th className="px-3 py-2 text-gray-900 dark:text-gray-100">Low</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pairData.dailyRates.slice(-10).reverse().map((dailyRate, index) => (
+                <tr key={index} className="border-b border-gray-200 dark:border-gray-700 even:bg-gray-50 even:dark:bg-gray-700">
+                  <td className="px-3 py-2 text-gray-700 dark:text-gray-200">{dailyRate.date}</td>
+                  <td className="px-3 py-2 text-gray-700 dark:text-gray-200 font-medium">{dailyRate.rate}</td>
+                  <td className="px-3 py-2 text-green-600 dark:text-green-400">{dailyRate.high}</td>
+                  <td className="px-3 py-2 text-red-600 dark:text-red-400">{dailyRate.low}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">Showing last 10 trading days</div>
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">About Currency Strength</h2>
