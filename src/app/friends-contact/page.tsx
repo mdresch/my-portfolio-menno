@@ -657,53 +657,6 @@ export default function FriendsContactPage() {
                   </motion.div>
                 </FormSection>
 
-                {/* Dutch Consent Section */}
-                <FormSection title="Nederlandse Bevestiging" icon="🇳🇱" delay={0.8}>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-orange-500/10 border border-orange-400/30 rounded-2xl p-6 backdrop-blur-sm"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <motion.input
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        type="checkbox"
-                        id="dutchConsent"
-                        name="dutchConsent"
-                        checked={formData.dutchConsent}
-                        onChange={handleInputChange}
-                        className="w-6 h-6 text-orange-600 bg-white/20 border-white/30 rounded-lg focus:ring-orange-500 focus:ring-2 mt-1"
-                      />
-                      <div className="flex-1">
-                        <label htmlFor="dutchConsent" className="text-white text-lg leading-relaxed block mb-4">
-                          Zoals op het kinderdagverblijf van mijn moeder vroeger en de belofte aan Menno als handreiking is gegeven heeft de binnendienst te samen met de brandweer een kluisje geinstalleerd in de kledingkast. Dit kluisje treft u in elke hotel kamer terug daar kunt u de bijbel uit elkaar leggen zodat het magazijn niet geladen achterblijft. Door invoer van uw pincode kan gecontroleerd worden of het kluisje opengaat mocht deze samen met uw gegevens opengaan ben ik zo met de juiste voorlichting bij u. Mocht u de pincode uit de tas van uw vader of moeder moeten halen om deze hier in te voeren zal u gevraagd worden bij het open gaan van het kluisje deze kant op te komen. Gezamelijk komen wij geladen door het enthousiasme van de een goede film zo bij u terug.
-                        </label>
-                        <div className="text-white/80 text-base leading-relaxed bg-white/5 rounded-xl p-4">
-                          <p className="mb-3">
-                            <strong>English Translation:</strong> As was done for Menno at the daycare, the internal team, together with the fire department, has installed a small safe in the wardrobe. You'll find this safe in every hotel room. It's meant for storing the Bible in separate parts, so that the magazine (possibly referring to a loaded item) is not left intact.
-                          </p>
-                          <p className="mb-3">
-                            You can open the safe by entering your personal PIN code. If the safe opens and your details match, I'll be there shortly to provide you with some guidance.
-                          </p>
-                          <p>
-                            If you need to get the PIN code from your father's or mother's bag, you'll be better off coming this way. As always the maturity levels will be evaluated and assessed where serious UPO and Senior Unaccompanied Minors to these subjects advised not to worry he/she will be back well enthusiastic and fully loaded to blow you away.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    {errors.dutchConsent && (
-                      <motion.p
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="text-red-300 text-sm mt-3 flex items-center"
-                      >
-                        <span className="mr-2">⚠️</span>
-                        {errors.dutchConsent}
-                      </motion.p>
-                    )}
-                  </motion.div>
-                </FormSection>
-
                 {/* Cinematic Submit Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}

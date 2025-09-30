@@ -114,6 +114,215 @@ export default function PolicyImpactPage() {
             <p><strong>Interpretation:</strong> The actual outcome will depend on global conditions, policy execution, and market sentiment. High-impact scenarios assume effective policy, strong global demand, and positive confidence effects. Low-impact scenarios reflect weak policy transmission or external shocks. Neutral is the most likely if policies are implemented as planned and no major shocks occur.</p>
           </div>
         </div>
+
+        {/* Tariff Rates Section */}
+        <div className="my-10 p-6 bg-orange-50 dark:bg-orange-900/40 rounded dark:text-orange-100">
+          <h2 className="text-2xl font-semibold mb-4">Current Tariff Rates & Trade Policy Impact</h2>
+          <p className="mb-4 text-gray-700 dark:text-gray-200">Tariff rates significantly influence trade flows, consumer prices, and economic growth. Below is an analysis of current tariff structures and their projected economic impacts.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded border">
+              <h3 className="font-semibold mb-3 text-gray-900 dark:text-gray-100">Current Tariff Rates by Sector</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>Automotive:</span>
+                  <span className="font-medium">25%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Steel & Aluminum:</span>
+                  <span className="font-medium">25%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Consumer Electronics:</span>
+                  <span className="font-medium">15%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Textiles:</span>
+                  <span className="font-medium">20%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Agricultural Products:</span>
+                  <span className="font-medium">12%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Machinery:</span>
+                  <span className="font-medium">18%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Chemicals:</span>
+                  <span className="font-medium">10%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Average Overall:</span>
+                  <span className="font-bold text-orange-600 dark:text-orange-400">15.6%</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 p-4 rounded border">
+              <h3 className="font-semibold mb-3 text-gray-900 dark:text-gray-100">Trade Policy Scenarios</h3>
+              <div className="space-y-3 text-sm">
+                <div className="border-l-4 border-green-500 pl-3">
+                  <div className="font-medium text-green-700 dark:text-green-400">Trade Liberalization</div>
+                  <div className="text-gray-600 dark:text-gray-300">Reduce tariffs to 5% average</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">GDP Impact: +0.8% to +1.5%</div>
+                </div>
+                <div className="border-l-4 border-yellow-500 pl-3">
+                  <div className="font-medium text-yellow-700 dark:text-yellow-400">Current Policy</div>
+                  <div className="text-gray-600 dark:text-gray-300">Maintain 15.6% average tariffs</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">GDP Impact: -0.2% to -0.5%</div>
+                </div>
+                <div className="border-l-4 border-red-500 pl-3">
+                  <div className="font-medium text-red-700 dark:text-red-400">Trade War Escalation</div>
+                  <div className="text-gray-600 dark:text-gray-300">Increase tariffs to 25% average</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">GDP Impact: -1.2% to -2.0%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto mb-6">
+            <table className="min-w-full border border-gray-300 dark:border-gray-700">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="px-4 py-2 border dark:border-gray-700 text-left">Trade Policy Impact</th>
+                  <th className="px-4 py-2 border dark:border-gray-700">Short-term (1-2 years)</th>
+                  <th className="px-4 py-2 border dark:border-gray-700">Medium-term (5 years)</th>
+                  <th className="px-4 py-2 border dark:border-gray-700">Long-term (15+ years)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="px-4 py-2 border font-semibold dark:border-gray-700">Import Volume</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +15%<br/>
+                    Current: 0%<br/>
+                    Escalation: -20%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +25%<br/>
+                    Current: +2%<br/>
+                    Escalation: -35%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +40%<br/>
+                    Current: +5%<br/>
+                    Escalation: -50%
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 border font-semibold dark:border-gray-700">Export Volume</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +8%<br/>
+                    Current: 0%<br/>
+                    Escalation: -15%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +18%<br/>
+                    Current: +3%<br/>
+                    Escalation: -25%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +30%<br/>
+                    Current: +8%<br/>
+                    Escalation: -40%
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 border font-semibold dark:border-gray-700">Consumer Prices</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -2.5%<br/>
+                    Current: +1.2%<br/>
+                    Escalation: +4.8%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -3.5%<br/>
+                    Current: +0.8%<br/>
+                    Escalation: +6.2%
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -4.0%<br/>
+                    Current: +0.5%<br/>
+                    Escalation: +7.5%
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 border font-semibold dark:border-gray-700">Manufacturing Employment</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +120K jobs<br/>
+                    Current: +15K jobs<br/>
+                    Escalation: -180K jobs
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +350K jobs<br/>
+                    Current: +45K jobs<br/>
+                    Escalation: -420K jobs
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: +600K jobs<br/>
+                    Current: +120K jobs<br/>
+                    Escalation: -750K jobs
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 border font-semibold dark:border-gray-700">Trade Balance</td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -$45B<br/>
+                    Current: -$15B<br/>
+                    Escalation: +$8B
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -$25B<br/>
+                    Current: -$5B<br/>
+                    Escalation: +$35B
+                  </td>
+                  <td className="px-4 py-2 border dark:border-gray-700">
+                    Liberalization: -$10B<br/>
+                    Current: +$5B<br/>
+                    Escalation: +$60B
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded border">
+              <h4 className="font-semibold mb-2 text-green-700 dark:text-green-400">Benefits of Lower Tariffs</h4>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-300">
+                <li>• Lower consumer prices</li>
+                <li>• Increased trade volume</li>
+                <li>• Enhanced competitiveness</li>
+                <li>• Supply chain efficiency</li>
+                <li>• Innovation stimulation</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded border">
+              <h4 className="font-semibold mb-2 text-orange-700 dark:text-orange-400">Current Policy Effects</h4>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-300">
+                <li>• Moderate price increases</li>
+                <li>• Protected domestic industries</li>
+                <li>• Reduced import competition</li>
+                <li>• Government revenue generation</li>
+                <li>• Trade relationship tensions</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded border">
+              <h4 className="font-semibold mb-2 text-red-700 dark:text-red-400">Risks of Higher Tariffs</h4>
+              <ul className="text-sm space-y-1 text-gray-600 dark:text-gray-300">
+                <li>• Significant price inflation</li>
+                <li>• Reduced economic efficiency</li>
+                <li>• Trade war escalation</li>
+                <li>• Job losses in trade sectors</li>
+                <li>• Global supply chain disruption</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-gray-700 dark:text-gray-200 text-sm">
+            <p><strong>Trade Policy Note:</strong> Tariff rates directly impact consumer costs, business competitiveness, and international relations. Current average tariff rates of 15.6% represent a significant increase from historical lows of 5-6% during peak globalization periods. The economic impact depends on how other countries respond and whether domestic production can effectively substitute for imports.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
