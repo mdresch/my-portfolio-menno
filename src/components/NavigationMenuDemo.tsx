@@ -263,8 +263,21 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
   
   return (
     <div className="w-full sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/20 shadow-lg">
-      {/* Mobile menu button */}
-      <div className="md:hidden flex justify-end py-4 px-4">
+      {/* Mobile menu button and chat button */}
+      <div className="md:hidden flex justify-between items-center py-4 px-4">
+        {/* Chat button */}
+        <Link
+          href="/chat"
+          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          aria-label="Open Chat"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span className="font-medium text-sm">Chat</span>
+        </Link>
+        
+        {/* Menu button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -289,7 +302,10 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
         <NavigationMenu className="flex justify-center mx-auto py-2">
           <NavigationMenuList className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl px-2 py-1 shadow-2xl border border-gray-200/30 dark:border-gray-700/30">
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-blue-200 dark:hover:border-blue-700/50 shadow-sm hover:shadow-md">About</NavigationMenuTrigger>
+        <NavigationMenuTrigger className="bg-gradient-to-r from-sky-50 to-blue-100 dark:from-blue-900/20 dark:to-indigo-800/20 hover:from-blue-100 hover:to-cyan-200 dark:hover:from-blue-800/30 dark:hover:to-sky-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-blue-300 dark:hover:border-blue-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
+          <span className="text-lg text-blue-900 dark:text-blue-300">👤</span>
+          About
+        </NavigationMenuTrigger>
               <NavigationMenuContent>                
                 <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
@@ -307,9 +323,12 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                     </Link>
                   </StrictNavigationMenuLink>                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/about" className={cn("block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50")}>
+                      <Link href="/about" className={cn("block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50")}>
                         <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">About Me</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg">👤</span>
+                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">About Me</span>
+                          </div>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Professional Expertise and Technical Skills
                           </span>
@@ -317,9 +336,12 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/now" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
+                      <Link href="/now" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Now</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg">⏰</span>
+                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Now</span>
+                          </div>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             What I&apos;m Doing Now - Maturity Dashboard
                           </span>
@@ -327,9 +349,12 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/resume" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
+                      <Link href="/resume" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Resume</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg">📄</span>
+                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Resume</span>
+                          </div>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
                             Interactive Resume - My Work Experience
                           </span>
@@ -360,7 +385,10 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 hover:from-green-100 hover:to-blue-100 dark:hover:from-green-800/30 dark:hover:to-blue-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-green-200 dark:hover:border-green-700/50 shadow-sm hover:shadow-md">News</NavigationMenuTrigger>
+        <NavigationMenuTrigger className="bg-gradient-to-r from-cyan-50 to-sky-100 dark:from-sky-900/20 dark:to-blue-800/20 hover:from-sky-100 hover:to-blue-200 dark:hover:from-sky-800/30 dark:hover:to-cyan-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-cyan-300 dark:hover:border-sky-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
+          <span className="text-lg text-blue-900 dark:text-blue-300">📝</span>
+          News
+        </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
@@ -387,7 +415,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/blog" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
+                      <Link href="/blog" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Blog</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -397,7 +425,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/admin" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
+                      <Link href="/admin" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Admin</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -406,15 +434,28 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link href="https://iq4fun.gitbook.io/my-portfolio-menno/" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-50 hover:to-indigo-100 dark:hover:from-sky-900/20 dark:hover:to-indigo-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">📚 Docs</span>
+                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
+                            Comprehensive documentation and guides
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
                   </div>
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 hover:from-red-100 hover:to-orange-100 dark:hover:from-red-800/30 dark:hover:to-orange-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-red-200 dark:hover:border-red-700/50 shadow-sm hover:shadow-md">Risk</NavigationMenuTrigger>
+        <NavigationMenuTrigger className="bg-gradient-to-r from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-800/20 hover:from-indigo-100 hover:to-cyan-200 dark:hover:from-indigo-800/30 dark:hover:to-blue-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
+          <span className="text-lg text-blue-900 dark:text-blue-300">⚠️</span>
+          Risk
+        </NavigationMenuTrigger>
               <NavigationMenuContent>                
                 <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Risk landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
+                      <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
                       <div className="flex flex-col">
                         <span className="text-base font-bold text-white">Risk Dashboards Home</span>
                         <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all risk dashboards</span>
@@ -423,7 +464,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                   </StrictNavigationMenuLink>
                   {/* Risk components */}                  {components.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 dark:hover:from-red-900/20 dark:hover:to-orange-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-red-200/50 dark:hover:border-red-700/50">
+                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -436,11 +477,14 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 hover:from-emerald-100 hover:to-teal-100 dark:hover:from-emerald-800/30 dark:hover:to-teal-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-emerald-200 dark:hover:border-emerald-700/50 shadow-sm hover:shadow-md">Economics</NavigationMenuTrigger>
+        <NavigationMenuTrigger className="bg-gradient-to-r from-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:to-blue-800/20 hover:from-cyan-100 hover:to-sky-200 dark:hover:from-cyan-800/30 dark:hover:to-blue-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-cyan-300 dark:hover:border-cyan-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
+          <span className="text-lg text-blue-900 dark:text-blue-300">📊</span>
+          Economics
+        </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Economics landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
+                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
                       <div className="flex flex-col">
                         <span className="text-base font-bold text-white">Economics Dashboards Home</span>
                         <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all economics dashboards</span>
@@ -448,7 +492,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                     </Link>
                   </StrictNavigationMenuLink>                  {componentseconomics.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 dark:hover:from-emerald-900/20 dark:hover:to-teal-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-emerald-200/50 dark:hover:border-emerald-700/50">
+                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -461,11 +505,10 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <StrictNavigationMenuLink className="bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900/20 dark:to-gray-900/20 hover:from-slate-100 hover:to-gray-100 dark:hover:from-slate-800/30 dark:hover:to-gray-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-slate-200 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md px-4 py-2 font-medium" asChild>
-                <Link href="https://iq4fun.gitbook.io/my-portfolio-menno/">Docs</Link>
-              </StrictNavigationMenuLink>
-            </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-900/20 dark:to-indigo-900/20 hover:from-violet-100 hover:to-indigo-100 dark:hover:from-violet-800/30 dark:hover:to-indigo-800/30 transition-all duration-300 rounded-xl border border-transparent hover:border-violet-200 dark:hover:border-violet-700/50 shadow-sm hover:shadow-md">AI Chat</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-gradient-to-r from-indigo-50 to-cyan-100 dark:from-indigo-900/20 dark:to-cyan-800/20 hover:from-indigo-100 hover:to-sky-200 dark:hover:from-indigo-800/30 dark:hover:to-cyan-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
+                <span className="text-lg text-blue-900 dark:text-blue-300">🤖</span>
+                AI Chat
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
                     <Link
@@ -483,7 +526,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                     </Link>
                   </StrictNavigationMenuLink>                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
+                      <Link href="/chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Chat Interface</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -493,7 +536,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
+                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">AI Logic</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -503,7 +546,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
+                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">GenKit</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -513,7 +556,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
+                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-100 dark:hover:from-cyan-900/20 dark:hover:to-sky-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-cyan-200/50 dark:hover:border-cyan-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Firebase AI Test</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
@@ -523,7 +566,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-50 hover:to-indigo-50 dark:hover:from-violet-900/20 dark:hover:to-indigo-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-violet-200/50 dark:hover:border-violet-700/50">
+                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-50 hover:to-indigo-100 dark:hover:from-sky-900/20 dark:hover:to-indigo-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50">
                         <div className="flex flex-col">
                           <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Vertex AI Chat</span>
                           <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">

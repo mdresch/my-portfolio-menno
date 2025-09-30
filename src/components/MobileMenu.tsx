@@ -101,6 +101,38 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
             <MobileLink href="/projects">Projects</MobileLink>
             <MobileLink href="/blog">Blog</MobileLink>
             
+            {/* Chat Section */}
+            <MobileAccordion title="💬 Chat & AI">
+              <MobileLink href="/chat">
+                <span className="flex items-center gap-2">
+                  <span>🤖</span>
+                  <span>Standard Chat</span>
+                </span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">General purpose AI chat interface</span>
+              </MobileLink>
+              <MobileLink href="/chat/vertex-ai-chat">
+                <span className="flex items-center gap-2">
+                  <span>🧠</span>
+                  <span>Vertex AI Chat</span>
+                </span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Advanced Google Vertex AI integration</span>
+              </MobileLink>
+              <MobileLink href="/chat/rag-chat">
+                <span className="flex items-center gap-2">
+                  <span>📚</span>
+                  <span>Portfolio RAG Chat</span>
+                </span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Chat with my portfolio knowledge base</span>
+              </MobileLink>
+              <MobileLink href="/chat/genkit">
+                <span className="flex items-center gap-2">
+                  <span>⚡</span>
+                  <span>Genkit Demo</span>
+                </span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Google Genkit AI framework demo</span>
+              </MobileLink>
+            </MobileAccordion>
+            
             {/* Collapsible sections */}
             <MobileAccordion title="Risk">
               {components.map((item) => (
