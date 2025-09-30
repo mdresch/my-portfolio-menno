@@ -26,7 +26,12 @@ const useMockGemini = process.env.USE_MOCK_GEMINI === 'true' ||
   (!process.env.GOOGLE_CLOUD_PROJECT_ID || 
    (!process.env.GOOGLE_APPLICATION_CREDENTIALS && !process.env.GOOGLE_SERVICE_ACCOUNT_KEY));
 
-const projectId = process.env.VERTEX_AI_PROJECT_ID || process.env.GOOGLE_CLOUD_PROJECT_ID;
+const projectId = process.env.VERTEX_AI_PROJECT_ID || process.env.GOOGLE_CLOUD_PROJECT_ID || 'my-portfolio-menno';
+
+// Suppress Google Cloud logging errors by setting default project
+if (!process.env.GOOGLE_CLOUD_PROJECT_ID) {
+  process.env.GOOGLE_CLOUD_PROJECT_ID = projectId;
+}
 const location = process.env.VERTEX_AI_LOCATION || 'us-central1';
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.DOTNET_API_BASE_URL;
 
