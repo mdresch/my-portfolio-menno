@@ -9,10 +9,10 @@ function normalizeProject(p: ApiProject) {
     title: p.title ?? "",
     description: p.description ?? "",
     technologies: p.technologies ?? [],
-    image: p.imageUrl ?? "/images/default-project-image.jpg",
-    gitHubUrl: p.gitHubUrl ?? "",
-    liveUrl: p.liveUrl ?? "",
-    slug: p.slug ?? (p.title ? p.title.toLowerCase().replace(/\s+/g, "-") : String(p.id)),
+    image: "/images/default-project-image.jpg", // Default image since not in schema
+    gitHubUrl: "", // Not in Prisma schema
+    liveUrl: "", // Not in Prisma schema
+    slug: p.slug,
   };
 }
 

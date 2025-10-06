@@ -10,9 +10,9 @@ function normalizeProject(p: ApiProject) {
     title: p.title ?? "",
     description: p.description ?? "",
     technologies: p.technologies ?? [],
-    imageUrl: p.imageUrl ?? "/default-project-image.jpg",
-    gitHubUrl: p.gitHubUrl ?? "",
-    liveUrl: p.liveUrl ?? "",
+    imageUrl: "/default-project-image.jpg", // Default image since not in schema
+    gitHubUrl: "", // Not in Prisma schema
+    liveUrl: "", // Not in Prisma schema
   };
 }
 

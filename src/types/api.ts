@@ -1,19 +1,18 @@
-// API Types that match the .NET Backend models
+// API Types that match the Prisma schema
 
 export interface ApiProject {
-id: number;
-title: string;
-description: string | null;
-imageUrl: string | null;
-gitHubUrl: string | null;
-liveUrl: string | null;
-created: string;
-technologies: string[];
-viewCount?: number;
-caseStudy?: string | null;
-screenshots?: string[];
-outcomes?: string[];
-challenges?: string[];
+  id: number;
+  title: string;
+  description: string | null;
+  technologies: string[];
+  link: string | null;
+  datePublished: string | null;
+  category: string | null;
+  screenshots: string[];
+  outcomes: string[];
+  challenges: string[];
+  caseStudy: string | null;
+  slug: string;
 }
 
 export interface BlogPost {
