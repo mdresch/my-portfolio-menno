@@ -25,6 +25,7 @@ interface MobileMenuProps {
   onClose: () => void;
   components: ComponentItem[];
   componentseconomics: ComponentItem[];
+  jobSeekerComponents?: ComponentItem[];
 }
 
 interface MobileLinkProps {
@@ -75,7 +76,7 @@ function MobileAccordion({ title, children }: MobileAccordionProps) {
   );
 }
 
-export function MobileMenu({ isOpen, onClose, components, componentseconomics }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, components, componentseconomics, jobSeekerComponents }: MobileMenuProps) {
   return (
     <>
       {/* Backdrop */}
@@ -155,6 +156,24 @@ export function MobileMenu({ isOpen, onClose, components, componentseconomics }:
                 </MobileLink>
               ))}
             </MobileAccordion>
+            
+            {/* Job Seeker landing page link */}
+            {jobSeekerComponents && jobSeekerComponents.length > 0 && (
+              <>
+                <MobileLink href="/job-seeker">
+                  <span className="font-semibold text-purple-600 dark:text-purple-400">Job Seeker Hub</span>
+                  <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Professional profile management and career tools</span>
+                </MobileLink>
+                <MobileAccordion title="Job Seeker">
+                  {jobSeekerComponents.map((item) => (
+                    <MobileLink key={item.href} href={item.href}>
+                      {item.title}
+                      {item.description && <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">{item.description}</span>}
+                    </MobileLink>
+                  ))}
+                </MobileAccordion>
+              </>
+            )}
             
             <MobileLink href="https://iq4fun.gitbook.io/my-portfolio-menno/">Docs</MobileLink>
             
