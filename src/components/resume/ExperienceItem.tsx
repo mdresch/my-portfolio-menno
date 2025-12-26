@@ -3,19 +3,25 @@ import { WorkExperience } from "@/data/resume";
 
 interface ExperienceItemProps {
   experience: WorkExperience;
+  isLast?: boolean;
 }
 
-export default function ExperienceItem({ experience }: ExperienceItemProps) {
+export default function ExperienceItem({ experience, isLast = false }: ExperienceItemProps) {
   const isCurrentPosition = !experience.endDate;
 
   return (
-    <div className="group relative mb-8 p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 hover:border-blue-200 dark:hover:border-blue-500">
+    <div className="group relative mb-6 last:mb-0 p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 hover:border-blue-200 dark:hover:border-blue-500">
       {/* Timeline Indicator */}
-      <div className="absolute -left-3 top-8 w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg">
+      <div className="absolute -left-6 md:-left-8 top-8 w-6 h-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full border-4 border-white dark:border-gray-800 shadow-lg z-10">
         {isCurrentPosition && (
           <div className="absolute inset-1 bg-green-400 rounded-full animate-pulse"></div>
         )}
       </div>
+      
+      {/* Timeline Line (connecting line between items) - only show if not last */}
+      {!isLast && (
+        <div className="absolute -left-[22px] md:-left-[30px] top-14 bottom-0 w-0.5 bg-gradient-to-b from-blue-300 to-blue-200 dark:from-blue-600 dark:to-blue-800 z-0"></div>
+      )}
 
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">

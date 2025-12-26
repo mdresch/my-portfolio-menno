@@ -7,6 +7,7 @@ import ResumeSection from "./ResumeSection";
 import SkillsVisualization from "./SkillsVisualization";
 import ExperienceItem from "./ExperienceItem";
 import EducationItem from "./EducationItem";
+import CertificationItem from "./CertificationItem";
 import PDFExport from "./PDFExport";
 import ResumeJsonLd from "../../components/SEO/ResumeJsonLd";
 import { usePerformanceMonitoring } from "../../hooks/usePerformanceMonitoring";
@@ -71,7 +72,7 @@ export default function ResumeContainer() {
       <div className={`max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Modern Resume Card */}
         <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700 backdrop-blur-sm">
-          <div className="p-8 md:p-12 print:p-0" id="resume-content">
+          <div className="p-8 md:p-12 print:p-0 overflow-x-hidden" id="resume-content">
           <ResumeHeader 
             name={resumeData.name} 
             title={resumeData.title} 
@@ -103,7 +104,11 @@ export default function ResumeContainer() {
             onToggle={() => toggleSection("experience")}
           >
             {resumeData.workExperience.map((experience, index) => (
-              <ExperienceItem key={index} experience={experience} />
+              <ExperienceItem 
+                key={index} 
+                experience={experience} 
+                isLast={index === resumeData.workExperience.length - 1}
+              />
             ))}
           </ResumeSection>
           
@@ -117,6 +122,19 @@ export default function ResumeContainer() {
               <EducationItem key={index} education={education} />
             ))}
           </ResumeSection>
+
+          {resumeData.certifications && resumeData.certifications.length > 0 && (
+            <ResumeSection 
+              title="Certifications & Memberships" 
+              id="certifications"
+              isExpanded={expandedSections.has("certifications")}
+              onToggle={() => toggleSection("certifications")}
+            >
+              {resumeData.certifications.map((certification, index) => (
+                <CertificationItem key={index} certification={certification} />
+              ))}
+            </ResumeSection>
+          )}
 
           <ResumeSection 
             title="Resume Validation Scores" 

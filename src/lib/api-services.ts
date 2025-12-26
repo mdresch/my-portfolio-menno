@@ -22,59 +22,10 @@ export type ContactMessage = {
   [key: string]: any;
 };
 
-// Enhanced API configuration with environment detection
-const getApiBaseUrl = (): string => {
-  // Production environment - use deployed backend
-  if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return process.env.NEXT_PUBLIC_API_BASE_URL;
-  }
+// Simplified API configuration - use only Next.js API routes
+const API_BASE_URL = '/api';
 
-  // If an explicit base URL is provided via environment, use it
-  if (process.env.NEXT_PUBLIC_API_BASE_URL) return process.env.NEXT_PUBLIC_API_BASE_URL;
-
-  // When running on the server (SSR), prefer the internal Next.js API routes
-  // This avoids trying to connect to an external backend (which may be down)
-  if (typeof window === 'undefined') {
-    return '/api';
-  }
-
-  // Development/client-side fallback: try local backend at port 5154 if available
-  return "http://localhost:5154/api";
-};
-
-const API_BASE_URL = getApiBaseUrl();
-
-// API health check and fallback detection
-let isBackendAvailable: boolean | null = null;
-let lastHealthCheck = 0;
-const HEALTH_CHECK_INTERVAL = 5 * 60 * 1000; // 5 minutes
-
-// Health check function
-async function checkBackendHealth(): Promise<boolean> {
-  const now = Date.now();
-
-  // Use cached result if recent
-  if (isBackendAvailable !== null && (now - lastHealthCheck) < HEALTH_CHECK_INTERVAL) {
-    return isBackendAvailable;
-  }
-
-  try {
-    const response = await fetch(`${API_BASE_URL}/health`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      signal: AbortSignal.timeout(5000), // 5 second timeout
-    });
-
-    isBackendAvailable = response.ok;
-    lastHealthCheck = now;
-    return isBackendAvailable;
-  } catch (error) {
-    console.warn('Backend health check failed:', error);
-    isBackendAvailable = false;
-    lastHealthCheck = now;
-    return false;
-  }
-}
+// Removed backend health check - using only Next.js API routes
 
 // Helper function to get auth header (safe for both server and client)
 export function getAuthHeader(): Record<string, string> {
@@ -85,15 +36,12 @@ export function getAuthHeader(): Record<string, string> {
   return {};
 }
 
-// Enhanced HTTP request function with fallback support
+// Simplified HTTP request function for Next.js API routes
 async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}): Promise<T> {
-  const baseHeaders: Record<string, string> = {
+  const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...getAuthHeader(),
-  };
-  const headers: Record<string, string> = {
-    ...baseHeaders,
-    ...(options.headers ? options.headers as Record<string, string> : {}),
+    ...(options.headers || {}),
   };
 
   // Add timeout to prevent hanging requests
@@ -102,21 +50,21 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    // Ensure Node.js receives an absolute URL. If API_BASE_URL is a relative
-    // path (for internal Next.js API routes) and we're on the server, prefix
-    // it with localhost and the current process port (fallback 3000).
+    // Handle server-side requests by creating absolute URLs
     let requestUrl: string;
-    if (typeof window === 'undefined' && API_BASE_URL.startsWith('/')) {
-      const port = process.env.PORT || 3000;
-      const host = `http://localhost:${port}`;
-      // Build absolute URL to internal Next.js API route. Use API_BASE_URL + endpoint
-      // so a request for "/projects" becomes "http://localhost:3000/api/projects",
-      // avoiding new URL behavior where a leading slash on endpoint overrides the base path.
-      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, host).toString();
+    if (typeof window === 'undefined') {
+      // Server-side: Use Vercel URL during build, or localhost for local dev
+      const baseUrl = process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}`
+        : process.env.NEXT_PUBLIC_SITE_URL 
+        ? process.env.NEXT_PUBLIC_SITE_URL
+        : `http://localhost:${process.env.PORT || 3000}`;
+      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, baseUrl).toString();
     } else {
+      // Client-side: use relative URL
       requestUrl = `${API_BASE_URL}${endpoint}`;
     }
-
+    
     const response = await fetch(requestUrl, {
       ...options,
       headers,
@@ -138,36 +86,12 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
     return response.json() as Promise<T>;
   } catch (error) {
     clearTimeout(timeoutId);
-
-    // Log the error for debugging
     console.error(`API request failed for ${endpoint}:`, error);
-
-    // Re-throw the error to be handled by the calling service
     throw error;
   }
 }
 
-// Fallback function for Next.js API routes
-async function fetchFallbackAPI<T>(endpoint: string, options: Record<string, any> = {}): Promise<T> {
-  const response = await fetch(`/api${endpoint}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(error || response.statusText || "Fallback API request failed");
-  }
-
-  if (response.status === 204) {
-    return {} as T;
-  }
-
-  return response.json() as Promise<T>;
-}
+// Removed fallback function - using only Next.js API routes
 
 // API Services
 export const ProjectService = {
@@ -236,64 +160,18 @@ export const BlogService = {
 
 export const SkillService = {
   async getAll(): Promise<Skill[]> {
-    try {
-      // Try the .NET backend first
-      return await fetchAPI<Skill[]>("/skills");
-    } catch (error) {
-      console.warn("Backend API not available, falling back to Next.js API:", error);
-      try {
-        // Fallback to Next.js API route
-        const response = await fetch("/api/skills");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-      } catch (fallbackError) {
-        console.error("Both backend and fallback API failed:", fallbackError);
-        throw new Error("Unable to fetch skills from any source");
-      }
-    }
+    return fetchAPI<Skill[]>("/skills");
   },
 
   async getByCategory(category: string): Promise<Skill[]> {
-    try {
-      // Try the .NET backend first
-      return await fetchAPI<Skill[]>(`/skills/category/${category}`);
-    } catch (error) {
-      console.warn("Backend API not available, filtering locally:", error);
-      try {
-        // Fallback: get all skills and filter locally
-        const allSkills = await this.getAll();
-        return allSkills.filter(skill => skill.category === category);
-      } catch (fallbackError) {
-        console.error("Failed to get skills by category:", fallbackError);
-        throw new Error(`Unable to fetch skills for category: ${category}`);
-      }
-    }
+    return fetchAPI<Skill[]>(`/skills/category/${category}`);
   },
 
   async getCategories(): Promise<string[]> {
-    try {
-      // Try the .NET backend first
-      return await fetchAPI<string[]>("/skills/categories");
-    } catch (error) {
-      console.warn("Backend API not available, falling back to Next.js API:", error);
-      try {
-        // Fallback to Next.js API route
-        const response = await fetch("/api/skills/categories");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await response.json();
-      } catch (fallbackError) {
-        console.error("Both backend and fallback API failed:", fallbackError);
-        throw new Error("Unable to fetch skill categories from any source");
-      }
-    }
+    return fetchAPI<string[]>("/skills/categories");
   },
 
   async create(skill: Omit<Skill, "id">): Promise<Skill> {
-    // This operation requires the backend as Next.js API is read-only
     return fetchAPI<Skill>("/skills", {
       method: "POST",
       body: JSON.stringify(skill),
@@ -301,7 +179,6 @@ export const SkillService = {
   },
 
   async delete(id: number): Promise<void> {
-    // This operation requires the backend as Next.js API is read-only
     return fetchAPI<void>(`/skills/${id}`, {
       method: "DELETE",
     });

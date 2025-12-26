@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { StrictNavigationMenuLink } from "./StrictNavigationMenuLink";
 
 import { cn } from "../lib/utils";
@@ -16,6 +17,27 @@ import {
 } from "./ui/navigation-menu";
 import { MobileMenu } from "./MobileMenu";
 import { ComponentItem } from "../types/navigation";
+
+// Professional Heroicons imports
+import {
+  UserCircleIcon,
+  DocumentTextIcon,
+  ClockIcon,
+  AcademicCapIcon,
+  RocketLaunchIcon,
+  SparklesIcon,
+  NewspaperIcon,
+  FolderIcon,
+  BookOpenIcon,
+  ShieldExclamationIcon,
+  ChartBarIcon,
+  CurrencyDollarIcon,
+  ChatBubbleLeftRightIcon,
+  CpuChipIcon,
+  FireIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 // Define interfaces for component props
 interface IconProps {
@@ -248,6 +270,8 @@ function CloseIcon({ className = "w-6 h-6" }: IconProps): React.ReactElement {
 
 export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Close mobile menu when resizing to desktop
   useEffect(() => {
@@ -260,32 +284,46 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Handle scroll effect for enhanced navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   
   return (
-    <div className="w-full sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/20 shadow-lg">
+    <div className={cn(
+      "w-full sticky top-0 z-50 transition-all duration-300",
+      isScrolled
+        ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+        : "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200/30 dark:border-gray-700/30 shadow-md"
+    )}>
       {/* Mobile menu button and chat button */}
       <div className="md:hidden flex justify-between items-center py-4 px-4">
         {/* Chat button */}
         <Link
           href="/chat"
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-900 via-blue-600 to-indigo-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 font-medium text-sm"
           aria-label="Open Chat"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          <span className="font-medium text-sm">Chat</span>
+          <ChatBubbleLeftRightIcon className="w-5 h-5" />
+          <span>Chat</span>
         </Link>
         
         {/* Menu button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-all duration-200"
           aria-label="Open main menu"
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          {isMobileMenuOpen ? (
+            <XMarkIcon className="h-6 w-6" />
+          ) : (
+            <Bars3Icon className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -298,86 +336,161 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
       />
       
       {/* Desktop menu */}
-      <div className="hidden md:block">
-        <NavigationMenu className="flex justify-center mx-auto py-2">
-          <NavigationMenuList className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl rounded-2xl px-2 py-1 shadow-2xl border border-gray-200/30 dark:border-gray-700/30">
+      <div className="hidden md:block relative">
+        <NavigationMenu className="flex justify-center mx-auto py-3 px-4">
+          <NavigationMenuList className="flex items-center gap-2 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl px-3 py-2 shadow-xl border border-gray-200/40 dark:border-gray-700/40">
             <NavigationMenuItem>
-        <NavigationMenuTrigger className="bg-gradient-to-r from-sky-50 to-blue-100 dark:from-blue-900/20 dark:to-indigo-800/20 hover:from-blue-100 hover:to-cyan-200 dark:hover:from-blue-800/30 dark:hover:to-sky-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-blue-300 dark:hover:border-blue-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
-          <span className="text-lg text-blue-900 dark:text-blue-300">👤</span>
-          About
+        <NavigationMenuTrigger className={cn(
+          "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+          "bg-gradient-to-r from-blue-50 to-sky-50 dark:from-blue-950/40 dark:to-sky-950/40",
+          "hover:from-blue-100 hover:to-sky-100 dark:hover:from-blue-900/50 dark:hover:to-sky-900/50",
+          "border border-blue-200/60 dark:border-blue-800/40",
+          "hover:border-blue-300 dark:hover:border-blue-700/60",
+          "hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-blue-500/30",
+          "text-blue-700 dark:text-blue-300",
+          pathname === "/" || pathname === "/about" || pathname === "/now" || pathname === "/resume" || pathname === "/friends-contact" || pathname === "/quick-wins-demo"
+            ? "ring-2 ring-blue-500/50 dark:ring-blue-400/50 shadow-md bg-blue-100 dark:bg-blue-900/30"
+            : ""
+        )}>
+          <UserCircleIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+          <span>About</span>
         </NavigationMenuTrigger>
               <NavigationMenuContent>                
-                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[500px] lg:w-[600px] lg:grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">                  
+                  <StrictNavigationMenuLink asChild>
                     <Link
                       href="/"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-blue-900 via-blue-700 to-sky-600 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white group"
                     >
                       <div className="flex flex-col">
-                        <span className="mb-2 mt-4 text-lg font-semibold">
-                          Portfolio Menno
-                        </span>
+                        <div className="flex items-center gap-2 mb-2">
+                          <UserCircleIcon className="w-6 h-6 text-white/90 group-hover:scale-110 transition-transform" />
+                          <span className="text-lg font-bold">Portfolio</span>
+                        </div>
                         <span className="text-sm leading-tight text-white/90">
-                          Learn more about my background and experience
+                          Learn more about my background, experience, and professional journey
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
+                  </StrictNavigationMenuLink>                  
+                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/about" className={cn("block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50")}>
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg">👤</span>
-                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">About Me</span>
+                      <Link 
+                        href="/about" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50 dark:hover:from-blue-900/30 dark:hover:to-sky-900/30",
+                          "hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50",
+                          pathname === "/about" ? "bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 group-hover:bg-blue-200 dark:group-hover:bg-blue-800/40 transition-colors">
+                            <UserCircleIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                           </div>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Professional Expertise and Technical Skills
-                          </span>
-                        </div>
-                      </Link>
-                    </StrictNavigationMenuLink>
-                    <StrictNavigationMenuLink asChild>
-                      <Link href="/now" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg">⏰</span>
-                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Now</span>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">About Me</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Professional expertise and technical skills
+                            </div>
                           </div>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            What I&apos;m Doing Now - Maturity Dashboard
-                          </span>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/resume" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg">📄</span>
-                            <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Resume</span>
+                      <Link 
+                        href="/now" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-sky-50 hover:to-cyan-50 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-sky-500/10 dark:hover:shadow-sky-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50",
+                          pathname === "/now" ? "bg-sky-50 dark:bg-sky-900/20 border-sky-300 dark:border-sky-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors">
+                            <ClockIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
                           </div>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Interactive Resume - My Work Experience
-                          </span>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Now</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Current projects and maturity dashboard
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/friends-contact" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium leading-none">🚀 Friends Contact</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
-                            Elio-inspired cosmic contact form for friends
-                          </span>
+                      <Link 
+                        href="/resume" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 dark:hover:from-cyan-900/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-cyan-500/10 dark:hover:shadow-cyan-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-cyan-200/50 dark:hover:border-cyan-700/50",
+                          pathname === "/resume" ? "bg-cyan-50 dark:bg-cyan-900/20 border-cyan-300 dark:border-cyan-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-800/40 transition-colors">
+                            <DocumentTextIcon className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Resume</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Interactive resume with work experience
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/quick-wins-demo" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">⚡ Quick Wins Demo</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            See frontend improvements in action
-                          </span>
+                      <Link 
+                        href="/friends-contact" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-indigo-200/50 dark:hover:border-indigo-700/50",
+                          pathname === "/friends-contact" ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-300 dark:border-indigo-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/40 transition-colors">
+                            <RocketLaunchIcon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Friends Contact</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Elio-inspired cosmic contact form
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                    <StrictNavigationMenuLink asChild>
+                      <Link 
+                        href="/quick-wins-demo" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-sky-50 hover:to-cyan-50 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-sky-500/10 dark:hover:shadow-sky-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50",
+                          pathname === "/quick-wins-demo" ? "bg-sky-50 dark:bg-sky-900/20 border-sky-300 dark:border-sky-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors">
+                            <SparklesIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Quick Wins Demo</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Frontend improvements showcase
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
@@ -385,62 +498,137 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-        <NavigationMenuTrigger className="bg-gradient-to-r from-cyan-50 to-sky-100 dark:from-sky-900/20 dark:to-blue-800/20 hover:from-sky-100 hover:to-blue-200 dark:hover:from-sky-800/30 dark:hover:to-cyan-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-cyan-300 dark:hover:border-sky-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
-          <span className="text-lg text-blue-900 dark:text-blue-300">📝</span>
-          News
+        <NavigationMenuTrigger className={cn(
+          "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+          "bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/40 dark:to-blue-950/40",
+          "hover:from-indigo-100 hover:to-blue-100 dark:hover:from-indigo-900/50 dark:hover:to-blue-900/50",
+          "border border-indigo-200/60 dark:border-indigo-800/40",
+          "hover:border-indigo-300 dark:hover:border-indigo-700/60",
+          "hover:shadow-lg hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/30",
+          "text-indigo-700 dark:text-indigo-300",
+          pathname === "/projects" || pathname === "/blog" || pathname === "/admin" || pathname.startsWith("/blog/")
+            ? "ring-2 ring-indigo-500/50 dark:ring-indigo-400/50 shadow-md bg-indigo-100 dark:bg-indigo-900/30"
+            : ""
+        )}>
+          <NewspaperIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+          <span>Content</span>
         </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[500px] lg:w-[600px] lg:grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">                  
+                  <StrictNavigationMenuLink asChild>
                     <Link
-                      href="/"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-green-500 via-blue-500 to-purple-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
+                      href="/projects"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-blue-900 via-blue-700 to-indigo-600 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white group"
                     >
-                      <div className="flex flex-col">                        <span className="mb-2 mt-4 text-lg font-semibold">
-                          Blog and Projects
-                        </span>
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2 mb-2">
+                          <FolderIcon className="w-6 h-6 text-white/90 group-hover:scale-110 transition-transform" />
+                          <span className="text-lg font-bold">Projects & Blog</span>
+                        </div>
                         <span className="text-sm leading-tight text-white/90">
-                          Learn more about my posts and projects
+                          Explore my technical projects and blog posts
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
+                  </StrictNavigationMenuLink>                  
+                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/projects" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-green-200/50 dark:hover:border-green-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Projects</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Professional Expertise and Technical Skills
-                          </span>
+                      <Link 
+                        href="/projects" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-indigo-200/50 dark:hover:border-indigo-700/50",
+                          pathname === "/projects" ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-300 dark:border-indigo-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/40 transition-colors">
+                            <FolderIcon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Projects</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Technical projects and portfolio work
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/blog" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Blog</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            What I&apos;m Doing Now - Maturity Dashboard
-                          </span>
+                      <Link 
+                        href="/blog" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50 dark:hover:from-blue-900/30 dark:hover:to-sky-900/30",
+                          "hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50",
+                          pathname === "/blog" || pathname.startsWith("/blog/") ? "bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 group-hover:bg-blue-200 dark:group-hover:bg-blue-800/40 transition-colors">
+                            <BookOpenIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Blog</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Articles, insights, and technical writing
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/admin" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Admin</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Interactive Resume - My Work Experience
-                          </span>
+                      <Link 
+                        href="/admin" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-900/10 hover:to-blue-50 dark:hover:from-blue-950/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-800/50 dark:hover:border-blue-700/50",
+                          pathname.startsWith("/admin") ? "bg-blue-900/10 dark:bg-blue-950/20 border-blue-800 dark:border-blue-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-blue-900/20 dark:bg-blue-950/30 group-hover:bg-blue-900/30 dark:group-hover:bg-blue-900/40 transition-colors">
+                            <AcademicCapIcon className="w-5 h-5 text-blue-800 dark:text-blue-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Admin</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Content management and administration
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="https://iq4fun.gitbook.io/my-portfolio-menno/" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-50 hover:to-indigo-100 dark:hover:from-sky-900/20 dark:hover:to-indigo-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">📚 Docs</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Comprehensive documentation and guides
-                          </span>
+                      <Link 
+                        href="https://iq4fun.gitbook.io/my-portfolio-menno/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-sky-50 hover:to-cyan-50 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-sky-500/10 dark:hover:shadow-sky-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50"
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors">
+                            <DocumentTextIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1 flex items-center gap-1">
+                              Documentation
+                              <span className="text-xs">↗</span>
+                            </div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Comprehensive guides and documentation
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
@@ -448,26 +636,56 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-        <NavigationMenuTrigger className="bg-gradient-to-r from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-800/20 hover:from-indigo-100 hover:to-cyan-200 dark:hover:from-indigo-800/30 dark:hover:to-blue-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
-          <span className="text-lg text-blue-900 dark:text-blue-300">⚠️</span>
-          Risk
+        <NavigationMenuTrigger className={cn(
+          "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+          "bg-gradient-to-r from-blue-900/10 to-blue-50 dark:from-blue-950/40 dark:to-blue-950/40",
+          "hover:from-blue-900/20 hover:to-blue-100 dark:hover:from-blue-900/50 dark:hover:to-blue-900/50",
+          "border border-blue-800/60 dark:border-blue-800/40",
+          "hover:border-blue-700 dark:hover:border-blue-700/60",
+          "hover:shadow-lg hover:shadow-blue-900/20 dark:hover:shadow-blue-900/30",
+          "text-blue-900 dark:text-blue-300",
+          pathname.startsWith("/risk")
+            ? "ring-2 ring-blue-800/50 dark:ring-blue-700/50 shadow-md bg-blue-900/20 dark:bg-blue-900/30"
+            : ""
+        )}>
+          <ShieldExclamationIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+          <span>Risk</span>
         </NavigationMenuTrigger>
               <NavigationMenuContent>                
-                <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Risk landing page link */}
+                <div className="grid w-[700px] gap-3 p-6 grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">                  
+                  {/* Risk landing page link */}
                   <StrictNavigationMenuLink asChild>
-                      <Link href="/risk" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
-                      <div className="flex flex-col">
-                        <span className="text-base font-bold text-white">Risk Dashboards Home</span>
-                        <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all risk dashboards</span>
+                    <Link 
+                      href="/risk" 
+                      className="col-span-2 group block select-none space-y-1 rounded-xl p-5 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-900 via-blue-700 to-indigo-600 hover:from-blue-950 hover:via-blue-800 hover:to-indigo-700 mb-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-white/20 group-hover:bg-white/30 transition-colors">
+                          <ShieldExclamationIcon className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-base font-bold text-white">Risk Dashboards Home</span>
+                          <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all risk dashboards</span>
+                        </div>
                       </div>
                     </Link>
                   </StrictNavigationMenuLink>
-                  {/* Risk components */}                  {components.map((component) => (
+                  {/* Risk components */}                  
+                  {components.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
+                      <Link 
+                        href={component.href} 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-900/10 hover:to-blue-50 dark:hover:from-blue-900/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-blue-900/10 dark:hover:shadow-blue-900/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-800/50 dark:hover:border-blue-700/50",
+                          pathname === component.href ? "bg-blue-900/10 dark:bg-blue-900/20 border-blue-800 dark:border-blue-700" : ""
+                        )}
+                      >
                         <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">{component.title}</span>
+                          <span className="line-clamp-2 text-xs leading-snug text-gray-600 dark:text-gray-400">
                             {component.description}
                           </span>
                         </div>
@@ -477,25 +695,55 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-        <NavigationMenuTrigger className="bg-gradient-to-r from-blue-50 to-cyan-100 dark:from-cyan-900/20 dark:to-blue-800/20 hover:from-cyan-100 hover:to-sky-200 dark:hover:from-cyan-800/30 dark:hover:to-blue-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-cyan-300 dark:hover:border-cyan-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
-          <span className="text-lg text-blue-900 dark:text-blue-300">📊</span>
-          Economics
+        <NavigationMenuTrigger className={cn(
+          "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+          "bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/40 dark:to-cyan-950/40",
+          "hover:from-blue-100 hover:to-cyan-100 dark:hover:from-blue-900/50 dark:hover:to-cyan-900/50",
+          "border border-blue-200/60 dark:border-blue-800/40",
+          "hover:border-blue-300 dark:hover:border-blue-700/60",
+          "hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-blue-500/30",
+          "text-blue-700 dark:text-blue-300",
+          pathname.startsWith("/dashboards")
+            ? "ring-2 ring-blue-500/50 dark:ring-blue-400/50 shadow-md bg-blue-100 dark:bg-blue-900/30"
+            : ""
+        )}>
+          <ChartBarIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+          <span>Economics</span>
         </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[650px] gap-3 p-6 grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  {/* Economics landing page link */}
+                <div className="grid w-[700px] gap-3 p-6 grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">                  
+                  {/* Economics landing page link */}
                   <StrictNavigationMenuLink asChild>
-                    <Link href="/dashboards" className="col-span-2 block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 mb-3 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white">
-                      <div className="flex flex-col">
-                        <span className="text-base font-bold text-white">Economics Dashboards Home</span>
-                        <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all economics dashboards</span>
+                    <Link 
+                      href="/dashboards" 
+                      className="col-span-2 group block select-none space-y-1 rounded-xl p-5 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-blue-700 via-cyan-600 to-sky-500 hover:from-blue-800 hover:via-cyan-700 hover:to-sky-600 mb-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-white/20 group-hover:bg-white/30 transition-colors">
+                          <ChartBarIcon className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-base font-bold text-white">Economics Dashboards Home</span>
+                          <span className="text-xs leading-tight text-white/90 mt-1">Overview & links to all economics dashboards</span>
+                        </div>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>                  {componentseconomics.map((component) => (
+                  </StrictNavigationMenuLink>                  
+                  {componentseconomics.map((component) => (
                     <StrictNavigationMenuLink key={component.href} asChild>
-                      <Link href={component.href} className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
+                      <Link 
+                        href={component.href} 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 dark:hover:from-blue-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50",
+                          pathname === component.href ? "bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-700" : ""
+                        )}
+                      >
                         <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">{component.title}</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">{component.title}</span>
+                          <span className="line-clamp-2 text-xs leading-snug text-gray-600 dark:text-gray-400">
                             {component.description}
                           </span>
                         </div>
@@ -505,73 +753,157 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>            <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-gradient-to-r from-indigo-50 to-cyan-100 dark:from-indigo-900/20 dark:to-cyan-800/20 hover:from-indigo-100 hover:to-sky-200 dark:hover:from-indigo-800/30 dark:hover:to-cyan-700/30 transition-all duration-300 rounded-xl border border-transparent hover:border-indigo-300 dark:hover:border-indigo-600/50 shadow-sm hover:shadow-md flex items-center gap-2 px-4 py-2 h-10 min-w-[80px] justify-center">
-                <span className="text-lg text-blue-900 dark:text-blue-300">🤖</span>
-                AI Chat
+              <NavigationMenuTrigger className={cn(
+                "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+                "bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/40 dark:to-blue-950/40",
+                "hover:from-indigo-100 hover:to-blue-100 dark:hover:from-indigo-900/50 dark:hover:to-blue-900/50",
+                "border border-indigo-200/60 dark:border-indigo-800/40",
+                "hover:border-indigo-300 dark:hover:border-indigo-700/60",
+                "hover:shadow-lg hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/30",
+                "text-indigo-700 dark:text-indigo-300",
+                pathname.startsWith("/chat") || pathname === "/firebase-ai-test"
+                  ? "ring-2 ring-indigo-500/50 dark:ring-indigo-400/50 shadow-md bg-indigo-100 dark:bg-indigo-900/30"
+                  : ""
+              )}>
+                <ChatBubbleLeftRightIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                <span>AI Chat</span>
               </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid gap-3 p-6 md:w-[450px] lg:w-[550px] lg:grid-cols-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/20 dark:border-gray-700/20">                  <StrictNavigationMenuLink asChild>
+                <div className="grid gap-3 p-6 md:w-[500px] lg:w-[600px] lg:grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">                  
+                  <StrictNavigationMenuLink asChild>
                     <Link
                       href="/chat"
-                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-violet-500 via-purple-500 to-indigo-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-xl bg-gradient-to-br from-indigo-700 via-blue-600 to-sky-500 p-6 no-underline outline-none focus:shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-white group"
                     >
                       <div className="flex flex-col">
-                        <span className="mb-2 mt-4 text-lg font-semibold">
-                          AI Chat Hub
-                        </span>
+                        <div className="flex items-center gap-2 mb-2">
+                          <CpuChipIcon className="w-6 h-6 text-white/90 group-hover:scale-110 transition-transform" />
+                          <span className="text-lg font-bold">AI Chat Hub</span>
+                        </div>
                         <span className="text-sm leading-tight text-white/90">
                           Explore AI-powered chat and testing interfaces
                         </span>
                       </div>
                     </Link>
-                  </StrictNavigationMenuLink>                  <div className="grid gap-2">
+                  </StrictNavigationMenuLink>                  
+                  <div className="grid gap-2">
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Chat Interface</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Main AI chat interface and conversation tools
-                          </span>
+                      <Link 
+                        href="/chat" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-indigo-50 hover:to-blue-50 dark:hover:from-indigo-900/30 dark:hover:to-blue-900/30",
+                          "hover:shadow-lg hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-indigo-200/50 dark:hover:border-indigo-700/50",
+                          pathname === "/chat" ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-300 dark:border-indigo-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/40 transition-colors">
+                            <ChatBubbleLeftRightIcon className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Chat Interface</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Main AI chat interface and conversation tools
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/AI-Logic" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">AI Logic</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            AI reasoning and logic processing interface
-                          </span>
+                      <Link 
+                        href="/chat/AI-Logic" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50 dark:hover:from-blue-900/30 dark:hover:to-sky-900/30",
+                          "hover:shadow-lg hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50",
+                          pathname === "/chat/AI-Logic" ? "bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 group-hover:bg-blue-200 dark:group-hover:bg-blue-800/40 transition-colors">
+                            <CpuChipIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">AI Logic</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              AI reasoning and logic processing interface
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/genkit" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-blue-200/50 dark:hover:border-blue-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">GenKit</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Firebase GenKit AI development and testing
-                          </span>
+                      <Link 
+                        href="/chat/genkit" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-sky-50 hover:to-cyan-50 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-sky-500/10 dark:hover:shadow-sky-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50",
+                          pathname === "/chat/genkit" ? "bg-sky-50 dark:bg-sky-900/20 border-sky-300 dark:border-sky-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors">
+                            <FireIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">GenKit</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Firebase GenKit AI development and testing
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/firebase-ai-test" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-100 dark:hover:from-cyan-900/20 dark:hover:to-sky-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-cyan-200/50 dark:hover:border-cyan-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Firebase AI Test</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Firebase integration testing for AI services
-                          </span>
+                      <Link 
+                        href="/firebase-ai-test" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-50 dark:hover:from-cyan-900/30 dark:hover:to-sky-900/30",
+                          "hover:shadow-lg hover:shadow-cyan-500/10 dark:hover:shadow-cyan-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-cyan-200/50 dark:hover:border-cyan-700/50",
+                          pathname === "/firebase-ai-test" ? "bg-cyan-50 dark:bg-cyan-900/20 border-cyan-300 dark:border-cyan-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-800/40 transition-colors">
+                            <SparklesIcon className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Firebase AI Test</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Firebase integration testing for AI services
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
                     <StrictNavigationMenuLink asChild>
-                      <Link href="/chat/vertex-ai-chat" className="block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300 hover:bg-gradient-to-r hover:from-sky-50 hover:to-indigo-100 dark:hover:from-sky-900/20 dark:hover:to-indigo-800/20 hover:shadow-md transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100">Vertex AI Chat</span>
-                          <span className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-gray-400 mt-1">
-                            Chat with Vertex AI using portfolio data
-                          </span>
+                      <Link 
+                        href="/chat/vertex-ai-chat" 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-sky-50 hover:to-cyan-50 dark:hover:from-sky-900/30 dark:hover:to-cyan-900/30",
+                          "hover:shadow-lg hover:shadow-sky-500/10 dark:hover:shadow-sky-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-sky-200/50 dark:hover:border-sky-700/50",
+                          pathname === "/chat/vertex-ai-chat" ? "bg-sky-50 dark:bg-sky-900/20 border-sky-300 dark:border-sky-700" : ""
+                        )}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="p-2 rounded-lg bg-sky-100 dark:bg-sky-900/30 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors">
+                            <CpuChipIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">Vertex AI Chat</div>
+                            <div className="text-xs leading-snug text-gray-600 dark:text-gray-400">
+                              Chat with Vertex AI using portfolio data
+                            </div>
+                          </div>
                         </div>
                       </Link>
                     </StrictNavigationMenuLink>
@@ -579,8 +911,9 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                 </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
-          </NavigationMenuList>        </NavigationMenu>        
-        <div className="absolute right-6 top-1/2 -translate-y-1/2">
+          </NavigationMenuList>        
+        </NavigationMenu>        
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block">
           <DarkModeToggle />
         </div>
       </div>

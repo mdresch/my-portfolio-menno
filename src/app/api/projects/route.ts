@@ -17,7 +17,6 @@ export async function GET(request: NextRequest) {
 
     const payload = projects.map((p) => ({
       id: p.id,
-      name: p.title || p.slug,
       title: p.title,
       description: p.description || "",
       technologies: p.technologies || [],
@@ -35,5 +34,32 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Error loading projects from database:", error);
     return NextResponse.json({ error: "Failed to load projects" }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    
+    const project = await prisma.project.create({
+      data: {
+        title: body.title,
+        description: body.description || null,
+        technologies: body.technologies || [],
+        link: body.link || null,
+        datePublished: body.datePublished ? new Date(body.datePublished) : null,
+        category: body.category || null,
+        screenshots: body.screenshots || [],
+        outcomes: body.outcomes || [],
+        challenges: body.challenges || [],
+        caseStudy: body.caseStudy || null,
+        slug: body.slug || body.title.toLowerCase().replace(/\s+/g, "-"),
+      },
+    });
+
+    return NextResponse.json(project);
+  } catch (error) {
+    console.error("Error creating project:", error);
+    return NextResponse.json({ error: "Failed to create project" }, { status: 500 });
   }
 }

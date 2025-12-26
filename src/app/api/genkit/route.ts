@@ -8,8 +8,14 @@ enableFirebaseTelemetry();
 
 
 
+// Initialize Genkit with GoogleAI plugin
+// The plugin automatically reads GOOGLE_GENAI_API_KEY from environment variables
 const ai = genkit({
-  plugins: [googleAI()],
+  plugins: [
+    googleAI({
+      apiKey: process.env.GOOGLE_GENAI_API_KEY,
+    }),
+  ],
   model: gemini15Flash,
 });
 

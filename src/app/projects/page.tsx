@@ -1,25 +1,38 @@
-import { ProjectService } from "../../lib/api-services";
-import type { ApiProject } from "../../types/api";
+import { prisma } from "../../lib/prisma";
 import Image from "next/image";
 
-// Helper to normalize API data for server rendering
-function normalizeProject(p: ApiProject) {
+// Helper to normalize Prisma data for server rendering
+function normalizeProject(p: any) {
   return {
     id: p.id,
     title: p.title ?? "",
     description: p.description ?? "",
     technologies: p.technologies ?? [],
-    image: p.imageUrl ?? "/images/default-project-image.jpg",
-    gitHubUrl: p.gitHubUrl ?? "",
-    liveUrl: p.liveUrl ?? "",
-    slug: p.slug ?? (p.title ? p.title.toLowerCase().replace(/\s+/g, "-") : String(p.id)),
+    image: "/images/default-project-image.jpg", // Default image since not in schema
+    gitHubUrl: "", // Not in Prisma schema
+    liveUrl: "", // Not in Prisma schema
+    slug: p.slug,
   };
 }
 
 export default async function ProjectsPage() {
   try {
-    const apiProjects = await ProjectService.getAll();
-    const projects = apiProjects.map(normalizeProject);
+    // Use Prisma directly in server component (works during build)
+    // Handle missing DATABASE_URL gracefully during build
+    let dbProjects = [];
+    if (process.env.DATABASE_URL) {
+      try {
+        dbProjects = await prisma.project.findMany({
+          orderBy: {
+            datePublished: "desc",
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching projects from database:", error);
+        // Continue with empty array if database is unavailable
+      }
+    }
+    const projects = dbProjects.map(normalizeProject);
 
     return (
       <main className="container mx-auto px-4 py-8">

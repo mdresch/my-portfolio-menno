@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import ModelClient, { isUnexpected } from '@azure-rest/ai-inference';
-import { AzureKeyCredential } from '@azure/core-auth';
 
 export async function POST(request) {
   try {
@@ -23,36 +21,10 @@ export async function POST(request) {
       return NextResponse.json({ message: fallbackResponse });
     }
     
-    const endpoint = 'https://models.github.ai/inference';
-    const model = 'openai/gpt-4.1';
-
-    // Initialize Azure REST AI-inference client
-    const client = ModelClient(endpoint, new AzureKeyCredential(token));
-    
-    // Add system message if not present
-    const systemMessage = { role: 'system', content: 'You are a helpful assistant for a portfolio website. You can help answer questions about the portfolio owner, their projects, skills, and general inquiries.' };
-    const formattedMessages = messages[0]?.role === 'system' ? messages : [systemMessage, ...messages];
-    
-    const response = await client.path('/chat/completions').post({
-      body: {
-        model,
-        messages: formattedMessages,
-        temperature: 1.0,
-        top_p: 1.0,
-        max_tokens: 1000
-      }
-    });
-
-    if (isUnexpected(response)) {
-      console.error('Inference API error:', response.body.error);
-      // Return fallback response instead of error
-      const userMessage = messages[messages.length - 1]?.content || '';
-      const fallbackResponse = generateFallbackResponse(userMessage);
-      return NextResponse.json({ message: fallbackResponse });
-    }
-    
-    const message = response.body.choices[0].message.content;
-    return NextResponse.json({ message });
+    // Azure AI service disabled - using fallback response
+    const userMessage = messages[messages.length - 1]?.content || '';
+    const fallbackResponse = generateFallbackResponse(userMessage);
+    return NextResponse.json({ message: fallbackResponse });
   } catch (error) {
     console.error('API Error:', error);
     // Return fallback response instead of error

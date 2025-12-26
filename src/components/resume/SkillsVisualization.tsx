@@ -49,7 +49,7 @@ export default function SkillsVisualization({ skills }: SkillsVisualizationProps
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 relative z-10">
       {/* Modern Category Filter */}
       <div className="mb-8 print:hidden">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Filter by Category</h3>
@@ -77,7 +77,7 @@ export default function SkillsVisualization({ skills }: SkillsVisualizationProps
       </div>
       
       {/* Modern Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
         {filteredSkills.map((skill, index) => (
           <div
             key={index}
@@ -134,7 +134,7 @@ export default function SkillsVisualization({ skills }: SkillsVisualizationProps
       </div>
 
       {/* Skills Summary */}
-      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border border-blue-100 dark:border-blue-800">
+      <div className="mt-8 mb-4 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl border border-blue-100 dark:border-blue-800">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           <div>
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">

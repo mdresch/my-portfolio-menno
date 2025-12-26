@@ -11,15 +11,15 @@ interface ValidationMetric {
 const validationMetrics: ValidationMetric[] = [
   {
     title: "Relevant Experience",
-    score: 95,
-    description: "25+ years spanning HCM, Finance, and Technology",
+    score: 96,
+    description: "25+ years spanning HCM, Finance, and Technology with enterprise-grade projects",
     icon: "💼",
     color: "from-green-500 to-emerald-600"
   },
   {
     title: "Skills & Competencies",
-    score: 92,
-    description: "Full-stack development, Azure, .NET, React expertise",
+    score: 96,
+    description: "150+ technologies: Full-stack, AI/ML, Enterprise integrations, Modern frameworks",
     icon: "⚡",
     color: "from-blue-500 to-cyan-600"
   },
@@ -32,22 +32,22 @@ const validationMetrics: ValidationMetric[] = [
   },
   {
     title: "Achievements & Results",
-    score: 90,
-    description: "Measurable impact in HR systems and process optimization",
+    score: 93,
+    description: "Enterprise AI systems, entity extraction, multi-provider orchestration, document processing",
     icon: "🏆",
     color: "from-orange-500 to-red-600"
   },
   {
     title: "Career Progression",
-    score: 93,
-    description: "Consistent growth from Developer to HCM Specialist",
+    score: 94,
+    description: "Consistent growth from Developer to HCM Specialist with advanced technical expertise",
     icon: "📈",
     color: "from-teal-500 to-green-600"
   },
   {
     title: "Job Alignment",
-    score: 89,
-    description: "Strong alignment with technical and business requirements",
+    score: 93,
+    description: "Excellent alignment with modern tech stack and enterprise requirements",
     icon: "🎯",
     color: "from-pink-500 to-rose-600"
   },
@@ -60,8 +60,8 @@ const validationMetrics: ValidationMetric[] = [
   },
   {
     title: "Additional Contributions",
-    score: 87,
-    description: "Industry engagement and continuous learning initiatives",
+    score: 91,
+    description: "Portfolio projects, enterprise applications, continuous learning and innovation",
     icon: "🌟",
     color: "from-yellow-500 to-orange-600"
   }
@@ -71,7 +71,7 @@ const overallScore = Math.round(validationMetrics.reduce((sum, metric) => sum + 
 
 export default function ResumeValidationScores() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 relative z-10">
       {/* Header */}
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">
@@ -124,7 +124,7 @@ export default function ResumeValidationScores() {
             </div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 font-medium">
-            Exceptional candidate with strong technical expertise and proven experience
+            Exceptional candidate with enterprise-grade technical expertise, AI/ML integration, and proven track record
           </p>
         </div>
       </div>

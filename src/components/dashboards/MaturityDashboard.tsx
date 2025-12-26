@@ -37,15 +37,15 @@ export const MaturityDashboard = () => {
   }, []);
 
   return (
-    <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 className="text-2xl font-semibold mb-4">Maturity Dashboard</h2>
-      <p className="text-gray-600 mb-6 text-sm">
-        Self-assess your portfolio’s evolution across key areas. Updated quarterly.
+    <section className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Maturity Dashboard</h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm">
+        Self-assess your portfolio's evolution across key areas. Updated quarterly.
       </p>
       {loading ? (
-        <div className="text-gray-500 text-sm">Loading...</div>
+        <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
       ) : error ? (
-        <div className="text-red-500 text-sm">{error}</div>
+        <div className="text-red-500 dark:text-red-400 text-sm">{error}</div>
       ) : (
         <AnimatePresence>
           <motion.div
@@ -70,12 +70,12 @@ export const MaturityDashboard = () => {
           </motion.div>
         </AnimatePresence>
       )}
-      <div className="mt-4 text-xs text-gray-500">
+      <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
         Based on Azure Well-Architected Framework, web best practices, and personal growth milestones.
       </div>
       {/* Decorative SVG wave for visual distinction */}
       <svg viewBox="0 0 500 30" className="w-full mt-8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 20 Q125 40 250 20 T500 20 V30 H0Z" fill="#f3f4f6" />
+        <path d="M0 20 Q125 40 250 20 T500 20 V30 H0Z" className="fill-gray-100 dark:fill-gray-700" />
       </svg>
     </section>
   );

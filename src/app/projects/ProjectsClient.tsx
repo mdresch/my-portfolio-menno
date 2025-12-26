@@ -48,15 +48,15 @@ function normalizeProject(p: ApiProject): Project {
     title: p.title ?? "",
     description: p.description ?? "",
     technologies: p.technologies ?? [],
-    link: "", // Not present in API, fallback to empty string
-    datePublished: "", // Not present in API, fallback to empty string
-    category: "", // Not present in API, fallback to empty string
-    image: p.imageUrl ?? "/default-project-image.png",
+    link: p.link ?? "",
+    datePublished: p.datePublished ?? "",
+    category: p.category ?? "",
+    image: "/default-project-image.png", // Default image since not in schema
     caseStudy: p.caseStudy ?? "",
     screenshots: p.screenshots ?? [],
     outcomes: p.outcomes ?? [],
-    gitHubUrl: p.gitHubUrl ?? "",
-    liveUrl: p.liveUrl ?? "",
+    gitHubUrl: "", // Not in Prisma schema, fallback to empty
+    liveUrl: "", // Not in Prisma schema, fallback to empty
     challenges: p.challenges ?? [],
   };
 }
@@ -80,7 +80,7 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
         setLoading(false);
       })
       .catch(() => {
-        setError("Failed to load projects from Azure SQL.");
+        setError("Failed to load projects from database.");
         setLoading(false);
       });
   }, []);
@@ -108,22 +108,19 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
         // TODO: Implement update logic if needed
         setProjectList(prev => prev.map((p, i) => (i === editIndex ? project : p)));
       } else {
-        // Map frontend Project to backend API fields
+        // Map frontend Project to Prisma API fields
         const apiProject = {
           title: project.title,
           description: project.description,
           technologies: project.technologies ?? [],
-          imageUrl: project.image || "",
-          gitHubUrl: project.gitHubUrl || "",
-          liveUrl: project.liveUrl || "",
-          created: new Date().toISOString(),
           link: project.link || "",
-          datePublished: project.datePublished || "",
+          datePublished: project.datePublished || new Date().toISOString(),
           category: project.category || "",
           caseStudy: project.caseStudy || "",
           screenshots: project.screenshots ?? [],
           outcomes: project.outcomes ?? [],
           challenges: project.challenges ?? [],
+          slug: project.title.toLowerCase().replace(/\s+/g, "-"),
         };
         await ProjectService.create(apiProject);
         // Refresh from API

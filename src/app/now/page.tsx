@@ -88,45 +88,45 @@ export default function NowPage() {
               </div>
             </div>
             
-            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl p-6 mb-6">
-              <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
-                <strong className="text-green-700 dark:text-green-300">Overall Impression:</strong> Clean, modern, and professional portfolio. Clear structure, fast load times, and effective presentation as a Full Stack Developer & AI Enthusiast. Dark theme is well-executed.
+            <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/30 dark:to-blue-900/30 rounded-xl p-6 mb-6">
+              <p className="text-gray-700 dark:text-gray-100 leading-relaxed">
+                <strong className="text-green-700 dark:text-green-200">Overall Impression:</strong> Clean, modern, and professional portfolio. Clear structure, fast load times, and effective presentation as a Full Stack Developer & AI Enthusiast. Dark theme is well-executed.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">Design & Aesthetics</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Design & Aesthetics</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">Content Quality</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Content Quality</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">User Experience</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">User Experience</span>
                   <span className="text-green-600 dark:text-green-400 font-bold">5/5</span>
                 </div>
               </div>
               <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">Technical Implementation</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Technical Implementation</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">4.5/5</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">Professional Presentation</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Professional Presentation</span>
                   <span className="text-green-600 dark:text-green-400 font-bold">5/5</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                  <span className="font-medium">SEO & Performance</span>
+                <div className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/70 rounded-lg">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">SEO & Performance</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">4/5</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-6">
-              <p className="text-green-700 dark:text-green-300 font-medium">
+            <div className="bg-green-50 dark:bg-green-900/30 rounded-xl p-6">
+              <p className="text-green-700 dark:text-green-200 font-medium">
                 <strong>Conclusion:</strong> Your portfolio is excellent—technically sound, visually appealing, and clearly communicates your skills. Adding depth to project showcases will elevate it further. Well done!
               </p>
             </div>
@@ -139,25 +139,25 @@ export default function NowPage() {
             {/* Learning Section */}
             <GlassCard 
               hoverEffect="lift"
-              borderColor="border-purple-200/50 dark:border-gray-700/50"
+              borderColor="border-indigo-200/50 dark:border-gray-700/50"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <AcademicCapIcon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
+                  <AcademicCapIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Learning</h2>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
                   <span className="text-gray-700 dark:text-gray-300">Deepening expertise in Azure cloud architecture and best practices</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
                   <span className="text-gray-700 dark:text-gray-300">Exploring advanced data visualization with D3.js and React</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
                   <span className="text-gray-700 dark:text-gray-300">Experimenting with AI/ML integrations in web apps</span>
                 </li>
               </ul>

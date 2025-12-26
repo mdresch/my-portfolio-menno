@@ -128,14 +128,14 @@ function getAverageScore(details: { score: number }[]): string {
 }
 
 export const MaturityAssessmentDashboard = () => (
-  <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-    <h2 className="text-2xl font-semibold mb-4">Portfolio Maturity Assessment</h2>
+  <section className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+    <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Portfolio Maturity Assessment</h2>
     <div className="space-y-8">
       {assessment.map((item) => (
         <div key={item.category} className="mb-2">
           <div className="flex justify-between items-center mb-1">
-            <span className="font-medium">{item.category}</span>
-            <span className="text-xs font-mono text-blue-700">
+            <span className="font-medium text-gray-900 dark:text-gray-100">{item.category}</span>
+            <span className="text-xs font-mono text-blue-700 dark:text-blue-400">
 							Average: {getAverageScore(item.details)}/5
             </span>
           </div>
@@ -143,23 +143,23 @@ export const MaturityAssessmentDashboard = () => (
             {item.details.map((detail) => (
               <div
                 key={detail.label}
-                className="bg-gray-50 rounded p-2 flex flex-col border border-gray-100"
+                className="bg-gray-50 dark:bg-gray-700/50 rounded p-2 flex flex-col border border-gray-100 dark:border-gray-600"
               >
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-xs font-semibold text-gray-700">{detail.label}</span>
-                  <span className="text-xs font-mono text-blue-700">{detail.score}/5</span>
+                  <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">{detail.label}</span>
+                  <span className="text-xs font-mono text-blue-700 dark:text-blue-400">{detail.score}/5</span>
                 </div>
-                <div className="text-xs text-gray-500">{detail.note}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-300">{detail.note}</div>
               </div>
             ))}
           </div>
-          <div className="text-xs text-blue-700 mb-2">
+          <div className="text-xs text-blue-700 dark:text-blue-400 mb-2">
 						Recommendation: {item.recommendation}
           </div>
         </div>
       ))}
     </div>
-    <div className="mt-6 text-xs text-gray-500">
+    <div className="mt-6 text-xs text-gray-500 dark:text-gray-400">
 			By implementing these recommendations, Menno Drescher's portfolio site can achieve a higher level
 			of excellence and stand out as a benchmark in portfolio design.
     </div>

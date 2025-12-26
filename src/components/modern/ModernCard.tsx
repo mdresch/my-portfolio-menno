@@ -25,7 +25,7 @@ export const ModernCard: React.FC<ModernCardProps> = ({
       case "glass":
         return "bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-white/30 dark:border-gray-700/30";
       case "gradient":
-        return "bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-gray-900/90 border border-blue-200/50 dark:border-gray-700/50";
+        return "bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800 dark:to-gray-900 border border-blue-200/50 dark:border-gray-700/50";
       case "elevated":
         return "bg-white dark:bg-gray-800 shadow-2xl border border-gray-100 dark:border-gray-700";
       default:

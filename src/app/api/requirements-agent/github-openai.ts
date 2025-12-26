@@ -1,5 +1,4 @@
-import ModelClient, { isUnexpected } from "@azure-rest/ai-inference";
-import { AzureKeyCredential } from "@azure/core-auth";
+// Azure dependencies removed - using mock implementation
 
 // This is a utility to call the GitHub OpenAI model (mocked for now)
 // In the future, replace this with a real call to the GitHub OpenAI API when available
@@ -36,25 +35,10 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     }
     // If instructions are provided, use them as the prompt (for business problem statement)
     const prompt = options.instructions;
-    const client = ModelClient(endpoint, new AzureKeyCredential(token));
-    const response = await client.path("/chat/completions").post({
-      body: {
-        messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: prompt }
-        ],
-        temperature: 0.7,
-        top_p: 1.0,
-        model: model
-      }
-    });
-    if (isUnexpected(response)) {
-      throw response.body.error;
-    }
-    const rawContent = response.body.choices[0].message.content ?? "";
-    console.log("[Requirements Agent] Raw LLM output:", sanitizeLogContent(rawContent));
-    // Return as string (plain business problem statement)
-    return rawContent;
+    // Azure AI service disabled - returning mock response
+    const mockResponse = "MOCK: This is a mock business problem statement generated from the provided instructions.";
+    console.log("[Requirements Agent] Mock LLM output:", sanitizeLogContent(mockResponse));
+    return mockResponse;
   }
 
   if (!token) {
@@ -105,29 +89,14 @@ export async function getRequirementsFromGithubAI(businessProblem: string, optio
     prompt = `You are a requirements agent. Analyze the following business problem, technology stack, and project context, then generate a list of user roles. For each role, provide a bulleted list of their needs and the most probable processes that should be maintained based on the role's purpose. Respond ONLY in valid minified JSON as an array of {role:string,needs:[string],processes:[string]}. Do not include markdown, comments, or any other text.\nBusiness problem: ${businessProblem}${techStackText}${contextBundle}`;
   }
 
-  const client = ModelClient(
-    endpoint,
-    new AzureKeyCredential(token),
-  );
-
-  const response = await client.path("/chat/completions").post({
-    body: {
-      messages: [
-        { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt }
-      ],
-      temperature: 0.7,
-      top_p: 1.0,
-      model: model
-    }
-  });
-
-  if (isUnexpected(response)) {
-    throw response.body.error;
-  }
-
-  // Debug: Output raw LLM response to console
-  const rawContent = response.body.choices[0].message.content ?? "";
+  // Azure AI service disabled - using mock response
+  const rawContent = options?.requestStrategicSections 
+    ? JSON.stringify(MOCK_STRATEGIC_SECTIONS)
+    : JSON.stringify([{
+        role: "MOCK Project Stakeholder",
+        needs: ["Clear project goals", "Regular status updates", "Quality deliverables"],
+        processes: ["Project planning", "Progress tracking", "Quality assurance"]
+      }]);
   console.log("[Requirements Agent] Raw LLM output:", sanitizeLogContent(rawContent));
 
   // Try to parse the model's response as JSON
