@@ -18,11 +18,20 @@ function normalizeProject(p: any) {
 export default async function ProjectsPage() {
   try {
     // Use Prisma directly in server component (works during build)
-    const dbProjects = await prisma.project.findMany({
-      orderBy: {
-        datePublished: "desc",
-      },
-    });
+    // Handle missing DATABASE_URL gracefully during build
+    let dbProjects = [];
+    if (process.env.DATABASE_URL) {
+      try {
+        dbProjects = await prisma.project.findMany({
+          orderBy: {
+            datePublished: "desc",
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching projects from database:", error);
+        // Continue with empty array if database is unavailable
+      }
+    }
     const projects = dbProjects.map(normalizeProject);
 
     return (
