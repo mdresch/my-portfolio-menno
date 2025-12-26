@@ -109,13 +109,15 @@ api/.env*
 
 .fake
 
-# Firebase Admin SDK service account key
-my-portfolio-menno-firebase-adminsdk-fbsvc-be51664a5d.json
+# Firebase Admin SDK service account keys (generic pattern)
+*-firebase-adminsdk-*.json
+firebase-adminsdk-*.json
 
-# Google Cloud service account keys (wildcard pattern to catch all)
-my-portfolio-menno-*.json
-my-portfolio-menno-1c10fc787618.json
-service-account-key-single-line.json
+# Google Cloud service account keys (generic patterns)
+*-service-account*.json
+service-account*.json
+*-credentials*.json
+*credentials*.json
 .env.local
 
 docs/requirements/gathered-project-context.txt
