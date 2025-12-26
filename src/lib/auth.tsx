@@ -102,19 +102,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signUp = async ({ username, email, password }: { username: string; email: string; password: string }) => {
     try {
       if (!isFirebaseInitialized()) {
-        throw new Error("Firebase is not properly configured");
+        throw new Error("Firebase is not properly configured. Please check your environment variables.");
       }
 
       const { auth } = await import("./firebase");
+      if (!auth) {
+        throw new Error("Firebase authentication is not available. Please check your configuration.");
+      }
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, {
         displayName: username
       });
     } catch (error: unknown) {
+      // Log the full error for debugging
+      console.error("Sign up error details:", error);
+      
+      // Handle Firebase errors with codes
       if (typeof error === "object" && error !== null && "code" in error) {
-        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
+        const errorCode = (error as { code: string }).code;
+        const message = getFirebaseErrorMessage(errorCode);
+        console.error("Firebase error code:", errorCode, "Message:", message);
+        throw new Error(message);
       }
-      throw new Error("An error occurred. Please try again.");
+      
+      // Handle Error objects
+      if (error instanceof Error) {
+        console.error("Error object:", error.message);
+        throw error;
+      }
+      
+      // Fallback for unknown errors - provide more context
+      const errorString = String(error);
+      console.error("Unknown error type:", typeof error, "Value:", errorString);
+      throw new Error(`Sign up failed: ${errorString || "Unknown error"}. Please check your Firebase configuration or try again.`);
     }
   };
 
@@ -181,18 +202,24 @@ function getFirebaseErrorMessage(errorCode: string): string {
   case "auth/wrong-password":
     return "Incorrect password.";
   case "auth/email-already-in-use":
-    return "An account with this email already exists.";
+    return "An account with this email already exists. Please sign in instead.";
   case "auth/weak-password":
     return "Password should be at least 6 characters.";
   case "auth/invalid-email":
-    return "Invalid email address.";
+    return "Invalid email address. Please check your email format.";
   case "auth/too-many-requests":
     return "Too many failed attempts. Please try again later.";
   case "auth/user-disabled":
     return "This account has been disabled.";
   case "auth/invalid-credential":
     return "Invalid email or password.";
+  case "auth/network-request-failed":
+    return "Network error. Please check your internet connection and try again.";
+  case "auth/operation-not-allowed":
+    return "Email/password sign-up is not enabled. Please contact support.";
   default:
-    return "An error occurred. Please try again.";
+    // Log the unknown error code for debugging
+    console.error("Unknown Firebase error code:", errorCode);
+    return `An error occurred (${errorCode}). Please try again or contact support if the problem persists.`;
   }
 }

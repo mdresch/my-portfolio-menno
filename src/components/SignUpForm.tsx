@@ -72,6 +72,16 @@ export default function SignUpForm() {
       {error && (
         <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-md text-sm">
           {error}
+          {error.includes("Firebase") && (
+            <div className="mt-2 text-xs">
+              <p className="font-semibold mb-1">To enable sign-up, configure Firebase:</p>
+              <ol className="list-decimal list-inside space-y-1 text-xs">
+                <li>Create a Firebase project at <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer" className="underline">Firebase Console</a></li>
+                <li>Enable Authentication (Email/Password)</li>
+                <li>Add Firebase config to <code className="bg-gray-200 dark:bg-gray-700 px-1 rounded">.env.local</code></li>
+              </ol>
+            </div>
+          )}
         </div>
       )}
       
@@ -122,6 +132,7 @@ export default function SignUpForm() {
             onChange={(e) => setPassword(e.target.value)}
             required
             minLength={6}
+            autoComplete="new-password"
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white"
           />
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Must be at least 6 characters long</p>
@@ -138,6 +149,7 @@ export default function SignUpForm() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             minLength={6}
+            autoComplete="new-password"
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:text-white"
           />
         </div>

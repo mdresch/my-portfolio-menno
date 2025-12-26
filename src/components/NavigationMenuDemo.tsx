@@ -37,6 +37,7 @@ import {
   FireIcon,
   Bars3Icon,
   XMarkIcon,
+  BriefcaseIcon,
 } from "@heroicons/react/24/outline";
 
 // Define interfaces for component props
@@ -121,6 +122,34 @@ const components: ComponentItem[] = [
     href: "/risk/cost-optimization",
     description:
       "Cost Optimization in a Volatile Economy",
+  }
+];
+
+const jobSeekerComponents: ComponentItem[] = [
+  {
+    title: "Features Overview",
+    href: "/job-seeker/features",
+    description: "Discover all job seeker tools and features"
+  },
+  {
+    title: "Profile Builder",
+    href: "/job-seeker?tab=profile",
+    description: "Create and manage your professional profile"
+  },
+  {
+    title: "Networking Hub",
+    href: "/job-seeker?tab=networking",
+    description: "Connect with industry professionals"
+  },
+  {
+    title: "Industry Trends",
+    href: "/job-seeker?tab=trends",
+    description: "Stay updated with market insights"
+  },
+  {
+    title: "Completion Guide",
+    href: "/job-seeker?tab=guide",
+    description: "Optimize your professional presence"
   }
 ];
 
@@ -333,6 +362,7 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
         onClose={() => setIsMobileMenuOpen(false)}
         components={components}
         componentseconomics={componentseconomics}
+        jobSeekerComponents={jobSeekerComponents}
       />
       
       {/* Desktop menu */}
@@ -752,7 +782,70 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
                   ))}
                 </div>
               </NavigationMenuContent>
-            </NavigationMenuItem>            <NavigationMenuItem>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className={cn(
+                "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
+                "bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40",
+                "hover:from-purple-100 hover:to-indigo-100 dark:hover:from-purple-900/50 dark:hover:to-indigo-900/50",
+                "border border-purple-200/60 dark:border-purple-800/40",
+                "hover:border-purple-300 dark:hover:border-purple-700/60",
+                "hover:shadow-lg hover:shadow-purple-500/20 dark:hover:shadow-purple-500/30",
+                "text-purple-700 dark:text-purple-300",
+                pathname.startsWith("/job-seeker")
+                  ? "ring-2 ring-purple-500/50 dark:ring-purple-400/50 shadow-md bg-purple-100 dark:bg-purple-900/30"
+                  : ""
+              )}>
+                <BriefcaseIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                <span>Job Seeker</span>
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[700px] gap-3 p-6 grid-cols-2 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/30 dark:border-gray-700/30">
+                  {/* Job Seeker landing page link */}
+                  <StrictNavigationMenuLink asChild>
+                    <Link 
+                      href="/job-seeker" 
+                      className="col-span-2 group block select-none space-y-1 rounded-xl p-5 leading-none no-underline outline-none transition-all duration-300 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 mb-2 shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-white"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-white/20 group-hover:bg-white/30 transition-colors">
+                          <BriefcaseIcon className="w-6 h-6 text-white" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-base font-bold text-white">Job Seeker Hub</span>
+                          <span className="text-xs leading-tight text-white/90 mt-1">Professional profile management and career tools</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </StrictNavigationMenuLink>
+                  {/* Job Seeker components */}
+                  {jobSeekerComponents.map((component) => (
+                    <StrictNavigationMenuLink key={component.href} asChild>
+                      <Link 
+                        href={component.href} 
+                        className={cn(
+                          "group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all duration-300",
+                          "hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 dark:hover:from-purple-900/30 dark:hover:to-indigo-900/30",
+                          "hover:shadow-lg hover:shadow-purple-500/10 dark:hover:shadow-purple-500/20",
+                          "transform hover:scale-[1.02] border border-transparent hover:border-purple-200/50 dark:hover:border-purple-700/50",
+                          pathname === component.href || (component.href.includes("?tab=") && pathname.startsWith("/job-seeker"))
+                            ? "bg-purple-50 dark:bg-purple-900/20 border-purple-300 dark:border-purple-700"
+                            : ""
+                        )}
+                      >
+                        <div className="flex flex-col">
+                          <span className="text-sm font-semibold leading-none text-gray-900 dark:text-gray-100 mb-1">{component.title}</span>
+                          <span className="line-clamp-2 text-xs leading-snug text-gray-600 dark:text-gray-400">
+                            {component.description}
+                          </span>
+                        </div>
+                      </Link>
+                    </StrictNavigationMenuLink>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
               <NavigationMenuTrigger className={cn(
                 "group relative flex items-center gap-2 px-5 py-2.5 h-11 rounded-xl font-medium text-sm transition-all duration-300",
                 "bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/40 dark:to-blue-950/40",

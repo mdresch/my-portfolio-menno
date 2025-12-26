@@ -119,6 +119,11 @@ const riskItems = [
 
 const jobSeekerItems = [
   {
+    label: "Features",
+    href: "/job-seeker/features",
+    description: "Discover all job seeker tools and features"
+  },
+  {
     label: "Profile Builder",
     href: "/job-seeker?tab=profile",
     description: "Create and manage your professional profile"

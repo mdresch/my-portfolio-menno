@@ -25,7 +25,7 @@ export default function FloatingChatWidget() {
           </svg>
         ) : (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
         )}
       </div>
@@ -34,7 +34,8 @@ export default function FloatingChatWidget() {
       {isOpen && (
         <div className="floating-chat-widget">
           <div className="widget-header">
-            <h3>AI Assistant</h3>            <button onClick={toggleChat} className="close-button" title="Close chat">
+            <h3>AI Assistant</h3>
+            <button onClick={toggleChat} className="close-button" title="Close chat">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
