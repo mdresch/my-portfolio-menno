@@ -2,9 +2,15 @@
 
 This guide explains how to configure GitHub Actions secrets for automated deployments to Vercel.
 
+## ⚠️ Important Note
+
+**The workflow will build successfully even without Vercel secrets**, but **deployment will be skipped** if secrets are not configured. The build step will complete, allowing you to verify your code works before setting up deployment.
+
 ## Required GitHub Secrets
 
 To enable automated deployments via GitHub Actions, you need to configure the following secrets in your GitHub repository:
+
+**Note:** If these secrets are not set, the workflow will still build your application but will skip the deployment step with a helpful message.
 
 ### 1. Navigate to Repository Settings
 

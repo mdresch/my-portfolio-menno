@@ -37,6 +37,12 @@ jobs:
         
     - name: Deploy preview to Vercel
       run: |
+        if [ -z "$VERCEL_TOKEN" ]; then
+          echo "⚠️  VERCEL_TOKEN not set. Skipping deployment."
+          echo "💡 To enable deployments, add VERCEL_TOKEN, ORG_ID, and PROJECT_ID to GitHub Secrets."
+          echo "📖 See docs/GITHUB_ACTIONS_SETUP.md for instructions."
+          exit 0
+        fi
         npm install -g vercel
         vercel --prebuilt --yes
       env:
@@ -79,6 +85,12 @@ jobs:
         
     - name: Deploy to Vercel production
       run: |
+        if [ -z "$VERCEL_TOKEN" ]; then
+          echo "⚠️  VERCEL_TOKEN not set. Skipping deployment."
+          echo "💡 To enable deployments, add VERCEL_TOKEN, ORG_ID, and PROJECT_ID to GitHub Secrets."
+          echo "📖 See docs/GITHUB_ACTIONS_SETUP.md for instructions."
+          exit 0
+        fi
         npm install -g vercel
         vercel --prod --prebuilt --yes
       env:
