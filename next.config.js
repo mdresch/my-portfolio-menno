@@ -10,9 +10,20 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: false, // Enable image optimization for better performance
     domains: ['localhost', 'vercel.app', 'my-portfolio-menno.vercel.app'],
+    formats: ['image/webp', 'image/avif'], // Modern image formats
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@heroicons/react', 'lucide-react'],
+  },
+  // Compression and caching
+  compress: true,
+  poweredByHeader: false,
   webpack: (config, { isServer }) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
