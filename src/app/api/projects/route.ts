@@ -10,6 +10,9 @@ export async function GET(request: NextRequest) {
     // Query projects from the database. Order by datePublished desc when available.
     const projects = await prisma.project.findMany({
       take: LIMIT,
+      include: {
+        client: true,
+      },
       orderBy: {
         datePublished: "desc",
       },
@@ -28,6 +31,15 @@ export async function GET(request: NextRequest) {
       challenges: p.challenges || [],
       caseStudy: p.caseStudy || "",
       slug: p.slug,
+      // Contractor-specific fields
+      isService: p.isService,
+      serviceType: p.serviceType,
+      duration: p.duration,
+      budget: p.budget,
+      clientName: p.clientName,
+      testimonial: p.testimonial,
+      status: p.status,
+      client: p.client,
     }));
 
     return NextResponse.json(payload);
@@ -54,6 +66,15 @@ export async function POST(request: NextRequest) {
         challenges: body.challenges || [],
         caseStudy: body.caseStudy || null,
         slug: body.slug || body.title.toLowerCase().replace(/\s+/g, "-"),
+        // Contractor-specific fields
+        isService: body.isService || false,
+        serviceType: body.serviceType || null,
+        duration: body.duration || null,
+        budget: body.budget || null,
+        clientName: body.clientName || null,
+        testimonial: body.testimonial || null,
+        status: body.status || "completed",
+        clientId: body.clientId || null,
       },
     });
 

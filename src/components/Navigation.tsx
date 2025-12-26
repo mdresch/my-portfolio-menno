@@ -37,6 +37,7 @@ const menuGroups = [
           { title: "Now", href: "/now" },
           { title: "Resume", href: "/resume", icon: <DocumentTextIcon className="w-5 h-5 mr-2 inline" /> },
           { title: "Contact", href: "/contact" },
+          { title: "Contractor Dashboard", href: "/contractor-dashboard" },
         ]
       },
     ]
@@ -63,6 +64,17 @@ const menuGroups = [
         items: [
           { title: "All Posts", href: "/blog" },
           { title: "Visualization Showcase", href: "/dashboards/visualizations-showcase" }
+        ]
+      },
+      {
+        title: "Services",
+        href: "/services",
+        description: "Professional services and consulting",
+        icon: <CodeBracketIcon className="w-6 h-6" />,
+        items: [
+          { title: "All Services", href: "/services" },
+          { title: "Get Quote", href: "/contact/professional" },
+          { title: "Portfolio", href: "/projects" }
         ]
       },
 

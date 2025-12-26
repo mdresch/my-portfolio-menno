@@ -132,6 +132,26 @@ export default function AdminDashboard() {
                 href="/admin/analytics"
                 icon="📊"
               />
+              <ActionButton
+                title="Client Inquiries"
+                href="/admin/inquiries"
+                icon="📧"
+              />
+              <ActionButton
+                title="Manage Clients"
+                href="/admin/clients"
+                icon="👥"
+              />
+              <ActionButton
+                title="Services"
+                href="/admin/services"
+                icon="🛠️"
+              />
+              <ActionButton
+                title="Project Management"
+                href="/admin/project-management"
+                icon="📋"
+              />
             </div>
           </div>
         </>

@@ -23,4 +23,79 @@ model Project {
   challenges   String[]
   caseStudy    String?
   slug         String   @unique
+  // Contractor-specific fields
+  isService    Boolean  @default(false)
+  serviceType  String?  // "consulting", "development", "design", etc.
+  duration     String?  // Project duration
+  budget       String?  // Budget range
+  clientName   String?  // Client name (if public)
+  testimonial  String?  // Client testimonial
+  status       String   @default("completed") // "active", "completed", "on-hold"
+  clientId     Int?     // Reference to client
+  client       Client?  @relation(fields: [clientId], references: [id])
+}
+
+model Client {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  company      String?
+  phone        String?
+  website      String?
+  industry     String?
+  description  String?
+  status       String   @default("active") // "active", "inactive", "prospect"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  projects     Project[]
+  inquiries    ClientInquiry[]
+  communications ClientCommunication[]
+}
+
+model ClientInquiry {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String
+  company      String?
+  phone        String?
+  subject      String
+  message      String
+  serviceType  String?  // Type of service they're interested in
+  budget       String?  // Budget range
+  timeline     String?  // Expected timeline
+  status       String   @default("new") // "new", "contacted", "qualified", "converted", "closed"
+  priority     String   @default("medium") // "low", "medium", "high"
+  source       String?  // How they found you
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  clientId     Int?     // If converted to client
+  client       Client?  @relation(fields: [clientId], references: [id])
+  communications ClientCommunication[]
+}
+
+model ClientCommunication {
+  id           Int      @id @default(autoincrement())
+  subject      String
+  message      String
+  type         String   // "email", "call", "meeting", "note"
+  direction    String   // "inbound", "outbound"
+  createdAt    DateTime @default(now())
+  clientId     Int?
+  client       Client?  @relation(fields: [clientId], references: [id])
+  inquiryId    Int?
+  inquiry      ClientInquiry? @relation(fields: [inquiryId], references: [id])
+}
+
+model Service {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  category     String   // "consulting", "development", "design", etc.
+  features     String[] // List of features/deliverables
+  duration     String?  // Typical duration
+  priceRange   String?  // Price range
+  isActive     Boolean  @default(true)
+  order        Int      @default(0) // For ordering services
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
