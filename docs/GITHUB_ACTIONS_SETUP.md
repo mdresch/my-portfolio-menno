@@ -70,6 +70,7 @@ These are optional but recommended for complete functionality:
 - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
 - `NEXT_PUBLIC_FIREBASE_APP_ID`
 - `GOOGLE_CLOUD_PROJECT_ID` (for Genkit/Vertex AI features)
+- `GOOGLE_GENAI_API_KEY` (for Genkit GoogleAI plugin - get from https://aistudio.google.com/app/apikey)
 
 ## Verification
 
