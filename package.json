@@ -23,11 +23,13 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:db": "node scripts/test-database-connection.js",
+    "test:db:crud": "node scripts/test-database-crud.js",
     "extract-blog-content": "tsx scripts/extract-blog-content.ts",
     "extract-project-content": "tsx scripts/extract-project-content.ts",
     "extract-risk-content": "tsx scripts/extract-risk-content.ts",
     "extract-all-content": "npm run extract-blog-content && npm run extract-project-content && npm run extract-risk-content",
-  "seed:projects": "tsx scripts/seed-projects.ts",
+    "seed:projects": "tsx scripts/seed-projects.ts",
     "postinstall": "npx prisma generate",
     "build:vercel": "npx prisma generate && npx prisma migrate deploy && next build",
     "build:production": "npx prisma generate && next build",
@@ -88,6 +90,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@csstools/postcss-oklab-function": "^4.0.12",
     "@eslint/eslintrc": "^3",
     "@octokit/rest": "^21.1.1",
     "@tailwindcss/postcss": "^4",
@@ -113,6 +116,7 @@
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.3",
     "prisma": "^6.16.1",
+    "process": "^0.11.10",
     "tailwindcss": "^4.1.7",
     "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
@@ -130,8 +134,7 @@
       "react": "^19",
       "react-dom": "^19"
     }
-  }
-  ,
+  },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   }

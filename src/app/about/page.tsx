@@ -38,17 +38,17 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-sky-900/20">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-indigo-400/20 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       <div className={`relative z-10 text-center max-w-4xl mx-auto px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="mb-8">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
             About Me
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             Discover My Story
           </button>
@@ -96,8 +96,8 @@ const StorySection: React.FC = () => (
             </p>
           </div>
 
-          <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl border border-purple-100 dark:border-purple-800">
-            <h3 className="text-2xl font-bold text-purple-800 dark:text-purple-200 mb-4">The Developer</h3>
+          <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800">
+            <h3 className="text-2xl font-bold text-indigo-800 dark:text-indigo-200 mb-4">The Developer</h3>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               As a passionate Full-Stack Developer, I specialize in C#/.NET, React, TypeScript, and Azure cloud solutions. I thrive at the intersection of business and technology—where strategic goals meet practical execution, creating innovative solutions that drive real business value.
             </p>
@@ -108,7 +108,7 @@ const StorySection: React.FC = () => (
           <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-3xl p-8 shadow-2xl">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">25+</span>
                 </div>
                 <div>
@@ -158,7 +158,7 @@ const StorySection: React.FC = () => (
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">💻</span>
                 </div>
                 <div>
@@ -215,7 +215,7 @@ export default function AboutPage() {
         <section id="expertise-section" className="py-24 px-6 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900/20">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 What I Bring to the Table
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -241,7 +241,7 @@ export default function AboutPage() {
                   icon: "🚀",
                   title: "Project & Change Management",
                   description: "Leading initiatives and transitions with precision and care",
-                  color: "from-purple-500 to-pink-500"
+                  color: "from-indigo-500 to-blue-500"
                 },
                 {
                   icon: "⚡",
@@ -277,7 +277,7 @@ export default function AboutPage() {
                   icon: "🔄",
                   title: "Change Management",
                   description: "Guiding organizations through transformation with proven methodologies and stakeholder buy-in",
-                  color: "from-violet-500 to-purple-600"
+                  color: "from-blue-600 to-indigo-600"
                 }
               ].map((item, index) => (
                 <div
@@ -329,7 +329,7 @@ export default function AboutPage() {
                 {
                   category: "Cloud & DevOps",
                   icon: "☁️",
-                  color: "from-purple-500 to-pink-500",
+                  color: "from-indigo-500 to-blue-500",
                   skills: ["Azure", "Docker", "Kubernetes", "CI/CD", "Terraform"]
                 },
                 {
@@ -368,12 +368,12 @@ export default function AboutPage() {
         {/* Approach Section */}
         <section className="py-24 px-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               My Approach
             </h2>
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl border border-blue-100 dark:border-blue-800">
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                I'm passionate about <span className="font-bold text-blue-600 dark:text-blue-400">innovation</span> and <span className="font-bold text-purple-600 dark:text-purple-400">continuous improvement</span>. I thrive at the intersection of business and technology—where strategic goals meet practical execution.
+                I'm passionate about <span className="font-bold text-blue-600 dark:text-blue-400">innovation</span> and <span className="font-bold text-indigo-600 dark:text-indigo-400">continuous improvement</span>. I thrive at the intersection of business and technology—where strategic goals meet practical execution.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 Whether it's optimizing HR systems, building full-stack applications, or exploring the latest in web development, I bring <span className="font-semibold">curiosity</span>, <span className="font-semibold">clarity</span>, and <span className="font-semibold">commitment</span> to every challenge.
@@ -383,7 +383,7 @@ export default function AboutPage() {
         </section>
 
         {/* Connect Section */}
-        <section className="py-24 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white">
+        <section className="py-24 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-8">
               Let's Connect

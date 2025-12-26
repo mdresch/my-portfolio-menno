@@ -16,7 +16,7 @@ export default function ResumeSection({
   children
 }: ResumeSectionProps) {
   return (
-    <section id={id} className="mb-12 print:mb-8">
+    <section id={id} className={`mb-12 print:mb-8 relative ${id === "experience" ? "mb-16 z-0" : "z-10"} ${id === "validation-scores" ? "mt-8" : ""} ${id === "skills" ? "mb-20" : ""} ${id === "education" ? "mt-8" : ""}`}>
       {/* Modern Section Header */}
       <div
         className="group flex items-center justify-between cursor-pointer mb-6 print:cursor-default p-4 rounded-2xl bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-800 dark:to-blue-900/20 hover:from-blue-50 hover:to-purple-50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-300 border border-gray-100 dark:border-gray-700"
@@ -53,10 +53,12 @@ export default function ResumeSection({
       {/* Content with Enhanced Animation */}
       <div className={`transition-all duration-500 ease-in-out ${
         isExpanded
-          ? "opacity-100 max-h-screen transform translate-y-0"
+          ? "opacity-100 max-h-none transform translate-y-0"
           : "opacity-0 max-h-0 overflow-hidden transform -translate-y-4"
       } print:opacity-100 print:max-h-full print:transform-none`}>
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+        <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 ${
+          id === "experience" ? "p-6 pl-10 md:pl-12 relative z-0" : "p-6 relative z-10"
+        }`}>
           {children}
         </div>
       </div>
