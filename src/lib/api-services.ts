@@ -53,10 +53,13 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
     // Handle server-side requests by creating absolute URLs
     let requestUrl: string;
     if (typeof window === 'undefined') {
-      // Server-side: create absolute URL using localhost and port
-      const port = process.env.PORT || 3001; // Use 3001 since dev server is on that port
-      const host = `http://localhost:${port}`;
-      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, host).toString();
+      // Server-side: Use Vercel URL during build, or localhost for local dev
+      const baseUrl = process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}`
+        : process.env.NEXT_PUBLIC_SITE_URL 
+        ? process.env.NEXT_PUBLIC_SITE_URL
+        : `http://localhost:${process.env.PORT || 3000}`;
+      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, baseUrl).toString();
     } else {
       // Client-side: use relative URL
       requestUrl = `${API_BASE_URL}${endpoint}`;

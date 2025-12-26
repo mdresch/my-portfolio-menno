@@ -1,9 +1,8 @@
-import { ProjectService } from "../../lib/api-services";
-import type { ApiProject } from "../../types/api";
+import { prisma } from "../../lib/prisma";
 import Image from "next/image";
 
-// Helper to normalize API data for server rendering
-function normalizeProject(p: ApiProject) {
+// Helper to normalize Prisma data for server rendering
+function normalizeProject(p: any) {
   return {
     id: p.id,
     title: p.title ?? "",
@@ -18,8 +17,13 @@ function normalizeProject(p: ApiProject) {
 
 export default async function ProjectsPage() {
   try {
-    const apiProjects = await ProjectService.getAll();
-    const projects = apiProjects.map(normalizeProject);
+    // Use Prisma directly in server component (works during build)
+    const dbProjects = await prisma.project.findMany({
+      orderBy: {
+        datePublished: "desc",
+      },
+    });
+    const projects = dbProjects.map(normalizeProject);
 
     return (
       <main className="container mx-auto px-4 py-8">
