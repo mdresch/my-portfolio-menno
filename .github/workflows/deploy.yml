@@ -36,12 +36,12 @@ jobs:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         
     - name: Deploy preview to Vercel
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.ORG_ID }}
-        vercel-project-id: ${{ secrets.PROJECT_ID }}
-        vercel-args: '--preview'
+      run: |
+        npm install -g vercel
+        vercel --token ${{ secrets.VERCEL_TOKEN }} --prebuilt
+      env:
+        VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
   # Production deployment only on push to main/master (with migrations)
   production:
@@ -77,9 +77,9 @@ jobs:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
         
     - name: Deploy to Vercel production
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.ORG_ID }}
-        vercel-project-id: ${{ secrets.PROJECT_ID }}
-        vercel-args: '--prod'
+      run: |
+        npm install -g vercel
+        vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --prebuilt
+      env:
+        VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
