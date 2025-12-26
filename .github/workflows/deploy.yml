@@ -107,6 +107,12 @@ jobs:
           exit 0
         fi
         npm install -g vercel
+        # Check if vercel command exists first
+        if ! command -v vercel &> /dev/null; then
+          echo "❌ Vercel CLI not found after installation"
+          exit 1
+        fi
+        
         if vercel --prod --prebuilt --yes; then
           echo "✅ Production deployment successful"
         else
