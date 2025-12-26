@@ -3,7 +3,16 @@ import { genkit } from "genkit";
 import { enableFirebaseTelemetry } from "@genkit-ai/firebase";
 import { gemini15Flash, googleAI } from "@genkit-ai/googleai";
 
-enableFirebaseTelemetry();
+// Only enable telemetry if Google Cloud Project ID is configured
+// This prevents build-time errors when the project ID is not set
+if (process.env.GOOGLE_CLOUD_PROJECT_ID || process.env.GCLOUD_PROJECT) {
+  try {
+    enableFirebaseTelemetry();
+  } catch (error) {
+    // Silently fail if telemetry can't be enabled (e.g., missing credentials)
+    // This is expected in development or when Google Cloud is not configured
+  }
+}
 
 
 
