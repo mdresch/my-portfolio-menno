@@ -63,6 +63,11 @@ const navigationItems = [
     label: "Blog",
     href: "/blog",
     icon: "📝"
+  },
+  {
+    label: "Job Seeker Hub",
+    href: "/job-seeker",
+    icon: "💼"
   }
 ];
 
@@ -109,6 +114,29 @@ const riskItems = [
     label: "Business Complexity",
     href: "/risk/global-business-complexity-index",
     description: "Global business complexity metrics"
+  }
+];
+
+const jobSeekerItems = [
+  {
+    label: "Profile Builder",
+    href: "/job-seeker?tab=profile",
+    description: "Create and manage your professional profile"
+  },
+  {
+    label: "Networking Hub",
+    href: "/job-seeker?tab=networking",
+    description: "Connect with industry professionals"
+  },
+  {
+    label: "Industry Trends",
+    href: "/job-seeker?tab=trends",
+    description: "Stay updated with market insights"
+  },
+  {
+    label: "Completion Guide",
+    href: "/job-seeker?tab=guide",
+    description: "Optimize your professional presence"
   }
 ];
 
@@ -307,6 +335,36 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             </div>
           </div>
 
+          {/* Job Seeker Tools */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
+              Job Seeker Tools
+            </h3>
+            <div className="space-y-1">
+              {jobSeekerItems.map((item, index) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className={cn(
+                      "block px-4 py-3 rounded-lg transition-colors duration-200",
+                      isActive
+                        ? "bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400"
+                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    )}
+                    onClick={onClose}
+                  >
+                    <div className="font-medium">{item.label}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      {item.description}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Additional Links */}
           <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="space-y-1">
@@ -408,6 +466,7 @@ export default function ModernNavigation() {
               <div className="flex items-center gap-2">
                 <Dropdown label="Dashboards" items={dashboardItems} icon="📊" />
                 <Dropdown label="Risk Analysis" items={riskItems} icon="⚠️" />
+                <Dropdown label="Job Seeker" items={jobSeekerItems} icon="💼" />
               </div>
 
               {/* Theme Toggle */}
