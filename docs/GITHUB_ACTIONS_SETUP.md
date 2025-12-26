@@ -32,7 +32,11 @@ To enable automated deployments via GitHub Actions, you need to configure the fo
 6. **Copy the token immediately** (you won't be able to see it again)
 7. Paste it as the value for `VERCEL_TOKEN` in GitHub Secrets
 
-**Note:** If you get "The specified token is not valid" error, your token may be expired or incorrect. Generate a new one.
+**⚠️ Important:** 
+- The token must be valid and not expired
+- If you get "The specified token is not valid" error, your token may be expired or incorrect
+- Generate a new token and update the GitHub secret
+- Make sure there are no extra spaces or characters when pasting
 
 #### `ORG_ID` (Required for deployment)
 
