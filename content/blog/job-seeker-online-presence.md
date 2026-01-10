@@ -1,12 +1,13 @@
 ---
-title: "Improving Your Online Presence as a Job Seeker"
-date: 2026-01-10
-slug: "job-seeker-online-presence"
+title: "Alliance Resilience Project — Ideation & Charter"
+date: 2025-12-22
+slug: "alliance-resilience-project"
 tags:
-  - careers
-  - job-search
-  - personal-branding
-summary: "Practical steps to strengthen your online presence and stand out to employers."
+  - defense
+  - policy
+  - project-management
+  - adpa
+summary: "Project charter and implementation plan for the Alliance Resilience Project (ADPA)."
 draft: false
 ---
 
