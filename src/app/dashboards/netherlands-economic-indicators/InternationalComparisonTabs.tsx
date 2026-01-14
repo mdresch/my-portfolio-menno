@@ -206,6 +206,13 @@ export default function InternationalComparisonTabs({ ireland, luxembourg, uk }:
                 <tr key={index} className="hover:bg-gray-50 dark:hover:bg-neutral-800">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">{company.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{company.sector}</td>
+                  {/*
+                    Contributor note: `CompanyType` does not declare the following properties used below:
+                    `revenue_ttm_usd_billion`, `employees`, `rpe_usd`, `rpe_gbp`.
+                    This can produce type errors or runtime exceptions. Recommended fixes:
+                    - Extend `CompanyType` to include these fields with correct types, OR
+                    - Guard accessors here (e.g. `company.revenue_ttm_usd_billion || 'N/A'`, `company.employees?.toLocaleString() || 'N/A'`, and conditional formatting for `rpe_usd`/`rpe_gbp`).
+                  */}
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">${company.revenue_ttm_usd_billion}B</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{company.employees.toLocaleString()}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 dark:text-blue-400 font-semibold">${(company.rpe_usd/1000000).toFixed(3)}M</td>
