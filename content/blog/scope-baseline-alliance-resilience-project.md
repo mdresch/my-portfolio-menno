@@ -35,7 +35,7 @@ Framework: PMBOK® Guide (7th Edition)
 ### 1.1 Project Purpose and Objectives
 
 #### 1.1.1 Purpose
-The Alliance Resilience Project is a high-priority NATO initiative to enhance operational resilience of diplomatic and military aviation across NATO and EU airspace. The project will develop a modular Automated Diplomatic Protocol Automation (ADPA) system to streamline diplomatic clearances and asset relocations for VIP aircraft (e.g., Qatari 747-8) at hubs such as Lelystad and Schiphol. The system incorporates lessons from the Kabul evacuation, including predictive drift detection for militia threats, 48-hour airstrip orchestration via baseline extraction, and need-to-know compliance logs evolving from testing to operational readiness.
+The Alliance Resilience Project is a high-priority NATO initiative to enhance operational resilience of diplomatic and military aviation across NATO and EU airspace. The project will develop a modular Automated Diplomatic Protocol Automation (ADPA) system to streamline diplomatic clearances and asset relocations for VIP aircraft (e.g., wide-body government or state aircraft) at hubs such as Lelystad and Schiphol. The system incorporates lessons from the Kabul evacuation, including predictive drift detection for militia threats, 48-hour airstrip orchestration via baseline extraction, and need-to-know compliance logs evolving from testing to operational readiness.
 
 #### 1.1.2 Final Product/Service
 Major deliverables:
