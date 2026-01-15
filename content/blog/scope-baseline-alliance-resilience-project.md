@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-Confidentiality Level: NATO Confidential
+Confidentiality Level: Public (Unclassified)
 
 Framework: PMBOK® Guide (7th Edition)
 
