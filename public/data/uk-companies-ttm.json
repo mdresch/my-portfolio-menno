@@ -1,0 +1,38 @@
+{
+  "date": "2025-12-31",
+  "usd_to_gbp_rate": 0.742583,
+  "rate_source": "https://www.x-rates.com/historical/?from=USD&amount=1&date=2025-12-31",
+  "companies": [
+    {
+      "rank": 1,
+      "company": "Shell",
+      "revenue_usd_billion": 269.07,
+      "revenue_gbp_billion": 199.81
+    },
+    {
+      "rank": 2,
+      "company": "BP",
+      "revenue_usd_billion": 187.70,
+      "revenue_gbp_billion": 139.38
+    },
+    {
+      "rank": 3,
+      "company": "Prudential",
+      "revenue_usd_billion": 128.74,
+      "revenue_gbp_billion": 95.60
+    },
+    {
+      "rank": 4,
+      "company": "Tesco",
+      "revenue_usd_billion": 88.08,
+      "revenue_gbp_billion": 65.41
+    },
+    {
+      "rank": 5,
+      "company": "HSBC",
+      "revenue_usd_billion": 70.04,
+      "revenue_gbp_billion": 52.01
+    }
+  ],
+  "notes": "USD revenues sourced from user-provided list; GBP conversions use USD->GBP spot rate at 2025-12-31 from x-rates.com. Values rounded to 2 decimal places (billion GBP)."
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Economic Indicators - Sources & Latest Figures (as used on dashboard)",
+  "lastUpdated": "2025-12-01",
+  "indicators": [
+    { "indicator": "GDP Growth Rate", "value": "1.3%", "period": "2025 (projected)", "source": "OECD / IMF / European Commission", "source_url": "https://data.oecd.org/gdp/gross-domestic-product-gdp.htm" },
+    { "indicator": "GDP Growth Rate", "value": "1.1%", "period": "2026 (projected)", "source": "OECD", "source_url": "https://data.oecd.org/gdp/gross-domestic-product-gdp.htm" },
+    { "indicator": "Inflation Rate", "value": "2.9%", "period": "2025 (projected)", "source": "OECD", "source_url": "https://data.oecd.org/price/inflation-cpi.htm" },
+    { "indicator": "Inflation Rate", "value": "2.8%", "period": "2025 (projected)", "source": "IMF", "source_url": "https://www.imf.org/en/Publications/WEO" },
+    { "indicator": "Unemployment Rate", "value": "3.8%", "period": "May 2025 (actual)", "source": "CBS / Trading Economics", "source_url": "https://www.cbs.nl/en-gb" },
+    { "indicator": "Population", "value": "18.05 million", "period": "2025", "source": "IMF DataMapper", "source_url": "https://www.imf.org/en/Data" },
+    { "indicator": "Purchasing Power", "value": "+2.9%", "period": "2024", "source": "CPB", "source_url": "https://www.cpb.nl/en" },
+    { "indicator": "Current Account Balance", "value": "10.4% of GDP", "period": "2025 (projected)", "source": "CPB", "source_url": "https://www.cpb.nl/en" },
+    { "indicator": "Poverty Rate", "value": "Declining", "period": "2025", "source": "CPB", "source_url": "https://www.cpb.nl/en" }
+  ],
+  "notes": "Source URLs populated with primary dataset pages: OECD, IMF WEO, CBS StatLine and CPB. For more granular table exports, add CSV/JSON files into public/data/ and link them using the `source_url` keys.",
+  "downloadGuide": "Place machine-readable CSV or JSON versions of the source tables in public/data/ and link to them here using the `source_url` keys."
+}

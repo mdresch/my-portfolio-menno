@@ -246,6 +246,25 @@ export default function NetherlandsEconomicIndicatorsPage() {
         }
       ]
     }
+    ,
+    uk: {
+      sectors: [
+        { sector: "Advanced Manufacturing", revenuePerEmployee: "€1,336m (UKRI)", description: "Drive35 expansion and support for zero-emissions vehicle manufacturing; major private & public projects across automotive supply chain." },
+        { sector: "Clean Growth & Energy", revenuePerEmployee: "€1,176m (UKRI)", description: "SMR selection at Wylfa, Great British Energy supply-chain fund and Clean Energy Jobs Plan targeting 400k jobs by 2030." },
+        { sector: "Creative Industries", revenuePerEmployee: "€369m (UKRI)", description: "Increased R&D allocations, major studio investments and jobs growth across film, TV and games." },
+        { sector: "Digital & Technologies (AI, Quantum)", revenuePerEmployee: "€3,355m (selected sub-allocations)", description: "Significant AI, quantum, engineering biology funding, AI Growth Zones and free compute access to researchers." },
+        { sector: "Life Sciences", revenuePerEmployee: "€1,508m (UKRI)", description: "Funding for pharmaceutical R&D, replacing animals in science strategy and mental health research investment." },
+        { sector: "Financial & Professional Services", revenuePerEmployee: "€118m (UKRI) + private commitments", description: "New investor services, scale-up units and London market innovations to increase access to growth capital." }
+      ],
+      companies: [
+        { name: "Shell", sector: "Energy/Petrochemicals", revenue_ttm_usd_billion: 269.07, employees: 93000, rpe_usd: 2893000, rpe_gbp: 2148292.62, revenuePerEmployee: "USD 269.07 bn / GBP 199.81 bn", keyRoles: "Energy Transition Specialists, Project Engineers, Sustainability Experts" },
+        { name: "BP", sector: "Energy/Petrochemicals", revenue_ttm_usd_billion: 187.70, employees: 100500, rpe_usd: 1868000, rpe_gbp: 1387145.04, revenuePerEmployee: "USD 187.70 bn / GBP 139.38 bn", keyRoles: "Upstream/Downstream Engineers, Energy Traders" },
+        { name: "Prudential", sector: "Insurance/Financials", revenue_ttm_usd_billion: 128.74, employees: 15412, rpe_usd: 8353000, rpe_gbp: 6202795.8, revenuePerEmployee: "USD 128.74 bn / GBP 95.60 bn", keyRoles: "Actuaries, Investment Managers, Risk Officers" },
+        { name: "Tesco", sector: "Retail", revenue_ttm_usd_billion: 88.08, employees: 341108, rpe_usd: 258000, rpe_gbp: 191586.41, revenuePerEmployee: "USD 88.08 bn / GBP 65.41 bn", keyRoles: "Retail Managers, Supply Chain, Merchandisers" },
+        { name: "HSBC", sector: "Banking/Financials", revenue_ttm_usd_billion: 70.04, employees: 220928, rpe_usd: 317000, rpe_gbp: 235398.81, revenuePerEmployee: "USD 70.04 bn / GBP 52.01 bn", keyRoles: "Bankers, Compliance, Corporate Finance" }
+      ],
+      findings: "Quarterly update (Q4 2025): >£9bn allocated via UKRI to IS-8 sectors; delivery milestones include AI Growth Zones, semiconductor centre in London, £20 Sterling investor partnership to mobilise pension funds, major private investments across regions, and planning/energy reforms to accelerate projects. Key recommendations: maintain targeted UKRI support, accelerate grid connections for priority projects, provide tailored capital instruments for scale-ups, and ensure skills pipelines through Technical Excellence Colleges."
+    }
   };
 
   const economicData = [
@@ -684,7 +703,7 @@ export default function NetherlandsEconomicIndicatorsPage() {
             <span className="ml-3 px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full">Netherlands vs. Ireland vs. Luxembourg</span>
           </h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
             {/* Netherlands Summary Card */}
             <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden border border-blue-200 dark:border-blue-800">
               <div className="bg-blue-50 dark:bg-blue-900/30 px-6 py-4 border-b border-blue-200 dark:border-blue-800">
@@ -789,12 +808,59 @@ export default function NetherlandsEconomicIndicatorsPage() {
                 </div>
               </div>
             </div>
+            {/* UK Summary Card */}
+            <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden border border-yellow-200 dark:border-yellow-800">
+              <div className="bg-yellow-50 dark:bg-yellow-900/30 px-6 py-4 border-b border-yellow-200 dark:border-yellow-800">
+                <div className="flex items-center">
+                  <div className="w-8 h-6 mr-3 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6">
+                      <rect fill="#00247d" width="10" height="6"/>
+                      <rect fill="#cf142b" width="10" height="3"/>
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">United Kingdom</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Industrial Strategy IS-8 quarterly update (Q4 2025)</p>
+              </div>
+              <div className="p-6">
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs uppercase font-medium text-gray-500 dark:text-gray-400 mb-1">Top Programmes</p>
+                    <p className="text-sm font-semibold">UKRI IS-8 allocations & regional investments</p>
+                    <p className="text-lg font-bold text-emerald-600 dark:text-emerald-400">£9bn+ directed to IS-8; major sector packages</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase font-medium text-gray-500 dark:text-gray-400 mb-1">Leading Initiatives</p>
+                    <p className="text-sm font-semibold">AI Growth Zones, Semiconductor Centre (King's Cross), DRIVE35</p>
+                    <p className="text-base font-bold text-blue-600 dark:text-blue-400">Private & public packages across regions</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase font-medium text-gray-500 dark:text-gray-400 mb-1">Key Advantage</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">Coordinated UKRI allocations, investor mobilisation and planning/energy reforms to accelerate delivery of large capital projects.</p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase font-medium text-gray-500 dark:text-gray-400 mb-2">Top UK Companies (TTM Revenue, close of 2025)</p>
+                    <ul className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                      {internationalComparison.uk.companies.map((c, i) => (
+                        <li key={i} className="flex justify-between">
+                          <span className="font-medium">{c.name}</span>
+                          <span className="text-right text-sm text-blue-600 dark:text-blue-400">{c.revenuePerEmployee}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* Detailed Comparison Tabs */}
           <InternationalComparisonTabs 
             ireland={internationalComparison.ireland}
             luxembourg={internationalComparison.luxembourg}
+            uk={internationalComparison.uk}
           />
           
           <div className="mt-6 bg-gray-50 dark:bg-neutral-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
@@ -817,9 +883,13 @@ export default function NetherlandsEconomicIndicatorsPage() {
                 <span className="text-red-600 dark:text-red-400 font-bold mr-2">•</span>
                 <span><strong>Luxembourg:</strong> Specializes almost exclusively in high-value financial services, particularly investment fund management, with the financial sector managing assets of €5.9 trillion (2025) with a relatively small workforce.</span>
               </li>
+              <li className="flex items-start">
+                <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">•</span>
+                <span><strong>United Kingdom:</strong> Combines targeted public funding (UKRI IS-8 allocations), investor mobilisation and regional investment zones to scale frontier industries (AI, semiconductors, clean energy). The UK model emphasises rapid commercialisation, large-scale project delivery and market-making interventions.</span>
+              </li>
             </ul>
             <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              The Netherlands' approach represents a more diversified model than either Ireland (tech/pharma dominated) or Luxembourg (finance dominated), potentially offering greater economic resilience but somewhat lower peak revenue-per-employee metrics in certain sectors.
+              The Netherlands' approach represents a more diversified model than Ireland (tech/pharma dominated) or Luxembourg (finance dominated). The UK sits alongside these models with a policy-driven scaling approach: substantial public grants and investor mobilisation can produce rapid sectoral scale-up and large flagship projects, though outcomes depend on effective project delivery and market access. Each model has trade-offs between peak revenue-per-employee in specialist sectors and broader economic resilience.
             </p>
           </div>
         </section>
@@ -865,6 +935,9 @@ export default function NetherlandsEconomicIndicatorsPage() {
                     <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                       While maintaining the Netherlands' commitment to fair taxation, selective elements of Ireland's approach will be adopted through targeted investments of €5.8 billion (2026-2030) to create specialized innovation hubs and IP management centers:
                     </p>
+                    <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                      Sources: <a href="https://www.cpb.nl/en" target="_blank" rel="noopener noreferrer" className="underline">CPB</a> · <a href="https://www.cbs.nl/en-gb" target="_blank" rel="noopener noreferrer" className="underline">CBS</a> · <a href="https://www.oecd.org/economy" target="_blank" rel="noopener noreferrer" className="underline">OECD</a> · <a href="https://www.government.nl/topics/knowledge-and-innovation/national-growth-fund" target="_blank" rel="noopener noreferrer" className="underline">National Growth Fund</a>
+                    </div>
                     <ul className="space-y-2">
                       <li className="flex items-start text-sm">
                         <span className="text-green-600 dark:text-green-400 font-bold mr-2">1.</span>
@@ -905,6 +978,9 @@ export default function NetherlandsEconomicIndicatorsPage() {
                     <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                       Building on Amsterdam's existing financial infrastructure and the Netherlands' strong regulatory reputation, investments of €4.3 billion (2026-2029) will establish specialized financial service centers:
                     </p>
+                    <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                      Sources: <a href="https://www.ecb.europa.eu/home/html/index.en.html" target="_blank" rel="noopener noreferrer" className="underline">European Central Bank</a> · <a href="https://www.cbs.nl/en-gb" target="_blank" rel="noopener noreferrer" className="underline">CBS</a> · <a href="https://ec.europa.eu/info/index_en" target="_blank" rel="noopener noreferrer" className="underline">European Commission</a>
+                    </div>
                     <ul className="space-y-2">
                       <li className="flex items-start text-sm">
                         <span className="text-red-600 dark:text-red-400 font-bold mr-2">1.</span>
@@ -942,23 +1018,84 @@ export default function NetherlandsEconomicIndicatorsPage() {
                   
                   <div className="md:col-span-2">
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Integration Strategy: Best-of-All-Worlds Approach</h4>
+                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                          These initiatives will be integrated in a pragmatic, Dutch manner: pilot-led, regionally balanced, SME-inclusive, and built through stakeholder consensus (the Dutch "polder" approach). The goal is to capture high-value opportunities while preserving social cohesion, fair taxation and broad-based regional benefits.
+                        </p>
+                        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                          Sources: <a href="https://www.government.nl/ministries/ministry-of-economic-affairs-and-climate-policy" target="_blank" rel="noopener noreferrer" className="underline">Ministry of Economic Affairs</a> · <a href="https://www.cpb.nl/en" target="_blank" rel="noopener noreferrer" className="underline">CPB</a> · <a href="https://www.oecd.org/competition/" target="_blank" rel="noopener noreferrer" className="underline">OECD</a>
+                        </div>
+                      <ul className="space-y-2">
+                        <li className="flex items-start text-sm">
+                          <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">1.</span>
+                          <span><strong>Green Energy Financial Complex</strong> - Use pilot financing windows and public–private co-investment structures to mobilise capital for energy-transition projects, prioritising local suppliers, circular value chains and long-term regional job creation while safeguarding fiscal fairness.</span>
+                        </li>
+                        <li className="flex items-start text-sm">
+                          <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">2.</span>
+                          <span><strong>High-Tech Manufacturing IP Platform</strong> - Build IP management capabilities around existing manufacturing clusters with clear SME access rules, shared R&D facilities, and transparent incentives that reward domestic value capture without eroding tax base or public trust.</span>
+                        </li>
+                        <li className="flex items-start text-sm">
+                          <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">3.</span>
+                          <span><strong>Digital Logistics Optimization</strong> - Combine Dutch logistics strengths with modular digital pilots (ports, transport corridors, customs facilitation) that scale nationally when evaluated against productivity, emissions and regional inclusion metrics.</span>
+                        </li>
+                        <li className="flex items-start text-sm">
+                          <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">4.</span>
+                          <span><strong>Implementation Principles</strong> - Apply small-scale pilots, independent evaluation, clear SME participation rules, worker reskilling commitments, and sunset clauses for temporary incentives to ensure accountability and adaptability.</span>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+
+                {/* From the United Kingdom */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                  <div className="md:col-span-1 bg-yellow-50 dark:bg-yellow-900/20 p-5 rounded-lg border border-yellow-100 dark:border-yellow-800/30">
+                    <div className="flex items-center mb-3">
+                      <div className="w-6 h-4 mr-2 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+                          <rect width="60" height="30" fill="#012169" />
+                          <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" strokeWidth="4" />
+                          <path d="M0 0 L60 30 M60 0 L0 30" stroke="#FFFFFF" strokeWidth="2" />
+                        </svg>
+                      </div>
+                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">From the United Kingdom</h4>
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                      Coordinated public funding, investor mobilisation and delivery reforms that accelerate frontier industries (AI, semiconductors, clean energy) and regional flagship projects.
+                    </p>
+                    <div className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                      <a href="/data/uk-is8-q4-2025.json" target="_blank" rel="noopener noreferrer">Source: IS-8 Q4 2025 data</a>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Dutch Adaptation: UK Lessons</h4>
                     <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
-                      These initiatives will be carefully integrated with the Netherlands' existing economic strengths to create a balanced and resilient approach:
+                      The UK provides practical delivery levers that the Netherlands can adopt selectively to complement its diversified growth model:
                     </p>
                     <ul className="space-y-2">
                       <li className="flex items-start text-sm">
-                        <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">1.</span>
-                        <span><strong>Green Energy Financial Complex</strong> - Combining Dutch leadership in energy transition with Luxembourg-style financial expertise to create a specialized hub for energy transition financing, expected to generate €1.1M+ per employee</span>
+                        <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">1.</span>
+                        <span><strong>Multi-year commitment:</strong> Use targeted multi-year public allocations to provide certainty for long-term projects and unlock private co-investment.</span>
                       </li>
                       <li className="flex items-start text-sm">
-                        <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">2.</span>
-                        <span><strong>High-Tech Manufacturing IP Platform</strong> - Integrating Irish-style IP management with Dutch manufacturing excellence to maximize value capture in semiconductor and precision manufacturing</span>
+                        <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">2.</span>
+                        <span><strong>Delivery acceleration:</strong> Implement planning and grid-connection accelerators to reduce time-to-market for strategic capital projects.</span>
                       </li>
                       <li className="flex items-start text-sm">
-                        <span className="text-blue-600 dark:text-blue-400 font-bold mr-2">3.</span>
-                        <span><strong>Digital Logistics Optimization</strong> - Leveraging Dutch logistics leadership with enhanced digital technologies, targeting a 65% increase in revenue per employee in logistics tech by 2030</span>
+                        <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">3.</span>
+                        <span><strong>Market-shaping procurement:</strong> Deploy Advance Market Commitments and early-buyer programmes to de-risk early-stage technologies.</span>
+                      </li>
+                      <li className="flex items-start text-sm">
+                        <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">4.</span>
+                        <span><strong>Investor mobilisation:</strong> Establish dedicated investor vehicles to channel pension and institutional capital into strategic infrastructure and scale-ups.</span>
+                      </li>
+                      <li className="flex items-start text-sm">
+                        <span className="text-yellow-600 dark:text-yellow-400 font-bold mr-2">5.</span>
+                        <span><strong>Skills & R&D pairing:</strong> Pair Technical Excellence Colleges and research compute access with funding programmes to ensure talent and innovation capacity scale together.</span>
                       </li>
                     </ul>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
+                      These measures should be tailored to Dutch governance and social priorities, keeping fair taxation and regional balance as core principles.
+                    </p>
                   </div>
                 </div>
                 

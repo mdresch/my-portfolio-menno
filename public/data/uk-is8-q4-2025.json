@@ -1,0 +1,49 @@
+{
+  "title": "UK IS-8 Quarterly Update Q4 2025",
+  "lastUpdated": "2025-12-31",
+  "summary": "Quarterly update summarising UK Industrial Strategy (IS-8) delivery and allocations in Q4 2025: >£9bn allocated via UKRI to IS-8 sectors; AI Growth Zones, Semiconductor Centre (King's Cross), DRIVE35 expansion, major regional private investments, planning and energy reforms to accelerate delivery.",
+  "allocations_millions_gbp": {
+    "Advanced Manufacturing": 1336,
+    "Clean Growth and Energy": 1176,
+    "Creative Industries": 369,
+    "Defence and National Security": 555,
+    "Engineering Biology": 643,
+    "AI": 1584,
+    "Quantum Technologies": 1013,
+    "Advanced Connectivity & Semiconductors & Cybersecurity": 718,
+    "Life Sciences": 1508,
+    "Professional and Business Services_Financial Services": 118
+  },
+  "deliveryMilestones": [
+    "£9bn+ directed to IS-8 via UKRI four-year allocations",
+    "AI Growth Zones in North & South Wales announced (5,000+ jobs over next decade, potential £124bn private investment)",
+    "New Semiconductor Centre planned in King's Cross, London",
+    "Drive35 expansion to £4bn to 2035 for zero-emissions vehicle manufacturing",
+    "Wylfa selected as first SMR site with £2.5bn+ funding",
+    "New Connections Accelerator Service pilot to speed grid connections for priority projects",
+    "Network Charging Compensation Scheme to reduce electricity network costs for eligible businesses (from April 2026)"
+  ],
+  "regionalHighlights": {
+    "Birmingham": "Regional Investment Summit commitments >£10bn; Knowledge Quarter support",
+    "Wales": "AI Growth Zones, £1.4bn private investment confirmed",
+    "Oxford-Cambridge": "£500m investment package for homes, infrastructure and R&D at Ellison Institute"
+  },
+  "policyActions": [
+    "UKRI targeted grants and institute funding",
+    "Planning and Infrastructure Act reforms to accelerate delivery",
+    "Business environment reforms to reduce administrative burdens",
+    "Skills investment via Technical Excellence Colleges and Youth Guarantee packages",
+    "Investor mobilisation (Sterling 20 partnership) and procurement innovations (Advance Market Commitments)"
+  ],
+  "examples_public_finance_support": [
+    { "investor": "PolyAI", "value_m": 14.9, "purpose": "direct co-investment for conversational AI" },
+    { "investor": "Partech Impact", "value_m": 22 },
+    { "investor": "SV Health Investors", "value_m": 74, "purpose": "therapeutics fund" }
+  ],
+  "notes": "Derived from the Q4 2025 IS-8 quarterly update provided by the user. Replace or augment with direct UKRI/ONS source URLs where available.",
+  "sources": [
+    { "name": "UKRI Corporate Report: Budget Allocations December 2025", "url": "" },
+    { "name": "IS-8 Quarterly Update Q4 2025 (government publication)", "url": "" },
+    { "name": "ONS / HMRC statistics referenced in report", "url": "" }
+  ]
+}

@@ -24,10 +24,15 @@ interface InternationalComparisonProps {
     sectors: SectorType[];
     companies: CompanyType[];
   };
+  uk: {
+    sectors: SectorType[];
+    companies: CompanyType[];
+    findings?: string;
+  };
 }
 
-export default function InternationalComparisonTabs({ ireland, luxembourg }: InternationalComparisonProps) {
-  const [activeTab, setActiveTab] = useState<'ireland' | 'luxembourg'>('ireland');
+export default function InternationalComparisonTabs({ ireland, luxembourg, uk }: InternationalComparisonProps) {
+  const [activeTab, setActiveTab] = useState<'ireland' | 'luxembourg' | 'uk'>('ireland');
 
   return (
     <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -35,7 +40,7 @@ export default function InternationalComparisonTabs({ ireland, luxembourg }: Int
         <nav className="flex -mb-px">
           <button 
             onClick={() => setActiveTab('ireland')} 
-            className={`w-1/2 py-4 px-6 text-center border-b-2 font-medium text-sm ${
+            className={`w-1/3 py-4 px-6 text-center border-b-2 font-medium text-sm ${
               activeTab === 'ireland'
                 ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
@@ -45,13 +50,23 @@ export default function InternationalComparisonTabs({ ireland, luxembourg }: Int
           </button>
           <button 
             onClick={() => setActiveTab('luxembourg')} 
-            className={`w-1/2 py-4 px-6 text-center border-b-2 font-medium text-sm ${
+            className={`w-1/3 py-4 px-6 text-center border-b-2 font-medium text-sm ${
               activeTab === 'luxembourg'
                 ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
             }`}
           >
             Luxembourg: Financial Services Excellence
+          </button>
+          <button
+            onClick={() => setActiveTab('uk')}
+            className={`w-1/3 py-4 px-6 text-center border-b-2 font-medium text-sm ${
+              activeTab === 'uk'
+                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
+            }`}
+          >
+            United Kingdom: Cross-Country Learnings
           </button>
         </nav>
       </div>
@@ -153,6 +168,69 @@ export default function InternationalComparisonTabs({ ireland, luxembourg }: Int
             <span className="font-semibold">Key Insight:</span> Luxembourg's financial sector leverages its specialized expertise and favorable regulatory environment to manage €5.9 trillion in assets with a relatively small workforce, resulting in exceptionally high revenue per employee figures compared to other European financial centers. The country's focus on investment fund services and specialized financial infrastructure has created one of the highest GDP per capita figures worldwide.
           </p>
         </div>
+      </div>
+
+      {/* UK Detail Section */}
+      <div className={`p-6 ${activeTab === 'uk' ? '' : 'hidden'}`}>
+        <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">United Kingdom: Cross-Country Learning</h4>
+        <p className="text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+          The UK section contains strategic findings sourced from the provided report. Replace the placeholder content with the report summary or upload the report's findings to populate this area.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {uk.sectors.map((sector, index) => (
+            <div key={index} className="bg-gray-50 dark:bg-neutral-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+              <h5 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">{sector.sector}</h5>
+              <p className="text-emerald-600 dark:text-emerald-400 font-bold mb-2">{sector.revenuePerEmployee}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{sector.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Leading UK-based Companies (Placeholder)</h4>
+        <div className="overflow-x-auto">
+          <table className="min-w-full">
+            <thead className="bg-gray-50 dark:bg-neutral-800">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Company</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sector</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Revenue (TTM, USD)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Employees</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">RPE (USD)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">RPE (GBP)</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Key Roles</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white dark:bg-neutral-900 divide-y divide-gray-200 dark:divide-gray-700">
+              {uk.companies.map((company, index) => (
+                <tr key={index} className="hover:bg-gray-50 dark:hover:bg-neutral-800">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">{company.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{company.sector}</td>
+                  {/*
+                    Contributor note: `CompanyType` does not declare the following properties used below:
+                    `revenue_ttm_usd_billion`, `employees`, `rpe_usd`, `rpe_gbp`.
+                    This can produce type errors or runtime exceptions. Recommended fixes:
+                    - Extend `CompanyType` to include these fields with correct types, OR
+                    - Guard accessors here (e.g. `company.revenue_ttm_usd_billion || 'N/A'`, `company.employees?.toLocaleString() || 'N/A'`, and conditional formatting for `rpe_usd`/`rpe_gbp`).
+                  */}
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">${company.revenue_ttm_usd_billion}B</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{company.employees.toLocaleString()}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 dark:text-blue-400 font-semibold">${(company.rpe_usd/1000000).toFixed(3)}M</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-emerald-600 dark:text-emerald-400 font-semibold">£{(company.rpe_gbp/1000000).toFixed(3)}M</td>
+                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">{company.keyRoles}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {uk.findings && (
+          <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-lg">
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              <span className="font-semibold">Report Findings:</span> {uk.findings}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

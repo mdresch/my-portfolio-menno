@@ -1,0 +1,58 @@
+{
+  "date": "2025-12-31",
+  "usd_to_gbp_rate": 0.742583,
+  "rate_source": "https://www.x-rates.com/historical/?from=USD&amount=1&date=2025-12-31",
+  "companies": [
+    {
+      "rank": 1,
+      "company": "Shell",
+      "revenue_ttm_usd_billion": 269.07,
+      "employees": 93000,
+      "rpe_usd": 2893000,
+      "rpe_gbp": 2148292.62,
+      "rpe_usd_m": 2.893,
+      "rpe_gbp_m": 2.148
+    },
+    {
+      "rank": 2,
+      "company": "BP",
+      "revenue_ttm_usd_billion": 187.70,
+      "employees": 100500,
+      "rpe_usd": 1868000,
+      "rpe_gbp": 1387145.04,
+      "rpe_usd_m": 1.868,
+      "rpe_gbp_m": 1.387
+    },
+    {
+      "rank": 3,
+      "company": "Prudential",
+      "revenue_ttm_usd_billion": 128.74,
+      "employees": 15412,
+      "rpe_usd": 8353000,
+      "rpe_gbp": 6202795.80,
+      "rpe_usd_m": 8.353,
+      "rpe_gbp_m": 6.203
+    },
+    {
+      "rank": 4,
+      "company": "Tesco",
+      "revenue_ttm_usd_billion": 88.08,
+      "employees": 341108,
+      "rpe_usd": 258000,
+      "rpe_gbp": 191586.41,
+      "rpe_usd_m": 0.258,
+      "rpe_gbp_m": 0.192
+    },
+    {
+      "rank": 5,
+      "company": "HSBC",
+      "revenue_ttm_usd_billion": 70.04,
+      "employees": 220928,
+      "rpe_usd": 317000,
+      "rpe_gbp": 235398.81,
+      "rpe_usd_m": 0.317,
+      "rpe_gbp_m": 0.235
+    }
+  ],
+  "notes": "RPE = Revenue (TTM USD) / Employees. Revenues per employee shown in raw USD and GBP and in millions. GBP conversion uses 2025-12-31 USD->GBP spot rate from x-rates.com. Employee counts are latest reported per company filings or reputable aggregates (dates vary)."
+}
