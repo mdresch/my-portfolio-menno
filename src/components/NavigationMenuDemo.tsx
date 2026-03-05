@@ -17,6 +17,7 @@ import {
 } from "./ui/navigation-menu";
 import { MobileMenu } from "./MobileMenu";
 import { ComponentItem } from "../types/navigation";
+import { SearchTrigger, dispatchOpenSearchPalette } from "./GlobalSearchPalette";
 
 // Professional Heroicons imports
 import {
@@ -341,6 +342,9 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
           <ChatBubbleLeftRightIcon className="w-5 h-5" />
           <span>Chat</span>
         </Link>
+
+        {/* Search trigger */}
+        <SearchTrigger onClick={dispatchOpenSearchPalette} />
         
         {/* Menu button */}
         <button
@@ -1006,7 +1010,8 @@ export function NavigationMenuDemo({}: NavigationMenuDemoProps) {
             </NavigationMenuItem>
           </NavigationMenuList>        
         </NavigationMenu>        
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block">
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2">
+          <SearchTrigger onClick={dispatchOpenSearchPalette} />
           <DarkModeToggle />
         </div>
       </div>
