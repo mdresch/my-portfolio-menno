@@ -6,12 +6,15 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Declare Turbopack config to silence the webpack/Turbopack conflict error in Next.js 16
+  turbopack: {},
   images: {
     unoptimized: true,
-    domains: ['localhost', 'vercel.app', 'my-portfolio-menno.vercel.app'],
+    // Use remotePatterns instead of the deprecated `domains`
+    remotePatterns: [
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'my-portfolio-menno.vercel.app', pathname: '/**' },
+    ],
   },
   webpack: (config, { isServer }) => {
     config.resolve.fallback = {
