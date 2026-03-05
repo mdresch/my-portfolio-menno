@@ -8,6 +8,7 @@ import { app, isFirebaseInitialized } from "@/lib/firebase";
 import { getAnalytics } from "firebase/analytics";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { usePerformanceMonitoring } from "../hooks/usePerformanceMonitoring";
+import Testimonials from "../components/Testimonials";
 
 // Modern Hero Section with animated elements
 const HeroSection: React.FC = () => {
@@ -502,6 +503,9 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Testimonials Section */}
+        <Testimonials />
 
         {/* CTA Section */}
         <CTASection />
