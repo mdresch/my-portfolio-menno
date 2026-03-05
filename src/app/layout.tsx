@@ -16,6 +16,7 @@ import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
 import ClientChatWidget from "../../components/ClientChatWidget";
 import { LoadingProvider } from "@/components/providers/LoadingProvider";
+import { GlobalSearchPaletteProvider } from "@/components/GlobalSearchPalette";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -118,6 +119,7 @@ export default function RootLayout({
                   </main>
                   <ConditionalFooter />
                   <ClientChatWidget />
+                  <GlobalSearchPaletteProvider />
                 </ClientAuthProvider>
               </LoadingProvider>
             </RadixTheme>
