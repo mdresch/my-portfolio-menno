@@ -211,6 +211,19 @@ html {
   outline-offset: 2px;
 }
 
+/* Visually-hidden / sr-only utility — explicit definition for reliable screen-reader support */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* About page specific animations */
 @keyframes bounceIn {
   0% {
@@ -510,35 +523,35 @@ html {
 
 /* Print styles for resume */
 @media print {
-  .print\\:hidden {
+  .print\:hidden {
     display: none !important;
   }
 
-  .print\\:block {
+  .print\:block {
     display: block !important;
   }
 
-  .print\\:p-0 {
+  .print\:p-0 {
     padding: 0 !important;
   }
 
-  .print\\:mb-6 {
+  .print\:mb-6 {
     margin-bottom: 1.5rem !important;
   }
 
-  .print\\:mb-8 {
+  .print\:mb-8 {
     margin-bottom: 2rem !important;
   }
 
-  .print\\:opacity-100 {
+  .print\:opacity-100 {
     opacity: 1 !important;
   }
 
-  .print\\:max-h-full {
+  .print\:max-h-full {
     max-height: none !important;
   }
 
-  .print\\:transform-none {
+  .print\:transform-none {
     transform: none !important;
   }
 

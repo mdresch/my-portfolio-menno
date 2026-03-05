@@ -17,7 +17,15 @@ export default function FloatingChatWidget() {
   return (
     <>
       {/* Chat Toggle Button */}
-      <div className={`chat-toggle ${isOpen ? 'open' : ''}`} onClick={toggleChat}>
+      <div
+        className={`chat-toggle ${isOpen ? 'open' : ''}`}
+        onClick={toggleChat}
+        title={isOpen ? 'Close chat' : "Ask Menno's AI – trained on portfolio & experience"}
+        role="button"
+        aria-label={isOpen ? 'Close chat' : "Open AI chat – ask about Menno's work"}
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleChat(); } }}
+      >
         {isOpen ? (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -34,7 +42,10 @@ export default function FloatingChatWidget() {
       {isOpen && (
         <div className="floating-chat-widget">
           <div className="widget-header">
-            <h3>AI Assistant</h3>
+            <div>
+              <h3>Ask Menno&apos;s AI</h3>
+              <p className="widget-subtitle">Trained on my portfolio, projects &amp; experience</p>
+            </div>
             <button onClick={toggleChat} className="close-button" title="Close chat">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -105,6 +116,13 @@ export default function FloatingChatWidget() {
           margin: 0;
           font-size: 16px;
           font-weight: 600;
+        }
+
+        .widget-subtitle {
+          margin: 2px 0 0;
+          font-size: 11px;
+          opacity: 0.85;
+          font-weight: 400;
         }
 
         .close-button {

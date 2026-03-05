@@ -90,7 +90,7 @@ EOF
 
 # Try to build with minimal pages
 echo "Building minimal site with essential pages..."
-next build --no-lint || {
+next build || {
   echo "❌ Stage 1 build failed. Creating static fallback..."
   mkdir -p out
   cp -r temp_src/pages/* out/
