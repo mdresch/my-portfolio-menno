@@ -211,6 +211,19 @@ html {
   outline-offset: 2px;
 }
 
+/* Visually-hidden / sr-only utility — explicit definition for reliable screen-reader support */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* About page specific animations */
 @keyframes bounceIn {
   0% {

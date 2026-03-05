@@ -26,9 +26,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Menno Drescher - Full-Stack Developer | Modern Web Solutions",
-  description: "Full-Stack Developer specializing in C#/.NET, React, and Azure. Building scalable, high-performance applications with modern technologies and best practices.",
-  keywords: ["full-stack developer", "C# developer", ".NET developer", "React developer", "Azure developer", "TypeScript", "Next.js", "web development", "software engineer", "Menno Drescher", "portfolio", "modern web solutions"],
+  title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+  description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development (C#/.NET, React, Azure) and Human Capital Management. Building scalable, high-performance applications and strategic HCM solutions.",
+  keywords: ["Menno Drescher", "full-stack developer", "HCM specialist", "C# developer", ".NET developer", "React developer", "Azure developer", "TypeScript", "Next.js", "human capital management", "HR technology", "software engineer", "portfolio"],
   authors: [{ name: "Menno Drescher" }],
   creator: "Menno Drescher",
   metadataBase: new URL("https://my-portfolio-menno.vercel.app/"), // Update with your actual domain
@@ -47,14 +47,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://my-portfolio-menno.vercel.app/", // Update with your actual domain
-    title: "Menno Drescher - Portfolio",
-    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+    description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development and Human Capital Management.",
     siteName: "Menno Drescher",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Menno Drescher - Portfolio",
-    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+    description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development and Human Capital Management.",
     creator: "@mennodre", // Update with your actual Twitter handle
     site: "@mennodre", // Update with your actual Twitter handle
   },
