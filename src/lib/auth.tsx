@@ -1,16 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { 
-  User,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  sendPasswordResetEmail,
-  updateProfile,
-  onAuthStateChanged
-} from "firebase/auth";
-import { isFirebaseInitialized } from "./firebase";
+import type { User } from "firebase/auth";
 
 interface AuthContextType {
   user: User | null;
@@ -25,6 +16,15 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+async function loadFirebaseModules() {
+  const [firebaseModule, firebaseAuthModule] = await Promise.all([
+    import("./firebase"),
+    import("firebase/auth"),
+  ]);
+
+  return { firebaseModule, firebaseAuthModule };
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -33,14 +33,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
+        const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
+
         // Check if Firebase is initialized
-        if (!isFirebaseInitialized()) {
+        if (!firebaseModule.isFirebaseInitialized()) {
           setError("Firebase is not properly configured");
           setLoading(false);
           return;
         }
 
-        const { auth } = await import("./firebase");
+        const { auth } = firebaseModule;
         
         if (!auth) {
           setError("Firebase auth not available");
@@ -48,7 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
 
-        const unsubscribe = onAuthStateChanged(
+        const unsubscribe = firebaseAuthModule.onAuthStateChanged(
           auth, 
           (user) => {
             setUser(user);
@@ -85,12 +87,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async ({ email, password }: { email: string; password: string }) => {
     try {
-      if (!isFirebaseInitialized()) {
+      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
+
+      if (!firebaseModule.isFirebaseInitialized()) {
         throw new Error("Firebase is not properly configured");
       }
 
-      const { auth } = await import("./firebase");
-      await signInWithEmailAndPassword(auth, email, password);
+      const { auth } = firebaseModule;
+      if (!auth) {
+        throw new Error("Firebase auth not available");
+      }
+
+      await firebaseAuthModule.signInWithEmailAndPassword(auth, email, password);
     } catch (error: unknown) {
       if (typeof error === "object" && error !== null && "code" in error) {
         throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
@@ -101,17 +109,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = async ({ username, email, password }: { username: string; email: string; password: string }) => {
     try {
-      if (!isFirebaseInitialized()) {
+      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
+
+      if (!firebaseModule.isFirebaseInitialized()) {
         throw new Error("Firebase is not properly configured. Please check your environment variables.");
       }
 
-      const { auth } = await import("./firebase");
+      const { auth } = firebaseModule;
       if (!auth) {
         throw new Error("Firebase authentication is not available. Please check your configuration.");
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(userCredential.user, {
+      const userCredential = await firebaseAuthModule.createUserWithEmailAndPassword(auth, email, password);
+      await firebaseAuthModule.updateProfile(userCredential.user, {
         displayName: username
       });
     } catch (error: unknown) {
@@ -141,12 +151,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     try {
-      if (!isFirebaseInitialized()) {
+      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
+
+      if (!firebaseModule.isFirebaseInitialized()) {
         throw new Error("Firebase is not properly configured");
       }
 
-      const { auth } = await import("./firebase");
-      await signOut(auth);
+      const { auth } = firebaseModule;
+      if (!auth) {
+        throw new Error("Firebase auth not available");
+      }
+
+      await firebaseAuthModule.signOut(auth);
     } catch {
       throw new Error("Failed to log out");
     }
@@ -154,12 +170,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const resetPassword = async (email: string) => {
     try {
-      if (!isFirebaseInitialized()) {
+      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
+
+      if (!firebaseModule.isFirebaseInitialized()) {
         throw new Error("Firebase is not properly configured");
       }
 
-      const { auth } = await import("./firebase");
-      await sendPasswordResetEmail(auth, email);
+      const { auth } = firebaseModule;
+      if (!auth) {
+        throw new Error("Firebase auth not available");
+      }
+
+      await firebaseAuthModule.sendPasswordResetEmail(auth, email);
     } catch (error: unknown) {
       if (typeof error === "object" && error !== null && "code" in error) {
         throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
