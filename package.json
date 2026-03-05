@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack",
     "build": "cross-env NODE_OPTIONS=\"--max_old_space_size=3072\" next build --no-lint",
     "build:minimal": "cross-env NEXT_MINIMAL_BUILD=true NODE_OPTIONS=\"--max_old_space_size=4096 --v8-pool-size=0\" next build --no-lint",
     "build:prod": "cross-env NODE_OPTIONS=\"--max_old_space_size=4096\" next build --no-lint",
