@@ -20,7 +20,7 @@ export NODE_OPTIONS="--max_old_space_size=4096 --v8-pool-size=0 --no-warnings"
 
 # Build with absolute minimum features
 echo "🏗️ Building static export..."
-next build --no-lint
+next build
 
 # Check build status
 if [ $? -eq 0 ]; then
