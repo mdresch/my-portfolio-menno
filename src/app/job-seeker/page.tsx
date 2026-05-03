@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Metadata } from "next";
 import JobSeekerDashboard from "../../components/job-seeker/JobSeekerDashboard";
 
@@ -27,7 +27,15 @@ export default function JobSeekerPage() {
           </p>
         </div>
 
-        <JobSeekerDashboard />
+        <Suspense
+          fallback={
+            <div className="rounded-xl border border-gray-200 bg-white/80 py-16 text-center text-gray-600 dark:border-gray-700 dark:bg-gray-900/50 dark:text-gray-300">
+              Loading job seeker dashboard…
+            </div>
+          }
+        >
+          <JobSeekerDashboard />
+        </Suspense>
       </div>
     </div>
   );
