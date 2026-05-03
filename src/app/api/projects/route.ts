@@ -47,7 +47,12 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
+    if (typeof body.title !== "string" || !body.title.trim()) {
+      return NextResponse.json({ error: "Title is required and must be a non-empty string" }, { status: 400 });
+    }
+    const title = body.title.trim();
+
     const repoFromBody =
       body.repoUrl !== undefined && body.repoUrl !== ""
         ? String(body.repoUrl).trim()
@@ -70,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     const project = await prisma.project.create({
       data: {
-        title: body.title,
+        title,
         description: body.description || null,
         technologies: body.technologies || [],
         repoUrl,
@@ -81,7 +86,10 @@ export async function POST(request: NextRequest) {
         outcomes: body.outcomes || [],
         challenges: body.challenges || [],
         caseStudy: body.caseStudy || null,
-        slug: body.slug || body.title.toLowerCase().replace(/\s+/g, "-"),
+        slug:
+          typeof body.slug === "string" && body.slug.trim()
+            ? body.slug.trim()
+            : title.toLowerCase().replace(/\s+/g, "-"),
       },
     });
 

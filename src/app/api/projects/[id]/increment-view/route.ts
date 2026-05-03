@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../../../../lib/prisma";
+
+function isRecordNotFound(e: unknown): boolean {
+  return e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2025";
+}
 
 /**
  * POST /api/projects/:slugOrId/increment-view
  * Uses the existing `[id]` segment so slugs (e.g. cba-ai-foundry) and numeric ids both work.
+ * Single atomic `update` per match so concurrent increments return the post-update count.
  */
 export async function POST(
   _request: NextRequest,
@@ -16,30 +22,28 @@ export async function POST(
       return NextResponse.json({ error: "Invalid path" }, { status: 400 });
     }
 
-    const bySlug = await prisma.project.updateMany({
-      where: { slug: segment },
-      data: { viewCount: { increment: 1 } },
-    });
-    if (bySlug.count > 0) {
-      const row = await prisma.project.findUnique({
+    try {
+      const row = await prisma.project.update({
         where: { slug: segment },
+        data: { viewCount: { increment: 1 } },
         select: { viewCount: true },
       });
-      return NextResponse.json({ viewCount: row?.viewCount ?? 0 });
+      return NextResponse.json({ viewCount: row.viewCount });
+    } catch (e) {
+      if (!isRecordNotFound(e)) throw e;
     }
 
     const numericId = Number(segment);
     if (Number.isFinite(numericId) && numericId >= 1) {
-      const byId = await prisma.project.updateMany({
-        where: { id: Math.floor(numericId) },
-        data: { viewCount: { increment: 1 } },
-      });
-      if (byId.count > 0) {
-        const row = await prisma.project.findUnique({
+      try {
+        const row = await prisma.project.update({
           where: { id: Math.floor(numericId) },
+          data: { viewCount: { increment: 1 } },
           select: { viewCount: true },
         });
-        return NextResponse.json({ viewCount: row?.viewCount ?? 0 });
+        return NextResponse.json({ viewCount: row.viewCount });
+      } catch (e) {
+        if (!isRecordNotFound(e)) throw e;
       }
     }
 
