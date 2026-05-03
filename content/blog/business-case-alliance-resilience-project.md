@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_9956df5c-a416-4616-bd29-7bac6946a858.jpeg"
 title: "Business Case: Alliance Resilience Project"
 date: 2025-01-10
 slug: "business-case-alliance-resilience-project"

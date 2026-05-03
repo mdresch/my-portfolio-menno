@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_e719ca1e-8982-4c3f-a39d-8f02d25e7a99.jpeg"
 title: "Alliance Resilience Project — Ideation & Charter"
 date: 2025-12-22
 slug: "alliance-resilience-project"

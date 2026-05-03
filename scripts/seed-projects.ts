@@ -17,12 +17,26 @@ async function loadProjectFile(filePath: string) {
   // Normalize fields to match Prisma model
   const slug = data.slug || path.basename(filePath).replace(/\.md$/, '');
 
+  const rawLink = typeof data.link === 'string' && data.link.trim() ? data.link.trim() : null;
+  const repoFromFm = typeof data.repoUrl === 'string' && data.repoUrl.trim() ? data.repoUrl.trim() : null;
+  const liveFromFm = typeof data.liveUrl === 'string' && data.liveUrl.trim() ? data.liveUrl.trim() : null;
+  let repoUrl: string | null = repoFromFm;
+  let liveUrl: string | null = liveFromFm;
+  if (!repoUrl && !liveUrl && rawLink) {
+    if (/github\.com/i.test(rawLink)) {
+      repoUrl = rawLink;
+    } else {
+      liveUrl = rawLink;
+    }
+  }
+
   return {
     slug,
     title: data.title || slug,
     description: data.description || null,
     technologies: Array.isArray(data.technologies) ? data.technologies : (data.technologies ? String(data.technologies).split(',').map((s: string) => s.trim()) : []),
-    link: data.link || null,
+    repoUrl,
+    liveUrl,
     datePublished: data.datePublished ? new Date(data.datePublished) : null,
     category: data.category || null,
     screenshots: Array.isArray(data.screenshots) ? data.screenshots : [],
@@ -50,7 +64,8 @@ export async function seed() {
           title: project.title,
           description: project.description,
           technologies: project.technologies,
-          link: project.link,
+          repoUrl: project.repoUrl,
+          liveUrl: project.liveUrl,
           datePublished: project.datePublished,
           category: project.category,
           screenshots: project.screenshots,
@@ -63,7 +78,8 @@ export async function seed() {
           title: project.title,
           description: project.description,
           technologies: project.technologies,
-          link: project.link,
+          repoUrl: project.repoUrl,
+          liveUrl: project.liveUrl,
           datePublished: project.datePublished,
           category: project.category,
           screenshots: project.screenshots,

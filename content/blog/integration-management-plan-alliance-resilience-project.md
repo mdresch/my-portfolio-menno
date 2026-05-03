@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_df741a22-44b4-4b1d-871b-ca76de3dd092.jpeg"
 title: "Integration Management Plan — Alliance Resilience Project"
 date: 2025-01-25
 slug: "integration-management-plan-alliance-resilience-project"

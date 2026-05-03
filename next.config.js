@@ -17,6 +17,20 @@ const nextConfig = {
     ],
   },
   webpack: (config, { isServer }) => {
+    // Sentry → @sentry/node → Prisma/OpenTelemetry use dynamic requires; webpack warns but it is expected.
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      (warning) => {
+        const msg = String(warning.message || '');
+        const res = warning.module?.resource || '';
+        return (
+          msg.includes('Critical dependency: the request of a dependency is an expression') &&
+          (res.includes('@opentelemetry') ||
+            (res.includes('@prisma') && res.includes('instrumentation')))
+        );
+      },
+    ];
+
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,

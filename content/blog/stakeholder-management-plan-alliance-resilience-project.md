@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20lots%20of%20hot%20air%20balloons%20in%20the%20sky%20guided%20by%20lighthouses%20from%20the%20ground%2018364.jpg"
 title: "Stakeholder Management Plan — Alliance Resilience Project"
 slug: "stakeholder-management-plan-alliance-resilience-project"
 date: 2025-11-10

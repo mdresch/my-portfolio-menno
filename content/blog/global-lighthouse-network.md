@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_cb7bd1a2-7319-4137-89b2-96872775b987.jpeg"
 title: Global Lighthouse Network
 date: 2025-05-10
 author: Menno Drescher

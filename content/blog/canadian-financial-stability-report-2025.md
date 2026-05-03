@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_afefdbd3-d155-4e21-9eef-fafe5425fd9d.jpg"
 title: "Canadian Financial Stability Report—2025: Navigating a Trade War"
 description: "Analysis of the Bank of Canada's Financial Stability Report examining how the Canadian financial system is responding to US trade policy uncertainty and market volatility in 2025."
 date: "2025-05-08"

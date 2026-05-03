@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/default-project-image.jpg"
 title: "🚀 Building a Scalable AI-Powered Web App with Firebase, Vertex AI, and Vercel"
 date: "2025-05-27"
 author: Menno Drescher

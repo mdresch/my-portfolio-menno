@@ -4,10 +4,15 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SkillService } from "../../../../lib/api-services";
+import {
+  RESUME_SKILL_CATEGORY_LABELS,
+  RESUME_SKILL_CATEGORY_VALUES,
+  type ResumeSkillCategory,
+} from "../../../../lib/skills-constants";
 
 export default function AddSkillPage() {
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState<ResumeSkillCategory>("technical");
   const [proficiencyLevel, setProficiencyLevel] = useState(1);
   const [iconUrl, setIconUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,13 +48,22 @@ export default function AddSkillPage() {
           />
         </div>
         <div>
-          <label className="block font-medium mb-1">Category</label>
-          <input
-            type="text"
-            className="w-full border rounded px-3 py-2"
+          <label htmlFor="skill-category" className="block font-medium mb-1">
+            Category
+          </label>
+          <select
+            id="skill-category"
+            className="w-full border rounded px-3 py-2 bg-white"
             value={category}
-            onChange={e => setCategory(e.target.value)}
-          />
+            onChange={(e) => setCategory(e.target.value as ResumeSkillCategory)}
+            required
+          >
+            {RESUME_SKILL_CATEGORY_VALUES.map((value) => (
+              <option key={value} value={value}>
+                {RESUME_SKILL_CATEGORY_LABELS[value]}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className="block font-medium mb-1">Proficiency Level (1-10)</label>

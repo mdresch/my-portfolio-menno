@@ -63,14 +63,6 @@ if [ -d "my-portfolio-menno" ]; then
     cd ..
 fi
 
-# Install dependencies for requirements-gathering-agent if it exists
-if [ -d "requirements-gathering-agent" ]; then
-    echo "📦 Installing requirements-gathering-agent dependencies..."
-    cd requirements-gathering-agent
-    npm install
-    cd ..
-fi
-
 # Restore .NET packages for API projects
 echo "📦 Restoring .NET packages..."
 if [ -d "api" ]; then

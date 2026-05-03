@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_993fb40c-51d9-404b-9462-051b53f00d2a.jpg"
 title: Building a Full-Stack Portfolio with Next.js and ASP.NET Core
 date: 2025-05-14
 author: Menno Drescher

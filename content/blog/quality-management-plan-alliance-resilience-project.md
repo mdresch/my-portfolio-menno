@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/1baloon%20lighthouses.jpeg"
 title: "Quality Management Plan — Alliance Resilience Project"
 slug: "quality-management-plan-alliance-resilience-project"
 date: 2026-01-10

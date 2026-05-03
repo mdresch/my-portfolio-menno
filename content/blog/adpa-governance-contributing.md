@@ -1,0 +1,251 @@
+---
+coverImage: "/images/_3409f712-2474-41d0-b61f-e0575aaf1704.jpeg"
+title: "✅ Atomic Execution & Validation (AEV) Workflow"
+date: 2026-05-02
+slug: "adpa-governance-contributing"
+description: "ADPA Codebase – Mandatory Change Protocol"
+categories:
+  - ADPA
+  - Governance
+  - RPAS
+author: "Menno Drescher"
+sourceRepo: "https://github.com/mdresch/adpa"
+sourceBranch: "adpa-project-charter"
+sourcePath: "governance/CONTRIBUTING.md"
+---
+> **Source:** [`governance/CONTRIBUTING.md`](https://github.com/mdresch/adpa/blob/adpa-project-charter/governance/CONTRIBUTING.md) — branch `adpa-project-charter`, repository [mdresch/adpa](https://github.com/mdresch/adpa).
+
+# ✅ Atomic Execution & Validation (AEV) Workflow
+
+**ADPA Codebase – Mandatory Change Protocol**
+
+## 0. Authority Model (Non‑Negotiable)
+
+*   The **agent is a proposer and executor**, not an authority.
+*   The **codebase is the authority**.
+*   A change exists **only** if it passes validation gates.
+
+No agent assertion of correctness is sufficient on its own.
+
+***
+
+## 1. Atomicity Contract
+
+Each agent action **MUST** satisfy all of the following:
+
+### ✅ One Logical Change Only
+
+An atomic change is limited to **exactly one** of:
+
+*   One new entity
+*   One state transition
+*   One event consumer or publisher
+*   One UI component
+*   One refactor with no semantic change
+
+If more than one applies → **reject and split**.
+
+***
+
+### ✅ Fully Specified Scope
+
+Every change must explicitly declare:
+
+*   Files touched (exact paths)
+*   Type of change (add / modify / delete)
+*   Rationale (one sentence, factual)
+
+If scope cannot be enumerated → **change is invalid**.
+
+***
+
+## 2. Execution Rules for the Agent
+
+### ❌ Forbidden Behaviors
+
+The agent may **never**:
+
+*   Ask for “manual edits”
+*   Say “apply this conceptually”
+*   Assume file placement
+*   Modify files outside declared scope
+*   Change infrastructure and business logic together
+
+Violation = immediate rollback.
+
+***
+
+### ✅ Required Output Format
+
+The agent must produce **one** of:
+
+*   Unified diff (`git diff` format)
+*   Explicit file replacement with full contents
+*   Atomic commit (if tool supports it)
+
+No prose‑only instructions are acceptable.
+
+***
+
+## 3. Validation Gates (Mandatory, Ordered)
+
+### 🟢 Gate 1 — Mechanical Integrity
+
+Immediately after application:
+
+```bash
+git status
+git diff --stat
+```
+
+✅ Expected:
+
+*   Only declared files changed
+*   No untracked artifacts
+*   No unexpected deletions
+
+Failure → rollback.
+
+***
+
+### 🟢 Gate 2 — Build Integrity
+
+```bash
+dotnet build
+```
+
+✅ Expected:
+
+*   All projects compile
+*   No new warnings at error level
+*   No DI or namespace breaks
+
+Failure → rollback.
+
+***
+
+### 🟢 Gate 3 — Orchestration Integrity
+
+```bash
+dotnet run --project Adpa.AppHost
+```
+
+✅ Expected:
+
+*   Aspire resolves all services
+*   No startup exceptions
+*   No missing dependencies
+
+Failure → rollback **without debugging**.
+
+***
+
+### 🟢 Gate 4 — Governance Invariants (Critical)
+
+The following **must still be true**:
+
+*   Ledger writes are **append‑only**
+*   Amendments are **immutable**
+*   Phase transitions remain **explicit**
+*   Human approval still gates execution
+*   Events are **idempotent**
+*   Hash chains are **unbroken**
+
+If any invariant is unclear → rollback.
+
+***
+
+### 🟢 Gate 5 — Proof‑of‑Life Scenario
+
+Run **one** happy path only.
+
+Example (Phase‑relevant):
+
+*   Create Phase 0 entry
+*   Approve Phase 1
+*   Verify:
+    *   Ledger record exists
+    *   Amendment recorded (if applicable)
+    *   Event emitted once
+    *   Consumer is idempotent
+
+Failure → rollback.
+
+***
+
+### 🟢 Gate 6 — PR Semantic Audit (DRACO)
+
+All Pull Requests targeting `main` or `develop` must pass a semantic integrity audit.
+- **Trigger**: Automatic on push/synchronize.
+- **Output**: Structured Board Report in PR comments.
+- **Policy**: See [governance/PR-GOVERNANCE.md](file:///f:/Source/Repos/adpa/governance/PR-GOVERNANCE.md).
+
+Failure → Investigations and findings resolved before merger.
+
+***
+
+## 4. Database Migration Protocol (CSR Certified)
+
+All mutations to the Persistence Layer (PostgreSQL) must adhere to the following safety ritual:
+
+1.  **Mandatory Backup**: Perform a full database backup (`pg_dump` or equivalent) **before** applying any migration script.
+2.  **Rollback Test**: Verify that the migration script has a corresponding "down" or "rollback" script that restores the previous schema state without data loss.
+3.  **Atomic Schema/Code Sync**: Migrations must be committed as part of the logic change that requires them. "Naked" migrations (no code change) are prohibited unless identified as Hygiene Tasks.
+4.  **Verification Query**: Every migration script must include a verification query to prove success (e.g., checking `information_schema.columns`).
+
+Failure to provide a rollback path results in immediate **REJECT** at Gate 4.
+
+***
+
+## 5. Commit Certification
+
+Only after all gates pass:
+
+```bash
+git commit -m "SAFE: <atomic change description>"
+```
+
+Rules:
+
+*   “SAFE” prefix is mandatory
+*   Commit message must match declared scope
+*   No squashing of failed attempts
+
+***
+
+## 5. Rollback Rule (Absolute)
+
+If **any** gate fails:
+
+*   Revert to last SAFE commit
+*   Do **not** debug in a dirty state
+*   Do **not** layer fixes
+*   Restart from baseline
+
+Rollback is not failure — it is compliance.
+
+***
+
+## 6. Agent Compliance Statement (Implicit)
+
+By operating under this workflow, the agent implicitly agrees:
+
+*   It is **not trusted by default**
+*   Correctness is proven, not claimed
+*   Silence is preferred over unsafe action
+*   Partial success is failure
+
+***
+
+## 7. Why This Works (Important)
+
+This workflow:
+
+*   Eliminates silent regressions
+*   Makes rollback trivial and safe
+*   Scales with complexity
+*   Is compatible with AI, CLI, IDE, or human edits
+*   Matches ADPA’s governance philosophy exactly
+
+You are not slowing development —  
+you are **preventing irreversible damage**.

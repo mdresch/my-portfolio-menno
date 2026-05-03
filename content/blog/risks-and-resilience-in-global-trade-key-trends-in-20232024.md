@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/blue%20ligjhthouse%202.jpeg"
 title: Risks and Resilience in Global Trade Key Trends in 2023-2024
 date: 2025-04-22
 author: Menno Drescher

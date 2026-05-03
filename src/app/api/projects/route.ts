@@ -5,11 +5,17 @@ export async function GET(request: NextRequest) {
   try {
     const url = request.nextUrl;
     const limitParam = url.searchParams.get("limit");
-    const LIMIT = limitParam ? Math.max(1, Number(limitParam)) : 10;
+    let take: number | undefined;
+    if (limitParam != null && limitParam !== "") {
+      const n = Number(limitParam);
+      if (Number.isFinite(n) && n > 0) {
+        take = Math.min(Math.floor(n), 500);
+      }
+    }
 
-    // Query projects from the database. Order by datePublished desc when available.
+    // Query projects from the database. No `limit` = return all (admin/UI); cap with ?limit= for large DBs.
     const projects = await prisma.project.findMany({
-      take: LIMIT,
+      ...(take ? { take } : {}),
       orderBy: {
         datePublished: "desc",
       },
@@ -20,7 +26,8 @@ export async function GET(request: NextRequest) {
       title: p.title,
       description: p.description || "",
       technologies: p.technologies || [],
-      link: p.link || "",
+      repoUrl: p.repoUrl || "",
+      liveUrl: p.liveUrl || "",
       datePublished: p.datePublished ? p.datePublished.toISOString() : null,
       category: p.category || "",
       screenshots: p.screenshots || [],
@@ -41,12 +48,33 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
+    const repoFromBody =
+      body.repoUrl !== undefined && body.repoUrl !== ""
+        ? String(body.repoUrl).trim()
+        : body.gitHubUrl
+          ? String(body.gitHubUrl).trim()
+          : null;
+    const liveFromBody =
+      body.liveUrl !== undefined && body.liveUrl !== "" ? String(body.liveUrl).trim() : null;
+    const legacyLink =
+      body.link !== undefined && body.link !== "" ? String(body.link).trim() : null;
+    let repoUrl: string | null = repoFromBody || null;
+    let liveUrl: string | null = liveFromBody || null;
+    if (!repoUrl && !liveUrl && legacyLink) {
+      if (/github\.com/i.test(legacyLink)) {
+        repoUrl = legacyLink;
+      } else {
+        liveUrl = legacyLink;
+      }
+    }
+
     const project = await prisma.project.create({
       data: {
         title: body.title,
         description: body.description || null,
         technologies: body.technologies || [],
-        link: body.link || null,
+        repoUrl,
+        liveUrl,
         datePublished: body.datePublished ? new Date(body.datePublished) : null,
         category: body.category || null,
         screenshots: body.screenshots || [],

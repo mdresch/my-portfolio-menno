@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouse%20guiding%20hot%20air%20balloons%20to%20the%20sea%20during%20sunset%2054338.jpg"
 title: "Schedule Management Plan — Alliance Resilience Project"
 slug: "schedule-management-plan-alliance-resilience-project"
 date: 2025-04-15

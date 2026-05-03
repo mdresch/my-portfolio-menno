@@ -5,15 +5,15 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
-  link?: string;
   datePublished?: string;
   category?: string;
   image?: string;
   caseStudy?: string;
   screenshots?: string[];
   outcomes?: string[];
-  gitHubUrl?: string; // Added for backend compatibility
-  liveUrl?: string;   // Added for backend compatibility
+  /** Repository URL (GitHub, GitLab, …). Sent to API as `repoUrl` or `gitHubUrl`. */
+  repoUrl?: string;
+  liveUrl?: string;
 }
 
 interface ProjectFormProps {
@@ -38,15 +38,14 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
       title: "",
       description: "",
       technologies: [],
-      link: "",
       datePublished: "",
       category: "",
       image: "",
       caseStudy: "",
       screenshots: [],
       outcomes: [],
-      gitHubUrl: "", // Added
-      liveUrl: "",   // Added
+      repoUrl: "",
+      liveUrl: "",
     }
   );
 
@@ -103,10 +102,6 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
         </select>
       </div>
       <div>
-        <label className="block font-semibold">Link</label>
-        <input name="link" value={project.link || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Optional link" />
-      </div>
-      <div>
         <label className="block font-semibold">Date Published</label>
         <input name="datePublished" type="date" value={project.datePublished || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select publication date" />
       </div>
@@ -127,12 +122,12 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
         <textarea name="outcomes" value={project.outcomes?.join("\n") || ""} onChange={handleOutcomesChange} className="border rounded px-3 py-2 w-full" placeholder="Project outcomes (one per line)" />
       </div>
       <div>
-        <label className="block font-semibold">GitHub URL</label>
-        <input name="gitHubUrl" value={project.gitHubUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="GitHub repository URL" />
+        <label className="block font-semibold">Repository URL</label>
+        <input name="repoUrl" value={project.repoUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="https://github.com/…" />
       </div>
       <div>
-        <label className="block font-semibold">Live URL</label>
-        <input name="liveUrl" value={project.liveUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Live demo URL" />
+        <label className="block font-semibold">Live / demo URL</label>
+        <input name="liveUrl" value={project.liveUrl || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="https://…" />
       </div>
       <div className="flex gap-4 mt-4">
         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{initialProject ? "Update" : "Create"}</button>

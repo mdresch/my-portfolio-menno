@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/baloon%20lighthouses%203.jpeg"
 title: "Request for Proposal (RfP) Template Outline"
 date: "2025-05-10"
 categories:

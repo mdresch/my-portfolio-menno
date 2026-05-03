@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_b9fa2c87-2309-49e8-a385-6e0bb2b2a298.jpg"
 title: "Breakthrough in Contextual Reasoning - A Landmark Achievement in AI-Powered Document Generation"
 date: 2025-06-18
 author: Menno Drescher

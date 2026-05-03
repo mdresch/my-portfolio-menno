@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_b83181eb-2dd5-4652-bd27-d8f9e6488c33.jpeg"
 title: "Communications Management Plan — Alliance Resilience Project"
 date: 2025-01-20
 slug: "communications-management-plan-alliance-resilience-project"

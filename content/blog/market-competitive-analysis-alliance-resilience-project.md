@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_f23c3bca-e1ce-42d5-937d-a34ad4ef11da.jpeg"
 title: "Market Competitive Analysis — Alliance Resilience Project"
 slug: "market-competitive-analysis-alliance-resilience-project"
 date: 2026-01-10
