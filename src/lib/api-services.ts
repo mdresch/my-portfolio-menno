@@ -61,8 +61,8 @@ async function fetchAPI<T>(endpoint: string, options: Record<string, any> = {}):
         : `http://localhost:${process.env.PORT || 3000}`;
       requestUrl = new URL(`${API_BASE_URL}${endpoint}`, baseUrl).toString();
     } else {
-      // Client-side: use relative URL
-      requestUrl = `${API_BASE_URL}${endpoint}`;
+      // Client-side: same-origin App Router API only (do not use legacy Azure NEXT_PUBLIC_API_BASE_URL)
+      requestUrl = new URL(`${API_BASE_URL}${endpoint}`, window.location.origin).toString();
     }
     
     const response = await fetch(requestUrl, {
