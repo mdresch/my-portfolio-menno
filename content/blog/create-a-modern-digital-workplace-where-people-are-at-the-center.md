@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_bd674bd9-17c4-47b7-a2fa-67cbb300c55f.jpg"
 title: create-a-modern-digital-workplace-where-people-are-at-the-center
 date: 2025-05-14
 author: Menno Drescher

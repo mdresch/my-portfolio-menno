@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/blue%20ligjhthouse.jpeg"
 title: Risks In International Trade
 date: 2025-04-22
 author: Menno Drescher

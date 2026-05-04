@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_c9f1f669-1fd4-4c25-8ca2-dd00767bd1bc.jpeg"
 title: Financial Stability Risks April 2025
 date: 2025-04-29
 author: Menno Drescher

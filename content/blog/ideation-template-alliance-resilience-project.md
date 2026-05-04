@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_d926ab2b-59a4-48b4-80fe-5c03744918d6.jpeg"
 title: "Ideation Template — Alliance Resilience Project"
 slug: "ideation-template-alliance-resilience-project"
 date: 2025-04-15

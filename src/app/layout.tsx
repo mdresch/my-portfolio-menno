@@ -17,6 +17,7 @@ import ClientAuthProvider from "@/components/ClientAuthProvider";
 import ClientChatWidget from "../../components/ClientChatWidget";
 import { LoadingProvider } from "@/components/providers/LoadingProvider";
 import { GlobalSearchPaletteProvider } from "@/components/GlobalSearchPalette";
+import { ScrollProgress } from "@/components/modern/ScrollProgress";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -77,19 +78,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="min-h-screen transition-colors" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="min-h-screen transition-colors"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+    >
       <head>
-        {/* Hotjar Tracking Code for My Portfolio Menno */}
-        <script>
-          {`(function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:6399278,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
-        </script>
+        {/* Hotjar: loaded only on HTTPS via ClientAnalytics → HotjarWrapper (Hotjar blocks http://localhost) */}
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DE640X7RM"></script>
         <script
@@ -109,9 +105,11 @@ export default function RootLayout({
             <RadixTheme>
               <LoadingProvider>
                 <ClientAuthProvider>
+                  <ScrollProgress />
                   <div className="flex items-center justify-center">
                     <NavigationMenuDemo />
-                  </div>                  <main className="flex-1">
+                  </div>
+                  <main className="flex-1">
                     {children}
                     <Analytics />
                     <SpeedInsights />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { SkillService } from "../../../lib/api-services";
+import { CUSTOM_SKILL_ID_MIN } from "../../../lib/skills-constants";
 import type { Skill as ApiSkill } from "../../../types/api";
 
 // Use the real Skill type from backend
@@ -71,14 +72,20 @@ export default function SkillsAdminPage() {
                 <td className="py-2 px-4 border-b">{skill.category ?? "-"}</td>
                 <td className="py-2 px-4 border-b">{skill.proficiencyLevel}</td>
                 <td className="py-2 px-4 border-b">
-                  <Link href={`/admin/skills/${skill.id}/edit`} className="text-blue-600 hover:underline mr-2">Edit</Link>
-                  <button
-                    className="text-red-600 hover:underline disabled:opacity-50"
-                    disabled={deletingId === skill.id}
-                    onClick={() => handleDelete(skill.id)}
-                  >
-                    {deletingId === skill.id ? "Deleting..." : "Delete"}
-                  </button>
+                  {skill.id >= CUSTOM_SKILL_ID_MIN ? (
+                    <button
+                      type="button"
+                      className="text-red-600 hover:underline disabled:opacity-50"
+                      disabled={deletingId === skill.id}
+                      onClick={() => handleDelete(skill.id)}
+                    >
+                      {deletingId === skill.id ? "Deleting..." : "Delete"}
+                    </button>
+                  ) : (
+                    <span className="text-gray-500 text-sm" title="Edit resume skills in src/data/resume.ts">
+                      From resume
+                    </span>
+                  )}
                 </td>
               </tr>
             ))}

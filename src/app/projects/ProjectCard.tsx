@@ -20,7 +20,15 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
       <div className="mb-4">
-        <Image src={project.image ?? "/images/default-project-image.jpg"} alt={project.title} width={400} height={250} className="rounded-lg object-cover" />
+        <Image
+          src={project.image ?? "/images/default-project-image.jpg"}
+          alt={project.title}
+          width={400}
+          height={250}
+          sizes="(max-width: 768px) 100vw, 600px"
+          className="h-auto w-full max-h-[250px] rounded-lg object-cover"
+          style={{ height: "auto" }}
+        />
       </div>
       <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
       <p className="text-gray-600 mb-2">{project.description}</p>

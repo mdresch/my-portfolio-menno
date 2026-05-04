@@ -1,41 +1,56 @@
 import { NextRequest, NextResponse } from "next/server";
 import resumeData from "@/data/resume";
+import { appendCustomSkill, readCustomSkills } from "@/lib/custom-skills-store";
+import {
+  customSkillToApi,
+  normalizeSkillCategory,
+  proficiencyToLevel,
+  resumeSkillToApi,
+} from "./skill-map";
 
-// This API route serves skills data directly from resume.ts
-// This acts as a fallback when the .NET backend API is not available
+// Resume skills are read from `resume.ts`. Admin-added skills persist in
+// `content/skills/custom-skills.json` and are merged here.
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    // Extract skills from resume.ts and transform them to the expected format
-    const skills = resumeData.skills.map((skill, index) => ({
-      id: index + 1, // Generate sequential IDs
-      name: skill.name,
-      category: skill.category || "General", // Provide default category if missing
-      proficiencyLevel: Math.ceil(skill.level / 20), // Convert 0-100 scale to 1-5 scale
-      iconUrl: skill.iconUrl || null, // Include icon if available
-      level: skill.level, // Keep original level for reference
-    }));
-
-    return NextResponse.json(skills);
+    const fromResume = resumeData.skills.map((skill, index) => resumeSkillToApi(skill, index + 1));
+    const custom = await readCustomSkills();
+    const fromFile = custom.map((s) => customSkillToApi(s));
+    return NextResponse.json([...fromResume, ...fromFile]);
   } catch (error) {
-    console.error("Error serving skills from resume.ts:", error);
-    return NextResponse.json(
-      { error: "Failed to load skills" },
-      { status: 500 }
-    );
+    console.error("Error serving skills:", error);
+    return NextResponse.json({ error: "Failed to load skills" }, { status: 500 });
   }
 }
 
 export async function POST(request: NextRequest) {
-  return NextResponse.json(
-    { error: "POST method not supported for this endpoint. Skills are read-only from resume.ts" },
-    { status: 405 }
-  );
-}
+  try {
+    const body = (await request.json()) as Record<string, unknown>;
+    const name = typeof body.name === "string" ? body.name.trim() : "";
+    if (!name) {
+      return NextResponse.json({ error: "Skill name is required" }, { status: 400 });
+    }
 
-export async function DELETE(request: NextRequest) {
-  return NextResponse.json(
-    { error: "DELETE method not supported for this endpoint. Skills are read-only from resume.ts" },
-    { status: 405 }
-  );
+    const category = normalizeSkillCategory(
+      typeof body.category === "string" && body.category.trim() !== ""
+        ? body.category
+        : "technical"
+    );
+    const proficiencyRaw = body.proficiencyLevel ?? body.level;
+    const proficiencyLevel = Number(proficiencyRaw);
+    const level = Number.isFinite(proficiencyLevel)
+      ? proficiencyToLevel(proficiencyLevel)
+      : 50;
+
+    let iconUrl: string | null = null;
+    if (typeof body.iconUrl === "string" && body.iconUrl.trim() !== "") {
+      iconUrl = body.iconUrl.trim();
+    }
+
+    const stored = await appendCustomSkill({ name, category, level, iconUrl });
+    return NextResponse.json(customSkillToApi(stored));
+  } catch (error) {
+    console.error("Error creating skill:", error);
+    return NextResponse.json({ error: "Failed to create skill" }, { status: 500 });
+  }
 }

@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20shining%20their%20rescue%20beacon%20lights%20at%20night%20where%20hot%20airbaloons%20many%20in%20the%20sky.jpg"
 title: "Self-charging cars Key Findings 08-05-2025"
 date: "2025-05-08"
 author: "Menno Drescher"

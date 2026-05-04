@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouse%20guiding%20hot%20air%20balloons%20to%20the%20sea%20during%20sunset%2067547.jpg"
 title: "Scope Baseline — Alliance Resilience Project"
 slug: "scope-baseline-alliance-resilience-project"
 date: 2025-11-15

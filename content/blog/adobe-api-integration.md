@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_0f9418f9-c421-4080-b8c1-428bd1941ae1.jpeg"
 title: "Complete Success: Adobe Real API Integration"
 date: 2025-07-08
 author: Menno Drescher

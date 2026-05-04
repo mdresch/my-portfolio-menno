@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_bb418623-2e7c-4818-852e-5e3a0dcf379d.jpeg"
 title: "Cost Management Plan — Alliance Resilience Project"
 slug: "cost-management-plan-alliance-resilience-project"
 date: 2025-04-10
