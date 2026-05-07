@@ -123,8 +123,8 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.14)(react@19.2.4)
       react-server-dom-webpack:
-        specifier: 19.2.4
-        version: 19.2.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.106.2)
+        specifier: 19.2.6
+        version: 19.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.106.2)
       react-simple-maps:
         specifier: ^3.0.0
         version: 3.0.0(prop-types@15.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -7839,13 +7839,12 @@ packages:
       '@types/react':
         optional: true
 
-  react-server-dom-webpack@19.2.4:
-    resolution: {integrity: sha512-zEhkWv6RhXDctC2N7yEUHg3751nvFg81ydHj8LTTZuukF/IF1gcOKqqAL6Ds+kS5HtDVACYPik0IvzkgYXPhlQ==}
+  react-server-dom-webpack@19.2.6:
+    resolution: {integrity: sha512-762YXjBPc6hw2V16k4x1sdnw0mxghcSPzoiOhefGYjiTguJLCImGBUz6EjznPIfqKhWgLtpaQMlBhp66N8dKrw==}
     engines: {node: '>=0.10.0'}
-    deprecated: High Security Vulnerability in React Server Components
     peerDependencies:
-      react: ^19.2.4
-      react-dom: ^19.2.4
+      react: ^19.2.6
+      react-dom: ^19.2.6
       webpack: ^5.59.0
 
   react-simple-maps@3.0.0:
@@ -18382,7 +18381,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-server-dom-webpack@19.2.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.106.2):
+  react-server-dom-webpack@19.2.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(webpack@5.106.2):
     dependencies:
       acorn-loose: 8.5.2
       neo-async: 2.6.2
