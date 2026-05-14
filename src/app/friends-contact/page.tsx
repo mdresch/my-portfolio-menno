@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from '../../components/modern/ClientMotionWrapper';
+import { writeJourneySnapshotFromForm } from '../../lib/friends-contact-journey';
 
 interface FriendContactForm {
   name: string;
@@ -338,7 +340,7 @@ export default function FriendsContactPage() {
     e.preventDefault();
 
     if (!validateForm()) {
-      setSubmitMessage('Please fix the errors above and try again.');
+      setSubmitMessage('Please complete all required fields and checkboxes (see red messages above).');
       return;
     }
 
@@ -358,6 +360,7 @@ export default function FriendsContactPage() {
       const result = await response.json();
 
       if (response.ok) {
+        writeJourneySnapshotFromForm(formData);
         setSubmitMessage('🚀 Thank you for sharing your cosmic details! Your intergalactic friend profile has been received. Menno will be thrilled to read about your space adventures! 🌟');
 
         // Reset form
@@ -655,6 +658,39 @@ export default function FriendsContactPage() {
                       </motion.p>
                     )}
                   </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    className="bg-blue-500/10 border border-blue-400/30 rounded-2xl p-6 backdrop-blur-sm mt-6"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <motion.input
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        type="checkbox"
+                        id="dutchConsent"
+                        name="dutchConsent"
+                        checked={formData.dutchConsent}
+                        onChange={handleInputChange}
+                        className="w-6 h-6 text-purple-600 bg-white/20 border-white/30 rounded-lg focus:ring-purple-500 focus:ring-2 mt-1"
+                      />
+                      <label htmlFor="dutchConsent" className="text-white text-lg leading-relaxed">
+                        I confirm that I understand this form is offered in English and that any follow-up may be in
+                        Dutch or English. I agree to the processing of my responses as described above (AVG /
+                        GDPR-aligned contact for this portfolio).
+                      </label>
+                    </div>
+                    {errors.dutchConsent && (
+                      <motion.p
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-red-300 text-sm mt-3 flex items-center"
+                      >
+                        <span className="mr-2">⚠️</span>
+                        {errors.dutchConsent}
+                      </motion.p>
+                    )}
+                  </motion.div>
                 </FormSection>
 
                 {/* Cinematic Submit Button */}
@@ -729,6 +765,27 @@ export default function FriendsContactPage() {
                         {submitMessage.includes('Thank you') ? '🎉' : '⚠️'}
                       </motion.div>
                       <p className="text-lg leading-relaxed">{submitMessage}</p>
+                      {submitMessage.includes('Thank you') ? (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.35 }}
+                          className="mt-8"
+                        >
+                          <Link
+                            href="/friends-contact/journey"
+                            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-cyan-400/50 bg-cyan-500/20 px-6 py-3 text-base font-semibold text-cyan-50 shadow-lg transition hover:bg-cyan-500/30"
+                          >
+                            <span aria-hidden>⚛️</span>
+                            Continue: Higgs field journey
+                            <span aria-hidden>→</span>
+                          </Link>
+                          <p className="mt-3 text-sm text-green-100/80">
+                            Your answers are saved in this browser for the journey view only—submit again anytime to
+                            refresh them.
+                          </p>
+                        </motion.div>
+                      ) : null}
                     </motion.div>
                   )}
                 </AnimatePresence>

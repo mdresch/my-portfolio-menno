@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20guiding%20hot%20air%20balloons%20to%20the%20sea%20during%20sunset%3B%20travel%20and%20sightseeing%3B%20activ%20(1).jpg"
 title: "Scope Management Plan — Alliance Resilience Project"
 date: 2026-03-15
 slug: "scope-management-plan-alliance-resilience-project"

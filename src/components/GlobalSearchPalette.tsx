@@ -45,6 +45,8 @@ const SEARCH_ITEMS: SearchItem[] = [
   { id: "resume", title: "Resume", description: "Interactive resume with work experience", href: "/resume", category: "Pages" },
   { id: "now", title: "Now", description: "Current projects and maturity dashboard", href: "/now", category: "Pages" },
   { id: "contact", title: "Friends Contact", description: "Elio-inspired cosmic contact form", href: "/friends-contact", category: "Pages" },
+  { id: "contact-journey", title: "Higgs field journey", description: "Particle journey over your friends-contact details", href: "/friends-contact/journey", category: "Pages" },
+  { id: "admin-journey-inbox", title: "Journey chat inbox", description: "Reply to messages from /friends-contact/journey", href: "/admin/journey-inbox", category: "Pages" },
 
   // ── Projects ─────────────────────────────────────────────────────────────────
   { id: "projects", title: "Projects", description: "All projects overview", href: "/projects", category: "Projects" },

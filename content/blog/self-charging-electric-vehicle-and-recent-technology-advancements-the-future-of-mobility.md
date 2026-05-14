@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20shining%20their%20rescue%20beacon%20lights%20at%20night%20where%20hot%20airbaloons%20many%20in%20the%20sky%20(2).jpg"
 title: "Self Charging Electric Vehicle and Recent Technology Advancements: The Future of Mobility"
 date: "2025-04-11"
 excerpt: "Full energy autonomous vehicles and the arrival home fully charged."

@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_c578fd06-9f48-4905-941a-293614a1b545.jpeg"
 title: "ECB Financial Stability Risk Dashboard—2025"
 description: "Interactive risk dashboard for the euro area, visualizing key data and trends from the ECB Financial Stability Review 2025."
 date: "2025-05-21"

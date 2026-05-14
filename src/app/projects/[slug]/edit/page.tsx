@@ -3,11 +3,27 @@
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { ProjectService } from "../../../../lib/api-services";
-import type { Project } from "../../../../types/api";
+import type { ApiProject } from "../../../../types/api";
+
+/** API row + imageUrl for the edit form (first screenshot). */
+type ProjectForEdit = ApiProject & {
+  imageUrl?: string;
+  /** Form label “GitHub”; persisted as `repoUrl`. */
+  gitHubUrl?: string;
+};
+
+function apiProjectToForm(p: ApiProject): ProjectForEdit {
+  return {
+    ...p,
+    imageUrl: p.screenshots?.[0] ?? "",
+    gitHubUrl: p.repoUrl ?? "",
+    liveUrl: p.liveUrl ?? "",
+  };
+}
 
 interface ProjectFormProps {
-  project: Project;
-  onSubmit: (updatedProject: Partial<Project>) => void;
+  project: ProjectForEdit;
+  onSubmit: (updatedProject: Partial<ProjectForEdit>) => void;
   isSaving: boolean;
   error?: string;
 }
@@ -19,16 +35,37 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSubmit, isSaving, 
   const [imageUrl, setImageUrl] = useState(project.imageUrl ?? "");
   const [gitHubUrl, setGitHubUrl] = useState(project.gitHubUrl ?? "");
   const [liveUrl, setLiveUrl] = useState(project.liveUrl ?? "");
+  const [outcomes, setOutcomes] = useState(() => (project.outcomes ?? []).join("\n"));
+  const [challenges, setChallenges] = useState(() => (project.challenges ?? []).join("\n"));
+  const [caseStudy, setCaseStudy] = useState(project.caseStudy ?? "");
+
+  useEffect(() => {
+    setTitle(project.title);
+    setDescription(project.description ?? "");
+    setTechnologies(project.technologies.join(", "));
+    setImageUrl(project.imageUrl ?? "");
+    setGitHubUrl(project.gitHubUrl ?? "");
+    setLiveUrl(project.liveUrl ?? "");
+    setOutcomes((project.outcomes ?? []).join("\n"));
+    setChallenges((project.challenges ?? []).join("\n"));
+    setCaseStudy(project.caseStudy ?? "");
+  }, [project]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const g = gitHubUrl.trim();
+    const l = liveUrl.trim();
+
     onSubmit({
       title,
       description,
       technologies: technologies.split(",").map((t) => t.trim()).filter(Boolean),
       imageUrl,
-      gitHubUrl,
-      liveUrl,
+      repoUrl: g || null,
+      liveUrl: l || null,
+      outcomes: outcomes.split("\n").map((s) => s.trim()).filter(Boolean),
+      challenges: challenges.split("\n").map((s) => s.trim()).filter(Boolean),
+      caseStudy: caseStudy.trim() || null,
     });
   };
 
@@ -85,6 +122,39 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ project, onSubmit, isSaving, 
           value={liveUrl}
           onChange={(e) => setLiveUrl(e.target.value)}
         />
+        <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+          Repository and live/demo URLs are stored separately. You can set both, one, or neither.
+        </p>
+      </div>
+      <div>
+        <label className="block font-semibold">Outcomes</label>
+        <textarea
+          className="border rounded w-full p-2 font-mono text-sm"
+          value={outcomes}
+          onChange={(e) => setOutcomes(e.target.value)}
+          rows={5}
+          placeholder="One outcome per line"
+        />
+      </div>
+      <div>
+        <label className="block font-semibold">Technical challenges &amp; solutions</label>
+        <textarea
+          className="border rounded w-full p-2 font-mono text-sm"
+          value={challenges}
+          onChange={(e) => setChallenges(e.target.value)}
+          rows={6}
+          placeholder="One challenge or solution per line (shown as a list on the project page)"
+        />
+      </div>
+      <div>
+        <label className="block font-semibold">Case study (markdown)</label>
+        <textarea
+          className="border rounded w-full p-2 font-mono text-sm"
+          value={caseStudy}
+          onChange={(e) => setCaseStudy(e.target.value)}
+          rows={12}
+          placeholder="Markdown body for the case study section"
+        />
       </div>
       <button
         type="submit"
@@ -103,43 +173,62 @@ const normalizeSlug = (title: string) =>
 const EditProjectPage: React.FC = () => {
   const params = useParams<{ slug: string }>();
   const router = useRouter();
-  const [project, setProject] = useState<Project | null>(null);
+  const [project, setProject] = useState<ProjectForEdit | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string>();
 
-  // Load original project by slug
+  // Load project by DB slug (URL param); GET /api/projects returns all rows when no limit.
   useEffect(() => {
+    setError(undefined);
+    setProject(null);
+    const slug = typeof params.slug === "string" ? params.slug : "";
     ProjectService.getAll()
       .then((projects) => {
-        const found = projects.find(
-          (p) => normalizeSlug(p.title) === params.slug
-        );
-        setProject(found ?? null);
-        if (!found) setError("Project not found.");
+        const list = projects as ApiProject[];
+        const found =
+          list.find((p) => p.slug === slug) ||
+          list.find((p) => p.slug === decodeURIComponent(slug)) ||
+          list.find((p) => normalizeSlug(p.title) === slug);
+        if (found) {
+          setProject(apiProjectToForm(found));
+        } else {
+          setProject(null);
+          setError("Project not found.");
+        }
       })
       .catch(() => setError("Failed to load project."));
   }, [params.slug]);
 
-  const handleUpdate = async (updated: Partial<Project>) => {
+  const handleUpdate = async (updated: Partial<ProjectForEdit>) => {
     if (!project) return;
     setIsSaving(true);
     setError(undefined);
     try {
-      await ProjectService.update(project.id, updated);
-      router.push(`/projects/${params.slug}`);
-    } catch (e: any) {
-      setError(e.message || "Failed to update project.");
+      const saved = (await ProjectService.update(project.id, updated)) as ApiProject;
+      router.push(`/projects/${encodeURIComponent(saved.slug)}`);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "Failed to update project.";
+      setError(msg.length > 200 ? `${msg.slice(0, 200)}…` : msg);
     } finally {
       setIsSaving(false);
     }
   };
 
-  if (!project) {
+  if (!project && !error) {
     return <div className="text-center mt-12">Loading project details...</div>;
+  }
+
+  if (!project) {
+    return (
+      <div className="text-center mt-12 text-red-600 dark:text-red-400">
+        {error ?? "Project not found."}
+      </div>
+    );
   }
 
   return (
     <ProjectForm
+      key={project.id}
       project={project}
       onSubmit={handleUpdate}
       isSaving={isSaving}

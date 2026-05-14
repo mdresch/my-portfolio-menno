@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_eb2a06a0-bc3d-4bfa-9933-028341989652.jpeg"
 title: Legal Payment Tender Risks in the United Kingdom 2025
 date: 2025-05-08
 author: Menno Drescher

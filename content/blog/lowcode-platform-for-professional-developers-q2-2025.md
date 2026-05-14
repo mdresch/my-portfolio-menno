@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_ecb52ee7-e3cb-40e1-8b5a-f713b859a8e8.jpg"
 title: "Low-Code Platform For Professional Developers, Q2 2025"
 date: "2025-05-15"
 author: "Menno Drescher"

@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_f55695eb-8527-44f3-8ca9-e8e96b1e30c0.jpeg"
 title: "Procurement Management Plan — Alliance Resilience Project"
 slug: "procurement-management-plan-alliance-resilience-project"
 date: 2026-01-10

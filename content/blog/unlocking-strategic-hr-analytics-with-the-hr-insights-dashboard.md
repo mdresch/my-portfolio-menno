@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Global%20Earth%20Lighthouse%20View.jpeg"
 title: Unlocking Strategic HR Analytics with the HR Insights Dashboard
 date: 2025-04-12
 excerpt: The HR Insights Dashboard is a dynamic platform built to empower organizations with actionable insights into human resources management.

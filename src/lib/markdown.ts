@@ -133,13 +133,18 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
     if (typeof categories === "string") {
       categories = [categories];
     }
+
+    const excerptText =
+      (matterResult.data.excerpt as string | undefined) ||
+      (matterResult.data.description as string | undefined) ||
+      "";
     
     return {
       id: slug,
       slug,
       title: matterResult.data.title || "Untitled",
       date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : "",
-      excerpt: matterResult.data.excerpt || "",
+      excerpt: excerptText,
       content: contentHtml,
       categories: categories,
       readingTime: `${readingTime} min read`,
@@ -181,16 +186,22 @@ export async function getSortedPostsData(): Promise<Omit<BlogPost, "content">[]>
                 if (typeof categories === "string") {
                   categories = [categories];
                 }
+
+                const excerptText =
+                  (matterResult.data.excerpt as string | undefined) ||
+                  (matterResult.data.description as string | undefined) ||
+                  "";
                 
                 return {
                   id: slug,
                   slug,
                   title: matterResult.data.title || "Untitled",
                   date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : "",
-                  excerpt: matterResult.data.excerpt || "",
+                  excerpt: excerptText,
                   categories: categories,
                   readingTime: "3 min read", // Simple placeholder
-                  author: matterResult.data.author || "Anonymous"
+                  author: matterResult.data.author || "Anonymous",
+                  coverImage: (matterResult.data.coverImage as string | undefined) || undefined,
                 };
               } catch (yamlError) {
                 console.error(`YAML parsing error in ${fileName}:`, yamlError);

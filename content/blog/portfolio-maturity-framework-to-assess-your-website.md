@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_f44f0c9d-2dfa-429a-972e-d156d944f1c6.jpeg"
 title: Portfolio Maturity Framework to Assess your website
 date: 2025-04-27
 author: Menno Drescher

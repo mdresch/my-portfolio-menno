@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_0155d7d5-4454-4563-b7b1-b9fd583392ef.jpeg"
 title: "A Disruptive Rebel: Risk for Planned Business Engagements and Nonlinear Risk Management and Accountabilityr"
 description: "Exploring the risks and opportunities of engaging a disruptive rebel in planned business boundary initiatives."
 date: "2025-05-10"

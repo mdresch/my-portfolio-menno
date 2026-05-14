@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/global%20lighthouse%20security%20compliance%20disaster%20recovery.jpeg"
 title: What do i need to consider when using Cascade modelbase 
 date: 2025-04-12
 excerpt: The Base model has more limited code generation capabilities compared to the current model Complex integrations like the DEV.to publisher might need to be simplified or broken down into smaller steps. You may need to provide more detailed guidance for each step of implementation
