@@ -1,0 +1,11 @@
+{
+  "skills": [
+    {
+      "id": 1000000,
+      "name": "Cursor",
+      "category": "technical",
+      "level": 50,
+      "iconUrl": null
+    }
+  ]
+}

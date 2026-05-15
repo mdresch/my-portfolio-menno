@@ -2,8 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useAuth } from "../../lib/auth";
-import { useRouter } from "next/navigation";
-import LoginForm from "../../components/LoginForm";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function AdminLayout({
   children,
@@ -12,41 +11,39 @@ export default function AdminLayout({
 }) {
   const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname() || "";
+  const isLoginRoute = pathname === "/admin/login" || pathname.endsWith("/admin/login");
 
-  // If not authenticated and not loading, redirect to admin login
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!loading && !isAuthenticated && !isLoginRoute) {
       router.replace("/admin/login");
     }
-  }, [loading, isAuthenticated, router]);
+  }, [loading, isAuthenticated, isLoginRoute, router]);
 
-  // Show loading state
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" />
       </div>
     );
   }
 
-  // If authenticated, show admin content
+  if (isLoginRoute) {
+    return <>{children}</>;
+  }
+
   if (isAuthenticated) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
-        <div className="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">
-          {children}
-        </div>
+        <div className="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">{children}</div>
       </div>
     );
   }
 
-  // This should not normally be visible due to the redirect,
-  // but serves as a fallback
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6 text-center">Admin Access Required</h1>
-      <LoginForm />
+    <div className="flex items-center justify-center min-h-[40vh] text-neutral-600 dark:text-neutral-400">
+      Redirecting to sign in…
     </div>
   );
 }

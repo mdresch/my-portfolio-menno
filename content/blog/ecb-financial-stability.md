@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_c650e5db-df53-43bc-a042-3373a438f89a.jpeg"
 title: "ECB Financial Stability Report—2025: Navigating Uncertainty in the Euro Area"
 description: "Analysis of the European Central Bank’s Financial Stability Review, examining how the euro area financial system is responding to macro-financial, geopolitical, and market risks in 2025."
 date: "2025-05-21"

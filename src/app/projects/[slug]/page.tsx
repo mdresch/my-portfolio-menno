@@ -1,18 +1,9 @@
 import ProjectDetail from "../ProjectDetail";
+import { mapDbProjectToDetail } from "../map-db-project";
 import { prisma } from "../../../lib/prisma";
 import { notFound } from "next/navigation";
 
-// Helper to normalize Prisma data to ProjectDetail type
-function normalizeProject(p: any) {
-  return {
-    title: p.title ?? "",
-    description: p.description ?? "",
-    technologies: p.technologies ?? [],
-    imageUrl: "/default-project-image.jpg", // Default image since not in schema
-    gitHubUrl: "", // Not in Prisma schema
-    liveUrl: "", // Not in Prisma schema
-  };
-}
+export const dynamic = "force-dynamic";
 
 // Define proper types for App Router
 interface ProjectPageProps {
@@ -49,14 +40,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         
         if (!projectByTitle) return notFound();
         
-        return <ProjectDetail project={normalizeProject(projectByTitle)} />;
+        return <ProjectDetail project={mapDbProjectToDetail(projectByTitle)} />;
       } catch (error) {
         console.error("Error fetching all projects:", error);
         return notFound();
       }
     }
 
-    return <ProjectDetail project={normalizeProject(dbProject)} />;
+    return <ProjectDetail project={mapDbProjectToDetail(dbProject)} />;
   } catch (error) {
     console.error("Error fetching project:", error);
     return notFound();

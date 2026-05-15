@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 
 // Simple placeholder for any chart type (Can keep as fallback or remove)
 const MockChartPlaceholder = ({ title, type }: { title: string; type: string }) => (
@@ -174,7 +173,7 @@ export const MockUnemploymentLineChart = ({ title }: { title: string }) => (
   <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
     <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-1 overflow-x-auto p-2">
-      {unemploymentRateData.map((point, idx) => (
+      {unemploymentRateData.map((point) => (
         <div key={point.year} className="flex flex-col items-center w-8">
           <div
             className="w-4 bg-blue-500 rounded-t-sm"
@@ -208,7 +207,7 @@ export const MockPPICPIChart = ({ title }: { title: string }) => (
   <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 h-64 flex flex-col bg-white dark:bg-neutral-900 shadow-sm">
     <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 text-center">{title}</p>
     <div className="flex-grow flex items-end space-x-2 overflow-x-auto p-2">
-      {ppiCpiData.map((point, idx) => (
+      {ppiCpiData.map((point) => (
         <div key={point.year} className="flex flex-col items-center w-8">
           {/* CPI line (green dot) */}
           <div
@@ -334,13 +333,47 @@ export const MockEmploymentCostIndexChart = ({ title }: { title: string }) => (
 );
 
 // Placeholder for KPI cards
-export const MockKPICard = ({ title, value, change }: { title: string; value: string; change?: string }) => (
-  <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm">
-    <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">{title}</p>
-    <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{value}</p>
-    {change && <p className={`text-xs ${change.startsWith("+") ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>{change}</p>}
-  </div>
-);
+export const MockKPICard = ({
+  title,
+  value,
+  change,
+  changeTone = "delta",
+  scoreOutOf5,
+}: {
+  title: string;
+  value: string;
+  change?: string;
+  /** "delta" = green/red for +/- changes; "muted" = neutral caption (e.g. maturity notes) */
+  changeTone?: "delta" | "muted";
+  /** Optional 0–5 bar under the value */
+  scoreOutOf5?: number;
+}) => {
+  const changeClass =
+    changeTone === "muted"
+      ? "text-gray-600 dark:text-gray-400"
+      : change?.startsWith("+")
+        ? "text-green-600 dark:text-green-400"
+        : "text-red-600 dark:text-red-400";
+  const clamped = scoreOutOf5 === undefined ? undefined : Math.min(5, Math.max(0, scoreOutOf5));
+  return (
+    <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+      <p className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1">{title}</p>
+      <p className="text-2xl font-semibold tabular-nums text-gray-800 dark:text-gray-100">{value}</p>
+      {change && <p className={`text-xs mt-1 leading-snug ${changeClass}`}>{change}</p>}
+      {clamped !== undefined && (
+        <div
+          className="mt-3 h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden"
+          aria-hidden
+        >
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 dark:from-violet-400 dark:to-indigo-400"
+            style={{ width: `${(clamped / 5) * 100}%` }}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
 
 // Placeholder for a simple table/matrix
 export const MockTablePlaceholder = ({ title }: { title: string }) => (

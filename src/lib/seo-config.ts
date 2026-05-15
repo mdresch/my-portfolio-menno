@@ -8,12 +8,12 @@ export const SEO_CONFIG = {
   // Base website information
   baseUrl: "https://my-portfolio-menno.vercel.app/",
   siteName: "Menno Drescher",
-  siteDescription: "Personal portfolio and blog of Menno Drescher, HCM Services Specialist",
+  siteDescription: "Portfolio of Menno Drescher – Full-Stack Developer & HCM Specialist with 25+ years of experience in technology and consultancy.",
   
   // Default meta tags
-  defaultTitle: "Menno Drescher | HCM Services Specialist",
-  defaultDescription: "Personal portfolio and blog of Menno Drescher, an experienced HCM Services Specialist with expertise in finance and human resources consultancy.",
-  defaultKeywords: ["Menno Drescher", "HCM Services", "Human Resources", "HR Consultant", "Finance", "Portfolio"],
+  defaultTitle: "Menno Drescher | Full-Stack Developer & HCM Specialist",
+  defaultDescription: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development (C#/.NET, React, Azure) and Human Capital Management. Building scalable applications and strategic HCM solutions.",
+  defaultKeywords: ["Menno Drescher", "Full-Stack Developer", "HCM Specialist", "Human Resources", "HR Technology", "C# Developer", ".NET Developer", "React Developer", "Azure Developer", "Finance", "Portfolio"],
   
   // Open Graph defaults
   defaultOgImage: "/images/og-default-image.jpg",
@@ -24,7 +24,7 @@ export const SEO_CONFIG = {
   socialMedia: {
     twitter: "https://twitter.com/mennodre",
     github: "https://github.com/mdresch",
-    linkedin: "https://linkedin.com/in/menno.drescher",
+    linkedin: "https://www.linkedin.com/in/mennodrescher",
   },
   
   // Contact information
@@ -34,8 +34,8 @@ export const SEO_CONFIG = {
   // Author information
   author: {
     name: "Menno Drescher",
-    jobTitle: "HCM Services Specialist",
+    jobTitle: "Full-Stack Developer & HCM Specialist",
     company: "CBA Consult",
-    bio: "A passionate professional with over 25 years of experience in Finance and Human Resources Consultancy.",
+    bio: "A passionate professional with over 25 years of experience in Full-Stack Development, Finance, and Human Resources Consultancy.",
   }
 };

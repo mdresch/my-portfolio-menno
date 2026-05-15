@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20in%20a%20distance%20guiding%20multitude%20of%20hot%20air%20balloons%20to%20the%20sea%20during%20sunset%3B%20tr%20(1).jpg"
 title: "Self-Charging Car: Key Findings - May 27, 2025"
 date: "2025-05-27"
 description: "Toyota-Waymo Alliance to Revolutionize Autonomous Vehicles"

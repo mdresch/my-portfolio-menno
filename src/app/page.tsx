@@ -8,6 +8,7 @@ import { app, isFirebaseInitialized } from "@/lib/firebase";
 import { getAnalytics } from "firebase/analytics";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { usePerformanceMonitoring } from "../hooks/usePerformanceMonitoring";
+import Testimonials from "../components/Testimonials";
 
 // Modern Hero Section with animated elements
 const HeroSection: React.FC = () => {
@@ -187,6 +188,91 @@ const SkillsSection: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const RPASGovernanceSection: React.FC = () => {
+  const governancePillars = [
+    {
+      title: "Policy-Driven Agent Operations",
+      description:
+        "Define guardrails for agent actions, approvals, and escalation paths so autonomous workflows remain controlled and auditable.",
+      points: ["Role-based permissions", "Approval gates", "Runbook alignment"],
+    },
+    {
+      title: "Secure-by-Design Delivery",
+      description:
+        "Embed identity, secrets handling, and compliance checks into pipelines to reduce exposure while accelerating deployment confidence.",
+      points: ["Secrets governance", "Zero-trust defaults", "Continuous compliance"],
+    },
+    {
+      title: "Observable Automation Lifecycle",
+      description:
+        "Track agent decisions, deployment events, and rollback signals in one governance trail for faster incident response and learning loops.",
+      points: ["Traceable agent actions", "SLO-aware alerts", "Post-incident feedback"],
+    },
+  ];
+
+  const outcomes = [
+    "Faster releases with controlled autonomy",
+    "Lower operational risk in multi-agent workflows",
+    "Improved audit readiness across CI/CD stages",
+    "Higher developer focus on high-value engineering work",
+  ];
+
+  return (
+    <section className="py-24 px-6 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium mb-6 border border-indigo-200/50 dark:border-indigo-700/50">
+            RPAS Governance
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            Agentic DevOps with Governance by Design
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
+            This section highlights how a developed RPAS governance model supports safe, scalable,
+            and measurable agentic delivery in modern DevOps environments.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+          {governancePillars.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-7 border border-gray-200 dark:border-gray-700 shadow-sm"
+            >
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{pillar.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                {pillar.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {pillar.points.map((point) => (
+                  <span
+                    key={point}
+                    className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm border border-indigo-100 dark:border-indigo-800"
+                  >
+                    {point}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 md:p-10 text-white">
+          <h3 className="text-2xl md:text-3xl font-bold mb-5">Benefits in the DevOps Agentic Work Environment</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {outcomes.map((outcome) => (
+              <div key={outcome} className="flex items-start gap-3">
+                <span className="mt-1 inline-block w-2.5 h-2.5 rounded-full bg-blue-200" />
+                <p className="text-blue-100">{outcome}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -479,6 +565,9 @@ const Home: React.FC = () => {
         {/* Skills Section */}
         <SkillsSection />
 
+        {/* RPAS Governance Section */}
+        <RPASGovernanceSection />
+
         {/* Stats Section */}
         <StatsSection />
 
@@ -502,6 +591,9 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Testimonials Section */}
+        <Testimonials />
 
         {/* CTA Section */}
         <CTASection />

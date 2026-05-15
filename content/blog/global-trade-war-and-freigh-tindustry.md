@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_d4badf06-1355-47fc-bd3d-2ae94291fbb0.jpg"
 title: Global Trade War And Freight Industry
 date: 2025-05-06
 author: Menno Drescher

@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20in%20a%20distance%20guiding%20multitude%20of%20hot%20air%20balloons%20to%20the%20sea%20during%20sunset%3B%20tr%20(2).jpg"
 title: "Self-Charging Cars: Key Findings 14-05-2025"
 date: 2025-05-14
 summary: "Major developments and challenges in the global automotive and EV sector, including new launches, production shifts, and strategic pivots."

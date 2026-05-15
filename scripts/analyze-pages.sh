@@ -56,7 +56,7 @@ if [ -d "$app_dir" ]; then
     echo "export default function Page() { return <div>Test</div>; }" > "temp_app/$page_path/page.js"
     
     # Try to build just this page
-    if NEXT_BUILD_PAGE="/$page_path" next build --no-lint >/dev/null 2>&1; then
+    if NEXT_BUILD_PAGE="/$page_path" next build >/dev/null 2>&1; then
       echo "✅ Page /$page_path builds successfully"
       successful_pages+=("/$page_path")
     else

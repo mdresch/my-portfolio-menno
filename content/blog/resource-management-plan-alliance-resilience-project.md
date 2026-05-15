@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/baloon%20lighthouses%202.jpeg"
 title: "Resource Management Plan — Alliance Resilience Project"
 date: 2025-03-20
 slug: "resource-management-plan-alliance-resilience-project"

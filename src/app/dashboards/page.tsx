@@ -24,68 +24,81 @@ const dashboards = [
     title: "Balance of Trade",
     description: "Visualize trade surpluses and deficits for major economies.",
     href: "/dashboards/balance-of-trade",
+    imageSrc: "/images/trade-policy-uncertainty-index.jpg",
   },
   {
     title: "Currencies",
     description: "Compare currency strength and recent trends.",
     href: "/dashboards/currencies",
+    imageSrc: "/images/showcase-economics.jpg",
   },
   {
     title: "Economic Indicators",
     description: "Key macroeconomic indicators and trends.",
     href: "/dashboards/economic-indicators",
+    imageSrc: "/images/showcase-dataviz.jpg",
   },
   {
     title: "Macroeconomic Dashboard",
     description: "Major macro trends: GDP, inflation, employment, and more.",
     href: "/dashboards/macro",
+    imageSrc: "/images/showcase-dataviz5.jpg",
   },
   {
     title: "Major Economics",
     description: "Compare headline indicators for the world’s largest economies.",
     href: "/dashboards/major-economics",
+    imageSrc: "/images/risk-europe.jpg",
   },
   {
     title: "Market Trends",
     description: "Compare sector and segment performance to the total market, spot over/underperformance, and visualize trends.",
     href: "/dashboards/market-trends",
+    imageSrc: "/images/showcase-cloudscale.jpg",
   },
   {
     title: "Policy Impact",
     description: "Analyze the effects of policy changes on economic indicators and market outcomes.",
     href: "/dashboards/policy-impact",
+    imageSrc: "/images/riskmanagement2.jpg",
   },
   {
     title: "Overview Dashboard",
     description: "A comprehensive overview of key economic indicators and trends.",
     href: "/dashboards/overview-dashboard",
+    imageSrc: "/images/showcase-cloudbackup.jpg",
   },
   {
     title: "Stocks",
     description: "Overview of major stock indices and their performance.",
     href: "/dashboards/stocks",
+    imageSrc: "/images/showcase-aiassist.jpg",
   },
   {
     title: "Indicators Trade",
     description: "Comprehensive overview of economic indicators influencing imports, exports, and trade between countries.",
     href: "/dashboards/indicators-trade",
+    imageSrc: "/images/tariff-modeler-capabilities.png",
   },
   {
     title: "Policy Impact Dashboard",
     description: "Analyze the effects of policy changes on economic indicators and market outcomes.",
     href: "/dashboards/policyimpact-dashboard",
+    imageSrc: "/images/riskmanagement3.jpg",
   },
   {
     title: "OECD Economic Surveys Netherlands 2023",
     description: "Comprehensive analysis of the Dutch economy, key challenges, and OECD recommendations from the 2023 Economic Survey.",
     href: "/dashboards/oecd-netherlands-2023",
+    imageSrc: "/images/risk-productivity.jpg",
   },
   {
     title: "Economic Indicators for the Netherlands",
     description: "Current key economic indicators for the Netherlands including GDP, inflation, unemployment, and purchasing power from OECD, IMF, CBS, and CPB.",
     href: "/dashboards/netherlands-economic-indicators",
+    imageSrc: "/images/risk-management-1.jpg",
   },
-];
+] as const;
 
 export default function EconomicsLandingPage() {
   return (
@@ -112,10 +125,27 @@ export default function EconomicsLandingPage() {
             <Link
               key={dashboard.href}
               href={dashboard.href}
-              className="block bg-white dark:bg-neutral-900 rounded-lg shadow-md p-6 hover:bg-blue-50 dark:hover:bg-blue-900 transition border border-gray-200 dark:border-gray-700"
+              className="group block overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition hover:border-blue-300 hover:shadow-lg dark:border-gray-700 dark:bg-neutral-900 dark:hover:border-blue-700 dark:hover:bg-blue-950/40"
             >
-              <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{dashboard.title}</h2>
-              <p className="text-gray-700 dark:text-gray-300">{dashboard.description}</p>
+              <div className="relative aspect-[2/1] w-full overflow-hidden sm:aspect-[21/9]">
+                <Image
+                  src={dashboard.imageSrc}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-80 dark:from-black/50"
+                  aria-hidden
+                />
+              </div>
+              <div className="p-6 pt-5">
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 sm:text-2xl">
+                  {dashboard.title}
+                </h2>
+                <p className="mt-2 text-gray-700 dark:text-gray-300">{dashboard.description}</p>
+              </div>
             </Link>
           ))}
         </div>

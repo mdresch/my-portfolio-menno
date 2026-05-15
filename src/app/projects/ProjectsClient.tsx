@@ -2,22 +2,7 @@
 import React, { useState, useEffect } from "react";
 import ProjectForm from "../../components/ProjectForm";
 import { ProjectService } from "../../lib/api-services";
-// Define ApiProject type locally (copied from src/types/api.ts)
-interface ApiProject {
-  id: number;
-  title: string;
-  description: string | null;
-  imageUrl: string | null;
-  gitHubUrl: string | null;
-  liveUrl: string | null;
-  created: string;
-  technologies: string[];
-  viewCount?: number;
-  caseStudy?: string | null;
-  screenshots?: string[];
-  outcomes?: string[];
-  challenges?: string[];
-}
+import type { ApiProject } from "../../types/api";
 import ProjectCard from "./ProjectCard.client";
 
 interface ProjectsClientProps {
@@ -29,34 +14,37 @@ export interface Project {
   title: string;
   description: string;
   technologies: string[];
-  link?: string;
   datePublished?: string;
   category?: string;
   image?: string;
   caseStudy?: string;
   screenshots?: string[];
   outcomes?: string[];
+  /** Alias for cards that still expect `gitHubUrl`. */
   gitHubUrl?: string;
+  repoUrl?: string;
   liveUrl?: string;
   challenges?: string[];
 }
 
 // Helper to normalize API data to Project type
 function normalizeProject(p: ApiProject): Project {
+  const repo = (p.repoUrl ?? "").trim();
+  const live = (p.liveUrl ?? "").trim();
   return {
     id: p.id,
     title: p.title ?? "",
     description: p.description ?? "",
     technologies: p.technologies ?? [],
-    link: p.link ?? "",
     datePublished: p.datePublished ?? "",
     category: p.category ?? "",
-    image: "/default-project-image.png", // Default image since not in schema
+    image: "/default-project-image.png",
     caseStudy: p.caseStudy ?? "",
     screenshots: p.screenshots ?? [],
     outcomes: p.outcomes ?? [],
-    gitHubUrl: "", // Not in Prisma schema, fallback to empty
-    liveUrl: "", // Not in Prisma schema, fallback to empty
+    repoUrl: repo,
+    gitHubUrl: repo,
+    liveUrl: live,
     challenges: p.challenges ?? [],
   };
 }
@@ -113,7 +101,8 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
           title: project.title,
           description: project.description,
           technologies: project.technologies ?? [],
-          link: project.link || "",
+          repoUrl: (project.repoUrl ?? "").trim() || null,
+          liveUrl: (project.liveUrl ?? "").trim() || null,
           datePublished: project.datePublished || new Date().toISOString(),
           category: project.category || "",
           caseStudy: project.caseStudy || "",

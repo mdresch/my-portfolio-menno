@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import dynamic from "next/dynamic";
+import ConditionalFooter from "../components/ConditionalFooter";
 import "./globals.css";
 import "../styles/markdown-fix.css";
 import "../styles/resume-print.css"; // Add print styles
@@ -9,10 +9,15 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "next-themes";
 import { Theme as RadixTheme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { NavigationMenuDemo } from "../components/NavigationMenuDemo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ClientAnalytics from "../components/ClientAnalytics";
+import Providers from "./providers";
 import ClientAuthProvider from "@/components/ClientAuthProvider";
+import ClientChatWidget from "../../components/ClientChatWidget";
 import { LoadingProvider } from "@/components/providers/LoadingProvider";
 import { GlobalSearchPaletteProvider } from "@/components/GlobalSearchPalette";
+import { ScrollProgress } from "@/components/modern/ScrollProgress";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -21,26 +26,10 @@ const geist = Geist({
   fallback: ["system-ui", "arial"],
 });
 
-const NavigationMenuDemo = dynamic(
-  () => import("../components/NavigationMenuDemo").then((mod) => mod.NavigationMenuDemo)
-);
-
-const ConditionalFooter = dynamic(
-  () => import("../components/ConditionalFooter")
-);
-
-const ClientChatWidget = dynamic(
-  () => import("../../components/ClientChatWidget")
-);
-
-const ClientAnalytics = dynamic(
-  () => import("../components/ClientAnalytics")
-);
-
 export const metadata: Metadata = {
-  title: "Menno Drescher - Full-Stack Developer | Modern Web Solutions",
-  description: "Full-Stack Developer specializing in C#/.NET, React, and Azure. Building scalable, high-performance applications with modern technologies and best practices.",
-  keywords: ["full-stack developer", "C# developer", ".NET developer", "React developer", "Azure developer", "TypeScript", "Next.js", "web development", "software engineer", "Menno Drescher", "portfolio", "modern web solutions"],
+  title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+  description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development (C#/.NET, React, Azure) and Human Capital Management. Building scalable, high-performance applications and strategic HCM solutions.",
+  keywords: ["Menno Drescher", "full-stack developer", "HCM specialist", "C# developer", ".NET developer", "React developer", "Azure developer", "TypeScript", "Next.js", "human capital management", "HR technology", "software engineer", "portfolio"],
   authors: [{ name: "Menno Drescher" }],
   creator: "Menno Drescher",
   metadataBase: new URL("https://my-portfolio-menno.vercel.app/"), // Update with your actual domain
@@ -59,14 +48,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://my-portfolio-menno.vercel.app/", // Update with your actual domain
-    title: "Menno Drescher - Portfolio",
-    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+    description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development and Human Capital Management.",
     siteName: "Menno Drescher",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Menno Drescher - Portfolio",
-    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    title: "Menno Drescher – Full-Stack Developer & HCM Specialist",
+    description: "Portfolio of Menno Drescher – 25+ years of expertise in Full-Stack Development and Human Capital Management.",
     creator: "@mennodre", // Update with your actual Twitter handle
     site: "@mennodre", // Update with your actual Twitter handle
   },
@@ -89,19 +78,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="min-h-screen transition-colors" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="min-h-screen transition-colors"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+    >
       <head>
-        {/* Hotjar Tracking Code for My Portfolio Menno */}
-        <script>
-          {`(function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:6399278,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
-        </script>
+        {/* Hotjar: loaded only on HTTPS via ClientAnalytics → HotjarWrapper (Hotjar blocks http://localhost) */}
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-9DE640X7RM"></script>
         <script
@@ -116,26 +100,29 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geist.className} bg-white dark:bg-neutral-950 min-h-screen flex flex-col transition-colors`}>
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <RadixTheme accentColor="blue" grayColor="slate">
-            <LoadingProvider>
-              <ClientAuthProvider>
-                <div className="flex items-center justify-center">
-                  <NavigationMenuDemo />
-                </div>
-                <main className="flex-1">
-                  {children}
-                  <Analytics />
-                  <SpeedInsights />
-                  <ClientAnalytics />
-                </main>
-                <ConditionalFooter />
-                <ClientChatWidget />
-                <GlobalSearchPaletteProvider />
-              </ClientAuthProvider>
-            </LoadingProvider>
-          </RadixTheme>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <RadixTheme>
+              <LoadingProvider>
+                <ClientAuthProvider>
+                  <ScrollProgress />
+                  <div className="flex items-center justify-center">
+                    <NavigationMenuDemo />
+                  </div>
+                  <main className="flex-1">
+                    {children}
+                    <Analytics />
+                    <SpeedInsights />
+                    <ClientAnalytics />
+                  </main>
+                  <ConditionalFooter />
+                  <ClientChatWidget />
+                  <GlobalSearchPaletteProvider />
+                </ClientAuthProvider>
+              </LoadingProvider>
+            </RadixTheme>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

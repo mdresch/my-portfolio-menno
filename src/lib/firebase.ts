@@ -47,7 +47,11 @@ if (isBrowser) {
   try {
     // Ensure env.local is loaded before validation
     if (!validateFirebaseConfig()) {
-      console.warn("Firebase configuration incomplete — skipping browser initialization.");
+      if (process.env.NODE_ENV === "development") {
+        console.debug(
+          "Firebase: NEXT_PUBLIC_FIREBASE_* env vars incomplete — auth/analytics disabled until configured."
+        );
+      }
       createNoOpFirebaseStubs();
     } else {
       // Initialize Firebase only if it hasn't been initialized already
@@ -99,7 +103,9 @@ if (isBrowser) {
           });
           console.log("Firebase App Check initialized successfully with reCAPTCHA v3");
         } else {
-          console.warn("NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY not found. App Check not initialized.");
+          if (process.env.NODE_ENV === "development") {
+            console.debug("Firebase App Check: NEXT_PUBLIC_RECAPTCHA_V3_SITE_KEY not set — skipping.");
+          }
           appCheck = null;
         }
       } catch (appCheckError) {
@@ -221,14 +227,19 @@ export async function generateAIResponseDirect(prompt: string, model: string = "
 // Export with proper error handling
 export { app, auth, db, appCheck, remoteConfig };
 
-// Helper function to check if Firebase is properly initialized
+/** True when the client Firebase app and Auth are ready (Firestore may still be null). */
 export function isFirebaseInitialized(): boolean {
   try {
-    return getApps().length > 0 && !!auth && !!db;
+    return getApps().length > 0 && !!auth;
   } catch (error) {
     console.error("Error checking Firebase initialization:", error);
     return false;
   }
+}
+
+/** True when Firestore was initialized (optional for login-only flows). */
+export function isFirebaseFirestoreReady(): boolean {
+  return !!db;
 }
 
 // Default export

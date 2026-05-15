@@ -39,28 +39,29 @@ export function generateBlogPostStructuredData(post: BlogPostStructuredData, bas
   };
 }
 
-export function generatePersonStructuredData(baseUrl: string) {
+export function generatePersonStructuredData(baseUrl: string = "https://my-portfolio-menno.vercel.app") {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Menno Drescher",
     url: baseUrl,
-    jobTitle: "Software Developer",
+    jobTitle: "Full-Stack Developer & HCM Specialist",
+    description: "25+ years of expertise in Full-Stack Development, Human Capital Management, Finance, and Technology.",
     sameAs: [
-      "https://github.com/mdresch", // Update with actual profiles
-      "https://linkedin.com/in/menno.drescher",
+      "https://github.com/mdresch",
+      "https://www.linkedin.com/in/mennodrescher",
       "https://twitter.com/mennodre"
     ],
   };
 }
 
-export function generateWebsiteStructuredData(baseUrl: string) {
+export function generateWebsiteStructuredData(baseUrl: string = "https://my-portfolio-menno.vercel.app") {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Menno Drescher",
     url: baseUrl,
-    description: "Personal portfolio showcasing my projects and skills as a software developer.",
+    description: "Portfolio of Menno Drescher – Full-Stack Developer & HCM Specialist with 25+ years of experience in technology and consultancy.",
   };
 }
 

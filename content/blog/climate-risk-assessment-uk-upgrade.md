@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_b79147cd-96d8-4f11-bd97-77cc278cd2d9.jpg"
 title: "Climate Risk Assessment UK Review and Upgrade"
 description: "Analysis of the Bank of England Financial Climate Risk Maintaining Momentum: Managing Climate risk in a changing world − speech by David Bailey"
 date: "2025-05-08"

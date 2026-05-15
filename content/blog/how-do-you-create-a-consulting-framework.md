@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_d711012f-9232-4fcd-a429-36987d28a454.jpg"
 title: "How Do You Create a Consulting Framework? A Guide"
 author: "Menno Drescher"
 date: "2025-05-10"

@@ -89,10 +89,10 @@ export default function AdminDashboard() {
               href="/blog"
             />
             <StatCard
-              title="Messages"
+              title="Journey chat"
               count={stats.contactMessagesCount}
               icon="✉️"
-              href="/messages"
+              href="/admin/journey-inbox"
               badge={stats.unreadMessagesCount > 0 ? stats.unreadMessagesCount : undefined}
             />
             <StatCard
@@ -131,6 +131,11 @@ export default function AdminDashboard() {
                 title="Analytics"
                 href="/admin/analytics"
                 icon="📊"
+              />
+              <ActionButton
+                title="Journey chat inbox"
+                href="/admin/journey-inbox"
+                icon="💬"
               />
             </div>
           </div>

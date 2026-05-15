@@ -5,7 +5,8 @@ export interface ApiProject {
   title: string;
   description: string | null;
   technologies: string[];
-  link: string | null;
+  repoUrl: string | null;
+  liveUrl: string | null;
   datePublished: string | null;
   category: string | null;
   screenshots: string[];
@@ -14,6 +15,9 @@ export interface ApiProject {
   caseStudy: string | null;
   slug: string;
 }
+
+/** Alias for components that still import `Project`. */
+export type Project = ApiProject;
 
 export interface BlogPost {
   id: number;

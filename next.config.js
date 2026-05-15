@@ -6,14 +6,31 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Declare Turbopack config to silence the webpack/Turbopack conflict error in Next.js 16
+  turbopack: {},
   images: {
     unoptimized: true,
-    domains: ['localhost', 'vercel.app', 'my-portfolio-menno.vercel.app'],
+    // Use remotePatterns instead of the deprecated `domains`
+    remotePatterns: [
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'my-portfolio-menno.vercel.app', pathname: '/**' },
+    ],
   },
   webpack: (config, { isServer }) => {
+    // Sentry → @sentry/node → Prisma/OpenTelemetry use dynamic requires; webpack warns but it is expected.
+    config.ignoreWarnings = [
+      ...(config.ignoreWarnings || []),
+      (warning) => {
+        const msg = String(warning.message || '');
+        const res = warning.module?.resource || '';
+        return (
+          msg.includes('Critical dependency: the request of a dependency is an expression') &&
+          (res.includes('@opentelemetry') ||
+            (res.includes('@prisma') && res.includes('instrumentation')))
+        );
+      },
+    ];
+
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,

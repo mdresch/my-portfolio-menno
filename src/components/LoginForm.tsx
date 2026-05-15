@@ -1,44 +1,46 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "../lib/auth";
 import Link from "next/link";
+import AuthBffFriendsCallout from "./AuthBffFriendsCallout";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const { login, isAuthenticated, user } = useAuth();
-  
+
+  const { login, isAuthenticated, user, sessionError } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace("/admin");
+    }
+  }, [isAuthenticated, router]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    
+
     try {
       await login({ email, password });
-      // Login successful, Firebase will handle state updates
+      router.replace("/admin");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed. Please check your credentials.");
     } finally {
       setIsSubmitting(false);
     }
   };
-  
+
   if (isAuthenticated) {
     return (
-      <div className="p-6 max-w-sm mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-md">
-        <div className="text-center">
-          <p className="text-green-600 dark:text-green-400 font-semibold">Welcome back!</p>
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
-            Logged in as: {user?.displayName || user?.email}
-          </p>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">
-            You can now access the admin features.
-          </p>
-        </div>
+      <div className="p-6 max-w-sm mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-md text-center">
+        <p className="text-green-600 dark:text-green-400 font-semibold">Welcome back{user?.email ? `, ${user.displayName || user.email}` : ""}!</p>
+        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">Opening the admin dashboard…</p>
       </div>
     );
   }
@@ -46,7 +48,14 @@ export default function LoginForm() {
   return (
     <div className="p-6 max-w-sm mx-auto bg-white dark:bg-slate-800 rounded-xl shadow-md">
       <h2 className="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">Admin Login</h2>
-      
+
+      <AuthBffFriendsCallout />
+
+      {sessionError ? (
+        <div className="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 rounded-md text-sm">
+          {sessionError}
+        </div>
+      ) : null}
       {error && (
         <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 rounded-md text-sm">
           {error}

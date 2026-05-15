@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_0d3899bd-78fa-422e-ab52-ea3c37fb73de.jpeg"
 title: "Activity List — Alliance Resilience Project"
 slug: "activity-list-alliance-resilience-project"
 date: 2026-03-15

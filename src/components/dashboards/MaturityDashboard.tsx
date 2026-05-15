@@ -2,6 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { MockKPICard } from "../../components/dashboards/MockVisuals";
 import { motion, AnimatePresence } from "../modern/ClientMotionWrapper";
+import { ChartBarIcon } from "@heroicons/react/24/outline";
+
+function parseScoreOutOf5(value: string): number | undefined {
+  const m = value.trim().match(/^([\d.]+)\s*\//);
+  if (!m) return undefined;
+  const n = parseFloat(m[1]);
+  return Number.isFinite(n) ? n : undefined;
+}
 
 export const MaturityDashboard = () => {
   const [maturityData, setMaturityData] = useState([
@@ -37,19 +45,36 @@ export const MaturityDashboard = () => {
   }, []);
 
   return (
-    <section className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Maturity Dashboard</h2>
-      <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm">
-        Self-assess your portfolio's evolution across key areas. Updated quarterly.
-      </p>
+    <section className="rounded-2xl border border-gray-200/80 dark:border-gray-600/60 bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm shadow-lg shadow-gray-900/5 dark:shadow-black/40 p-6 sm:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+        <div className="flex items-start gap-3">
+          <div className="rounded-xl bg-violet-100 dark:bg-violet-950/50 p-2.5 ring-1 ring-violet-200/60 dark:ring-violet-800/40">
+            <ChartBarIcon className="h-6 w-6 text-violet-700 dark:text-violet-300" aria-hidden />
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white tracking-tight">
+              Maturity dashboard
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 max-w-xl leading-relaxed">
+              A concise snapshot of how this portfolio scores across pillars I care about—aligned with
+              Azure Well-Architected and solid web fundamentals. Numbers are a self-review, not an
+              audit; I refresh them roughly each quarter.
+            </p>
+          </div>
+        </div>
+      </div>
       {loading ? (
-        <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
+        <div className="text-gray-500 dark:text-gray-400 text-sm py-8 text-center rounded-xl bg-gray-50 dark:bg-gray-800/50">
+          Loading scores…
+        </div>
       ) : error ? (
-        <div className="text-red-500 dark:text-red-400 text-sm">{error}</div>
+        <div className="text-red-600 dark:text-red-400 text-sm py-4 px-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200/80 dark:border-red-900/50">
+          {error}
+        </div>
       ) : (
         <AnimatePresence>
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -58,25 +83,28 @@ export const MaturityDashboard = () => {
             {maturityData.map((item, idx) => (
               <motion.div
                 key={item.title}
-                whileHover={{ scale: 1.04, boxShadow: "0 4px 24px rgba(0,0,0,0.10)" }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 30 }}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.99 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.08, duration: 0.4 }}
+                transition={{ delay: idx * 0.06, duration: 0.35 }}
               >
-                <MockKPICard title={item.title} value={item.value} change={item.change} />
+                <MockKPICard
+                  title={item.title}
+                  value={item.value}
+                  change={item.change}
+                  changeTone="muted"
+                  scoreOutOf5={parseScoreOutOf5(item.value)}
+                />
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
       )}
-      <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-        Based on Azure Well-Architected Framework, web best practices, and personal growth milestones.
-      </div>
-      {/* Decorative SVG wave for visual distinction */}
-      <svg viewBox="0 0 500 30" className="w-full mt-8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 20 Q125 40 250 20 T500 20 V30 H0Z" className="fill-gray-100 dark:fill-gray-700" />
-      </svg>
+      <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-200/80 dark:border-gray-700/80 pt-5">
+        Method notes: scores mix qualitative judgment with Lighthouse-style signals where relevant.
+        Sub-scores in parentheses (e.g. depth, SEO) call out the main drag on that pillar.
+      </p>
     </section>
   );
 };

@@ -1,16 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import resumeData from "@/data/resume";
+import { readCustomSkills } from "@/lib/custom-skills-store";
 
-// This API route serves skill categories directly from resume.ts
-
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    // Extract unique categories from skills in resume.ts
-    const categories = [...new Set(
-      resumeData.skills
-        .map(skill => skill.category || "General")
-        .filter(Boolean)
-    )].sort();
+    const custom = await readCustomSkills();
+    const fromResume = resumeData.skills.map((s) => s.category || "General");
+    const fromCustom = custom.map((s) => s.category || "General");
+    const categories = [...new Set([...fromResume, ...fromCustom].filter(Boolean))].sort();
 
     return NextResponse.json(categories);
   } catch (error) {

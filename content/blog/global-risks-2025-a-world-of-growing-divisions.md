@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_cf0919ff-6a3c-404f-9a96-5387a31fb983.jpeg"
 title: Global Risks 2025 a world of growing divisions
 date: 2025-04-29
 author: Menno Drescher

@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/_a0a6db01-4103-4028-9cd2-2401a06fc116.jpeg"
 title: "Business Case Template — Alliance Resilience Project"
 date: 2025-01-10
 slug: "business-case-template-alliance-resilience-project"

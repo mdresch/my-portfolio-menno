@@ -37,13 +37,15 @@ export default function ProjectCard({ project, onEdit }: ProjectCardProps) {
           project.imageUrl && project.imageUrl.startsWith("http")
             ? project.imageUrl
             : project.image && project.image.startsWith("http")
-            ? project.image
-            : "/images/default-project-image.jpg"
+              ? project.image
+              : "/images/default-project-image.jpg"
         }
         alt={project.title}
         width={400}
         height={250}
-        className="rounded-lg object-cover mb-4"
+        sizes="(max-width: 768px) 100vw, 600px"
+        className="mb-4 h-auto w-full max-h-[250px] rounded-lg object-cover"
+        style={{ height: "auto" }}
       />
       <h2 className="text-2xl font-semibold mb-2">{project.title}</h2>
       <p className="text-gray-600 mb-2">{project.description}</p>

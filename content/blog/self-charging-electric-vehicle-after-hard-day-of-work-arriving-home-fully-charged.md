@@ -1,4 +1,5 @@
 ---
+coverImage: "/images/Firefly%20Lighthouses%20shining%20their%20rescue%20beacon%20lights%20at%20night%20where%20hot%20airbaloons%20many%20in%20the%20sky%20(1).jpg"
 title: Self Charging Electric Vehicle. After hard day of work arriving home fully charged
 date: 2025-04-21
 excerpt: The SELF Charging Electric Vehicle

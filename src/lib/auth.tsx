@@ -1,192 +1,138 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import type { User } from "firebase/auth";
+
+/** User shape from BFF session / login (no Firebase client SDK required). */
+export type SessionUser = {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  emailVerified?: boolean;
+};
 
 interface AuthContextType {
-  user: User | null;
+  user: SessionUser | null;
   loading: boolean;
   isAuthenticated: boolean;
   error: string | null;
+  sessionError: string | null;
   login: (credentials: { email: string; password: string }) => Promise<void>;
   signUp: (data: { username: string; email: string; password: string }) => Promise<void>;
   logout: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
+  refreshSession: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-async function loadFirebaseModules() {
-  const [firebaseModule, firebaseAuthModule] = await Promise.all([
-    import("./firebase"),
-    import("firebase/auth"),
-  ]);
-
-  return { firebaseModule, firebaseAuthModule };
+async function readSession(): Promise<{ user: SessionUser | null; sessionError: string | null }> {
+  const res = await fetch("/api/auth/session", { method: "GET", credentials: "include" });
+  const data = (await res.json().catch(() => ({}))) as {
+    user?: SessionUser | null;
+    error?: string;
+  };
+  if (res.status === 503 && data.error) {
+    return { user: null, sessionError: data.error };
+  }
+  if (res.ok && data.user) {
+    return { user: data.user, sessionError: null };
+  }
+  return { user: null, sessionError: null };
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<SessionUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sessionError, setSessionError] = useState<string | null>(null);
+
+  const refreshSession = React.useCallback(async () => {
+    const { user: u, sessionError: se } = await readSession();
+    setUser(u);
+    setSessionError(se);
+  }, []);
 
   useEffect(() => {
-    const initializeAuth = async () => {
+    let cancelled = false;
+    (async () => {
       try {
-        const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
-
-        // Check if Firebase is initialized
-        if (!firebaseModule.isFirebaseInitialized()) {
-          setError("Firebase is not properly configured");
-          setLoading(false);
-          return;
+        const { user: u, sessionError: se } = await readSession();
+        if (!cancelled) {
+          setUser(u);
+          setSessionError(se);
+          setError(null);
         }
-
-        const { auth } = firebaseModule;
-        
-        if (!auth) {
-          setError("Firebase auth not available");
-          setLoading(false);
-          return;
+      } catch {
+        if (!cancelled) {
+          setUser(null);
+          setSessionError(null);
         }
-
-        const unsubscribe = firebaseAuthModule.onAuthStateChanged(
-          auth, 
-          (user) => {
-            setUser(user);
-            setLoading(false);
-            setError(null);
-          }, 
-          (error) => {
-            console.error("Auth state change error:", error);
-            setError("Authentication error occurred");
-            setLoading(false);
-          }
-        );
-
-        return unsubscribe;
-      } catch (error) {
-        console.error("Failed to initialize Firebase auth:", error);
-        setError("Failed to initialize authentication");
-        setLoading(false);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-    };
-
-    let unsubscribe: (() => void) | undefined;
-    
-    initializeAuth().then((unsub) => {
-      unsubscribe = unsub;
-    });
-
+    })();
     return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
+      cancelled = true;
     };
   }, []);
 
   const login = async ({ email, password }: { email: string; password: string }) => {
-    try {
-      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
-
-      if (!firebaseModule.isFirebaseInitialized()) {
-        throw new Error("Firebase is not properly configured");
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    });
+    const data = (await res.json().catch(() => ({}))) as { error?: string; user?: SessionUser };
+    if (!res.ok) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("[auth.login BFF]", res.status, data);
       }
-
-      const { auth } = firebaseModule;
-      if (!auth) {
-        throw new Error("Firebase auth not available");
-      }
-
-      await firebaseAuthModule.signInWithEmailAndPassword(auth, email, password);
-    } catch (error: unknown) {
-      if (typeof error === "object" && error !== null && "code" in error) {
-        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
-      }
-      throw new Error("An error occurred. Please try again.");
+      throw new Error(data.error || "Login failed.");
+    }
+    if (data.user) {
+      setUser(data.user);
+      setSessionError(null);
+      setError(null);
     }
   };
 
   const signUp = async ({ username, email, password }: { username: string; email: string; password: string }) => {
-    try {
-      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
-
-      if (!firebaseModule.isFirebaseInitialized()) {
-        throw new Error("Firebase is not properly configured. Please check your environment variables.");
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ username, email, password }),
+    });
+    const data = (await res.json().catch(() => ({}))) as { error?: string; user?: SessionUser };
+    if (!res.ok) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("[auth.signup BFF]", res.status, data);
       }
-
-      const { auth } = firebaseModule;
-      if (!auth) {
-        throw new Error("Firebase authentication is not available. Please check your configuration.");
-      }
-
-      const userCredential = await firebaseAuthModule.createUserWithEmailAndPassword(auth, email, password);
-      await firebaseAuthModule.updateProfile(userCredential.user, {
-        displayName: username
-      });
-    } catch (error: unknown) {
-      // Log the full error for debugging
-      console.error("Sign up error details:", error);
-      
-      // Handle Firebase errors with codes
-      if (typeof error === "object" && error !== null && "code" in error) {
-        const errorCode = (error as { code: string }).code;
-        const message = getFirebaseErrorMessage(errorCode);
-        console.error("Firebase error code:", errorCode, "Message:", message);
-        throw new Error(message);
-      }
-      
-      // Handle Error objects
-      if (error instanceof Error) {
-        console.error("Error object:", error.message);
-        throw error;
-      }
-      
-      // Fallback for unknown errors - provide more context
-      const errorString = String(error);
-      console.error("Unknown error type:", typeof error, "Value:", errorString);
-      throw new Error(`Sign up failed: ${errorString || "Unknown error"}. Please check your Firebase configuration or try again.`);
+      throw new Error(data.error || "Sign up failed.");
+    }
+    if (data.user) {
+      setUser(data.user);
+      setSessionError(null);
+      setError(null);
     }
   };
 
   const logout = async () => {
-    try {
-      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
-
-      if (!firebaseModule.isFirebaseInitialized()) {
-        throw new Error("Firebase is not properly configured");
-      }
-
-      const { auth } = firebaseModule;
-      if (!auth) {
-        throw new Error("Firebase auth not available");
-      }
-
-      await firebaseAuthModule.signOut(auth);
-    } catch {
-      throw new Error("Failed to log out");
-    }
+    await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+    setUser(null);
   };
 
   const resetPassword = async (email: string) => {
-    try {
-      const { firebaseModule, firebaseAuthModule } = await loadFirebaseModules();
-
-      if (!firebaseModule.isFirebaseInitialized()) {
-        throw new Error("Firebase is not properly configured");
-      }
-
-      const { auth } = firebaseModule;
-      if (!auth) {
-        throw new Error("Firebase auth not available");
-      }
-
-      await firebaseAuthModule.sendPasswordResetEmail(auth, email);
-    } catch (error: unknown) {
-      if (typeof error === "object" && error !== null && "code" in error) {
-        throw new Error(getFirebaseErrorMessage((error as { code: string }).code));
-      }
-      throw new Error("An error occurred. Please try again.");
+    const res = await fetch("/api/auth/reset-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email }),
+    });
+    const data = (await res.json().catch(() => ({}))) as { error?: string };
+    if (!res.ok) {
+      throw new Error(data.error || "Could not send reset email.");
     }
   };
 
@@ -195,17 +141,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading,
     isAuthenticated: !!user,
     error,
+    sessionError,
     login,
     signUp,
     logout,
-    resetPassword
+    resetPassword,
+    refreshSession,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
@@ -214,34 +158,4 @@ export function useAuth() {
     throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
-}
-
-// Helper function to convert Firebase error codes to user-friendly messages
-function getFirebaseErrorMessage(errorCode: string): string {
-  switch (errorCode) {
-  case "auth/user-not-found":
-    return "No account found with this email address.";
-  case "auth/wrong-password":
-    return "Incorrect password.";
-  case "auth/email-already-in-use":
-    return "An account with this email already exists. Please sign in instead.";
-  case "auth/weak-password":
-    return "Password should be at least 6 characters.";
-  case "auth/invalid-email":
-    return "Invalid email address. Please check your email format.";
-  case "auth/too-many-requests":
-    return "Too many failed attempts. Please try again later.";
-  case "auth/user-disabled":
-    return "This account has been disabled.";
-  case "auth/invalid-credential":
-    return "Invalid email or password.";
-  case "auth/network-request-failed":
-    return "Network error. Please check your internet connection and try again.";
-  case "auth/operation-not-allowed":
-    return "Email/password sign-up is not enabled. Please contact support.";
-  default:
-    // Log the unknown error code for debugging
-    console.error("Unknown Firebase error code:", errorCode);
-    return `An error occurred (${errorCode}). Please try again or contact support if the problem persists.`;
-  }
 }
