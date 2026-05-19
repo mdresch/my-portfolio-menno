@@ -133,6 +133,11 @@ export default function AdminDashboard() {
                 icon="📊"
               />
               <ActionButton
+                title="Image library"
+                href="/admin/images"
+                icon="🖼️"
+              />
+              <ActionButton
                 title="Journey chat inbox"
                 href="/admin/journey-inbox"
                 icon="💬"

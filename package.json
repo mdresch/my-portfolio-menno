@@ -35,6 +35,8 @@
     "build:vercel": "npx prisma generate && npx prisma migrate deploy && node node_modules/next/dist/bin/next build",
     "build:production": "npx prisma generate && node node_modules/next/dist/bin/next build",
     "deploy:db": "npx prisma migrate deploy",
+    "db:migrate": "npx prisma migrate deploy",
+    "verify:image-library": "node scripts/verify-image-library.mjs",
     "deploy:seed": "npm run deploy:db && npm run seed:projects"
   },
   "dependencies": {
@@ -55,6 +57,7 @@
     "@toast-ui/react-editor": "^3.2.3",
     "@uiw/react-codemirror": "^4.23.10",
     "@vercel/analytics": "^1.5.0",
+    "@vercel/blob": "^0.27.3",
     "@vercel/speed-insights": "^1.2.0",
     "chart.js": "^4.4.8",
     "class-variance-authority": "^0.7.1",

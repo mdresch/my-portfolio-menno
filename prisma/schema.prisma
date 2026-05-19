@@ -28,3 +28,43 @@ model Project {
   slug         String   @unique
   viewCount    Int      @default(0)
 }
+
+/// Curated image library (blog covers, projects, direct links). Served at /media/{slug}.
+model ImageAsset {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  storageKey  String
+  blobUrl     String?
+  filename    String
+  mimeType    String
+  byteSize    Int
+  width       Int?
+  height      Int?
+  altText     String?
+  title       String?
+  caption     String?
+  description String?
+  tags        String[]    @default([])
+  source      String      @default("upload")
+  checksum    String?     @unique
+  deletedAt   DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  views       ImageView[]
+
+  @@index([deletedAt])
+  @@index([createdAt])
+}
+
+model ImageView {
+  id         String     @id @default(cuid())
+  imageId    String
+  image      ImageAsset @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  occurredAt DateTime   @default(now())
+  referrer   String?
+  path       String?
+  userAgent  String?
+  isBot      Boolean    @default(false)
+
+  @@index([imageId, occurredAt])
+}

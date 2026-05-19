@@ -20,6 +20,9 @@
 # production
 /build
 
+# image library local uploads (when BLOB_READ_WRITE_TOKEN is unset)
+/data/image-library/
+
 # misc
 .DS_Store
 *.pem
