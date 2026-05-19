@@ -1,43 +1,51 @@
-# Commands to Start the Integrated Portfolio Application
+# Startup Guide (Node.js + Next.js + pnpm)
 
-## Starting the API
+Use this guide to run the portfolio locally with pnpm.
 
-```powershell
-# Navigate to the API directory
-cd c:\Users\menno\Source\Repos\my-portfolio-menno\api
+## 1) Prerequisites
 
-# Run the API
-dotnet run
+- Node.js 18+ (Node.js 20 LTS recommended)
+- pnpm (recommended package manager for this repo)
+
+If pnpm is not installed yet:
+
+```bash
+corepack enable
+corepack prepare pnpm@latest --activate
 ```
 
-The API will start on http://localhost:5154/api
+## 2) Install dependencies
 
-## Starting the Frontend
+From the project root:
 
-```powershell
-# Navigate to the root directory
-cd c:\Users\menno\Source\Repos\my-portfolio-menno
-
-# Run the Next.js development server
-npm run dev
+```bash
+cd /workspaces/my-portfolio-menno
+pnpm install
 ```
 
-The frontend will start on http://localhost:3000
+## 3) Start development server
 
-## Available Features
+```bash
+pnpm dev
+```
 
-- View projects from the database
-- Browse blog posts
-- Explore skills by category
-- Submit contact messages
-- Admin login (username: admin, password: Portfolio@2025)
+The Next.js app runs on:
 
-## Testing the API
+- http://localhost:3000
 
-You can use the Swagger UI at http://localhost:5154/swagger to test the API endpoints.
+## 4) Useful pnpm commands
 
-## Notes
+```bash
+pnpm lint
+pnpm test
+pnpm build
+pnpm start
+```
 
-- The API and frontend must both be running for the application to work properly.
-- The database is using LocalDB, make sure SQL Server LocalDB is installed and running.
-- JWT authentication is implemented for admin features.
+## 5) Environment setup
+
+If needed, create your local env file from the template before running dev:
+
+```bash
+cp env.example.template .env.local
+```
