@@ -27,6 +27,31 @@ export default function AdminImagesPage() {
     slug: "",
   });
   const [copied, setCopied] = useState<string | null>(null);
+  const [setup, setSetup] = useState<{
+    ready: boolean;
+    storageMode: string;
+    migrationHint: string | null;
+  } | null>(null);
+
+  const loadSetup = useCallback(async () => {
+    try {
+      const res = await fetch("/api/images/setup", { credentials: "include" });
+      const data = (await res.json()) as {
+        ready?: boolean;
+        storageMode?: string;
+        migrationHint?: string | null;
+      };
+      if (res.ok) {
+        setSetup({
+          ready: Boolean(data.ready),
+          storageMode: data.storageMode ?? "local",
+          migrationHint: data.migrationHint ?? null,
+        });
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const loadImages = useCallback(async () => {
     setLoading(true);
@@ -45,8 +70,9 @@ export default function AdminImagesPage() {
   }, [includeDeleted]);
 
   useEffect(() => {
+    void loadSetup();
     void loadImages();
-  }, [loadImages]);
+  }, [loadSetup, loadImages]);
 
   async function handleUpload(file: File) {
     setUploading(true);
@@ -158,6 +184,12 @@ export default function AdminImagesPage() {
             Upload curated images. Use <code className="text-xs">/media/&#123;slug&#125;</code> in
             blog posts and projects. Views are logged on each load.
           </p>
+          {setup && (
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              Storage: <span className="font-medium">{setup.storageMode}</span>
+              {setup.ready ? " · database ready" : " · database migration required"}
+            </p>
+          )}
         </div>
         <label className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
           {uploading ? "Uploading…" : "Upload image"}
@@ -183,6 +215,12 @@ export default function AdminImagesPage() {
         />
         Show deleted
       </label>
+
+      {setup && !setup.ready && setup.migrationHint && (
+        <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+          {setup.migrationHint}
+        </p>
+      )}
 
       {error && (
         <p className="mb-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
@@ -249,6 +287,15 @@ export default function AdminImagesPage() {
                     }
                   >
                     MD
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded bg-gray-100 px-2 py-1 text-xs dark:bg-gray-700"
+                    onClick={() =>
+                      copyText("coverImage", `coverImage: "${img.mediaUrl}"`)
+                    }
+                  >
+                    Cover
                   </button>
                   <button
                     type="button"

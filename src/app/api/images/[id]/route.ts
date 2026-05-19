@@ -3,6 +3,7 @@ import { requireImageLibraryAdmin } from "../../../../lib/image-library-admin";
 import { prisma } from "../../../../lib/prisma";
 import { serializeImageAsset } from "../../../../lib/image-library-serialize";
 import { slugifyFilename } from "../../../../lib/image-slug";
+import { imageLibraryErrorResponse } from "../../../../lib/image-library-db";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +28,8 @@ export async function GET(_request: NextRequest, context: RouteContext) {
     });
   } catch (e) {
     console.error("GET /api/images/[id]:", e);
-    return NextResponse.json({ error: "Failed to load image" }, { status: 500 });
+    const { status, error } = imageLibraryErrorResponse(e);
+    return NextResponse.json({ error }, { status });
   }
 }
 
@@ -85,7 +87,8 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
     return NextResponse.json({ image: serializeImageAsset(row) });
   } catch (e) {
     console.error("PATCH /api/images/[id]:", e);
-    return NextResponse.json({ error: "Failed to update image" }, { status: 500 });
+    const { status, error } = imageLibraryErrorResponse(e);
+    return NextResponse.json({ error }, { status });
   }
 }
 
@@ -103,6 +106,7 @@ export async function DELETE(_request: NextRequest, context: RouteContext) {
     return NextResponse.json({ image: serializeImageAsset(row) });
   } catch (e) {
     console.error("DELETE /api/images/[id]:", e);
-    return NextResponse.json({ error: "Failed to delete image" }, { status: 500 });
+    const { status, error } = imageLibraryErrorResponse(e);
+    return NextResponse.json({ error }, { status });
   }
 }

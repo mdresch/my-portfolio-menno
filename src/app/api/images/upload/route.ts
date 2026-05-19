@@ -9,6 +9,7 @@ import {
 } from "../../../../lib/image-library-storage";
 import { serializeImageAsset } from "../../../../lib/image-library-serialize";
 import { slugifyFilename, uniqueSlugCandidate } from "../../../../lib/image-slug";
+import { imageLibraryErrorResponse } from "../../../../lib/image-library-db";
 
 export const dynamic = "force-dynamic";
 
@@ -85,20 +86,23 @@ export async function POST(request: NextRequest) {
       select: { id: true },
     });
 
-    const stored = await storeImageBuffer(id, file.name, file.type, buffer);
-
-    const row = await prisma.imageAsset.update({
-      where: { id },
-      data: {
-        storageKey: stored.storageKey,
-        blobUrl: stored.blobUrl,
-      },
-    });
-
-    return NextResponse.json({ image: serializeImageAsset(row) }, { status: 201 });
+    try {
+      const stored = await storeImageBuffer(id, file.name, file.type, buffer);
+      const row = await prisma.imageAsset.update({
+        where: { id },
+        data: {
+          storageKey: stored.storageKey,
+          blobUrl: stored.blobUrl,
+        },
+      });
+      return NextResponse.json({ image: serializeImageAsset(row) }, { status: 201 });
+    } catch (storeErr) {
+      await prisma.imageAsset.delete({ where: { id } }).catch(() => undefined);
+      throw storeErr;
+    }
   } catch (e) {
     console.error("POST /api/images/upload:", e);
-    const message = e instanceof Error ? e.message : "Upload failed";
-    return NextResponse.json({ error: message }, { status: 500 });
+    const { status, error } = imageLibraryErrorResponse(e);
+    return NextResponse.json({ error }, { status });
   }
 }

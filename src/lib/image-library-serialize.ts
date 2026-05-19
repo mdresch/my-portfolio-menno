@@ -27,6 +27,10 @@ export function mediaUrlForSlug(slug: string): string {
   return `/media/${encodeURIComponent(slug)}`;
 }
 
+export function coverImageFrontmatterForSlug(slug: string): string {
+  return `coverImage: "${mediaUrlForSlug(slug)}"`;
+}
+
 export function serializeImageAsset(
   row: ImageAsset,
   extras?: { viewCount?: number }

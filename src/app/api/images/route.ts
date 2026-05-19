@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireImageLibraryAdmin } from "../../../lib/image-library-admin";
 import { prisma } from "../../../lib/prisma";
 import { serializeImageAsset } from "../../../lib/image-library-serialize";
+import { imageLibraryErrorResponse } from "../../../lib/image-library-db";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +28,7 @@ export async function GET(request: NextRequest) {
     });
   } catch (e) {
     console.error("GET /api/images:", e);
-    return NextResponse.json({ error: "Failed to list images" }, { status: 500 });
+    const { status, error } = imageLibraryErrorResponse(e);
+    return NextResponse.json({ error }, { status });
   }
 }
