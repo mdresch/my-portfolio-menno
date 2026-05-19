@@ -4,7 +4,10 @@ import { prisma } from "../../../../lib/prisma";
 import {
   ALLOWED_IMAGE_MIME,
   MAX_IMAGE_BYTES,
+  MAX_SLUG_RESOLVE_ATTEMPTS,
+  detectImageMimeFromBuffer,
   sha256Checksum,
+  safeStoredFilename,
   storeImageBuffer,
 } from "../../../../lib/image-library-storage";
 import { serializeImageAsset } from "../../../../lib/image-library-serialize";
@@ -15,13 +18,12 @@ export const dynamic = "force-dynamic";
 
 async function resolveUniqueSlug(base: string): Promise<string> {
   let candidate = base;
-  let n = 0;
-  while (true) {
+  for (let n = 0; n < MAX_SLUG_RESOLVE_ATTEMPTS; n++) {
     const existing = await prisma.imageAsset.findUnique({ where: { slug: candidate } });
     if (!existing) return candidate;
-    n += 1;
-    candidate = uniqueSlugCandidate(base, String(n));
+    candidate = uniqueSlugCandidate(base, String(n + 1));
   }
+  throw new Error("Could not allocate a unique slug");
 }
 
 export async function POST(request: NextRequest) {
@@ -35,18 +37,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing file field" }, { status: 400 });
     }
 
-    if (!ALLOWED_IMAGE_MIME.has(file.type)) {
-      return NextResponse.json(
-        { error: "Allowed types: JPEG, PNG, WebP, GIF" },
-        { status: 400 }
-      );
-    }
-
     if (file.size > MAX_IMAGE_BYTES) {
       return NextResponse.json({ error: "Max file size is 10 MB" }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
+    const detectedMime = detectImageMimeFromBuffer(buffer);
+    if (!detectedMime || !ALLOWED_IMAGE_MIME.has(detectedMime)) {
+      return NextResponse.json(
+        { error: "File content must be a valid JPEG, PNG, WebP, or GIF image" },
+        { status: 400 }
+      );
+    }
+
     const checksum = sha256Checksum(buffer);
 
     const duplicate = await prisma.imageAsset.findUnique({ where: { checksum } });
@@ -54,11 +57,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "This file was already uploaded",
-          existing: serializeImageAsset(duplicate),
+          existingSlug: duplicate.slug,
+          existingId: duplicate.id,
         },
         { status: 409 }
       );
     }
+
+    const storedFilename = safeStoredFilename(file.name, detectedMime);
 
     const titleFromForm = String(form.get("title") ?? "").trim();
     const altFromForm = String(form.get("altText") ?? "").trim();
@@ -67,16 +73,16 @@ export async function POST(request: NextRequest) {
       ? tagsRaw.split(",").map((t) => t.trim()).filter(Boolean)
       : [];
 
-    const baseSlug = slugifyFilename(file.name);
+    const baseSlug = slugifyFilename(storedFilename);
     const slug = await resolveUniqueSlug(baseSlug);
 
     const { id } = await prisma.imageAsset.create({
       data: {
         slug,
         storageKey: "pending",
-        filename: file.name,
-        mimeType: file.type,
-        byteSize: file.size,
+        filename: storedFilename,
+        mimeType: detectedMime,
+        byteSize: buffer.length,
         title: titleFromForm || null,
         altText: altFromForm || null,
         tags,
@@ -87,7 +93,7 @@ export async function POST(request: NextRequest) {
     });
 
     try {
-      const stored = await storeImageBuffer(id, file.name, file.type, buffer);
+      const stored = await storeImageBuffer(id, storedFilename, detectedMime, buffer);
       const row = await prisma.imageAsset.update({
         where: { id },
         data: {

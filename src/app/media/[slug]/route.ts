@@ -25,7 +25,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
 
     if (asset.blobUrl) {
       return NextResponse.redirect(asset.blobUrl, {
-        status: 302,
+        status: 308,
         headers: {
           "Cache-Control": "public, max-age=31536000, immutable",
         },

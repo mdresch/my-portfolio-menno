@@ -99,6 +99,10 @@ export async function DELETE(_request: NextRequest, context: RouteContext) {
   const { id } = await context.params;
 
   try {
+    const existing = await prisma.imageAsset.findUnique({ where: { id } });
+    if (!existing) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
     const row = await prisma.imageAsset.update({
       where: { id },
       data: { deletedAt: new Date() },
