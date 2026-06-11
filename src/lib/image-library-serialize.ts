@@ -1,5 +1,21 @@
 import type { ImageAsset } from "@prisma/client";
 
+/** Public list / picker — omits internal storage fields. */
+export type PublicImageAssetDto = {
+  id: string;
+  slug: string;
+  filename: string;
+  mimeType: string;
+  byteSize: number;
+  altText: string | null;
+  title: string | null;
+  caption: string | null;
+  tags: string[];
+  mediaUrl: string;
+  viewCount?: number;
+  usageCount?: number;
+};
+
 export type ImageAssetDto = {
   id: string;
   slug: string;
@@ -29,6 +45,26 @@ export function mediaUrlForSlug(slug: string): string {
 
 export function coverImageFrontmatterForSlug(slug: string): string {
   return `coverImage: "${mediaUrlForSlug(slug)}"`;
+}
+
+export function serializePublicImageAsset(
+  row: ImageAsset,
+  extras?: { viewCount?: number; usageCount?: number }
+): PublicImageAssetDto {
+  return {
+    id: row.id,
+    slug: row.slug,
+    filename: row.filename,
+    mimeType: row.mimeType,
+    byteSize: row.byteSize,
+    altText: row.altText,
+    title: row.title,
+    caption: row.caption,
+    tags: row.tags,
+    mediaUrl: mediaUrlForSlug(row.slug),
+    viewCount: extras?.viewCount,
+    usageCount: extras?.usageCount,
+  };
 }
 
 export function serializeImageAsset(
