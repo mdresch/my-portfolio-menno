@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import ProjectForm from "../../components/ProjectForm";
 import { ProjectService } from "../../lib/api-services";
+import { buildProjectUsageEntries } from "@/lib/image-library-usage";
+import { syncImageUsagesClient } from "@/lib/sync-image-usages-client";
 import type { ApiProject } from "../../types/api";
 import ProjectCard from "./ProjectCard.client";
 
@@ -112,6 +114,12 @@ export default function ProjectsClient({ projects: initialProjects }: ProjectsCl
           slug: project.title.toLowerCase().replace(/\s+/g, "-"),
         };
         await ProjectService.create(apiProject);
+        void syncImageUsagesClient({
+          refSlug: apiProject.slug,
+          refPath: `/projects/${apiProject.slug}`,
+          replaceUsageTypes: ["project_image", "project_screenshot"],
+          entries: buildProjectUsageEntries(project.image, project.screenshots),
+        });
         // Refresh from API
         const apiProjects = await ProjectService.getAll();
         setProjectList(apiProjects.map(normalizeProject));

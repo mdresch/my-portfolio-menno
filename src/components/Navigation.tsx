@@ -62,6 +62,7 @@ const menuGroups = [
         icon: <DocumentTextIcon className="w-6 h-6" />,
         items: [
           { title: "All Posts", href: "/blog" },
+          { title: "Image Library", href: "/library" },
           { title: "Visualization Showcase", href: "/dashboards/visualizations-showcase" }
         ]
       },

@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import BlogPostImageTools from "@/components/image-library/BlogPostImageTools";
+import { buildBlogUsageEntries } from "@/lib/image-library-usage";
+import { syncImageUsagesClient } from "@/lib/sync-image-usages-client";
 
 // Dynamically import the editor to avoid SSR issues
 const MarkdownEditor = dynamic(() => import("../../../components/admin/MarkdownEditor"), {
@@ -25,6 +28,7 @@ export default function NewPostPage() {
   const [excerpt, setExcerpt] = useState("");
   const [categories, setCategories] = useState<string[]>([""]);
   const [content, setContent] = useState("");
+  const [coverImage, setCoverImage] = useState("");
   const [author, setAuthor] = useState("");
   
   // GitHub credentials
@@ -114,12 +118,14 @@ export default function NewPostPage() {
       categoriesYAML = "categories: []";
     }
 
+    const coverLine = coverImage ? `coverImage: "${coverImage}"\n` : "";
+
     const frontmatter = `---
 title: "${title}"
 date: "${date}"
 author: "${author}"
 excerpt: "${excerpt}"
-${categoriesYAML}
+${coverLine}${categoriesYAML}
 ---
 
 ${content}`;
@@ -146,6 +152,13 @@ ${content}`;
         throw new Error(data.error || "Failed to create post");
       }
       
+      void syncImageUsagesClient({
+        refSlug: slug,
+        refPath: `content/blog/${slug}.md`,
+        replaceUsageTypes: ["blog_cover", "blog_inline"],
+        entries: buildBlogUsageEntries(slug, coverImage || null, content),
+      });
+
       setSuccess(true);
       // Redirect after short delay
       setTimeout(() => {
@@ -296,6 +309,13 @@ ${content}`;
               ))}
             </div>
             
+            <BlogPostImageTools
+              coverImage={coverImage}
+              onCoverImageChange={setCoverImage}
+              content={content}
+              onContentChange={setContent}
+            />
+
             <div className="mb-6">
               <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
                 Content

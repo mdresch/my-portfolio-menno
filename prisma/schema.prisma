@@ -51,9 +51,26 @@ model ImageAsset {
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   views       ImageView[]
+  usages      ImageUsage[]
 
   @@index([deletedAt])
   @@index([createdAt])
+}
+
+/// Where a library image is referenced (blog cover, project screenshot, etc.).
+model ImageUsage {
+  id        String     @id @default(cuid())
+  imageId   String
+  image     ImageAsset @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  usageType String
+  refSlug   String?
+  refPath   String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@unique([imageId, usageType, refSlug])
+  @@index([imageId])
+  @@index([refSlug])
 }
 
 model ImageView {

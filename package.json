@@ -37,6 +37,7 @@
     "deploy:db": "npx prisma migrate deploy",
     "db:migrate": "npx prisma migrate deploy",
     "verify:image-library": "node scripts/verify-image-library.mjs",
+    "index:image-usages": "tsx scripts/index-image-usages.ts",
     "deploy:seed": "npm run deploy:db && npm run seed:projects"
   },
   "dependencies": {

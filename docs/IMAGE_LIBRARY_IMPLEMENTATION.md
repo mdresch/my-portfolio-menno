@@ -43,12 +43,12 @@
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 2.1 | Public browse page `/library` | ⬜ | Tag filter, search |
-| 2.2 | `ImageUsage` model + registration API | ⬜ | blog_cover, project_screenshot, etc. |
-| 2.3 | Image picker component | ⬜ | Reusable modal |
-| 2.4 | Blog `PostEditor` cover + insert | ⬜ | Sets `coverImage: "/media/..."` |
-| 2.5 | `ProjectForm` screenshot picker | ⬜ | `screenshots[]` |
-| 2.6 | “Where used” from markdown scan | ⬜ | Script or on-save indexer |
+| 2.1 | Public browse page `/library` | ✅ | Tag filter, search · `GET /api/library` |
+| 2.2 | `ImageUsage` model + registration API | ✅ | `POST /api/images/usage/sync` · `GET /api/images/:id/usage` |
+| 2.3 | Image picker component | ✅ | `ImageLibraryPicker` + `ImageLibraryField` |
+| 2.4 | Blog admin cover + insert | ✅ | `BlogPostImageTools` on new/edit post |
+| 2.5 | `ProjectForm` screenshot picker | ✅ | Library field + “Add from library” |
+| 2.6 | “Where used” from markdown scan | ✅ | `npm run index:image-usages` + on-save sync |
 
 ---
 
@@ -101,6 +101,11 @@
 | PATCH | `/api/images/:id` | Admin | Metadata / restore (`deletedAt: null`) |
 | DELETE | `/api/images/:id` | Admin | Soft delete |
 | GET | `/media/:slug` | Public | Serve file + log view |
+| GET | `/api/library` | Public | Browse catalog (`?q=` `?tag=`) |
+| POST | `/api/images/usage/sync` | Admin | Replace usage rows for a ref |
+| GET | `/api/images/:id/usage` | Admin | Where-used list for one asset |
+
+**Phase 2 setup:** run `npm run db:migrate` (applies `20260519180000_image_usage`), then optionally `npm run index:image-usages` to backfill blog references.
 
 ---
 
