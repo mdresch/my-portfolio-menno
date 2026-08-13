@@ -47,10 +47,10 @@ export function getFirebaseAdminApp(): admin.app.App | null {
       projectId?: string;
       clientEmail?: string;
       privateKey?: string;
-    };
+    } | null;
     const hasJsonKey =
-      Boolean(keys.project_id && keys.client_email && keys.private_key) ||
-      Boolean(keys.projectId && keys.clientEmail && keys.privateKey);
+      Boolean(keys?.project_id && keys.client_email && keys.private_key) ||
+      Boolean(keys?.projectId && keys.clientEmail && keys.privateKey);
     if (sa && hasJsonKey) {
       admin.initializeApp({
         credential: admin.credential.cert(sa),
@@ -64,6 +64,11 @@ export function getFirebaseAdminApp(): admin.app.App | null {
       });
       return admin.app();
     }
+
+    console.error(
+      "Firebase Admin not configured: set FIREBASE_SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_KEY " +
+      "(service account JSON) or GOOGLE_APPLICATION_CREDENTIALS (path to a service account JSON file) in your .env."
+    );
   } catch (e) {
     console.error("Firebase Admin initializeApp failed:", e);
     return null;

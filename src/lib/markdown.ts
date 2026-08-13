@@ -56,6 +56,21 @@ export interface ProjectMarkdown {
   content: string;
 }
 
+// Shared markdown -> HTML rendering pipeline, used by blog posts and (optionally) project bodies
+export async function renderMarkdown(markdown: string): Promise<string> {
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
+    .process(markdown);
+
+  return processedContent.toString();
+}
+
 // SERVER-SIDE FUNCTIONS (for static generation)
 export async function getAllPostIdsFromFiles(): Promise<PostParams[]> {
   try {
@@ -108,18 +123,7 @@ export async function getPostDataFromFile(slug: string): Promise<BlogPost | null
       };
     }
     
-    // Use remark to convert markdown into HTML string
-    const processedContent = await unified()
-      .use(remarkParse)
-      .use(remarkGfm) 
-      .use(remarkRehype)
-      .use(rehypeSlug)
-      .use(rehypeAutolinkHeadings)
-      .use(rehypeHighlight)
-      .use(rehypeStringify)
-      .process(matterResult.content);
-      
-    const contentHtml = processedContent.toString();
+    const contentHtml = await renderMarkdown(matterResult.content);
     
     // Calculate reading time
     const wordsPerMinute = 200;
