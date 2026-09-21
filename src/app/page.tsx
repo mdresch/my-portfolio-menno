@@ -52,16 +52,11 @@ const HeroSection: React.FC = () => {
         </h1>
 
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Full-Stack Developer crafting
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold"> scalable solutions </span>
-          with modern technologies
+          Enterprise AI & Governance Architect
         </h2>
 
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Specializing in <strong className="text-gray-800 dark:text-gray-200">C#/.NET</strong>,
-          <strong className="text-gray-800 dark:text-gray-200"> React</strong>, and
-          <strong className="text-gray-800 dark:text-gray-200"> Azure</strong> to build
-          high-performance applications that make a difference.
+          Designing <strong className="text-gray-800 dark:text-gray-200">audit-grade AI systems</strong> for compliant, scalable decision-making.
         </p>
 
         {/* CTA Buttons */}
@@ -282,9 +277,23 @@ const RPASGovernanceSection: React.FC = () => {
 // Modern Project Showcase
 const projects = [
   {
+    title: "ADPA Framework",
+    description: "Enterprise AI Governance Platform. A full-stack AI system that generates and validates business-critical documentation with audit-grade traceability, compliance enforcement, and drift detection.",
+    image: "/images/showcase-aiassist.jpg",
+    tags: ["AI Governance", "Enterprise Architecture", "Full-Stack", "PMBOK/BABOK"],
+    link: "/projects/adpa"
+  },
+  {
+    title: "Governed Feature Development",
+    description: "A self-healing Software Development Lifecycle (SDLC) model where features define their own correctness, and every change must pass atomic validation to be accepted.",
+    image: "/images/showcase-cloudscale.jpg",
+    tags: ["System Design", "DevOps", "Governance", "Testing"],
+    link: "/projects/governed-sdlc"
+  },
+  {
     title: "AI-Powered Portfolio",
     description: "A modern portfolio site with dynamic content, analytics, and Azure integration featuring real-time data visualization.",
-    image: "/images/showcase-aiassist.jpg",
+    image: "/images/showcase-cloudbackup.jpg",
     tags: ["React", "TypeScript", "Azure", "AI"],
     link: "/projects/ai-portfolio"
   },
@@ -515,7 +524,7 @@ const Home: React.FC = () => {
     trackRender();
 
     // Initialize Firebase Analytics
-    if (typeof window !== "undefined" && isFirebaseInitialized()) {
+    if (typeof window !== "undefined" && isFirebaseInitialized() && app) {
       try {
         getAnalytics(app);
       } catch (err) {

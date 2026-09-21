@@ -21,43 +21,61 @@ function frontmatterHasCover(fmBlock) {
   return /^coverImage\s*:/m.test(fmBlock);
 }
 
-const images = fs
-  .readdirSync(imgDir)
-  .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
-  .sort((a, b) => a.localeCompare(b, "en"));
+let images;
+try {
+  images = fs
+    .readdirSync(imgDir)
+    .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
+    .sort((a, b) => a.localeCompare(b, "en"));
+} catch (e) {
+  console.error("Cannot read image directory:", imgDir, e);
+  process.exit(1);
+}
 
 if (images.length === 0) {
   console.error("No images found in", imgDir);
   process.exit(1);
 }
 
-const posts = fs
-  .readdirSync(blogDir)
-  .filter((f) => f.endsWith(".md"))
-  .sort((a, b) => a.localeCompare(b, "en"));
+let posts;
+try {
+  posts = fs
+    .readdirSync(blogDir)
+    .filter((f) => f.endsWith(".md"))
+    .sort((a, b) => a.localeCompare(b, "en"));
+} catch (e) {
+  console.error("Cannot read blog directory:", blogDir, e);
+  process.exit(1);
+}
 
 let added = 0;
 let skippedHasCover = 0;
 let skippedNoFm = 0;
+let errors = 0;
 
 for (let i = 0; i < posts.length; i++) {
   const rel = posts[i];
   const filePath = path.join(blogDir, rel);
-  let raw = fs.readFileSync(filePath, "utf8");
-  const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!fmMatch) {
-    skippedNoFm++;
-    console.warn("No frontmatter:", rel);
-    continue;
+  try {
+    let raw = fs.readFileSync(filePath, "utf8");
+    const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!fmMatch) {
+      skippedNoFm++;
+      console.warn("No frontmatter:", rel);
+      continue;
+    }
+    if (frontmatterHasCover(fmMatch[1])) {
+      skippedHasCover++;
+      continue;
+    }
+    const url = imageUrl(images[i % images.length]);
+    raw = raw.replace(/^---\r?\n/, `---\ncoverImage: "${url}"\n`);
+    fs.writeFileSync(filePath, raw, "utf8");
+    added++;
+  } catch (e) {
+    errors++;
+    console.error("Error processing", rel, e instanceof Error ? e.message : e);
   }
-  if (frontmatterHasCover(fmMatch[1])) {
-    skippedHasCover++;
-    continue;
-  }
-  const url = imageUrl(images[i % images.length]);
-  raw = raw.replace(/^---\r?\n/, `---\ncoverImage: "${url}"\n`);
-  fs.writeFileSync(filePath, raw, "utf8");
-  added++;
 }
 
 console.log({
@@ -66,4 +84,5 @@ console.log({
   addedCoverImage: added,
   skippedAlreadyHadCover: skippedHasCover,
   skippedNoFrontmatter: skippedNoFm,
+  fileErrors: errors,
 });

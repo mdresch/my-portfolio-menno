@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import BlogPostImageTools from "@/components/image-library/BlogPostImageTools";
+import { buildBlogUsageEntries } from "@/lib/image-library-usage";
+import { syncImageUsagesClient } from "@/lib/sync-image-usages-client";
 
 // Dynamically import the editor to avoid SSR issues
 const MarkdownEditor = dynamic(() => import("../../../../components/admin/MarkdownEditor"), {
@@ -18,6 +21,7 @@ interface Post {
   published: boolean;
   publishDate: string;
   tags: string[];
+  coverImage?: string;
 }
 
 export default function EditPostPage() {
@@ -39,6 +43,7 @@ export default function EditPostPage() {
   const [excerpt, setExcerpt] = useState("");
   const [categories, setCategories] = useState([""]);
   const [content, setContent] = useState("");
+  const [coverImage, setCoverImage] = useState("");
   const [date, setDate] = useState("");
   const [author, setAuthor] = useState("");
   const [originalContent, setOriginalContent] = useState("");
@@ -90,6 +95,7 @@ export default function EditPostPage() {
       setExcerpt(post.excerpt || "");
       setCategories(post.categories && post.categories.length > 0 ? post.categories : [""]);
       setContent(post.content || "");
+      setCoverImage(post.coverImage ?? "");
       setDate(post.date ? new Date(post.date).toISOString().split("T")[0] : "");
       setAuthor(post.author || "");
       setOriginalContent(post.content || "");
@@ -163,13 +169,14 @@ export default function EditPostPage() {
     // Filter out empty categories
     const filteredCategories = categories.filter(cat => cat.trim() !== "");
 
-    // Create frontmatter
+    const coverLine = coverImage ? `coverImage: "${coverImage}"\n` : "";
+
     const frontmatter = `---
 title: ${title}
 date: ${date || new Date().toISOString().split("T")[0]}
 author: ${author}
 excerpt: ${excerpt}
-categories: [${filteredCategories.join(", ")}]
+${coverLine}categories: [${filteredCategories.join(", ")}]
 ---
 
 ${content}`;
@@ -194,6 +201,13 @@ ${content}`;
       if (!response.ok) {
         throw new Error(data.error || "Failed to update post");
       }
+
+      void syncImageUsagesClient({
+        refSlug: postSlug,
+        refPath: `content/blog/${postSlug}.md`,
+        replaceUsageTypes: ["blog_cover", "blog_inline"],
+        entries: buildBlogUsageEntries(postSlug, coverImage || null, content),
+      });
 
       setSuccess(true);
       // Redirect after short delay
@@ -369,6 +383,13 @@ ${content}`;
                 </div>
               ))}
             </div>
+
+            <BlogPostImageTools
+              coverImage={coverImage}
+              onCoverImageChange={setCoverImage}
+              content={content}
+              onContentChange={setContent}
+            />
 
             <div className="mb-6">
               <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">

@@ -1,4 +1,7 @@
 import React, { useState, FormEvent } from "react";
+import ImageLibraryField from "@/components/image-library/ImageLibraryField";
+import ImageLibraryPicker from "@/components/image-library/ImageLibraryPicker";
+import type { PublicImageAssetDto } from "@/lib/image-library-serialize";
 
 export interface Project {
   id?: number;
@@ -31,6 +34,7 @@ const categoryOptions = [
 ];
 
 export default function ProjectForm({ initialProject, onSubmit, onCancel }: ProjectFormProps) {
+  const [screenshotPickerOpen, setScreenshotPickerOpen] = useState(false);
   const [project, setProject] = useState<Project>(
     initialProject || {
       // id is optional for new projects
@@ -105,17 +109,46 @@ export default function ProjectForm({ initialProject, onSubmit, onCancel }: Proj
         <label className="block font-semibold">Date Published</label>
         <input name="datePublished" type="date" value={project.datePublished || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" title="Select publication date" />
       </div>
-      <div>
-        <label className="block font-semibold">Image URL</label>
-        <input name="image" value={project.image || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Image URL" />
-      </div>
+      <ImageLibraryField
+        label="Project image"
+        value={project.image || ""}
+        onChange={(url) => setProject((prev) => ({ ...prev, image: url }))}
+        pickerTitle="Choose project image"
+      />
       <div>
         <label className="block font-semibold">Case Study</label>
         <textarea name="caseStudy" value={project.caseStudy || ""} onChange={handleChange} className="border rounded px-3 py-2 w-full" placeholder="Case study content" />
       </div>
       <div>
         <label className="block font-semibold">Screenshots (comma separated URLs)</label>
-        <input name="screenshots" value={project.screenshots?.join(", ") || ""} onChange={handleScreenshotsChange} className="border rounded px-3 py-2 w-full" placeholder="Screenshot URLs (comma separated)" />
+        <div className="flex flex-wrap gap-2">
+          <input
+            name="screenshots"
+            value={project.screenshots?.join(", ") || ""}
+            onChange={handleScreenshotsChange}
+            className="min-w-[200px] flex-1 border rounded px-3 py-2"
+            placeholder="Screenshot URLs (comma separated)"
+          />
+          <button
+            type="button"
+            onClick={() => setScreenshotPickerOpen(true)}
+            className="rounded bg-blue-600 px-3 py-2 text-sm text-white hover:bg-blue-700"
+          >
+            Add from library
+          </button>
+        </div>
+        <ImageLibraryPicker
+          open={screenshotPickerOpen}
+          onClose={() => setScreenshotPickerOpen(false)}
+          title="Add screenshot"
+          onSelect={(image: PublicImageAssetDto) => {
+            const existing = project.screenshots?.filter(Boolean) ?? [];
+            setProject((prev) => ({
+              ...prev,
+              screenshots: [...existing, image.mediaUrl],
+            }));
+          }}
+        />
       </div>
       <div>
         <label className="block font-semibold">Outcomes (one per line)</label>

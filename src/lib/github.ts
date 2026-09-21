@@ -74,7 +74,9 @@ export async function fetchPostsFromGitHub(token?: string): Promise<BlogPost[]> 
             content: content,
             categories: data.categories || [],
             readingTime: calculateReadingTime(content),
-            author: data.author || "Anonymous"
+            author: data.author || "Anonymous",
+            coverImage:
+              typeof data.coverImage === "string" ? data.coverImage : undefined,
           };
           
           return post;

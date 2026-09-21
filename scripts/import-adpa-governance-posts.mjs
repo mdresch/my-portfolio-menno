@@ -147,65 +147,69 @@ async function main() {
   await mkdir(BLOG_DIR, { recursive: true });
 
   for (const relPath of FILES) {
-    const isJson = relPath.endsWith(".json");
-    const url = rawUrl(relPath);
-    const srcHtml = htmlUrl(relPath);
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`Skip (HTTP ${res.status}): ${relPath}`);
-      continue;
-    }
-    const bodyRaw = await res.text();
-    const slug = toSlug(relPath);
-    const date = inferDate(relPath);
-    const title = extractTitle(bodyRaw, relPath, isJson);
-    const description = excerptFromBody(bodyRaw, title, isJson, relPath);
-
-    let body = "";
-    if (isJson) {
-      body = [
-        `> **Source:** [\`governance/${relPath}\`](${srcHtml}) — branch \`${REF}\`, repository [mdresch/adpa](https://github.com/mdresch/adpa).`,
-        "",
-        "```json",
-        bodyRaw.trimEnd(),
-        "```",
-        "",
-      ].join("\n");
-    } else {
-      let md = bodyRaw.trimEnd();
-      if (md.startsWith("---")) {
-        const end = md.indexOf("\n---", 3);
-        if (end !== -1) md = md.slice(end + 4).trimStart();
+    try {
+      const isJson = relPath.endsWith(".json");
+      const url = rawUrl(relPath);
+      const srcHtml = htmlUrl(relPath);
+      const res = await fetch(url);
+      if (!res.ok) {
+        console.error(`Skip (HTTP ${res.status}): ${relPath}`);
+        continue;
       }
-      body = [
-        `> **Source:** [\`governance/${relPath}\`](${srcHtml}) — branch \`${REF}\`, repository [mdresch/adpa](https://github.com/mdresch/adpa).`,
-        "",
-        md,
+      const bodyRaw = await res.text();
+      const slug = toSlug(relPath);
+      const date = inferDate(relPath);
+      const title = extractTitle(bodyRaw, relPath, isJson);
+      const description = excerptFromBody(bodyRaw, title, isJson, relPath);
+
+      let body = "";
+      if (isJson) {
+        body = [
+          `> **Source:** [\`governance/${relPath}\`](${srcHtml}) — branch \`${REF}\`, repository [mdresch/adpa](https://github.com/mdresch/adpa).`,
+          "",
+          "```json",
+          bodyRaw.trimEnd(),
+          "```",
+          "",
+        ].join("\n");
+      } else {
+        let md = bodyRaw.trimEnd();
+        if (md.startsWith("---")) {
+          const end = md.indexOf("\n---", 3);
+          if (end !== -1) md = md.slice(end + 4).trimStart();
+        }
+        body = [
+          `> **Source:** [\`governance/${relPath}\`](${srcHtml}) — branch \`${REF}\`, repository [mdresch/adpa](https://github.com/mdresch/adpa).`,
+          "",
+          md,
+          "",
+        ].join("\n");
+      }
+
+      const frontmatter = [
+        "---",
+        `title: ${yamlString(title)}`,
+        `date: ${date}`,
+        `slug: ${yamlString(slug)}`,
+        `description: ${yamlString(description)}`,
+        `categories:`,
+        `  - ADPA`,
+        `  - Governance`,
+        `  - RPAS`,
+        `author: "Menno Drescher"`,
+        `sourceRepo: "https://github.com/mdresch/adpa"`,
+        `sourceBranch: ${yamlString(REF)}`,
+        `sourcePath: ${yamlString(`governance/${relPath}`)}`,
+        "---",
         "",
       ].join("\n");
+
+      const outPath = path.join(BLOG_DIR, `${slug}.md`);
+      await writeFile(outPath, frontmatter + body, "utf8");
+      console.log("Wrote", path.relative(ROOT, outPath));
+    } catch (e) {
+      console.error(`Error processing ${relPath}:`, e instanceof Error ? e.message : e);
     }
-
-    const frontmatter = [
-      "---",
-      `title: ${yamlString(title)}`,
-      `date: ${date}`,
-      `slug: ${yamlString(slug)}`,
-      `description: ${yamlString(description)}`,
-      `categories:`,
-      `  - ADPA`,
-      `  - Governance`,
-      `  - RPAS`,
-      `author: "Menno Drescher"`,
-      `sourceRepo: "https://github.com/mdresch/adpa"`,
-      `sourceBranch: ${yamlString(REF)}`,
-      `sourcePath: ${yamlString(`governance/${relPath}`)}`,
-      "---",
-      "",
-    ].join("\n");
-
-    const outPath = path.join(BLOG_DIR, `${slug}.md`);
-    await writeFile(outPath, frontmatter + body, "utf8");
-    console.log("Wrote", path.relative(ROOT, outPath));
   }
 }
 
