@@ -38,8 +38,12 @@ export const metadata: Metadata = {
     types: {
       "application/rss+xml": [
         {
-          url: "feed.xml",
+          url: "/blog/feed.xml",
           title: "Menno Drescher's Blog RSS Feed"
+        },
+        {
+          url: "/projects/feed.xml",
+          title: "Menno Drescher's Projects RSS Feed"
         },
       ],
     },
