@@ -120,3 +120,6 @@ service-account*.json
 .env.local
 
 docs/requirements/gathered-project-context.txt
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
