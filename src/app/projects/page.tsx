@@ -44,7 +44,29 @@ export default async function ProjectsPage() {
           error instanceof Error ? error.message : "Database query failed";
       }
     }
-    const projects = dbProjects.map(normalizeProjectForList);
+    const projects = [
+      {
+        id: "static-adpa",
+        title: "ADPA Framework",
+        description: "Enterprise AI Governance Platform. A full-stack AI system that generates and validates business-critical documentation with audit-grade traceability, compliance enforcement, and drift detection.",
+        technologies: ["AI Governance", "Enterprise Architecture", "Full-Stack", "PMBOK/BABOK"],
+        image: "/images/showcase-aiassist.jpg",
+        repoUrl: "",
+        liveUrl: "",
+        slug: "adpa",
+      },
+      {
+        id: "static-governed-sdlc",
+        title: "Governed Feature Development",
+        description: "A self-healing Software Development Lifecycle (SDLC) model where features define their own correctness, and every change must pass atomic validation to be accepted.",
+        technologies: ["System Design", "DevOps", "Governance", "Testing"],
+        image: "/images/showcase-cloudscale.jpg",
+        repoUrl: "",
+        liveUrl: "",
+        slug: "governed-sdlc",
+      },
+      ...dbProjects.map(normalizeProjectForList)
+    ];
 
     return (
       <main className="container mx-auto px-4 py-8" data-tour="projects-page">

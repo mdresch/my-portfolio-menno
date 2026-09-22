@@ -22,64 +22,51 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 
-// Mortgage Arrears Data
+// Mortgage Arrears Data — updated with 2026 actuals (national rate reached decade high of 0.29%, May 2026)
 const mortgageArrearsData = [
   { name: "Q1 2023", actual: 0.15, baseCase: 0.15, severeCase: 0.15 },
   { name: "Q2 2023", actual: 0.17, baseCase: 0.17, severeCase: 0.17 },
   { name: "Q3 2023", actual: 0.18, baseCase: 0.18, severeCase: 0.18 },
   { name: "Q4 2023", actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
-  { name: "Q1 2024", actual: 0.19, baseCase: 0.19, severeCase: 0.19 },
-  { name: "Q2 2024", actual: 0.18, baseCase: 0.19, severeCase: 0.21 },
-  { name: "Q3 2024", actual: 0.17, baseCase: 0.18, severeCase: 0.23 },
-  { name: "Q4 2024", actual: 0.16, baseCase: 0.17, severeCase: 0.25 },
-  { name: "Q1 2025", actual: 0.15, baseCase: 0.17, severeCase: 0.28 },
-  { name: "Q2 2025", actual: null, baseCase: 0.16, severeCase: 0.32 },
-  { name: "Q3 2025", actual: null, baseCase: 0.16, severeCase: 0.38 },
-  { name: "Q4 2025", actual: null, baseCase: 0.15, severeCase: 0.45 },
-  { name: "Q1 2026", actual: null, baseCase: 0.15, severeCase: 0.52 },
+  { name: "Q1 2024", actual: 0.21, baseCase: 0.21, severeCase: 0.21 },
+  { name: "Q2 2024", actual: 0.22, baseCase: 0.22, severeCase: 0.23 },
+  { name: "Q3 2024", actual: 0.23, baseCase: 0.23, severeCase: 0.25 },
+  { name: "Q4 2024", actual: 0.25, baseCase: 0.25, severeCase: 0.27 },
+  { name: "Q1 2025", actual: 0.26, baseCase: 0.26, severeCase: 0.30 },
+  { name: "Q2 2025", actual: 0.27, baseCase: 0.27, severeCase: 0.34 },
+  { name: "Q3 2025", actual: 0.27, baseCase: 0.27, severeCase: 0.39 },
+  { name: "Q4 2025", actual: 0.28, baseCase: 0.28, severeCase: 0.44 },
+  { name: "Q1 2026", actual: 0.29, baseCase: 0.29, severeCase: 0.50 },
+  { name: "Q2 2026", actual: 0.29, baseCase: 0.29, severeCase: 0.54 },
+  { name: "Q3 2026", actual: null, baseCase: 0.28, severeCase: 0.57 },
+  { name: "Q4 2026", actual: null, baseCase: 0.27, severeCase: 0.58 },
+  { name: "Q1 2027", actual: null, baseCase: 0.25, severeCase: 0.55 },
+  { name: "Q2 2027", actual: null, baseCase: 0.23, severeCase: 0.50 },
 ];
 
-// Bank Capital Ratio Data
+// Bank Capital Ratio Data — CET1 averaged 13.7% in Q1 2026 (Bank of Canada FSR 2026)
 const bankCapitalRatioData = [
   { name: "2023", actual: 12.8, stressScenario: null },
   { name: "2024", actual: 13.1, stressScenario: null },
-  { name: "2025", actual: 13.3, stressScenario: 13.3 },
-  { name: "2026", actual: null, stressScenario: 10.8 },
-  { name: "2027", actual: null, stressScenario: 9.2 },
+  { name: "2025", actual: 13.3, stressScenario: null },
+  { name: "2026", actual: 13.7, stressScenario: 13.7 },
+  { name: "2027", actual: null, stressScenario: 11.2 },
+  { name: "2028", actual: null, stressScenario: 9.5 },
 ];
 
-// Asset Volatility Data
+// Asset Volatility Data — extended through May 2026 including Middle East disruption spike
 const assetVolatilityData = [
-  {
-    date: "Jan 2025",
-    equityVolatility: 11,
-    bondVolatility: 5,
-    currencyVolatility: 8,
-  },
-  {
-    date: "Feb 2025",
-    equityVolatility: 13,
-    bondVolatility: 7,
-    currencyVolatility: 9,
-  },
-  {
-    date: "Mar 2025",
-    equityVolatility: 15,
-    bondVolatility: 8,
-    currencyVolatility: 11,
-  },
-  {
-    date: "Apr 2025",
-    equityVolatility: 29,
-    bondVolatility: 18,
-    currencyVolatility: 24,
-  },
-  {
-    date: "May 2025",
-    equityVolatility: 22,
-    bondVolatility: 14,
-    currencyVolatility: 16,
-  },
+  { date: "Jan 2025", equityVolatility: 11, bondVolatility: 5, currencyVolatility: 8 },
+  { date: "Feb 2025", equityVolatility: 13, bondVolatility: 7, currencyVolatility: 9 },
+  { date: "Mar 2025", equityVolatility: 15, bondVolatility: 8, currencyVolatility: 11 },
+  { date: "Apr 2025", equityVolatility: 29, bondVolatility: 18, currencyVolatility: 24 },
+  { date: "May 2025", equityVolatility: 22, bondVolatility: 14, currencyVolatility: 16 },
+  { date: "Jun 2025", equityVolatility: 16, bondVolatility: 10, currencyVolatility: 12 },
+  { date: "Sep 2025", equityVolatility: 13, bondVolatility: 8, currencyVolatility: 10 },
+  { date: "Dec 2025", equityVolatility: 12, bondVolatility: 7, currencyVolatility: 9 },
+  { date: "Feb 2026", equityVolatility: 19, bondVolatility: 13, currencyVolatility: 15 },
+  { date: "Mar 2026", equityVolatility: 23, bondVolatility: 16, currencyVolatility: 18 },
+  { date: "May 2026", equityVolatility: 16, bondVolatility: 11, currencyVolatility: 13 },
 ];
 
 // Business Vulnerability Data
@@ -110,68 +97,44 @@ const businessVulnerabilityData = [
   },
   {
     sector: "Technology",
-    highDebt: 15,
-    lowCash: 18,
+    highDebt: 24,
+    lowCash: 22,
     usTradeDependence: 67,
   },
 ];
 
-// Risk assessment data
+// Risk assessment data — updated to May 2026 vs May 2025 comparison; Geopolitical Risk reflects Middle East + trade war
 const riskAssessmentData = [
-  { subject: "Market Risk", A: 8, B: 6, fullMark: 10 },
-  { subject: "Credit Risk", A: 7, B: 5, fullMark: 10 },
-  { subject: "Funding Risk", A: 5, B: 2, fullMark: 10 },
-  { subject: "Trade War Impact", A: 9, B: 3, fullMark: 10 },
-  { subject: "Household Risk", A: 6, B: 5, fullMark: 10 },
-  { subject: "Business Risk", A: 7, B: 4, fullMark: 10 },
+  { subject: "Market Risk", A: 7, B: 8, fullMark: 10 },
+  { subject: "Credit Risk", A: 7, B: 7, fullMark: 10 },
+  { subject: "Funding Risk", A: 6, B: 5, fullMark: 10 },
+  { subject: "Geopolitical Risk", A: 9, B: 9, fullMark: 10 },
+  { subject: "Household Risk", A: 5, B: 6, fullMark: 10 },
+  { subject: "Business Risk", A: 7, B: 7, fullMark: 10 },
 ];
 
-// Housing Market Vulnerability Data
+// Housing Market Vulnerability Data — extended through Q2 2026 reflecting market softening (Bank of Canada FSR 2026)
 const housingVulnerabilityData = [
-  {
-    quarter: "Q1 2024",
-    overvaluation: 65,
-    debtService: 72,
-    priceAcceleration: 45,
-    overbuilding: 38
-  },
-  {
-    quarter: "Q2 2024",
-    overvaluation: 68,
-    debtService: 75,
-    priceAcceleration: 50,
-    overbuilding: 42
-  },
-  {
-    quarter: "Q3 2024",
-    overvaluation: 70,
-    debtService: 78,
-    priceAcceleration: 58,
-    overbuilding: 44
-  },
-  {
-    quarter: "Q4 2024",
-    overvaluation: 73,
-    debtService: 82,
-    priceAcceleration: 62,
-    overbuilding: 48
-  },
-  {
-    quarter: "Q1 2025",
-    overvaluation: 75,
-    debtService: 85,
-    priceAcceleration: 65,
-    overbuilding: 51
-  },
+  { quarter: "Q1 2024", overvaluation: 65, debtService: 72, priceAcceleration: 45, overbuilding: 38 },
+  { quarter: "Q2 2024", overvaluation: 68, debtService: 75, priceAcceleration: 50, overbuilding: 42 },
+  { quarter: "Q3 2024", overvaluation: 70, debtService: 78, priceAcceleration: 58, overbuilding: 44 },
+  { quarter: "Q4 2024", overvaluation: 73, debtService: 82, priceAcceleration: 62, overbuilding: 48 },
+  { quarter: "Q1 2025", overvaluation: 75, debtService: 85, priceAcceleration: 65, overbuilding: 51 },
+  { quarter: "Q2 2025", overvaluation: 72, debtService: 83, priceAcceleration: 55, overbuilding: 49 },
+  { quarter: "Q3 2025", overvaluation: 68, debtService: 80, priceAcceleration: 46, overbuilding: 46 },
+  { quarter: "Q4 2025", overvaluation: 65, debtService: 77, priceAcceleration: 38, overbuilding: 43 },
+  { quarter: "Q1 2026", overvaluation: 62, debtService: 74, priceAcceleration: 30, overbuilding: 41 },
+  { quarter: "Q2 2026", overvaluation: 60, debtService: 72, priceAcceleration: 26, overbuilding: 40 },
 ];
 
-// International Financial Contagion Risk Data
+// International Financial Contagion Risk Data — Middle East added as new 2026 risk channel
 const contagionRiskData = [
-  { name: "US", value: 35 },
-  { name: "EU", value: 28 },
-  { name: "China", value: 22 },
-  { name: "UK", value: 10 },
-  { name: "Japan", value: 5 },
+  { name: "US", value: 30 },
+  { name: "EU", value: 23 },
+  { name: "China", value: 20 },
+  { name: "Middle East", value: 15 },
+  { name: "UK", value: 8 },
+  { name: "Japan", value: 4 },
 ];
 
 // Climate Financial Risk Data
@@ -257,7 +220,7 @@ export const MortgageArrearsChart: React.FC = () => {
             strokeWidth={2}
             strokeDasharray="3 3"
             dot={{ r: 3 }}
-            name="Severe Trade War Scenario"
+            name="Severe Stress Scenario"
           />
         </LineChart>
       </ResponsiveContainer>
@@ -290,7 +253,7 @@ export const BankCapitalRatioChart: React.FC = () => {
           />
           <Legend />
           <Bar dataKey="actual" name="Actual CET1 Ratio" fill="#4285F4" />
-          <Bar dataKey="stressScenario" name="Severe Trade War Scenario" fill="#EA4335" />
+          <Bar dataKey="stressScenario" name="Severe Stress Scenario" fill="#EA4335" />
         </BarChart>
       </ResponsiveContainer>
       <div className="mt-4 flex items-center justify-center">
@@ -419,7 +382,7 @@ export const HousingVulnerabilityChart: React.FC = () => {
           />
           <PolarRadiusAxis angle={90} domain={[0, 100]} />
           <Radar
-            name="Q1 2025"
+            name="Q2 2026"
             dataKey="value"
             stroke="#8884d8"
             fill="#8884d8"
@@ -439,7 +402,7 @@ export const HousingVulnerabilityChart: React.FC = () => {
         Source: Bank of Canada Housing Market Assessment Framework
       </div>
       <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        <strong>Key Finding:</strong> Elevated debt service ratios represent the highest vulnerability in the Canadian housing market, driven by higher interest rates and increased mortgage renewals at higher rates.
+        <strong>Key Finding (Q2 2026):</strong> Housing markets have softened over the past 12 months. Price acceleration vulnerability has declined markedly, though debt service remains elevated as the final wave of pandemic-era mortgage renewals completes. Risk is expected to pass by H2 2027.
       </div>
     </div>
   );
@@ -476,7 +439,7 @@ export const InternationalContagionChart: React.FC = () => {
         Source: Bank of Canada International Financial Stability Analysis
       </div>
       <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
-        <strong>Key Finding:</strong> The United States remains the largest potential source of financial contagion risk to Canada due to highly integrated banking systems and trade dependencies.
+        <strong>Key Finding (2026 Update):</strong> The Middle East conflict has emerged as a significant new contagion channel, driving oil price pressure and energy market disruption. The US remains the largest single source of risk due to deep trade and financial integration.
       </div>
     </div>
   );
@@ -609,21 +572,21 @@ export const RiskAssessmentDashboard: React.FC = () => {
       
       <div className="md:col-span-2 bg-white dark:bg-neutral-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 transition-colors">Risk Assessment Comparison</h3>
-        <div className="text-sm text-gray-600 dark:text-gray-300 mb-4 transition-colors">Current vs. Pre-Trade War</div>
+        <div className="text-sm text-gray-600 dark:text-gray-300 mb-4 transition-colors">May 2026 vs. May 2025</div>
         <ResponsiveContainer width="100%" height={250}>
           <RadarChart outerRadius={90} data={riskAssessmentData}>
             <PolarGrid stroke="#e0e0e0" />
             <PolarAngleAxis dataKey="subject" tick={{ fill: "#666", fontSize: 12 }} />
             <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: "#666", fontSize: 10 }} />
             <Radar
-              name="May 2025 (Current)"
+              name="May 2026 (Current)"
               dataKey="A"
               stroke="#8884d8"
               fill="#8884d8"
               fillOpacity={0.6}
             />
             <Radar
-              name="January 2025 (Pre-Trade War)"
+              name="May 2025"
               dataKey="B"
               stroke="#82ca9d"
               fill="#82ca9d"
