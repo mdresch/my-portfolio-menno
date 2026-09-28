@@ -188,10 +188,10 @@ export const MortgageArrearsChart: React.FC = () => {
           <YAxis
             tick={{ fill: "#666", fontSize: 12 }}
             domain={[0, 0.6]}
-            tickFormatter={(value) => `${(value * 100).toFixed(1)}%`}
+            tickFormatter={(value) => `${value.toFixed(1)}%`}
           />
           <Tooltip
-            formatter={(value: any) => [`${(value * 100).toFixed(2)}%`, undefined]}
+            formatter={(value: any) => [`${value.toFixed(2)}%`, undefined]}
             labelFormatter={(label) => `Period: ${label}`}
           />
           <Legend />
