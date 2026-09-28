@@ -88,6 +88,15 @@ export default async function ProjectsPage() {
           </span>
         </aside>
 
+        {dbLoadError ? (
+          <div className="mb-6 max-w-3xl rounded-lg border-l-4 border-yellow-500 bg-yellow-50 p-4 text-sm text-yellow-800 dark:border-yellow-600 dark:bg-yellow-950/40 dark:text-yellow-200">
+            <p className="font-medium">Some projects could not be loaded from the database.</p>
+            {process.env.NODE_ENV === "development" ? (
+              <p className="mt-1 whitespace-pre-wrap text-red-800 dark:text-red-300">{dbLoadError}</p>
+            ) : null}
+          </div>
+        ) : null}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-tour="projects-grid">
           {projects.length === 0 ? (
             <div className="col-span-2 bg-yellow-50 border-l-4 border-yellow-500 p-4 space-y-2">
