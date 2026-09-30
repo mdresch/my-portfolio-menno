@@ -264,6 +264,20 @@ export default function RiskOverviewPage() {
             />
           </div>
 
+          {/* Card 3b - Canada Softwood and US Housing */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="Canada Softwood and US Housing"
+              description="Canadian softwood supply, US housing demand, interest rates and oil side by side, with sources, as of 29 September 2026."
+              date="September 30, 2026"
+              category="Economic Risk"
+              tags={["Softwood Lumber", "Housing", "Interest Rates"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/canada-softwood-us-housing"
+              usePlaceholder={false}
+            />
+          </div>
+
           {/* Card 4 - Deep Dive Trade War */}
           <div className="risk-card-hover">
             <RiskReportCard
@@ -494,6 +508,20 @@ export default function RiskOverviewPage() {
                   url: "/data/canadian-financial-stability-2025.xml",
                 },
               ]}
+            />
+          </div>
+
+          {/* Canada Softwood and US Housing */}
+          <div className="risk-card-hover">
+            <RiskReportCard
+              title="Canada Softwood and US Housing"
+              description="Canadian softwood supply, US housing demand, interest rates and oil side by side, with sources, as of 29 September 2026."
+              date="September 30, 2026"
+              category="Economic Risk"
+              tags={["Softwood Lumber", "Housing", "Interest Rates"]}
+              imageUrl="/images/showcase-dataviz.jpg"
+              href="/risk/canada-softwood-us-housing"
+              usePlaceholder={false}
             />
           </div>
 
