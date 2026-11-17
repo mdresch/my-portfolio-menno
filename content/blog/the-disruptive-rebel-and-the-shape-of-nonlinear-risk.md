@@ -73,7 +73,7 @@ The design proposal recommended an envelope of €1-2 billion over five years, s
 | UK's ARIA | €300 million | aiming to grow to €400-500M |
 | NADI (proposed) | €1-2 billion over 5 years | funds roughly 20 programs and 15 challenges, run by 10-15 Innovation Directors |
 
-Reported follow-up steps include a €500 million allocation announced on Prinsjesdag 2026 and a first €40 million AI-Native Chip Design Challenge run jointly with SPRIND — check the latest official NADI communications for current figures.
+The government has since allocated €500 million to NADI, announced on Prinsjesdag 2026. Its first initiative is a €40 million AI-Native Chip Design Challenge, run jointly with SPRIND.
 
 **Built on the same portfolio logic as this piece.** NADI's model explicitly accepts that roughly 80% of its funded programs will fail — the 20% that succeed need to generate a 7-10x return for the portfolio to pay off overall. That's the "fail fast, learn, move on" pattern, run at the scale of a national research-funding portfolio.
 
