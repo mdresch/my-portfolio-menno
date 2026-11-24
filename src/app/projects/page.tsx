@@ -44,7 +44,24 @@ export default async function ProjectsPage() {
           error instanceof Error ? error.message : "Database query failed";
       }
     }
-    const projects = [
+    const staticProjects = [
+      {
+        id: "static-mxc",
+        title: "MXC — Micro-Execution Container",
+        description:
+          "Hardware-isolated Windows 11, Windows Server 2025 & autonomous AI agent micro-VMs at container speed. Type-1 Hyper-V Gen2 sandboxes over airgapped VMBus with ≤ 5 ms hot dispatch, 9s lean Win11 cold boot, multi-tier standby pools, and instant checkpoint rollback.",
+        technologies: [
+          "Rust (mxc-sdk / wxc-exec)",
+          "Hyper-V Gen2 (VMBus)",
+          "Python 3.15",
+          "AI Agent Sandboxes",
+          "EU AI Act / ISO 42001",
+        ],
+        image: "/images/showcase-cybershield-1.jpeg",
+        repoUrl: "https://github.com/mdresch/mxc",
+        liveUrl: "",
+        slug: "mxc",
+      },
       {
         id: "static-adpa",
         title: "ADPA Framework",
@@ -65,7 +82,13 @@ export default async function ProjectsPage() {
         liveUrl: "",
         slug: "governed-sdlc",
       },
-      ...dbProjects.map(normalizeProjectForList)
+    ];
+    const staticSlugs = new Set(staticProjects.map((p) => p.slug));
+    const projects = [
+      ...staticProjects,
+      ...dbProjects
+        .map(normalizeProjectForList)
+        .filter((p) => !staticSlugs.has(p.slug)),
     ];
 
     return (
