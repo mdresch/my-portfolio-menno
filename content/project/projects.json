@@ -1,5 +1,21 @@
 [
   {
+    "Title": "MXC — Micro-Execution Container (Hyper-V & AI Agent Sandboxes)",
+    "Description": "Hardware-isolated Windows 11, Windows Server 2025, and autonomous AI agent micro-VMs at container speed — <= 5 ms hot dispatch, 9s stripped Win11 cold boot, airgapped VMBus execution, and 100% immutable golden parent sterility.",
+    "ImageUrl": "/images/showcase-cybershield-1.jpeg",
+    "GitHubUrl": "https://github.com/mdresch/mxc",
+    "LiveUrl": "https://my-portfolio-menno.vercel.app/projects/mxc",
+    "Created": "2026-11-24T00:00:00.000Z",
+    "Technologies": [
+      "Rust (mxc-sdk / wxc-exec)",
+      "Python 3.15",
+      "Hyper-V Gen2 (VMBus)",
+      "Windows 11 Pro & Server 2025",
+      "Multi-Tier Standby Pools",
+      "TLS SNI Predictive Wake"
+    ]
+  },
+  {
     "Title": "Portfolio Website",
     "Description": "A personal portfolio website built with Next.js and .NET API backend, deployed on Azure.",
     "ImageUrl": "/images/projects/portfolio.jpg",
